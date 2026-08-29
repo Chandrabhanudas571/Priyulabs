@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospitality Tech | AI POS, KDS & Restaurant OS | Priyulabs Digital</title>
+  <meta name="description" content="Priyulabs Hospitality Tech – Smart AI POS, Kitchen KDS, QR Table Menus, Bakery Weight Sync & Multi-Outlet Management for Restaurants, Cafes & Hotels across India." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Dedicated Hospitality Page Custom Styles */
+    .hosp-hero {
+      padding: clamp(100px, 16vh, 150px) 16px clamp(40px, 8vh, 80px);
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
+      text-align: center;
+      position: relative;
+    }
+
+    .hosp-eyebrow {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      font-size: clamp(11.5px, 2.5vw, 13px);
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      max-width: 100%;
+    }
+
+    .hosp-title {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 5.5vw, 42px);
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    .hosp-sub {
+      font-size: clamp(14px, 3.6vw, 18px);
+      color: var(--text-body);
+      max-width: 780px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hosp-sec-placeholder {
+      padding: clamp(40px, 8vw, 80px) 16px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .hosp-sec-title {
+      font-family: var(--font-heading);
+      font-size: clamp(20px, 4.5vw, 28px);
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .hosp-sec-desc {
+      font-size: clamp(13.5px, 3.2vw, 15px);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .sq-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .sq-hero-ctas {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .sq-hero-ctas a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 12px 18px;
+        font-size: 14px;
+      }
+      .cta-content h2 {
+        font-size: 20px;
+        line-height: 1.3;
+      }
+      .cta-content p {
+        font-size: 13.5px;
+      }
+      .cta-buttons a {
+        font-size: 13px;
+        padding: 10px 14px;
+        word-break: break-word;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL NAVIGATION HEADER (HOSPITALITY TECH PAGE)
+  ══════════════════════════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle">HOSPITALITY TECH</span>
+        </div>
+      </a>
+
+      <!-- Hospitality Tech Dedicated Header Menu -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#product" class="nav-link-title">Product</a></li>
+        <li><a href="#pricing" class="nav-link-title">Pricing</a></li>
+        <li><a href="#success-stories" class="nav-link-title">Success Stories</a></li>
+        <li><a href="#contact" class="nav-link-title">Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">✨ Interactive Demo</button>
+        <a href="#contact" class="btn-nav">Start Free Trial</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HOSPITALITY TECH HERO SECTION
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hosp-hero" id="product">
+    <div class="container">
+      <span class="hosp-eyebrow">🛎️ PRIYULABS HOSPITALITY TECH</span>
+      <h1 class="hosp-title">Next-Generation AI Operating System for Restaurants, Cafes &amp; Hotels</h1>
+      <p class="hosp-sub">
+        Streamline counter billing, kitchen KDS order printing, self-order QR table menus, custom bakery cake bookings &amp; multi-outlet inventory in one fast OS.
+      </p>
+
+      <div class="sq-hero-ctas">
+        <a href="#contact" class="btn-primary-hero">Book Hospitality Demo →</a>
+        <a href="solutions.html?sector=cafe" class="btn-secondary-hero">Explore All Features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 1: PRODUCT
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hosp-sec-placeholder" id="product-details">
+    <div class="container text-center">
+      <h2 class="hosp-sec-title">📦 Product Overview</h2>
+      <p class="hosp-sec-desc">Comprehensive POS, Kitchen KDS, QR Menus &amp; Recipe ERP software built for F&amp;B and Hospitality operations.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 2: PRICING
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hosp-sec-placeholder" id="pricing" style="background: var(--bg-subtle);">
+    <div class="container text-center">
+      <h2 class="hosp-sec-title">💳 Pricing Plans</h2>
+      <p class="hosp-sec-desc">Transparent, affordable plans tailored for standalone cafes, bakeries &amp; multi-chain hotels.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 3: SUCCESS STORIES
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hosp-sec-placeholder" id="success-stories">
+    <div class="container text-center">
+      <h2 class="hosp-sec-title">🌟 Success Stories</h2>
+      <p class="hosp-sec-desc">See how 500+ cafes, restaurants &amp; bakeries across India scaled operations with Priyulabs Hospitality Tech.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 4: CONTACT US
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hosp-sec-placeholder" id="contact" style="background: var(--bg-subtle);">
+    <div class="container text-center">
+      <h2 class="hosp-sec-title">📞 Contact Us</h2>
+      <p class="hosp-sec-desc">Schedule a 10-minute live demonstration or talk with our hospitality technology experts.</p>
+      
+      <div class="cta-banner" style="margin-top: 40px;">
+        <div class="cta-content">
+          <h2>Ready to Upgrade Your Hospitality Operations?</h2>
+          <p>Book your live demo or whatsapp our team for quick setup across India.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/917849074050?text=Hello!%20I%20want%20a%20demo%20for%20my%20Hospitality%20business." class="btn-secondary-hero" target="_blank">💬 WhatsApp Support (+91 78490 74050)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+            <div class="logo-text-group">
+              <span class="logo-title">PRIYULABS</span>
+              <span class="logo-subtitle">HOSPITALITY TECH</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Priyulabs Hospitality Tech – POS, Kitchen KDS &amp; Order OS for Restaurants, Cafes, Bakeries &amp; Hotels across India.
+          </p>
+        </div>
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#success-stories">Success Stories</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Priyulabs Digital. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail Sector Solutions &amp; AI Digital Upgrades | Priyulabs Digital</title>
+  <meta name="description" content="Discover how Priyulabs AI Retail OS transforms Kirana, Cafes, Apparel, Pharmacies, Electronics, and 15+ retail sectors across India." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Dedicated Solutions Page Custom Styles */
+    .sol-page-hero {
+      padding: clamp(95px, 14vh, 140px) 16px clamp(30px, 6vh, 60px);
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
+      text-align: center;
+      position: relative;
+    }
+
+    .sector-picker-bar {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 10px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 60px;
+      box-shadow: var(--shadow-sm);
+      margin: 24px auto 0;
+      max-width: 1000px;
+      width: 100%;
+      scrollbar-width: none;
+    }
+    .sector-picker-bar::-webkit-scrollbar { display: none; }
+
+    .sector-pick-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sector-pick-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-subtle);
+    }
+
+    .sector-pick-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+    }
+
+    .sol-detail-section {
+      padding: clamp(40px, 6vw, 60px) 0 100px;
+    }
+
+    .sol-transformation-hero {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: clamp(20px, 4vw, 40px);
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sol-hero-badge {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .sol-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 5vw, 34px);
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sol-hero-desc {
+      font-size: clamp(14px, 3.5vw, 16px);
+      color: var(--text-body);
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    .comp-grid-full {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 868px) {
+      .comp-grid-full { grid-template-columns: 1fr; gap: 20px; }
+      .sol-hero-title { font-size: clamp(20px, 5vw, 26px); }
+    }
+
+    .comp-col-card {
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .comp-col-before {
+      background: rgba(239, 68, 68, 0.03);
+      border-color: rgba(239, 68, 68, 0.25);
+    }
+
+    .comp-col-after {
+      background: rgba(16, 185, 129, 0.04);
+      border-color: rgba(16, 185, 129, 0.35);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+    }
+
+    .comp-header-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .comp-header-title h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .comp-list-full {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .comp-list-full li {
+      font-size: 15px;
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .comp-list-full li strong {
+      color: var(--text-main);
+    }
+
+    .upgrades-grid-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .upgrades-cards-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .upgrade-card-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .upgrade-card-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .upgrade-card-icon {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .upgrade-card-item h4 {
+      font-family: var(--font-heading);
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .upgrade-card-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .sol-roi-callout {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 34px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      margin-bottom: 60px;
+    }
+
+    .sol-roi-callout h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #34d399;
+    }
+
+    .sol-roi-callout p {
+      font-size: 16px;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL NAVIGATION HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle">DIGITAL</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <!-- 1. Business types Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="solutions.html" class="nav-link-title dropdown-trigger">
+            Business types <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-mega-3col">
+            <div class="mega-dropdown-inner mega-3col-wrapper">
+              
+              <!-- Column 1: Left Categories Tabs -->
+              <div class="mega-col-left">
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onmouseenter="switchMegaTab('fnb')" onclick="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onmouseenter="switchMegaTab('retail')" onclick="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onmouseenter="switchMegaTab('beauty')" onclick="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onmouseenter="switchMegaTab('services')" onclick="switchMegaTab('services')">Services</button>
+                <a href="solutions.html" class="sq-all-types-link">All business types</a>
+              </div>
+
+              <!-- Column 2: Discover (Specific Business Types) -->
+              <div class="mega-col-middle">
+                <div class="mega-sub-header">Discover</div>
+                <div class="sq-tab-content active" id="tab-fnb">
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item sq-disc-primary"><strong>Switch to Priyulabs</strong></a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">☕ Coffee shops &amp; Cafes</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🛎️ Quick service (QSR)</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🚗 Drive-thru &amp; Takeaway</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🍽️ Full service &amp; Fine dining</a>
+                  <a href="solutions.html?sector=liquor" class="sq-disc-item">🍸 Bars &amp; breweries</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🚚 Food trucks &amp; Kiosks</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">👨‍🍳 Catering &amp; Cloud Kitchens</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🎂 Bakeries &amp; Confectionery</a>
+                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🍕 Pizzeria &amp; Fast Food</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-retail">
+                  <a href="solutions.html?sector=supermarket" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=supermarket" class="sq-disc-item sq-disc-primary"><strong>Switch to Priyulabs</strong></a>
+                  <a href="solutions.html?sector=supermarket" class="sq-disc-item">🛒 Supermarkets &amp; Kirana</a>
+                  <a href="solutions.html?sector=mandi" class="sq-disc-item">🌾 Grain &amp; Mandi Wholesale</a>
+                  <a href="solutions.html?sector=meat" class="sq-disc-item">🥩 Meat &amp; Fish Outlets</a>
+                  <a href="solutions.html?sector=books" class="sq-disc-item">📚 Books &amp; Stationery</a>
+                  <a href="solutions.html?sector=florists" class="sq-disc-item">🌸 Florists &amp; Nurseries</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-beauty">
+                  <a href="solutions.html?sector=apparel" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=apparel" class="sq-disc-item sq-disc-primary"><strong>Switch to Priyulabs</strong></a>
+                  <a href="solutions.html?sector=apparel" class="sq-disc-item">👗 Apparel &amp; Fashion Stores</a>
+                  <a href="solutions.html?sector=apparel" class="sq-disc-item">👠 Footwear &amp; Shoe Outlets</a>
+                  <a href="solutions.html?sector=specialty" class="sq-disc-item">💄 Cosmetics &amp; Beauty Salons</a>
+                  <a href="solutions.html?sector=specialty" class="sq-disc-item">💎 Jewelry &amp; Luxury Gifts</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-services">
+                  <a href="solutions.html?sector=pharmacy" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=pharmacy" class="sq-disc-item sq-disc-primary"><strong>Switch to Priyulabs</strong></a>
+                  <a href="solutions.html?sector=pharmacy" class="sq-disc-item">💊 Pharmacies &amp; Chemist</a>
+                  <a href="solutions.html?sector=electronics" class="sq-disc-item">⚡ Electronics &amp; Mobile Shops</a>
+                  <a href="solutions.html?sector=autoparts" class="sq-disc-item">🚗 Auto Spare Parts</a>
+                  <a href="solutions.html?sector=furniture" class="sq-disc-item">🛋️ Furniture &amp; Home Decor</a>
+                  <a href="solutions.html?sector=petcare" class="sq-disc-item">🐶 Pet Care &amp; Vet Supplies</a>
+                </div>
+              </div>
+
+              <!-- Column 3: Capabilities -->
+              <div class="mega-col-right">
+                <div class="mega-sub-header">Capabilities</div>
+                <a href="index.html#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="solutions.html" class="sq-cap-item">Manage orders from one place</a>
+                <a href="index.html#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="solutions.html" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="index.html#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="index.html#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="index.html#attractions" class="sq-cap-item">Improve operations with AI Voice POS</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 2. Products Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="index.html#attractions" class="nav-link-title dropdown-trigger">
+            Products <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-dropdown-sm">
+            <div class="mega-dropdown-inner">
+              <div class="mega-column">
+                <a href="index.html#attractions" class="square-sub-item">
+                  <strong>🛒 POS Billing &amp; Voice AI</strong>
+                  <span>2-Second voice billing &amp; offline checkout</span>
+                </a>
+                <a href="index.html#attractions" class="square-sub-item">
+                  <strong>📦 Smart Inventory &amp; Vision AI OCR</strong>
+                  <span>Wholesaler invoice OCR &amp; batch expiry alerts</span>
+                </a>
+                <a href="index.html#attractions" class="square-sub-item">
+                  <strong>👥 Staff HRMS &amp; Selfie Attendance</strong>
+                  <span>Geofenced attendance &amp; auto payroll</span>
+                </a>
+                <a href="index.html#attractions" class="square-sub-item">
+                  <strong>🧾 1-Click GST &amp; EDC Payment Sync</strong>
+                  <span>GSTR-1 &amp; 3B JSON files for CA &amp; Cash Drawer Sync</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- 2B. Hospitality Tech Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="hospitality.html" class="nav-link-title dropdown-trigger">
+            Hospitality Tech <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-dropdown-sm">
+            <div class="mega-dropdown-inner">
+              <div class="mega-column">
+                <a href="hospitality.html#product" class="square-sub-item">
+                  <strong>☕ Hospitality Product OS</strong>
+                  <span>Table layout management, QR menus &amp; POS billing</span>
+                </a>
+                <a href="hospitality.html#pricing" class="square-sub-item">
+                  <strong>💳 Hospitality Pricing</strong>
+                  <span>Plans for standalone cafes, bakeries &amp; hotels</span>
+                </a>
+                <a href="hospitality.html#success-stories" class="square-sub-item">
+                  <strong>🌟 Success Stories</strong>
+                  <span>Case studies from 500+ Indian F&amp;B outlets</span>
+                </a>
+                <a href="hospitality.html#contact" class="square-sub-item">
+                  <strong>📞 Contact Us</strong>
+                  <span>Book 10-minute demo with hospitality team</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- 3. Hardware -->
+        <li><a href="index.html#hardware">Hardware</a></li>
+
+        <!-- 4. Pricing -->
+        <li><a href="index.html#problem">Pricing</a></li>
+
+        <!-- 5. What's new -->
+        <li><a href="index.html#trust">What's new</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">🌙</button>
+        <a href="index.html#cta" class="btn-primary-sm">Start Free Trial →</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTOR SOLUTIONS HERO & PICKER
+  ══════════════════════════════════════════════════════════ -->
+  <section class="sol-page-hero">
+    <div class="container">
+      <div class="section-badge">Industry Solutions</div>
+      <h1 class="section-title">Retail Sector AI Transformations</h1>
+      <p class="section-desc">
+        Select your store format below to see how Priyulabs upgrades traditional operations into a 10x faster AI digital store.
+      </p>
+
+      <!-- Horizontal Sector Selector Bar -->
+      <div class="sector-picker-bar" id="sectorPickerBar">
+        <button class="sector-pick-btn active" data-sector="supermarket">🛒 Kirana &amp; Supermarket</button>
+        <button class="sector-pick-btn" data-sector="cafe">☕ Cafe &amp; Restaurant</button>
+        <button class="sector-pick-btn" data-sector="bakery">🎂 Bakeries &amp; Confectionery</button>
+        <button class="sector-pick-btn" data-sector="apparel">🛍️ Apparel &amp; Fashion</button>
+        <button class="sector-pick-btn" data-sector="pharmacy">💊 Pharmacy &amp; Chemist</button>
+        <button class="sector-pick-btn" data-sector="electronics">⚡ Electronics &amp; Mobiles</button>
+        <button class="sector-pick-btn" data-sector="specialty">💄 Cosmetics &amp; Specialty</button>
+        <button class="sector-pick-btn" data-sector="meat">🥩 Meat &amp; Poultry</button>
+        <button class="sector-pick-btn" data-sector="mandi">🌾 Grain &amp; Mandi</button>
+        <button class="sector-pick-btn" data-sector="autoparts">🚗 Auto Spare Parts</button>
+        <button class="sector-pick-btn" data-sector="books">📚 Books &amp; Stationery</button>
+        <button class="sector-pick-btn" data-sector="florists">🌸 Florist &amp; Nursery</button>
+        <button class="sector-pick-btn" data-sector="liquor">🍷 Liquor Outlets</button>
+        <button class="sector-pick-btn" data-sector="furniture">🛋️ Furniture Showroom</button>
+        <button class="sector-pick-btn" data-sector="petcare">🐶 Pet Care &amp; Vet</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       DYNAMIC SECTOR DEEP-DIVE CONTENT
+  ══════════════════════════════════════════════════════════ -->
+  <section class="sol-detail-section">
+    <div class="container">
+
+      <!-- Square-Style High-Impact Sector Hero Header (Matching Reference) -->
+      <div class="sq-sector-hero">
+        <div class="sq-hero-eyebrow" id="sqHeroEyebrow">PRIYULABS FOR COFFEE SHOPS &amp; CAFES</div>
+        <h1 class="sq-hero-heading" id="sqHeroTitle">A fast, reliable POS to ease your daily grind</h1>
+        <p class="sq-hero-sub" id="sqHeroDesc">Streamline counter &amp; table ordering, print instant KOTs, offer self-order QR menus, and track recipe ingredient stock automatically.</p>
+        
+        <div class="sq-hero-ctas">
+          <a href="#cta" class="sq-btn-outline">Get Started</a>
+          <a href="#cta" class="sq-btn-solid">Contact Sales</a>
+        </div>
+
+        <!-- 3-Photo Visual Showcase Strip -->
+        <div class="sq-hero-photo-strip">
+          <div class="sq-photo-card sq-photo-main">
+            <img src="assets/pos_billing_preview.jpg" alt="Priyulabs Touchscreen POS Counter" id="sqHeroImg1" />
+            <span class="sq-photo-tag" id="sqHeroTag1">Touch POS Terminal</span>
+          </div>
+          <div class="sq-photo-card">
+            <img src="assets/inventory_ocr_preview.jpg" alt="Smart Inventory & Stock Management" id="sqHeroImg2" />
+            <span class="sq-photo-tag" id="sqHeroTag2">Inventory AI OCR</span>
+          </div>
+          <div class="sq-photo-card">
+            <img src="assets/hrms_selfie_preview.jpg" alt="Staff HRMS & EDC Terminal" id="sqHeroImg3" />
+            <span class="sq-photo-tag" id="sqHeroTag3">Staff HRMS &amp; EDC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sector Video Showcase Container (Rendered dynamically when video is available) -->
+      <div class="sol-video-showcase" id="solVideoShowcase" style="display: none;">
+        <!-- Injected dynamically via JS -->
+      </div>
+
+      <!-- Before vs After Full Comparison Grid -->
+      <div class="comp-grid-full">
+        <!-- Traditional Column -->
+        <div class="comp-col-card comp-col-before">
+          <div class="comp-header-title">
+            <h3>🔴 Traditional Store Setup</h3>
+            <span class="comp-badge-bad">Pehle Kaise Hota Tha</span>
+          </div>
+          <ul class="comp-list-full" id="solBeforeList">
+            <!-- Injected dynamically -->
+          </ul>
+        </div>
+
+        <!-- Priyulabs Column -->
+        <div class="comp-col-card comp-col-after">
+          <div class="comp-header-title">
+            <h3>🟢 Priyulabs AI Digital OS</h3>
+            <span class="comp-badge-good">Ab Naya Smart Upgrade</span>
+          </div>
+          <ul class="comp-list-full" id="solAfterList">
+            <!-- Injected dynamically -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Key Hardware & Software Upgrades Grid -->
+      <h3 class="upgrades-grid-title">🚀 Key Hardware &amp; Software Upgrades Available for This Sector</h3>
+      <div class="upgrades-cards-wrap" id="solUpgradesWrap">
+        <!-- Injected dynamically -->
+      </div>
+
+      <!-- ROI Callout Banner -->
+      <div class="sol-roi-callout" id="solRoiBanner">
+        <!-- Injected dynamically -->
+      </div>
+
+      <!-- Demo CTA Section -->
+      <div class="cta-banner" style="margin-top: 40px;">
+        <div class="cta-content">
+          <h2>Ready to Upgrade Your Store with Priyulabs?</h2>
+          <p id="solCtaText">Schedule a 10-minute live demonstration for your shop format across India.</p>
+          <div class="cta-buttons">
+            <a href="index.html#cta" class="btn-primary-hero">Book Live Demo Now →</a>
+            <a href="https://wa.me/917849074050?text=Hello!%20I%20want%20a%20demo%20for%20my%20store." class="btn-secondary-hero" target="_blank">💬 WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+            <div class="logo-text-group">
+              <span class="logo-title">PRIYULABS</span>
+              <span class="logo-subtitle">DIGITAL</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Priyulabs Digital – India's Smartest Multilingual AI Voice POS, Smart Inventory &amp; Complete Business Operating System.
+          </p>
+        </div>
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#attractions">4 Services</a></li>
+            <li><a href="index.html#who-we-serve">All Sectors</a></li>
+            <li><a href="index.html#hardware">Hardware</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Priyulabs Digital. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Solutions Page Specific Script
+    document.addEventListener('DOMContentLoaded', () => {
+      // Read query string ?sector=...
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetSector = urlParams.get('sector') || 'supermarket';
+      
+      selectSectorView(targetSector);
+
+      // Event listener for sector pick buttons
+      document.querySelectorAll('.sector-pick-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-sector');
+          selectSectorView(key);
+          // Update URL without reload
+          window.history.pushState({}, '', `solutions.html?sector=${key}`);
+        });
+      });
+    });
+
+    function selectSectorView(key) {
+      const data = sectorDetailsData[key] || sectorDetailsData.supermarket;
+
+      // Highlight active button
+      document.querySelectorAll('.sector-pick-btn').forEach(btn => {
+        if (btn.getAttribute('data-sector') === key) {
+          btn.classList.add('active');
+          btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Update Square-Style High-Impact Hero Header
+      const eyebrow = document.getElementById('sqHeroEyebrow');
+      if (eyebrow) eyebrow.textContent = data.eyebrow || `PRIYULABS FOR ${data.title.toUpperCase()}`;
+      
+      const headline = document.getElementById('sqHeroTitle');
+      if (headline) headline.textContent = data.headline || `Complete AI POS & Operating System for ${data.title}`;
+      
+      const sub = document.getElementById('sqHeroDesc');
+      if (sub) sub.textContent = data.heroDesc || `Upgrade your traditional ${data.title} store into a 10x faster AI digital store.`;
+
+      // Update Video / Photo Showcase Section
+      const videoContainer = document.getElementById('solVideoShowcase');
+      if (videoContainer) {
+        if (data.videoUrl) {
+          videoContainer.style.display = 'block';
+          videoContainer.innerHTML = `
+            <div class="sol-video-card">
+              <div class="sol-video-wrapper" style="position: relative;">
+                <video id="bakerySolVideo" autoplay muted loop playsinline controls preload="auto" poster="assets/pos_billing_preview.jpg">
+                  <source src="${data.videoUrl}" type="video/mp4">
+                  <source src="assets/bakery-demo.mp4" type="video/mp4">
+                  <source src="bakery-demo.mp4" type="video/mp4">
+                  <source src="bakery-demo..mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <button type="button" onclick="toggleBakeryFullscreen(document.getElementById('bakerySolVideo'))" style="position: absolute; top: 14px; right: 14px; background: rgba(15, 23, 42, 0.85); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 50px; padding: 8px 16px; font-size: 12.5px; font-weight: 800; cursor: pointer; backdrop-filter: blur(8px); display: flex; align-items: center; gap: 6px; z-index: 10;">
+                  ⛶ Maximize Fullscreen
+                </button>
+              </div>
+              <div class="sol-video-info">
+                <div class="sol-video-badge">🎥 Live Video Demo</div>
+                <h2 class="sol-video-title">${data.title} POS &amp; Custom Order OS Walkthrough</h2>
+                <p class="sol-video-desc">Watch how Priyulabs POS handles advance custom cake bookings, instant weighing scale checkout, thermal batch expiry printing, and recipe inventory deduction in real time.</p>
+                <div class="sol-video-features">
+                  ${(data.techUpgrades || []).map(t => `<span class="sol-video-tag">${t}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (data.image) {
+          videoContainer.style.display = 'block';
+          videoContainer.innerHTML = `
+            <div class="sol-video-card">
+              <div class="sol-video-wrapper" style="position: relative; overflow: hidden; border-radius: 16px; max-height: 420px;">
+                <img src="${data.image}" alt="${data.title}" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px;" />
+                <div style="position: absolute; bottom: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); color: #fff; border-radius: 50px; padding: 6px 16px; font-size: 12px; font-weight: 800; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">
+                  ✨ Real Retail Environment
+                </div>
+              </div>
+              <div class="sol-video-info">
+                <div class="sol-video-badge">🏪 Real Store Visual Showcase</div>
+                <h2 class="sol-video-title">${data.title} Operating System</h2>
+                <p class="sol-video-desc">${data.heroDesc}</p>
+                <div class="sol-video-features">
+                  ${(data.techUpgrades || []).map(t => `<span class="sol-video-tag">${t}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          videoContainer.style.display = 'none';
+          videoContainer.innerHTML = '';
+        }
+      }
+
+      // Update Before List
+      const beforeList = document.getElementById('solBeforeList');
+      if (beforeList) {
+        beforeList.innerHTML = data.before.map(b => `<li><span>❌</span> <div>${b}</div></li>`).join('');
+      }
+
+      // Update After List
+      const afterList = document.getElementById('solAfterList');
+      if (afterList) {
+        afterList.innerHTML = data.after.map(a => `<li><span>✅</span> <div>${a}</div></li>`).join('');
+      }
+
+      // Update Upgrades Grid
+      const upgradesWrap = document.getElementById('solUpgradesWrap');
+      if (upgradesWrap && data.techUpgrades) {
+        const upgradeDescriptions = {
+          '🎙️ Multilingual Voice POS': 'Speak items in your preferred language for 2-second billing without typing.',
+          '📷 Vision AI Invoice Scan': 'Snap wholesale invoices to auto-add stock into ERP.',
+          '⚖️ Weighing Scale Sync': 'Weight auto-transfers from scale into bill.',
+          '📅 FEFO Expiry Alerts': 'Real-time alerts before goods expire on racks.',
+          '📱 Touchscreen Kiosk': 'Interactive self-ordering Kiosk for customer convenience.',
+          '📲 Table QR Ordering': 'Scan QR code on table to view menu & order.',
+          '🖥️ Kitchen KDS & KOT': 'Orders instantly print in kitchen or display on chef screen.',
+          '📊 Recipe ERP': 'Auto-deduct raw ingredients per dish sold.',
+          '🏷️ Barcode Tag Printer': 'Print custom barcode price tags in 1 click.',
+          '👗 Multi-Variant Matrix': 'View stock across sizes, colors & brands in 1 view.',
+          '💬 WhatsApp Store Catalog': 'Send digital product catalog to customer WhatsApp.',
+          '🔍 150k Salt Search Engine': 'Find substitute medicine salts in under 1 second.',
+          '📱 IMEI & Serial Scanner': 'Scan and bind serial numbers to customer bill.',
+          '💎 Jewelry Weight Scale Sync': 'Auto-calculate net weight & making charges.'
+        };
+
+        upgradesWrap.innerHTML = data.techUpgrades.map(chip => {
+          const desc = upgradeDescriptions[chip] || 'Integrated hardware & software upgrade tailored for your store.';
+          return `
+            <div class="upgrade-card-item">
+              <div class="upgrade-card-icon">${chip.split(' ')[0]}</div>
+              <h4>${chip.substring(chip.indexOf(' ') + 1)}</h4>
+              <p>${desc}</p>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Update ROI Banner
+      const roiBanner = document.getElementById('solRoiBanner');
+      if (roiBanner) {
+        roiBanner.innerHTML = `<h3>${data.roi.split(':')[0]}</h3><p>${data.roi.split(':')[1] || data.roi}</p>`;
+      }
+
+      // Update CTA Text
+      document.getElementById('solCtaText').textContent = `Book a live demo customized for ${data.title} and experience 10x faster operations.`;
+    }
+  </script>
+</body>
+</html>
