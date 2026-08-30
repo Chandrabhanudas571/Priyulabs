@@ -59,7 +59,7 @@ if (hamburger && navLinks) {
 
 // ─── SMOOTH SCROLL FOR ANCHOR LINKS ─────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();
@@ -184,7 +184,7 @@ function simulateVoicePOS() {
 
     if (wave) wave.classList.remove('active');
     if (quote) quote.innerHTML = `Heard: <em style="color:#f59e0b">${curr.text}</em>`;
-    
+
     if (badge) {
       badge.textContent = curr.billBadge;
       badge.style.background = 'rgba(16, 185, 129, 0.25)';
@@ -869,7 +869,7 @@ function switchHeroEcosystem(key) {
   tabs.forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-ecosystem') === key);
   });
-  
+
   const panelMap = {
     website: 'heroPanelWebsite',
     pos: 'heroPanelPos',
@@ -877,7 +877,7 @@ function switchHeroEcosystem(key) {
     whatsapp: 'heroPanelWhatsapp',
     hrms: 'heroPanelHrms'
   };
-  
+
   Object.keys(panelMap).forEach(k => {
     const el = document.getElementById(panelMap[k]);
     if (el) {
