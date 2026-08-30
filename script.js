@@ -932,6 +932,8 @@ const sectorDetailsData = {
   }
 };
 
+window.sectorDetailsData = sectorDetailsData;
+
 function openSectorModal(key) {
   window.location.href = `solutions.html?sector=${key}`;
 }

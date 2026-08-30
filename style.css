@@ -5525,55 +5525,65 @@ iframe {
   }
 
   /* Square-Style Horizontal Swipe Carousels on Mobile */
-  .sq-hero-photo-strip {
+  .sq-hero-photo-strip,
+  .sol-page-hero .sq-hero-photo-strip,
+  .sq-sector-hero .sq-hero-photo-strip {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    gap: 14px !important;
-    padding: 6px 16px 18px !important;
-    margin: 0 -16px !important;
-    width: calc(100% + 32px) !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding: 15px 20px !important;
+    width: 100% !important;
     box-sizing: border-box !important;
+    scrollbar-width: none !important;
   }
 
-  .sq-hero-photo-strip::-webkit-scrollbar {
+  .sq-hero-photo-strip::-webkit-scrollbar,
+  .sol-page-hero .sq-hero-photo-strip::-webkit-scrollbar {
     display: none !important;
   }
 
-  .sq-hero-photo-strip .sq-photo-card {
-    flex: 0 0 82% !important;
-    max-width: 82% !important;
+  .sq-hero-photo-strip .sq-photo-card,
+  .sq-photo-card,
+  .sq-photo-main {
+    flex: 0 0 85% !important;
+    min-width: 270px !important;
+    max-width: 85% !important;
     scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
+    flex-shrink: 0 !important;
     box-sizing: border-box !important;
     border-radius: 18px !important;
   }
 
-  .sector-picker-bar {
+  .sector-picker-bar,
+  .sol-page-hero .sector-picker-bar {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    gap: 8px !important;
+    white-space: nowrap !important;
+    gap: 10px !important;
     padding: 8px 16px !important;
-    margin: 16px -16px 0 !important;
-    width: calc(100% + 32px) !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
     box-sizing: border-box !important;
-    border-radius: 0 !important;
-    border-left: none !important;
-    border-right: none !important;
   }
 
-  .sector-picker-bar::-webkit-scrollbar {
+  .sector-picker-bar::-webkit-scrollbar,
+  .sol-page-hero .sector-picker-bar::-webkit-scrollbar {
     display: none !important;
   }
 
   .sector-pick-btn {
     flex-shrink: 0 !important;
-    scroll-snap-align: start !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
   }
 
   .hero-atoz-strip {

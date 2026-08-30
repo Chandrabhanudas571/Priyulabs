@@ -821,7 +821,9 @@
 
       // Event listener for sector pick buttons
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
           const key = btn.getAttribute('data-sector');
           selectSectorView(key);
           // Update URL without reload
@@ -831,7 +833,8 @@
     });
 
     function selectSectorView(key) {
-      const data = sectorDetailsData[key] || sectorDetailsData.supermarket;
+      const dataStore = (typeof sectorDetailsData !== 'undefined' ? sectorDetailsData : window.sectorDetailsData) || {};
+      const data = dataStore[key] || dataStore.supermarket || { title: key, after: [], before: [] };
 
       // Highlight active button
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
@@ -852,6 +855,12 @@
       
       const sub = document.getElementById('sqHeroDesc');
       if (sub) sub.textContent = data.heroDesc || `Upgrade your traditional ${data.title} store into a 10x faster AI digital store.`;
+
+      // Update 3-Photo Showcase Strip
+      const img1 = document.getElementById('sqHeroImg1');
+      if (img1 && data.image) img1.src = data.image;
+      const tag1 = document.getElementById('sqHeroTag1');
+      if (tag1) tag1.textContent = `${data.title} Terminal`;
 
       // Update Video / Photo Showcase Section
       const videoContainer = document.getElementById('solVideoShowcase');
