@@ -583,6 +583,13 @@ iframe {
   margin-bottom: 50px;
 }
 
+@media (min-width: 769px) {
+  .sq-hero-photo-strip {
+    display: grid !important;
+    overflow: hidden !important;
+  }
+}
+
 .sq-photo-card {
   position: relative;
   height: 320px;
@@ -617,11 +624,38 @@ iframe {
 
 @media (max-width: 768px) {
   .sq-hero-photo-strip {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    grid-template-columns: unset !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    gap: 16px !important;
+    padding: 16px !important;
+    scrollbar-width: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important;
+  }
+
+  .sq-hero-photo-strip::-webkit-scrollbar {
+    display: none !important;
   }
 
   .sq-photo-card {
-    height: 220px;
+    flex: 0 0 85% !important;
+    min-width: 280px !important;
+    max-width: 85% !important;
+    height: auto !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -4349,7 +4383,8 @@ iframe {
    ══════════════════════════════════════════════════════════════ */
 
 /* Square-Style Native App-like Touch Feedback */
-@media (hover: none) and (pointer: coarse), screen and (max-width: 992px) {
+@media (hover: none) and (pointer: coarse),
+screen and (max-width: 992px) {
   * {
     -webkit-tap-highlight-color: rgba(99, 102, 241, 0.08);
   }
@@ -5968,13 +6003,35 @@ iframe {
   }
 
   .sector-picker-bar {
-    padding: 6px 10px !important;
-    gap: 4px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    white-space: nowrap !important;
+    scroll-behavior: smooth !important;
+    gap: 8px !important;
+    padding: 8px 12px !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
+  }
+
+  .sector-picker-bar::-webkit-scrollbar {
+    display: none !important;
   }
 
   .sector-pick-btn {
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
     font-size: 11px !important;
-    padding: 5px 10px !important;
+    padding: 7px 12px !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
   }
 
   .upgrade-card-item {

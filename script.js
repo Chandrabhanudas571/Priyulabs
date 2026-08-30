@@ -1092,7 +1092,7 @@ function initVideoTouchProtection() {
       vid.addEventListener('click', (e) => {
         e.stopPropagation();
         if (vid.paused) {
-          vid.play().catch(() => {});
+          vid.play().catch(() => { });
         } else {
           vid.pause();
         }
@@ -1104,6 +1104,52 @@ function initVideoTouchProtection() {
 document.addEventListener('DOMContentLoaded', initVideoTouchProtection);
 initVideoTouchProtection();
 window.initVideoTouchProtection = initVideoTouchProtection;
+
+// ─── SECTOR PICKER & CONTENT PANEL TOGGLE ──────────────────────
+function initSectorPicker() {
+  const sectorBtns = document.querySelectorAll('.sector-pick-btn');
+  if (!sectorBtns.length) return;
+
+  sectorBtns.forEach(btn => {
+    if (btn.dataset.sectorBound) return;
+    btn.dataset.sectorBound = 'true';
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const sectorKey = btn.getAttribute('data-sector') || btn.dataset.sector;
+
+      // Toggle .active class among sector pick buttons
+      sectorBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Activate respective sector content panel via global selectSectorView if available
+      if (typeof window.selectSectorView === 'function' && sectorKey) {
+        window.selectSectorView(sectorKey);
+      } else if (typeof selectSectorView === 'function' && sectorKey) {
+        selectSectorView(sectorKey);
+      }
+
+      // Toggle .active class on sector content panel elements
+      const sectorPanels = document.querySelectorAll('.sector-panel, .sector-tab-content, [data-sector-panel]');
+      sectorPanels.forEach(panel => {
+        const pKey = panel.getAttribute('data-sector') || panel.getAttribute('data-sector-panel') || panel.id.replace(/^(tab-|sector-)/, '');
+        if (pKey === sectorKey) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSectorPicker);
+} else {
+  initSectorPicker();
+}
+window.initSectorPicker = initSectorPicker;
 
 console.log('%c Priyulabs – India’s Smartest AI Retail OS Loaded Successfully! 🇮🇳 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');
