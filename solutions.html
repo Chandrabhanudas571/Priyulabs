@@ -960,6 +960,10 @@
 
       // Update CTA Text
       document.getElementById('solCtaText').textContent = `Book a live demo customized for ${data.title} and experience 10x faster operations.`;
+
+      if (window.initVideoTouchProtection) {
+        window.initVideoTouchProtection();
+      }
     }
   </script>
 </body>

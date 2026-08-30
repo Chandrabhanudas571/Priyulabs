@@ -1074,5 +1074,34 @@ function switchHeroEcosystem(key) {
   });
 }
 
+// ─── VIDEO INTERACTION & TOUCH HANDLER (PREVENT REDIRECTS) ─────
+function initVideoTouchProtection() {
+  const videoElements = document.querySelectorAll('video, .card-video-wrap, .sol-video-wrapper');
+  videoElements.forEach(wrapper => {
+    ['click', 'touchstart', 'touchend', 'pointerdown'].forEach(evt => {
+      wrapper.addEventListener(evt, (e) => {
+        e.stopPropagation();
+      }, { passive: true });
+    });
+
+    const vid = wrapper.tagName === 'VIDEO' ? wrapper : wrapper.querySelector('video');
+    if (vid && !vid.dataset.bound) {
+      vid.dataset.bound = 'true';
+      vid.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (vid.paused) {
+          vid.play().catch(() => {});
+        } else {
+          vid.pause();
+        }
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initVideoTouchProtection);
+initVideoTouchProtection();
+window.initVideoTouchProtection = initVideoTouchProtection;
+
 console.log('%c Priyulabs – India’s Smartest AI Retail OS Loaded Successfully! 🇮🇳 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');

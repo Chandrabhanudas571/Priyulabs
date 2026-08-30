@@ -5332,9 +5332,6 @@ iframe {
   }
 
   .pvs-grid,
-  .attr-grid,
-  .serve-grid,
-  .test-grid,
   .trust-grid,
   .cta-inner,
   .comp-grid-full,
@@ -5343,6 +5340,88 @@ iframe {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
     width: 100% !important;
+  }
+
+  /* 1. Hardware & Feature Showcase Cards (Main Attractions): Horizontal Swipe Carousel */
+  .attr-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding: 12px 16px 20px !important;
+    margin: 0 -16px !important;
+    width: calc(100% + 32px) !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .attr-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .attr-card {
+    flex: 0 0 82% !important;
+    min-width: 270px !important;
+    max-width: 320px !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 2. Business Types & Categories Showcase (Who We Serve): Horizontal Swipe Carousel */
+  .serve-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding: 12px 16px 20px !important;
+    margin: 0 -16px !important;
+    width: calc(100% + 32px) !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .serve-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .serve-card {
+    flex: 0 0 82% !important;
+    min-width: 270px !important;
+    max-width: 320px !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    cursor: pointer;
+  }
+
+  /* Customer Testimonials Carousel */
+  .test-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    padding: 12px 16px 20px !important;
+    margin: 0 -16px !important;
+    width: calc(100% + 32px) !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .test-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .test-card {
+    flex: 0 0 82% !important;
+    min-width: 270px !important;
+    max-width: 320px !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
   }
 
   .pvs-vs {
@@ -5368,7 +5447,6 @@ iframe {
   .sol-roi-callout {
     padding: 24px 20px !important;
     width: 100% !important;
-    max-width: 100% !important;
     box-sizing: border-box !important;
     border-radius: 20px !important;
     border: 1px solid rgba(15, 23, 42, 0.07) !important;
