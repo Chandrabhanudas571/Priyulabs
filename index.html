@@ -268,210 +268,37 @@
         </div>
       </div>
 
-      <!-- Modern Interactive Multi-Capability Ecosystem Console Showcase -->
+      <!-- Modern Multi-Device Platform Showcase (Hero Visual) -->
       <div class="hero-visual">
-        <div class="hero-console-card">
-          <!-- Top Interactive Service Navigation Tabs -->
-          <div class="console-nav-tabs">
-            <button type="button" class="c-tab-btn active" data-ecosystem="website" onclick="switchHeroEcosystem('website')">
-              🌐 Website &amp; Apps
-            </button>
-            <button type="button" class="c-tab-btn" data-ecosystem="pos" onclick="switchHeroEcosystem('pos')">
-              🛒 AI POS Billing
-            </button>
-            <button type="button" class="c-tab-btn" data-ecosystem="inventory" onclick="switchHeroEcosystem('inventory')">
-              📦 Inventory ERP
-            </button>
-            <button type="button" class="c-tab-btn" data-ecosystem="whatsapp" onclick="switchHeroEcosystem('whatsapp')">
-              💬 WhatsApp
-            </button>
-            <button type="button" class="c-tab-btn" data-ecosystem="hrms" onclick="switchHeroEcosystem('hrms')">
-              👥 Staff HRMS
-            </button>
-          </div>
-
-          <!-- Screen 1: Custom Website & E-Com Store Showcase (Default) -->
-          <div class="console-screen-panel active" id="heroPanelWebsite">
-            <div class="browser-mockup-header">
-              <div class="browser-dots"><span></span><span></span><span></span></div>
-              <div class="browser-url-bar">
-                <span class="lock-icon">🔒</span> https://yourbrand.priyulabs.store
-              </div>
-              <span class="live-dot-badge">● LIVE STORE</span>
-            </div>
-            <div class="browser-mockup-body">
-              <div class="mock-store-banner">
-                <div class="mock-store-info">
-                  <span class="mock-badge">✨ Custom High-Converting Storefront</span>
-                  <h4>YourBrand Flagship Online Store</h4>
-                  <p>Fast loading, mobile-first, zero commission with instant UPI payments &amp; delivery tracking.</p>
-                </div>
-              </div>
-              <div class="mock-products-row">
-                <div class="mock-prod-item">
-                  <div class="mock-prod-img">🛍️</div>
-                  <div class="mock-prod-detail">
-                    <strong>Premium Catalog</strong>
-                    <span>₹499 • In Stock</span>
-                  </div>
-                  <button class="mock-btn-buy">Buy Now</button>
-                </div>
-                <div class="mock-prod-item">
-                  <div class="mock-prod-img">📱</div>
-                  <div class="mock-prod-detail">
-                    <strong>App &amp; QR Menu</strong>
-                    <span>Instant Order Sync</span>
-                  </div>
-                  <button class="mock-btn-buy">Explore</button>
-                </div>
-              </div>
-              <div class="console-footer-strip">
-                <span>⚡ Custom Domain + SEO + Payment Gateway + WhatsApp Auto-Order Integration</span>
-              </div>
+        <div class="hero-showcase-wrapper">
+          <div class="hero-showcase-glow"></div>
+          <div class="hero-showcase-frame">
+            <img 
+              src="assets/hero_platform_showcase.jpg" 
+              alt="Priyulabs Complete Business Ecosystem - POS, ERP, Website &amp; Automation" 
+              class="hero-showcase-img"
+              id="heroShowcaseImg"
+            />
+            <div class="hero-live-sync-badge">
+              <span class="pulse-dot"></span> 
+              <span>LIVE CLOUD ECOSYSTEM SYNC</span>
             </div>
           </div>
-
-          <!-- Screen 2: AI Voice POS Billing -->
-          <div class="console-screen-panel" id="heroPanelPos">
-            <div class="s-panel-top">
-              <div class="s-panel-brand">
-                <img src="assets/logo.svg" alt="Priyulabs" class="mini-logo" />
-                <span>Priyulabs AI POS Terminal #01</span>
-              </div>
-              <div class="s-panel-status">
-                <span class="dot-online"></span> 100% Offline Ready
-              </div>
-            </div>
-            <div class="pos-live-grid" id="heroLivePosItems">
-              <div class="pos-item-row">
-                <div class="item-name">
-                  <strong>Fortune Sunlite Refined Oil 1L</strong>
-                  <small>HSN: 1512 • GST 5% • Voice Recognized</small>
-                </div>
-                <div class="item-price">₹145.00</div>
-              </div>
-              <div class="pos-item-row">
-                <div class="item-name">
-                  <strong>Madhur Pure Sugar 2Kg</strong>
-                  <small>HSN: 1701 • GST 0% • Auto Weight Sync</small>
-                </div>
-                <div class="item-price">₹84.00</div>
-              </div>
-            </div>
-            <div class="pos-total-row">
-              <div class="total-label">Total Amount:</div>
-              <div class="total-val" id="heroLivePosTotal">₹229.00</div>
-            </div>
-            <div class="pos-pine-strip">
-              <div class="pine-logo-tag">💳 EDC POS TERMINAL</div>
-              <div class="pine-sync-tag">Auto-Synced • Dynamic QR Active</div>
-            </div>
-          </div>
-
-          <!-- Screen 3: Smart Inventory ERP -->
-          <div class="console-screen-panel" id="heroPanelInventory">
-            <div class="s-panel-top">
-              <div class="s-panel-brand">
-                <span>📦 Vision AI Stock Manager</span>
-              </div>
-              <div class="s-panel-status" style="color: var(--amber); background: var(--amber-bg);">
-                ⚠️ 2 Expiry Alerts
-              </div>
-            </div>
-            <div class="mock-inv-list">
-              <div class="mock-inv-item">
-                <div>
-                  <strong>Aashirvaad Shudh Chakki Atta 5kg</strong>
-                  <small>Batch #B492 • 48 Units Left</small>
-                </div>
-                <span class="stock-status in-stock">Optimal</span>
-              </div>
-              <div class="mock-inv-item">
-                <div>
-                  <strong>Amul Butter 500g</strong>
-                  <small>Expiring in 7 Days • FEFO Triggered</small>
-                </div>
-                <span class="stock-status low-stock">Discount Offer</span>
-              </div>
-            </div>
-            <div class="console-footer-strip">
-              <span>📷 1-Click Wholesale Bill OCR Scan • Zero Manual Data Entry</span>
-            </div>
-          </div>
-
-          <!-- Screen 4: WhatsApp Automation -->
-          <div class="console-screen-panel" id="heroPanelWhatsapp">
-            <div class="s-panel-top">
-              <div class="s-panel-brand">
-                <span>💬 WhatsApp Business Bot</span>
-              </div>
-              <div class="s-panel-status" style="color: #25d366; background: #ecfdf5;">
-                ● Auto-Sync Active
-              </div>
-            </div>
-            <div class="mock-wa-bubble">
-              <div class="wa-msg-header">PRIYULABS DIGITAL RECEIPT 🧾</div>
-              <div class="wa-msg-body">
-                Hello Sharma Ji! Your digital receipt of ₹229.00 has been generated. You earned 25 Loyalty Points on this purchase.
-              </div>
-              <div class="wa-msg-footer">
-                <span class="wa-btn-pill">📥 Download PDF</span>
-                <span class="wa-btn-pill">🔁 1-Click Reorder</span>
-              </div>
-            </div>
-            <div class="console-footer-strip">
-              <span>📲 Automated Digital Bills + Festive Offers + Customer Re-Engagement</span>
-            </div>
-          </div>
-
-          <!-- Screen 5: Staff HRMS -->
-          <div class="console-screen-panel" id="heroPanelHrms">
-            <div class="s-panel-top">
-              <div class="s-panel-brand">
-                <span>👥 Staff HRMS &amp; Multi-Branch ERP</span>
-              </div>
-              <div class="s-panel-status">
-                ● 12/12 On Duty
-              </div>
-            </div>
-            <div class="mock-hrms-grid">
-              <div class="mock-hrms-user">
-                <div class="user-avatar">👨‍💼</div>
-                <div>
-                  <strong>Rahul Verma (Counter 1)</strong>
-                  <small>Clocked in 09:30 AM • Selfie Verified</small>
-                </div>
-                <span class="badge-punch-in">Active</span>
-              </div>
-              <div class="mock-hrms-user">
-                <div class="user-avatar">👩‍💼</div>
-                <div>
-                  <strong>Pooja Singh (Inventory)</strong>
-                  <small>Clocked in 09:45 AM • Geofenced OK</small>
-                </div>
-                <span class="badge-punch-in">Active</span>
-              </div>
-            </div>
-            <div class="console-footer-strip">
-              <span>🔒 Anti-Theft Cash Register Tracking + Auto Salary Calculation</span>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Floating Badges -->
+        <!-- Floating Interactive Badges -->
         <div class="hero-badge-float f1">
           <span class="f-icon">🌐</span>
           <div>
-            <div class="fbf-title">Custom Website &amp; Apps</div>
+            <div class="fbf-title">Custom Websites &amp; Apps</div>
             <div class="fbf-sub">Launch your brand in 24 hours!</div>
           </div>
         </div>
         <div class="hero-badge-float f2">
           <span class="f-icon">⚡</span>
           <div>
-            <div class="fbf-title">A to Z Digital Business</div>
-            <div class="fbf-sub">Website • POS • Inventory • ERP</div>
+            <div class="fbf-title">All-in-One Platform</div>
+            <div class="fbf-sub">Websites • POS • ERP • Automation</div>
           </div>
         </div>
       </div>
