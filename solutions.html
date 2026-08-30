@@ -426,6 +426,234 @@
   </header>
 
   <!-- ══════════════════════════════════════════════════════════
+       FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <!-- Top Header Bar inside Drawer -->
+    <div class="drawer-header">
+      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span class="drawer-back-text">Back</span>
+      </button>
+      <div class="drawer-header-title" id="drawerHeaderTitle">Menu</div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sliding Viewport Container -->
+    <div class="drawer-viewport" id="drawerViewport">
+      
+      <!-- ════ LEVEL 1: MAIN MENU ════ -->
+      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
+        <div class="drawer-panel-scroll">
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
+              <span>Business types</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelSolutions">
+              <span>Solutions</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelHospitality">
+              <span>Hospitality Tech</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="index.html#problem" class="drawer-nav-item drawer-link">
+              <span>Pricing</span>
+            </a>
+            <a href="index.html#trust" class="drawer-nav-item drawer-link">
+              <span>What's new</span>
+            </a>
+          </nav>
+
+          <div class="drawer-divider"></div>
+
+          <!-- Lower Utility Links & CTA -->
+          <div class="drawer-utility-links">
+            <a href="solutions.html" class="drawer-sublink">All Business Types Directory</a>
+            <a href="index.html#cta" class="drawer-sublink">Support &amp; Contact</a>
+          </div>
+
+          <div class="drawer-bottom-cta">
+            <a href="index.html#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
+      <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain" data-title="Business types">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Select Industry Category</div>
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
+              <span>☕ Food &amp; Beverage</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
+              <span>🛒 Retail</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
+              <span>👗 Beauty &amp; Fashion</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
+              <span>💊 Services</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="solutions.html" class="drawer-nav-item drawer-link highlight">
+              <span>✨ View All Business Types</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
+      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain" data-title="Solutions">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Core Products &amp; Services</div>
+          <nav class="drawer-solution-cards">
+            <a href="index.html#attractions" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">🖥️</div>
+              <div class="drawer-sol-info">
+                <strong>POS</strong>
+                <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
+              </div>
+            </a>
+            <a href="index.html#attractions" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">📊</div>
+              <div class="drawer-sol-info">
+                <strong>Complete Management System</strong>
+                <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
+              </div>
+            </a>
+            <a href="index.html#cta" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">🌐</div>
+              <div class="drawer-sol-info">
+                <strong>Website Building &amp; Digital Marketing</strong>
+                <span>Custom websites, e-commerce stores &amp; WhatsApp marketing</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: HOSPITALITY TECH ════ -->
+      <div class="drawer-panel" id="drawerPanelHospitality" data-level="2" data-parent="drawerPanelMain" data-title="Hospitality Tech">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite</div>
+          <nav class="drawer-solution-cards">
+            <a href="hospitality.html#product" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">☕</div>
+              <div class="drawer-sol-info">
+                <strong>Hospitality Product OS</strong>
+                <span>Table layout, QR menus &amp; instant POS billing</span>
+              </div>
+            </a>
+            <a href="hospitality.html#pricing" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">💳</div>
+              <div class="drawer-sol-info">
+                <strong>Hospitality Pricing</strong>
+                <span>Plans tailored for cafes, bakeries, bars &amp; hotels</span>
+              </div>
+            </a>
+            <a href="hospitality.html#success-stories" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">🌟</div>
+              <div class="drawer-sol-info">
+                <strong>Success Stories</strong>
+                <span>Case studies from 500+ Indian F&amp;B outlets</span>
+              </div>
+            </a>
+            <a href="hospitality.html#contact" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon">📞</div>
+              <div class="drawer-sol-info">
+                <strong>Book a 10-Min Demo</strong>
+                <span>Speak directly with hospitality specialist</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: FOOD & BEVERAGE ════ -->
+      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness" data-title="Food &amp; Beverage">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Food &amp; Beverage Outlets</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link strong">Overview &amp; Features</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">☕ Coffee shops &amp; Cafes</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">🛎️ Quick service (QSR)</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">🚗 Drive-thru &amp; Takeaway</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">🍽️ Full service &amp; Fine dining</a>
+            <a href="solutions.html?sector=liquor" class="drawer-nav-item drawer-link">🍸 Bars &amp; breweries</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">🚚 Food trucks &amp; Kiosks</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">👨‍🍳 Catering &amp; Cloud Kitchens</a>
+            <a href="solutions.html?sector=bakery" class="drawer-nav-item drawer-link">🎂 Bakeries &amp; Confectionery</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">🍕 Pizzeria &amp; Fast Food</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: RETAIL ════ -->
+      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness" data-title="Retail">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Retail Formats</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=supermarket" class="drawer-nav-item drawer-link strong">Overview &amp; Features</a>
+            <a href="solutions.html?sector=supermarket" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=supermarket" class="drawer-nav-item drawer-link">🛒 Supermarkets &amp; Kirana</a>
+            <a href="solutions.html?sector=mandi" class="drawer-nav-item drawer-link">🌾 Grain &amp; Mandi Wholesale</a>
+            <a href="solutions.html?sector=meat" class="drawer-nav-item drawer-link">🥩 Meat &amp; Fish Outlets</a>
+            <a href="solutions.html?sector=books" class="drawer-nav-item drawer-link">📚 Books &amp; Stationery</a>
+            <a href="solutions.html?sector=florists" class="drawer-nav-item drawer-link">🌸 Florists &amp; Nurseries</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: BEAUTY & FASHION ════ -->
+      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness" data-title="Beauty &amp; Fashion">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Stores</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link strong">Overview &amp; Features</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">👗 Apparel &amp; Fashion Stores</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">👠 Footwear &amp; Shoe Outlets</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">💄 Cosmetics &amp; Beauty Salons</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">💎 Jewelry &amp; Luxury Gifts</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: SERVICES ════ -->
+      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness" data-title="Services">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Specialty &amp; Services</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=pharmacy" class="drawer-nav-item drawer-link strong">Overview &amp; Features</a>
+            <a href="solutions.html?sector=pharmacy" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=pharmacy" class="drawer-nav-item drawer-link">💊 Pharmacies &amp; Chemist</a>
+            <a href="solutions.html?sector=electronics" class="drawer-nav-item drawer-link">⚡ Electronics &amp; Mobile Shops</a>
+            <a href="solutions.html?sector=autoparts" class="drawer-nav-item drawer-link">🚗 Auto Spare Parts</a>
+            <a href="solutions.html?sector=furniture" class="drawer-nav-item drawer-link">🛋️ Furniture &amp; Home Decor</a>
+            <a href="solutions.html?sector=petcare" class="drawer-nav-item drawer-link">🐶 Pet Care &amp; Vet Supplies</a>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
        SECTOR SOLUTIONS HERO & PICKER
   ══════════════════════════════════════════════════════════ -->
   <section class="sol-page-hero">
