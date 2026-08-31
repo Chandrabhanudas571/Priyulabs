@@ -581,13 +581,7 @@ iframe {
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-color);
   margin-bottom: 50px;
-}
-
-@media (min-width: 769px) {
-  .sq-hero-photo-strip {
-    display: grid !important;
-    overflow: hidden !important;
-  }
+  width: 100%;
 }
 
 .sq-photo-card {
@@ -620,43 +614,7 @@ iframe {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.03em;
-}
-
-@media (max-width: 768px) {
-  .sq-hero-photo-strip {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    grid-template-columns: unset !important;
-    -webkit-overflow-scrolling: touch !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-behavior: smooth !important;
-    gap: 16px !important;
-    padding: 16px !important;
-    scrollbar-width: none !important;
-    border-radius: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    margin-bottom: 16px !important;
-  }
-
-  .sq-hero-photo-strip::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  .sq-photo-card {
-    flex: 0 0 85% !important;
-    min-width: 280px !important;
-    max-width: 85% !important;
-    height: auto !important;
-    scroll-snap-align: start !important;
-    flex-shrink: 0 !important;
-    box-sizing: border-box !important;
-  }
+  z-index: 2;
 }
 
 .square-dropdown-sm {
@@ -4443,19 +4401,12 @@ screen and (max-width: 992px) {
   }
 }
 
-/* Square-Style Staggered Scroll Reveal System (Mobile & Tablet) */
-@media screen and (max-width: 992px) {
-  .reveal-item {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-  }
-
-  .reveal-item.is-revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Staggered Scroll Reveal System & AOS Compatibility */
+.reveal-item,
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4515,16 +4466,6 @@ screen and (max-width: 992px) {
   .vs-line {
     width: 80px;
     height: 2px;
-  }
-
-  .attr-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .test-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
 
   .trust-grid {
@@ -4690,8 +4631,233 @@ screen and (max-width: 992px) {
   }
 }
 
+/* Universal Mobile & Desktop Button Interactivity & Touch Target Rules */
+button,
+a,
+input,
+select,
+textarea,
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-primary-hero,
+.btn-secondary-hero,
+.sq-btn-outline,
+.sq-btn-solid,
+.attr-btn,
+.serve-btn,
+.niche-chip,
+.sector-pick-btn,
+.sq-cat-btn,
+.demo-tab,
+.modal-close,
+.social-btn,
+.whatsapp-float,
+.theme-toggle,
+.hamburger,
+.drawer-link,
+.drawer-sublink,
+.drawer-drill-trigger,
+.drawer-back-btn,
+.drawer-close-btn,
+.preset-btn,
+.c-tab-btn {
+  touch-action: manipulation !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: rgba(79, 70, 229, 0.15) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .attr-btn,
+  .serve-btn,
+  .btn-primary,
+  .btn-secondary,
+  .sq-btn-outline,
+  .sq-btn-solid,
+  .cta-form .btn-primary {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Slider Dragging, Touch & Mouse Grab Rules */
+.attr-grid,
+.serve-grid,
+.test-grid,
+.sq-hero-photo-strip,
+.hw-logos,
+.niche-chips-wrap,
+.sector-picker-bar {
+  cursor: grab;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.attr-grid.is-dragging,
+.serve-grid.is-dragging,
+.test-grid.is-dragging,
+.sq-hero-photo-strip.is-dragging,
+.hw-logos.is-dragging,
+.niche-chips-wrap.is-dragging,
+.sector-picker-bar.is-dragging {
+  cursor: grabbing !important;
+  scroll-behavior: auto !important;
+  scroll-snap-type: none !important;
+}
+
+.attr-grid img,
+.serve-grid img,
+.test-grid img,
+.sq-hero-photo-strip img,
+.hw-logos img {
+  user-drag: none !important;
+  -webkit-user-drag: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
+}
+
+/* Ensure horizontal carousel items are ALWAYS 100% visible and interactive */
+.attr-grid > *,
+.serve-grid > *,
+.test-grid > *,
+.sq-hero-photo-strip > *,
+.hw-logos > *,
+.niche-chips-wrap > * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ══════════════════════════════════════════════════════════
+   1. DESKTOP SCREENS (> 1024px) - UNTOUCHED CLEAN GRID LAYOUT
+   ══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 1025px) {
+  .attr-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 28px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .serve-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .test-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 26px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .attr-card,
+  .serve-card,
+  .test-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: unset !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   2. TABLETS & MOBILES (<= 1024px) - HORIZONTAL SWIPE SLIDING
+   ══════════════════════════════════════════════════════════ */
+@media screen and (max-width: 1024px) {
+  .attr-grid,
+  .serve-grid,
+  .test-grid,
+  .sq-hero-photo-strip {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain !important;
+    gap: 16px !important;
+    padding: 12px 16px 20px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    width: calc(100% + 32px) !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+  }
+
+  .attr-grid::-webkit-scrollbar,
+  .serve-grid::-webkit-scrollbar,
+  .test-grid::-webkit-scrollbar,
+  .sq-hero-photo-strip::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .attr-card,
+  .serve-card,
+  .test-card {
+    flex: 0 0 85% !important;
+    width: 85% !important;
+    min-width: 280px !important;
+    max-width: 340px !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .sq-photo-card {
+    flex: 0 0 85% !important;
+    width: 85% !important;
+    min-width: 280px !important;
+    max-width: 340px !important;
+    scroll-snap-align: start !important;
+    flex-shrink: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
 /* 3. Mobiles & Portrait Tablets (<= 768px) */
 @media screen and (max-width: 768px) {
+
+  /* Mobile Performance: Remove Heavy GPU Backdrop Blurs to Eliminate Lag on iOS/Android */
+  .navbar,
+  .navbar.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #ffffff !important;
+  }
+
+  [data-theme="dark"] .navbar,
+  [data-theme="dark"] .navbar.scrolled {
+    background: #0b0f19 !important;
+  }
+
+  .hero-voice-hook,
+  .sq-photo-tag,
+  .hero-live-sync-badge {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 
   /* Prevent horizontal overflow globally */
   html,
@@ -5384,6 +5550,8 @@ screen and (max-width: 992px) {
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain !important;
     gap: 16px !important;
     padding: 12px 16px 20px !important;
     margin: 0 -16px !important;
@@ -5397,9 +5565,10 @@ screen and (max-width: 992px) {
   }
 
   .attr-card {
-    flex: 0 0 82% !important;
+    flex: 0 0 85% !important;
+    width: 85% !important;
     min-width: 270px !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
     scroll-snap-align: start !important;
     flex-shrink: 0 !important;
   }
@@ -5411,6 +5580,8 @@ screen and (max-width: 992px) {
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain !important;
     gap: 16px !important;
     padding: 12px 16px 20px !important;
     margin: 0 -16px !important;
@@ -5424,9 +5595,10 @@ screen and (max-width: 992px) {
   }
 
   .serve-card {
-    flex: 0 0 82% !important;
+    flex: 0 0 85% !important;
+    width: 85% !important;
     min-width: 270px !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
     scroll-snap-align: start !important;
     flex-shrink: 0 !important;
     cursor: pointer;
@@ -5439,6 +5611,8 @@ screen and (max-width: 992px) {
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain !important;
     gap: 16px !important;
     padding: 12px 16px 20px !important;
     margin: 0 -16px !important;
@@ -5452,9 +5626,10 @@ screen and (max-width: 992px) {
   }
 
   .test-card {
-    flex: 0 0 82% !important;
+    flex: 0 0 85% !important;
+    width: 85% !important;
     min-width: 270px !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
     scroll-snap-align: start !important;
     flex-shrink: 0 !important;
   }
@@ -5481,11 +5656,18 @@ screen and (max-width: 992px) {
   .sol-video-card,
   .sol-roi-callout {
     padding: 24px 20px !important;
-    width: 100% !important;
     box-sizing: border-box !important;
     border-radius: 20px !important;
     border: 1px solid rgba(15, 23, 42, 0.07) !important;
     box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03) !important;
+  }
+
+  .pvs-card,
+  .comp-col-card,
+  .upgrade-card-item,
+  .sol-video-card,
+  .sol-roi-callout {
+    width: 100% !important;
   }
 
   [data-theme="dark"] .attr-card,
@@ -5570,11 +5752,18 @@ screen and (max-width: 992px) {
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
     scroll-snap-type: x mandatory !important;
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain !important;
     gap: 16px !important;
-    padding: 15px 20px !important;
-    width: 100% !important;
+    padding: 12px 16px 20px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    width: calc(100% + 32px) !important;
     box-sizing: border-box !important;
     scrollbar-width: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
   }
 
   .sq-hero-photo-strip::-webkit-scrollbar,
@@ -5586,12 +5775,17 @@ screen and (max-width: 992px) {
   .sq-photo-card,
   .sq-photo-main {
     flex: 0 0 85% !important;
-    min-width: 270px !important;
-    max-width: 85% !important;
-    scroll-snap-align: center !important;
+    width: 85% !important;
+    min-width: 280px !important;
+    max-width: 340px !important;
+    height: 260px !important;
+    scroll-snap-align: start !important;
     flex-shrink: 0 !important;
     box-sizing: border-box !important;
-    border-radius: 18px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
   }
 
   .sector-picker-bar,

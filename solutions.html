@@ -543,23 +543,25 @@
       </p>
 
       <!-- Horizontal Sector Selector Bar: Smooth Left/Right Swipeable -->
-      <div class="sector-picker-bar" id="sectorPickerBar">
-        <button type="button" class="sector-pick-btn active" data-sector="supermarket">🛒 Kirana &amp;
-          Supermarket</button>
-        <button type="button" class="sector-pick-btn" data-sector="cafe">☕ Cafe &amp; Restaurant</button>
-        <button type="button" class="sector-pick-btn" data-sector="bakery">🎂 Bakeries &amp; Confectionery</button>
-        <button type="button" class="sector-pick-btn" data-sector="apparel">🛍️ Apparel &amp; Fashion</button>
-        <button type="button" class="sector-pick-btn" data-sector="pharmacy">💊 Pharmacy &amp; Chemist</button>
-        <button type="button" class="sector-pick-btn" data-sector="electronics">⚡ Electronics &amp; Mobiles</button>
-        <button type="button" class="sector-pick-btn" data-sector="specialty">💄 Cosmetics &amp; Specialty</button>
-        <button type="button" class="sector-pick-btn" data-sector="meat">🥩 Meat &amp; Poultry</button>
-        <button type="button" class="sector-pick-btn" data-sector="mandi">🌾 Grain &amp; Mandi</button>
-        <button type="button" class="sector-pick-btn" data-sector="autoparts">🚗 Auto Spare Parts</button>
-        <button type="button" class="sector-pick-btn" data-sector="books">📚 Books &amp; Stationery</button>
-        <button type="button" class="sector-pick-btn" data-sector="florists">🌸 Florist &amp; Nursery</button>
-        <button type="button" class="sector-pick-btn" data-sector="liquor">🍷 Liquor Outlets</button>
-        <button type="button" class="sector-pick-btn" data-sector="furniture">🛋️ Furniture Showroom</button>
-        <button type="button" class="sector-pick-btn" data-sector="petcare">🐶 Pet Care &amp; Vet</button>
+      <div class="sector-picker-bar-wrap" style="position: relative; max-width: 1000px; margin: 24px auto 0;">
+        <div class="sector-picker-bar" id="sectorPickerBar">
+          <button type="button" class="sector-pick-btn active" data-sector="supermarket">🛒 Kirana &amp;
+            Supermarket</button>
+          <button type="button" class="sector-pick-btn" data-sector="cafe">☕ Cafe &amp; Restaurant</button>
+          <button type="button" class="sector-pick-btn" data-sector="bakery">🎂 Bakeries &amp; Confectionery</button>
+          <button type="button" class="sector-pick-btn" data-sector="apparel">🛍️ Apparel &amp; Fashion</button>
+          <button type="button" class="sector-pick-btn" data-sector="pharmacy">💊 Pharmacy &amp; Chemist</button>
+          <button type="button" class="sector-pick-btn" data-sector="electronics">⚡ Electronics &amp; Mobiles</button>
+          <button type="button" class="sector-pick-btn" data-sector="specialty">💄 Cosmetics &amp; Specialty</button>
+          <button type="button" class="sector-pick-btn" data-sector="meat">🥩 Meat &amp; Poultry</button>
+          <button type="button" class="sector-pick-btn" data-sector="mandi">🌾 Grain &amp; Mandi</button>
+          <button type="button" class="sector-pick-btn" data-sector="autoparts">🚗 Auto Spare Parts</button>
+          <button type="button" class="sector-pick-btn" data-sector="books">📚 Books &amp; Stationery</button>
+          <button type="button" class="sector-pick-btn" data-sector="florists">🌸 Florist &amp; Nursery</button>
+          <button type="button" class="sector-pick-btn" data-sector="liquor">🍷 Liquor Outlets</button>
+          <button type="button" class="sector-pick-btn" data-sector="furniture">🛋️ Furniture Showroom</button>
+          <button type="button" class="sector-pick-btn" data-sector="petcare">🐶 Pet Care &amp; Vet</button>
+        </div>
       </div>
     </div>
   </section>
@@ -583,7 +585,7 @@
         </div>
 
         <!-- 3-Photo Visual Showcase Strip: Smooth Touch Swipeable on Mobile -->
-        <div class="sq-hero-photo-strip">
+        <div class="sq-hero-photo-strip" id="sqHeroPhotoStrip">
           <div class="sq-photo-card sq-photo-main">
             <img src="assets/pos_billing_preview.jpg" alt="Priyulabs Touchscreen POS Counter" id="sqHeroImg1" />
             <span class="sq-photo-tag" id="sqHeroTag1">Touch POS Terminal</span>

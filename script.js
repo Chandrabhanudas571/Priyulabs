@@ -26,13 +26,23 @@ if (themeToggleBtn) {
 
 // ─── NAVBAR SCROLL & ACTIVE STATE ──────────────────────────────
 const navbar = document.getElementById('navbar');
+let isTicking = false;
+
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  if (!isTicking) {
+    window.requestAnimationFrame(() => {
+      if (navbar) {
+        if (window.scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+      isTicking = false;
+    });
+    isTicking = true;
   }
-});
+}, { passive: true });
 
 // ─── SQUARE-STYLE FULL-SCREEN DRILLDOWN MOBILE DRAWER ─────────
 const mobileDrawer = document.getElementById('mobileDrawer');
@@ -213,16 +223,11 @@ function initSquareScrollReveal() {
     return;
   }
 
-  // Grid / multi-card containers with staggered micro-delays
+  // Grid / multi-card containers with staggered micro-delays (Exclude horizontal swipe carousels so items are always 100% visible)
   const staggerContainers = document.querySelectorAll(`
     .pvs-grid,
-    .attr-grid,
-    .serve-grid,
-    .test-grid,
     .trust-grid,
     .hero-stats,
-    .hw-logos,
-    .sq-hero-photo-strip,
     .comp-grid-full,
     .upgrades-cards-wrap,
     .trust-stats-mini
@@ -1076,20 +1081,99 @@ function switchHeroEcosystem(key) {
   });
 }
 
-// ─── VIDEO INTERACTION & TOUCH HANDLER (PREVENT REDIRECTS) ─────
+// ─── CAROUSEL & SLIDER CONTROLS ─────────────────────────────────
+function scrollCarousel(target, direction) {
+  let container = typeof target === 'string' ? (document.getElementById(target) || document.querySelector(`.${target}`)) : target;
+  if (!container) return;
+
+  const firstChild = container.querySelector('.attr-card, .serve-card, .test-card, .sq-photo-card, .hw-item, .niche-chip, .sector-pick-btn');
+  const scrollAmount = firstChild ? (firstChild.offsetWidth + 16) * direction : container.clientWidth * 0.75 * direction;
+
+  container.scrollBy({
+    left: scrollAmount,
+    behavior: 'smooth'
+  });
+}
+window.scrollCarousel = scrollCarousel;
+
+// Robust Drag-to-Scroll for Mouse & Pure Native Touch Gestures
+function initCarouselDragScroll() {
+  const carousels = document.querySelectorAll('.attr-grid, .serve-grid, .test-grid, .sq-hero-photo-strip, .hw-logos, .niche-chips-wrap, .sector-picker-bar');
+
+  carousels.forEach(slider => {
+    if (slider.dataset.dragBound) return;
+    slider.dataset.dragBound = 'true';
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    // Prevent default ghost image drag
+    slider.querySelectorAll('img').forEach(img => {
+      img.setAttribute('draggable', 'false');
+      img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+
+    // MOUSE DRAG HANDLERS (Desktop / Laptop Mouse Navigation)
+    slider.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button, a, input, select, textarea')) return;
+      isDown = true;
+      slider.classList.add('is-dragging');
+      slider.style.scrollSnapType = 'none';
+      slider.style.scrollBehavior = 'auto';
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      if (!isDown) return;
+      isDown = false;
+      slider.classList.remove('is-dragging');
+      slider.style.scrollSnapType = '';
+      slider.style.scrollBehavior = '';
+    });
+
+    slider.addEventListener('mouseup', () => {
+      if (!isDown) return;
+      isDown = false;
+      slider.classList.remove('is-dragging');
+      slider.style.scrollSnapType = '';
+      slider.style.scrollBehavior = '';
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // MOUSE WHEEL (Allows horizontal scroll with wheel when hovering carousel)
+    slider.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && !e.shiftKey) {
+        slider.scrollLeft += e.deltaY * 0.8;
+      }
+    }, { passive: true });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCarouselDragScroll);
+} else {
+  initCarouselDragScroll();
+}
+window.initCarouselDragScroll = initCarouselDragScroll;
+
+// ─── VIDEO INTERACTION & TOUCH HANDLER (SAFE PLAY/PAUSE) ────────
 function initVideoTouchProtection() {
   const videoElements = document.querySelectorAll('video, .card-video-wrap, .sol-video-wrapper');
   videoElements.forEach(wrapper => {
-    ['click', 'touchstart', 'touchend', 'pointerdown'].forEach(evt => {
-      wrapper.addEventListener(evt, (e) => {
-        e.stopPropagation();
-      }, { passive: true });
-    });
-
     const vid = wrapper.tagName === 'VIDEO' ? wrapper : wrapper.querySelector('video');
     if (vid && !vid.dataset.bound) {
       vid.dataset.bound = 'true';
       vid.addEventListener('click', (e) => {
+        // Prevent anchor link navigation if video is inside a card
         e.stopPropagation();
         if (vid.paused) {
           vid.play().catch(() => { });
@@ -1149,6 +1233,25 @@ if (document.readyState === 'loading') {
 } else {
   initSectorPicker();
 }
+
+// ─── GLOBAL WINDOW EXPORTS FOR MOBILE & DESKTOP EVENT HANDLERS ───
+window.openDemoModal = openDemoModal;
+window.closeDemoModal = closeDemoModal;
+window.switchDemoTab = switchDemoTab;
+window.runSimVoice = runSimVoice;
+window.simulatePinePush = simulatePinePush;
+window.simulateVisionScan = simulateVisionScan;
+window.simulateGstDownload = simulateGstDownload;
+window.simulateVoicePOS = simulateVoicePOS;
+window.openPolicyModal = openPolicyModal;
+window.closePolicyModal = closePolicyModal;
+window.openSectorModal = openSectorModal;
+window.closeSectorModal = closeSectorModal;
+window.switchMegaTab = switchMegaTab;
+window.switchHeroEcosystem = switchHeroEcosystem;
+window.showToast = showToast;
+window.toggleBakeryFullscreen = toggleBakeryFullscreen;
+window.handleLeadSubmit = handleLeadSubmit;
 window.initSectorPicker = initSectorPicker;
 
 console.log('%c Priyulabs – India’s Smartest AI Retail OS Loaded Successfully! 🇮🇳 ',
