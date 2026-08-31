@@ -951,7 +951,7 @@ function closeSectorModal() {
 }
 
 // ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ────────
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxj4k_MxGd213M2axuweB3YwzfHQ-QfQG6NjCtYgKSniUl4NEZKawAn1gdCbV6QU1zNig/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPl-7pp-g-VOMUDpP900zdOB8DhA8gS6sOrKwUeTTNclUtggc3UKg7_G2rJl3VjyRlMA/exec";
 
 const leadForm = document.getElementById('leadForm');
 if (leadForm) {
