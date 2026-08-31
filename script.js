@@ -646,13 +646,34 @@ window.addEventListener('keydown', (e) => {
 const sectorModal = document.getElementById('sectorModal');
 
 const sectorDetailsData = {
+  pos: {
+    emoji: '🖥️',
+    badge: 'Next-Gen Point of Sale (POS)',
+    title: 'Point of Sale (POS)',
+    eyebrow: 'PRIYULABS NEXT-GEN RETAIL POS',
+    headline: 'Keep the lines moving and checkout blazing fast',
+    heroDesc: 'Empower your cashiers with lightning-fast POS billing, offline mode capability, and seamless hardware integration.',
+    image: 'assets/pos_billing_preview.jpg',
+    before: [
+      'Clunky legacy desktop software freezing during peak billing rush hours',
+      'No internet outage protection — store stops billing when Wi-Fi drops',
+      'Disconnected card swipe machines requiring manual price re-typing on EDC'
+    ],
+    after: [
+      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap a wholesaler invoice — AI auto-extracts items (name, qty, batch, MRP) and logs stock in under 2 seconds with zero manual entry',
+      '<strong>100% Offline-First Engine:</strong> Keep billing without internet; automatically syncs to cloud when reconnected',
+      '<strong>Bi-Directional EDC & UPI Push:</strong> Send exact invoice amounts directly to Pine Labs, Paytm & UPI QR screens with zero cashier theft'
+    ],
+    techUpgrades: ['⚡ Sub-Second POS Billing', '📦 Vision AI Stock Detection', '🛡️ Expiry Shield Alerts', '💳 Bi-Directional EDC Sync', '📱 Dual Customer Screen'],
+    roi: '🚀 <strong>Proven Impact:</strong> 3x Faster Customer Checkout • 0% Dead-Stock Write-Offs • 100% Cash Reconciliation'
+  },
   supermarket: {
     emoji: '🛒',
     badge: 'High-Volume Retail & Grocery POS',
     title: 'Supermarkets, Grocery & Kirana',
     eyebrow: 'PRIYULABS FOR SUPERMARKETS & KIRANA',
-    headline: 'Lightning-fast barcode & voice checkout for high-volume grocery',
-    heroDesc: 'Cut checkout queues by 80% with Multilingual Voice POS, digital weighing scale auto-sync, and Vision AI wholesaler invoice scanning.',
+    headline: 'Vision AI Stock Detection & Expiry Shield for high-volume grocery & Kirana',
+    heroDesc: 'Cut expired-stock losses to zero with Vision AI Stock Detection — snap a wholesale invoice, auto-log every item, and shield shelves across Kirana, Pharmacy & Supermarket from pre-expiry losses.',
     image: 'assets/sector_supermarket.jpg',
     before: [
       'Manual barcode searching & keyboard price typing creating long 10-minute billing queues',
@@ -660,11 +681,11 @@ const sectorDetailsData = {
       'Stock expiry losses: Expired packets sitting unnoticed on back shelves causing customer loss'
     ],
     after: [
-      '<strong>Multilingual Voice POS:</strong> Speak items in your language (<em>"2 kg sugar and 1 litre oil"</em>) for instant 2-second billing',
+      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap wholesaler invoices to auto-log stock & get pre-expiry alerts 7–30 days before expiry across Kirana, Pharmacy & Supermarket',
       '<strong>Direct Weighing Scale Sync:</strong> Weight transfers automatically from digital scale straight into POS bill',
-      '<strong>Vision AI Purchase OCR & FEFO Alerts:</strong> Snap wholesaler invoices to auto-add stock & get pre-expiry alerts'
+      '<strong>Invoice OCR Auto-Stock Logging:</strong> AI extracts every line item (name, qty, batch, MRP) from wholesale bill photos in under 2 seconds'
     ],
-    techUpgrades: ['🎙️ Multilingual Voice POS', '📷 Vision AI Invoice Scan', '⚖️ Weighing Scale Sync', '📅 FEFO Expiry Alerts'],
+    techUpgrades: ['📦 Vision AI Stock Detection', '🛡️ Expiry Shield Alerts', '📷 Invoice OCR Auto-Log', '⚖️ Weighing Scale Sync', '📅 FEFO Batch Tracking'],
     roi: '⚡ <strong>Proven Impact:</strong> 80% Faster Billing Queue • 0% Expired Stock Losses • 100% Cash Accuracy'
   },
   cafe: {
@@ -1156,6 +1177,43 @@ function initCarouselDragScroll() {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && !e.shiftKey) {
         slider.scrollLeft += e.deltaY * 0.8;
       }
+    }, { passive: true });
+
+    // ── TOUCH SWIPE HANDLERS (Mobile & Tablet Native Swipe) ──
+    let touchStartX = 0;
+    let touchStartScrollLeft = 0;
+    let isSwiping = false;
+
+    slider.addEventListener('touchstart', (e) => {
+      if (e.target.closest('button, a, input, select, textarea')) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartScrollLeft = slider.scrollLeft;
+      isSwiping = true;
+      slider.style.scrollSnapType = 'none';
+      slider.style.scrollBehavior = 'auto';
+      slider.classList.add('is-dragging');
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+      const touchCurrentX = e.touches[0].clientX;
+      const diff = touchStartX - touchCurrentX;
+      slider.scrollLeft = touchStartScrollLeft + diff;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', () => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      slider.classList.remove('is-dragging');
+      slider.style.scrollSnapType = '';
+      slider.style.scrollBehavior = '';
+    }, { passive: true });
+
+    slider.addEventListener('touchcancel', () => {
+      isSwiping = false;
+      slider.classList.remove('is-dragging');
+      slider.style.scrollSnapType = '';
+      slider.style.scrollBehavior = '';
     }, { passive: true });
   });
 }

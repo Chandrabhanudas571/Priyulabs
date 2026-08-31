@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POS Billing Software | AI Stock Prediction &amp; 2-Sec Touch Billing | Priyulabs Digital</title>
+  <meta name="description"
+    content="India's fastest POS system — lightning 2-sec billing, Vision AI stock prediction &amp; expiry shield, 100% offline mode, zero-fraud EDC payment sync &amp; thermal printer integration. Built for every retail format." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       POS PAGE — DEDICATED STANDALONE STYLES
+       All selectors prefixed with .pos- to prevent global bleed
+    ══════════════════════════════════════════════════════════ */
+
+    /* ── SCROLL REVEAL ── */
+    .pos-reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pos-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pos-reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pos-reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .pos-reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pos-reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* delay helpers */
+    .pos-delay-1 { transition-delay: 0.1s; }
+    .pos-delay-2 { transition-delay: 0.2s; }
+    .pos-delay-3 { transition-delay: 0.3s; }
+    .pos-delay-4 { transition-delay: 0.4s; }
+
+    /* ── HERO SECTION ── */
+    .pos-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(165deg, #08091a 0%, #0d1130 45%, #060e22 100%);
+      padding: clamp(110px, 16vh, 160px) 16px clamp(50px, 8vh, 90px);
+      text-align: center;
+    }
+
+    /* Animated gradient orbs */
+    .pos-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: pos-orb-pulse 8s ease-in-out infinite alternate;
+    }
+
+    .pos-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: pos-orb-pulse 10s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes pos-orb-pulse {
+      from { transform: scale(1) translate(0, 0); }
+      to   { transform: scale(1.15) translate(20px, -20px); }
+    }
+
+    .pos-hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .pos-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .pos-hero-eyebrow .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: #6366f1;
+      border-radius: 50%;
+      animation: pos-blink 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pos-blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .pos-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 6.5vw, 68px);
+      font-weight: 900;
+      color: #f8fafc;
+      margin-bottom: 10px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .pos-hero-title .pos-highlight {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pos-hero-sub {
+      font-size: clamp(15px, 3.2vw, 20px);
+      color: #94a3b8;
+      max-width: 760px;
+      margin: 18px auto 36px;
+      line-height: 1.65;
+    }
+
+    /* Speed badge */
+    .pos-speed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      margin-bottom: 36px;
+    }
+
+    .pos-speed-badge .lightning-icon {
+      animation: pos-lightning 1.8s ease-in-out infinite;
+      font-style: normal;
+    }
+
+    @keyframes pos-lightning {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Hero CTA Row */
+    .pos-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 56px;
+    }
+
+    .pos-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+      color: #fff;
+      font-size: 15.5px;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4), 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .pos-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(79, 70, 229, 0.55), 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .pos-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e2e8f0;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .pos-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(99, 102, 241, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Hero image frame */
+    .pos-hero-frame {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .pos-hero-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04),
+                  0 24px 80px rgba(0,0,0,0.6),
+                  0 0 120px rgba(79, 70, 229, 0.18);
+      position: relative;
+    }
+
+    .pos-hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(8, 9, 26, 0.7) 100%);
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 20px;
+    }
+
+    .pos-hero-img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .pos-hero-img-wrap:hover .pos-hero-img {
+      transform: scale(1.02);
+    }
+
+    /* Floating stat pills on hero */
+    .pos-hero-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .pos-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .pos-stat-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(99,102,241,0.12);
+    }
+
+    .pos-stat-num {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 900;
+      color: #f8fafc;
+      line-height: 1;
+    }
+
+    .pos-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      line-height: 1.3;
+    }
+
+    .pos-stat-icon {
+      font-size: 20px;
+    }
+
+    /* ── TRUST STRIP ── */
+    .pos-trust-strip {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 24px;
+    }
+
+    .pos-trust-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pos-trust-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .pos-trust-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border-color);
+      flex-shrink: 0;
+    }
+
+    .pos-trust-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .pos-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+
+    .pos-trust-item .check {
+      color: #059669;
+      font-size: 14px;
+    }
+
+    /* ── SECTION SHARED ── */
+    .pos-section {
+      padding: clamp(60px, 9vw, 100px) 0;
+    }
+
+    .pos-section-alt {
+      background: #f8fafc;
+    }
+
+    .pos-section-dark {
+      background: linear-gradient(165deg, #08091a 0%, #0d1130 100%);
+      color: #f8fafc;
+    }
+
+    .pos-eyebrow-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .pos-eyebrow-indigo {
+      background: rgba(79, 70, 229, 0.1);
+      color: #4f46e5;
+      border: 1px solid rgba(79, 70, 229, 0.2);
+    }
+
+    .pos-eyebrow-emerald {
+      background: rgba(5, 150, 105, 0.1);
+      color: #059669;
+      border: 1px solid rgba(5, 150, 105, 0.2);
+    }
+
+    .pos-eyebrow-violet {
+      background: rgba(139, 92, 246, 0.1);
+      color: #7c3aed;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .pos-eyebrow-amber {
+      background: rgba(217, 119, 6, 0.1);
+      color: #d97706;
+      border: 1px solid rgba(217, 119, 6, 0.2);
+    }
+
+    .pos-section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 4.5vw, 46px);
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .pos-section-title-light { color: #f8fafc; }
+
+    .pos-section-desc {
+      font-size: clamp(14px, 2.8vw, 17px);
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+
+    .pos-section-desc-light { color: #94a3b8; }
+
+    /* ── FEATURE SPLIT ── */
+    .pos-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+
+    .pos-split.reversed {
+      direction: rtl;
+    }
+
+    .pos-split.reversed > * {
+      direction: ltr;
+    }
+
+    @media (max-width: 860px) {
+      .pos-split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .pos-split.reversed {
+        direction: ltr;
+      }
+    }
+
+    /* Image panel */
+    .pos-img-panel { position: relative; }
+
+    .pos-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+
+    .pos-img-wrap-dark {
+      border-color: rgba(99, 102, 241, 0.25);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 60px rgba(79, 70, 229, 0.15);
+    }
+
+    .pos-img-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .pos-img-wrap:hover img { transform: scale(1.03); }
+
+    /* Floating badge on image */
+    .pos-img-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(8, 9, 26, 0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    .pos-img-badge-light {
+      background: rgba(255,255,255,0.9);
+      border-color: rgba(79, 70, 229, 0.2);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .pos-badge-icon { font-size: 22px; }
+
+    .pos-badge-text-top {
+      font-size: 16px;
+      font-weight: 900;
+      color: #f8fafc;
+      line-height: 1;
+      font-family: var(--font-heading);
+    }
+
+    .pos-badge-text-top.dark-text { color: #0f172a; }
+
+    .pos-badge-text-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* ── FEATURE CHIPS LIST ── */
+    .pos-feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .pos-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .pos-feature-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .pos-feature-icon-indigo { background: rgba(79, 70, 229, 0.1); }
+    .pos-feature-icon-emerald { background: rgba(5, 150, 105, 0.1); }
+    .pos-feature-icon-violet { background: rgba(139, 92, 246, 0.1); }
+    .pos-feature-icon-amber { background: rgba(217, 119, 6, 0.1); }
+
+    .pos-feature-text-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .pos-feature-text-title.light { color: #f1f5f9; }
+
+    .pos-feature-text-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .pos-feature-text-desc.light { color: #64748b; }
+
+    /* ── GLASSMORPHISM CARDS GRID ── */
+    .pos-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .pos-glass-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pos-glass-card::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .pos-glass-card:hover::before { opacity: 1; }
+
+    .pos-glass-card.indigo-glow::before { background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%); }
+    .pos-glass-card.emerald-glow::before { background: radial-gradient(circle, rgba(5,150,105,0.12) 0%, transparent 70%); }
+    .pos-glass-card.violet-glow::before { background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%); }
+    .pos-glass-card.amber-glow::before { background: radial-gradient(circle, rgba(217,119,6,0.12) 0%, transparent 70%); }
+    .pos-glass-card.cyan-glow::before { background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%); }
+    .pos-glass-card.rose-glow::before { background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 70%); }
+
+    .pos-glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
+      border-color: rgba(79, 70, 229, 0.2);
+    }
+
+    .pos-glass-card-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .pos-glass-card-title {
+      font-family: var(--font-heading);
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .pos-glass-card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── OFFLINE MODE STEP LIST ── */
+    .pos-offline-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pos-offline-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .pos-offline-step:last-child { border-bottom: none; }
+
+    .pos-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+    }
+
+    .pos-step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .pos-step-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── NUMBERS GRID ── */
+    .pos-numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .pos-numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .pos-number-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pos-number-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pos-number-val {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .pos-number-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ── CTA BANNER ── */
+    .pos-cta-section {
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #7c3aed 100%);
+      padding: clamp(60px, 9vw, 100px) 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pos-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .pos-cta-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+    }
+
+    .pos-cta-title {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 4.5vw, 44px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+
+    .pos-cta-desc {
+      font-size: clamp(14px, 2.6vw, 17px);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .pos-cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .pos-cta-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #4f46e5;
+      font-size: 15.5px;
+      font-weight: 800;
+      padding: 15px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pos-cta-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+
+    .pos-cta-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 15px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .pos-cta-btn-ghost:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ── SECTION HEADER CENTERED ── */
+    .pos-section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .pos-section-header .pos-section-title { margin-bottom: 14px; }
+    .pos-section-header .pos-section-desc { max-width: 640px; margin: 0 auto; }
+
+    /* ── HARDWARE CHIPS ── */
+    .pos-hardware-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pos-hw-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-body);
+      box-shadow: var(--shadow-xs);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pos-hw-chip:hover {
+      border-color: rgba(79, 70, 229, 0.3);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .pos-hero-ctas { flex-direction: column; align-items: center; }
+      .pos-btn-primary, .pos-btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
+      .pos-hero-stats-row { gap: 8px; }
+      .pos-cta-btns { flex-direction: column; align-items: center; }
+      .pos-cta-btn-primary, .pos-cta-btn-ghost { width: 100%; max-width: 320px; justify-content: center; }
+      .pos-trust-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       DEDICATED POS NAVBAR
+  ══════════════════════════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle" style="color: #4f46e5; letter-spacing: 0.18em;">POS</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#pos-billing" class="nav-link-title">Billing</a></li>
+        <li><a href="#pos-stock-ai" class="nav-link-title">AI Stock Prediction</a></li>
+        <li><a href="#pos-offline" class="nav-link-title">Offline Mode</a></li>
+        <li><a href="#pos-hardware" class="nav-link-title">Hardware</a></li>
+        <li><a href="#pos-lead-form" class="nav-link-title">Get Quote</a></li>
+        <li><a href="solutions.html" class="nav-link-title">All Solutions</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">&#10024; Live Demo</button>
+        <a href="#pos-lead-form" class="btn-nav">Start Free Trial</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MOBILE DRAWER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span class="drawer-back-text">Back</span>
+      </button>
+      <div class="drawer-header-title" id="drawerHeaderTitle">POS Menu</div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-viewport" id="drawerViewport">
+      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="POS Menu">
+        <div class="drawer-panel-scroll">
+          <nav class="drawer-nav-list">
+            <a href="#pos-billing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>⚡ Lightning Billing</span>
+            </a>
+            <a href="#pos-stock-ai" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>📦 AI Stock Prediction &amp; Expiry</span>
+            </a>
+            <a href="#pos-offline" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>&#128244; Offline Mode</span>
+            </a>
+            <a href="#pos-hardware" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>&#128424;&#65039; Hardware Integration</span>
+            </a>
+            <a href="#pos-lead-form" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>📝 Get POS Quote &amp; Demo</span>
+            </a>
+            <a href="solutions.html" class="drawer-nav-item drawer-link">
+              <span>&#128197; All Solutions</span>
+            </a>
+            <a href="index.html" class="drawer-nav-item drawer-link highlight">
+              <span>&#127968; Main Platform Home</span>
+            </a>
+          </nav>
+          <div class="drawer-divider"></div>
+          <div class="drawer-utility-links">
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">&#10024; Interactive Demo</button>
+            <a href="https://wa.me/917849074050" target="_blank" class="drawer-sublink" onclick="closeMobileDrawer()">WhatsApp Support</a>
+          </div>
+          <div class="drawer-bottom-cta">
+            <a href="#pos-lead-form" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Book POS Demo &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-hero" id="pos-hero">
+    <div class="pos-hero-inner container">
+
+      <div class="pos-hero-eyebrow pos-reveal">
+        <span class="eyebrow-dot"></span>
+        &#128187; PRIYULABS POS &mdash; INDIA'S FASTEST RETAIL BILLING OS
+      </div>
+
+      <h1 class="pos-hero-title pos-reveal pos-delay-1">
+        Bill Every Customer in<br>
+        <span class="pos-highlight">Under 2 Seconds.</span>
+      </h1>
+
+      <p class="pos-hero-sub pos-reveal pos-delay-2">
+        A lightning-fast touch POS, Vision AI stock prediction &amp; festive demand forecasting, 100% offline mode, and zero-fraud EDC payment sync &mdash;
+        all packed into one powerful system built for Indian retail.
+      </p>
+
+      <div class="pos-speed-badge pos-reveal pos-delay-3">
+        <em class="lightning-icon">&#9889;</em>
+        Average billing time: <strong>2.1 seconds</strong> across 50,000+ transactions
+      </div>
+
+      <div class="pos-hero-ctas pos-reveal pos-delay-3">
+        <a href="#pos-lead-form" class="pos-btn-primary">
+          &#128640; Book Free Demo
+        </a>
+        <a href="#pos-billing" class="pos-btn-secondary">
+          Explore Features &#8595;
+        </a>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="pos-hero-frame pos-reveal pos-delay-4">
+        <div class="pos-hero-img-wrap">
+          <img
+            src="assets/pos_ui_hero.jpg"
+            alt="Priyulabs POS billing interface with AI voice button, itemized cart, and payment options"
+            class="pos-hero-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Stat Pills -->
+      <div class="pos-hero-stats-row pos-reveal pos-delay-4">
+        <div class="pos-stat-pill">
+          <span class="pos-stat-icon">&#9889;</span>
+          <div>
+            <div class="pos-stat-num">2s</div>
+            <div class="pos-stat-label">Avg. billing time</div>
+          </div>
+        </div>
+        <div class="pos-stat-pill">
+          <span class="pos-stat-icon">&#128244;</span>
+          <div>
+            <div class="pos-stat-num">100%</div>
+            <div class="pos-stat-label">Offline capable</div>
+          </div>
+        </div>
+        <div class="pos-stat-pill">
+          <span class="pos-stat-icon">📦</span>
+          <div>
+            <div class="pos-stat-num">0%</div>
+            <div class="pos-stat-label">Dead-stock expiry loss</div>
+          </div>
+        </div>
+        <div class="pos-stat-pill">
+          <span class="pos-stat-icon">&#128737;&#65039;</span>
+          <div>
+            <div class="pos-stat-num">0%</div>
+            <div class="pos-stat-label">Fraud on EDC sync</div>
+          </div>
+        </div>
+        <div class="pos-stat-pill">
+          <span class="pos-stat-icon">&#127978;</span>
+          <div>
+            <div class="pos-stat-num">15+</div>
+            <div class="pos-stat-label">Retail formats</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TRUST STRIP
+  ══════════════════════════════════════════════════════════ -->
+  <div class="pos-trust-strip">
+    <div class="pos-trust-inner">
+      <span class="pos-trust-label">Trusted by</span>
+      <div class="pos-trust-divider"></div>
+      <div class="pos-trust-items">
+        <span class="pos-trust-item"><span class="check">&#10003;</span> 3,200+ Retail Outlets</span>
+        <span class="pos-trust-item"><span class="check">&#10003;</span> GST Compliant Billing</span>
+        <span class="pos-trust-item"><span class="check">&#10003;</span> Pine Labs &amp; Razorpay EDC Sync</span>
+        <span class="pos-trust-item"><span class="check">&#10003;</span> Works on Android &amp; Windows</span>
+        <span class="pos-trust-item"><span class="check">&#10003;</span> 24/7 WhatsApp Support</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 1: LIGHTNING-FAST TOUCH BILLING
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-section" id="pos-billing">
+    <div class="container">
+      <div class="pos-split">
+
+        <div class="pos-reveal-left">
+          <span class="pos-eyebrow-chip pos-eyebrow-indigo">&#9889; Touch POS Billing</span>
+          <h2 class="pos-section-title">Bill Customers Before<br>They Finish Saying<br>the Price.</h2>
+          <p class="pos-section-desc">
+            Priyulabs POS is engineered for real-world Indian retail speed. Scan barcodes, search by name or code,
+            and generate GST-compliant thermal bills in under 2 seconds &mdash; on any Android tablet or Windows counter.
+          </p>
+
+          <div class="pos-feature-list">
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#128269;</div>
+              <div>
+                <div class="pos-feature-text-title">Smart Product Search</div>
+                <div class="pos-feature-text-desc">Search by name, barcode, HSN code, or shorthand nicknames. Fuzzy match finds what you mean even with typos.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#129518;</div>
+              <div>
+                <div class="pos-feature-text-title">1-Click GST Bill Generation</div>
+                <div class="pos-feature-text-desc">Automatic CGST/SGST/IGST breakup, HSN codes, and invoice numbering. Fully compliant with GST portal requirements.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#128424;&#65039;</div>
+              <div>
+                <div class="pos-feature-text-title">Instant Thermal Print</div>
+                <div class="pos-feature-text-desc">Auto-trigger thermal receipt printing on bill confirmation. Compatible with Epson, TVS, and Bluetooth thermal printers.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#128179;</div>
+              <div>
+                <div class="pos-feature-text-title">Split Payments &amp; Loyalty Points</div>
+                <div class="pos-feature-text-desc">Accept UPI, cash, card, and credit simultaneously. Apply discount codes and redeem loyalty points in one transaction.</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#pos-lead-form" class="pos-btn-primary" style="display: inline-flex;">
+            See It Live &#8594; Book Demo
+          </a>
+        </div>
+
+        <div class="pos-img-panel pos-reveal-right">
+          <div class="pos-img-wrap">
+            <img
+              src="assets/pos_billing_preview.jpg"
+              alt="Priyulabs POS touch billing terminal in a retail store"
+              loading="lazy"
+            />
+            <div class="pos-img-badge pos-img-badge-light">
+              <span class="pos-badge-icon">&#9889;</span>
+              <div>
+                <div class="pos-badge-text-top dark-text">2.1 sec</div>
+                <div class="pos-badge-text-sub">Average bill time</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 2: FULL FEATURE CARDS
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-section pos-section-alt">
+    <div class="container">
+      <div class="pos-section-header">
+        <span class="pos-eyebrow-chip pos-eyebrow-indigo pos-reveal">&#128193; Full POS Feature Suite</span>
+        <h2 class="pos-section-title pos-reveal pos-delay-1">Everything Your Counter Needs.</h2>
+        <p class="pos-section-desc pos-reveal pos-delay-2">
+          From the moment a customer walks in to the moment they walk out &mdash; Priyulabs POS handles every step without friction.
+        </p>
+      </div>
+
+      <div class="pos-cards-grid">
+        <div class="pos-glass-card indigo-glow pos-reveal">
+          <span class="pos-glass-card-icon">&#128230;</span>
+          <div class="pos-glass-card-title">Live Inventory Deduction</div>
+          <div class="pos-glass-card-desc">Every bill auto-deducts stock in real time. Get low-stock alerts before you run out, not after.</div>
+        </div>
+        <div class="pos-glass-card emerald-glow pos-reveal pos-delay-1">
+          <span class="pos-glass-card-icon">&#128278;</span>
+          <div class="pos-glass-card-title">Barcode &amp; QR Scanning</div>
+          <div class="pos-glass-card-desc">Works with USB barcode guns, Bluetooth scanners, and the phone's built-in camera. Zero additional hardware required.</div>
+        </div>
+        <div class="pos-glass-card violet-glow pos-reveal pos-delay-2">
+          <span class="pos-glass-card-icon">&#127873;</span>
+          <div class="pos-glass-card-title">Loyalty &amp; Offers Engine</div>
+          <div class="pos-glass-card-desc">Run BOGO deals, percentage discounts, points-based loyalty, and seasonal campaigns &mdash; all from the billing screen.</div>
+        </div>
+        <div class="pos-glass-card amber-glow pos-reveal pos-delay-3">
+          <span class="pos-glass-card-icon">&#129518;</span>
+          <div class="pos-glass-card-title">Multi-Pricelist Support</div>
+          <div class="pos-glass-card-desc">Set different price lists for wholesale, retail, and loyalty customers. Prices switch automatically based on customer profile.</div>
+        </div>
+        <div class="pos-glass-card cyan-glow pos-reveal">
+          <span class="pos-glass-card-icon">&#128202;</span>
+          <div class="pos-glass-card-title">End-of-Day Reports</div>
+          <div class="pos-glass-card-desc">Daily sales summary, shift-wise collections, payment mode breakups, and top-selling items &mdash; in one clean dashboard.</div>
+        </div>
+        <div class="pos-glass-card rose-glow pos-reveal pos-delay-1">
+          <span class="pos-glass-card-icon">&#128260;</span>
+          <div class="pos-glass-card-title">Return &amp; Exchange</div>
+          <div class="pos-glass-card-desc">Process returns, partial refunds, and item exchanges in seconds. Auto-adjusts inventory and restores GST credits correctly.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 3: AI STOCK PREDICTION & FESTIVE SURGE SHIELD
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-section pos-section-dark" id="pos-stock-ai">
+    <div class="container">
+      <div class="pos-split reversed">
+
+        <div class="pos-img-panel pos-reveal-right">
+          <div class="pos-img-wrap pos-img-wrap-dark">
+            <img
+              src="assets/pos_stock_prediction.jpg"
+              alt="AI Stock Prediction Dashboard displaying Puja Season surge alerts, low-stock warnings, and Expiry Shield status"
+              loading="lazy"
+            />
+            <div class="pos-img-badge">
+              <span class="pos-badge-icon">📦</span>
+              <div>
+                <div class="pos-badge-text-top">AI Stock Intelligence</div>
+                <div class="pos-badge-text-sub">Puja Surge: +140% Demand Detected</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pos-reveal-left">
+          <span class="pos-eyebrow-chip pos-eyebrow-violet">📦 Vision AI Stock Prediction</span>
+          <h2 class="pos-section-title pos-section-title-light">Predict Depletion.<br>Catch Festive Surges.<br><em>Before</em> Shelves Empty.</h2>
+          <p class="pos-section-desc pos-section-desc-light">
+            Never lose sales to stockouts or write off expired products again. Priyulabs AI monitors sales velocity, festive shopping trends (Puja, Diwali, Eid), and supplier lead times to give you proactive reordering alerts.
+          </p>
+
+          <div class="pos-feature-list">
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-violet">📈</div>
+              <div>
+                <div class="pos-feature-text-title light">Festive &amp; Seasonal Surge AI</div>
+                <div class="pos-feature-text-desc light">Forecasts sales spikes before festivals like Durga Puja, Diwali, and New Year. Alerts you in advance: <em>"Puja demand +140% on Ghee, Sweets &amp; Dry Fruits — Refill Suggested"</em>.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-violet">⚠️</div>
+              <div>
+                <div class="pos-feature-text-title light">Smart Low-Stock Run-Out Predictor</div>
+                <div class="pos-feature-text-desc light">Calculates exact item burn rates in real time: <em>"Stock emptying in 48 hours"</em>. Generates 1-click purchase orders before you run out.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-violet">🛡️</div>
+              <div>
+                <div class="pos-feature-text-title light">Expiry Shield &amp; FEFO Automation</div>
+                <div class="pos-feature-text-desc light">Flags items expiring in 7, 15, or 30 days across Kirana, Pharmacy, and Supermarkets. Suggests smart combo bundles to sell near-expiry stock with 0% loss.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-violet">📷</div>
+              <div>
+                <div class="pos-feature-text-title light">Wholesaler Invoice OCR Ingestion</div>
+                <div class="pos-feature-text-desc light">Snap a photo of wholesale bills — AI auto-extracts line items, quantities, batch numbers, and MRPs into ERP in 1.2 seconds. Zero manual entry.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="#pos-lead-form" class="pos-btn-primary">Book AI Stock Demo</a>
+            <a href="solutions.html" class="pos-btn-secondary">See All Features</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 4: 100% OFFLINE MODE
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-section" id="pos-offline">
+    <div class="container">
+      <div class="pos-split">
+
+        <div class="pos-reveal-left">
+          <span class="pos-eyebrow-chip pos-eyebrow-emerald">&#128244; Offline Mode</span>
+          <h2 class="pos-section-title">Internet Down?<br>Your Billing Doesn't Stop.</h2>
+          <p class="pos-section-desc">
+            Priyulabs POS runs entirely on-device. Every sale, inventory deduction, and customer record is stored
+            locally &mdash; and syncs automatically the moment connectivity returns.
+          </p>
+
+          <div class="pos-offline-steps">
+            <div class="pos-offline-step pos-reveal pos-delay-1">
+              <div class="pos-step-num">1</div>
+              <div>
+                <div class="pos-step-title">Full Local Operation</div>
+                <div class="pos-step-desc">All product data, pricing, and customer records are cached locally. The POS runs at full speed &mdash; no latency, no cloud dependency.</div>
+              </div>
+            </div>
+            <div class="pos-offline-step pos-reveal pos-delay-2">
+              <div class="pos-step-num">2</div>
+              <div>
+                <div class="pos-step-title">Auto Conflict Resolution</div>
+                <div class="pos-step-desc">If multiple terminals billed the same item offline, our sync engine resolves stock conflicts intelligently. No double-deductions, no errors.</div>
+              </div>
+            </div>
+            <div class="pos-offline-step pos-reveal pos-delay-3">
+              <div class="pos-step-num">3</div>
+              <div>
+                <div class="pos-step-title">Background Sync on Reconnect</div>
+                <div class="pos-step-desc">The moment internet returns, all offline bills, stock changes, and payments sync silently in the background. Zero manual intervention required.</div>
+              </div>
+            </div>
+            <div class="pos-offline-step pos-reveal pos-delay-4">
+              <div class="pos-step-num">4</div>
+              <div>
+                <div class="pos-step-title">Payment Acceptance Offline</div>
+                <div class="pos-step-desc">Accept cash and record UPI/card transactions offline. Payment sync logs catch up automatically &mdash; no missed revenue, ever.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pos-img-panel pos-reveal-right">
+          <div class="pos-img-wrap">
+            <img
+              src="assets/pos_offline_counter.jpg"
+              alt="Cashier using Priyulabs touchscreen POS system operating in 100% offline mode"
+              loading="lazy"
+            />
+            <div class="pos-img-badge pos-img-badge-light" style="background: rgba(5,150,105,0.9); border-color: rgba(5,150,105,0.5);">
+              <span class="pos-badge-icon">&#9989;</span>
+              <div>
+                <div class="pos-badge-text-top" style="color: #fff;">Offline Active</div>
+                <div class="pos-badge-text-sub" style="color: rgba(255,255,255,0.75);">All data saved locally</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;">
+            <div class="pos-glass-card emerald-glow" style="padding: 20px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 900; color: #059669; font-family: var(--font-heading);">&#8734;</div>
+              <div style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">Hours offline</div>
+            </div>
+            <div class="pos-glass-card emerald-glow" style="padding: 20px; text-align: center;">
+              <div style="font-size: 28px; font-weight: 900; color: #059669; font-family: var(--font-heading);">0</div>
+              <div style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">Bills lost on outage</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SECTION 5: ZERO-FRAUD EDC & HARDWARE
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-section pos-section-alt" id="pos-hardware">
+    <div class="container">
+      <div class="pos-split reversed">
+
+        <div class="pos-img-panel pos-reveal-right">
+          <div class="pos-img-wrap">
+            <img
+              src="assets/pine_labs_real.jpg"
+              alt="Pine Labs EDC machine synced with Priyulabs POS for zero-fraud card payment processing"
+              loading="lazy"
+            />
+            <div class="pos-img-badge pos-img-badge-light">
+              <span class="pos-badge-icon">&#128737;&#65039;</span>
+              <div>
+                <div class="pos-badge-text-top dark-text">0% Fraud</div>
+                <div class="pos-badge-text-sub">EDC amount locked by POS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pos-reveal-left">
+          <span class="pos-eyebrow-chip pos-eyebrow-amber">&#128737;&#65039; Zero-Fraud EDC &amp; Hardware</span>
+          <h2 class="pos-section-title">Payment Amount<br>Sent Directly to EDC.<br>No Human Touch.</h2>
+          <p class="pos-section-desc">
+            Priyulabs POS pushes the exact bill amount to your EDC machine automatically &mdash; no staff keying in figures,
+            no shortchanging, no overcharge. Plus seamless integration with all popular hardware.
+          </p>
+
+          <div class="pos-feature-list">
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128274;</div>
+              <div>
+                <div class="pos-feature-text-title">Amount-Locked EDC Push</div>
+                <div class="pos-feature-text-desc">The POS sends the exact bill total directly to Pine Labs, Ingenico, or PAX EDC &mdash; staff cannot manually enter a different amount.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128242;</div>
+              <div>
+                <div class="pos-feature-text-title">UPI Auto-Verification</div>
+                <div class="pos-feature-text-desc">QR code amount is pre-filled by the POS. Payment confirmation is received and matched automatically &mdash; no manual checking needed.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128424;&#65039;</div>
+              <div>
+                <div class="pos-feature-text-title">Thermal Printer Integration</div>
+                <div class="pos-feature-text-desc">Auto-print on bill or on demand. Compatible with Epson TM, TVS RP, Xprinter, and any ESC/POS compliant thermal printer.</div>
+              </div>
+            </div>
+            <div class="pos-feature-item">
+              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128247;</div>
+              <div>
+                <div class="pos-feature-text-title">Barcode Scanner Plug-and-Play</div>
+                <div class="pos-feature-text-desc">USB HID or Bluetooth scanners recognized instantly. Honeywell, Zebra, Datalogic, Netum &mdash; all work out of the box.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pos-hardware-strip">
+            <div class="pos-hw-chip">&#128697; Pine Labs EDC</div>
+            <div class="pos-hw-chip">&#128179; Ingenico</div>
+            <div class="pos-hw-chip">&#128242; Razorpay POS</div>
+            <div class="pos-hw-chip">&#128424;&#65039; Epson Thermal</div>
+            <div class="pos-hw-chip">&#128269; Honeywell Scanner</div>
+            <div class="pos-hw-chip">&#128247; Zebra Scanner</div>
+            <div class="pos-hw-chip">&#128250; Customer Display</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       LEAD DETAILS SUBMISSION & DEMO BOOKING FORM
+  ══════════════════════════════════════════════════════════ -->
+  <section class="cta-section pos-section-alt" id="pos-lead-form" style="position: relative; overflow: hidden; padding: clamp(60px, 8vw, 100px) 0; border-top: 1px solid var(--border-color);">
+    <div class="cta-orb cta-orb1"></div>
+    <div class="cta-orb cta-orb2"></div>
+    <div class="container">
+      <div class="cta-inner" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 60px); align-items: center;">
+        <div class="cta-text pos-reveal-left">
+          <span class="pos-eyebrow-chip pos-eyebrow-indigo" style="margin-bottom: 18px;">
+            🚀 Fast Onboarding &amp; Custom Quote
+          </span>
+          <h2 style="color: var(--text-main); font-family: var(--font-heading); font-size: clamp(28px, 4.2vw, 44px); font-weight: 900; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 16px;">
+            Your Fastest Checkout Experience Starts with One Demo.
+          </h2>
+          <p style="color: var(--text-muted); font-size: clamp(14.5px, 2.5vw, 17px); line-height: 1.65; margin-bottom: 26px;">
+            Submit your store details below. Our POS specialists will give you a 10-minute live demonstration, customize your pricing package, and have your store billing in under 30 minutes.
+          </p>
+          <div class="cta-trust-row" style="display: flex; flex-wrap: wrap; gap: 14px; color: var(--text-body); font-weight: 700; font-size: 13.5px; margin-bottom: 28px;">
+            <span><span style="color:#059669;">✓</span> 14-Day Free Trial</span>
+            <span><span style="color:#059669;">✓</span> Zero Setup Fee</span>
+            <span><span style="color:#059669;">✓</span> 24/7 WhatsApp Support (<a href="tel:+917849074050" style="color: #4f46e5; font-weight: 800;">+91 78490 74050</a>)</span>
+          </div>
+
+          <div style="display: inline-flex; gap: 12px; align-items: center; padding: 14px 20px; background: var(--bg-surface); border-radius: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+            <span style="font-size: 24px;">💬</span>
+            <span style="font-size: 14px; color: var(--text-body); font-weight: 600;">Need immediate help? <a href="https://wa.me/917849074050?text=Hello!%20I%20want%20a%20POS%20demo%20and%20pricing%20quote%20for%20my%20store." target="_blank" style="color: #059669; font-weight: 800; text-decoration: underline;">Chat on WhatsApp →</a></span>
+          </div>
+        </div>
+
+        <div class="cta-form-wrap pos-reveal-right">
+          <form class="cta-form" id="leadForm" style="background: var(--bg-surface); border-radius: 20px; padding: clamp(24px, 4vw, 36px); box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08); border: 1px solid var(--border-color);">
+            <h3 style="font-family: var(--font-heading); font-size: clamp(20px, 3vw, 24px); font-weight: 800; color: var(--text-main); margin-bottom: 8px;">
+              Get POS Quote &amp; Free Trial
+            </h3>
+            <p class="cta-form-sub" style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+              Submit your store details to request an instant onboarding call:
+            </p>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="userName" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Your Name *</label>
+              <input type="text" id="userName" name="Name" placeholder="Enter your full name (e.g. Ramesh Kumar)" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff;" />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="shopName" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Shop / Business Name *</label>
+              <input type="text" id="shopName" name="StoreName" placeholder="Enter store name (e.g. Shree Ram Supermarket)" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff;" />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+              <label for="userPhone" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Phone / WhatsApp Number *</label>
+              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78490 74050)" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff;" />
+            </div>
+
+            <button type="submit" class="btn-primary full-width" id="submitLeadBtn" style="width: 100%; padding: 14px 20px; font-size: 15.5px; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);">
+              Submit &amp; Get Free POS Demo 🚀
+            </button>
+
+            <div id="formStatusMsg" class="form-status-msg" style="display: none; margin-top: 14px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;"></div>
+
+            <p class="form-privacy" style="font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center; line-height: 1.4;">
+              🔒 Your inquiry is securely received. Our team will contact you within 15 minutes.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+            <div class="logo-text-group">
+              <span class="logo-title">PRIYULABS</span>
+              <span class="logo-subtitle" style="color: #4f46e5;">POS SYSTEM</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Priyulabs POS &mdash; Lightning-fast touch billing, Vision AI stock prediction &amp; expiry shield, 100% offline mode, and zero-fraud EDC
+            payment sync for Indian retail.
+          </p>
+        </div>
+        <div class="footer-links-group">
+          <h4>POS Features</h4>
+          <ul>
+            <li><a href="#pos-billing">&#9889; Touch Billing</a></li>
+            <li><a href="#pos-stock-ai">📦 AI Stock Prediction</a></li>
+            <li><a href="#pos-offline">&#128244; Offline Mode</a></li>
+            <li><a href="#pos-hardware">&#128737;&#65039; EDC &amp; Hardware</a></li>
+            <li><a href="#pos-lead-form">&#128221; Get Quote &amp; Demo</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="index.html">&#127968; Home</a></li>
+            <li><a href="solutions.html">&#128197; All Solutions</a></li>
+            <li><a href="hospitality.html">&#9749; Hospitality Tech</a></li>
+            <li><a href="https://wa.me/917849074050" target="_blank">&#128172; WhatsApp Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Dedicated POS Billing Software for Indian Retail.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    /* ── SCROLL REVEAL OBSERVER ── */
+    (function () {
+      var revealEls = document.querySelectorAll(
+        '.pos-reveal, .pos-reveal-left, .pos-reveal-right'
+      );
+      var observer = new IntersectionObserver(
+        function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      revealEls.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>

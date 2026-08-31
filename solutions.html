@@ -413,7 +413,7 @@
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
-                <a href="index.html#attractions" class="square-sub-item">
+                <a href="solutions.html?sector=pos" class="square-sub-item">
                   <strong>🖥️ POS</strong>
                   <span>Fast billing, AI voice checkout &amp; offline mode</span>
                 </a>
@@ -545,6 +545,7 @@
       <!-- Horizontal Sector Selector Bar: Smooth Left/Right Swipeable -->
       <div class="sector-picker-bar-wrap" style="position: relative; max-width: 1000px; margin: 24px auto 0;">
         <div class="sector-picker-bar" id="sectorPickerBar">
+          <button type="button" class="sector-pick-btn" data-sector="pos">🖥️ Point of Sale (POS)</button>
           <button type="button" class="sector-pick-btn active" data-sector="supermarket">🛒 Kirana &amp;
             Supermarket</button>
           <button type="button" class="sector-pick-btn" data-sector="cafe">☕ Cafe &amp; Restaurant</button>
@@ -693,14 +694,14 @@
 
   <script src="script.js"></script>
   <script>
-    // Solutions Page Specific Script
+    // Solutions Page Dynamic Sector & POS Switcher Script
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const targetSector = urlParams.get('sector') || 'supermarket';
+      const targetSector = urlParams.get('sector') || 'pos';
 
       selectSectorView(targetSector);
 
-      // Add click listeners to all buttons
+      // Add click listeners to all sector picker buttons
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -710,11 +711,26 @@
           window.history.pushState({}, '', `solutions.html?sector=${key}`);
         });
       });
+
+      // Handle in-page dropdown links (e.g. Solutions -> POS)
+      document.querySelectorAll('a[href*="solutions.html?sector="]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          const sectorMatch = href.match(/sector=([a-z0-9_-]+)/i);
+          if (sectorMatch && sectorMatch[1]) {
+            e.preventDefault();
+            const key = sectorMatch[1];
+            selectSectorView(key);
+            window.history.pushState({}, '', `solutions.html?sector=${key}`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
     });
 
     function selectSectorView(key) {
       const dataStore = (typeof sectorDetailsData !== 'undefined' ? sectorDetailsData : window.sectorDetailsData) || {};
-      const data = dataStore[key] || dataStore.supermarket || {
+      const data = dataStore[key] || dataStore.pos || dataStore.supermarket || {
         title: key.charAt(0).toUpperCase() + key.slice(1),
         eyebrow: `PRIYULABS FOR ${key.toUpperCase()}`,
         headline: `A fast, reliable POS to ease your daily grind`,
@@ -724,6 +740,14 @@
         techUpgrades: ['🎙️ Multilingual Voice POS', '📷 Vision AI Invoice Scan', '⚖️ Weighing Scale Sync'],
         roi: '10x Faster Operations: Save 2+ hours daily on manual accounting.'
       };
+
+      // Add subtle smooth transition
+      const heroContainer = document.querySelector('.sq-sector-hero');
+      if (heroContainer) {
+        heroContainer.style.opacity = '0.7';
+        heroContainer.style.transition = 'opacity 0.25s ease';
+        setTimeout(() => { heroContainer.style.opacity = '1'; }, 50);
+      }
 
       // Highlight active button and smooth scroll tab into center
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
