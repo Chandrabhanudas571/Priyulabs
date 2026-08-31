@@ -1317,6 +1317,8 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: flex-start;
+  margin-top: 20px;
 }
 
 .hero-showcase-wrapper {
