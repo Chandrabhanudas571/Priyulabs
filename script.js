@@ -951,19 +951,19 @@ function closeSectorModal() {
 }
 
 // ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ────────
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_fACfLYt953q3I7Enn9i3k1YW6SSw4XCnkNw6M-bTB9sLlBk2sqvTHlx9USs-MB9K0g/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxj4k_MxGd213M2axuweB3YwzfHQ-QfQG6NjCtYgKSniUl4NEZKawAn1gdCbV6QU1zNig/exec";
 
 const leadForm = document.getElementById('leadForm');
 if (leadForm) {
-  leadForm.addEventListener('submit', async (e) => {
+  leadForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const btn = document.getElementById('submitLeadBtn');
+    const button = document.getElementById('submitLeadBtn');
     const statusMsg = document.getElementById('formStatusMsg');
 
-    if (btn) {
-      btn.textContent = 'Submitting...';
-      btn.disabled = true;
-      btn.style.opacity = '0.85';
+    if (button) {
+      button.textContent = "Submitting...";
+      button.disabled = true;
+      button.style.opacity = '0.85';
     }
 
     if (statusMsg) {
@@ -971,48 +971,49 @@ if (leadForm) {
       statusMsg.textContent = '';
     }
 
-    const formData = new FormData(leadForm);
-
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        body: formData
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      body: new FormData(leadForm),
+      mode: "no-cors"
+    })
+      .then(() => {
+        if (button) {
+          button.disabled = false;
+          button.innerHTML = "Submit & Get Early Access 🚀";
+          button.style.opacity = '1';
+        }
+        const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
+        if (statusMsg) {
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = '#d1fae5';
+          statusMsg.style.color = '#065f46';
+          statusMsg.style.border = '1px solid #10b981';
+          statusMsg.textContent = successText;
+        }
+        if (typeof showToast === 'function') {
+          showToast(successText);
+        }
+        leadForm.reset();
+      })
+      .catch(err => {
+        console.error('Google Sheet Submission Error:', err);
+        if (button) {
+          button.disabled = false;
+          button.innerHTML = "Submit & Get Early Access 🚀";
+          button.style.opacity = '1';
+        }
+        const errorText = "Something went wrong. Please try again.";
+        if (statusMsg) {
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = '#fee2e2';
+          statusMsg.style.color = '#991b1b';
+          statusMsg.style.border = '1px solid #ef4444';
+          statusMsg.textContent = errorText;
+        }
+        if (typeof showToast === 'function') {
+          showToast(errorText);
+        }
       });
-
-      // On success: Show success text, reset form, and re-enable button
-      if (statusMsg) {
-        statusMsg.style.display = 'block';
-        statusMsg.style.background = '#d1fae5';
-        statusMsg.style.color = '#065f46';
-        statusMsg.style.border = '1px solid #10b981';
-        statusMsg.textContent = 'Thank you! Your details have been submitted successfully.';
-      }
-      if (typeof showToast === 'function') {
-        showToast('Thank you! Your details have been submitted successfully.');
-      }
-      leadForm.reset();
-
-    } catch (err) {
-      console.error('Submission error:', err);
-      // On failure: Show error text and re-enable button
-      if (statusMsg) {
-        statusMsg.style.display = 'block';
-        statusMsg.style.background = '#fee2e2';
-        statusMsg.style.color = '#991b1b';
-        statusMsg.style.border = '1px solid #ef4444';
-        statusMsg.textContent = 'Something went wrong. Please try again.';
-      }
-      if (typeof showToast === 'function') {
-        showToast('Something went wrong. Please try again.');
-      }
-    } finally {
-      if (btn) {
-        btn.textContent = 'Submit & Get Early Access 🚀';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        btn.style.background = '';
-      }
-    }
   });
 }
 
