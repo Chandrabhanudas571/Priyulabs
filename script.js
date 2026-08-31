@@ -950,67 +950,68 @@ function closeSectorModal() {
   }
 }
 
-// ─── CTA LEAD FORM SUBMISSION (DIRECT TO priylabspos@gmail.com) ───
+// ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ────────
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_fACfLYt953q3I7Enn9i3k1YW6SSw4XCnkNw6M-bTB9sLlBk2sqvTHlx9USs-MB9K0g/exec";
+
 const leadForm = document.getElementById('leadForm');
 if (leadForm) {
   leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submitLeadBtn');
-    const name = document.getElementById('userName').value.trim();
-    const shop = document.getElementById('shopName').value.trim();
-    const phone = document.getElementById('userPhone').value.trim();
+    const statusMsg = document.getElementById('formStatusMsg');
 
     if (btn) {
-      btn.textContent = '⏳ Sending details to priylabspos@gmail.com...';
+      btn.textContent = 'Submitting...';
       btn.disabled = true;
       btn.style.opacity = '0.85';
     }
 
+    if (statusMsg) {
+      statusMsg.style.display = 'none';
+      statusMsg.textContent = '';
+    }
+
+    const formData = new FormData(leadForm);
+
     try {
-      // Direct AJAX POST to FormSubmit which emails priylabspos@gmail.com
-      const response = await fetch('https://formsubmit.co/ajax/priylabspos@gmail.com', {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          "Customer Name": name,
-          "Shop / Business Name": shop,
-          "WhatsApp Phone Number": phone,
-          "Submitted On": new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-          "_subject": `🚀 New Trial Request from ${shop} (${name})`,
-          "_template": "table"
-        })
+        body: formData
       });
 
-      const data = await response.json();
-
-      if (btn) {
-        btn.textContent = '✅ Sent! Request Received on priylabspos@gmail.com';
-        btn.style.background = 'linear-gradient(180deg, #10b981, #059669)';
+      // On success: Show success text, reset form, and re-enable button
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.style.background = '#d1fae5';
+        statusMsg.style.color = '#065f46';
+        statusMsg.style.border = '1px solid #10b981';
+        statusMsg.textContent = 'Thank you! Your details have been submitted successfully.';
       }
-      showToast(`🎉 Shukriya ${name}! Aapki enquiry priylabspos@gmail.com par bhej di gayi hai.`);
+      if (typeof showToast === 'function') {
+        showToast('Thank you! Your details have been submitted successfully.');
+      }
       leadForm.reset();
 
     } catch (err) {
-      console.warn('Direct fetch failed, falling back to standard submission:', err);
-      // Fallback submit
-      if (btn) {
-        btn.textContent = '✅ Free Trial Activated! We will call you soon.';
-        btn.style.background = 'linear-gradient(180deg, #10b981, #059669)';
+      console.error('Submission error:', err);
+      // On failure: Show error text and re-enable button
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.style.background = '#fee2e2';
+        statusMsg.style.color = '#991b1b';
+        statusMsg.style.border = '1px solid #ef4444';
+        statusMsg.textContent = 'Something went wrong. Please try again.';
       }
-      showToast(`🎉 Shukriya ${name}! Aapki request record ho gayi hai.`);
-      leadForm.reset();
+      if (typeof showToast === 'function') {
+        showToast('Something went wrong. Please try again.');
+      }
     } finally {
-      setTimeout(() => {
-        if (btn) {
-          btn.textContent = 'Submit & Get Early Access 🚀';
-          btn.style.background = '';
-          btn.disabled = false;
-          btn.style.opacity = '1';
-        }
-      }, 6000);
+      if (btn) {
+        btn.textContent = 'Submit & Get Early Access 🚀';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.background = '';
+      }
     }
   });
 }

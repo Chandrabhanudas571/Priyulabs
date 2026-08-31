@@ -1245,31 +1245,33 @@
         </div>
 
         <div class="cta-form-wrap" data-aos>
-          <form class="cta-form" id="leadForm" onsubmit="handleLeadSubmit(event)">
+          <form class="cta-form" id="leadForm">
             <h3>Start Your Free Trial</h3>
             <p class="cta-form-sub">Submit your details to request an instant onboarding call:</p>
 
             <div class="form-group">
               <label for="userName">Your Name *</label>
-              <input type="text" id="userName" name="name" placeholder="Enter your full name (e.g. Ramesh Kumar)"
+              <input type="text" id="userName" name="Name" placeholder="Enter your full name (e.g. Ramesh Kumar)"
                 required />
             </div>
 
             <div class="form-group">
               <label for="shopName">Shop Name *</label>
-              <input type="text" id="shopName" name="shop_name"
+              <input type="text" id="shopName" name="StoreName"
                 placeholder="Enter store name (e.g. Shree Ram Supermarket)" required />
             </div>
 
             <div class="form-group">
               <label for="userPhone">Phone / WhatsApp Number *</label>
-              <input type="tel" id="userPhone" name="phone_number" placeholder="WhatsApp Number (+91 78490 74050)"
+              <input type="tel" id="userPhone" name="Mobile number" placeholder="WhatsApp Number (+91 78490 74050)"
                 required />
             </div>
 
             <button type="submit" class="btn-primary full-width" id="submitLeadBtn">
               Submit &amp; Get Early Access 🚀
             </button>
+
+            <div id="formStatusMsg" class="form-status-msg" style="display: none; margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;"></div>
 
             <p class="form-privacy">🔒 Your inquiry is securely received. Our team will contact you within 15 minutes.
             </p>
