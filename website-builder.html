@@ -17,13 +17,60 @@
 
   <style>
     /* ══════════════════════════════════════════════════════════
-       WEBSITE BUILDER PAGE — SCOPED CUSTOM STYLES
-       All custom selectors are prefixed with .wb- to avoid conflicts
+       WEBSITE BUILDER PAGE — SCOPED RESPONSIVE DESIGN SYSTEM
+       All custom selectors are prefixed with .wb- to prevent conflicts
+       Optimized for: 320px, 375px, 390px, 430px, 768px, 1024px, 1366px, 1920px
     ══════════════════════════════════════════════════════════ */
+
+    /* Global Defensive Resets for Page Content */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      width: 100%;
+      scroll-behavior: smooth;
+    }
+
+    #what-we-build,
+    #leadForm,
+    .wb-section,
+    .cta-section {
+      scroll-margin-top: 90px;
+    }
+
+    /* Navbar Theme Toggle Button */
+    .theme-toggle-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 16px;
+      min-width: 42px;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--border-color);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO SECTION ── */
     .wb-hero {
       position: relative;
       overflow: hidden;
-      padding: clamp(100px, 14vh, 140px) 16px clamp(40px, 7vh, 80px);
+      width: 100%;
+      max-width: 100%;
+      padding: clamp(90px, 13vh, 140px) 16px clamp(40px, 7vh, 80px);
       background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 60%),
                   linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
     }
@@ -32,9 +79,10 @@
       max-width: 1240px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 48px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(24px, 4vw, 48px);
       align-items: center;
+      width: 100%;
     }
 
     .wb-eyebrow {
@@ -44,23 +92,28 @@
       background: var(--primary-bg);
       color: var(--primary);
       border: 1px solid var(--border-highlight);
-      font-size: clamp(11px, 2.2vw, 12px);
+      font-size: clamp(10.5px, 2vw, 12px);
       font-weight: 800;
       padding: 6px 14px;
       border-radius: 50px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      max-width: 100%;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.4;
     }
 
     .wb-hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(32px, 5.2vw, 56px);
+      font-size: clamp(28px, 5.2vw, 54px);
       font-weight: 900;
       color: var(--text-main);
       line-height: 1.12;
       letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      word-break: break-word;
     }
 
     .wb-hero-title span {
@@ -70,65 +123,87 @@
     }
 
     .wb-hero-sub {
-      font-size: clamp(15px, 2.4vw, 18px);
+      font-size: clamp(14.5px, 2.2vw, 17.5px);
       color: var(--text-body);
       line-height: 1.65;
       max-width: 600px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
+      word-break: break-word;
     }
 
     .wb-hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
+      width: 100%;
+    }
+
+    .wb-hero-actions a {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 26px;
+      font-size: 15.5px;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
     }
 
     .wb-trust-metrics {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
-      padding-top: 24px;
+      gap: 14px 20px;
+      padding-top: 22px;
       border-top: 1px solid var(--border-color);
       font-size: 13px;
       font-weight: 700;
       color: var(--text-muted);
+      width: 100%;
     }
 
     .wb-trust-metrics span {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     .wb-trust-metrics span.highlight {
       color: var(--emerald);
     }
 
-    /* Hero Preview Card */
+    /* ── HERO PREVIEW CARD ── */
     .wb-preview-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: 24px;
+      padding: clamp(16px, 3vw, 24px);
       box-shadow: var(--shadow-xl);
       position: relative;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-preview-topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 16px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--border-light);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      gap: 8px;
     }
 
     .wb-preview-dots {
       display: flex;
       gap: 6px;
       align-items: center;
+      flex-shrink: 0;
     }
 
     .wb-dot {
@@ -146,7 +221,10 @@
       font-size: 11px;
       font-weight: 700;
       color: var(--text-muted);
-      margin-left: 8px;
+      margin-left: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .wb-live-badge {
@@ -157,14 +235,18 @@
       padding: 3px 8px;
       border-radius: 4px;
       letter-spacing: 0.05em;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .wb-preview-feature-box {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 16px;
-      margin-bottom: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-preview-feature-header {
@@ -172,6 +254,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 6px;
+      gap: 8px;
     }
 
     .wb-preview-feature-title {
@@ -188,6 +271,8 @@
       font-weight: 800;
       padding: 2px 8px;
       border-radius: 50px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .wb-preview-feature-desc {
@@ -199,16 +284,19 @@
     .wb-stat-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 10px;
+      margin-bottom: 12px;
+      width: 100%;
     }
 
     .wb-stat-box {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 12px;
+      padding: 10px;
       text-align: center;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-stat-label {
@@ -219,112 +307,124 @@
 
     .wb-stat-val {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
       color: var(--primary);
       margin-top: 4px;
     }
 
-    /* Sections Common */
+    /* ── SECTIONS & TYPOGRAPHY ── */
     .wb-section {
-      padding: clamp(60px, 8vw, 90px) 16px;
+      padding: clamp(48px, 7vw, 84px) 16px;
       max-width: 1240px;
       margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-header-center {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto clamp(36px, 6vw, 56px);
+      margin: 0 auto clamp(28px, 5vw, 48px);
+      width: 100%;
     }
 
     .wb-section-title {
       font-family: var(--font-heading);
-      font-size: clamp(24px, 4.2vw, 38px);
+      font-size: clamp(23px, 4vw, 36px);
       font-weight: 900;
       color: var(--text-main);
       line-height: 1.2;
-      margin-top: 10px;
-      margin-bottom: 12px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      word-break: break-word;
     }
 
     .wb-section-sub {
-      font-size: clamp(14.5px, 2.2vw, 16.5px);
+      font-size: clamp(14px, 2vw, 16px);
       color: var(--text-body);
       line-height: 1.6;
+      word-break: break-word;
     }
 
-    /* Cards Grid */
+    /* ── GRIDS & CARD ARCHITECTURE ── */
     .wb-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      gap: clamp(16px, 2vw, 24px);
+      width: 100%;
     }
 
     .wb-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: clamp(16px, 2vw, 24px);
+      width: 100%;
     }
 
     .wb-grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: clamp(16px, 2vw, 24px);
+      width: 100%;
     }
 
     .wb-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: 30px 24px;
+      padding: clamp(20px, 3vw, 30px) clamp(16px, 2.5vw, 24px);
       box-shadow: var(--shadow-sm);
       display: flex;
-      flex-col;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .wb-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-highlight);
+    @media (hover: hover) {
+      .wb-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--border-highlight);
+      }
     }
 
     .wb-card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-lg);
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
       background: var(--primary-bg);
       color: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
-      margin-bottom: 20px;
+      font-size: 24px;
+      margin-bottom: 16px;
+      flex-shrink: 0;
     }
 
     .wb-card-title {
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: clamp(18px, 2.5vw, 20px);
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .wb-card-desc {
       font-size: 14px;
       color: var(--text-body);
       line-height: 1.6;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .wb-pill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      padding-top: 16px;
+      padding-top: 14px;
       border-top: 1px solid var(--border-light);
     }
 
@@ -335,40 +435,45 @@
       color: var(--text-muted);
       padding: 4px 10px;
       border-radius: 50px;
+      white-space: nowrap;
     }
 
-    /* Process Steps */
+    /* ── PROCESS STEPS ── */
     .wb-process-wrapper {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: clamp(36px, 6vw, 60px) clamp(20px, 4vw, 48px);
+      padding: clamp(28px, 5vw, 56px) clamp(16px, 3.5vw, 44px);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-step-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: clamp(18px, 2.5vw, 24px);
       box-shadow: var(--shadow-xs);
       position: relative;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-step-num {
       font-family: var(--font-heading);
       font-size: 28px;
       font-weight: 900;
-      color: rgba(99, 102, 241, 0.35);
-      margin-bottom: 12px;
+      color: rgba(99, 102, 241, 0.4);
+      margin-bottom: 10px;
       line-height: 1;
     }
 
     .wb-step-title {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .wb-step-desc {
@@ -377,23 +482,27 @@
       line-height: 1.55;
     }
 
-    /* Blueprint Section */
+    /* ── BLUEPRINT SECTION ── */
     .wb-blueprint-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: 30px 24px;
+      padding: clamp(22px, 3vw, 30px) clamp(16px, 2.5vw, 24px);
       box-shadow: var(--shadow-sm);
-      transition: all 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .wb-blueprint-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+    @media (hover: hover) {
+      .wb-blueprint-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
     }
 
     .wb-blueprint-cat {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -406,14 +515,14 @@
       font-size: 18px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .wb-blueprint-desc {
       font-size: 14px;
       color: var(--text-body);
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .wb-checklist {
@@ -430,25 +539,29 @@
       font-weight: 600;
       color: var(--text-muted);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
+      line-height: 1.45;
     }
 
     .wb-checklist li span.icon {
       color: var(--emerald);
       font-weight: 800;
+      flex-shrink: 0;
     }
 
-    /* AI Section */
+    /* ── AI SECTION ── */
     .wb-ai-section {
       background: linear-gradient(145deg, #090d16 0%, #151638 50%, #090d16 100%);
       border: 1px solid rgba(99, 102, 241, 0.35);
       border-radius: var(--radius-xl);
-      padding: clamp(40px, 7vw, 70px) clamp(20px, 4vw, 56px);
+      padding: clamp(32px, 6vw, 64px) clamp(16px, 3.5vw, 52px);
       color: #ffffff;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-xl);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .wb-ai-section::before {
@@ -456,8 +569,8 @@
       position: absolute;
       top: -30%;
       right: -10%;
-      width: 500px;
-      height: 500px;
+      width: 450px;
+      height: 450px;
       background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
@@ -470,107 +583,211 @@
       background: rgba(99, 102, 241, 0.25);
       border: 1px solid rgba(165, 180, 252, 0.3);
       color: #a5b4fc;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 5px 14px;
+      padding: 5px 12px;
       border-radius: 50px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .wb-ai-title {
       font-family: var(--font-heading);
-      font-size: clamp(26px, 4.5vw, 44px);
+      font-size: clamp(24px, 4.5vw, 42px);
       font-weight: 900;
       color: #ffffff;
       line-height: 1.15;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      word-break: break-word;
     }
 
     .wb-ai-sub {
-      font-size: clamp(14.5px, 2.2vw, 17px);
+      font-size: clamp(14px, 2vw, 16.5px);
       color: #cbd5e1;
       line-height: 1.65;
       max-width: 740px;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
+      word-break: break-word;
     }
 
     .wb-ai-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 28px;
+      gap: 14px;
+      margin-bottom: 24px;
+      width: 100%;
     }
 
     .wb-ai-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-lg);
-      padding: 20px;
+      padding: clamp(14px, 2vw, 18px);
       backdrop-filter: blur(10px);
       transition: all 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .wb-ai-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(99, 102, 241, 0.4);
+    @media (hover: hover) {
+      .wb-ai-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(99, 102, 241, 0.4);
+      }
     }
 
     .wb-ai-card-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .wb-ai-card-desc {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #94a3b8;
       line-height: 1.5;
     }
 
     .wb-ai-note {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #64748b;
       line-height: 1.5;
     }
 
-    /* Responsive Queries */
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+       Structured specifically for: 1024px, 768px, 480px, 360px
+    ══════════════════════════════════════════════════════════ */
+
+    /* Tablet Landscape (<= 1024px) */
     @media (max-width: 1024px) {
       .wb-hero-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 36px;
       }
       .wb-grid-4 {
         grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
       }
       .wb-grid-3 {
         grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
       }
       .wb-ai-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
       }
     }
 
-    @media (max-width: 640px) {
-      .wb-grid-4,
-      .wb-grid-3,
-      .wb-grid-2,
+    /* Tablet Portrait (<= 768px) */
+    @media (max-width: 768px) {
+      .wb-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .wb-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .wb-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
       .wb-ai-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    /* Mobile Screens (<= 480px - covers 430px, 390px, 375px) */
+    @media (max-width: 480px) {
+      .wb-hero {
+        padding-top: 84px;
+        padding-bottom: 36px;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      .wb-section {
+        padding: 40px 12px;
       }
       .wb-hero-actions {
         flex-direction: column;
-        align-items: stretch;
+        width: 100%;
+        gap: 10px;
       }
       .wb-hero-actions a {
         width: 100%;
+        min-height: 48px;
         text-align: center;
         justify-content: center;
+      }
+      .wb-trust-metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 10px;
+        font-size: 11.5px;
+      }
+      .wb-trust-metrics span {
+        white-space: normal;
+        line-height: 1.3;
+      }
+      .wb-preview-card {
+        padding: 14px;
+        border-radius: 16px;
+      }
+      .wb-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+      .wb-blueprint-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+      .wb-process-wrapper {
+        padding: 22px 12px;
+        border-radius: 16px;
+      }
+      .wb-ai-section {
+        padding: 24px 14px;
+        border-radius: 18px;
+      }
+      .cta-form {
+        padding: 20px 14px;
+      }
+      .whatsapp-float {
+        bottom: 16px;
+        right: 12px;
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+    }
+
+    /* Small Mobile (<= 360px - covers 320px) */
+    @media (max-width: 360px) {
+      .wb-hero-title {
+        font-size: 24px;
+      }
+      .wb-trust-metrics {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .wb-stat-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .wb-eyebrow {
+        font-size: 9.5px;
+        padding: 4px 10px;
+      }
+      .wb-preview-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
       }
     }
   </style>
@@ -744,9 +961,9 @@
         <li><a href="index.html#trust">What's new</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode" style="background: var(--bg-subtle); border: 1px solid var(--border-color); color: var(--text-main); border-radius: var(--radius-md); padding: 8px 12px; cursor: pointer; font-size: 15px;">🌙</button>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">🌙</button>
         <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">✨ Interactive Demo</button>
-        <a href="#cta" class="btn-nav">Start Free Trial</a>
+        <a href="#leadForm" class="btn-nav">Start Your Project</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -811,7 +1028,7 @@
           </div>
 
           <div class="drawer-bottom-cta">
-            <a href="#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
+            <a href="#leadForm" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Your Project →</a>
           </div>
         </div>
       </div>
@@ -925,10 +1142,10 @@
           We design and build fast, modern, conversion-focused websites that help businesses attract customers, manage operations, and grow online.
         </p>
         <div class="wb-hero-actions">
-          <a href="#cta" class="btn-primary" style="padding: 14px 28px; font-size: 16px; border-radius: 12px;">
+          <a href="#leadForm" class="btn-primary">
             Start Your Project →
           </a>
-          <a href="#services" class="btn-outline" style="padding: 14px 24px; font-size: 16px; border-radius: 12px;">
+          <a href="#what-we-build" class="btn-outline">
             View Our Services
           </a>
         </div>
@@ -989,7 +1206,7 @@
   <!-- ══════════════════════════════════════════════════════════
        2. WHAT WE BUILD SECTION
   ══════════════════════════════════════════════════════════ -->
-  <section class="wb-section" id="services">
+  <section class="wb-section" id="what-we-build">
     <div class="wb-header-center">
       <div class="section-badge">Tailored Web Solutions</div>
       <h2 class="wb-section-title">What We Build</h2>
@@ -1448,7 +1665,7 @@
             <li><a href="#" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a></li>
             <li><a href="#" onclick="openPolicyModal('terms'); return false;">Terms &amp; Conditions</a></li>
             <li><a href="#" onclick="openPolicyModal('refund'); return false;">Refund &amp; Cancellation</a></li>
-            <li><a href="#cta">Start Free Trial</a></li>
+            <li><a href="#leadForm">Start Your Project</a></li>
           </ul>
         </div>
 
@@ -1644,7 +1861,7 @@
         </div>
         <div class="mf-right">
           <button class="btn-ghost-sm" onclick="closeDemoModal()">Close</button>
-          <a href="#cta" class="btn-primary-sm" onclick="closeDemoModal()">Start 14-Day Free Trial →</a>
+          <a href="#leadForm" class="btn-primary-sm" onclick="closeDemoModal()">Start Your Project →</a>
         </div>
       </div>
     </div>
