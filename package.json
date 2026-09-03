@@ -1,0 +1,12 @@
+{
+  "name": "priyulabs",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,green \"npm run dev --workspace @priyulabs/web\" \"npm run dev --workspace @priyulabs/api\"",
+    "build": "npm run build --workspace @priyulabs/contracts && npm run build --workspace @priyulabs/web && npm run build --workspace @priyulabs/api",
+    "check": "npm run build --workspace @priyulabs/contracts && npm run check --workspace @priyulabs/web && npm run check --workspace @priyulabs/api"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}

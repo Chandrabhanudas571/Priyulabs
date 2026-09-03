@@ -1,0 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+const schema = z.object({ name: z.string().min(2, 'Enter your name'), storeName: z.string().min(2, 'Enter your business name'), mobile: z.string().regex(/^[0-9+\- ()]{7,20}$/, 'Enter a valid mobile number') });
+type Values = z.infer<typeof schema>;
+export function LeadForm() { const [sent, setSent] = useState(false); const {register,handleSubmit,formState:{errors,isSubmitting}}=useForm<Values>({resolver:zodResolver(schema)}); const submit=async(values:Values)=>{ await fetch(`${import.meta.env.VITE_API_URL ?? 'http://localhost:4000'}/api/leads`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(values)}).catch(()=>undefined); setSent(true);}; if(sent)return <div className="rounded-2xl bg-white p-7 font-bold text-slate-900">Thanks—we’ll be in touch shortly.</div>; return <form className="grid gap-3 rounded-2xl bg-white p-6 text-slate-900 shadow-xl" onSubmit={handleSubmit(submit)} noValidate>{[['name','Your name'],['storeName','Business name'],['mobile','Mobile number']].map(([name,label])=><label className="grid gap-1 text-sm font-semibold" key={name}>{label}<input className="rounded-lg border border-slate-300 px-3 py-2.5 outline-indigo-600" {...register(name as keyof Values)} />{errors[name as keyof Values]&&<small className="text-rose-600">{errors[name as keyof Values]?.message}</small>}</label>)}<button disabled={isSubmitting} className="mt-2 rounded-lg bg-indigo-600 px-4 py-3 font-bold text-white disabled:opacity-50">{isSubmitting?'Sending…':'Request a callback'}</button></form>; }
