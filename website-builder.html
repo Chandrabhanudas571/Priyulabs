@@ -1,3 +1,6 @@
+---
+permalink: /website-builder
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +27,7 @@
         } else {
           document.documentElement.removeAttribute('data-theme');
         }
-      } catch (e) {}
+      } catch (e) { }
     })();
   </script>
 
@@ -36,7 +39,9 @@
     ══════════════════════════════════════════════════════════ */
 
     /* Global Defensive Resets */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -145,20 +150,16 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(
-          90deg,
+        linear-gradient(90deg,
           rgba(4, 8, 24, 0.58) 0%,
           rgba(6, 11, 30, 0.35) 45%,
           rgba(4, 8, 24, 0.10) 75%,
-          rgba(4, 8, 24, 0.15) 100%
-        ),
-        linear-gradient(
-          180deg,
+          rgba(4, 8, 24, 0.15) 100%),
+        linear-gradient(180deg,
           rgba(4, 8, 24, 0.20) 0%,
           transparent 35%,
           rgba(4, 8, 24, 0.45) 80%,
-          #0b0f19 100%
-        );
+          #0b0f19 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -166,13 +167,11 @@
     @media (max-width: 768px) {
       .wb-hero-video-overlay {
         background:
-          linear-gradient(
-            180deg,
+          linear-gradient(180deg,
             rgba(4, 8, 24, 0.68) 0%,
             rgba(4, 8, 24, 0.38) 40%,
             rgba(4, 8, 24, 0.20) 70%,
-            #0b0f19 100%
-          );
+            #0b0f19 100%);
       }
     }
 
@@ -180,6 +179,7 @@
       .wb-hero-video {
         display: none;
       }
+
       .wb-hero-video-wrap {
         background-image: url('assets/website-builder-bg-poster.jpg');
         background-size: cover;
@@ -336,6 +336,7 @@
       0% {
         transform: translateY(0px);
       }
+
       100% {
         transform: translateY(-8px);
       }
@@ -368,9 +369,17 @@
       border-radius: 50%;
     }
 
-    .wb-dot.red { background: #ef4444; }
-    .wb-dot.yellow { background: #f59e0b; }
-    .wb-dot.green { background: #10b981; }
+    .wb-dot.red {
+      background: #ef4444;
+    }
+
+    .wb-dot.yellow {
+      background: #f59e0b;
+    }
+
+    .wb-dot.green {
+      background: #10b981;
+    }
 
     .wb-preview-url {
       font-family: monospace;
@@ -413,9 +422,11 @@
       0% {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
       }
+
       70% {
         box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
       }
+
       100% {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
       }
@@ -560,9 +571,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.45s ease;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.45s ease;
       width: 100%;
       box-sizing: border-box;
       position: relative;
@@ -748,6 +759,7 @@
         box-shadow: var(--shadow-md);
         border-color: var(--border-highlight);
       }
+
       .wb-step-card:hover::before {
         opacity: 1;
       }
@@ -1063,7 +1075,7 @@
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
@@ -1072,12 +1084,29 @@
       transform: translateY(0);
     }
 
-    .wb-stagger-1 { transition-delay: 0.08s; }
-    .wb-stagger-2 { transition-delay: 0.16s; }
-    .wb-stagger-3 { transition-delay: 0.24s; }
-    .wb-stagger-4 { transition-delay: 0.32s; }
-    .wb-stagger-5 { transition-delay: 0.40s; }
-    .wb-stagger-6 { transition-delay: 0.48s; }
+    .wb-stagger-1 {
+      transition-delay: 0.08s;
+    }
+
+    .wb-stagger-2 {
+      transition-delay: 0.16s;
+    }
+
+    .wb-stagger-3 {
+      transition-delay: 0.24s;
+    }
+
+    .wb-stagger-4 {
+      transition-delay: 0.32s;
+    }
+
+    .wb-stagger-5 {
+      transition-delay: 0.40s;
+    }
+
+    .wb-stagger-6 {
+      transition-delay: 0.48s;
+    }
 
     /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
@@ -1085,10 +1114,12 @@
         animation: none !important;
         transform: none !important;
       }
+
       .wb-live-pulse-dot,
       .wb-ai-visual-status span.dot {
         animation: none !important;
       }
+
       .wb-card,
       .wb-step-card,
       .wb-blueprint-card,
@@ -1096,16 +1127,19 @@
         transition: none !important;
         transform: none !important;
       }
+
       .wb-card:hover,
       .wb-step-card:hover,
       .wb-blueprint-card:hover,
       .wb-ai-card:hover {
         transform: none !important;
       }
+
       .wb-card:hover .wb-card-img,
       .wb-ai-visual-card:hover .wb-ai-visual-img {
         transform: none !important;
       }
+
       .wb-reveal {
         opacity: 1 !important;
         transform: none !important;
@@ -1124,14 +1158,17 @@
         grid-template-columns: 1fr;
         gap: 36px;
       }
+
       .wb-grid-4 {
         grid-template-columns: repeat(2, 1fr);
         gap: 18px;
       }
+
       .wb-grid-3 {
         grid-template-columns: repeat(2, 1fr);
         gap: 18px;
       }
+
       .wb-ai-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
@@ -1229,14 +1266,17 @@
         grid-template-columns: 1fr;
         gap: 16px;
       }
+
       .wb-grid-3 {
         grid-template-columns: 1fr;
         gap: 16px;
       }
+
       .wb-grid-4 {
         grid-template-columns: 1fr;
         gap: 14px;
       }
+
       .wb-ai-grid {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -1291,33 +1331,41 @@
         font-size: 11.5px;
         text-align: left;
       }
+
       .wb-trust-metrics span {
         white-space: normal;
         line-height: 1.3;
       }
+
       .wb-preview-card {
         padding: 14px;
         border-radius: 16px;
       }
+
       .wb-card {
         padding: 18px 14px;
         border-radius: 16px;
       }
+
       .wb-blueprint-card {
         padding: 18px 14px;
         border-radius: 16px;
       }
+
       .wb-process-wrapper {
         padding: 22px 12px;
         border-radius: 16px;
       }
+
       .wb-ai-section {
         padding: 24px 14px;
         border-radius: 18px;
       }
+
       .cta-form {
         padding: 20px 14px;
       }
+
       .whatsapp-float {
         bottom: 16px;
         right: 12px;
@@ -1349,15 +1397,18 @@
         grid-template-columns: 1fr;
         gap: 6px;
       }
+
       .wb-stat-grid {
         grid-template-columns: 1fr;
         gap: 8px;
       }
+
       .wb-eyebrow {
         font-size: 9px;
         padding: 4px 8px;
         letter-spacing: 0.04em;
       }
+
       .wb-preview-topbar {
         flex-direction: column;
         align-items: flex-start;
@@ -1467,7 +1518,8 @@
                 <a href="solutions.html" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
                 <a href="index.html#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
                 <a href="index.html#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="index.html#attractions" class="sq-cap-item">📦 Vision AI Stock Detection &amp; Expiry Shield</a>
+                <a href="index.html#attractions" class="sq-cap-item">📦 Vision AI Stock Detection &amp; Expiry
+                  Shield</a>
               </div>
 
             </div>
@@ -1597,12 +1649,14 @@
 
           <div class="drawer-utility-links">
             <a href="solutions.html" class="drawer-sublink">All Business Types Directory</a>
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">✨ Interactive Demo &amp; Portfolio</button>
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">✨ Interactive
+              Demo &amp; Portfolio</button>
             <a href="index.html#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
           </div>
 
           <div class="drawer-bottom-cta">
-            <a href="#leadForm" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Your Project →</a>
+            <a href="#leadForm" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Your Project
+              →</a>
           </div>
         </div>
       </div>
@@ -1706,15 +1760,8 @@
   <header class="wb-hero">
     <!-- Cinematic Hero Video Background -->
     <div class="wb-hero-video-wrap" aria-hidden="true">
-      <video
-        class="wb-hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="assets/website-builder-bg-poster.jpg"
-      >
+      <video class="wb-hero-video" autoplay muted loop playsinline preload="metadata"
+        poster="assets/website-builder-bg-poster.jpg">
         <source src="assets/website-builder-bg.mp4" type="video/mp4">
       </video>
       <div class="wb-hero-video-overlay"></div>
@@ -1729,7 +1776,8 @@
           Websites Built for <span>Your Business.</span>
         </h1>
         <p class="wb-hero-sub">
-          We design and build fast, modern, conversion-focused websites that help businesses attract customers, manage operations, and grow online.
+          We design and build fast, modern, conversion-focused websites that help businesses attract customers, manage
+          operations, and grow online.
         </p>
         <div class="wb-hero-actions">
           <a href="#leadForm" class="btn-primary">
@@ -1811,11 +1859,8 @@
         <div>
           <div class="wb-card-image-wrap">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
-                 alt="Modern local business storefront and corporate website design"
-                 class="wb-card-img"
-                 loading="lazy"
-                 width="600"
-                 height="338" />
+              alt="Modern local business storefront and corporate website design" class="wb-card-img" loading="lazy"
+              width="600" height="338" />
             <div class="wb-card-image-badge">🏢 Business &amp; Enterprise</div>
           </div>
           <div class="wb-card-header-row">
@@ -1823,7 +1868,8 @@
             <h3 class="wb-card-title" style="margin-bottom: 0;">Business Websites</h3>
           </div>
           <p class="wb-card-desc">
-            Professional websites for companies, brands and local businesses. Focus on credibility, performance and lead generation.
+            Professional websites for companies, brands and local businesses. Focus on credibility, performance and lead
+            generation.
           </p>
         </div>
         <div class="wb-pill-list">
@@ -1838,11 +1884,8 @@
         <div>
           <div class="wb-card-image-wrap">
             <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
-                 alt="Customer booking and professional appointment scheduling interface"
-                 class="wb-card-img"
-                 loading="lazy"
-                 width="600"
-                 height="338" />
+              alt="Customer booking and professional appointment scheduling interface" class="wb-card-img"
+              loading="lazy" width="600" height="338" />
             <div class="wb-card-image-badge">📅 Online Scheduling</div>
           </div>
           <div class="wb-card-header-row">
@@ -1850,7 +1893,8 @@
             <h3 class="wb-card-title" style="margin-bottom: 0;">Appointment &amp; Booking Websites</h3>
           </div>
           <p class="wb-card-desc">
-            Online booking systems for businesses that work with appointments. Include availability, booking flow and customer information.
+            Online booking systems for businesses that work with appointments. Include availability, booking flow and
+            customer information.
           </p>
         </div>
         <div class="wb-pill-list">
@@ -1865,11 +1909,8 @@
         <div>
           <div class="wb-card-image-wrap">
             <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                 alt="Modern fine dining restaurant interior and digital menu reservation experience"
-                 class="wb-card-img"
-                 loading="lazy"
-                 width="600"
-                 height="338" />
+              alt="Modern fine dining restaurant interior and digital menu reservation experience" class="wb-card-img"
+              loading="lazy" width="600" height="338" />
             <div class="wb-card-image-badge">🍽️ Restaurant &amp; Dining</div>
           </div>
           <div class="wb-card-header-row">
@@ -1877,7 +1918,8 @@
             <h3 class="wb-card-title" style="margin-bottom: 0;">Restaurant Websites</h3>
           </div>
           <p class="wb-card-desc">
-            Digital presence for restaurants, cafes and food businesses. Include menus, reservations, location and contact/ordering integrations where appropriate.
+            Digital presence for restaurants, cafes and food businesses. Include menus, reservations, location and
+            contact/ordering integrations where appropriate.
           </p>
         </div>
         <div class="wb-pill-list">
@@ -1892,11 +1934,8 @@
         <div>
           <div class="wb-card-image-wrap">
             <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
-                 alt="Premium modern salon studio interior and beauty stylist appointment website"
-                 class="wb-card-img"
-                 loading="lazy"
-                 width="600"
-                 height="338" />
+              alt="Premium modern salon studio interior and beauty stylist appointment website" class="wb-card-img"
+              loading="lazy" width="600" height="338" />
             <div class="wb-card-image-badge">💇 Salon &amp; Wellness</div>
           </div>
           <div class="wb-card-header-row">
@@ -1904,7 +1943,8 @@
             <h3 class="wb-card-title" style="margin-bottom: 0;">Salon Websites</h3>
           </div>
           <p class="wb-card-desc">
-            Modern websites for salons and beauty businesses. Include services, pricing, staff/booking flows, offers and customer contact.
+            Modern websites for salons and beauty businesses. Include services, pricing, staff/booking flows, offers and
+            customer contact.
           </p>
         </div>
         <div class="wb-pill-list">
@@ -1924,7 +1964,8 @@
       <div class="section-badge">End-to-End Technology Stack</div>
       <h2 class="wb-section-title">More Than Just a Website</h2>
       <p class="wb-section-sub">
-        Priyulabs engineers the complete technology ecosystem around your web presence—from custom management panels to payment gateways and automation.
+        Priyulabs engineers the complete technology ecosystem around your web presence—from custom management panels to
+        payment gateways and automation.
       </p>
     </div>
 
@@ -1946,7 +1987,8 @@
           <div class="wb-card-icon">💬</div>
           <h3 class="wb-card-title">WhatsApp Integration</h3>
           <p class="wb-card-desc">
-            Connect your website with WhatsApp for customer communication, notifications, enquiries and business workflows.
+            Connect your website with WhatsApp for customer communication, notifications, enquiries and business
+            workflows.
           </p>
         </div>
       </div>
@@ -1990,7 +2032,8 @@
           <div class="wb-card-icon">🤖</div>
           <h3 class="wb-card-title">AI-Powered Features</h3>
           <p class="wb-card-desc">
-            Add AI capabilities such as intelligent chat, recommendations, automation, customer assistance and business workflows.
+            Add AI capabilities such as intelligent chat, recommendations, automation, customer assistance and business
+            workflows.
           </p>
         </div>
       </div>
@@ -2070,7 +2113,8 @@
       <div class="section-badge">Industry-Specific Blueprints</div>
       <h2 class="wb-section-title">Built for Your Business</h2>
       <p class="wb-section-sub">
-        Different businesses need different website systems. We craft specialized digital experiences engineered specifically for your operating model.
+        Different businesses need different website systems. We craft specialized digital experiences engineered
+        specifically for your operating model.
       </p>
     </div>
 
@@ -2143,16 +2187,14 @@
           <div class="wb-ai-badge">✨ Next-Gen Intelligence</div>
           <h2 class="wb-ai-title">Make Your Website Smarter.</h2>
           <p class="wb-ai-sub" style="margin-bottom: 0;">
-            Your website doesn't have to be static. Add AI-powered experiences that help customers, automate repetitive tasks and connect your website to your business operations.
+            Your website doesn't have to be static. Add AI-powered experiences that help customers, automate repetitive
+            tasks and connect your website to your business operations.
           </p>
         </div>
         <div class="wb-ai-visual-card">
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
-               alt="Modern business workspace and digital technology visualization"
-               class="wb-ai-visual-img"
-               loading="lazy"
-               width="500"
-               height="312" />
+            alt="Modern business workspace and digital technology visualization" class="wb-ai-visual-img" loading="lazy"
+            width="500" height="312" />
           <div class="wb-ai-visual-overlay">
             <div class="wb-ai-visual-status">
               <span class="dot"></span>
@@ -2207,7 +2249,8 @@
       </div>
 
       <p class="wb-ai-note">
-        * AI capabilities are optional, customized engineering additions tailored specifically to your business workflows and goals.
+        * AI capabilities are optional, customized engineering additions tailored specifically to your business
+        workflows and goals.
       </p>
     </div>
   </section>
@@ -2229,7 +2272,8 @@
           <div class="cta-trust-row">
             <span>✅ Custom Design &amp; Development</span>
             <span>✅ Dedicated Support</span>
-            <span>✅ Direct WhatsApp Contact (<a href="tel:+917849074050" style="color:#a5b4fc;font-weight:700;">+91 78490 74050</a>)</span>
+            <span>✅ Direct WhatsApp Contact (<a href="tel:+917849074050" style="color:#a5b4fc;font-weight:700;">+91
+                78490 74050</a>)</span>
           </div>
         </div>
 
@@ -2240,12 +2284,14 @@
 
             <div class="form-group">
               <label for="userName">Your Name *</label>
-              <input type="text" id="userName" name="Name" placeholder="Enter your full name (e.g. Ramesh Kumar)" required />
+              <input type="text" id="userName" name="Name" placeholder="Enter your full name (e.g. Ramesh Kumar)"
+                required />
             </div>
 
             <div class="form-group">
               <label for="shopName">Business / Brand Name *</label>
-              <input type="text" id="shopName" name="StoreName" placeholder="Enter business name (e.g. Royal Salon)" required />
+              <input type="text" id="shopName" name="StoreName" placeholder="Enter business name (e.g. Royal Salon)"
+                required />
             </div>
 
             <div class="form-group">
@@ -2261,7 +2307,8 @@
               style="display: none; margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;">
             </div>
 
-            <p class="form-privacy">🔒 Your inquiry is securely received. Our engineering team will contact you within 15 minutes.</p>
+            <p class="form-privacy">🔒 Your inquiry is securely received. Our engineering team will contact you within
+              15 minutes.</p>
           </form>
         </div>
       </div>
@@ -2282,7 +2329,8 @@
               <span class="logo-subtitle">DIGITAL</span>
             </div>
           </a>
-          <p>Priyulabs Digital — India’s Smartest AI Retail OS &amp; Web Engineering Partner. Built for Bharat. Manage POS Billing, ERP Inventory, Web Systems &amp; Payments on Autopilot.</p>
+          <p>Priyulabs Digital — India’s Smartest AI Retail OS &amp; Web Engineering Partner. Built for Bharat. Manage
+            POS Billing, ERP Inventory, Web Systems &amp; Payments on Autopilot.</p>
           <div class="footer-badges">
             <span class="f-badge">🇮🇳 Startup India / DPIIT</span>
             <span class="f-badge">🔒 100% Offline &amp; Encrypted</span>
@@ -2420,7 +2468,8 @@
               <p>Amount pushes automatically to Pine Labs / Paytm POS terminals and displays dynamic UPI QR:</p>
               <div class="payment-modes">
                 <button class="pay-btn" onclick="simulatePayment('UPI Dynamic QR')">📱 Push to UPI QR</button>
-                <button class="pay-btn" onclick="simulatePayment('Pine Labs Card EDC')">💳 Push to Pine Labs EDC</button>
+                <button class="pay-btn" onclick="simulatePayment('Pine Labs Card EDC')">💳 Push to Pine Labs
+                  EDC</button>
                 <button class="pay-btn" onclick="simulatePayment('Paytm Soundbox')">🔊 Announce on Soundbox</button>
               </div>
               <div class="pay-result" id="payResult">Click a payment mode to test bi-directional terminal push...</div>
