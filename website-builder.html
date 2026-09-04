@@ -15,23 +15,42 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('priyulabs_theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <style>
     /* ══════════════════════════════════════════════════════════
-       WEBSITE BUILDER PAGE — SCOPED RESPONSIVE DESIGN SYSTEM
+       WEBSITE BUILDER PAGE — SCOPED DARK VIDEO HERO & FULL GLOBAL THEME SUPPORT
        All custom selectors are prefixed with .wb- to prevent conflicts
        Optimized for: 320px, 375px, 390px, 430px, 768px, 1024px, 1366px, 1920px
     ══════════════════════════════════════════════════════════ */
 
-    /* Global Defensive Resets for Page Content */
+    /* Global Defensive Resets */
     *, *::before, *::after {
       box-sizing: border-box;
     }
 
-    html, body {
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
       max-width: 100%;
       overflow-x: hidden;
+    }
+
+    body {
       width: 100%;
-      scroll-behavior: smooth;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     #what-we-build,
@@ -64,18 +83,112 @@
       transform: translateY(-1px);
     }
 
-    /* ── HERO SECTION ── */
+    /* ── HERO SECTION & CINEMATIC VIDEO BACKGROUND (PERMANENT DARK TREATMENT) ── */
     .wb-hero {
       position: relative;
       overflow: hidden;
       width: 100%;
       max-width: 100%;
       padding: clamp(90px, 13vh, 140px) 16px clamp(40px, 7vh, 80px);
-      background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 60%),
-                  linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
+      background: #0b0f19;
+      color: #cbd5e1;
+      /* Scoped Dark Tokens for Hero */
+      --bg-main: #0b0f19;
+      --bg-surface: #111827;
+      --bg-subtle: #1a2234;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-light: rgba(255, 255, 255, 0.04);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --border-highlight: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      --primary: #818cf8;
+      --primary-light: #a5b4fc;
+      --primary-bg: rgba(99, 102, 241, 0.15);
+      --accent: #c084fc;
+      --accent-bg: rgba(192, 132, 252, 0.15);
+      --emerald: #10b981;
+      --emerald-bg: rgba(16, 185, 129, 0.15);
+      --emerald-border: rgba(16, 185, 129, 0.3);
+    }
+
+    .wb-hero-video-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .wb-hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.85;
+      filter: brightness(1.08) contrast(1.04) saturate(1.08);
+      transition: opacity 0.5s ease;
+    }
+
+    .wb-hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(4, 8, 24, 0.58) 0%,
+          rgba(6, 11, 30, 0.35) 45%,
+          rgba(4, 8, 24, 0.10) 75%,
+          rgba(4, 8, 24, 0.15) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(4, 8, 24, 0.20) 0%,
+          transparent 35%,
+          rgba(4, 8, 24, 0.45) 80%,
+          #0b0f19 100%
+        );
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .wb-hero-video-overlay {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(4, 8, 24, 0.68) 0%,
+            rgba(4, 8, 24, 0.38) 40%,
+            rgba(4, 8, 24, 0.20) 70%,
+            #0b0f19 100%
+          );
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wb-hero-video {
+        display: none;
+      }
+      .wb-hero-video-wrap {
+        background-image: url('assets/website-builder-bg-poster.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.65;
+      }
     }
 
     .wb-hero-container {
+      position: relative;
+      z-index: 1;
       max-width: 1240px;
       margin: 0 auto;
       display: grid;
@@ -89,9 +202,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--primary-bg);
-      color: var(--primary);
-      border: 1px solid var(--border-highlight);
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.35);
       font-size: clamp(10.5px, 2vw, 12px);
       font-weight: 800;
       padding: 6px 14px;
@@ -109,7 +222,7 @@
       font-family: var(--font-heading);
       font-size: clamp(28px, 5.2vw, 54px);
       font-weight: 900;
-      color: var(--text-main);
+      color: #f8fafc;
       line-height: 1.12;
       letter-spacing: -0.02em;
       margin-bottom: 18px;
@@ -117,14 +230,14 @@
     }
 
     .wb-hero-title span {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .wb-hero-sub {
       font-size: clamp(14.5px, 2.2vw, 17.5px);
-      color: var(--text-body);
+      color: #cbd5e1;
       line-height: 1.65;
       max-width: 600px;
       margin-bottom: 28px;
@@ -153,15 +266,29 @@
       touch-action: manipulation;
     }
 
+    .wb-hero-actions .btn-outline {
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .wb-hero-actions .btn-outline:hover {
+      background: #1a2234;
+      border-color: #cbd5e1;
+      color: #818cf8;
+    }
+
     .wb-trust-metrics {
       display: flex;
       flex-wrap: wrap;
       gap: 14px 20px;
       padding-top: 22px;
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       font-size: 13px;
       font-weight: 700;
-      color: var(--text-muted);
+      color: #94a3b8;
       width: 100%;
     }
 
@@ -170,23 +297,39 @@
       align-items: center;
       gap: 6px;
       white-space: nowrap;
+      color: #94a3b8;
     }
 
     .wb-trust-metrics span.highlight {
-      color: var(--emerald);
+      color: #10b981;
     }
 
-    /* ── HERO PREVIEW CARD ── */
+    /* ── HERO PREVIEW CARD & AMBIENT FLOATING ── */
     .wb-preview-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-xl);
       padding: clamp(16px, 3vw, 24px);
-      box-shadow: var(--shadow-xl);
+      box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
       position: relative;
       width: 100%;
       max-width: 100%;
       box-sizing: border-box;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.3s ease;
+      animation: wbHeroFloat 5.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes wbHeroFloat {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .wb-preview-card:hover {
+      box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.28), 0 0 0 1px rgba(99, 102, 241, 0.35);
     }
 
     .wb-preview-topbar {
@@ -194,7 +337,7 @@
       align-items: center;
       justify-content: space-between;
       padding-bottom: 14px;
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       margin-bottom: 16px;
       gap: 8px;
     }
@@ -220,7 +363,7 @@
       font-family: monospace;
       font-size: 11px;
       font-weight: 700;
-      color: var(--text-muted);
+      color: #94a3b8;
       margin-left: 6px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -228,8 +371,8 @@
     }
 
     .wb-live-badge {
-      background: var(--primary-bg);
-      color: var(--primary);
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
       font-size: 10px;
       font-weight: 800;
       padding: 3px 8px;
@@ -237,11 +380,37 @@
       letter-spacing: 0.05em;
       white-space: nowrap;
       flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .wb-live-pulse-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      margin-right: 5px;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: wbPulseRadar 2s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes wbPulseRadar {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
     }
 
     .wb-preview-feature-box {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      background: #1a2234;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-lg);
       padding: 14px;
       margin-bottom: 12px;
@@ -260,13 +429,13 @@
     .wb-preview-feature-title {
       font-size: 13px;
       font-weight: 800;
-      color: var(--text-main);
+      color: #f8fafc;
     }
 
     .wb-score-badge {
-      background: var(--emerald-bg);
-      color: var(--emerald);
-      border: 1px solid var(--emerald-border);
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
       font-size: 11px;
       font-weight: 800;
       padding: 2px 8px;
@@ -277,7 +446,7 @@
 
     .wb-preview-feature-desc {
       font-size: 12px;
-      color: var(--text-muted);
+      color: #94a3b8;
       line-height: 1.5;
     }
 
@@ -290,8 +459,8 @@
     }
 
     .wb-stat-box {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      background: #1a2234;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-md);
       padding: 10px;
       text-align: center;
@@ -302,7 +471,7 @@
     .wb-stat-label {
       font-size: 11px;
       font-weight: 600;
-      color: var(--text-muted);
+      color: #94a3b8;
     }
 
     .wb-stat-val {
@@ -373,21 +542,97 @@
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: clamp(20px, 3vw, 30px) clamp(16px, 2.5vw, 24px);
+      padding: clamp(18px, 2.5vw, 24px);
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.45s ease;
       width: 100%;
       box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
     }
 
     @media (hover: hover) {
       .wb-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-md);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 35px -10px rgba(99, 102, 241, 0.2), 0 1px 3px rgba(0, 0, 0, 0.06);
         border-color: var(--border-highlight);
+      }
+    }
+
+    /* ── WHAT WE BUILD IMAGE CARDS ── */
+    .wb-card-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      box-sizing: border-box;
+    }
+
+    .wb-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    @media (hover: hover) {
+      .wb-card:hover .wb-card-img {
+        transform: scale(1.06);
+      }
+    }
+
+    .wb-card-image-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .wb-card-header-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .wb-card-header-row .wb-card-icon {
+      margin-bottom: 0;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      border-radius: var(--radius-md);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      .wb-card:hover .wb-card-header-row .wb-card-icon {
+        transform: scale(1.08);
       }
     }
 
@@ -403,6 +648,13 @@
       font-size: 24px;
       margin-bottom: 16px;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      .wb-card:hover .wb-card-icon {
+        transform: scale(1.08);
+      }
     }
 
     .wb-card-title {
@@ -438,7 +690,7 @@
       white-space: nowrap;
     }
 
-    /* ── PROCESS STEPS ── */
+    /* ── PROCESS STEPS ROADMAP ── */
     .wb-process-wrapper {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
@@ -446,26 +698,74 @@
       padding: clamp(28px, 5vw, 56px) clamp(16px, 3.5vw, 44px);
       width: 100%;
       box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
     }
 
     .wb-step-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: clamp(18px, 2.5vw, 24px);
+      padding: clamp(20px, 2.5vw, 26px);
       box-shadow: var(--shadow-xs);
       position: relative;
       width: 100%;
       box-sizing: border-box;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wb-step-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      .wb-step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--border-highlight);
+      }
+      .wb-step-card:hover::before {
+        opacity: 1;
+      }
+    }
+
+    .wb-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
     }
 
     .wb-step-num {
       font-family: var(--font-heading);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 900;
-      color: rgba(99, 102, 241, 0.4);
-      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       line-height: 1;
+    }
+
+    .wb-step-icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
     }
 
     .wb-step-title {
@@ -489,15 +789,16 @@
       border-radius: var(--radius-xl);
       padding: clamp(22px, 3vw, 30px) clamp(16px, 2.5vw, 24px);
       box-shadow: var(--shadow-sm);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
       width: 100%;
       box-sizing: border-box;
     }
 
     @media (hover: hover) {
       .wb-blueprint-card:hover {
-        transform: translateY(-3px);
+        transform: translateY(-5px);
         box-shadow: var(--shadow-md);
+        border-color: var(--border-highlight);
       }
     }
 
@@ -550,16 +851,16 @@
       flex-shrink: 0;
     }
 
-    /* ── AI SECTION ── */
+    /* ── AI SECTION ENHANCEMENT ── */
     .wb-ai-section {
       background: linear-gradient(145deg, #090d16 0%, #151638 50%, #090d16 100%);
       border: 1px solid rgba(99, 102, 241, 0.35);
       border-radius: var(--radius-xl);
-      padding: clamp(32px, 6vw, 64px) clamp(16px, 3.5vw, 52px);
+      padding: clamp(32px, 6vw, 56px) clamp(16px, 3.5vw, 48px);
       color: #ffffff;
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-xl);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.2);
       width: 100%;
       box-sizing: border-box;
     }
@@ -574,6 +875,85 @@
       background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+    }
+
+    .wb-ai-header-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(24px, 4vw, 40px);
+      align-items: center;
+      margin-bottom: clamp(28px, 4vw, 40px);
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px) {
+      .wb-ai-header-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wb-ai-visual-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(165, 180, 252, 0.25);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+      background: rgba(15, 23, 42, 0.6);
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .wb-ai-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    @media (hover: hover) {
+      .wb-ai-visual-card:hover .wb-ai-visual-img {
+        transform: scale(1.05);
+      }
+    }
+
+    .wb-ai-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(9, 13, 22, 0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+
+    .wb-ai-visual-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #a5b4fc;
+      width: fit-content;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .wb-ai-visual-status span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: wbPulseRadar 2s infinite;
     }
 
     .wb-ai-badge {
@@ -607,7 +987,7 @@
       color: #cbd5e1;
       line-height: 1.65;
       max-width: 740px;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
       word-break: break-word;
     }
 
@@ -617,6 +997,8 @@
       gap: 14px;
       margin-bottom: 24px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     .wb-ai-card {
@@ -625,15 +1007,17 @@
       border-radius: var(--radius-lg);
       padding: clamp(14px, 2vw, 18px);
       backdrop-filter: blur(10px);
-      transition: all 0.2s ease;
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
       width: 100%;
       box-sizing: border-box;
     }
 
     @media (hover: hover) {
       .wb-ai-card:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(99, 102, 241, 0.4);
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
       }
     }
 
@@ -657,6 +1041,63 @@
       font-size: 11.5px;
       color: #64748b;
       line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── SCROLL REVEAL & STAGGER SYSTEM ── */
+    .wb-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .wb-reveal.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wb-stagger-1 { transition-delay: 0.08s; }
+    .wb-stagger-2 { transition-delay: 0.16s; }
+    .wb-stagger-3 { transition-delay: 0.24s; }
+    .wb-stagger-4 { transition-delay: 0.32s; }
+    .wb-stagger-5 { transition-delay: 0.40s; }
+    .wb-stagger-6 { transition-delay: 0.48s; }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .wb-preview-card {
+        animation: none !important;
+        transform: none !important;
+      }
+      .wb-live-pulse-dot,
+      .wb-ai-visual-status span.dot {
+        animation: none !important;
+      }
+      .wb-card,
+      .wb-step-card,
+      .wb-blueprint-card,
+      .wb-ai-card {
+        transition: none !important;
+        transform: none !important;
+      }
+      .wb-card:hover,
+      .wb-step-card:hover,
+      .wb-blueprint-card:hover,
+      .wb-ai-card:hover {
+        transform: none !important;
+      }
+      .wb-card:hover .wb-card-img,
+      .wb-ai-visual-card:hover .wb-ai-visual-img {
+        transform: none !important;
+      }
+      .wb-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
     }
 
     /* ══════════════════════════════════════════════════════════
@@ -1130,8 +1571,24 @@
        1. HERO SECTION
   ══════════════════════════════════════════════════════════ -->
   <header class="wb-hero">
+    <!-- Cinematic Hero Video Background -->
+    <div class="wb-hero-video-wrap" aria-hidden="true">
+      <video
+        class="wb-hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="assets/website-builder-bg-poster.jpg"
+      >
+        <source src="assets/website-builder-bg.mp4" type="video/mp4">
+      </video>
+      <div class="wb-hero-video-overlay"></div>
+    </div>
+
     <div class="wb-hero-container">
-      <div>
+      <div class="wb-reveal wb-stagger-1">
         <div class="wb-eyebrow">
           🌐 PRIYULABS WEB ENGINEERING &amp; DIGITAL SOLUTIONS
         </div>
@@ -1158,7 +1615,7 @@
       </div>
 
       <!-- Hero Visual Tech Card -->
-      <div class="wb-preview-card">
+      <div class="wb-preview-card wb-reveal wb-stagger-2">
         <div class="wb-preview-topbar">
           <div class="wb-preview-dots">
             <span class="wb-dot red"></span>
@@ -1166,7 +1623,7 @@
             <span class="wb-dot green"></span>
             <span class="wb-preview-url">priyulabs.in/build</span>
           </div>
-          <span class="wb-live-badge">LIVE ARCHITECTURE</span>
+          <span class="wb-live-badge"><span class="wb-live-pulse-dot"></span>LIVE ARCHITECTURE</span>
         </div>
 
         <div class="wb-preview-feature-box">
@@ -1207,7 +1664,7 @@
        2. WHAT WE BUILD SECTION
   ══════════════════════════════════════════════════════════ -->
   <section class="wb-section" id="what-we-build">
-    <div class="wb-header-center">
+    <div class="wb-header-center wb-reveal">
       <div class="section-badge">Tailored Web Solutions</div>
       <h2 class="wb-section-title">What We Build</h2>
       <p class="wb-section-sub">
@@ -1217,10 +1674,21 @@
 
     <div class="wb-grid-2">
       <!-- 1. Business Websites -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-1">
         <div>
-          <div class="wb-card-icon">🏢</div>
-          <h3 class="wb-card-title">Business Websites</h3>
+          <div class="wb-card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                 alt="Modern local business storefront and corporate website design"
+                 class="wb-card-img"
+                 loading="lazy"
+                 width="600"
+                 height="338" />
+            <div class="wb-card-image-badge">🏢 Business &amp; Enterprise</div>
+          </div>
+          <div class="wb-card-header-row">
+            <div class="wb-card-icon">🏢</div>
+            <h3 class="wb-card-title" style="margin-bottom: 0;">Business Websites</h3>
+          </div>
           <p class="wb-card-desc">
             Professional websites for companies, brands and local businesses. Focus on credibility, performance and lead generation.
           </p>
@@ -1233,10 +1701,21 @@
       </div>
 
       <!-- 2. Appointment & Booking Websites -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-2">
         <div>
-          <div class="wb-card-icon">📅</div>
-          <h3 class="wb-card-title">Appointment &amp; Booking Websites</h3>
+          <div class="wb-card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+                 alt="Customer booking and professional appointment scheduling interface"
+                 class="wb-card-img"
+                 loading="lazy"
+                 width="600"
+                 height="338" />
+            <div class="wb-card-image-badge">📅 Online Scheduling</div>
+          </div>
+          <div class="wb-card-header-row">
+            <div class="wb-card-icon">📅</div>
+            <h3 class="wb-card-title" style="margin-bottom: 0;">Appointment &amp; Booking Websites</h3>
+          </div>
           <p class="wb-card-desc">
             Online booking systems for businesses that work with appointments. Include availability, booking flow and customer information.
           </p>
@@ -1249,10 +1728,21 @@
       </div>
 
       <!-- 3. Restaurant Websites -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-3">
         <div>
-          <div class="wb-card-icon">🍽️</div>
-          <h3 class="wb-card-title">Restaurant Websites</h3>
+          <div class="wb-card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+                 alt="Modern fine dining restaurant interior and digital menu reservation experience"
+                 class="wb-card-img"
+                 loading="lazy"
+                 width="600"
+                 height="338" />
+            <div class="wb-card-image-badge">🍽️ Restaurant &amp; Dining</div>
+          </div>
+          <div class="wb-card-header-row">
+            <div class="wb-card-icon">🍽️</div>
+            <h3 class="wb-card-title" style="margin-bottom: 0;">Restaurant Websites</h3>
+          </div>
           <p class="wb-card-desc">
             Digital presence for restaurants, cafes and food businesses. Include menus, reservations, location and contact/ordering integrations where appropriate.
           </p>
@@ -1265,10 +1755,21 @@
       </div>
 
       <!-- 4. Salon Websites -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-4">
         <div>
-          <div class="wb-card-icon">💇</div>
-          <h3 class="wb-card-title">Salon Websites</h3>
+          <div class="wb-card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
+                 alt="Premium modern salon studio interior and beauty stylist appointment website"
+                 class="wb-card-img"
+                 loading="lazy"
+                 width="600"
+                 height="338" />
+            <div class="wb-card-image-badge">💇 Salon &amp; Wellness</div>
+          </div>
+          <div class="wb-card-header-row">
+            <div class="wb-card-icon">💇</div>
+            <h3 class="wb-card-title" style="margin-bottom: 0;">Salon Websites</h3>
+          </div>
           <p class="wb-card-desc">
             Modern websites for salons and beauty businesses. Include services, pricing, staff/booking flows, offers and customer contact.
           </p>
@@ -1286,7 +1787,7 @@
        3. MORE THAN JUST A WEBSITE SECTION
   ══════════════════════════════════════════════════════════ -->
   <section class="wb-section" style="padding-top: 0;">
-    <div class="wb-header-center">
+    <div class="wb-header-center wb-reveal">
       <div class="section-badge">End-to-End Technology Stack</div>
       <h2 class="wb-section-title">More Than Just a Website</h2>
       <p class="wb-section-sub">
@@ -1296,7 +1797,7 @@
 
     <div class="wb-grid-3">
       <!-- 1. Custom Admin Panels -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-1">
         <div>
           <div class="wb-card-icon">📊</div>
           <h3 class="wb-card-title">Custom Admin Panels</h3>
@@ -1307,7 +1808,7 @@
       </div>
 
       <!-- 2. WhatsApp Integration -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-2">
         <div>
           <div class="wb-card-icon">💬</div>
           <h3 class="wb-card-title">WhatsApp Integration</h3>
@@ -1318,7 +1819,7 @@
       </div>
 
       <!-- 3. Payment Integration -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-3">
         <div>
           <div class="wb-card-icon">💳</div>
           <h3 class="wb-card-title">Payment Integration</h3>
@@ -1329,7 +1830,7 @@
       </div>
 
       <!-- 4. Website Maintenance -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-4">
         <div>
           <div class="wb-card-icon">🛠️</div>
           <h3 class="wb-card-title">Website Maintenance</h3>
@@ -1340,7 +1841,7 @@
       </div>
 
       <!-- 5. Hosting & Deployment -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-5">
         <div>
           <div class="wb-card-icon">☁️</div>
           <h3 class="wb-card-title">Hosting &amp; Deployment</h3>
@@ -1351,7 +1852,7 @@
       </div>
 
       <!-- 6. AI-Powered Features -->
-      <div class="wb-card">
+      <div class="wb-card wb-reveal wb-stagger-6">
         <div>
           <div class="wb-card-icon">🤖</div>
           <h3 class="wb-card-title">AI-Powered Features</h3>
@@ -1367,7 +1868,7 @@
        4. HOW WE BUILD SECTION
   ══════════════════════════════════════════════════════════ -->
   <section class="wb-section" style="padding-top: 0;">
-    <div class="wb-process-wrapper">
+    <div class="wb-process-wrapper wb-reveal">
       <div class="wb-header-center" style="margin-bottom: 36px;">
         <div class="section-badge">Our Development Methodology</div>
         <h2 class="wb-section-title">How We Build</h2>
@@ -1378,8 +1879,11 @@
 
       <div class="wb-grid-4">
         <!-- 01 Understand -->
-        <div class="wb-step-card">
-          <div class="wb-step-num">01</div>
+        <div class="wb-step-card wb-reveal wb-stagger-1">
+          <div class="wb-step-header">
+            <div class="wb-step-num">01</div>
+            <div class="wb-step-icon-badge">🎯</div>
+          </div>
           <h3 class="wb-step-title">Understand</h3>
           <p class="wb-step-desc">
             We understand your business, customers and goals.
@@ -1387,8 +1891,11 @@
         </div>
 
         <!-- 02 Design -->
-        <div class="wb-step-card">
-          <div class="wb-step-num">02</div>
+        <div class="wb-step-card wb-reveal wb-stagger-2">
+          <div class="wb-step-header">
+            <div class="wb-step-num">02</div>
+            <div class="wb-step-icon-badge">🎨</div>
+          </div>
           <h3 class="wb-step-title">Design</h3>
           <p class="wb-step-desc">
             We design a modern experience around your brand and users.
@@ -1396,8 +1903,11 @@
         </div>
 
         <!-- 03 Build -->
-        <div class="wb-step-card">
-          <div class="wb-step-num">03</div>
+        <div class="wb-step-card wb-reveal wb-stagger-3">
+          <div class="wb-step-header">
+            <div class="wb-step-num">03</div>
+            <div class="wb-step-icon-badge">⚡</div>
+          </div>
           <h3 class="wb-step-title">Build</h3>
           <p class="wb-step-desc">
             We develop the website, integrations and business functionality.
@@ -1405,8 +1915,11 @@
         </div>
 
         <!-- 04 Launch & Maintain -->
-        <div class="wb-step-card">
-          <div class="wb-step-num">04</div>
+        <div class="wb-step-card wb-reveal wb-stagger-4">
+          <div class="wb-step-header">
+            <div class="wb-step-num">04</div>
+            <div class="wb-step-icon-badge">🚀</div>
+          </div>
           <h3 class="wb-step-title">Launch &amp; Maintain</h3>
           <p class="wb-step-desc">
             We deploy, monitor and maintain your website after launch.
@@ -1420,7 +1933,7 @@
        5. BUILT FOR YOUR BUSINESS SECTION
   ══════════════════════════════════════════════════════════ -->
   <section class="wb-section" style="padding-top: 0;">
-    <div class="wb-header-center">
+    <div class="wb-header-center wb-reveal">
       <div class="section-badge">Industry-Specific Blueprints</div>
       <h2 class="wb-section-title">Built for Your Business</h2>
       <p class="wb-section-sub">
@@ -1430,7 +1943,7 @@
 
     <div class="wb-grid-2">
       <!-- For Businesses -->
-      <div class="wb-blueprint-card">
+      <div class="wb-blueprint-card wb-reveal wb-stagger-1">
         <div class="wb-blueprint-cat">Corporate &amp; Services</div>
         <h3 class="wb-blueprint-title">For Businesses</h3>
         <p class="wb-blueprint-desc">
@@ -1444,7 +1957,7 @@
       </div>
 
       <!-- For Salons -->
-      <div class="wb-blueprint-card">
+      <div class="wb-blueprint-card wb-reveal wb-stagger-2">
         <div class="wb-blueprint-cat">Beauty &amp; Wellness</div>
         <h3 class="wb-blueprint-title">For Salons</h3>
         <p class="wb-blueprint-desc">
@@ -1458,7 +1971,7 @@
       </div>
 
       <!-- For Restaurants -->
-      <div class="wb-blueprint-card">
+      <div class="wb-blueprint-card wb-reveal wb-stagger-3">
         <div class="wb-blueprint-cat">Food &amp; Beverage</div>
         <h3 class="wb-blueprint-title">For Restaurants</h3>
         <p class="wb-blueprint-desc">
@@ -1472,7 +1985,7 @@
       </div>
 
       <!-- For Appointment-Based Businesses -->
-      <div class="wb-blueprint-card">
+      <div class="wb-blueprint-card wb-reveal wb-stagger-4">
         <div class="wb-blueprint-cat">Consulting &amp; Health</div>
         <h3 class="wb-blueprint-title">For Appointment-Based Businesses</h3>
         <p class="wb-blueprint-desc">
@@ -1491,50 +2004,68 @@
        6. AI-POWERED WEBSITES SECTION
   ══════════════════════════════════════════════════════════ -->
   <section class="wb-section" style="padding-top: 0;">
-    <div class="wb-ai-section">
-      <div class="wb-ai-badge">✨ Next-Gen Intelligence</div>
-      <h2 class="wb-ai-title">Make Your Website Smarter.</h2>
-      <p class="wb-ai-sub">
-        Your website doesn't have to be static. Add AI-powered experiences that help customers, automate repetitive tasks and connect your website to your business operations.
-      </p>
+    <div class="wb-ai-section wb-reveal">
+      <div class="wb-ai-header-layout">
+        <div>
+          <div class="wb-ai-badge">✨ Next-Gen Intelligence</div>
+          <h2 class="wb-ai-title">Make Your Website Smarter.</h2>
+          <p class="wb-ai-sub" style="margin-bottom: 0;">
+            Your website doesn't have to be static. Add AI-powered experiences that help customers, automate repetitive tasks and connect your website to your business operations.
+          </p>
+        </div>
+        <div class="wb-ai-visual-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+               alt="Modern business workspace and digital technology visualization"
+               class="wb-ai-visual-img"
+               loading="lazy"
+               width="500"
+               height="312" />
+          <div class="wb-ai-visual-overlay">
+            <div class="wb-ai-visual-status">
+              <span class="dot"></span>
+              <span>Live AI Business Engine</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="wb-ai-grid">
-        <div class="wb-ai-card">
+        <div class="wb-ai-card wb-reveal wb-stagger-1">
           <div class="wb-ai-card-title">🤖 AI Customer Assistant</div>
           <p class="wb-ai-card-desc">
             24/7 intelligent assistant answering customer queries, pricing details, and store hours.
           </p>
         </div>
 
-        <div class="wb-ai-card">
+        <div class="wb-ai-card wb-reveal wb-stagger-2">
           <div class="wb-ai-card-title">🎯 Smart Recommendations</div>
           <p class="wb-ai-card-desc">
             Suggests the best products, services, or packages based on visitor interest and behavior.
           </p>
         </div>
 
-        <div class="wb-ai-card">
+        <div class="wb-ai-card wb-reveal wb-stagger-3">
           <div class="wb-ai-card-title">⚡ Automated Enquiries</div>
           <p class="wb-ai-card-desc">
             Automatically qualifies leads, extracts requirements, and sends them directly to your phone.
           </p>
         </div>
 
-        <div class="wb-ai-card">
+        <div class="wb-ai-card wb-reveal wb-stagger-4">
           <div class="wb-ai-card-title">✍️ AI Content Assistance</div>
           <p class="wb-ai-card-desc">
             Dynamic content generation, multilingual translations, and automated product descriptions.
           </p>
         </div>
 
-        <div class="wb-ai-card">
+        <div class="wb-ai-card wb-reveal wb-stagger-5">
           <div class="wb-ai-card-title">⚙️ Business Automation</div>
           <p class="wb-ai-card-desc">
             Connects online bookings and customer requests directly with your internal staff tasks.
           </p>
         </div>
 
-        <div class="wb-ai-card">
+        <div class="wb-ai-card wb-reveal wb-stagger-6">
           <div class="wb-ai-card-title">💬 WhatsApp AI Workflows</div>
           <p class="wb-ai-card-desc">
             Automated conversational booking confirmations, appointment reminders, and follow-ups.
@@ -1556,7 +2087,7 @@
     <div class="cta-orb cta-orb2"></div>
     <div class="container">
       <div class="cta-inner">
-        <div class="cta-text">
+        <div class="cta-text wb-reveal">
           <div class="section-badge">Start Your Project Today</div>
           <h2>Ready to Build Your Digital Presence?</h2>
           <p>
@@ -1569,7 +2100,7 @@
           </div>
         </div>
 
-        <div class="cta-form-wrap">
+        <div class="cta-form-wrap wb-reveal wb-stagger-2">
           <form class="cta-form" id="leadForm">
             <h3>Start Your Project</h3>
             <p class="cta-form-sub">Share your project requirements for a fast consultation:</p>
@@ -1898,6 +2429,59 @@
   <div class="toast" id="mainToast"></div>
 
   <script src="script.js"></script>
+  <script>
+    // ── SCOPED SCROLL REVEAL OBSERVER FOR WEBSITE BUILDER ──
+    (function () {
+      function initWbScrollReveal() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('.wb-reveal').forEach(function (el) {
+            el.classList.add('is-revealed');
+          });
+          return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          document.querySelectorAll('.wb-reveal').forEach(function (el) {
+            el.classList.add('is-revealed');
+          });
+          return;
+        }
+
+        var revealObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -20px 0px'
+        });
+
+        document.querySelectorAll('.wb-reveal').forEach(function (el) {
+          revealObserver.observe(el);
+        });
+
+        // Ensure hero background video plays smoothly
+        var heroVid = document.querySelector('.wb-hero-video');
+        if (heroVid) {
+          var playPromise = heroVid.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(function () {
+              // Autoplay restrictions or low-power mode: poster fallback remains active
+            });
+          }
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initWbScrollReveal);
+      } else {
+        initWbScrollReveal();
+      }
+    })();
+  </script>
 </body>
 
 </html>
