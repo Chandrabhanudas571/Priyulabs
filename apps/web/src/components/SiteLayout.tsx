@@ -1,4 +1,4 @@
-﻿import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronRight, Menu, MessageCircle, Moon, Sun, X, ArrowLeft } from 'lucide-react';
 import { useEffect, useState, type PropsWithChildren } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -267,7 +267,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
                 GST.
               </p>
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
-                🇮🇳 DPIIT & Startup India Recognized Enterprise
+                🇮🇳 MSME Certified (UDYAM-OD-19-0177979) Enterprise
               </div>
             </div>
 

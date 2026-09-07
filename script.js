@@ -195,6 +195,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ─── COUNTER ANIMATION ──────────────────────────────────────────
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix !== undefined ? el.dataset.suffix : (target === 100 ? '+' : (target === 10 ? ' min' : (target === 0 ? '%' : '')));
   const duration = 1600;
   const step = Math.max(1, target / (duration / 20));
   let current = 0;
@@ -204,30 +205,28 @@ function animateCounter(el) {
       current = target;
       clearInterval(timer);
     }
-    if (target === 100) {
-      el.textContent = Math.floor(current) + '+';
-    } else if (target === 0) {
-      el.textContent = '0%';
-    } else {
-      el.textContent = Math.floor(current) + (target === 10 ? ' min' : '');
-    }
+    el.textContent = Math.floor(current) + suffix;
   }, 20);
 }
 
 // ─── SQUARE-STYLE STAGGERED SCROLL REVEAL & COUNTERS OBSERVER ──
-const countersAnimated = new Set();
-
 function initSquareScrollReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.stat-number').forEach(el => animateCounter(el));
+    document.querySelectorAll('.stat-number').forEach(el => {
+      if (!el.classList.contains('counted')) {
+        el.classList.add('counted');
+        animateCounter(el);
+      }
+    });
     return;
   }
 
-  // Grid / multi-card containers with staggered micro-delays (Exclude horizontal swipe carousels so items are always 100% visible)
+  // Grid / multi-card containers with staggered micro-delays
   const staggerContainers = document.querySelectorAll(`
     .pvs-grid,
     .trust-grid,
     .hero-stats,
+    .hero-service-badges,
     .comp-grid-full,
     .upgrades-cards-wrap,
     .trust-stats-mini
@@ -237,7 +236,7 @@ function initSquareScrollReveal() {
     const children = Array.from(container.children).filter(el => !el.classList.contains('stat-divider') && !el.classList.contains('pvs-vs'));
     children.forEach((child, index) => {
       child.classList.add('reveal-item');
-      child.style.transitionDelay = `${Math.min(index * 0.09, 0.45)}s`;
+      child.style.transitionDelay = `${Math.min(index * 0.07, 0.42)}s`;
     });
   });
 
@@ -248,7 +247,8 @@ function initSquareScrollReveal() {
     .hero-title,
     .hero-desc,
     .hero-buttons,
-    .hero-voice-hook,
+    .hero-service-badges,
+    .hero-spotlight-card,
     .hero-visual,
     .hardware-strip,
     .serve-niche-banner,
@@ -275,19 +275,15 @@ function initSquareScrollReveal() {
         // Animate counter numbers inside intersecting element if present
         const stats = entry.target.querySelectorAll ? entry.target.querySelectorAll('.stat-number') : [];
         stats.forEach(st => {
-          const id = st.dataset.target;
-          if (id && !countersAnimated.has(id)) {
-            countersAnimated.add(id);
+          if (!st.classList.contains('counted')) {
+            st.classList.add('counted');
             animateCounter(st);
           }
         });
 
-        if (entry.target.classList.contains('stat-number')) {
-          const id = entry.target.dataset.target;
-          if (id && !countersAnimated.has(id)) {
-            countersAnimated.add(id);
-            animateCounter(entry.target);
-          }
+        if (entry.target.classList.contains('stat-number') && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          animateCounter(entry.target);
         }
       }
     });
@@ -300,10 +296,43 @@ function initSquareScrollReveal() {
   document.querySelectorAll('.stat-number').forEach(el => scrollObserver.observe(el));
 }
 
+// ─── HERO SPOTLIGHT TICKER ─────────────────────────────────────────
+let spotlightIdx = 0;
+let spotlightTimer = null;
+
+function setSpotlightIndex(idx) {
+  const items = document.querySelectorAll('#heroSpotlightTicker .ticker-item');
+  const dots = document.querySelectorAll('#spotlightDots .s-dot');
+  if (!items.length) return;
+  spotlightIdx = (idx + items.length) % items.length;
+  items.forEach((item, i) => {
+    item.classList.toggle('active', i === spotlightIdx);
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === spotlightIdx);
+  });
+}
+
+function initHeroSpotlight() {
+  const ticker = document.getElementById('heroSpotlightTicker');
+  if (!ticker) return;
+  if (spotlightTimer) clearInterval(spotlightTimer);
+  spotlightTimer = setInterval(() => {
+    const items = document.querySelectorAll('#heroSpotlightTicker .ticker-item');
+    if (items.length > 0) {
+      setSpotlightIndex((spotlightIdx + 1) % items.length);
+    }
+  }, 4200);
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSquareScrollReveal);
+  document.addEventListener('DOMContentLoaded', () => {
+    initSquareScrollReveal();
+    initHeroSpotlight();
+  });
 } else {
   initSquareScrollReveal();
+  initHeroSpotlight();
 }
 
 // ─── HERO LIVE VOICE POS SIMULATION ─────────────────────────────
@@ -405,16 +434,17 @@ function simulateVoicePOS() {
   }, 900);
 }
 
-// ─── DEMO VIDEO & EXPERIENCE MODAL ──────────────────────────────
+// ─── PRIYULABS INTERACTIVE 6-SERVICE DEMO PLAYGROUND ENGINE ────
 const demoModal = document.getElementById('demoModal');
 
-function openDemoModal(tab = 'voice') {
+function openDemoModal(tab = 'pos') {
   if (demoModal) {
     demoModal.classList.add('active');
     document.body.style.overflow = 'hidden';
     switchDemoTab(tab);
+    initDemoPlaygrounds();
   } else {
-    window.location.href = 'index.html#interactive-demo';
+    window.location.href = 'index.html#demoModal';
   }
 }
 
@@ -425,138 +455,559 @@ function closeDemoModal() {
   }
 }
 
-// Switch Demo Tabs
+// Switch Demo Tabs across all 6 services
 function switchDemoTab(tabKey) {
+  const aliasMap = {
+    'voice': 'pos',
+    'payments': 'pos',
+    'vision': 'erp',
+    'superapp': 'erp',
+    'gst': 'bundle'
+  };
+  const targetTab = aliasMap[tabKey] || tabKey;
+
   document.querySelectorAll('.demo-tab').forEach(tab => {
-    tab.classList.toggle('active', tab.dataset.tab === tabKey);
+    tab.classList.toggle('active', tab.dataset.tab === targetTab);
   });
   document.querySelectorAll('.demo-panel').forEach(panel => {
-    panel.classList.toggle('active', panel.id === `tab-${tabKey}`);
+    panel.classList.toggle('active', panel.id === `tab-${targetTab}`);
   });
 }
 
-// Demo Sim Actions: Voice POS
-function runSimVoice(phrase) {
-  const status = document.getElementById('voiceSimStatus');
-  const itemsContainer = document.getElementById('simReceiptItems');
-  const totalEl = document.getElementById('simReceiptTotal');
+// ─── TAB 1: SMART POS BILLING ENGINE ───────────────────────────
+const posProducts = [
+  { id: 'p1', name: 'Caramel Cold Frappe', price: 140, cat: 'cafe', emoji: '☕', tax: 0.05 },
+  { id: 'p2', name: 'Veg Supreme Burger', price: 160, cat: 'cafe', emoji: '🍔', tax: 0.05 },
+  { id: 'p3', name: 'Farmhouse Pizza 8"', price: 280, cat: 'cafe', emoji: '🍕', tax: 0.05 },
+  { id: 'p4', name: 'Fortune Mustard Oil 1L', price: 145, cat: 'grocery', emoji: '🧴', tax: 0.05 },
+  { id: 'p5', name: 'Basmati Rice Royal 5kg', price: 420, cat: 'grocery', emoji: '🌾', tax: 0.05 },
+  { id: 'p6', name: 'Maggi Noodles 4-Pack', price: 60, cat: 'grocery', emoji: '🍜', tax: 0.05 },
+  { id: 'p7', name: 'Cotton Casual Shirt (M)', price: 799, cat: 'fashion', emoji: '👔', tax: 0.12 },
+  { id: 'p8', name: 'Designer Silk Saree', price: 1499, cat: 'fashion', emoji: '👗', tax: 0.12 }
+];
 
-  if (status) {
-    status.innerHTML = `<span class="status-indicator" style="background:#f59e0b"></span> Processing: "${phrase}"...`;
+let posCart = [
+  { id: 'p2', name: 'Veg Supreme Burger', price: 160, emoji: '🍔', qty: 2, tax: 0.05 },
+  { id: 'p1', name: 'Caramel Cold Frappe', price: 140, emoji: '☕', qty: 1, tax: 0.05 }
+];
+
+function filterPosProducts(cat, btnEl) {
+  if (btnEl) {
+    document.querySelectorAll('.pos-cat-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  renderPosProducts(cat);
+}
+
+function renderPosProducts(filterCat = 'all') {
+  const grid = document.getElementById('posProductGrid');
+  if (!grid) return;
+  const filtered = filterCat === 'all' ? posProducts : posProducts.filter(p => p.cat === filterCat);
+  grid.innerHTML = filtered.map(p => `
+    <div class="pos-item-card" onclick="addPosToCart('${p.id}')">
+      <div class="pic-emoji">${p.emoji}</div>
+      <div class="pic-info">
+        <strong>${p.name}</strong>
+        <small>₹${p.price}</small>
+      </div>
+      <button class="pic-add-btn">+ Add</button>
+    </div>
+  `).join('');
+}
+
+function addPosToCart(productId) {
+  const prod = posProducts.find(p => p.id === productId);
+  if (!prod) return;
+  const existing = posCart.find(item => item.id === productId);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    posCart.push({ ...prod, qty: 1 });
+  }
+  renderPosCart();
+  showToast(`⚡ Added ${prod.name} to POS bill!`);
+}
+
+function updatePosQty(productId, delta) {
+  const item = posCart.find(i => i.id === productId);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    posCart = posCart.filter(i => i.id !== productId);
+  }
+  renderPosCart();
+}
+
+function removePosItem(productId) {
+  posCart = posCart.filter(i => i.id !== productId);
+  renderPosCart();
+}
+
+function clearPosCart() {
+  posCart = [];
+  renderPosCart();
+  showToast('🗑️ Cart cleared.');
+}
+
+function renderPosCart() {
+  const list = document.getElementById('posCartList');
+  const subtotalEl = document.getElementById('posSubtotal');
+  const taxEl = document.getElementById('posTax');
+  const totalEl = document.getElementById('posGrandTotal');
+  const successBox = document.getElementById('posPaySuccess');
+
+  if (successBox) successBox.style.display = 'none';
+
+  if (!list) return;
+
+  if (posCart.length === 0) {
+    list.innerHTML = `<div class="pos-empty-cart">🛒 Cart is empty. Click any product on left to start billing.</div>`;
+    if (subtotalEl) subtotalEl.textContent = '₹0.00';
+    if (taxEl) taxEl.textContent = '₹0.00';
+    if (totalEl) totalEl.textContent = '₹0.00';
+    return;
   }
 
-  setTimeout(() => {
-    const p = phrase.toLowerCase();
-    if (p.includes('sugar') || p.includes('cheeni') || p.includes('oil')) {
-      itemsContainer.innerHTML = `
-        <div class="r-row"><span>Sugar (2 Kg)</span><span>₹84.00</span></div>
-        <div class="r-row"><span>Fortune Mustard Oil (1L)</span><span>₹145.00</span></div>
-      `;
-      totalEl.textContent = '₹229.00';
-    } else if (p.includes('noodles') || p.includes('maggi') || p.includes('curd') || p.includes('dahi')) {
-      itemsContainer.innerHTML = `
-        <div class="r-row"><span>Maggi Noodles 70g (x5)</span><span>₹70.00</span></div>
-        <div class="r-row"><span>Amul Masti Dahi 400g (x2)</span><span>₹64.00</span></div>
-        <div class="r-row"><span>English Oven Brown Bread (1)</span><span>₹50.00</span></div>
-      `;
-      totalEl.textContent = '₹184.00';
-    } else {
-      itemsContainer.innerHTML = `
-        <div class="r-row"><span>Aashirvaad Whole Wheat Atta 1kg</span><span>₹55.00</span></div>
-        <div class="r-row"><span>Surf Excel Quick Wash 500g</span><span>₹78.00</span></div>
-      `;
-      totalEl.textContent = '₹133.00';
-    }
+  let subtotal = 0;
+  let tax = 0;
 
+  list.innerHTML = posCart.map(item => {
+    const itemSub = item.price * item.qty;
+    const itemTax = itemSub * (item.tax || 0.05);
+    subtotal += itemSub;
+    tax += itemTax;
+
+    return `
+      <div class="pos-cart-row">
+        <div class="pcr-left">
+          <span class="pcr-emoji">${item.emoji}</span>
+          <div>
+            <strong>${item.name}</strong>
+            <small>₹${item.price} each</small>
+          </div>
+        </div>
+        <div class="pcr-right">
+          <div class="pcr-qty-ctrl">
+            <button onclick="updatePosQty('${item.id}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="updatePosQty('${item.id}', 1)">+</button>
+          </div>
+          <strong class="pcr-price">₹${itemSub.toFixed(2)}</strong>
+          <button class="pcr-del" onclick="removePosItem('${item.id}')" title="Remove">×</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const grandTotal = subtotal + tax;
+  if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
+  if (taxEl) taxEl.textContent = `₹${tax.toFixed(2)}`;
+  if (totalEl) totalEl.textContent = `₹${grandTotal.toFixed(2)}`;
+}
+
+function runPosVoicePreset(phrase) {
+  showToast(`🎙️ Voice parsing: "${phrase}"`);
+  const status = document.getElementById('posStatusBar');
+  if (status) {
+    status.innerHTML = `<span class="status-indicator" style="background:#f59e0b"></span> 🗣️ AI Parsing: "${phrase}"...`;
+  }
+  setTimeout(() => {
+    if (phrase.includes('burger')) {
+      addPosToCart('p2');
+      addPosToCart('p1');
+    } else {
+      addPosToCart('p5');
+      addPosToCart('p4');
+    }
     if (status) {
-      status.innerHTML = `<span class="status-indicator" style="background:#10b981"></span> ✅ Priyulabs Bill Generated in 0.4s! Ready on Payment Terminal.`;
+      status.innerHTML = `<span class="status-indicator" style="background:#10b981"></span> ✅ AI Voice Bill Generated in 0.3s!`;
     }
   }, 400);
 }
 
-// Demo Sim Actions: Payment Terminal Push
-function simulatePinePush() {
-  const amtInput = document.getElementById('pineSimAmount');
-  const amt = amtInput ? amtInput.value : '750';
-  const display = document.querySelector('.pine-amt-display');
-  const status = document.querySelector('.pine-status-text');
-  const log = document.getElementById('pineLog');
-
-  if (display) display.textContent = `₹${parseFloat(amt).toFixed(2)}`;
-  if (status) {
-    status.textContent = 'PROCESSING PAYMENT ON TERMINAL...';
-    status.style.color = '#f59e0b';
-  }
-
-  setTimeout(() => {
-    if (status) {
-      status.textContent = '✅ PAYMENT SUCCESS • TRANSACTION #TX99182';
-      status.style.color = '#10b981';
-    }
-    if (log) {
-      const entry = document.createElement('div');
-      entry.className = 'log-item';
-      entry.style.color = '#34d399';
-      entry.textContent = `⚡ ₹${amt} received via UPI QR. Auto-Galla balanced!`;
-      log.prepend(entry);
-    }
-    showToast(`💳 ₹${amt} Payment Approved & Reconciled!`);
-  }, 1000);
+function simulateBarcodeScan() {
+  const randomProduct = posProducts[Math.floor(Math.random() * posProducts.length)];
+  addPosToCart(randomProduct.id);
+  showToast(`📷 Barcode Scanned (EAN-890123): Added ${randomProduct.name}!`);
 }
 
-// Demo Sim Actions: Vision AI Scanner
-function simulateVisionScan() {
-  const status = document.getElementById('visionStatus');
-  const invList = document.getElementById('visionInvList');
-
-  if (status) {
-    status.innerHTML = `<span>⏳ Priyulabs Vision AI scanning wholesale bill...</span>`;
+function executePosPayment() {
+  if (posCart.length === 0) {
+    showToast('⚠️ Please add at least one item to cart first.');
+    return;
   }
+  const totalEl = document.getElementById('posGrandTotal');
+  const paidAmt = document.getElementById('posPaidAmt');
+  const successBox = document.getElementById('posPaySuccess');
+  const payBtn = document.getElementById('btnPosPay');
+
+  if (payBtn) payBtn.textContent = '⏳ Transmitting to Payment Terminal...';
 
   setTimeout(() => {
-    if (invList) {
-      invList.innerHTML = `
-        <div class="inv-row">
-          <div>
-            <strong>Fortune Sunlite Refined Oil (15L Tin)</strong>
-            <small>HSN: 1512 • Batch: F2025B • Wholesaler: Gupta Bros</small>
-          </div>
-          <span>Qty: +12 Tins (₹23,400)</span>
-        </div>
-        <div class="inv-row">
-          <div>
-            <strong>Aashirvaad Shudh Chakki Atta 10kg</strong>
-            <small>HSN: 1101 • Batch: A2025 • Wholesaler: Gupta Bros</small>
-          </div>
-          <span>Qty: +40 Bags (₹15,200)</span>
-        </div>
-        <div class="inv-row">
-          <div>
-            <strong>MDH Deggi Mirch 100g</strong>
-            <small>HSN: 0910 • Batch: M881 • Wholesaler: Gupta Bros</small>
-          </div>
-          <span>Qty: +100 Pkts (₹7,800)</span>
-        </div>
-      `;
-    }
-    if (status) {
-      status.innerHTML = `<span style="color:#34d399">✅ Wholesale Invoice parsed! 3 products & ₹46,400 stock added.</span>`;
-    }
-    showToast('📷 Vision AI added 3 new wholesale products to inventory!');
-  }, 900);
+    if (paidAmt && totalEl) paidAmt.textContent = totalEl.textContent.replace('₹', '');
+    if (successBox) successBox.style.display = 'block';
+    if (payBtn) payBtn.textContent = '💳 Pay via UPI QR / Pine Labs ⚡';
+    showToast(`✅ Payment Approved! Invoice #PR-${Math.floor(1000 + Math.random() * 9000)} generated.`);
+  }, 600);
 }
 
-// Demo Sim Actions: GST Download
-function simulateGstDownload(type) {
-  const toast = document.getElementById('gstToast');
+function printPosInvoice() {
+  showToast('🖨️ Thermal Print signal sent (2-inch ESC/POS). Receipt Printed!');
+}
+
+function resetPosCart() {
+  posCart = [];
+  renderPosCart();
+  showToast('✨ POS ready for new customer checkout.');
+}
+
+// ─── TAB 2: ERP & STAFF HRMS ENGINE ────────────────────────────
+let erpStockData = [
+  { id: 's1', name: 'Fortune Sunlite Refined Oil 1L', stock: 48, min: 10, status: 'In Stock' },
+  { id: 's2', name: 'Aashirvaad Chakki Atta 10kg', stock: 18, min: 8, status: 'In Stock' },
+  { id: 's3', name: 'Tata Tea Gold 500g', stock: 4, min: 6, status: 'Low Stock' },
+  { id: 's4', name: 'Dove Daily Shine Shampoo 180ml', stock: 3, min: 5, status: 'Low Stock' },
+  { id: 's5', name: 'Cadbury Dairy Milk Silk 60g', stock: 32, min: 12, status: 'In Stock' }
+];
+
+function renderErpStock() {
+  const tbody = document.getElementById('erpStockRows');
+  if (!tbody) return;
+  tbody.innerHTML = erpStockData.map(item => {
+    const isLow = item.stock <= item.min;
+    return `
+      <tr>
+        <td><strong>${item.name}</strong></td>
+        <td><span class="stock-qty-badge ${isLow ? 'low' : ''}">${item.stock} Units</span></td>
+        <td>
+          <span class="status-pill ${isLow ? 'pill-warning' : 'pill-success'}">
+            ${isLow ? '⚠️ Low Stock Alert' : '✅ Healthy'}
+          </span>
+        </td>
+        <td>
+          <button class="btn-restock" onclick="reorderErpItem('${item.id}')">
+            ${isLow ? '⚡ Quick Reorder' : '+ Add Stock'}
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function simulateErpScanInvoice() {
+  const toast = document.getElementById('erpToastMsg');
   if (toast) {
-    toast.textContent = `✅ Generating ${type} JSON file... Download started!`;
-    toast.style.display = 'block';
+    toast.innerHTML = `<span>⏳ Priyulabs Vision AI scanning wholesale tax invoice...</span>`;
   }
-  showToast(`📥 ${type} JSON export downloaded. Ready to file with CA!`);
+  setTimeout(() => {
+    erpStockData.forEach(item => {
+      item.stock += 25;
+      item.status = 'In Stock';
+    });
+    renderErpStock();
+    if (toast) {
+      toast.innerHTML = `<span style="color:#059669">✅ Wholesale Invoice parsed! 5 SKUs updated with +125 units added to cloud ERP.</span>`;
+    }
+    showToast('📷 Vision AI OCR auto-logged 5 invoice items into ERP!');
+  }, 700);
 }
 
-// ─── POLICY MODAL (STARTUP INDIA / DPIIT COMPLIANT) ────────────
+function simulateErpSale() {
+  erpStockData.forEach(item => {
+    item.stock = Math.max(1, item.stock - Math.floor(Math.random() * 8 + 4));
+  });
+  renderErpStock();
+  showToast('📉 High-volume sale simulated! Low stock alerts triggered.');
+}
+
+function reorderErpItem(id) {
+  const item = erpStockData.find(s => s.id === id);
+  if (!item) return;
+  item.stock += 30;
+  renderErpStock();
+  showToast(`📦 Restocked +30 units of ${item.name}! Purchase order auto-sent.`);
+}
+
+function simulateHrmsCheckIn() {
+  const camStatus = document.getElementById('hrmsCamStatus');
+  const camBox = document.getElementById('hrmsCamBox');
+  if (camBox) camBox.classList.add('scanning');
+  if (camStatus) camStatus.innerHTML = `<span>🔍 Scanning Face & GPS Location (Store #104)...</span>`;
+
+  setTimeout(() => {
+    if (camBox) {
+      camBox.classList.remove('scanning');
+      camBox.classList.add('verified');
+    }
+    if (camStatus) {
+      camStatus.innerHTML = `<span style="color:#10b981;font-weight:700;">✅ Rahul Sharma Clocked In at 09:02 AM • Geofence Match (0.01m)</span>`;
+    }
+    showToast('🤳 Facial Biometric Attendance verified! Auto-logged into Payroll.');
+  }, 800);
+}
+
+// ─── TAB 3: CUSTOM WEBSITE & STOREFRONT ENGINE ──────────────────
+const wsIndustryTemplates = {
+  restaurant: {
+    headline: 'Fresh Artisanal Meals Delivered To Your Door',
+    sub: 'Order directly & get 20% flat discount on all combos today!',
+    catalog: [
+      { name: 'Gourmet Truffle Burger', price: '₹249', img: '🍔' },
+      { name: 'Wood-Fired Margherita', price: '₹349', img: '🍕' },
+      { name: 'Iced Hazelnut Latte', price: '₹179', img: '☕' }
+    ]
+  },
+  fashion: {
+    headline: 'Contemporary Indian & Western Couture Collection',
+    sub: 'Shop trendy fashion with same-day local delivery & easy exchange.',
+    catalog: [
+      { name: 'Pure Linen Floral Kurti', price: '₹1,299', img: '👗' },
+      { name: 'Slim Fit Cotton Blazer', price: '₹2,499', img: '🧥' },
+      { name: 'Handcrafted Leather Tote', price: '₹1,899', img: '👜' }
+    ]
+  },
+  grocery: {
+    headline: 'Fresh Farm Groceries & Supermarket Essentials',
+    sub: 'Order in 30 seconds on WhatsApp with free home delivery.',
+    catalog: [
+      { name: 'Organic Cold-Pressed Oil', price: '₹280', img: '🧴' },
+      { name: 'Himalayan Organic Ghee', price: '₹650', img: '🧈' },
+      { name: 'Dry Fruits Festive Pack', price: '₹890', img: '🥜' }
+    ]
+  },
+  clinic: {
+    headline: 'Specialized Healthcare & Instant Doctor Appointments',
+    sub: 'Book clinic visits & order prescription medicines online.',
+    catalog: [
+      { name: 'General Physician Consult', price: '₹500', img: '🩺' },
+      { name: 'Full Body Health Checkup', price: '₹1,499', img: '🧪' },
+      { name: 'Immunity Care Booster Kit', price: '₹750', img: '💊' }
+    ]
+  }
+};
+
+let currentWsIndustry = 'restaurant';
+let currentWsColor = '#b76e79';
+
+function setWsIndustry(ind, btnEl) {
+  currentWsIndustry = ind;
+  if (btnEl) {
+    document.querySelectorAll('.ws-ind-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  updateWsPreview();
+  showToast(`🌐 Switched website template to ${ind.toUpperCase()}!`);
+}
+
+function setWsColor(color, bg, btnEl) {
+  currentWsColor = color;
+  if (btnEl) {
+    document.querySelectorAll('.ws-swatch').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  const siteHeader = document.getElementById('wsSiteHeader');
+  const siteHero = document.getElementById('wsSiteHero');
+  if (siteHeader) siteHeader.style.background = color;
+  if (siteHero) siteHero.style.background = `linear-gradient(135deg, ${color} 0%, #2b1118 100%)`;
+  showToast('🎨 Updated website brand theme color!');
+}
+
+function setWsDevice(device) {
+  const frame = document.getElementById('wsPreviewFrame');
+  const btnM = document.getElementById('wsBtnMobile');
+  const btnD = document.getElementById('wsBtnDesktop');
+  if (device === 'desktop') {
+    if (frame) frame.classList.add('desktop-mode');
+    if (btnD) btnD.classList.add('active');
+    if (btnM) btnM.classList.remove('active');
+  } else {
+    if (frame) frame.classList.remove('desktop-mode');
+    if (btnM) btnM.classList.add('active');
+    if (btnD) btnD.classList.remove('active');
+  }
+}
+
+function updateWsPreview() {
+  const brandInput = document.getElementById('wsInputBrand');
+  const brandName = brandInput ? brandInput.value : 'Priyulabs Store';
+  const logoEl = document.getElementById('wsSiteLogo');
+  const urlEl = document.getElementById('wsBrowserUrl');
+  const headlineEl = document.getElementById('wsHeroHeadline');
+  const subEl = document.getElementById('wsHeroSub');
+  const catalogEl = document.getElementById('wsSiteCatalog');
+
+  if (logoEl) logoEl.textContent = `✨ ${brandName}`;
+  if (urlEl) {
+    const slug = brandName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    urlEl.textContent = `https://${slug || 'mystore'}.priyulabs.store`;
+  }
+
+  const tmpl = wsIndustryTemplates[currentWsIndustry] || wsIndustryTemplates.restaurant;
+  if (headlineEl) headlineEl.textContent = tmpl.headline;
+  if (subEl) subEl.textContent = tmpl.sub;
+
+  if (catalogEl) {
+    catalogEl.innerHTML = tmpl.catalog.map(item => `
+      <div class="ws-prod-card">
+        <span class="wpc-img">${item.img}</span>
+        <div class="wpc-details">
+          <strong>${item.name}</strong>
+          <span>${item.price}</span>
+        </div>
+        <button class="wpc-btn" onclick="showToast('🛍️ Added ${item.name} to cart!')">+ Add</button>
+      </div>
+    `).join('');
+  }
+}
+
+function simulateWsOrder() {
+  const brandInput = document.getElementById('wsInputBrand');
+  const brand = brandInput ? brandInput.value : 'Your Store';
+  showToast(`📲 Generated WhatsApp Order: "Hi ${brand}, I would like to order items from your online menu!"`);
+}
+
+// ─── TAB 4: DIGITAL MARKETING & ADS ROI ENGINE ─────────────────
+let mktGoal = 'footfall';
+
+function setMktGoal(goal, btnEl) {
+  mktGoal = goal;
+  if (btnEl) {
+    document.querySelectorAll('.mkt-goal-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  updateMktCalculation();
+}
+
+function updateMktCalculation() {
+  const slider = document.getElementById('mktBudgetSlider');
+  if (!slider) return;
+  const budget = parseInt(slider.value, 10);
+  const display = document.getElementById('mktBudgetDisplay');
+  const reachEl = document.getElementById('mktReach');
+  const leadsEl = document.getElementById('mktLeads');
+  const revEl = document.getElementById('mktRevenue');
+
+  if (display) display.textContent = `₹${budget.toLocaleString('en-IN')} / month`;
+
+  const multiplier = mktGoal === 'footfall' ? 4.8 : mktGoal === 'online' ? 3.6 : 4.2;
+  const reach = Math.round(budget * multiplier);
+  const leads = Math.round(budget * 0.042);
+  const rev = Math.round(budget * 3.85);
+
+  if (reachEl) reachEl.textContent = `${reach.toLocaleString('en-IN')}+`;
+  if (leadsEl) leadsEl.textContent = `${leads}+`;
+  if (revEl) revEl.textContent = `₹${rev.toLocaleString('en-IN')}`;
+}
+
+function setWaTemplate(type) {
+  const promoText = document.getElementById('waPromoText');
+  if (!promoText) return;
+
+  if (type === 'festive') {
+    promoText.textContent = 'Namaste! Special 40% FESTIVE DISCOUNT across all categories this weekend. Show this message at counter or order online!';
+  } else if (type === 'vip') {
+    promoText.textContent = 'Hello VIP Member! You have an exclusive ₹500 Cashback voucher waiting on your next bill above ₹1,999. Valid till Sunday.';
+  } else {
+    promoText.textContent = 'BUY 1 GET 1 FREE FLASH SALE! Buy any item today and get another item completely free. Hurry, offer valid till midnight!';
+  }
+  showToast(`📣 WhatsApp broadcast template updated: ${type.toUpperCase()}!`);
+}
+
+// ─── TAB 5: LOGO & BRAND STUDIO ENGINE ─────────────────────────
+let currentBrandIcon = '👑';
+let currentBrandTheme = 'rosegold';
+
+function setBrandIcon(icon, btnEl) {
+  currentBrandIcon = icon;
+  if (btnEl) {
+    document.querySelectorAll('.brand-ic-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  updateBrandEngine();
+  showToast(`🎯 Logo icon changed to ${icon}!`);
+}
+
+function setBrandTheme(theme, btnEl) {
+  currentBrandTheme = theme;
+  if (btnEl) {
+    document.querySelectorAll('.brand-st-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  const grid = document.getElementById('brandMockupsGrid');
+  if (grid) {
+    grid.className = `brand-mockups-grid theme-${theme}`;
+  }
+  showToast(`✨ Brand theme switched to ${theme.toUpperCase()}!`);
+}
+
+function updateBrandEngine() {
+  const nameInput = document.getElementById('brandNameInput');
+  const tagInput = document.getElementById('brandTaglineInput');
+  const name = nameInput ? nameInput.value || 'Crown Royale' : 'Crown Royale';
+  const tag = tagInput ? tagInput.value || 'Luxury & Trust Since 2024' : 'Luxury & Trust Since 2024';
+
+  document.querySelectorAll('.b-dyn-name').forEach(el => el.textContent = name);
+  document.querySelectorAll('.b-dyn-tag').forEach(el => el.textContent = tag);
+  document.querySelectorAll('.b-dyn-icon').forEach(el => el.textContent = currentBrandIcon);
+}
+
+// ─── TAB 6: ALL-IN-ONE BUNDLE ENGINE ───────────────────────────
+function updateBundleCalc() {
+  const checkboxes = document.querySelectorAll('.bundle-check-item input[type="checkbox"]');
+  let total = 0;
+  let count = 0;
+
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      total += parseInt(cb.dataset.price, 10);
+      count++;
+    }
+  });
+
+  const origPriceEl = document.getElementById('bundleOriginalPrice');
+  const discountEl = document.getElementById('bundleDiscount');
+  const finalPriceEl = document.getElementById('bundleFinalPrice');
+
+  let discount = 0;
+  let finalPrice = total;
+
+  if (count >= 5) {
+    discount = 28000;
+    finalPrice = 24999;
+  } else if (count >= 3) {
+    discount = Math.round(total * 0.35);
+    finalPrice = total - discount;
+  } else if (count >= 2) {
+    discount = Math.round(total * 0.20);
+    finalPrice = total - discount;
+  }
+
+  if (origPriceEl) origPriceEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+  if (discountEl) discountEl.textContent = `-₹${discount.toLocaleString('en-IN')} (${count >= 5 ? '53%' : count >= 3 ? '35%' : '20%'} OFF)`;
+  if (finalPriceEl) finalPriceEl.textContent = `₹${finalPrice.toLocaleString('en-IN')}`;
+}
+
+function launchCustomBundleWhatsApp() {
+  const selected = [];
+  document.querySelectorAll('.bundle-check-item input[type="checkbox"]:checked').forEach(cb => {
+    selected.push(cb.dataset.name);
+  });
+  const finalPrice = document.getElementById('bundleFinalPrice')?.textContent || '₹24,999';
+  const msg = encodeURIComponent(`Hello Priyulabs! I am interested in the All-in-One Business Stack with: ${selected.join(', ')} (Estimated Package: ${finalPrice}). Please share the proposal!`);
+  window.open(`https://wa.me/917849074050?text=${msg}`, '_blank');
+}
+
+function initDemoPlaygrounds() {
+  renderPosProducts('all');
+  renderPosCart();
+  renderErpStock();
+  updateWsPreview();
+  updateMktCalculation();
+  updateBrandEngine();
+  updateBundleCalc();
+}
+
+// ─── POLICY MODAL (MSME UDYAM-OD-19-0177979) ────────────
 const policyModal = document.getElementById('policyModal');
 const policyModalTitle = document.getElementById('policyModalTitle');
 const policyModalContent = document.getElementById('policyModalContent');
@@ -566,7 +1017,7 @@ const policies = {
     title: 'About Us – Priyulabs',
     content: `
       <h4>Our Mission</h4>
-      <p><strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup recognized under the <strong>Startup India & DPIIT initiative</strong>. Our goal is to empower 1.2+ Crore local retail merchants, supermarkets, cafes, and apparel stores with AI-powered retail operating systems.</p>
+      <p><strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup registered under <strong>MSME (UDYAM-OD-19-0177979)</strong>. Our goal is to empower 1.2+ Crore local retail merchants, supermarkets, cafes, and apparel stores with AI-powered retail operating systems.</p>
       <h4>What We Solve</h4>
       <p>We eliminate fragmented retail workflows by unifying Voice POS billing, ERP inventory, staff selfie attendance, 1-Click GST filing, and zero-fraud payments into one single, offline-first dashboard.</p>
       <h4>Company &amp; Contact Info</h4>
@@ -1298,10 +1749,38 @@ if (document.readyState === 'loading') {
 window.openDemoModal = openDemoModal;
 window.closeDemoModal = closeDemoModal;
 window.switchDemoTab = switchDemoTab;
-window.runSimVoice = runSimVoice;
-window.simulatePinePush = simulatePinePush;
-window.simulateVisionScan = simulateVisionScan;
-window.simulateGstDownload = simulateGstDownload;
+window.filterPosProducts = filterPosProducts;
+window.addPosToCart = addPosToCart;
+window.updatePosQty = updatePosQty;
+window.removePosItem = removePosItem;
+window.clearPosCart = clearPosCart;
+window.runPosVoicePreset = runPosVoicePreset;
+window.simulateBarcodeScan = simulateBarcodeScan;
+window.executePosPayment = executePosPayment;
+window.printPosInvoice = printPosInvoice;
+window.resetPosCart = resetPosCart;
+window.simulateErpScanInvoice = simulateErpScanInvoice;
+window.simulateErpSale = simulateErpSale;
+window.reorderErpItem = reorderErpItem;
+window.simulateHrmsCheckIn = simulateHrmsCheckIn;
+window.setWsIndustry = setWsIndustry;
+window.setWsColor = setWsColor;
+window.setWsDevice = setWsDevice;
+window.updateWsPreview = updateWsPreview;
+window.simulateWsOrder = simulateWsOrder;
+window.setMktGoal = setMktGoal;
+window.updateMktCalculation = updateMktCalculation;
+window.setWaTemplate = setWaTemplate;
+window.setBrandIcon = setBrandIcon;
+window.setBrandTheme = setBrandTheme;
+window.updateBrandEngine = updateBrandEngine;
+window.updateBundleCalc = updateBundleCalc;
+window.launchCustomBundleWhatsApp = launchCustomBundleWhatsApp;
+window.initDemoPlaygrounds = initDemoPlaygrounds;
+window.runSimVoice = runPosVoicePreset;
+window.simulatePinePush = executePosPayment;
+window.simulateVisionScan = simulateErpScanInvoice;
+window.simulateGstDownload = function() { showToast('📥 GST JSON generated!'); };
 window.simulateVoicePOS = simulateVoicePOS;
 window.openPolicyModal = openPolicyModal;
 window.closePolicyModal = closePolicyModal;
@@ -1313,6 +1792,8 @@ window.showToast = showToast;
 window.toggleBakeryFullscreen = toggleBakeryFullscreen;
 window.handleLeadSubmit = handleLeadSubmit;
 window.initSectorPicker = initSectorPicker;
+window.setSpotlightIndex = setSpotlightIndex;
+window.initHeroSpotlight = initHeroSpotlight;
 
 console.log('%c Priyulabs – India’s Smartest AI Retail OS Loaded Successfully! 🇮🇳 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');
