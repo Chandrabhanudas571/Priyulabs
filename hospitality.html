@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -131,21 +131,21 @@
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle">HOSPITALITY TECH</span>
+          <span class="logo-subtitle">HOSPITALITY TECH <span class="nav-soon-pill">SOON</span></span>
         </div>
       </a>
 
       <!-- Hospitality Tech Dedicated Header Menu -->
       <ul class="nav-links" id="navLinks">
-        <li><a href="#product" class="nav-link-title">Product</a></li>
-        <li><a href="#pricing" class="nav-link-title">Pricing</a></li>
-        <li><a href="#success-stories" class="nav-link-title">Success Stories</a></li>
-        <li><a href="#contact" class="nav-link-title">Contact Us</a></li>
+        <li><a href="#preview" class="nav-link-title">Sneak Peek</a></li>
+        <li><a href="#waitlist" class="nav-link-title">VIP Waitlist</a></li>
+        <li><a href="#roadmap" class="nav-link-title">Roadmap</a></li>
+        <li><a href="index.html#hardware" class="nav-link-title">Live Retail OS</a></li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">Interactive Demo</button>
-        <a href="#contact" class="btn-nav">Start Free Trial</a>
+        <a href="index.html#hardware" class="btn-demo-nav">← Back to Main Platform</a>
+        <a href="#waitlist" class="btn-nav">Join Waitlist 🚀</a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -186,17 +186,17 @@
         data-title="Hospitality Menu">
         <div class="drawer-panel-scroll">
           <nav class="drawer-nav-list">
-            <a href="hospitality.html#product" class="drawer-nav-item drawer-link">
-              <span>☕ Product OS</span>
+            <a href="#preview" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
+              <span>✨ Sneak Peek Preview</span>
             </a>
-            <a href="hospitality.html#pricing" class="drawer-nav-item drawer-link">
-              <span>💳 Pricing Plans</span>
+            <a href="#waitlist" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
+              <span>🚀 Join VIP Waitlist</span>
             </a>
-            <a href="hospitality.html#success-stories" class="drawer-nav-item drawer-link">
-              <span>🌟 Success Stories</span>
+            <a href="#roadmap" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
+              <span>📅 Launch Roadmap</span>
             </a>
-            <a href="hospitality.html#contact" class="drawer-nav-item drawer-link">
-              <span>📞 Contact Hospitality Team</span>
+            <a href="index.html#hardware" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer();">
+              <span>🛒 Explore Live Retail Platform</span>
             </a>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
               <span>Explore All Business Types</span>
@@ -342,73 +342,138 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
-       HOSPITALITY TECH HERO SECTION
+       HOSPITALITY TECH COMING SOON HERO
   ══════════════════════════════════════════════════════════ -->
-  <section class="hosp-hero" id="product">
+  <section class="hosp-hero" id="preview">
     <div class="container">
-      <span class="hosp-eyebrow">🛎️ PRIYULABS HOSPITALITY TECH</span>
-      <h1 class="hosp-title">Next-Generation AI Operating System for Restaurants, Cafes &amp; Hotels</h1>
+      <div class="coming-soon-icon-wrap" style="margin-bottom: 20px;">
+        <span class="cs-emoji">🛎️</span>
+      </div>
+      <span class="hosp-eyebrow">
+        <span class="pulse-dot"></span>
+        IN ACTIVE DEVELOPMENT • LAUNCHING SOON
+      </span>
+      <h1 class="hosp-title">
+        The Future of Restaurant, Cafe &amp; Hotel OS — <span class="gradient-brand" style="background: linear-gradient(135deg, #b76e79 0%, #e29b88 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Coming Soon.</span>
+      </h1>
       <p class="hosp-sub">
-        Streamline counter billing, kitchen KDS order printing, self-order QR table menus, custom bakery cake bookings
-        &amp; multi-outlet inventory in one fast OS.
+        Hum restaurants, cafes, cloud kitchens, bakeries aur hotels ke liye India ka smartest <strong>All-in-One F&amp;B Operating System</strong> craft kar rahe hain. We will offer this service in our upcoming major release!
       </p>
 
+      <!-- VIP Waitlist Card -->
+      <div class="cs-waitlist-box" style="max-width: 600px; margin: 0 auto 40px;" id="waitlist">
+        <div class="cs-wl-title">
+          <span>✨ Join 250+ F&amp;B Owners on the VIP Early Access Waitlist</span>
+          <small>Get notified on day one + unlock an exclusive <strong>50% Early-Bird Lifetime Discount</strong>.</small>
+        </div>
+        <form class="cs-wl-form" onsubmit="handleWaitlistSubmit(event)">
+          <div class="cs-input-group">
+            <input type="text" class="cs-input" id="csContactInput" placeholder="Enter your WhatsApp number or Email" required />
+            <button type="submit" class="cs-submit-btn">
+              <span>Join VIP Waitlist 🚀</span>
+            </button>
+          </div>
+        </form>
+        <div class="cs-wl-success" id="csWlSuccess" style="display: none;">
+          ✅ <strong>You're on the VIP Waitlist!</strong> We will reach out on WhatsApp with exclusive beta access as soon as it goes live.
+        </div>
+      </div>
+
       <div class="sq-hero-ctas">
-        <a href="#contact" class="btn-primary-hero">Book Hospitality Demo →</a>
-        <a href="solutions.html?sector=cafe" class="btn-secondary-hero">Explore All Features</a>
+        <a href="index.html#hardware" class="btn-primary-hero">Explore Live Retail Solutions Below →</a>
+        <a href="https://wa.me/917849074050?text=Hi%20Priyulabs!%20Tell%20me%20more%20about%20Hospitality%20Tech%20launch." target="_blank" class="btn-secondary-hero">💬 Chat on WhatsApp</a>
       </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 1: PRODUCT
+       SECTION 1: SNEAK PEEK MODULES
   ══════════════════════════════════════════════════════════ -->
-  <section class="hosp-sec-placeholder" id="product-details">
+  <section class="hosp-sec-placeholder" id="features">
     <div class="container text-center">
-      <h2 class="hosp-sec-title">📦 Product Overview</h2>
-      <p class="hosp-sec-desc">Comprehensive POS, Kitchen KDS, QR Menus &amp; Recipe ERP software built for F&amp;B and
-        Hospitality operations.</p>
+      <span class="section-badge">✨ SNEAK PEEK PREVIEW</span>
+      <h2 class="hosp-sec-title">What We're Building For You</h2>
+      <p class="hosp-sec-desc">A purpose-built ecosystem designed to eliminate table wait times, prevent kitchen chaos, and boost dine-in profitability.</p>
+
+      <div class="cs-features-grid" style="max-width: 900px; margin: 36px auto 0; text-align: left;">
+        <div class="cs-feat-item" style="padding: 20px;">
+          <span class="cs-feat-icon" style="font-size: 32px;">📱</span>
+          <div>
+            <strong style="font-size: 16px;">Self-Order QR Table Menus &amp; Instant UPI</strong>
+            <small style="font-size: 13.5px; line-height: 1.5;">Customers scan the QR on their table, view interactive visual menus with chef specials, place orders directly to the kitchen, and pay with 1-click UPI. Zero waiter delays.</small>
+          </div>
+        </div>
+
+        <div class="cs-feat-item" style="padding: 20px;">
+          <span class="cs-feat-icon" style="font-size: 32px;">👨‍🍳</span>
+          <div>
+            <strong style="font-size: 16px;">Live Kitchen Display System (KDS) &amp; Captain App</strong>
+            <small style="font-size: 13.5px; line-height: 1.5;">Orders instantly appear on chefs' touchscreens categorized by station (Grill, Fryer, Dessert). Waitstaff track live preparation timers and receive alert pings when food is ready.</small>
+          </div>
+        </div>
+
+        <div class="cs-feat-item" style="padding: 20px;">
+          <span class="cs-feat-icon" style="font-size: 32px;">🎂</span>
+          <div>
+            <strong style="font-size: 16px;">Bakery Advance Cake Booking &amp; Weight Scale Sync</strong>
+            <small style="font-size: 13.5px; line-height: 1.5;">Manage advance custom fondant cake delivery dates, flavor customizations, customer photo references, and live Bluetooth weighing scale auto-charging per gram.</small>
+          </div>
+        </div>
+
+        <div class="cs-feat-item" style="padding: 20px;">
+          <span class="cs-feat-icon" style="font-size: 32px;">🏨</span>
+          <div>
+            <strong style="font-size: 16px;">Central Kitchen ERP &amp; Bar Recipe Inventory</strong>
+            <small style="font-size: 13.5px; line-height: 1.5;">Track raw ingredient deductions down to grams and milliliters for cocktails. Automatic purchase orders when milk, cheese, or coffee bean thresholds hit red.</small>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 2: PRICING
+       SECTION 2: ROADMAP
   ══════════════════════════════════════════════════════════ -->
-  <section class="hosp-sec-placeholder" id="pricing" style="background: var(--bg-subtle);">
+  <section class="hosp-sec-placeholder" id="roadmap" style="background: var(--bg-subtle);">
     <div class="container text-center">
-      <h2 class="hosp-sec-title">💳 Pricing Plans</h2>
-      <p class="hosp-sec-desc">Transparent, affordable plans tailored for standalone cafes, bakeries &amp; multi-chain
-        hotels.</p>
+      <span class="section-badge">🚀 LAUNCH ROADMAP</span>
+      <h2 class="hosp-sec-title">Release Timeline</h2>
+      <p class="hosp-sec-desc">Our engineering team is actively building and testing with selected pilot outlets across India.</p>
+
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; max-width: 860px; margin-left: auto; margin-right: auto;">
+        <div style="flex: 1; min-width: 240px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 22px; text-align: left;">
+          <div style="color: #10b981; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 6px;">✓ Phase 1 (Completed)</div>
+          <h4 style="font-size: 16px; margin-bottom: 8px;">Architecture &amp; Core Engine</h4>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Offline-first SQLite sync, thermal printer USB/Bluetooth drivers, and high-speed table mapping.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 240px; background: var(--bg-surface); border: 2px solid var(--primary); border-radius: 16px; padding: 22px; text-align: left; box-shadow: 0 8px 24px -4px rgba(183, 110, 121, 0.2);">
+          <div style="color: var(--primary); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 6px;">⚡ Phase 2 (In Progress)</div>
+          <h4 style="font-size: 16px; margin-bottom: 8px;">KDS &amp; QR Self-Order Engine</h4>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Captain Android app, Kitchen touch station routing, and customer WhatsApp bill generation.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 240px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 22px; text-align: left;">
+          <div style="color: var(--text-subtle); font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 6px;">⏳ Phase 3 (Upcoming)</div>
+          <h4 style="font-size: 16px; margin-bottom: 8px;">Public Launch &amp; Beta Rollout</h4>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Opening doors to all cafes, bakeries, and restaurants with lifetime discounted pricing for waitlist members.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 3: SUCCESS STORIES
+       SECTION 3: ALTERNATIVE SOLUTIONS BANNER
   ══════════════════════════════════════════════════════════ -->
-  <section class="hosp-sec-placeholder" id="success-stories">
+  <section class="hosp-sec-placeholder" id="contact" style="background: var(--bg-surface);">
     <div class="container text-center">
-      <h2 class="hosp-sec-title">🌟 Success Stories</h2>
-      <p class="hosp-sec-desc">See how 500+ cafes, restaurants &amp; bakeries across India scaled operations with
-        Priyulabs Hospitality Tech.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 4: CONTACT US
-  ══════════════════════════════════════════════════════════ -->
-  <section class="hosp-sec-placeholder" id="contact" style="background: var(--bg-subtle);">
-    <div class="container text-center">
-      <h2 class="hosp-sec-title">📞 Contact Us</h2>
-      <p class="hosp-sec-desc">Schedule a 10-minute live demonstration or talk with our hospitality technology experts.
-      </p>
-
-      <div class="cta-banner" style="margin-top: 40px;">
+      <div class="cta-banner" style="margin-top: 10px;">
         <div class="cta-content">
-          <h2>Ready to Upgrade Your Hospitality Operations?</h2>
-          <p>Book your live demo or whatsapp our team for quick setup across India.</p>
+          <h2>Need POS, Inventory &amp; Online Store Today?</h2>
+          <p>Our Retail &amp; FMCG Operating System, Custom Website Builder, and Staff Attendance HRMS are 100% LIVE and ready to deploy in under 10 minutes.</p>
           <div class="cta-buttons">
-            <a href="https://wa.me/917849074050?text=Hello!%20I%20want%20a%20demo%20for%20my%20Hospitality%20business."
-              class="btn-secondary-hero" target="_blank">💬 WhatsApp Support (+91 78490 74050)</a>
+            <a href="index.html#hardware" class="btn-primary-hero">Explore Live Retail OS →</a>
+            <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20about%20your%20live%20business%20solutions." class="btn-secondary-hero" target="_blank">💬 WhatsApp Consultation (+91 78490 74050)</a>
           </div>
         </div>
       </div>

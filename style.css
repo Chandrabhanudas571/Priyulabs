@@ -1,8 +1,8 @@
-/* ══════════════════════════════════════════════════════════════
-   PRIYULABS DIGITAL — MODERN LIGHT THEME DESIGN SYSTEM
-   ══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PRIYULABS DIGITAL â€” MODERN LIGHT THEME DESIGN SYSTEM
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ─── RESET & BASE ─────────────────────────────────────────── */
+/* â”€â”€â”€ RESET & BASE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 *,
 *::before,
 *::after {
@@ -12,7 +12,7 @@
 }
 
 :root {
-  /* Brand Color Palette — Luxury Rose Gold & Champagne */
+  /* Brand Color Palette â€” Luxury Rose Gold & Champagne */
   --primary: #b76e79;
   --primary-light: #d88a95;
   --primary-dark: #8c3847;
@@ -39,7 +39,7 @@
   --cyan-light: #4a7b8e;
   --cyan-bg: #f0f7f9;
 
-  /* Surfaces & Backgrounds — Rose Gold Elegance */
+  /* Surfaces & Backgrounds â€” Rose Gold Elegance */
   --bg-main: #fff8f7;
   --bg-surface: #ffffff;
   --bg-subtle: #fdf1ef;
@@ -47,14 +47,14 @@
   --bg-card: #ffffff;
   --bg-card-hover: #ffffff;
 
-  /* Typography Colors — Rich Espresso / Plum for High Contrast */
+  /* Typography Colors â€” Rich Espresso / Plum for High Contrast */
   --text-main: #2b1118;
   --text-body: #593640;
   --text-muted: #7a525d;
   --text-subtle: #a67c87;
   --text-inverse: #ffffff;
 
-  /* Borders & Dividers — Subtle Rose Gold Hairlines */
+  /* Borders & Dividers â€” Subtle Rose Gold Hairlines */
   --border-color: rgba(183, 110, 121, 0.2);
   --border-light: rgba(183, 110, 121, 0.1);
   --border-focus: rgba(183, 110, 121, 0.5);
@@ -110,7 +110,6 @@ html {
   scroll-behavior: smooth;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -119,7 +118,7 @@ body {
   color: var(--text-body);
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -143,7 +142,7 @@ button {
 }
 
 img,
-video,
+video:not(.hero-video-element),
 svg,
 canvas,
 iframe {
@@ -169,7 +168,7 @@ iframe {
   background: var(--primary-light);
 }
 
-/* ─── MODERN NAVBAR ────────────────────────────────────────── */
+/* â”€â”€â”€ MODERN NAVBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .navbar {
   position: fixed;
   top: 0;
@@ -818,7 +817,7 @@ iframe {
   display: none;
 }
 
-/* ─── BUTTONS ──────────────────────────────────────────────── */
+/* â”€â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -908,7 +907,7 @@ iframe {
   border-color: var(--border-color);
 }
 
-/* ─── SECTION HEADER & BADGES ──────────────────────────────── */
+/* â”€â”€â”€ SECTION HEADER & BADGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .section-header {
   text-align: center;
   margin-bottom: 56px;
@@ -949,14 +948,72 @@ iframe {
   line-height: 1.7;
 }
 
-/* ─── 1. MODERN LIGHT HERO SECTION ─────────────────────────── */
+/* ─── 1. CINEMATIC HERO VIDEO STAGE (SCROLL BLUR & REVEAL) ─── */
+.hero-video-stage {
+  position: relative;
+  width: 100%;
+  height: 185vh;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+}
+.hero-video-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: blur(0px) brightness(1);
+  will-change: filter;
+  transform: translateZ(0);
+  z-index: 1;
+}
+.hero-video-tint {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(18, 7, 11, 0.45) 0%, rgba(18, 7, 11, 0.85) 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+.hero-manifesto-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  max-width: 960px;
+  width: 92%;
+  padding: 20px 24px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transform-origin: center center;
+}
+
+/* ─── 2. ALL-IN-ONE BUSINESS PLATFORM OVERVIEW (Section 2) ─── */
 .hero {
-  min-height: 94vh;
+  min-height: auto;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding-top: 40px;
+  padding: 40px 0 60px;
 }
 
 /* Ambient Light Background */
@@ -1000,7 +1057,7 @@ iframe {
 .hero-inner {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 100px 24px 60px;
+  padding: 20px 24px 40px;
   display: flex;
   align-items: center;
   gap: 50px;
@@ -1105,9 +1162,9 @@ iframe {
   padding: 15px 32px;
 }
 
-/* ══════════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HERO SERVICE QUICK-LAUNCH BADGES (4 CORE PILLARS MATRIX)
-   ══════════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .hero-service-badges {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1233,9 +1290,9 @@ iframe {
   border-color: rgba(245, 158, 11, 0.4);
 }
 
-/* ══════════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HERO ECOSYSTEM SPOTLIGHT & GUARANTEE CARD
-   ══════════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .hero-spotlight-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 248, 248, 0.92) 100%);
   backdrop-filter: blur(16px);
@@ -1473,7 +1530,7 @@ iframe {
   background: var(--border-color);
 }
 
-/* ─── MODERN A-TO-Z ECOSYSTEM SHOWCASE (HERO VISUAL) ─────────── */
+/* â”€â”€â”€ MODERN A-TO-Z ECOSYSTEM SHOWCASE (HERO VISUAL) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero-visual {
   flex: 1 1 580px;
   position: relative;
@@ -2133,7 +2190,7 @@ iframe {
   left: -20px;
 }
 
-/* ─── HARDWARE COMPATIBILITY STRIP ─────────────────────────── */
+/* â”€â”€â”€ HARDWARE COMPATIBILITY STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hardware-strip {
   background: #ffffff;
   border-top: 1px solid var(--border-color);
@@ -2187,7 +2244,7 @@ iframe {
   transform: translateY(-1px);
 }
 
-/* ─── MARQUEE ──────────────────────────────────────────────── */
+/* â”€â”€â”€ MARQUEE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .marquee-strip {
   background: var(--bg-subtle);
   border-bottom: 1px solid var(--border-color);
@@ -2225,7 +2282,7 @@ iframe {
   }
 }
 
-/* ─── 3. PROBLEM VS SOLUTION SECTION ───────────────────────── */
+/* â”€â”€â”€ 3. PROBLEM VS SOLUTION SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .problem-section {
   padding: 110px 0;
   background: var(--bg-main);
@@ -2391,7 +2448,7 @@ iframe {
   line-height: 1.55;
 }
 
-/* ─── 4. THE 4 MAIN ATTRACTIONS ────────────────────────────── */
+/* â”€â”€â”€ 4. THE 4 MAIN ATTRACTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .attractions {
   padding: 110px 0;
   background: #ffffff;
@@ -2740,7 +2797,7 @@ iframe {
   filter: brightness(1.08);
 }
 
-/* ─── TESTIMONIALS (DUKANDAR SOCIAL PROOF) ─────────────────── */
+/* â”€â”€â”€ TESTIMONIALS (DUKANDAR SOCIAL PROOF) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .testimonials-section {
   padding: 100px 0;
   background: var(--bg-main);
@@ -2827,7 +2884,7 @@ iframe {
   color: var(--text-muted);
 }
 
-/* ─── 5. WHO WE SERVE ──────────────────────────────────────── */
+/* â”€â”€â”€ 5. WHO WE SERVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .who-we-serve {
   padding: 110px 0;
   background: #ffffff;
@@ -3062,7 +3119,7 @@ iframe {
   border-color: var(--border-color);
 }
 
-/* ─── 6. TRUST & OFFLINE BANNER ────────────────────────────── */
+/* â”€â”€â”€ 6. TRUST & OFFLINE BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .trust-banner {
   padding: 100px 0;
   background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
@@ -3205,7 +3262,7 @@ iframe {
   line-height: 1.55;
 }
 
-/* ─── 7. FINAL CALL-TO-ACTION SECTION ──────────────────────── */
+/* â”€â”€â”€ 7. FINAL CALL-TO-ACTION SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .cta-section {
   padding: 110px 0;
   position: relative;
@@ -3364,7 +3421,7 @@ iframe {
   margin-top: 14px;
 }
 
-/* ─── 8. FOOTER ────────────────────────────────────────────── */
+/* â”€â”€â”€ 8. FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .footer {
   background: #0f172a;
   color: #cbd5e1;
@@ -3497,7 +3554,7 @@ iframe {
   color: #ffffff;
 }
 
-/* ─── MODALS (DEMO & POLICY) ───────────────────────────────── */
+/* â”€â”€â”€ MODALS (DEMO & POLICY) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -3594,6 +3651,273 @@ iframe {
   color: #ffffff;
   background: var(--rose);
   border-color: var(--rose);
+}
+
+/* ─── COMING SOON BADGES & MODAL ─── */
+.nav-soon-pill {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #b76e79 0%, #c47683 100%);
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  margin-left: 5px;
+  vertical-align: middle;
+  box-shadow: 0 2px 6px rgba(183, 110, 121, 0.35);
+}
+
+.sub-badge-soon {
+  display: inline-block;
+  background: rgba(183, 110, 121, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(183, 110, 121, 0.25);
+  font-size: 9.5px;
+  font-weight: 750;
+  padding: 1px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mega-soon-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(183, 110, 121, 0.08) 0%, rgba(226, 155, 136, 0.08) 100%);
+  border: 1px dashed rgba(183, 110, 121, 0.35);
+  font-size: 11.5px;
+  font-weight: 750;
+  color: var(--primary-dark);
+}
+
+.coming-soon-card {
+  max-width: 580px;
+  width: 92%;
+  border-radius: 24px;
+  padding: 36px 32px 30px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-xl), 0 0 60px -10px rgba(183, 110, 121, 0.25);
+  border: 1px solid var(--border-highlight);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.coming-soon-card .modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+.coming-soon-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(183, 110, 121, 0.15) 0%, rgba(226, 155, 136, 0.15) 100%);
+  border: 1px solid rgba(183, 110, 121, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  position: relative;
+  box-shadow: 0 10px 28px -6px rgba(183, 110, 121, 0.3);
+}
+
+.cs-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(183, 110, 121, 0.1);
+  color: var(--primary);
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.cs-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3.8vw, 30px);
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.cs-subtitle {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto 22px;
+}
+
+.cs-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+@media (max-width: 540px) {
+  .cs-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .coming-soon-card {
+    padding: 28px 18px 22px;
+  }
+}
+
+.cs-feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+}
+
+.cs-feat-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.cs-feat-item strong {
+  display: block;
+  font-size: 13px;
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+
+.cs-feat-item small {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.cs-waitlist-box {
+  background: linear-gradient(135deg, rgba(183, 110, 121, 0.08) 0%, rgba(226, 155, 136, 0.08) 100%);
+  border: 1px solid rgba(183, 110, 121, 0.25);
+  border-radius: 18px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.cs-wl-title span {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 3px;
+}
+
+.cs-wl-title small {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.cs-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .cs-input-group {
+    flex-direction: column;
+  }
+}
+
+.cs-input {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.15);
+}
+
+.cs-submit-btn {
+  padding: 11px 20px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #a75462 0%, #c47683 100%);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 750;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(183, 110, 121, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(183, 110, 121, 0.5);
+}
+
+.cs-wl-success {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #065f46;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .cs-wl-success {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.cs-footer-actions {
+  text-align: center;
+}
+
+.cs-btn-secondary {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.cs-btn-secondary:hover {
+  color: var(--primary-dark);
 }
 
 /* Sector Solutions Breakdown Modal */
@@ -3772,7 +4096,7 @@ iframe {
   color: #34d399;
 }
 
-/* ─── PRIYULABS INTERACTIVE 6-SERVICE DEMO PLAYGROUND CSS ──── */
+/* â”€â”€â”€ PRIYULABS INTERACTIVE 6-SERVICE DEMO PLAYGROUND CSS â”€â”€â”€â”€ */
 .modal-card.modal-hub-wide {
   max-width: 1020px;
   width: 95%;
@@ -3865,7 +4189,7 @@ iframe {
   line-height: 1.45;
 }
 
-/* ─── TAB 1: SMART POS STYLES ───────────────────────────────── */
+/* â”€â”€â”€ TAB 1: SMART POS STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sim-header-row {
   display: flex;
   justify-content: space-between;
@@ -4229,7 +4553,7 @@ iframe {
   gap: 8px;
 }
 
-/* ─── TAB 2: ERP & STAFF HRMS STYLES ────────────────────────── */
+/* â”€â”€â”€ TAB 2: ERP & STAFF HRMS STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .erp-quick-actions {
   display: flex;
   gap: 8px;
@@ -4468,7 +4792,7 @@ iframe {
   font-size: 12px;
 }
 
-/* ─── TAB 3: CUSTOM WEBSITE BUILDER STYLES ──────────────────── */
+/* â”€â”€â”€ TAB 3: CUSTOM WEBSITE BUILDER STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .ws-control-group {
   margin-bottom: 10px;
 }
@@ -4685,7 +5009,7 @@ iframe {
   cursor: pointer;
 }
 
-/* ─── TAB 4: DIGITAL MARKETING & ADS ROI STYLES ─────────────── */
+/* â”€â”€â”€ TAB 4: DIGITAL MARKETING & ADS ROI STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mkt-control-group {
   margin-bottom: 12px;
 }
@@ -4872,7 +5196,7 @@ iframe {
   cursor: pointer;
 }
 
-/* ─── TAB 5: LOGO & BRAND STUDIO STYLES ─────────────────────── */
+/* â”€â”€â”€ TAB 5: LOGO & BRAND STUDIO STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .brand-input-group {
   margin-bottom: 10px;
 }
@@ -5021,7 +5345,7 @@ iframe {
   font-weight: 800;
 }
 
-/* ─── TAB 6: ALL-IN-ONE BUNDLE STYLES ───────────────────────── */
+/* â”€â”€â”€ TAB 6: ALL-IN-ONE BUNDLE STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .bundle-check-list {
   display: flex;
   flex-direction: column;
@@ -5210,7 +5534,7 @@ iframe {
   margin-bottom: 14px;
 }
 
-/* ─── WHATSAPP FLOATING BUTTON ─────────────────────────────── */
+/* â”€â”€â”€ WHATSAPP FLOATING BUTTON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .whatsapp-float {
   position: fixed;
   bottom: 26px;
@@ -5239,7 +5563,7 @@ iframe {
   font-size: 20px;
 }
 
-/* ─── TOAST NOTIFICATION ───────────────────────────────────── */
+/* â”€â”€â”€ TOAST NOTIFICATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .toast {
   position: fixed;
   bottom: 28px;
@@ -5267,7 +5591,7 @@ iframe {
   opacity: 1;
 }
 
-/* ─── AOS ANIMATION ────────────────────────────────────────── */
+/* â”€â”€â”€ AOS ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 [data-aos] {
   opacity: 0;
   transform: translateY(24px);
@@ -5279,7 +5603,7 @@ iframe {
   transform: translateY(0);
 }
 
-/* ─── SECTOR VIDEO SHOWCASE COMPONENT (DESKTOP) ───────────── */
+/* â”€â”€â”€ SECTOR VIDEO SHOWCASE COMPONENT (DESKTOP) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sol-video-showcase {
   margin: 36px 0 40px;
   background: var(--bg-surface);
@@ -5376,9 +5700,9 @@ iframe {
 }
 
 
-/* ══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    RESPONSIVE BREAKPOINTS & DEVICE OPTIMIZATIONS (AT THE VERY BOTTOM)
-   ══════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Square-Style Native App-like Touch Feedback */
 @media (hover: none) and (pointer: coarse),
@@ -5771,9 +6095,9 @@ textarea,
   visibility: visible !important;
 }
 
-/* ══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    1. DESKTOP SCREENS (> 1024px) - UNTOUCHED CLEAN GRID LAYOUT
-   ══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (min-width: 1025px) {
   .attr-grid {
     display: grid !important;
@@ -5814,9 +6138,9 @@ textarea,
   }
 }
 
-/* ══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    2. TABLETS & MOBILES (<= 1024px) - HORIZONTAL SWIPE SLIDING
-   ══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (max-width: 1024px) {
   .attr-grid,
   .serve-grid,
@@ -5899,12 +6223,12 @@ textarea,
     -webkit-backdrop-filter: none !important;
   }
 
-  /* Prevent horizontal overflow globally */
+  /* Prevent horizontal overflow globally without breaking position: sticky */
   html,
   body {
     width: 100% !important;
     max-width: 100vw !important;
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
   }
 
   .container {
@@ -6010,9 +6334,9 @@ textarea,
     transform: translateY(-7px) rotate(-45deg) !important;
   }
 
-  /* ══════════════════════════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
-     ══════════════════════════════════════════════════════════ */
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   .mobile-drawer {
     display: flex !important;
     flex-direction: column !important;
@@ -7273,9 +7597,9 @@ textarea,
   }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   WHAT'S NEW SECTION — LUXURY ROSE GOLD THEME
-   ══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   WHAT'S NEW SECTION â€” LUXURY ROSE GOLD THEME
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 .whats-new-section {
   padding: 100px 0;
@@ -7302,7 +7626,7 @@ textarea,
   bottom: -150px; right: -100px;
 }
 
-/* ── Header ──────────────────────────────────────────── */
+/* â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-header {
   text-align: center;
   margin-bottom: 52px;
@@ -7357,7 +7681,7 @@ textarea,
   line-height: 1.75;
 }
 
-/* ── Stats Bar ───────────────────────────────────────── */
+/* â”€â”€ Stats Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-stats-bar {
   display: flex;
   align-items: center;
@@ -7400,7 +7724,7 @@ textarea,
   background: rgba(183, 110, 121, 0.22);
 }
 
-/* ── Flip Card Grid ──────────────────────────────────── */
+/* â”€â”€ Flip Card Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -7438,7 +7762,7 @@ textarea,
   box-sizing: border-box;
 }
 
-/* ── FRONT face (Pearlescent Rose Gold Glass) ────────── */
+/* â”€â”€ FRONT face (Pearlescent Rose Gold Glass) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-card-front {
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
@@ -7508,7 +7832,7 @@ textarea,
   font-weight: 600;
 }
 
-/* ── Transparent Card Watermark Illustration ─────────── */
+/* â”€â”€ Transparent Card Watermark Illustration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-card-watermark {
   position: absolute;
   top: 18px;
@@ -7535,7 +7859,7 @@ textarea,
   color: #ffffff;
 }
 
-/* ── Moving Golden Border Frame (Slim Beam on Flipped Back Face) ───── */
+/* â”€â”€ Moving Golden Border Frame (Slim Beam on Flipped Back Face) â”€â”€â”€â”€â”€ */
 .wn-gold-frame {
   position: absolute;
   inset: 6px;
@@ -7581,7 +7905,7 @@ textarea,
   }
 }
 
-/* ── BACK face (Luxury Metallic Rose Gradients) ──────── */
+/* â”€â”€ BACK face (Luxury Metallic Rose Gradients) â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-card-back {
   transform: rotateY(180deg);
   display: flex;
@@ -7628,7 +7952,7 @@ textarea,
   line-height: 1.45;
 }
 .wn-back-points li::before {
-  content: '✓';
+  content: 'âœ“';
   width: 18px;
   height: 18px;
   background: rgba(255, 255, 255, 0.25);
@@ -7661,7 +7985,7 @@ textarea,
   transform: translateY(-1px);
 }
 
-/* ── India Trust Strip ───────────────────────────────── */
+/* â”€â”€ India Trust Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-india-strip {
   display: flex;
   align-items: center;
@@ -7713,7 +8037,7 @@ textarea,
   white-space: nowrap;
 }
 
-/* ── Bottom CTA Row ──────────────────────────────────── */
+/* â”€â”€ Bottom CTA Row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wn-cta-row {
   text-align: center;
   display: flex;
@@ -7739,7 +8063,7 @@ textarea,
   box-shadow: 0 14px 45px rgba(183, 110, 121, 0.55);
 }
 
-/* ── Responsive ──────────────────────────────────────── */
+/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 1024px) {
   .wn-cards-grid { grid-template-columns: repeat(2, 1fr); }
   .wn-india-strip { flex-direction: column; align-items: flex-start; }
@@ -7753,9 +8077,3 @@ textarea,
   .wn-stat { padding: 0 12px; }
   .wn-india-strip { padding: 22px 20px; }
 }
-@media (hover: none) {
-  /* Touch devices — tap to flip */
-  .wn-flip-wrap.flipped .wn-flip-inner { transform: rotateY(180deg); }
-}
-
-

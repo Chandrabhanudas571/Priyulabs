@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Space+Grotesk:wght@500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260908" />
 </head>
 
 <body>
@@ -152,33 +152,11 @@
           </div>
         </li>
 
-        <!-- 2B. Hospitality Tech Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="hospitality.html" class="nav-link-title dropdown-trigger">
-            Hospitality Tech <span class="drop-arrow">▾</span>
+        <!-- 2B. Hospitality Tech (Direct Click -> Coming Soon Modal, No Hover Dropdown) -->
+        <li>
+          <a href="javascript:void(0)" onclick="openComingSoonModal('Hospitality Tech', event)" class="nav-link-title" style="cursor: pointer;">
+            Hospitality Tech <span class="nav-soon-pill">Soon</span>
           </a>
-          <div class="mega-dropdown square-dropdown-sm">
-            <div class="mega-dropdown-inner">
-              <div class="mega-column">
-                <a href="hospitality.html#product" class="square-sub-item">
-                  <strong>☕ Hospitality Product OS</strong>
-                  <span>Table layout management, QR menus &amp; POS billing</span>
-                </a>
-                <a href="hospitality.html#pricing" class="square-sub-item">
-                  <strong>💳 Hospitality Pricing</strong>
-                  <span>Plans for standalone cafes, bakeries &amp; hotels</span>
-                </a>
-                <a href="hospitality.html#success-stories" class="square-sub-item">
-                  <strong>🌟 Success Stories</strong>
-                  <span>Case studies from 500+ Indian F&amp;B outlets</span>
-                </a>
-                <a href="hospitality.html#contact" class="square-sub-item">
-                  <strong>📞 Contact Us</strong>
-                  <span>Book 10-minute demo with hospitality team</span>
-                </a>
-              </div>
-            </div>
-          </div>
         </li>
 
         <!-- 4. Pricing -->
@@ -236,10 +214,9 @@
               <span>Solutions</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelHospitality">
-              <span>Hospitality Tech</span>
-              <span class="drawer-chevron">›</span>
-            </button>
+            <a href="javascript:void(0)" class="drawer-nav-item drawer-link" onclick="openComingSoonModal('Hospitality Tech', event); closeMobileDrawer();">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
+            </a>
             <a href="index.html#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>Pricing</span>
             </a>
@@ -336,34 +313,38 @@
       <div class="drawer-panel" id="drawerPanelHospitality" data-level="2" data-parent="drawerPanelMain"
         data-title="Hospitality Tech">
         <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite</div>
+          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite • Coming Soon</div>
+          <div class="mega-soon-banner" style="margin: 10px 0 14px;">
+            <span class="pulse-dot"></span>
+            <span>🚀 In Active Beta • Launching Soon</span>
+          </div>
           <nav class="drawer-solution-cards">
-            <a href="hospitality.html#product" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="javascript:void(0)" class="drawer-sol-card" onclick="openComingSoonModal('Hospitality Product OS', event); closeMobileDrawer();">
               <div class="drawer-sol-icon">☕</div>
               <div class="drawer-sol-info">
-                <strong>Hospitality Product OS</strong>
+                <strong>Hospitality Product OS <span class="sub-badge-soon">Soon</span></strong>
                 <span>Table layout, QR menus &amp; instant POS billing</span>
               </div>
             </a>
-            <a href="hospitality.html#pricing" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="javascript:void(0)" class="drawer-sol-card" onclick="openComingSoonModal('Hospitality Pricing', event); closeMobileDrawer();">
               <div class="drawer-sol-icon">💳</div>
               <div class="drawer-sol-info">
-                <strong>Hospitality Pricing</strong>
+                <strong>Hospitality Pricing <span class="sub-badge-soon">Soon</span></strong>
                 <span>Plans tailored for cafes, bakeries, bars &amp; hotels</span>
               </div>
             </a>
-            <a href="hospitality.html#success-stories" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="javascript:void(0)" class="drawer-sol-card" onclick="openComingSoonModal('Success Stories', event); closeMobileDrawer();">
               <div class="drawer-sol-icon">🌟</div>
               <div class="drawer-sol-info">
-                <strong>Success Stories</strong>
-                <span>Case studies from 500+ Indian F&amp;B outlets</span>
+                <strong>Success Stories <span class="sub-badge-soon">Soon</span></strong>
+                <span>Case studies from upcoming Indian F&amp;B outlets</span>
               </div>
             </a>
-            <a href="hospitality.html#contact" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="javascript:void(0)" class="drawer-sol-card" onclick="openComingSoonModal('VIP Early Access Demo', event); closeMobileDrawer();">
               <div class="drawer-sol-icon">📞</div>
               <div class="drawer-sol-info">
-                <strong>Book a 10-Min Demo</strong>
-                <span>Speak directly with hospitality specialist</span>
+                <strong>Join VIP Waitlist <span class="sub-badge-soon">50% Off</span></strong>
+                <span>Get early access on launch day</span>
               </div>
             </a>
           </nav>
@@ -460,203 +441,373 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
-       1. THE HERO SECTION (Modern A-to-Z Platform Showcase)
+       HERO VIDEO SECTION (100vh — ZERO EMPTY SPACE)
+       • Opens with crystal clear background video playing
+       • On scroll: video smoothly blurs & hero line emerges directly on it
   ══════════════════════════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <!-- Realistic Subtle Background Lighting & Grid -->
-    <div class="hero-bg-realistic">
-      <div class="hero-photo-vignette"></div>
-      <div class="ambient-glow"></div>
-      <div class="tech-grid-realistic"></div>
-    </div>
+  <style>
+    .hero-video-stage {
+      position: relative;
+      width: 100%;
+      height: 185vh;
+      margin: 0;
+      padding: 0;
+      background: #000000;
+    }
+    .hero-video-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: blur(0px) brightness(1);
+      will-change: filter;
+      transform: translateZ(0);
+      z-index: 1;
+    }
+    .hero-video-tint {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(18, 7, 11, 0.45) 0%, rgba(18, 7, 11, 0.85) 100%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      will-change: opacity;
+      transform: translateZ(0);
+    }
+    .hero-manifesto-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      text-align: center;
+      max-width: 960px;
+      width: 92%;
+      padding: 20px 24px;
+      opacity: 0;
+      pointer-events: none;
+      will-change: opacity, transform;
+      transform-origin: center center;
+    }
+    .hero-video-controls {
+      position: absolute;
+      bottom: 24px;
+      right: 28px;
+      z-index: 20;
+    }
+    .hero-audio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-body, -apple-system, sans-serif);
+      font-size: 0.82rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 20px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fcecef;
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 10px #34d399;
+      display: inline-block;
+    }
+    .hero-headline {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 0 0 18px;
+    }
+    .hl-line1 {
+      font-family: var(--font-heading, 'Space Grotesk', -apple-system, sans-serif);
+      font-size: clamp(26px, 4.5vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.85);
+    }
+    .hl-line2 {
+      font-family: 'Newsreader', 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(25px, 4.2vw, 52px);
+      line-height: 1.18;
+      background: linear-gradient(135deg, #f8b4bc 0%, #e5989b 50%, #fcd5ce 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-description {
+      font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+      font-size: clamp(14px, 1.4vw, 17px);
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.65;
+      margin: 0 auto 22px;
+      max-width: 820px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+    }
+    .hero-description strong {
+      color: #ffffff;
+      font-weight: 750;
+    }
+    .hero-feature-pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .h-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .hero-cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 30px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #a75462 0%, #c47683 50%, #e29b88 100%);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(183, 110, 121, 0.45);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-primary-hero:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(183, 110, 121, 0.65);
+    }
+    .btn-ghost-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .btn-ghost-hero:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .hero-manifesto-overlay {
+        padding: 16px 12px;
+        width: 95%;
+      }
+      .hl-line1 { font-size: clamp(20px, 6.5vw, 32px); }
+      .hl-line2 { font-size: clamp(19px, 6vw, 28px); }
+      .hero-description { font-size: 13px; line-height: 1.55; margin-bottom: 16px; }
+      .hero-feature-pills { gap: 6px; margin-bottom: 18px; }
+      .h-pill { font-size: 11px; padding: 6px 12px; }
+      .hero-cta-buttons { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto; gap: 10px; }
+      .btn-primary-hero, .btn-ghost-hero { width: 100%; text-align: center; justify-content: center; }
+      .hero-video-controls { bottom: 16px; right: 16px; }
+      #heroAudioLabel { display: none; }
+      .hero-audio-btn { padding: 8px 10px; border-radius: 50%; }
+    }
+  </style>
 
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-live-pulse"></span>
-          <span>🚀 ALL-IN-ONE BUSINESS PLATFORM • COMPLETE A TO Z DIGITAL SOLUTION</span>
-        </div>
+  <section class="hero-video-stage" id="heroStage">
+    <div class="hero-video-sticky" id="heroSticky">
+      <!-- Fullscreen Video Element -->
+      <video class="hero-bg-video" id="heroBgVideo" autoplay muted loop playsinline preload="auto">
+        <source src="hero-video.mp4" type="video/mp4" />
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
 
-        <h1 class="hero-title">
-          From Neighborhood Favorite to Unstoppable Brand — <span class="gradient-text">Run Every Checkout, Click &amp;
-            Shelf on Native AI.</span>
-        </h1>
+      <!-- Dark Tint Gradient (fades in smoothly on scroll) -->
+      <div class="hero-video-tint" id="heroVideoTint"></div>
 
-        <p class="hero-desc">
-          Whether you need a high-converting <strong>Custom Website, E-Commerce Store &amp; Mobile App</strong>, or
-          <strong>AI-Billing POS, Smart Inventory, WhatsApp Marketing, Staff HRMS &amp; GST Sync</strong> — we
-          deliver complete end-to-end digital solutions tailored to launch, manage, and scale your business.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#cta" class="btn-primary hero-btn-main">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-            Start Your Free Trial
-          </a>
-          <button type="button" class="btn-ghost" id="heroDemoBtn" onclick="openDemoModal()">
-            ✨ Interactive Demo &amp; Portfolio
-          </button>
-        </div>
-
-        <!-- Interactive Service Quick-Launch Badges (4 Core Pillars with Direct Redirection) -->
-        <div class="hero-service-badges">
-          <a href="website-builder.html" class="hero-s-badge" title="Explore Custom Website &amp; App Solutions">
-            <span class="s-badge-icon">🌐</span>
-            <div class="s-badge-info">
-              <span class="s-badge-title">Custom Website</span>
-              <span class="s-badge-meta">Live in 5 Days →</span>
-            </div>
-            <span class="s-badge-arrow">↗</span>
-          </a>
-
-          <a href="pos.html" class="hero-s-badge" title="Explore Smart POS &amp; Touch Billing Solutions">
-            <span class="s-badge-icon">🖥️</span>
-            <div class="s-badge-info">
-              <span class="s-badge-title">Smart POS</span>
-              <span class="s-badge-meta">100% Offline Mode →</span>
-            </div>
-            <span class="s-badge-arrow">↗</span>
-          </a>
-
-          <a href="index.html#attractions" class="hero-s-badge" title="Explore Complete Management, ERP &amp; Staff HRMS">
-            <span class="s-badge-icon">📊</span>
-            <div class="s-badge-info">
-              <span class="s-badge-title">Complete Management</span>
-              <span class="s-badge-meta">ERP, HRMS &amp; GST →</span>
-            </div>
-            <span class="s-badge-arrow">↗</span>
-          </a>
-
-          <a href="digital-marketing.html" class="hero-s-badge highlight-bundle" title="Explore Ads, Meta Leads &amp; Digital Marketing Solutions">
-            <span class="s-badge-icon">📣</span>
-            <div class="s-badge-info">
-              <span class="s-badge-title">Ads &amp; Digital Marketing</span>
-              <span class="s-badge-meta tag-save">WhatsApp &amp; High-ROI →</span>
-            </div>
-            <span class="s-badge-arrow">↗</span>
-          </a>
-        </div>
-
-        <!-- Live Ecosystem Guarantee & Spotlight Card (Green Marked Zone) -->
-        <div class="hero-spotlight-card">
-          <div class="spotlight-header">
-            <div class="spotlight-pulse-tag">
-              <span class="live-dot-green"></span>
-              <span>ALL-IN-ONE DIGITAL ECOSYSTEM</span>
-            </div>
-            <div class="spotlight-trust-pill">
-              <span>🇮🇳 MSME Certified &amp; UDYAM-OD-19-0177979</span>
-            </div>
-          </div>
-
-          <div class="spotlight-body">
-            <div class="spotlight-ticker" id="heroSpotlightTicker">
-              <div class="ticker-item active" data-index="0">
-                <span class="ticker-icon">⚡</span>
-                <div class="ticker-content">
-                  <div class="ticker-head">5-Day Website &amp; App Launch Guarantee</div>
-                  <div class="ticker-sub">High-converting online store, domain &amp; payment gateway delivered in 5 business days.</div>
-                </div>
-              </div>
-              <div class="ticker-item" data-index="1">
-                <span class="ticker-icon">🖥️</span>
-                <div class="ticker-content">
-                  <div class="ticker-head">Zero-Downtime Offline POS Billing</div>
-                  <div class="ticker-sub">2-second barcode touch billing, thermal printing &amp; WhatsApp bills with 100% offline sync.</div>
-                </div>
-              </div>
-              <div class="ticker-item" data-index="2">
-                <span class="ticker-icon">👥</span>
-                <div class="ticker-content">
-                  <div class="ticker-head">Staff Selfie HRMS &amp; Live GPS Attendance</div>
-                  <div class="ticker-sub">Prevent proxy attendance with biometric selfie check-in &amp; 1-click salary slip generation.</div>
-                </div>
-              </div>
-              <div class="ticker-item" data-index="3">
-                <span class="ticker-icon">💬</span>
-                <div class="ticker-content">
-                  <div class="ticker-head">Automated WhatsApp Orders &amp; High-ROI Ads</div>
-                  <div class="ticker-sub">Send catalog broadcasts, abandoned cart recovery &amp; generate verified customer leads.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="spotlight-action">
-              <button type="button" class="spotlight-cta-btn" onclick="openDemoModal()" title="Explore live interactive playground">
-                <span>✨ Try Live Interactive Playground</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-              <div class="spotlight-dots" id="spotlightDots">
-                <span class="s-dot active" onclick="setSpotlightIndex(0)"></span>
-                <span class="s-dot" onclick="setSpotlightIndex(1)"></span>
-                <span class="s-dot" onclick="setSpotlightIndex(2)"></span>
-                <span class="s-dot" onclick="setSpotlightIndex(3)"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Grounded Business Stats (Yellow Marked Zone Updated to 100+) -->
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number" data-target="100" data-suffix="+">100+</div>
-            <div class="stat-label">Websites &amp; Stores Powered</div>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <div class="stat-number" data-target="100" data-suffix="%">100%</div>
-            <div class="stat-label">A-to-Z Business Coverage</div>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <div class="stat-number" data-target="10" data-suffix=" min">10 min</div>
-            <div class="stat-label">Fast Setup &amp; Onboarding</div>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <div class="stat-number" data-target="0" data-suffix="%">0%</div>
-            <div class="stat-label">Tech Headache For You</div>
-          </div>
-        </div>
+      <!-- Floating Audio Control -->
+      <div class="hero-video-controls">
+        <button type="button" class="hero-audio-btn" id="heroAudioToggle" onclick="toggleHeroAudio()" aria-label="Toggle Sound">
+          <span id="heroAudioIcon">🔇</span>
+          <span id="heroAudioLabel">Muted</span>
+        </button>
       </div>
 
-      <!-- Modern Multi-Device Platform Showcase (Hero Visual) -->
-      <div class="hero-visual">
-        <div class="hero-showcase-wrapper">
-          <div class="hero-showcase-glow"></div>
-          <div class="hero-showcase-frame">
-            <img src="assets/hero_platform_showcase.jpg"
-              alt="Priyulabs Complete Business Ecosystem - POS, ERP, Website &amp; Automation" class="hero-showcase-img"
-              id="heroShowcaseImg" />
-            <div class="hero-live-sync-badge">
-              <span class="pulse-dot"></span>
-              <span>LIVE CLOUD ECOSYSTEM SYNC</span>
-            </div>
-          </div>
+      <!-- Hero Line & Content (Emerges directly over blurred video on scroll) -->
+      <div class="hero-manifesto-overlay" id="heroManifestoOverlay">
+        <div class="hero-badge-pill">
+          <span class="hero-live-dot"></span>
+          <span>The Software Standard • All-in-One Business Platform</span>
         </div>
 
-        <!-- Floating Interactive Badges -->
-        <div class="hero-badge-float f1">
-          <span class="f-icon">🌐</span>
-          <div>
-            <div class="fbf-title">Custom Websites &amp; Apps</div>
-            <div class="fbf-sub">Launch your brand in 24 hours!</div>
-          </div>
+        <h1 class="hero-headline">
+          <span class="hl-line1">From Neighborhood Favorite to Unstoppable Brand —</span>
+          <span class="hl-line2">Run Every Checkout, Click &amp; Shelf on Native AI.</span>
+        </h1>
+
+        <p class="hero-description">
+          Whether you need a high-converting <strong>Custom Website, E-Commerce Store &amp; Mobile App</strong>, or
+          <strong>AI-Billing POS, Smart Inventory, WhatsApp Marketing, Staff HRMS &amp; GST Sync</strong> — we deliver complete end-to-end digital solutions tailored to launch, manage, and scale your business.
+        </p>
+
+        <!-- Glass Feature Pills -->
+        <div class="hero-feature-pills">
+          <span class="h-pill">⚡ 1.2s Offline Billing</span>
+          <span class="h-pill">📦 Real-time Vision AI ERP</span>
+          <span class="h-pill">📍 Geofenced Selfie HRMS</span>
+          <span class="h-pill">📑 1-Click GST Reconciliation</span>
         </div>
-        <div class="hero-badge-float f2">
-          <span class="f-icon">⚡</span>
-          <div>
-            <div class="fbf-title">All-in-One Platform</div>
-            <div class="fbf-sub">Websites • POS • ERP • Automation</div>
-          </div>
+
+        <div class="hero-cta-buttons">
+          <a href="#hardware" class="btn-primary-hero">
+            Explore The Platform Below ↓
+          </a>
+          <button type="button" class="btn-ghost-hero" onclick="openDemoModal()">
+            ✨ Book 10-Min Live Demo
+          </button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Inline Direct Scroll & Autoplay Engine (Guaranteed Execution & Zero Cache Delay) -->
+  <script>
+    (function () {
+      const v = document.getElementById('heroBgVideo');
+      const tint = document.getElementById('heroVideoTint');
+      const overlay = document.getElementById('heroManifestoOverlay');
+      const stage = document.getElementById('heroStage');
+
+      if (v) {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.play().catch(function () {});
+        const unlockPlay = function () {
+          v.play().catch(function () {});
+        };
+        window.addEventListener('click', unlockPlay, { once: true });
+        window.addEventListener('touchstart', unlockPlay, { once: true, passive: true });
+        window.addEventListener('scroll', unlockPlay, { once: true, passive: true });
+      }
+
+      let ticking = false;
+
+      function updateVideoHero() {
+        if (!stage) return;
+        const rect = stage.getBoundingClientRect();
+        const stageHeight = stage.offsetHeight - window.innerHeight;
+        if (stageHeight <= 0) return;
+
+        // Progress from 0.0 (top of stage) to 1.0 (end of sticky stage)
+        const scrolled = Math.max(0, -rect.top);
+        const progress = Math.min(1, Math.max(0, scrolled / stageHeight));
+
+        // 1. Video Blur (0 -> 14px) & Brightness (1.0 -> 0.50)
+        if (v) {
+          const blur = (progress * 14).toFixed(1);
+          const bright = (1 - progress * 0.50).toFixed(2);
+          v.style.filter = 'blur(' + blur + 'px) brightness(' + bright + ')';
+        }
+
+        // 2. Dark Tint Overlay (0.0 -> 0.80)
+        if (tint) {
+          tint.style.opacity = (progress * 0.80).toFixed(2);
+        }
+
+        // 3. Manifesto Text emerges and settles EARLY while pinned (between progress 0.08 and 0.55)
+        // By 0.55 it is 100% visible and settled, while the hero is still completely PINNED!
+        if (overlay) {
+          const textProgress = Math.max(0, Math.min(1, (progress - 0.08) / 0.47));
+          overlay.style.opacity = textProgress.toFixed(2);
+          const translateY = (1 - textProgress) * 28;
+          const scale = (0.96 + textProgress * 0.04).toFixed(3);
+          overlay.style.transform = 'translate(-50%, calc(-50% + ' + translateY.toFixed(1) + 'px)) scale(' + scale + ')';
+          overlay.style.pointerEvents = textProgress > 0.3 ? 'auto' : 'none';
+        }
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(updateVideoHero);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(updateVideoHero);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      updateVideoHero();
+      window.__heroVideoScrollerActive = true;
+    })();
+  </script>
+
 
   <!-- Hardware Compatibility Strip -->
   <div class="hardware-strip" id="hardware">
@@ -2333,6 +2484,87 @@
         <button class="btn-primary-sm" onclick="closePolicyModal()">I Understand &amp; Close</button>
       </div>
     </div>
+  <!-- ══════════════════════════════════════════════════════════
+       HOSPITALITY TECH COMING SOON MODAL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true" onclick="if(event.target === this) closeComingSoonModal();">
+    <div class="modal-card coming-soon-card">
+      <button class="modal-close" onclick="closeComingSoonModal()" aria-label="Close modal">&times;</button>
+      <div class="coming-soon-body">
+        <div class="coming-soon-icon-wrap">
+          <span class="cs-icon-glow"></span>
+          <span class="cs-emoji">🛎️</span>
+        </div>
+
+        <div class="cs-eyebrow">
+          <span class="pulse-dot"></span>
+          <span>In Active Development • Launching Soon</span>
+        </div>
+
+        <h3 class="cs-title">Hospitality Tech is Coming Soon!</h3>
+        <p class="cs-subtitle">
+          Hum restaurants, cafes, bakeries aur hotels ke liye India ka smartest <strong>All-in-One F&amp;B Operating System</strong> craft kar rahe hain. Ye service hamare upcoming release me live hogi.
+        </p>
+
+        <!-- Sneak Peek Feature Grid -->
+        <div class="cs-features-grid">
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon">📱</span>
+            <div>
+              <strong>QR Table Ordering &amp; Pay</strong>
+              <small>Contactless menus with instant UPI settlement</small>
+            </div>
+          </div>
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon">👨‍🍳</span>
+            <div>
+              <strong>Live Kitchen Display (KDS)</strong>
+              <small>Real-time order tickets &amp; station routing</small>
+            </div>
+          </div>
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon">🎂</span>
+            <div>
+              <strong>Bakery &amp; Weight Scale ERP</strong>
+              <small>Custom cake bookings with Bluetooth scale sync</small>
+            </div>
+          </div>
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon">🏨</span>
+            <div>
+              <strong>Multi-Outlet Central Kitchen</strong>
+              <small>Recipe management &amp; automated raw material POs</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIP Early Access Waitlist Box -->
+        <div class="cs-waitlist-box">
+          <div class="cs-wl-title">
+            <span>✨ Be the First to Experience It</span>
+            <small>Join 200+ F&amp;B owners on the VIP early access list (Get 50% launch discount)</small>
+          </div>
+          <form class="cs-wl-form" onsubmit="handleWaitlistSubmit(event)">
+            <div class="cs-input-group">
+              <input type="text" class="cs-input" id="csContactInput" placeholder="Enter your WhatsApp number or Email" required />
+              <button type="submit" class="cs-submit-btn">
+                <span>Notify Me 🚀</span>
+              </button>
+            </div>
+          </form>
+          <div class="cs-wl-success" id="csWlSuccess" style="display: none;">
+            ✅ <strong>You're on the VIP Waitlist!</strong> We will WhatsApp you with exclusive beta access as soon as it launches.
+          </div>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="cs-footer-actions">
+          <a href="index.html#hardware" onclick="closeComingSoonModal()" class="cs-btn-secondary">
+            Explore Available Retail &amp; POS Systems →
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
@@ -2347,7 +2579,10 @@
   <!-- Notification Toast -->
   <div class="toast" id="mainToast"></div>
 
-  <script src="script.js"></script>
+  <!-- GSAP & ScrollTrigger for Square-Style Pinned Scrub Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js?v=20260908"></script>
 </body>
 
 </html>
