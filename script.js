@@ -1520,6 +1520,43 @@ function switchMegaTab(tabKey) {
   });
 }
 
+// ─── MEGA MENU DROPDOWN CLOSE-ON-CLICK & CLICK-OUTSIDE ───────
+function initMegaMenuCloseHandlers() {
+  function closeAllMegaMenus() {
+    document.querySelectorAll('.mega-dropdown').forEach(dd => {
+      dd.classList.add('menu-closed');
+    });
+  }
+
+  // Dismiss dropdown on clicking any link inside mega dropdown
+  document.querySelectorAll('.mega-dropdown a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeAllMegaMenus();
+    });
+  });
+
+  // Re-enable dropdown on mouseleave so hover works again smoothly
+  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+    item.addEventListener('mouseleave', () => {
+      const dd = item.querySelector('.mega-dropdown');
+      if (dd) dd.classList.remove('menu-closed');
+    });
+  });
+
+  // Click outside to close open dropdowns
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      closeAllMegaMenus();
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMegaMenuCloseHandlers);
+} else {
+  initMegaMenuCloseHandlers();
+}
+
 // â”€â”€â”€ FULLSCREEN VIDEO MAXIMIZE HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function toggleBakeryFullscreen(elem) {
   if (!elem) return;

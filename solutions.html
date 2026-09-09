@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
     rel="stylesheet">
 
   <!-- Core Design System CSS -->
@@ -25,6 +25,137 @@
       background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%);
       text-align: center;
       position: relative;
+    }
+
+    /* Advanced Category Filter Segmented Control */
+    .sol-cat-filter-container {
+      display: flex;
+      justify-content: center;
+      margin: 28px auto 14px;
+      padding: 0 12px;
+    }
+
+    .sol-cat-filter-wrap {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 5px;
+      border-radius: 9999px;
+      border: 1px solid rgba(183, 110, 121, 0.22);
+      box-shadow: 0 4px 20px -2px rgba(183, 110, 121, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+      gap: 4px;
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .sol-cat-filter-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sol-cat-filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--text-body, #593640);
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .sol-cat-filter-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.75;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .sol-cat-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 9999px;
+      background: rgba(183, 110, 121, 0.12);
+      color: var(--primary, #b76e79);
+      transition: all 0.22s ease;
+    }
+
+    .sol-cat-filter-btn:hover {
+      color: var(--text-main, #2b1118);
+      background: rgba(183, 110, 121, 0.07);
+    }
+
+    .sol-cat-filter-btn:hover .sol-cat-filter-icon {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .sol-cat-filter-btn.active {
+      background: var(--text-main, #2b1118);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(43, 17, 24, 0.22);
+    }
+
+    .sol-cat-filter-btn.active .sol-cat-filter-icon {
+      opacity: 1;
+      color: #ffffff;
+    }
+
+    .sol-cat-filter-btn.active .sol-cat-badge {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    /* Dark Mode for Category Tabs */
+    [data-theme="dark"] .sol-cat-filter-wrap {
+      background: rgba(24, 24, 27, 0.85);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="dark"] .sol-cat-filter-btn {
+      color: #a1a1aa;
+    }
+
+    [data-theme="dark"] .sol-cat-filter-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    [data-theme="dark"] .sol-cat-filter-btn.active {
+      background: #ffffff;
+      color: #09090b;
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+    }
+
+    [data-theme="dark"] .sol-cat-filter-btn.active .sol-cat-filter-icon {
+      color: #09090b;
+    }
+
+    [data-theme="dark"] .sol-cat-filter-btn.active .sol-cat-badge {
+      background: rgba(0, 0, 0, 0.15);
+      color: #09090b;
+    }
+
+    [data-theme="dark"] .sol-cat-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: #d4d4d8;
     }
 
     /* Horizontal Category Tabs Container (Capsule Bar) */
@@ -230,55 +361,206 @@
       align-items: flex-start;
     }
 
-    .upgrades-grid-title {
-      font-family: var(--font-heading);
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 24px;
+    /* Modern Linear/Vercel Aesthetic for Upgrades Section */
+    .upgrades-section-header {
       text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .upgrades-section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 13px;
+      border-radius: 9999px;
+      background: var(--bg-subtle, #f4f4f5);
+      border: 1px solid var(--border-light, rgba(0, 0, 0, 0.06));
+      color: var(--text-muted, #71717a);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .upgrades-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary, #b76e79);
+    }
+
+    .upgrades-grid-title {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(22px, 2.8vw, 28px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-main, #18181b);
+      margin-bottom: 8px;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .upgrades-grid-subtitle {
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 14.5px;
+      color: var(--text-muted, #71717a);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.5;
     }
 
     .upgrades-cards-wrap {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      margin-bottom: 50px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 1024px) {
+      .upgrades-cards-wrap {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .upgrades-cards-wrap {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
 
     .upgrade-card-item {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e4e4e7);
+      border-radius: 16px;
       padding: 24px;
-      text-align: center;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-xs);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+      position: relative;
     }
 
     .upgrade-card-item:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--primary, #b76e79);
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
     }
 
-    .upgrade-card-icon {
-      font-size: 38px;
-      margin-bottom: 12px;
+    .upgrade-icon-badge {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-subtle, #f4f4f5);
+      border: 1px solid var(--border-light, rgba(0, 0, 0, 0.06));
+      color: var(--text-main, #18181b);
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .upgrade-card-item:hover .upgrade-icon-badge {
+      background: rgba(183, 110, 121, 0.08);
+      border-color: rgba(183, 110, 121, 0.25);
+      color: var(--primary, #b76e79);
+    }
+
+    .upgrade-icon-badge svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .upgrade-card-category {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary, #b76e79);
+      margin-bottom: 6px;
+      display: block;
     }
 
     .upgrade-card-item h4 {
-      font-family: var(--font-heading);
-      font-size: 16.5px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 6px;
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main, #18181b);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
 
     .upgrade-card-item p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 13.5px;
+      color: var(--text-muted, #71717a);
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .upgrade-card-spec {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-muted, #71717a);
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--bg-subtle, #f4f4f5);
+      border: 1px solid var(--border-light, rgba(0, 0, 0, 0.06));
+    }
+
+    .upgrade-spec-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    /* Dark Mode styles */
+    [data-theme="dark"] .upgrades-section-badge {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #d4d4d8;
+    }
+
+    [data-theme="dark"] .upgrade-card-item {
+      background: var(--bg-surface, #18181b);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="dark"] .upgrade-card-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="dark"] .upgrade-icon-badge {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #fafafa;
+    }
+
+    [data-theme="dark"] .upgrade-card-item:hover .upgrade-icon-badge {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .upgrade-card-spec {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.08);
+      color: #a1a1aa;
     }
 
     .sol-roi-callout {
@@ -347,46 +629,42 @@
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="solutions.html?sector=cafe"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">☕ Coffee shops &amp; Cafes</a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🛎️ Quick service (QSR)</a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🚗 Drive-thru &amp; Takeaway</a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🍽️ Full service &amp; Fine dining</a>
-                  <a href="solutions.html?sector=liquor" class="sq-disc-item">🍸 Bars &amp; breweries</a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🚚 Food trucks &amp; Kiosks</a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">👨‍🍳 Catering &amp; Cloud Kitchens</a>
-                  <a href="solutions.html?sector=bakery" class="sq-disc-item">🎂 Bakeries &amp; Confectionery</a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">🍕 Pizzeria &amp; Fast Food</a>
+                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="solutions.html?sector=qsr" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
+                  <a href="solutions.html?sector=cafes" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes &amp; Chai Bars</a>
+                  <a href="solutions.html?sector=cloudkitchen" data-sector="cloudkitchen" data-cat="fnb" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="solutions.html?sector=bakery" data-sector="bakery" data-cat="fnb" class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
+                  <a href="solutions.html?sector=bars" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="solutions.html?sector=supermarket"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=supermarket" class="sq-disc-item">🛒 Supermarkets &amp; Kirana</a>
-                  <a href="solutions.html?sector=mandi" class="sq-disc-item">🌾 Grain &amp; Mandi Wholesale</a>
-                  <a href="solutions.html?sector=meat" class="sq-disc-item">🥩 Meat &amp; Fish Outlets</a>
-                  <a href="solutions.html?sector=books" class="sq-disc-item">📚 Books &amp; Stationery</a>
-                  <a href="solutions.html?sector=florists" class="sq-disc-item">🌸 Florists &amp; Nurseries</a>
+                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                  <a href="solutions.html?sector=electronics" data-sector="electronics" data-cat="retail" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="solutions.html?sector=footwear" data-sector="footwear" data-cat="retail" class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="solutions.html?sector=jewellery" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery &amp; Watch Outlets</a>
+                  <a href="solutions.html?sector=hardware" data-sector="hardware" data-cat="retail" class="sq-disc-item">Hardware, Sanitary &amp; Paint Stores</a>
+                  <a href="solutions.html?sector=pharmacy" data-sector="pharmacy" data-cat="retail" class="sq-disc-item">Pharmacies &amp; Medical Stores</a>
+                  <a href="solutions.html?sector=books" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-beauty">
-                  <a href="solutions.html?sector=apparel"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=apparel" class="sq-disc-item">👗 Apparel &amp; Fashion Stores</a>
-                  <a href="solutions.html?sector=apparel" class="sq-disc-item">👠 Footwear &amp; Shoe Outlets</a>
-                  <a href="solutions.html?sector=specialty" class="sq-disc-item">💄 Cosmetics &amp; Beauty Salons</a>
-                  <a href="solutions.html?sector=specialty" class="sq-disc-item">💎 Jewelry &amp; Luxury Gifts</a>
+                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty" class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                  <a href="solutions.html?sector=salons" data-sector="salons" data-cat="beauty" class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="solutions.html?sector=cosmetics" data-sector="cosmetics" data-cat="beauty" class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                  <a href="solutions.html?sector=eyewear" data-sector="eyewear" data-cat="beauty" class="sq-disc-item">Eyewear &amp; Optical Stores</a>
+                  <a href="solutions.html?sector=tailoring" data-sector="tailoring" data-cat="beauty" class="sq-disc-item">Tailoring &amp; Custom Designer Studios</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-services">
-                  <a href="solutions.html?sector=pharmacy"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=pharmacy" class="sq-disc-item">💊 Pharmacies &amp; Chemist</a>
-                  <a href="solutions.html?sector=electronics" class="sq-disc-item">⚡ Electronics &amp; Mobile Shops</a>
-                  <a href="solutions.html?sector=autoparts" class="sq-disc-item">🚗 Auto Spare Parts</a>
-                  <a href="solutions.html?sector=furniture" class="sq-disc-item">🛋️ Furniture &amp; Home Decor</a>
-                  <a href="solutions.html?sector=petcare" class="sq-disc-item">🐶 Pet Care &amp; Vet Supplies</a>
+                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms, Fitness Studios &amp; Yoga Centers</a>
+                  <a href="solutions.html?sector=garages" data-sector="garages" data-cat="services" class="sq-disc-item">Auto Garages, Car Wash &amp; Bike Service Centers</a>
+                  <a href="solutions.html?sector=laundry" data-sector="laundry" data-cat="services" class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+                  <a href="solutions.html?sector=repairs" data-sector="repairs" data-cat="services" class="sq-disc-item">Repair Centers (Mobile, Laptop, Appliances)</a>
+                  <a href="solutions.html?sector=coworking" data-sector="coworking" data-cat="services" class="sq-disc-item">Co-working Spaces &amp; Shared Offices</a>
                 </div>
               </div>
 
@@ -414,19 +692,19 @@
             <div class="mega-dropdown-inner">
               <div class="mega-column">
                 <a href="pos.html" class="square-sub-item">
-                  <strong>🖥️ Smart POS</strong>
+                  <strong>Smart POS</strong>
                   <span>Fast billing, AI voice checkout &amp; offline mode</span>
                 </a>
                 <a href="index.html#attractions" class="square-sub-item">
-                  <strong>📊 Complete Management System</strong>
+                  <strong>Complete Management System</strong>
                   <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
                 </a>
                 <a href="website-builder.html" class="square-sub-item">
-                  <strong>🌐 Custom Website Building</strong>
+                  <strong>Custom Website Building</strong>
                   <span>Custom websites, e-commerce stores &amp; mobile apps</span>
                 </a>
                 <a href="digital-marketing.html" class="square-sub-item">
-                  <strong>📣 Digital Marketing &amp; Ads</strong>
+                  <strong>Digital Marketing &amp; Ads</strong>
                   <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
                 </a>
               </div>
@@ -449,7 +727,7 @@
       </ul>
 
       <div class="nav-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">🌙</button>
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
         <a href="index.html#cta" class="btn-primary-sm">Start Free Trial →</a>
       </div>
 
@@ -525,25 +803,80 @@
       </p>
 
       <!-- Horizontal Sector Selector Bar: Smooth Left/Right Swipeable -->
-      <div class="sector-picker-bar-wrap" style="position: relative; max-width: 1000px; margin: 24px auto 0;">
+      <!-- Advanced Category Filter Segmented Control -->
+      <div class="sol-cat-filter-container">
+        <div class="sol-cat-filter-wrap" id="solCatFilterWrap">
+          <button type="button" class="sol-cat-filter-btn active" data-filter="all">
+            <span class="sol-cat-filter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+            </span>
+            <span>All Sectors</span>
+            <span class="sol-cat-badge">23</span>
+          </button>
+          <button type="button" class="sol-cat-filter-btn" data-filter="fnb">
+            <span class="sol-cat-filter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" x2="6" y1="1" y2="4"/><line x1="10" x2="10" y1="1" y2="4"/><line x1="14" x2="14" y1="1" y2="4"/></svg>
+            </span>
+            <span>Food &amp; Beverage</span>
+            <span class="sol-cat-badge">6</span>
+          </button>
+          <button type="button" class="sol-cat-filter-btn" data-filter="retail">
+            <span class="sol-cat-filter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </span>
+            <span>Retail Stores</span>
+            <span class="sol-cat-badge">7</span>
+          </button>
+          <button type="button" class="sol-cat-filter-btn" data-filter="beauty">
+            <span class="sol-cat-filter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            </span>
+            <span>Beauty &amp; Fashion</span>
+            <span class="sol-cat-badge">5</span>
+          </button>
+          <button type="button" class="sol-cat-filter-btn" data-filter="services">
+            <span class="sol-cat-filter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </span>
+            <span>Services &amp; Pro</span>
+            <span class="sol-cat-badge">5</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Sector Selector Bar: Exactly the 23 Business Types -->
+      <div class="sector-picker-bar-wrap" style="position: relative; max-width: 1040px; margin: 12px auto 0;">
         <div class="sector-picker-bar" id="sectorPickerBar">
-          <button type="button" class="sector-pick-btn" data-sector="pos">🖥️ Point of Sale (POS)</button>
-          <button type="button" class="sector-pick-btn active" data-sector="supermarket">🛒 Kirana &amp;
-            Supermarket</button>
-          <button type="button" class="sector-pick-btn" data-sector="cafe">☕ Cafe &amp; Restaurant</button>
-          <button type="button" class="sector-pick-btn" data-sector="bakery">🎂 Bakeries &amp; Confectionery</button>
-          <button type="button" class="sector-pick-btn" data-sector="apparel">🛍️ Apparel &amp; Fashion</button>
-          <button type="button" class="sector-pick-btn" data-sector="pharmacy">💊 Pharmacy &amp; Chemist</button>
-          <button type="button" class="sector-pick-btn" data-sector="electronics">⚡ Electronics &amp; Mobiles</button>
-          <button type="button" class="sector-pick-btn" data-sector="specialty">💄 Cosmetics &amp; Specialty</button>
-          <button type="button" class="sector-pick-btn" data-sector="meat">🥩 Meat &amp; Poultry</button>
-          <button type="button" class="sector-pick-btn" data-sector="mandi">🌾 Grain &amp; Mandi</button>
-          <button type="button" class="sector-pick-btn" data-sector="autoparts">🚗 Auto Spare Parts</button>
-          <button type="button" class="sector-pick-btn" data-sector="books">📚 Books &amp; Stationery</button>
-          <button type="button" class="sector-pick-btn" data-sector="florists">🌸 Florist &amp; Nursery</button>
-          <button type="button" class="sector-pick-btn" data-sector="liquor">🍷 Liquor Outlets</button>
-          <button type="button" class="sector-pick-btn" data-sector="furniture">🛋️ Furniture Showroom</button>
-          <button type="button" class="sector-pick-btn" data-sector="petcare">🐶 Pet Care &amp; Vet</button>
+          <!-- 1. Food & Beverage (6) -->
+          <button type="button" class="sector-pick-btn" data-sector="restaurants" data-cat="fnb">Restaurants &amp; Fine Dining</button>
+          <button type="button" class="sector-pick-btn" data-sector="qsr" data-cat="fnb">QSR, Fast Food &amp; Takeaway</button>
+          <button type="button" class="sector-pick-btn" data-sector="cafes" data-cat="fnb">Cafes &amp; Chai Bars</button>
+          <button type="button" class="sector-pick-btn" data-sector="cloudkitchen" data-cat="fnb">Cloud Kitchens &amp; Catering</button>
+          <button type="button" class="sector-pick-btn" data-sector="bakery" data-cat="fnb">Bakeries &amp; Sweet Shops</button>
+          <button type="button" class="sector-pick-btn" data-sector="bars" data-cat="fnb">Bars, Pubs &amp; Breweries</button>
+
+          <!-- 2. Retail (7) -->
+          <button type="button" class="sector-pick-btn active" data-sector="grocery" data-cat="retail">Grocery, Supermarkets &amp; Kirana Stores</button>
+          <button type="button" class="sector-pick-btn" data-sector="electronics" data-cat="retail">Electronics &amp; Mobile Shops</button>
+          <button type="button" class="sector-pick-btn" data-sector="footwear" data-cat="retail">Footwear &amp; Leather Stores</button>
+          <button type="button" class="sector-pick-btn" data-sector="jewellery" data-cat="retail">Jewellery &amp; Watch Outlets</button>
+          <button type="button" class="sector-pick-btn" data-sector="hardware" data-cat="retail">Hardware, Sanitary &amp; Paint Stores</button>
+          <button type="button" class="sector-pick-btn" data-sector="pharmacy" data-cat="retail">Pharmacies &amp; Medical Stores</button>
+          <button type="button" class="sector-pick-btn" data-sector="books" data-cat="retail">Bookstores &amp; Stationery Outlets</button>
+
+          <!-- 3. Beauty & Fashion (5) -->
+          <button type="button" class="sector-pick-btn" data-sector="clothing" data-cat="beauty">Clothing Brands &amp; Apparel Boutiques</button>
+          <button type="button" class="sector-pick-btn" data-sector="salons" data-cat="beauty">Salons, Spas &amp; Beauty Parlors</button>
+          <button type="button" class="sector-pick-btn" data-sector="cosmetics" data-cat="beauty">Cosmetics &amp; Skincare Stores</button>
+          <button type="button" class="sector-pick-btn" data-sector="eyewear" data-cat="beauty">Eyewear &amp; Optical Stores</button>
+          <button type="button" class="sector-pick-btn" data-sector="tailoring" data-cat="beauty">Tailoring &amp; Custom Designer Studios</button>
+
+          <!-- 4. Services & Professional (5) -->
+          <button type="button" class="sector-pick-btn" data-sector="gyms" data-cat="services">Gyms, Fitness Studios &amp; Yoga Centers</button>
+          <button type="button" class="sector-pick-btn" data-sector="garages" data-cat="services">Auto Garages, Car Wash &amp; Bike Service Centers</button>
+          <button type="button" class="sector-pick-btn" data-sector="laundry" data-cat="services">Dry Cleaners &amp; Laundry Shops</button>
+          <button type="button" class="sector-pick-btn" data-sector="repairs" data-cat="services">Repair Centers (Mobile, Laptop, Appliances)</button>
+          <button type="button" class="sector-pick-btn" data-sector="coworking" data-cat="services">Co-working Spaces &amp; Shared Offices</button>
         </div>
       </div>
     </div>
@@ -593,7 +926,7 @@
       <div class="comp-grid-full">
         <div class="comp-col-card comp-col-before">
           <div class="comp-header-title">
-            <h3>🔴 Traditional Store Setup</h3>
+            <h3>Traditional Store Setup</h3>
             <span class="comp-badge-bad">Pehle Kaise Hota Tha</span>
           </div>
           <ul class="comp-list-full" id="solBeforeList">
@@ -603,7 +936,7 @@
 
         <div class="comp-col-card comp-col-after">
           <div class="comp-header-title">
-            <h3>🟢 Priyulabs AI Digital OS</h3>
+            <h3>Priyulabs AI Digital OS</h3>
             <span class="comp-badge-good">Ab Naya Smart Upgrade</span>
           </div>
           <ul class="comp-list-full" id="solAfterList">
@@ -613,9 +946,87 @@
       </div>
 
       <!-- Key Hardware & Software Upgrades Grid -->
-      <h3 class="upgrades-grid-title">🚀 Key Hardware &amp; Software Upgrades Available for This Sector</h3>
+      <div class="upgrades-section-header">
+        <div class="upgrades-section-badge">
+          <span class="upgrades-badge-dot"></span>
+          <span>System Architecture &amp; Extensions</span>
+        </div>
+        <h3 class="upgrades-grid-title">Key Hardware &amp; Software Upgrades Available for This Sector</h3>
+        <p class="upgrades-grid-subtitle">Modular industrial peripherals, real-time edge processing, and high-concurrency cloud engines engineered for zero downtime.</p>
+      </div>
       <div class="upgrades-cards-wrap" id="solUpgradesWrap">
-        <!-- Injected dynamically -->
+        <!-- Card 1 (Hardware / Processing): Cpu -->
+        <div class="upgrade-card-item">
+          <div class="upgrade-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu">
+              <rect width="16" height="16" x="4" y="4" rx="2"/>
+              <rect width="6" height="6" x="9" y="9" rx="1"/>
+              <path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+            </svg>
+          </div>
+          <span class="upgrade-card-category">Hardware / Processing</span>
+          <h4>Industrial Quad-Core POS Edge Unit</h4>
+          <p>Offline-first transaction processor with sub-second barcode, weighing scale, and cash drawer handshaking under 50ms.</p>
+          <div class="upgrade-card-spec">
+            <span class="upgrade-spec-dot"></span>
+            <span>Zero-latency edge memory</span>
+          </div>
+        </div>
+
+        <!-- Card 2 (Display / Workstation): Monitor -->
+        <div class="upgrade-card-item">
+          <div class="upgrade-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor">
+              <rect width="20" height="14" x="2" y="3" rx="2"/>
+              <line x1="8" x2="16" y1="21" y2="21"/>
+              <line x1="12" x2="12" y1="17" y2="21"/>
+            </svg>
+          </div>
+          <span class="upgrade-card-category">Display / Workstation</span>
+          <h4>Dual-Screen Customer Facing Display</h4>
+          <p>High-contrast 10.1" IPS screen showing itemized bills, promotional banners, and dynamic UPI QR payment push.</p>
+          <div class="upgrade-card-spec">
+            <span class="upgrade-spec-dot"></span>
+            <span>1080p anti-glare panel</span>
+          </div>
+        </div>
+
+        <!-- Card 3 (Infrastructure / Cloud / Storage): Server -->
+        <div class="upgrade-card-item">
+          <div class="upgrade-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server">
+              <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/>
+              <rect width="20" height="8" x="2" y="14" rx="2" ry="2"/>
+              <line x1="6" x2="6.01" y1="6" y2="6"/>
+              <line x1="6" x2="6.01" y1="18" y2="18"/>
+            </svg>
+          </div>
+          <span class="upgrade-card-category">Infrastructure / Cloud / Storage</span>
+          <h4>High-Concurrency Cloud Database</h4>
+          <p>Real-time master stock synchronization across counters with automatic background conflict resolution.</p>
+          <div class="upgrade-card-spec">
+            <span class="upgrade-spec-dot"></span>
+            <span>99.99% uptime SLA</span>
+          </div>
+        </div>
+
+        <!-- Card 4 (Software / Maintenance / Engineering): Code2 -->
+        <div class="upgrade-card-item">
+          <div class="upgrade-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2">
+              <path d="m18 16 4-4-4-4"/>
+              <path d="m6 8-4 4 4 4"/>
+              <path d="m14.5 4-5 16"/>
+            </svg>
+          </div>
+          <span class="upgrade-card-category">Software / Engineering</span>
+          <h4>Bi-Directional EDC &amp; UPI Push API</h4>
+          <p>Automated webhook drivers linking Pine Labs and Paytm swipe terminals with instant GSTR-1 audit export.</p>
+          <div class="upgrade-card-spec">
+            <span class="upgrade-spec-dot"></span>
+            <span>End-to-end encrypted API</span>
+          </div>
+        </div>
       </div>
 
       <!-- ROI Callout Banner -->
@@ -631,7 +1042,7 @@
           <div class="cta-buttons">
             <a href="index.html#cta" class="btn-primary-hero">Book Live Demo Now →</a>
             <a href="https://wa.me/917849074050?text=Hello!%20I%20want%20a%20demo%20for%20my%20store."
-              class="btn-secondary-hero" target="_blank">💬 WhatsApp Us</a>
+              class="btn-secondary-hero" target="_blank">WhatsApp Us</a>
           </div>
         </div>
       </div>
@@ -679,9 +1090,35 @@
     // Solutions Page Dynamic Sector & POS Switcher Script
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const targetSector = urlParams.get('sector') || 'pos';
+      let targetSector = urlParams.get('sector') || 'grocery';
 
-      selectSectorView(targetSector);
+      // Category filter buttons logic
+      document.querySelectorAll('.sol-cat-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          
+          document.querySelectorAll('.sol-cat-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const allSectorBtns = document.querySelectorAll('.sector-pick-btn');
+          let firstVisible = null;
+          allSectorBtns.forEach(sBtn => {
+            const cat = sBtn.getAttribute('data-cat');
+            if (filter === 'all' || cat === filter) {
+              sBtn.style.display = 'inline-flex';
+              if (!firstVisible) firstVisible = sBtn;
+            } else {
+              sBtn.style.display = 'none';
+            }
+          });
+
+          // If current active sector is now hidden, select first visible
+          const currentActive = document.querySelector('.sector-pick-btn.active');
+          if (currentActive && currentActive.style.display === 'none' && firstVisible) {
+            firstVisible.click();
+          }
+        });
+      });
 
       // Add click listeners to all sector picker buttons
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
@@ -694,7 +1131,29 @@
         });
       });
 
-      // Handle in-page dropdown links (e.g. Solutions -> POS)
+      // Close mega-menu dropdown helper
+      function closeAllMegaDropdowns() {
+        document.querySelectorAll('.mega-dropdown').forEach(dropdown => {
+          dropdown.classList.add('menu-closed');
+        });
+      }
+
+      // Re-enable mega-menu dropdown on mouseleave of parent dropdown item
+      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+        item.addEventListener('mouseleave', () => {
+          const dd = item.querySelector('.mega-dropdown');
+          if (dd) dd.classList.remove('menu-closed');
+        });
+      });
+
+      // Handle clicking outside to close any open dropdowns
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item-dropdown')) {
+          closeAllMegaDropdowns();
+        }
+      });
+
+      // Handle in-page dropdown links with immediate close, category tab sync & smooth scroll
       document.querySelectorAll('a[href*="solutions.html?sector="]').forEach(link => {
         link.addEventListener('click', (e) => {
           const href = link.getAttribute('href');
@@ -702,54 +1161,361 @@
           if (sectorMatch && sectorMatch[1]) {
             e.preventDefault();
             const key = sectorMatch[1];
+
+            // 1. Immediately close dropdown
+            closeAllMegaDropdowns();
+
+            // 2. Switch sector view and sync category tabs
             selectSectorView(key);
             window.history.pushState({}, '', `solutions.html?sector=${key}`);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 3. Smoothly scroll viewport down to content section
+            const detailSection = document.querySelector('.sol-detail-section') || document.getElementById('solCatFilterWrap');
+            if (detailSection) {
+              const navOffset = 90;
+              const elemPos = detailSection.getBoundingClientRect().top + window.pageYOffset - navOffset;
+              window.scrollTo({ top: elemPos, behavior: 'smooth' });
+            }
           }
         });
       });
+
+      // Also listen to any click inside .mega-col-middle or .square-mega-3col links
+      document.querySelectorAll('.mega-dropdown a').forEach(link => {
+        link.addEventListener('click', () => {
+          closeAllMegaDropdowns();
+        });
+      });
+
+      selectSectorView(targetSector);
     });
 
-    function selectSectorView(key) {
-      const dataStore = (typeof sectorDetailsData !== 'undefined' ? sectorDetailsData : window.sectorDetailsData) || {};
-      const data = dataStore[key] || dataStore.pos || dataStore.supermarket || {
-        title: key.charAt(0).toUpperCase() + key.slice(1),
-        eyebrow: `PRIYULABS FOR ${key.toUpperCase()}`,
-        headline: `A fast, reliable POS to ease your daily grind`,
-        heroDesc: `Streamline operations, automate inventory and scale billing with Priyulabs.`,
-        after: ['Lightning fast billing', 'Automated cloud reconciliation', 'Real-time stock deduction'],
-        before: ['Manual paper invoices', 'Long queues at counter', 'Daily cash drawer mismatch'],
-        techUpgrades: ['🎙️ Multilingual Voice POS', '📷 Vision AI Invoice Scan', '⚖️ Weighing Scale Sync'],
-        roi: '10x Faster Operations: Save 2+ hours daily on manual accounting.'
-      };
+    // 23 Comprehensive Business Types Dataset (Exactly matching Business Types)
+    const allBusinessTypesData = {
+      restaurants: {
+        title: 'Restaurants & Fine Dining',
+        cat: 'fnb',
+        eyebrow: 'PRIYULABS FOR RESTAURANTS & FINE DINING',
+        headline: 'Table management, sommelier billing & kitchen display OS',
+        heroDesc: 'Streamline multi-course dining, split checks, captain handheld ordering, and thermal kitchen routing.',
+        image: 'assets/sector_cafe.jpg',
+        before: ['Manual handwritten captain paper order slips causing delay & kitchen errors', 'Slow checkout queue causing table turnover delays during peak dinner hours', 'Unreconciled kitchen order tickets (KOT) mismatches between bar and kitchen'],
+        after: ['<strong>Captain Mobile POS:</strong> Sub-second table ordering straight to kitchen display', '<strong>Bi-Directional EDC Push:</strong> Table-side split payment reconciliation with zero theft', '<strong>Chef KDS Display:</strong> Real-time course sequencing (Starters -> Mains -> Desserts)'],
+        roi: '35% Higher Table Turnover • 100% KOT Delivery Accuracy'
+      },
+      qsr: {
+        title: 'QSR, Fast Food & Takeaway',
+        cat: 'fnb',
+        eyebrow: 'PRIYULABS FOR QUICK SERVICE & FAST FOOD',
+        headline: 'Sub-second drive-thru, counter order & token calling OS',
+        heroDesc: 'Keep customer lines moving with high-speed counter checkout, kitchen bump-bars, and automated order readiness screens.',
+        image: 'assets/sector_cafe.jpg',
+        before: ['Long ordering queues during lunch and dinner rush hours turning buyers away', 'Mistakes in combo customization & add-on pricing on manual cash registers', 'Chef confusion on takeout vs dine-in packaging tags'],
+        after: ['<strong>Touchscreen Rapid Billing:</strong> 1-Tap combo ordering in under 2 seconds', '<strong>Order Token Calling Display:</strong> High-contrast customer status screen', '<strong>KDS Route with Packaging Tag:</strong> Clear visual cues for takeouts vs dine-in'],
+        roi: '80% Faster Rush-Hour Queue • Zero Order Dispatch Mistakes'
+      },
+      cafes: {
+        title: 'Cafes & Chai Bars',
+        cat: 'fnb',
+        eyebrow: 'PRIYULABS FOR CAFES & CHAI BARS',
+        headline: 'Fast counter billing, loyalty beans & recipe stock deduction',
+        heroDesc: 'Streamline coffee & snack ordering, deduct milk & bean inventory by the gram, and reward repeat regulars automatically.',
+        image: 'assets/sector_cafe.jpg',
+        videoUrl: 'assets/bakery-demo.mp4',
+        before: ['Loose paper notebooks tracking raw milk & coffee bean usage vaguely', 'Slow order taking while typing customized syrup & dairy milk requests', 'Lost repeat customers due to lack of loyalty & membership rewards'],
+        after: ['<strong>1-Tap Modifier Buttons:</strong> Custom sugar, milk & syrup selection in 1 tap', '<strong>Gram-Level Recipe ERP:</strong> Automatically deducts coffee beans & milk per cup', '<strong>Automated Loyalty Points:</strong> Cashback credited straight to customer mobile'],
+        roi: '40% Repeat Customer Retention • 0% Beverage Waste'
+      },
+      cloudkitchen: {
+        title: 'Cloud Kitchens & Catering',
+        cat: 'fnb',
+        eyebrow: 'PRIYULABS FOR CLOUD KITCHENS & CATERING',
+        headline: 'Multi-brand central production & online aggregator sync',
+        heroDesc: 'Manage 5+ virtual food brands from a single kitchen terminal, consolidate Swiggy/Zomato orders, and automate bulk catering quotes.',
+        image: 'assets/sector_cafe.jpg',
+        before: ['Juggling 4 separate aggregator tablets causing missed orders during rush', 'Raw material stockouts during unexpected bulk catering bookings', 'Manual re-entry of online orders into billing software'],
+        after: ['<strong>Unified Delivery Screen:</strong> Consolidates all delivery aggregator channels', '<strong>Central Raw Material ERP:</strong> Batch production auto-replenishment alerts', '<strong>1-Click Catering Estimates:</strong> Fast booking quotes with advance token logs'],
+        roi: 'Zero Missed Delivery Orders • 50% Faster Kitchen Dispatch'
+      },
+      bakery: {
+        title: 'Bakeries & Sweet Shops',
+        cat: 'fnb',
+        eyebrow: 'PRIYULABS FOR BAKERIES & SWEET SHOPS',
+        headline: 'Advance custom cake booking & weigh-scale auto-billing',
+        heroDesc: 'Streamline custom photo-cake bookings, loose pastry weighing, recipe ingredient deduction, and thermal batch expiry labels.',
+        image: 'assets/sector_cafe.jpg',
+        videoUrl: 'assets/bakery-demo.mp4',
+        before: ['Custom cake delivery slips lost or misplaced during busy festival rushes', 'Manual weight-based pastry calculations causing cashier math errors', 'Spoiled cream & dairy raw ingredients tracked loosely without recipe links'],
+        after: ['<strong>Custom Cake Booking Vault:</strong> Delivery date, photo reference & advance tokens', '<strong>Direct Scale Auto-Sync:</strong> 1-Second weight calculation directly on POS', '<strong>Thermal Expiry Label Printing:</strong> Auto-prints batch, price & shelf-life tags'],
+        roi: '45% Faster Billing • 100% On-Time Cake Delivery'
+      },
+      bars: {
+        title: 'Bars, Pubs & Breweries',
+        cat: 'fnb',
+        eyebrow: 'PRIYULABS FOR BARS, PUBS & BREWERIES',
+        headline: 'Open bar tabs, bottle inventory & state excise compliance',
+        heroDesc: 'Manage customer bar tabs seamlessly, prevent liquor spillage with peg-level stock control, and auto-generate daily excise registers.',
+        image: 'assets/sector_cafe.jpg',
+        before: ['Unpaid open tabs forgotten when patrons switch tables or counters', 'Liquor bottle theft and unmeasured peg dispensing loss behind the bar', 'Manual evening excise register books taking hours to tally by hand'],
+        after: ['<strong>1-Click Bar Tab Vault:</strong> Pre-authorization and instant card linking', '<strong>Peg-Level Stock Control:</strong> Auto-deducts exact 30ml/60ml quantities', '<strong>Auto Excise Log Generator:</strong> Daily Brand & Size audit-ready logs'],
+        roi: '100% Excise Audit Pass • Zero Uncollected Bar Tabs'
+      },
+      grocery: {
+        title: 'Grocery, Supermarkets & Kirana Stores',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR GROCERY, SUPERMARKETS & KIRANA',
+        headline: 'Vision AI invoice OCR, expiry shield & weighing scale sync',
+        heroDesc: 'Cut expired-stock losses to zero with Vision AI — snap wholesale invoices to auto-log stock, sync digital scales, and bill in sub-seconds.',
+        image: 'assets/sector_supermarket.jpg',
+        before: ['Manual typing of items creating long 10-minute counter queues', 'Manual calculation of loose grains & vegetable scale weights on calculators', 'Expired stock sitting unnoticed on back shelves causing customer loss'],
+        after: ['<strong>Sub-Second Barcode Scanner:</strong> Offline-first high-speed cashier engine', '<strong>Direct Scale Auto-Sync:</strong> Weight transfers automatically into bill', '<strong>Vision AI Stock & Expiry Shield:</strong> Snap wholesaler invoices in 2 seconds'],
+        roi: '80% Faster Counter Queues • 0% Expired Stock Losses'
+      },
+      electronics: {
+        title: 'Electronics & Mobile Shops',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR ELECTRONICS & MOBILE SHOPS',
+        headline: 'IMEI / Serial barcode tracking, brand EMI & e-Warranty',
+        heroDesc: 'Bind exact 15-digit serial numbers to invoices, process multi-bank paperless EMI, and send digital WhatsApp warranty receipts.',
+        image: 'assets/sector_electronics.jpg',
+        before: ['Handwritten serial numbers causing warranty dispute claims at counter', 'Paper warranty slips lost by customers creating unnecessary friction', 'Manual re-entry of card swipe machine transaction amounts on EDC'],
+        after: ['<strong>IMEI & Serial Grabber:</strong> Scan 15-digit code directly into sales invoice', '<strong>WhatsApp Digital Warranty:</strong> Certificate sent straight to customer mobile', '<strong>100% EDC Payment Terminal Sync:</strong> Exact invoice total pushed to EDC'],
+        roi: '0 Serial Audit Discrepancies • 100% Payment Reconciliation'
+      },
+      footwear: {
+        title: 'Footwear & Leather Stores',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR FOOTWEAR & LEATHER STORES',
+        headline: 'Multi-size box barcode labeling & stockroom locator',
+        heroDesc: 'Print durable box labels with UK/India shoe sizes, locate matching pairs across backroom racks, and handle easy exchanges.',
+        image: 'assets/sector_fashion.jpg',
+        before: ['Shoe boxes without barcodes requiring manual price searching', 'Cashier running to backroom to search for requested size variant', 'Messy customer exchange & store credit tracking on paper slips'],
+        after: ['<strong>1-Tap Box Barcode Printer:</strong> Prints size, color & brand tags', '<strong>Rack & Aisle Locator:</strong> Shows exact backroom shelf location instantly', '<strong>1-Click Exchange POS:</strong> Seamless exchange with store credit wallet'],
+        roi: '3x Faster Size Retrieval • 100% Inventory Accuracy'
+      },
+      jewellery: {
+        title: 'Jewellery & Watch Outlets',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR JEWELLERY & WATCH OUTLETS',
+        headline: 'Purity karat calculation, stone weight & tag barcode POS',
+        heroDesc: 'Auto-calculate gold & silver making charges, net vs gross weight sync, Hallmarking tags, and VIP festive loyalty points.',
+        image: 'assets/sector_cosmetics.jpg',
+        before: ['Manual calculator math for gold rate, karat purity & making fees', 'Risk of billing discrepancies on high-value ornamental tags', 'Lack of customer anniversary & birthday loyalty reminders'],
+        after: ['<strong>Bullion Rate Auto-Calculator:</strong> Live karat purity & making charge sync', '<strong>Micro-Tag Barcode Scanner:</strong> High-precision jewellery tag lookup', '<strong>WhatsApp Anniversary Loyalty:</strong> Automated festive cashback gift points'],
+        roi: '100% Making Charge Accuracy • 50% Higher Repeat Buys'
+      },
+      hardware: {
+        title: 'Hardware, Sanitary & Paint Stores',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR HARDWARE, SANITARY & PAINT STORES',
+        headline: 'Contractor ledger, paint shade codes & bulk unit billing',
+        heroDesc: 'Manage trade builder credit (Udhar), convert meters to bundles, track custom paint tinting codes, and auto-dispatch WhatsApp ledgers.',
+        image: 'assets/sector_electronics.jpg',
+        before: ['Loose paper bahi-khata notebooks with unpaid contractor bills', 'Confusion over unit conversions (bags, bundles, square feet, meters)', 'Lost records of custom mixed paint shade formulas for repaints'],
+        after: ['<strong>WhatsApp Udhar Ledger:</strong> Automated payment reminders with UPI links', '<strong>Multi-Unit Measurement Converter:</strong> Trade conversion in 1 tap', '<strong>Paint Tinting Formula Vault:</strong> Saves exact tinting recipe per buyer'],
+        roi: '2x Faster Udhar Recovery • Zero Unit Conversion Errors'
+      },
+      pharmacy: {
+        title: 'Pharmacies & Medical Stores',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR PHARMACIES & MEDICAL STORES',
+        headline: '150,000+ salt search, FEFO batch expiry & Schedule H log',
+        heroDesc: 'Find generic substitute medicines in 1 second, enforce statutory expiry protection, log doctor prescriptions, and export CA-ready GST.',
+        image: 'assets/sector_pharmacy.jpg',
+        before: ['Turning customers away when a specific brand salt is out of stock', 'Expired medicine strips lying on back racks causing severe drug penalties', 'Tedious manual HSN code data entry for monthly GST filing'],
+        after: ['<strong>150,000+ Salt Search Engine:</strong> Instant generic substitute finder', '<strong>Strict FEFO Expiry Shield:</strong> First-Expiry-First-Out dispensing alerts', '<strong>1-Click GSTR-1 & 3B Export:</strong> Audit-ready JSON export in 1 click'],
+        roi: 'Zero Expired Medicine Loss • 100% Statutory Compliance'
+      },
+      books: {
+        title: 'Bookstores & Stationery Outlets',
+        cat: 'retail',
+        eyebrow: 'PRIYULABS FOR BOOKSTORES & STATIONERY OUTLETS',
+        headline: 'ISBN barcode auto-fetch, school kit bundling & publisher ERP',
+        heroDesc: 'Scan ISBNs to auto-populate title & author data, bundle full school stationery kits in 1 tap, and manage publisher consignment returns.',
+        image: 'assets/sector_supermarket.jpg',
+        before: ['Typing long book titles and publisher names manually on cashier terminal', 'Slow manual assembly of school book kits during peak admission season', 'Unorganized publisher return ledgers for unsold seasonal stock'],
+        after: ['<strong>ISBN Barcode Auto-Fetch:</strong> Fills title, author & MRP in milliseconds', '<strong>1-Click School Kit POS:</strong> Bill complete class book bundles in 1 tap', '<strong>Publisher Consignment ERP:</strong> Automated return credit and debit logs'],
+        roi: '10x Faster Admission Season Billing • Zero Stock Mismatch'
+      },
+      clothing: {
+        title: 'Clothing Brands & Apparel Boutiques',
+        cat: 'beauty',
+        eyebrow: 'PRIYULABS FOR CLOTHING BRANDS & APPAREL BOUTIQUES',
+        headline: 'Size-color variant matrix, custom tag printer & VIP WhatsApp catalog',
+        heroDesc: 'Print custom barcode tags, view style stock across sizes & colors on 1 screen, and broadcast digital lookbooks directly to VIP shoppers.',
+        image: 'assets/sector_fashion.jpg',
+        before: ['Handwritten tags falling off garments causing price confusion at counter', 'Inventory confusion across sizes (S, M, L, XL) and colors causing missed sales', 'Store limited to walk-in footfall without any digital re-engagement'],
+        after: ['<strong>1-Tap Barcode Tag Printer:</strong> Custom tags with size, color & fabric', '<strong>Multi-Variant Stock Matrix:</strong> Real-time size-color matrix in 1 screen', '<strong>WhatsApp VIP Lookbook:</strong> Interactive digital catalogs sent to buyers'],
+        roi: '40% Repeat Customer Growth • 100% Size-Color Control'
+      },
+      salons: {
+        title: 'Salons, Spas & Beauty Parlors',
+        cat: 'beauty',
+        eyebrow: 'PRIYULABS FOR SALONS, SPAS & BEAUTY PARLORS',
+        headline: 'Stylist appointment booking, commission payroll & service billing',
+        heroDesc: 'Manage stylist chairs, calculate staff tip & service commissions automatically, track consumable cosmetics, and send SMS appointment reminders.',
+        image: 'assets/sector_cosmetics.jpg',
+        before: ['Appointment double-bookings on paper appointment diaries causing complaints', 'Disputes over stylist commission calculations at month-end payroll', 'Unmonitored professional shampoo and color product bottle leakage'],
+        after: ['<strong>Real-Time Chair Calendar:</strong> Automated WhatsApp appointment confirms', '<strong>Stylist Commission Engine:</strong> Tiered staff commission & tip tracking', '<strong>Internal Supply Usage Tracker:</strong> Auto-deducts back-bar supplies'],
+        roi: '0 Appointment No-Shows • 100% Transparent Payroll'
+      },
+      cosmetics: {
+        title: 'Cosmetics & Skincare Stores',
+        cat: 'beauty',
+        eyebrow: 'PRIYULABS FOR COSMETICS & SKINCARE STORES',
+        headline: 'Tester batch tracking, shade finder & customer loyalty wallet',
+        heroDesc: 'Track tester consumption, match foundation shades to customer profiles, and credit cashback points on repeat skincare purchases.',
+        image: 'assets/sector_cosmetics.jpg',
+        before: ['Untracked tester bottle consumption causing untracked inventory leakage', 'Customers forgetting their exact skin shade or foundation number', 'Customers switching to online platforms without store cashback rewards'],
+        after: ['<strong>Tester Batch Inventory Tracker:</strong> Full audit of sample usage', '<strong>Customer Beauty Profile Vault:</strong> Logs preferred skin shade & undertone', '<strong>Digital Loyalty Cash Wallet:</strong> Automated repeat purchase incentives'],
+        roi: '50% Higher Customer Retention • Zero Tester Leakage'
+      },
+      eyewear: {
+        title: 'Eyewear & Optical Stores',
+        cat: 'beauty',
+        eyebrow: 'PRIYULABS FOR EYEWEAR & OPTICAL STORES',
+        headline: 'Optometrist power Rx billing, frame barcode tags & lab order dispatch',
+        heroDesc: 'Store eye prescription powers (Sph, Cyl, Axis, Add), manage optical lab lens-fitting orders, and track frame warranties effortlessly.',
+        image: 'assets/sector_electronics.jpg',
+        before: ['Handwritten lens power cards lost by customers causing remeasurements', 'Optical lab fitting status untracked leading to delivery delays', 'Frame barcode tags unreadable on small wireframe temples'],
+        after: ['<strong>Digital Eye Power Vault:</strong> Instant access to historic prescriptions', '<strong>Lab Job-Sheet Dispatcher:</strong> Tracks lens grinding and edge fitting', '<strong>Micro-Tail Eyewear Tag Printer:</strong> Smudge-proof optical frame labels'],
+        roi: '100% Prescription Accuracy • On-Time Spectacle Delivery'
+      },
+      tailoring: {
+        title: 'Tailoring & Custom Designer Studios',
+        cat: 'beauty',
+        eyebrow: 'PRIYULABS FOR TAILORING & DESIGNER STUDIOS',
+        headline: 'Custom body measurement vault, master tailor job cards & trial tracking',
+        heroDesc: 'Store detailed client body measurements, attach fabric swatches, track garment stitching stages, and send automated trial date alerts.',
+        image: 'assets/sector_fashion.jpg',
+        before: ['Measurement paper notebooks misplaced during busy wedding rush stitching', 'Clients calling repeatedly to check wedding outfit trial status', 'Uncollected balance payments at the time of final outfit delivery'],
+        after: ['<strong>Cloud Measurement Profile:</strong> 25+ fit parameters per client profile', '<strong>Master Tailor Job Card:</strong> Barcoded garment tracking across masters', '<strong>WhatsApp Trial Notifications:</strong> Automated status with balance links'],
+        roi: 'Zero Measurement Fit Complaints • 100% Balance Recovery'
+      },
+      gyms: {
+        title: 'Gyms, Fitness Studios & Yoga Centers',
+        cat: 'services',
+        eyebrow: 'PRIYULABS FOR GYMS, FITNESS STUDIOS & YOGA',
+        headline: 'Biometric turnstile check-in, trainer schedules & membership renewals',
+        heroDesc: 'Automate RFID/biometric door access, send WhatsApp renewal alerts before membership expiry, and manage personal trainer commissions.',
+        image: 'assets/sector_cosmetics.jpg',
+        before: ['Members entering with expired plans due to manual receptionist check', 'Staff spending hours calling members for monthly subscription fees', 'Trainer class attendance tracked manually on paper attendance registers'],
+        after: ['<strong>Biometric Access Sync:</strong> Automatically locks turnstile for expired plans', '<strong>WhatsApp Renewal Engine:</strong> 1-Tap UPI payment links sent 5 days prior', '<strong>Trainer PT Session Tracker:</strong> Transparent booking & commission log'],
+        roi: '30% Higher Membership Renewals • Zero Unauthorized Entries'
+      },
+      garages: {
+        title: 'Auto Garages, Car Wash & Bike Service Centers',
+        cat: 'services',
+        eyebrow: 'PRIYULABS FOR AUTO GARAGES & BIKE SERVICE',
+        headline: 'Vehicle job card, spare parts billing & mechanic labor ledger',
+        heroDesc: 'Digitize vehicle intake inspection photos, assign tasks to mechanics, bill OEM spares, and send automated next-service reminders.',
+        image: 'assets/sector_electronics.jpg',
+        before: ['Customer arguments over pre-existing vehicle scratches and fuel level', 'Spare parts taken from rack without cashier billing or mechanic allocation', 'Customers forgetting periodic 6-month engine oil & brake service'],
+        after: ['<strong>Digital Vehicle Intake Card:</strong> Intake photos & fuel level logged on phone', '<strong>Mechanic Parts Requisition:</strong> Auto-deducts OEM inventory as used', '<strong>Periodic Service Reminders:</strong> Automated WhatsApp reminder at 6 months'],
+        roi: '40% Repeat Service Growth • Zero Spare Part Theft'
+      },
+      laundry: {
+        title: 'Dry Cleaners & Laundry Shops',
+        cat: 'services',
+        eyebrow: 'PRIYULABS FOR DRY CLEANERS & LAUNDRY SHOPS',
+        headline: 'Waterproof tag printing, garment stain photo log & pickup dispatch',
+        heroDesc: 'Print thermal tags that survive wash cycles, log garment defects on intake, and send WhatsApp notifications when clothes are ironed & ready.',
+        image: 'assets/sector_fashion.jpg',
+        before: ['Garment tags tearing off in water causing misplaced clothes and disputes', 'Blame for pre-existing tears or color bleed on customer garments', 'Finished clothes piling up on racks with uncollected dues'],
+        after: ['<strong>Waterproof Thermal Tag:</strong> Resists wash and high-heat steam cycles', '<strong>Intake Defect Camera Log:</strong> Captures existing stains and fabric wear', '<strong>Ready for Pickup Alert:</strong> Automated WhatsApp alert with total balance'],
+        roi: '0 Lost Garment Claims • 2x Faster Pickup & Cash Flow'
+      },
+      repairs: {
+        title: 'Repair Centers (Mobile, Laptop, Appliances)',
+        cat: 'services',
+        eyebrow: 'PRIYULABS FOR REPAIR CENTERS & TECH CARE',
+        headline: 'Device ticket intake, technician bench tracking & warranty claim',
+        heroDesc: 'Track device passcodes, repair stages (Diagnosis -> Parts Awaiting -> Tested), issue repair warranties, and notify customers automatically.',
+        image: 'assets/sector_electronics.jpg',
+        before: ['Customer devices lost or mixed up on technician repair workbenches', 'Disputes over replaced components and post-repair warranties', 'Customers calling multiple times a day for status updates'],
+        after: ['<strong>Device Ticket Barcode:</strong> Pinned to device tracking customer & passcode', '<strong>Bench Stage Tracker:</strong> Real-time stage updates from Diagnosis to Tested', '<strong>SMS & WhatsApp Status Link:</strong> Customers check live repair stage online'],
+        roi: '50% Fewer Customer Inquiries • Zero Mixed-Up Devices'
+      },
+      coworking: {
+        title: 'Co-working Spaces & Shared Offices',
+        cat: 'services',
+        eyebrow: 'PRIYULABS FOR CO-WORKING SPACES & OFFICES',
+        headline: 'Hot-desk booking, meeting room credits & recurring invoicing',
+        heroDesc: 'Automate monthly desk rent invoicing, conference room credit deductions, guest Wi-Fi access, and cafeteria POS billing on one ledger.',
+        image: 'assets/pos_billing_preview.jpg',
+        before: ['Double-booking of conference rooms on shared office calendars', 'Manual creation of monthly GST rental invoices for 50+ startup teams', 'Cafeteria coffee & snack billing untracked for member teams'],
+        after: ['<strong>Self-Serve Room Booking:</strong> Real-time conference room credit deduction', '<strong>Automated Recurring Invoicing:</strong> Auto-generates GST tax bills on 1st', '<strong>Team Member Ledger POS:</strong> Cafeteria bills synced to company account'],
+        roi: '100% On-Time Rent Collection • Zero Meeting Room Conflicts'
+      }
+    };
 
-      // Add subtle smooth transition
+    // Alias mapping for legacy links or alternate keys
+    const sectorKeyAliases = {
+      pos: 'grocery',
+      supermarket: 'grocery',
+      cafe: 'cafes',
+      apparel: 'clothing',
+      specialty: 'cosmetics',
+      autoparts: 'hardware',
+      liquor: 'bars',
+      meat: 'grocery',
+      mandi: 'hardware',
+      florists: 'grocery',
+      furniture: 'hardware',
+      petcare: 'grocery'
+    };
+
+    function selectSectorView(rawKey) {
+      const key = sectorKeyAliases[rawKey] || rawKey;
+      const data = allBusinessTypesData[key] || allBusinessTypesData.grocery;
+
+      // Subtle smooth transition
       const heroContainer = document.querySelector('.sq-sector-hero');
       if (heroContainer) {
         heroContainer.style.opacity = '0.7';
-        heroContainer.style.transition = 'opacity 0.25s ease';
-        setTimeout(() => { heroContainer.style.opacity = '1'; }, 50);
+        heroContainer.style.transition = 'opacity 0.2s ease';
+        setTimeout(() => { heroContainer.style.opacity = '1'; }, 40);
       }
 
       // Highlight active button and smooth scroll tab into center
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
-        if (btn.getAttribute('data-sector') === key) {
+        if (btn.getAttribute('data-sector') === key || btn.getAttribute('data-sector') === rawKey) {
           btn.classList.add('active');
+          btn.style.display = 'inline-flex';
           btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         } else {
           btn.classList.remove('active');
         }
       });
 
+      // Synchronize category tab active state and filter sector buttons to match
+      if (data.cat) {
+        const catBtn = document.querySelector(`.sol-cat-filter-btn[data-filter="${data.cat}"]`);
+        if (catBtn) {
+          document.querySelectorAll('.sol-cat-filter-btn').forEach(b => b.classList.remove('active'));
+          catBtn.classList.add('active');
+
+          // Filter sector picker buttons so the active category's items are visible
+          document.querySelectorAll('.sector-pick-btn').forEach(sBtn => {
+            const cat = sBtn.getAttribute('data-cat');
+            if (cat === data.cat) {
+              sBtn.style.display = 'inline-flex';
+            } else {
+              sBtn.style.display = 'none';
+            }
+          });
+        }
+      }
+
       // Update Header Text
       const eyebrow = document.getElementById('sqHeroEyebrow');
-      if (eyebrow) eyebrow.textContent = data.eyebrow || `PRIYULABS FOR ${data.title.toUpperCase()}`;
+      if (eyebrow) eyebrow.textContent = data.eyebrow;
 
       const headline = document.getElementById('sqHeroTitle');
-      if (headline) headline.textContent = data.headline || `Complete AI POS & Operating System for ${data.title}`;
+      if (headline) headline.textContent = data.headline;
 
       const sub = document.getElementById('sqHeroDesc');
-      if (sub) sub.textContent = data.heroDesc || `Upgrade your traditional ${data.title} store into a 10x faster AI digital store.`;
+      if (sub) sub.textContent = data.heroDesc;
 
       // Update Showcase Strip
       const img1 = document.getElementById('sqHeroImg1');
@@ -757,7 +1523,7 @@
       const tag1 = document.getElementById('sqHeroTag1');
       if (tag1) tag1.textContent = `${data.title} Terminal`;
 
-      // Update Video Showcase safely without redirecting
+      // Update Video / Photo Showcase
       const videoContainer = document.getElementById('solVideoShowcase');
       if (videoContainer) {
         if (data.videoUrl) {
@@ -767,17 +1533,13 @@
               <div class="sol-video-wrapper" style="position: relative;" onclick="event.stopPropagation();">
                 <video id="bakerySolVideo" controls playsinline loop preload="metadata" poster="assets/pos_billing_preview.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px;">
                   <source src="${data.videoUrl}" type="video/mp4">
-                  <source src="assets/bakery-demo.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
               </div>
               <div class="sol-video-info">
-                <div class="sol-video-badge">🎥 Live Video Demo</div>
-                <h2 class="sol-video-title">${data.title} POS &amp; Custom Order OS Walkthrough</h2>
-                <p class="sol-video-desc">Watch how Priyulabs POS handles advance custom bookings, instant weighing scale checkout, thermal batch expiry printing, and recipe inventory deduction in real time.</p>
-                <div class="sol-video-features">
-                  ${(data.techUpgrades || []).map(t => `<span class="sol-video-tag">${t}</span>`).join('')}
-                </div>
+                <div class="sol-video-badge">Live Video Demo</div>
+                <h2 class="sol-video-title">${data.title} POS &amp; Operations Walkthrough</h2>
+                <p class="sol-video-desc">Watch how Priyulabs POS handles advance bookings, instant scale checkout, thermal batch expiry printing, and automated inventory deduction in real time.</p>
               </div>
             </div>
           `;
@@ -794,10 +1556,7 @@
               <div class="sol-video-info">
                 <div class="sol-video-badge">🏪 Real Store Visual Showcase</div>
                 <h2 class="sol-video-title">${data.title} Operating System</h2>
-                <p class="sol-video-desc">${data.heroDesc || ''}</p>
-                <div class="sol-video-features">
-                  ${(data.techUpgrades || []).map(t => `<span class="sol-video-tag">${t}</span>`).join('')}
-                </div>
+                <p class="sol-video-desc">${data.heroDesc}</p>
               </div>
             </div>
           `;
@@ -815,27 +1574,68 @@
 
       const afterList = document.getElementById('solAfterList');
       if (afterList && data.after) {
-        afterList.innerHTML = data.after.map(a => `<li><span>✅</span> <div>${a}</div></li>`).join('');
+        afterList.innerHTML = data.after.map(a => `<li><div>${a}</div></li>`).join('');
       }
 
-      // Update Upgrades Grid
+      // 4 Hardware & Software Upgrade Cards (Linear / Vercel Modern Aesthetic)
+      const vectorIcons = {
+        cpu: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>`,
+        monitor: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`,
+        server: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>`,
+        code2: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`
+      };
+
+      const upgradesCatalog = {
+        grocery: [
+          { type: 'cpu', category: 'Hardware / Processing', title: 'AI Optical Scanner & Scale Interface', desc: 'Direct RS232 scale sync with high-speed multi-line 2D barcode decoder for uninterrupted checkout queues.', spec: 'Sub-200ms scale sync' },
+          { type: 'monitor', category: 'Display / Workstation', title: 'High-Throughput Cashier Workstation', desc: 'Touch-optimized wide console featuring rapid PLU matrix and split-view inventory lookup.', spec: 'Ergonomic cashier layout' },
+          { type: 'server', category: 'Infrastructure / Cloud / Storage', title: 'Vision AI Wholesale Invoice OCR', desc: 'Instant photo parsing of distributor bills to auto-extract line items, batch codes, and MRP into database.', spec: 'Under 2s OCR extraction' },
+          { type: 'code2', category: 'Software / Engineering', title: 'Expiry Shield & FEFO Dispatch Logic', desc: 'Automated First-Expiry-First-Out dispensing alerts and supplier return workflows 30 days prior to expiry.', spec: 'Zero dead-stock loss' }
+        ],
+        cafes: [
+          { type: 'cpu', category: 'Hardware / Processing', title: 'Kitchen Routing & Thermal Controller', desc: 'Fail-safe hardware hub routing order tickets across kitchen prep stations and barista bar counters.', spec: 'Zero-drop print queue' },
+          { type: 'monitor', category: 'Display / Workstation', title: 'Interactive Self-Order Kiosk & KDS', desc: 'Anti-reflective chef display system with bump-bar inputs and sleek customer self-ordering stations.', spec: 'Heat & steam resistant' },
+          { type: 'server', category: 'Infrastructure / Cloud / Storage', title: 'Recipe Ingredient ERP Ledger', desc: 'Automated fractional deduction of dairy, syrups, and roasted coffee beans for each beverage prepared.', spec: 'Gram-level precision' },
+          { type: 'code2', category: 'Software / Engineering', title: 'Dynamic QR Menu & Table Engine', desc: 'Contactless digital ordering webhooks with live table occupancy tracking and split-bill payment routing.', spec: 'Instant payment webhooks' }
+        ],
+        clothing: [
+          { type: 'cpu', category: 'Hardware / Processing', title: 'Thermal Tag Printer & RFID Hub', desc: 'High-resolution barcode printer generating custom garment price tags with size, color, and fabric attributes.', spec: '300 DPI micro-print' },
+          { type: 'monitor', category: 'Display / Workstation', title: 'Boutique Variant Workstation', desc: 'Interactive touch terminal featuring instant 2D size-color inventory matrix across store racks.', spec: 'Instant stock matrix' },
+          { type: 'server', category: 'Infrastructure / Cloud / Storage', title: 'Multi-Location SKU Warehouse Vault', desc: 'Centralized cloud ledger tracking style codes and inter-store stock transfers with zero latency.', spec: 'Multi-store visibility' },
+          { type: 'code2', category: 'Software / Engineering', title: 'WhatsApp VIP Catalog & e-Receipt API', desc: 'Automated digital lookbook distribution and paperless WhatsApp receipts sent directly to VIP customers.', spec: 'Automated CRM pipeline' }
+        ]
+      };
+
+      const defaultFourCards = [
+        { type: 'cpu', category: 'Hardware / Processing', title: 'Industrial POS Edge Controller', desc: `Hardened edge processing unit engineered for continuous barcode scanning, scale sync, and offline checkout for ${data.title}.`, spec: 'High-concurrency edge' },
+        { type: 'monitor', category: 'Display / Workstation', title: 'High-Contrast Operator Workstation', desc: 'Ergonomic wide-view touch terminal designed for rapid cashier input and real-time customer transparency.', spec: 'Low-glare touch console' },
+        { type: 'server', category: 'Infrastructure / Cloud / Storage', title: 'Real-Time Cloud Inventory Ledger', desc: 'High-availability data pipeline maintaining real-time stock levels, purchase orders, and multi-location reconciliations.', spec: 'Continuous cloud sync' },
+        { type: 'code2', category: 'Software / Engineering', title: 'Custom API & ERP Integrations', desc: 'Extensible webhook pipelines connecting EDC swipe machines, UPI soundboxes, and automated GST reporting.', spec: 'REST & Webhook drivers' }
+      ];
+
       const upgradesWrap = document.getElementById('solUpgradesWrap');
-      if (upgradesWrap && data.techUpgrades) {
-        upgradesWrap.innerHTML = data.techUpgrades.map(chip => {
-          return `
-            <div class="upgrade-card-item">
-              <div class="upgrade-card-icon">${chip.split(' ')[0]}</div>
-              <h4>${chip.substring(chip.indexOf(' ') + 1)}</h4>
-              <p>Integrated hardware & software upgrade tailored for ${data.title}.</p>
+      if (upgradesWrap) {
+        const sectorCards = upgradesCatalog[key] || defaultFourCards;
+        upgradesWrap.innerHTML = sectorCards.map(card => `
+          <div class="upgrade-card-item">
+            <div class="upgrade-icon-badge">
+              ${vectorIcons[card.type] || vectorIcons.cpu}
             </div>
-          `;
-        }).join('');
+            <span class="upgrade-card-category">${card.category}</span>
+            <h4>${card.title}</h4>
+            <p>${card.desc}</p>
+            <div class="upgrade-card-spec">
+              <span class="upgrade-spec-dot"></span>
+              <span>${card.spec}</span>
+            </div>
+          </div>
+        `).join('');
       }
 
       // Update ROI Banner
       const roiBanner = document.getElementById('solRoiBanner');
       if (roiBanner && data.roi) {
-        roiBanner.innerHTML = `<h3>${data.roi.split(':')[0]}</h3><p>${data.roi.split(':')[1] || data.roi}</p>`;
+        roiBanner.innerHTML = `<h3>${data.roi.split('•')[0]}</h3><p>${data.roi.split('•').slice(1).join('•') || data.roi}</p>`;
       }
 
       // Update CTA Text
@@ -844,7 +1644,7 @@
         ctaText.textContent = `Book a live demo customized for ${data.title} and experience 10x faster operations.`;
       }
     }
-  </script>
+</script>
 </body>
 
 </html>

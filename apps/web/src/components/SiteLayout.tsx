@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronRight, Menu, MessageCircle, Moon, Sun, X, ArrowLeft } from 'lucide-react';
-import { useEffect, useState, type PropsWithChildren } from 'react';
+import { useEffect, useRef, useState, type PropsWithChildren } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { InteractiveDemo } from '../features/marketing/InteractiveDemo';
 import { PolicyModal, type PolicyType } from './PolicyModal';
@@ -17,37 +17,47 @@ const mobileCategoryGroups = [
     category: 'Food & Beverage',
     icon: '☕',
     items: [
-      { label: 'Coffee shops & Cafes', sector: 'cafe' },
-      { label: 'Bakeries & Confectionery', sector: 'bakery' },
-      { label: 'Quick Service & Fast Food', sector: 'cafe' },
-      { label: 'Full service & Fine dining', sector: 'cafe' },
+      { label: 'Restaurants & Fine Dining', sector: 'cafe' },
+      { label: 'QSR, Fast Food & Takeaway', sector: 'cafe' },
+      { label: 'Cafes & Chai Bars', sector: 'cafe' },
+      { label: 'Cloud Kitchens & Catering', sector: 'cafe' },
+      { label: 'Bakeries & Sweet Shops', sector: 'bakery' },
+      { label: 'Bars, Pubs & Breweries', sector: 'cafe' },
     ],
   },
   {
     category: 'Retail & Grocery',
     icon: '🛒',
     items: [
-      { label: 'Supermarkets & Kirana', sector: 'supermarket' },
-      { label: 'Grain & Mandi Wholesale', sector: 'supermarket' },
-      { label: 'Meat & Fish Outlets', sector: 'supermarket' },
+      { label: 'Grocery, Supermarkets & Kirana Stores', sector: 'supermarket' },
+      { label: 'Electronics & Mobile Shops', sector: 'electronics' },
+      { label: 'Footwear & Leather Stores', sector: 'apparel' },
+      { label: 'Jewellery & Watch Outlets', sector: 'specialty' },
+      { label: 'Hardware, Sanitary & Paint Stores', sector: 'pos' },
+      { label: 'Pharmacies & Medical Stores', sector: 'pharmacy' },
+      { label: 'Bookstores & Stationery Outlets', sector: 'pos' },
     ],
   },
   {
     category: 'Fashion & Beauty',
     icon: '👗',
     items: [
-      { label: 'Apparel & Fashion Stores', sector: 'apparel' },
-      { label: 'Footwear & Shoe Outlets', sector: 'apparel' },
-      { label: 'Cosmetics & Beauty Salons', sector: 'specialty' },
+      { label: 'Clothing Brands & Apparel Boutiques', sector: 'apparel' },
+      { label: 'Salons, Spas & Beauty Parlors', sector: 'specialty' },
+      { label: 'Cosmetics & Skincare Stores', sector: 'specialty' },
+      { label: 'Eyewear & Optical Stores', sector: 'specialty' },
+      { label: 'Tailoring & Custom Designer Studios', sector: 'apparel' },
     ],
   },
   {
-    category: 'Specialty & Services',
-    icon: '💊',
+    category: 'Services & Professional Businesses',
+    icon: '💼',
     items: [
-      { label: 'Pharmacies & Chemists', sector: 'pharmacy' },
-      { label: 'Electronics & Mobile Shops', sector: 'electronics' },
-      { label: 'Auto Parts & Hardware', sector: 'electronics' },
+      { label: 'Gyms, Fitness Studios & Yoga Centers', sector: 'specialty' },
+      { label: 'Auto Garages, Car Wash & Bike Service Centers', sector: 'pos' },
+      { label: 'Dry Cleaners & Laundry Shops', sector: 'apparel' },
+      { label: 'Repair Centers (Mobile, Laptop, Appliances)', sector: 'electronics' },
+      { label: 'Co-working Spaces & Shared Offices', sector: 'pos' },
     ],
   },
 ];
@@ -66,6 +76,26 @@ export function SiteLayout({ children }: PropsWithChildren) {
   });
 
   const location = useLocation();
+
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('Food & Beverage');
+  const megaMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close mega menu on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
+        setMegaMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close mega menu on route change
+  useEffect(() => {
+    setMegaMenuOpen(false);
+  }, [location.pathname, location.search]);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark);
@@ -96,6 +126,113 @@ export function SiteLayout({ children }: PropsWithChildren) {
           {/* Desktop Navigation Links */}
           <div className="hidden items-center gap-6 md:flex">
             {navLinks.map(({ label, to }) => {
+              if (label === 'Business types') {
+                return (
+                  <div key={to} className="relative" ref={megaMenuRef}>
+                    <button
+                      onClick={() => setMegaMenuOpen((prev) => !prev)}
+                      className={`flex items-center gap-1.5 text-sm font-semibold transition ${
+                        location.pathname === '/solutions' || megaMenuOpen
+                          ? 'text-indigo-600 dark:text-indigo-400'
+                          : 'text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400'
+                      }`}
+                      aria-expanded={megaMenuOpen}
+                    >
+                      {label}
+                      <ChevronRight
+                        size={14}
+                        className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-90' : 'rotate-0'}`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {megaMenuOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute left-1/2 top-full z-50 mt-3 w-[720px] -translate-x-1/2 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900"
+                        >
+                          <div className="grid grid-cols-12 gap-5">
+                            {/* Category Selector Tabs */}
+                            <div className="col-span-5 space-y-1.5 border-r border-slate-100 pr-3 dark:border-slate-800">
+                              <div className="px-3 pb-2 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
+                                Categories
+                              </div>
+                              {mobileCategoryGroups.map((cat) => (
+                                <button
+                                  key={cat.category}
+                                  type="button"
+                                  onMouseEnter={() => setSelectedCategory(cat.category)}
+                                  onClick={() => setSelectedCategory(cat.category)}
+                                  className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-bold transition ${
+                                    selectedCategory === cat.category
+                                      ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300'
+                                      : 'text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800/60'
+                                  }`}
+                                >
+                                  <span className="flex items-center gap-2">
+                                    <span>{cat.icon}</span>
+                                    <span>{cat.category}</span>
+                                  </span>
+                                  <ChevronRight size={14} className="opacity-50" />
+                                </button>
+                              ))}
+
+                              <div className="pt-2">
+                                <Link
+                                  to="/solutions"
+                                  onClick={() => setMegaMenuOpen(false)}
+                                  className="block rounded-xl border border-dashed border-indigo-200 p-2.5 text-center text-xs font-bold text-indigo-600 hover:bg-indigo-50/50 dark:border-indigo-900/60 dark:text-indigo-400 dark:hover:bg-indigo-950/30"
+                                >
+                                  View All 23 Industries →
+                                </Link>
+                              </div>
+                            </div>
+
+                            {/* DISCOVER Column */}
+                            <div className="col-span-7 pl-1">
+                              <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 mb-2">
+                                <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+                                  Discover • {selectedCategory}
+                                </span>
+                                <span className="text-[10px] text-slate-400">
+                                  Click to open &amp; sync tabs
+                                </span>
+                              </div>
+
+                              <div className="max-h-[300px] space-y-1 overflow-y-auto pr-1">
+                                {mobileCategoryGroups
+                                  .find((c) => c.category === selectedCategory)
+                                  ?.items.map((item) => (
+                                    <Link
+                                      key={item.label}
+                                      to={`/solutions?sector=${item.sector}`}
+                                      onClick={() => {
+                                        // 1. Immediately close dropdown on select
+                                        setMegaMenuOpen(false);
+                                      }}
+                                      className="group flex flex-col rounded-xl px-3 py-2 transition hover:bg-indigo-50/80 dark:hover:bg-indigo-950/50"
+                                    >
+                                      <span className="text-xs font-bold text-slate-800 group-hover:text-indigo-600 dark:text-slate-200 dark:group-hover:text-indigo-400">
+                                        {item.label}
+                                      </span>
+                                      <span className="text-[11px] text-slate-400 dark:text-slate-500">
+                                        Priyulabs OS Solution &amp; Billing
+                                      </span>
+                                    </Link>
+                                  ))}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
               const isActive = location.pathname === to;
               return (
                 <Link
