@@ -629,13 +629,13 @@
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="solutions.html?sector=qsr" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
-                  <a href="solutions.html?sector=cafes" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes &amp; Chai Bars</a>
-                  <a href="solutions.html?sector=cloudkitchen" data-sector="cloudkitchen" data-cat="fnb" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="solutions.html?sector=bakery" data-sector="bakery" data-cat="fnb" class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
-                  <a href="solutions.html?sector=bars" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
+                  <a href="restaurants-fine-dining.html" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="restaurants-fine-dining.html" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="qsr-fast-food.html" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
+                  <a href="cafes-chai-bars.html" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes &amp; Chai Bars</a>
+                  <a href="cloud-kitchens-catering.html" data-sector="cloudkitchen" data-cat="fnb" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="bakeries-shops.html" class="sq-disc-item">Bakeries &amp; Patisseries</a>
+                  <a href="bars-pubs-breweries.html" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
@@ -867,7 +867,7 @@
           <button type="button" class="sector-pick-btn" data-sector="qsr" data-cat="fnb">QSR, Fast Food &amp; Takeaway</button>
           <button type="button" class="sector-pick-btn" data-sector="cafes" data-cat="fnb">Cafes &amp; Chai Bars</button>
           <button type="button" class="sector-pick-btn" data-sector="cloudkitchen" data-cat="fnb">Cloud Kitchens &amp; Catering</button>
-          <button type="button" class="sector-pick-btn" data-sector="bakery" data-cat="fnb">Bakeries &amp; Sweet Shops</button>
+          <button type="button" class="sector-pick-btn" data-sector="bakery" data-cat="fnb">Bakeries &amp; Patisseries</button>
           <button type="button" class="sector-pick-btn" data-sector="bars" data-cat="fnb">Bars, Pubs &amp; Breweries</button>
 
           <!-- 2. Retail (7) -->
@@ -1107,6 +1107,32 @@
       const urlParams = new URLSearchParams(window.location.search);
       let targetSector = urlParams.get('sector') || 'grocery';
 
+      // Forward dedicated sector pages directly
+      if (targetSector === 'cloudkitchen') {
+        window.location.replace('cloud-kitchens-catering.html');
+        return;
+      }
+      if (targetSector === 'restaurants') {
+        window.location.replace('restaurants-fine-dining.html');
+        return;
+      }
+      if (targetSector === 'qsr') {
+        window.location.replace('qsr-fast-food.html');
+        return;
+      }
+      if (targetSector === 'bakery') {
+        window.location.replace('bakeries-shops.html');
+        return;
+      }
+      if (targetSector === 'bars') {
+        window.location.replace('bars-pubs-breweries.html');
+        return;
+      }
+      if (targetSector === 'cafes') {
+        window.location.replace('cafes-chai-bars.html');
+        return;
+      }
+
       // Category filter buttons logic
       document.querySelectorAll('.sol-cat-filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1138,9 +1164,25 @@
       // Add click listeners to all sector picker buttons
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
+          const key = btn.getAttribute('data-sector');
+          if (key === 'cloudkitchen') {
+            window.location.href = 'cloud-kitchens-catering.html';
+            return;
+          }
+          if (key === 'restaurants') {
+            window.location.href = 'restaurants-fine-dining.html';
+            return;
+          }
+          if (key === 'qsr') {
+            window.location.href = 'qsr-fast-food.html';
+            return;
+          }
+          if (key === 'cafes') {
+            window.location.href = 'cafes-chai-bars.html';
+            return;
+          }
           e.preventDefault();
           e.stopPropagation();
-          const key = btn.getAttribute('data-sector');
           selectSectorView(key);
           window.history.pushState({}, '', `solutions.html?sector=${key}`);
         });
@@ -1253,7 +1295,7 @@
         roi: 'Zero Missed Delivery Orders • 50% Faster Kitchen Dispatch'
       },
       bakery: {
-        title: 'Bakeries & Sweet Shops',
+        title: 'Bakeries & Patisseries',
         cat: 'fnb',
         eyebrow: 'PRIYULABS FOR BAKERIES & SWEET SHOPS',
         headline: 'Advance custom cake booking & weigh-scale auto-billing',

@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QSR, Fast Food &amp; Takeaway Operating System | Priyulabs</title>
+  <meta name="description"
+    content="High Volume. Split-Second Ordering. Zero Bottlenecks. The ultra-fast retail operating system built for burger joints, pizza outlets, chai points, and takeaway counters." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ==========================================================
+       ULTRA-CLEAN WHITE / OFF-WHITE AESTHETIC (SQUARE / APPLE / STRIPE)
+       ========================================================== */
+    :root {
+      --fd-white: #ffffff;
+      --fd-offwhite: #f8fafc;
+      --fd-subtle: #f1f5f9;
+      --fd-border: #e2e8f0;
+      --fd-border-strong: #cbd5e1;
+      --fd-text-dark: #0f172a;
+      --fd-text-slate: #475569;
+      --fd-text-muted: #64748b;
+      --fd-primary: #0f172a;
+      --fd-emerald: #059669;
+      --fd-emerald-bg: #ecfdf5;
+      --fd-emerald-border: #a7f3d0;
+    }
+
+    body {
+      background-color: var(--fd-white) !important;
+      color: var(--fd-text-dark) !important;
+      font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Light Clean Navbar Styling */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid var(--fd-border) !important;
+      position: sticky !important;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo-title {
+      color: var(--fd-text-dark) !important;
+    }
+
+    .navbar .logo-subtitle {
+      color: #64748b !important;
+    }
+
+    .clean-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .clean-nav-link {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #475569 !important;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .clean-nav-link:hover {
+      color: #0f172a !important;
+    }
+
+    .clean-nav-link.active {
+      color: #0f172a !important;
+      font-weight: 750;
+      cursor: default;
+    }
+
+    /* Types Dropdown (Food & Beverage Only) */
+    .types-menu-wrap {
+      position: relative;
+    }
+
+    .types-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 320px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .types-menu-wrap:hover .types-menu-dropdown,
+    .types-menu-wrap:focus-within .types-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 8px 12px 6px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 6px;
+    }
+
+    .types-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.18s ease;
+    }
+
+    .types-menu-item:hover {
+      background: #f8fafc;
+      color: #0f172a;
+      transform: translateX(2px);
+    }
+
+    .types-menu-item.current {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 750;
+    }
+
+    .types-badge-curr {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    /* ─── 1. Hero Section (Clean Minimalist Editorial) ───────── */
+    .clean-hero-sec {
+      position: relative;
+      background: linear-gradient(180deg, var(--fd-offwhite) 0%, var(--fd-white) 100%);
+      padding: clamp(120px, 16vh, 160px) 20px clamp(60px, 10vh, 100px);
+      text-align: center;
+      border-bottom: 1px solid var(--fd-border);
+    }
+
+    .clean-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    .clean-hero-badge .green-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .clean-hero-title {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(34px, 5.5vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      color: var(--fd-text-dark);
+      max-width: 960px;
+      margin: 0 auto 20px;
+    }
+
+    .clean-hero-title .muted-title {
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .clean-hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.6;
+      color: var(--fd-text-slate);
+      max-width: 780px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .clean-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .btn-solid-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 30px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-solid-dark:hover {
+      background: #1e293b;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.2);
+      color: #ffffff;
+    }
+
+    .btn-outline-clean {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid var(--fd-border-strong);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-outline-clean:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      transform: scale(1.02);
+      color: #0f172a;
+    }
+
+    /* Hero Visual Frame */
+    .clean-hero-visual-frame {
+      max-width: 1040px;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: 1px solid var(--fd-border);
+      background: #ffffff;
+      padding: 10px;
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .clean-hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: clamp(340px, 50vw, 540px);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f1f5f9;
+    }
+
+    .clean-hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .clean-hero-overlay-card {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 18px 20px;
+      text-align: left;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 640px) {
+      .clean-hero-overlay-card {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        max-width: none;
+      }
+    }
+
+    /* ─── 2. The 4 Pillars (Alternating Modern Split-Rows) ───── */
+    .clean-pillars-sec {
+      padding: clamp(80px, 12vh, 120px) 20px;
+      background: #ffffff;
+    }
+
+    .clean-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .clean-sec-header {
+      text-align: center;
+      margin-bottom: clamp(50px, 8vh, 80px);
+    }
+
+    .clean-sec-badge {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .clean-sec-title {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      color: var(--fd-text-dark);
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .clean-sec-desc {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--fd-text-slate);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+      margin-bottom: clamp(70px, 10vh, 110px);
+    }
+
+    .pillar-row:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 960px) {
+      .pillar-row {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .pillar-row.reverse .pillar-img-col {
+        order: 2;
+      }
+
+      .pillar-row.reverse .pillar-text-col {
+        order: 1;
+      }
+    }
+
+    .pillar-impact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .badge-green {
+      background: var(--fd-emerald-bg);
+      color: var(--fd-emerald);
+      border: 1px solid var(--fd-emerald-border);
+    }
+
+    .badge-blue {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-purple {
+      background: #faf5ff;
+      color: #7e22ce;
+      border: 1px solid #e9d5ff;
+    }
+
+    .badge-amber {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .pillar-heading {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      color: var(--fd-text-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .pillar-box-problem {
+      background: var(--fd-offwhite);
+      border: 1px solid var(--fd-border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--fd-text-slate);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .pillar-box-problem strong {
+      color: var(--fd-text-dark);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pillar-body-text {
+      font-size: 15px;
+      color: var(--fd-text-slate);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .pillar-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pillar-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .pillar-bullets li svg {
+      width: 17px;
+      height: 17px;
+      color: #059669;
+      min-width: 17px;
+      margin-top: 2px;
+    }
+
+    .pillar-img-frame {
+      border-radius: 20px;
+      border: 1px solid var(--fd-border);
+      background: #f8fafc;
+      padding: 8px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pillar-img-frame:hover {
+      transform: scale(1.015);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .pillar-img-frame img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    /* ─── 3. Interactive Feature Matrix (Minimalist Cards) ───── */
+    .clean-features-sec {
+      padding: clamp(80px, 12vh, 120px) 20px;
+      background: var(--fd-offwhite);
+      border-top: 1px solid var(--fd-border);
+      border-bottom: 1px solid var(--fd-border);
+    }
+
+    .clean-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 960px) {
+      .clean-feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .clean-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .clean-feat-card {
+      background: #ffffff;
+      border: 1px solid var(--fd-border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .clean-feat-card:hover {
+      border-color: #94a3b8;
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08);
+    }
+
+    .clean-feat-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: #0f172a;
+    }
+
+    .clean-feat-card h4 {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--fd-text-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .clean-feat-card p {
+      font-size: 14px;
+      color: var(--fd-text-slate);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ─── 4. Metrics That Matter (Minimalist Numbers Strip) ──── */
+    .clean-metrics-sec {
+      padding: 70px 20px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--fd-border);
+    }
+
+    .clean-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .clean-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .clean-metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .clean-metric-col {
+      border-left: 2px solid #cbd5e1;
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .clean-metric-val {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(34px, 4vw, 48px);
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .clean-metric-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .clean-metric-sub {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* ─── 5. Bottom Conversion Section ──────────────────────── */
+    .clean-cta-sec {
+      padding: clamp(80px, 12vh, 120px) 20px;
+      background: var(--fd-offwhite);
+    }
+
+    .clean-cta-box {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--fd-border);
+      border-radius: 24px;
+      padding: clamp(40px, 6vw, 70px) 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    .clean-cta-box h2 {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .clean-cta-box p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--fd-text-slate);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    /* Modal Form Styles */
+    .clean-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 20px;
+    }
+
+    .clean-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .clean-modal-card {
+      background: #ffffff;
+      border: 1px solid var(--fd-border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      padding: 32px 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .clean-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #f1f5f9;
+      border: none;
+      color: #64748b;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .clean-input {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: #0f172a;
+      outline: none;
+      box-sizing: border-box;
+      margin-top: 4px;
+      margin-bottom: 14px;
+    }
+
+    .clean-input:focus {
+      border-color: #0f172a;
+    }
+  
+    /* Bottom Conversion Banner */
+    .bottom-cta-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .bottom-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-title {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .bottom-cta-sub {
+      font-size: 17.5px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .bottom-cta-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-light-solid {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-light-solid:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Global Clean Navigation Header -->
+  <header class="navbar" id="navbar" style="position: sticky; top: 0; z-index: 50; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid #e2e8f0; padding: 14px 24px;">
+    <div class="nav-container" style="width: 100%; max-width: 100%; margin: 0 auto; padding: 0 16px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="logo" aria-label="Priyulabs Home" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <div style="background: #0f1422; border-radius: 12px; padding: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
+          <img src="assets/logo.svg" alt="Priyulabs Logo" style="width: 24px; height: 24px; display: block;" />
+        </div>
+        <div class="logo-text-group" style="display: flex; flex-direction: column; text-align: left;">
+          <span class="logo-title" style="font-size: 16px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; line-height: 1.1; font-family: var(--font-display);">PRIYULABS</span>
+          <span class="logo-subtitle" style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; margin-top: 2px;">DIGITAL</span>
+        </div>
+      </a>
+
+      <ul class="clean-nav-links" id="navLinks" style="display: flex; align-items: center; gap: 32px; list-style: none; font-size: 14px; font-weight: 500;">
+        <li>
+          <a href="javascript:void(0)" class="clean-nav-link active" onclick="event.preventDefault()" style="cursor: default; font-weight: 700; color: #0f172a;">Overview</a>
+        </li>
+        <li class="types-menu-wrap">
+          <a href="javascript:void(0)" class="clean-nav-link" style="color: #475569; display: flex; align-items: center; gap: 4px;">
+            <span>Types</span> <span style="font-size: 10px; color: #94a3b8;">▾</span>
+          </a>
+          <div class="types-menu-dropdown">
+            <div class="types-menu-header">Food &amp; Beverage Types</div>
+            <a href="restaurants-fine-dining.html" class="types-menu-item">
+              <span>🍽️ Restaurants &amp; Fine Dining</span>
+            </a>
+            <a href="qsr-fast-food.html" class="types-menu-item current">
+              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
+              <span class="types-badge-curr">Current</span>
+            </a>
+            <a href="cafes-chai-bars.html" class="types-menu-item">
+              <span>☕ Cafes &amp; Chai Bars</span>
+            </a>
+            <a href="cloud-kitchens-catering.html" class="types-menu-item">
+              <span>📦 Cloud Kitchens &amp; Catering</span>
+            </a>
+            <a href="bakeries-shops.html" class="types-menu-item">
+              <span>🥐 Bakeries &amp; Patisseries</span>
+            </a>
+            <a href="bars-pubs-breweries.html" class="types-menu-item">
+              <span>🍷 Bars, Pubs &amp; Breweries</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="#pillars" class="clean-nav-link" style="color: #475569; transition: color 0.15s ease;">Switch Priyulabs</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn-solid-dark" style="background: #0f172a; color: #ffffff; padding: 10px 20px; font-size: 14px; font-weight: 500; border-radius: 12px; text-decoration: none; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: background-color 0.15s ease;">Get Started</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (High Volume, Split-Second Counter Editorial)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-hero-sec">
+    <div class="clean-hero-badge">
+      <span class="green-dot"></span>
+      QSR &amp; QUICK BITES
+    </div>
+
+    <h1 class="clean-hero-title">
+      High Volume. Split-Second Ordering. <br />
+      <span class="muted-title">Zero Bottlenecks.</span>
+    </h1>
+
+    <p class="clean-hero-sub">
+      The ultra-fast retail operating system built for burger joints, pizza outlets, chai points, and takeaway counters — built to turn queues into revenue with zero counter lag.
+    </p>
+
+    <div class="clean-hero-actions">
+      <a href="index.html#cta" class="btn-solid-dark" style="text-decoration: none;">
+        Get Started Today
+      </a>
+      <button onclick="openVideoModal()" class="btn-outline-clean">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        See QSR Demo
+      </button>
+    </div>
+
+    <!-- Hero Visual Frame -->
+    <div class="clean-hero-visual-frame">
+      <div class="clean-hero-img-wrap">
+        <img
+          src="assets/qsr_hero_counter.jpg"
+          alt="Modern fast-food QSR ordering counter and digital menu displays"
+        />
+        <!-- Active Fast Food Counter Overlay -->
+        <div class="clean-hero-overlay-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+              <strong style="font-size: 13px; color: #0f172a; text-transform: uppercase;">TOKEN #A-108 • READY</strong>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 6px; border-radius: 4px;">Lane 01</span>
+          </div>
+          <div style="font-size: 12.5px; color: #334155; line-height: 1.6;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>2x Smash Crispy Chicken Combo</span>
+              <strong style="color: #0f172a;">₹440</strong>
+            </div>
+            <div style="font-size: 11px; color: #64748b;">• Modifiers: Extra Peri Peri Dip + Coke Zero</div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; margin-top: 10px; padding-top: 8px; font-size: 11.5px;">
+            <span style="color: #64748b;">Counter POS: Terminal 01</span>
+            <span style="color: #059669; font-weight: 700;">⚡ Billed in 2.1s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS — HOW OUR SOFTWARE DIRECTLY IMPROVES FAST FOOD & TAKEAWAY
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-pillars-sec" id="pillars">
+    <div class="clean-container">
+      <div class="clean-sec-header">
+        <span class="clean-sec-badge">The 4 Pillars of Operational Speed</span>
+        <h2 class="clean-sec-title">How Our Software Directly Improves Fast Food &amp; Takeaway</h2>
+        <p class="clean-sec-desc">
+          Four dedicated solutions addressing the exact challenges of high-volume counter operations.
+        </p>
+      </div>
+
+      <!-- Pillar 1 -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-green">
+            ⚡ Under 3-Second Average Checkout
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 1: Smart POS — 2-Second Counter Billing &amp; Token Generation
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Long queues at peak lunch/dinner rush leading to abandoned orders and customer frustration.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            Touch-first rapid menu grid, instant modifier combos (add cheese, extra dip), auto-generated order tokens, and 1-tap UPI/contactless payments. Works 100% offline during network drops.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Rapid numeric shortcut keys &amp; combo bundling</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Auto-trigger thermal token receipts &amp; customer-facing screens</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero cloud latency — bills generated locally in 0.2s</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="assets/qsr_pos_billing.jpg" alt="Touchscreen fast-food POS terminal and meal combo billing counter" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2 (Alternating) -->
+      <div class="pillar-row reverse">
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="assets/qsr_kitchen_kds.jpg" alt="Live Kitchen Display System KDS and fast-food burger prep assembly line" />
+          </div>
+        </div>
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-blue">
+            🔥 Zero Missed Orders &amp; Instant Kitchen Routing
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 2: Complete Management System — Live KDS &amp; Aggregator Integration
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Chaos between online food delivery apps (Swiggy/Zomato) and in-store counter orders.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            Unified Kitchen Display System (KDS) combining online orders and counter takeaways on one screen. Automated item status ("86"/Out of stock) sync across all platforms in real-time.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Color-coded timers (Green: On time, Yellow: Prep, Red: Delayed)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>1-click rider pickup verification via token sound alert</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Auto-sync out-of-stock items across Swiggy and Zomato instantly</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-purple">
+            🌐 Save Up To 30% Delivery Commissions
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 3: Custom Website &amp; QR Ordering — Direct Takeaway &amp; Pickup Web Store
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Losing 20–30% margins on aggregator commissions for recurring local customers.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            A lightweight, lightning-fast mobile web ordering app for direct curb-side pickups, scheduled pre-orders, and table QR ordering without downloading an app.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>0% commission direct online ordering with instant UPI payments</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Schedule pickup orders so food is packed before the customer arrives</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automatic customer database capture for repeat marketing</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1200&q=80" alt="Direct mobile pickup ordering for burgers and quick bites" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 4 (Alternating) -->
+      <div class="pillar-row reverse">
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80" alt="Hyper-local fast food marketing and repeat combos" />
+          </div>
+        </div>
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-amber">
+            📈 4x Higher Repeat Order Frequency
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 4: Targeted Digital Marketing &amp; Ads — Hyper-Local Footfall &amp; Re-Orders
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Unpredictable afternoon lulls and low customer retention during off-peak hours.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            Geo-fenced 2 km radius Instagram &amp; Meta ads targeting nearby colleges, offices, and residential hubs, plus automated WhatsApp promo triggers for combo offers.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automated "Happy Hour" WhatsApp deals triggered between 3 PM – 6 PM</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Targeted Meta ads reaching office lunch clusters within 15 minutes</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>1-click loyalty points redemption at the billing counter</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. INTERACTIVE FEATURE MATRIX / GRID (Minimalist Cards)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-features-sec">
+    <div class="clean-container">
+      <div class="clean-sec-header">
+        <span class="clean-sec-badge">Operational Capabilities</span>
+        <h2 class="clean-sec-title">Core features built for high-speed counter service</h2>
+        <p class="clean-sec-desc">
+          Minimalist, dependable tools designed to keep counter cashiers, line cooks, and pickup runners in perfect sync.
+        </p>
+      </div>
+
+      <div class="clean-feature-grid">
+        <!-- Card 1 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M16 8h-8"/><path d="M16 12h-8"/><path d="M11 16H8"/></svg>
+          </div>
+          <h4>Speed-Optimized Counter POS</h4>
+          <p>Fast product search, category barcodes, instant add-ons, and custom combo bundling built for peak rush speed.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Kitchen Display (KDS) &amp; Token Screen</h4>
+          <p>Visual color-coded order staging (Preparing, Ready, Picked up) with customer-facing token displays and audio buzzers.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="13" x="1" y="3" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h4>Dynamic Online Aggregator Sync</h4>
+          <p>Single central menu control that pushes dynamic pricing, new combos, and 86 status to third-party delivery apps instantly.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+          </div>
+          <h4>Portion &amp; Raw Material Tracking</h4>
+          <p>Real-time consumption tracking for patties, buns, cheese slices, packaging boxes, and dips with low-stock alerts.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>
+          </div>
+          <h4>Self-Ordering Kiosk Mode</h4>
+          <p>Switch any tablet into a self-service customer ordering kiosk with integrated UPI QR payments to cut queues in half.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+          </div>
+          <h4>Multi-Outlet Central Control</h4>
+          <p>Update combo prices, monitor daily sales, and transfer stock across city branches instantly from one central dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. METRICS THAT MATTER (Minimalist Numbers Strip)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-metrics-sec">
+    <div class="clean-container">
+      <div class="clean-metrics-grid">
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">&lt; 3s</div>
+          <div class="clean-metric-label">&lt; 3s Average Checkout Time</div>
+          <div class="clean-metric-sub">Instant modifier taps and barcode billing.</div>
+        </div>
+
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">100%</div>
+          <div class="clean-metric-label">100% Centralized Delivery App Sync</div>
+          <div class="clean-metric-sub">Swiggy &amp; Zomato orders on 1 live KDS.</div>
+        </div>
+
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">25%+</div>
+          <div class="clean-metric-label">25%+ Growth in Direct Online Pickups</div>
+          <div class="clean-metric-sub">Zero commissions on direct QR &amp; web store.</div>
+        </div>
+
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">0</div>
+          <div class="clean-metric-label">0 Lost KOTs During Rush Hours</div>
+          <div class="clean-metric-sub">Dual offline fallback with thermal backup.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION SECTION
+  ══════════════════════════════════════════════════════════ -->
+    <section class="bottom-cta-sec">
+    <div class="bottom-cta-box">
+      <h2 class="bottom-cta-title">Ready to Upgrade Your QSR &amp; Fast Food Operations?</h2>
+      <p class="bottom-cta-sub">
+        Accelerate high-velocity peak hour lines, sync self-ordering kiosks, optimize kitchen display timers, and turn first-time diners into loyal regulars.
+      </p>
+      <div class="bottom-cta-btns">
+        <a href="index.html#cta" class="btn-light-solid">
+          Get Started Today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20QSR%20and%20want%20to%20see%20a%20live%20POS%20demo." target="_blank" rel="noopener noreferrer" class="btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Chat with a QSR Specialist
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #ffffff; border-top: 1px solid #e2e8f0; padding: 50px 20px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap: 20px;">
+      <p style="margin: 0; color: #64748b; font-size: 13.5px;">© 2026 Priyulabs Digital. All Rights Reserved.</p>
+      <a href="index.html" style="color: #0f172a; text-decoration: none; font-weight: 600; font-size: 13.5px;">← Back to Main Platform</a>
+    </div>
+  </footer>
+
+  <!-- Walkthrough Modal -->
+  <div class="clean-modal-overlay" id="walkthroughModal" onclick="if(event.target === this) closeWalkthroughModal();">
+    <div class="clean-modal-card">
+      <button class="clean-modal-close" onclick="closeWalkthroughModal()">&times;</button>
+      <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px;">Schedule a 15-Minute QSR Walkthrough</h3>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Experience how Priyulabs accelerates counter billing, tokens &amp; kitchen orders.</p>
+
+      <form onsubmit="handleWalkthroughSubmit(event)">
+        <label style="font-size: 12px; font-weight: 700; color: #334155;">QSR / Brand / Outlet Name</label>
+        <input type="text" id="wtRestName" class="clean-input" placeholder="e.g. Burger Shack, Chai Adda" required />
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <label style="font-size: 12px; font-weight: 700; color: #334155;">WhatsApp Number</label>
+            <input type="tel" id="wtPhone" class="clean-input" placeholder="9876543210" required />
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 700; color: #334155;">Daily Orders</label>
+            <select id="wtTables" class="clean-input">
+              <option value="50-150">50 – 150 Orders / Day</option>
+              <option value="150-300">150 – 300 Orders / Day</option>
+              <option value="300+">300+ High Rush Orders</option>
+              <option value="Multi-Outlet">Multi-Outlet Chain</option>
+            </select>
+          </div>
+        </div>
+
+        <label style="font-size: 12px; font-weight: 700; color: #334155;">City</label>
+        <input type="text" id="wtCity" class="clean-input" placeholder="e.g. Mumbai, Delhi NCR, Bengaluru" required />
+
+        <button type="submit" class="btn-solid-dark" style="width: 100%; padding: 13px; margin-top: 10px;">
+          Confirm Walkthrough on WhatsApp →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="clean-modal-overlay" id="cleanVideoModal" onclick="if(event.target === this) closeVideoModal();">
+    <div class="clean-modal-card" style="max-width: 720px; padding: 10px; background: #000;">
+      <button class="clean-modal-close" style="background: rgba(255,255,255,0.2); color: #fff;" onclick="closeVideoModal()">&times;</button>
+      <video src="assets/pos-checkout.mp4" controls autoplay style="width: 100%; border-radius: 10px; display: block;"></video>
+    </div>
+  </div>
+
+  <script>
+    function openWalkthroughModal() {
+      document.getElementById('walkthroughModal').classList.add('active');
+    }
+    function closeWalkthroughModal() {
+      document.getElementById('walkthroughModal').classList.remove('active');
+    }
+    function openVideoModal() {
+      document.getElementById('cleanVideoModal').classList.add('active');
+    }
+    function closeVideoModal() {
+      document.getElementById('cleanVideoModal').classList.remove('active');
+    }
+
+    function handleWalkthroughSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('wtRestName').value;
+      const phone = document.getElementById('wtPhone').value;
+      const orders = document.getElementById('wtTables').value;
+      const city = document.getElementById('wtCity').value;
+
+      const msg = `Hello Priyulabs! I would like to schedule a 15-minute QSR walkthrough for ${name} (${orders} orders/day, ${city}). My phone is ${phone}.`;
+      window.open(`https://wa.me/917849074050?text=${encodeURIComponent(msg)}`, '_blank');
+      closeWalkthroughModal();
+    }
+
+    // Mobile navigation toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+
+</html>

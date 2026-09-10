@@ -2164,19 +2164,19 @@ permalink: /website-builder
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb"
+                  <a href="restaurants-fine-dining.html"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb"
+                  <a href="restaurants-fine-dining.html"
                     class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="solutions.html?sector=qsr" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
+                  <a href="qsr-fast-food.html" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
                     Food &amp; Takeaway</a>
-                  <a href="solutions.html?sector=cafes" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
+                  <a href="cafes-chai-bars.html" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
                     &amp; Chai Bars</a>
-                  <a href="solutions.html?sector=cloudkitchen" data-sector="cloudkitchen" data-cat="fnb"
+                  <a href="cloud-kitchens-catering.html" data-sector="cloudkitchen" data-cat="fnb"
                     class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="solutions.html?sector=bakery" data-sector="bakery" data-cat="fnb"
-                    class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
-                  <a href="solutions.html?sector=bars" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs
+                  <a href="bakeries-shops.html"
+                    class="sq-disc-item">Bakeries &amp; Patisseries</a>
+                  <a href="bars-pubs-breweries.html" class="sq-disc-item">Bars, Pubs
                     &amp; Breweries</a>
                 </div>
 
@@ -3375,9 +3375,24 @@ permalink: /website-builder
             </div>
 
             <div class="form-group">
-              <label for="shopName">Business / Brand Name *</label>
-              <input type="text" id="shopName" name="StoreName" placeholder="Enter business name (e.g. Royal Salon)"
-                required />
+              <label for="serviceCategory">Choose Service / Category *</label>
+              <select id="serviceCategory" name="Service" required>
+                <option value="Website Building" selected>Website Building</option>
+                <option value="POS">POS (Smart POS &amp; Billing)</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Complete Management System">Complete Management System</option>
+                <option value="Custom">Custom</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="customRequirementGroup" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px;">
+                <label for="customRequirement" style="margin-bottom: 0;">What do you need? (Custom Requirements) *</label>
+                <span id="customWordCount" style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">0 / 100 words</span>
+              </div>
+              <textarea id="customRequirement" name="CustomRequirement" rows="3"
+                placeholder="Describe your requirements in detail (maximum 100 words)..."></textarea>
+              <small id="customWordError" style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Word limit reached (Max 100 words allowed).</small>
             </div>
 
             <div class="form-group">
@@ -3450,7 +3465,7 @@ permalink: /website-builder
           <ul>
             <li><a href="solutions.html?sector=supermarket">Supermarkets &amp; Kirana</a></li>
             <li><a href="solutions.html?sector=cafe">Cafes &amp; Restaurants</a></li>
-            <li><a href="solutions.html?sector=bakery">Bakeries &amp; Confectionery</a></li>
+            <li><a href="bakeries-shops.html">Bakeries &amp; Confectionery</a></li>
             <li><a href="solutions.html?sector=apparel">Apparel &amp; Boutiques</a></li>
             <li><a href="solutions.html?sector=pharmacy">Pharmacies &amp; Chemist</a></li>
           </ul>

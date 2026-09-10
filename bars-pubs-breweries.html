@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bars, Pubs &amp; Breweries POS &amp; Management OS | Priyulabs Digital</title>
+  <meta name="description" content="Next-gen retail operating system for high-volume bars, craft breweries, cocktail lounges, and gastro-pubs. Lightning-fast bar tab management, keg yield tracking, automated happy hours, and zero-leakage liquor inventory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Clean White Theme (Square / Apple Aesthetic) */
+    :root {
+      --bg-pure: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-slate: #475569;
+      --text-muted: #64748b;
+      --border-subtle: #e2e8f0;
+      --accent-dark: #0f172a;
+      --accent-amber: #c2410c;
+      --accent-amber-bright: #d97706;
+      --accent-emerald: #059669;
+      --accent-indigo: #6366f1;
+    }
+
+    body {
+      background-color: var(--bg-pure);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sub-Navigation Bar */
+    .clean-subnav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 24px;
+    }
+
+    .clean-subnav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .clean-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .clean-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+    }
+
+    .clean-nav-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .clean-nav-link:hover {
+      color: #0f172a;
+    }
+
+    .clean-nav-link.active {
+      font-weight: 700;
+      color: #0f172a;
+      cursor: default;
+    }
+
+    /* Types Dropdown */
+    .types-menu-wrap {
+      position: relative;
+    }
+
+    .types-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 320px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .types-menu-wrap:hover .types-menu-dropdown,
+    .types-menu-wrap:focus-within .types-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 8px 12px 6px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 4px;
+    }
+
+    .types-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .types-menu-item:hover {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    .types-menu-item.current {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .types-badge-curr {
+      font-size: 10px;
+      font-weight: 700;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    .btn-solid-dark {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #0f172a;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-solid-dark:hover {
+      background: #1e293b;
+      border-color: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-clean {
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #cbd5e1;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline-clean:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* Hero Section */
+    .clean-hero-sec {
+      padding: 72px 24px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .clean-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #c2410c;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    .clean-hero-title {
+      font-size: 56px;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      color: #0f172a;
+      max-width: 980px;
+      margin: 0 auto 20px;
+    }
+
+    .text-amber-600 {
+      color: #d97706;
+    }
+
+    .text-emerald-700 {
+      color: #047857;
+    }
+
+    .text-indigo-600 {
+      color: #4f46e5;
+    }
+
+    .clean-hero-sub {
+      font-size: 18.5px;
+      line-height: 1.6;
+      color: #475569;
+      max-width: 800px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .clean-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .clean-hero-media-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12);
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .clean-hero-media-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .clean-hero-media-wrap:hover img {
+      transform: scale(1.015);
+    }
+
+    /* Interactive Overlay Card in Hero */
+    .hero-pos-overlay {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      max-width: 360px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+      text-align: left;
+    }
+
+    /* 4 Pillars Section */
+    .pillars-sec {
+      padding: 96px 24px;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .pillars-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 88px;
+    }
+
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .pillar-row.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pillar-row.reverse .pillar-text-col {
+      order: 2;
+    }
+
+    .pillar-row.reverse .pillar-media-col {
+      order: 1;
+    }
+
+    .pillar-impact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .pill-amber {
+      background: #fff7ed;
+      color: #c2410c;
+      border: 1px solid #ffedd5;
+    }
+
+    .pill-emerald {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #d1fae5;
+    }
+
+    .pill-indigo {
+      background: #eef2ff;
+      color: #4f46e5;
+      border: 1px solid #e0e7ff;
+    }
+
+    .pillar-title {
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+      margin-bottom: 14px;
+    }
+
+    .pillar-box-problem {
+      background: #f8fafc;
+      border-left: 3px solid #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 0 10px 10px 0;
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .pillar-box-problem strong {
+      color: #0f172a;
+    }
+
+    .pillar-desc {
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: #475569;
+      margin-bottom: 22px;
+    }
+
+    .pillar-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pillar-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .pillar-check-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ecfdf5;
+      color: #059669;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    .pillar-media-col {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08);
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .pillar-media-col img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar-media-col:hover img {
+      transform: scale(1.02);
+    }
+
+    /* 6 Minimalist Feature Cards */
+    .features-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .features-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+
+    .features-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0f172a;
+      background: #e2e8f0;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .features-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .features-sub {
+      font-size: 16.5px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-clean-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-clean-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08);
+    }
+
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #0f172a;
+    }
+
+    .feature-card-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .feature-card-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+
+    .feature-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      background: #f1f5f9;
+      padding: 3px 10px;
+      border-radius: 6px;
+      width: fit-content;
+    }
+
+    /* Metrics Strip */
+    .metrics-sec {
+      padding: 64px 24px;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .metrics-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .metric-num {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric-label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    /* Bottom Conversion Banner */
+    .bottom-cta-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .bottom-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(194, 65, 12, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-title {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .bottom-cta-sub {
+      font-size: 17.5px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .bottom-cta-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-light-solid {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-light-solid:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Video Modal */
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .video-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .video-modal-content {
+      background: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      z-index: 10;
+      transition: background 0.15s;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    @media (max-width: 1024px) {
+      .clean-hero-title { font-size: 44px; }
+      .pillar-row, .pillar-row.reverse { grid-template-columns: 1fr; gap: 40px; }
+      .pillar-row.reverse .pillar-text-col { order: 1; }
+      .pillar-row.reverse .pillar-media-col { order: 2; }
+      .pillar-media-col img { height: 320px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .metrics-container { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .hero-pos-overlay { position: static; max-width: 100%; margin: 16px; }
+    }
+
+    @media (max-width: 768px) {
+      .clean-nav-links { display: none; }
+      .clean-hero-title { font-size: 34px; }
+      .clean-hero-sub { font-size: 16px; }
+      .clean-hero-media-wrap img { height: 320px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .bottom-cta-box { padding: 40px 24px; }
+      .bottom-cta-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL SECONDARY SUB-NAVIGATION BAR
+  ══════════════════════════════════════════════════════════ -->
+  <header class="clean-subnav">
+    <div class="clean-subnav-inner">
+      <a href="index.html" class="clean-brand" aria-label="Priyulabs Home">
+        <div style="background:#0f1422; border-radius:12px; padding:8px; display:flex; align-items:center; justify-content:center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <img src="assets/logo.svg" style="height:22px; width:22px; display:block;" alt="Priyulabs Logo" />
+        </div>
+        <div style="display:flex; flex-direction:column; text-align:left;">
+          <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
+          <span style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:#64748b; text-transform:uppercase; margin-top:2px;">DIGITAL</span>
+        </div>
+      </a>
+
+      <ul class="clean-nav-links">
+        <li>
+          <a href="javascript:void(0)" class="clean-nav-link active">Overview</a>
+        </li>
+        <li class="types-menu-wrap">
+          <a href="javascript:void(0)" class="clean-nav-link">
+            <span>Types</span>
+            <span style="font-size:10px; color:#94a3b8;">▾</span>
+          </a>
+          <div class="types-menu-dropdown">
+            <div class="types-menu-header">Food &amp; Beverage Types</div>
+            <a href="restaurants-fine-dining.html" class="types-menu-item">
+              <span>🍽️ Restaurants &amp; Fine Dining</span>
+            </a>
+            <a href="qsr-fast-food.html" class="types-menu-item">
+              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
+            </a>
+            <a href="cafes-chai-bars.html" class="types-menu-item">
+              <span>☕ Cafes &amp; Chai Bars</span>
+            </a>
+            <a href="cloud-kitchens-catering.html" class="types-menu-item">
+              <span>📦 Cloud Kitchens &amp; Catering</span>
+            </a>
+            <a href="bakeries-shops.html" class="types-menu-item">
+              <span>🥐 Bakeries &amp; Patisseries</span>
+            </a>
+            <a href="bars-pubs-breweries.html" class="types-menu-item current">
+              <span>🍷 Bars, Pubs &amp; Breweries</span>
+              <span class="types-badge-curr">Current</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="#pillars" class="clean-nav-link">Switch Priyulabs</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn-solid-dark">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (Bars, Pubs & Breweries Editorial)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-hero-sec">
+    <div class="clean-hero-badge">
+      <span style="width:7px; height:7px; border-radius:50%; background:#c2410c; display:inline-block;"></span>
+      BARS, PUBS, COCKTAIL LOUNGES &amp; CRAFT BREWERIES
+    </div>
+
+    <h1 class="clean-hero-title">
+      Pour Fast. Open Tabs. <br />
+      <span class="text-amber-600">Zero Unaccounted Spills.</span>
+    </h1>
+
+    <p class="clean-hero-sub">
+      From lightning-fast bar tab management and keg yield tracking to automated happy hours and table-side checks — an all-in-one operating platform engineered for high-volume nightlife and craft beverage venues.
+    </p>
+
+    <div class="clean-hero-actions">
+      <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
+        Get Started Today
+      </a>
+      <button onclick="openVideoModal()" class="btn-outline-clean">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Explore Bar OS Demo
+      </button>
+    </div>
+
+    <div class="clean-hero-media-wrap">
+      <img src="assets/bar_hero.jpg" alt="Modern lively craft brewery bar counter with bartender tapping craft draft beer" />
+      
+      <!-- Active Bar POS Interface Overlay -->
+      <div class="hero-pos-overlay">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+            <strong style="font-size:13px; color:#0f172a; text-transform:uppercase;">Tab #42 • High-Top 8</strong>
+          </div>
+          <span style="font-size:11px; font-weight:700; color:#c2410c; background:#fff7ed; padding:2px 8px; border-radius:4px;">Pre-Auth Active</span>
+        </div>
+        <div style="font-size:12.5px; color:#334155; line-height:1.6;">
+          <div style="display:flex; justify-content:space-between;">
+            <span>4x Hazy IPA Draft (Pints)</span>
+            <strong style="color:#0f172a;">₹1,800</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>2x Smoked Old Fashioned</span>
+            <strong style="color:#0f172a;">₹1,400</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>1x Truffle Fries &amp; Bar Nachos</span>
+            <strong style="color:#0f172a;">₹650</strong>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #e2e8f0; margin-top:10px; padding-top:8px; font-size:11.5px;">
+          <span style="color:#64748b;">Bartender: Marcus</span>
+          <span style="color:#059669; font-weight:700;">Sub-3s Punch • KOT Dispensed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS — HOW OUR SOFTWARE DIRECTLY ELEVATES BAR & PUB OPERATIONS
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pillars-sec" id="pillars">
+    <div class="pillars-container">
+
+      <!-- PILLAR 1: Smart POS — Open Tabs, Fast Swipes -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-pill pill-amber">
+            <span class="text-amber-700 font-semibold">Sub-3-Second Bar Order Ticketing</span>
+          </div>
+          <h2 class="pillar-title">Smart POS — Open Tabs, Fast Swipes &amp; Split-Second Rush</h2>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong> Bar counter bottlenecks, forgotten running tabs, and chaotic delays when splitting large party bills late at night.
+          </div>
+          <p class="pillar-desc">
+            <strong>How It Works:</strong> 1-tap open tab pre-authorization, quick-reorder shortcuts for popular drafts and cocktails, instant bill splitting by seat or item, and contactless tap-to-pay at crowded standing bars.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>1-tap card pre-authorization keeps running tabs secure with zero walk-out loss.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>"Another Round" quick-fire button reorders drinks in a single tap without re-entering modifiers.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Seat-wise or equal multi-way bill splitting handled in under 5 seconds.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col">
+          <img src="assets/bar_pos_tabs.jpg" alt="Bartender operating modern touchscreen POS behind glowing craft cocktail bar counter" />
+        </div>
+      </div>
+
+      <!-- PILLAR 2: Keg Yields, Ounce-Level Variance & Liquor Stock -->
+      <div class="pillar-row reverse">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-pill pill-emerald">
+            <span class="text-emerald-700 font-semibold">Up to 18% Savings on Liquor Variance</span>
+          </div>
+          <h2 class="pillar-title">Complete Management System — Keg Yields &amp; Liquor Stock</h2>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong> Over-pouring, unregistered free drinks, and keg foaming leading to heavy liquor inventory shrinkages and lost margins.
+          </div>
+          <p class="pillar-desc">
+            <strong>How It Works:</strong> Real-time pour depletion by standard pour sizes (30ml, 60ml, pints, pitchers). Live draft keg volume tracking comparing dispensed liters against billed revenue, with instant low-keg change alerts.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Ounce and peg-level depletion automatically synchronized with every drink ring.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Keg flow meter integration compares actual dispensed beer against billed pints.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Instant mobile alerts when premium spirits or high-demand kegs drop below 15% capacity.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col">
+          <img src="assets/bar_draft_tap.jpg" alt="Draft craft beer pouring from taps into cold pint glasses" />
+        </div>
+      </div>
+
+      <!-- PILLAR 3: Custom Website & VIP Event Ticketing -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-pill pill-indigo">
+            <span class="text-indigo-600 font-semibold">Zero Commission on Direct VIP Bookings</span>
+          </div>
+          <h2 class="pillar-title">Custom Website &amp; VIP Event Ticketing — Direct Guest Bookings</h2>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong> Underbooked private lounge booths, missed weekend table reservations, and 3rd-party event aggregators taking steep 15-20% cuts.
+          </div>
+          <p class="pillar-desc">
+            <strong>How It Works:</strong> Branded responsive web portal for VIP table/booth reservations, live event ticket sales (DJ nights, tap takeovers, trivia nights), and bottle service minimum-spend pre-authorizations.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Interactive floor plan booking for premium booths, rooftop tables, and VIP lounges.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Direct ticketing with QR gate-pass check-in for ticketed events, live bands, and tastings.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Automated minimum-spend bottle service deposit collection credited directly to the bar tab.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col">
+          <img src="assets/bar_cocktail_mixologist.jpg" alt="Artisan craft cocktails and VIP table setup in modern lounge" />
+        </div>
+      </div>
+
+      <!-- PILLAR 4: Targeted Digital Marketing & Ads -->
+      <div class="pillar-row reverse">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-pill pill-amber">
+            <span class="text-amber-600 font-semibold">35% Lift in Weekday Taproom Footfall</span>
+          </div>
+          <h2 class="pillar-title">Targeted Digital Marketing &amp; Ads — Pack Weeknight Slumps</h2>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong> Slow Tuesday-to-Thursday shifts, empty happy hours, and relying solely on unpredictable weekend walk-in crowds.
+          </div>
+          <p class="pillar-desc">
+            <strong>How It Works:</strong> Automated Happy Hour geo-fenced Instagram and Meta ad triggers targeting corporate offices within 3 km, plus automated WhatsApp notifications for live sports screenings and craft brew releases.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Automated geo-fenced Meta ads launch automatically 2 hours before Happy Hour starts.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>1-click WhatsApp broadcasts for cricket &amp; football match screenings and DJ nights.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Loyalty perks trigger automated free craft beer tokens for returning weekday regulars.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col">
+          <img src="assets/bar_keg_inventory.jpg" alt="Crowd of friends socializing and toasting craft beer at lively gastro-pub" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. NIGHTLIFE & TAPROOM FEATURE GRID (6 Minimalist White Cards)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="features-sec">
+    <div class="features-header">
+      <span class="features-badge">NIGHTLIFE OS SUITE</span>
+      <h2 class="features-title">Engineered for High-Pressure Bar Counters</h2>
+      <p class="features-sub">
+        Eliminate lost drink rings, messy handwritten tabs, and liquor shrinkage with tools purpose-built for speed.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">💳</div>
+          <h3 class="feature-card-title">Rapid Bar-Tab Manager</h3>
+          <p class="feature-card-desc">
+            Search open tabs by guest name, seat number, or card token with one tap. Pre-authorize cards to eliminate walk-out risk during peak rush hours.
+          </p>
+        </div>
+        <span class="feature-tag">1-Tap Pre-Auth &amp; Split</span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">⏰</div>
+          <h3 class="feature-card-title">Automated Happy Hour Engine</h3>
+          <p class="feature-card-desc">
+            Schedule automated time-based pricing, BOGO deals, and beer-pitcher combos that switch on and off automatically without manual cashier intervention.
+          </p>
+        </div>
+        <span class="feature-tag">Scheduled Dynamic Pricing</span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">🍺</div>
+          <h3 class="feature-card-title">Keg &amp; Bottle Inventory Depletion</h3>
+          <p class="feature-card-desc">
+            Track liquor inventory down to milliliters, peg counts, and draft keg weight variances. Catch over-pouring and unauthorized comp pours instantly.
+          </p>
+        </div>
+        <span class="feature-tag">Ounce-Level Accuracy</span>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">🖥️</div>
+          <h3 class="feature-card-title">Bar Station Kitchen Display (KDS)</h3>
+          <p class="feature-card-desc">
+            Distinct display screens for dispense bartenders, service bars, and cocktail mixologists to balance preparation loads and eliminate paper ticket mess.
+          </p>
+        </div>
+        <span class="feature-tag">Multi-Station Route Sync</span>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">📱</div>
+          <h3 class="feature-card-title">Table QR Re-Ordering</h3>
+          <p class="feature-card-desc">
+            Allow seated guests to re-order another round of beers and bar bites straight from their phones without flagging down busy servers during peak hours.
+          </p>
+        </div>
+        <span class="feature-tag">+24% Average Spend</span>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">📊</div>
+          <h3 class="feature-card-title">Live Pour &amp; Revenue Analytics</h3>
+          <p class="feature-card-desc">
+            Monitor real-time gross pour costs, top-selling mixologists, fast-moving taps, and automated tip distributions across daytime and night shifts.
+          </p>
+        </div>
+        <span class="feature-tag">Shift &amp; Tip Reconciliations</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. METRICS THAT MATTER STRIP
+  ══════════════════════════════════════════════════════════ -->
+  <section class="metrics-sec">
+    <div class="metrics-container">
+      <div class="metric-block">
+        <div class="metric-num text-amber-600">&lt; 3s</div>
+        <div class="metric-label">Average Drink Punch Time</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num text-emerald-700">99.5%</div>
+        <div class="metric-label">Keg-to-Bill Inventory Accuracy</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num text-indigo-600">0</div>
+        <div class="metric-label">Lost or Forgotten Running Tabs</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num text-amber-600">35%+</div>
+        <div class="metric-label">Weekday Footfall Surge with Targeted Ads</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION BANNER
+  ══════════════════════════════════════════════════════════ -->
+    <section class="bottom-cta-sec">
+    <div class="bottom-cta-box">
+      <h2 class="bottom-cta-title">Ready to Upgrade Your Bar &amp; Brewery Operations?</h2>
+      <p class="bottom-cta-sub">
+        Turn weekend rushes into smooth, high-margin shifts with lightning-fast open tabs, recipe yield tracking, keg variance controls, and split-second mobile ordering.
+      </p>
+      <div class="bottom-cta-btns">
+        <a href="index.html#cta" class="btn-light-solid">
+          Get Started Today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20bar%2Fpub%20and%20want%20to%20see%20a%20live%20POS%20demo." target="_blank" rel="noopener noreferrer" class="btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Chat with a Bar Specialist
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+    <div class="video-modal-content" onclick="event.stopPropagation()">
+      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+      <div style="position:relative; padding-top:56.25%; width:100%; background:#000;">
+        <video id="barDemoVideo" controls style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" poster="assets/bar_hero.jpg">
+          <source src="assets/pos-checkout.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('barDemoVideo');
+      modal.classList.add('open');
+      if (video) video.play();
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('barDemoVideo');
+      modal.classList.remove('open');
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+  </script>
+</body>
+</html>

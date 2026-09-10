@@ -1446,8 +1446,82 @@ function closeSectorModal() {
   }
 }
 
-// â”€â”€â”€ CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ───────────────────
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPl-7pp-g-VOMUDpP900zdOB8DhA8gS6sOrKwUeTTNclUtggc3UKg7_G2rJl3VjyRlMA/exec";
+
+// Service Category & Custom 100-word Requirement Controller
+function initServiceCategoryFields() {
+  document.querySelectorAll('form#leadForm').forEach(form => {
+    const serviceCategorySelect = form.querySelector('#serviceCategory');
+    const customReqGroup = form.querySelector('#customRequirementGroup');
+    const customReqTextarea = form.querySelector('#customRequirement');
+    const customWordCountSpan = form.querySelector('#customWordCount');
+    const customWordErrorEl = form.querySelector('#customWordError');
+
+    if (serviceCategorySelect) {
+      serviceCategorySelect.addEventListener('change', () => {
+        if (serviceCategorySelect.value === 'Custom') {
+          if (customReqGroup) {
+            customReqGroup.style.display = 'block';
+            customReqGroup.style.animation = 'fadeIn 0.25s ease';
+          }
+          if (customReqTextarea) {
+            customReqTextarea.setAttribute('required', 'required');
+            customReqTextarea.focus();
+          }
+        } else {
+          if (customReqGroup) customReqGroup.style.display = 'none';
+          if (customReqTextarea) {
+            customReqTextarea.removeAttribute('required');
+            customReqTextarea.value = '';
+          }
+          if (customWordCountSpan) {
+            customWordCountSpan.textContent = '0 / 100 words';
+            customWordCountSpan.style.color = 'var(--text-muted)';
+          }
+          if (customWordErrorEl) customWordErrorEl.style.display = 'none';
+        }
+      });
+    }
+
+    if (customReqTextarea) {
+      customReqTextarea.addEventListener('input', () => {
+        const rawVal = customReqTextarea.value;
+        const words = rawVal.trim() ? rawVal.trim().split(/\s+/) : [];
+        const wordCount = words.length;
+
+        if (wordCount > 100) {
+          // Strictly restrict to 100 words max
+          const truncated = words.slice(0, 100).join(' ');
+          customReqTextarea.value = truncated;
+          if (customWordCountSpan) {
+            customWordCountSpan.textContent = '100 / 100 words';
+            customWordCountSpan.style.color = '#ef4444';
+          }
+          if (customWordErrorEl) {
+            customWordErrorEl.style.display = 'block';
+            customWordErrorEl.textContent = 'Word limit reached (Max 100 words allowed).';
+          }
+        } else {
+          if (customWordCountSpan) {
+            customWordCountSpan.textContent = `${wordCount} / 100 words`;
+            customWordCountSpan.style.color = wordCount >= 90 ? '#eab308' : 'var(--text-muted)';
+          }
+          if (customWordErrorEl) {
+            customWordErrorEl.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initServiceCategoryFields);
+} else {
+  initServiceCategoryFields();
+}
 
 const leadForm = document.getElementById('leadForm');
 if (leadForm) {
@@ -1455,6 +1529,26 @@ if (leadForm) {
     e.preventDefault();
     const button = document.getElementById('submitLeadBtn');
     const statusMsg = document.getElementById('formStatusMsg');
+    const serviceCategorySelect = leadForm.querySelector('#serviceCategory');
+    const customReqTextarea = leadForm.querySelector('#customRequirement');
+
+    const selectedService = serviceCategorySelect ? serviceCategorySelect.value : '';
+    const customReq = customReqTextarea ? customReqTextarea.value.trim() : '';
+
+    // Validate 100-word restriction if Custom is selected
+    if (selectedService === 'Custom') {
+      const words = customReq ? customReq.split(/\s+/) : [];
+      if (words.length === 0) {
+        if (typeof showToast === 'function') showToast('Please describe what you need in the custom field.');
+        if (customReqTextarea) customReqTextarea.focus();
+        return;
+      }
+      if (words.length > 100) {
+        if (typeof showToast === 'function') showToast('Custom requirement must be within 100 words.');
+        if (customReqTextarea) customReqTextarea.focus();
+        return;
+      }
+    }
 
     if (button) {
       button.textContent = "Submitting...";
@@ -1467,15 +1561,25 @@ if (leadForm) {
       statusMsg.textContent = '';
     }
 
+    const formData = new FormData(leadForm);
+    // Backward-compatible mapping for StoreName column in Google Sheets
+    if (selectedService === 'Custom') {
+      formData.set('StoreName', `Custom: ${customReq.slice(0, 80)}`);
+      formData.set('Category', 'Custom');
+    } else if (selectedService) {
+      formData.set('StoreName', selectedService);
+      formData.set('Category', selectedService);
+    }
+
     fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      body: new FormData(leadForm),
+      body: formData,
       mode: "no-cors"
     })
       .then(() => {
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access ðŸš€";
+          button.innerHTML = "Submit & Get Early Access 🚀";
           button.style.opacity = '1';
         }
         const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
@@ -1490,12 +1594,23 @@ if (leadForm) {
           showToast(successText);
         }
         leadForm.reset();
+
+        // Reset custom requirement box
+        const customReqGroup = leadForm.querySelector('#customRequirementGroup');
+        const customWordCountSpan = leadForm.querySelector('#customWordCount');
+        const customWordErrorEl = leadForm.querySelector('#customWordError');
+        if (customReqGroup) customReqGroup.style.display = 'none';
+        if (customWordCountSpan) {
+          customWordCountSpan.textContent = '0 / 100 words';
+          customWordCountSpan.style.color = 'var(--text-muted)';
+        }
+        if (customWordErrorEl) customWordErrorEl.style.display = 'none';
       })
       .catch(err => {
         console.error('Google Sheet Submission Error:', err);
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access ðŸš€";
+          button.innerHTML = "Submit & Get Early Access 🚀";
           button.style.opacity = '1';
         }
         const errorText = "Something went wrong. Please try again.";
@@ -1631,9 +1746,27 @@ function scrollCarousel(target, direction) {
 }
 window.scrollCarousel = scrollCarousel;
 
+// Square-style Showcase Carousel Arrows
+document.addEventListener('DOMContentLoaded', () => {
+  const sqSliderPrev = document.getElementById('sqSliderPrev');
+  const sqSliderNext = document.getElementById('sqSliderNext');
+  const sqCardsGrid = document.getElementById('sqCardsGrid');
+
+  if (sqSliderPrev && sqCardsGrid) {
+    sqSliderPrev.addEventListener('click', () => {
+      sqCardsGrid.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+  }
+  if (sqSliderNext && sqCardsGrid) {
+    sqSliderNext.addEventListener('click', () => {
+      sqCardsGrid.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+  }
+});
+
 // Robust Drag-to-Scroll for Mouse & Pure Native Touch Gestures
 function initCarouselDragScroll() {
-  const carousels = document.querySelectorAll('.attr-grid, .serve-grid, .test-grid, .sq-hero-photo-strip, .hw-logos, .niche-chips-wrap, .sector-picker-bar');
+  const carousels = document.querySelectorAll('.sq-cards-grid, .attr-grid, .serve-grid, .test-grid, .sq-hero-photo-strip, .hw-logos, .niche-chips-wrap, .sector-picker-bar');
 
   carousels.forEach(slider => {
     if (slider.dataset.dragBound) return;
@@ -1851,13 +1984,13 @@ window.switchMegaTab = switchMegaTab;
 window.switchHeroEcosystem = switchHeroEcosystem;
 window.showToast = showToast;
 window.toggleBakeryFullscreen = toggleBakeryFullscreen;
-window.handleLeadSubmit = handleLeadSubmit;
+if (typeof handleLeadSubmit !== 'undefined') window.handleLeadSubmit = handleLeadSubmit;
 window.initSectorPicker = initSectorPicker;
 window.setSpotlightIndex = setSpotlightIndex;
 window.initHeroSpotlight = initHeroSpotlight;
-window.initSquareMosaicShowcase = initSquareMosaicShowcase;
-window.toggleHeroVideoAudio = toggleHeroVideoAudio;
-window.toggleHeroVideoPlay = toggleHeroVideoPlay;
+if (typeof initSquareMosaicShowcase !== 'undefined') window.initSquareMosaicShowcase = initSquareMosaicShowcase;
+if (typeof toggleHeroVideoAudio !== 'undefined') window.toggleHeroVideoAudio = toggleHeroVideoAudio;
+if (typeof toggleHeroVideoPlay !== 'undefined') window.toggleHeroVideoPlay = toggleHeroVideoPlay;
 
 // ── Hospitality Tech Coming Soon Modal Engine ──
 function openComingSoonModal(serviceName = 'Hospitality Tech', event) {
@@ -2018,11 +2151,317 @@ window.initHeroPinnedScroll = initHeroVideoScroll;
 window.initShowcaseVideoScroll = initHeroVideoScroll;
 
 // Auto-init on load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initHeroVideoScroll);
-} else {
-  initHeroVideoScroll();
+function safeInitSquareHoverCards() {
+  try {
+    initSquareHoverCards();
+  } catch (err) {
+    console.error('[SquareCards] Init error:', err);
+  }
 }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    try { initHeroVideoScroll(); } catch (e) {}
+    safeInitSquareHoverCards();
+  });
+} else {
+  try { initHeroVideoScroll(); } catch (e) {}
+  safeInitSquareHoverCards();
+}
+
+// ─── SQUARE.COM INTERACTIVE HOVER VIDEO CARDS ──────────────────
+function initSquareHoverCards() {
+  const grid = document.getElementById('sqCardsGrid');
+  const cards = document.querySelectorAll('.sq-product-card');
+  if (!grid || !cards.length) return;
+
+  let activeCard = null;
+  let leaveTimeout = null;
+  let isAutoScrolling = false;
+  let scrollLockTimer = null;
+
+  function lockAutoScroll(duration = 450) {
+    isAutoScrolling = true;
+    if (scrollLockTimer) clearTimeout(scrollLockTimer);
+    scrollLockTimer = setTimeout(() => {
+      isAutoScrolling = false;
+    }, duration);
+  }
+
+  // Single global smooth scroll animator using native smooth scrolling
+  function smoothScrollGrid(targetLeft) {
+    if (!grid) return;
+    const maxScroll = Math.max(0, grid.scrollWidth - grid.clientWidth + 260);
+    const clampedTarget = Math.max(0, Math.min(targetLeft, maxScroll));
+    const diff = Math.abs(clampedTarget - grid.scrollLeft);
+
+    if (diff > 5) {
+      lockAutoScroll(450);
+      try {
+        grid.scrollTo({
+          left: clampedTarget,
+          behavior: 'smooth'
+        });
+      } catch (e) {
+        grid.scrollLeft = clampedTarget;
+      }
+    }
+
+    if (typeof updateArrowState === 'function') {
+      setTimeout(updateArrowState, 450);
+    }
+  }
+
+  function handleCardAutoSwipe(cardIndex, cardEl) {
+    if (!grid) return;
+
+    // When 3rd slide (index 2) is hovered:
+    // Scroll ONLY the exact amount needed so that Card 3's expanded 200px right edge
+    // is safely in view (with 18px padding). Do NOT over-scroll so that Card 4 never slips under the cursor!
+    if (cardIndex === 2) {
+      const cardRect = cardEl.getBoundingClientRect();
+      const gridRect = grid.getBoundingClientRect();
+      const cardLeftInGrid = (cardRect.left - gridRect.left) + grid.scrollLeft;
+      const baseWidth = cardEl.offsetWidth;
+      const expandedRight = cardLeftInGrid + baseWidth + 200;
+      const neededScroll = Math.max(0, expandedRight - grid.clientWidth + 18);
+      if (neededScroll > grid.scrollLeft + 5) {
+        smoothScrollGrid(neededScroll);
+      }
+    } else if (cardIndex === 3) {
+      // 4th slide: auto-swipe to reveal full 4th card
+      const maxScroll = Math.max(0, grid.scrollWidth - grid.clientWidth + 260);
+      smoothScrollGrid(maxScroll);
+    } else if (cardIndex === 0) {
+      // ONLY 1st slide (index 0) scrolls back to 0!
+      // Slide 2 is already completely in view in the middle, so Slide 2 must NEVER scroll to 0!
+      if (grid.scrollLeft > 10) {
+        smoothScrollGrid(0);
+      }
+    }
+    // Note: cardIndex === 1 (Slide 2) intentionally does NOT scroll. It stays centered!
+  }
+
+  cards.forEach((card, index) => {
+    const video = card.querySelector('.sq-card-video');
+    const box = card.querySelector('.sq-product-box');
+    const titleLink = card.querySelector('.sq-product-title');
+    let playPromise = null;
+    let fadeOutTimeout = null;
+    let touchActivated = false;
+
+    if (video) {
+      video.muted = true;
+      video.playsInline = true;
+      video.loop = true;
+    }
+
+    function playCardVideo() {
+      if (!video) return;
+      if (fadeOutTimeout) {
+        clearTimeout(fadeOutTimeout);
+        fadeOutTimeout = null;
+      }
+      try {
+        playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
+      } catch (err) {}
+    }
+
+    function gracefulStopVideo() {
+      if (!video) return;
+      if (fadeOutTimeout) clearTimeout(fadeOutTimeout);
+      fadeOutTimeout = setTimeout(() => {
+        if (!card.classList.contains('is-hovered') && !card.classList.contains('is-active')) {
+          if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.then(() => {
+              video.pause();
+              video.currentTime = 0;
+            }).catch(() => {
+              video.pause();
+              video.currentTime = 0;
+            });
+          } else {
+            video.pause();
+            video.currentTime = 0;
+          }
+          playPromise = null;
+        }
+      }, 420);
+    }
+
+    // Desktop hover enter
+    card.addEventListener('mouseenter', () => {
+      // If an auto-scroll is actively animating, do NOT let passing cards hijack focus!
+      if (isAutoScrolling && activeCard && activeCard !== card) {
+        return;
+      }
+
+      if (leaveTimeout) {
+        clearTimeout(leaveTimeout);
+        leaveTimeout = null;
+      }
+
+      if (activeCard && activeCard !== card) {
+        activeCard.classList.remove('is-hovered');
+        const prevCardHelper = activeCard.__stopVideo;
+        if (typeof prevCardHelper === 'function') prevCardHelper();
+      }
+
+      activeCard = card;
+      card.classList.add('is-hovered');
+      if (grid) grid.classList.add('has-active-card');
+      playCardVideo();
+
+      // Trigger intelligent auto-swipe when card is hovered
+      handleCardAutoSwipe(index, card);
+    });
+
+    // Desktop hover leave
+    card.addEventListener('mouseleave', () => {
+      leaveTimeout = setTimeout(() => {
+        card.classList.remove('is-hovered', 'is-active');
+        if (grid) grid.classList.remove('has-active-card');
+        activeCard = null;
+        gracefulStopVideo();
+      }, 75);
+    });
+
+    card.__stopVideo = gracefulStopVideo;
+
+    // Click anywhere on product box to open link
+    if (box && titleLink) {
+      box.addEventListener('click', (e) => {
+        if (touchActivated) {
+          touchActivated = false;
+          e.preventDefault();
+          return;
+        }
+        const targetHref = titleLink.getAttribute('href');
+        if (targetHref && targetHref !== '#') {
+          window.location.href = targetHref;
+        }
+      });
+    }
+
+    // Touch / Mobile support
+    card.addEventListener('touchstart', (e) => {
+      const isAlreadyActive = card.classList.contains('is-active');
+      if (!isAlreadyActive) {
+        cards.forEach(c => {
+          if (c !== card) {
+            c.classList.remove('is-active', 'is-hovered');
+            if (typeof c.__stopVideo === 'function') c.__stopVideo();
+          }
+        });
+
+        card.classList.add('is-active');
+        if (grid) grid.classList.add('has-active-card');
+        touchActivated = true;
+        playCardVideo();
+
+        // Also auto-swipe on touch
+        handleCardAutoSwipe(index, card);
+
+        setTimeout(() => {
+          touchActivated = false;
+        }, 350);
+      }
+    }, { passive: true });
+  });
+
+  // When cursor completely leaves the slider container, smoothly return to home
+  let gridLeaveTimeout = null;
+  if (grid) {
+    grid.addEventListener('mouseleave', () => {
+      if (gridLeaveTimeout) clearTimeout(gridLeaveTimeout);
+      gridLeaveTimeout = setTimeout(() => {
+        if (!grid.matches(':hover') && !activeCard) {
+          smoothScrollGrid(0);
+        }
+      }, 500);
+    });
+
+    grid.addEventListener('mouseenter', () => {
+      if (gridLeaveTimeout) {
+        clearTimeout(gridLeaveTimeout);
+        gridLeaveTimeout = null;
+      }
+    });
+  }
+
+  // Tap outside to dismiss active cards on mobile
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.sq-product-card')) {
+      if (grid) grid.classList.remove('has-active-card');
+      cards.forEach(card => {
+        card.classList.remove('is-active', 'is-hovered');
+        if (typeof card.__stopVideo === 'function') card.__stopVideo();
+      });
+      activeCard = null;
+    }
+  }, { passive: true });
+
+  // Horizontal slider arrows navigation
+  const prevBtn = document.getElementById('sqSliderPrev');
+  const nextBtn = document.getElementById('sqSliderNext');
+
+  function updateArrowState() {
+    if (!grid || !prevBtn || !nextBtn) return;
+    const maxScroll = grid.scrollWidth - grid.clientWidth;
+    if (maxScroll <= 5) {
+      prevBtn.style.opacity = '0.35';
+      prevBtn.style.pointerEvents = 'none';
+      nextBtn.style.opacity = '0.35';
+      nextBtn.style.pointerEvents = 'none';
+      return;
+    }
+
+    if (grid.scrollLeft <= 10) {
+      prevBtn.style.opacity = '0.35';
+      prevBtn.style.pointerEvents = 'none';
+    } else {
+      prevBtn.style.opacity = '1';
+      prevBtn.style.pointerEvents = 'auto';
+    }
+
+    if (grid.scrollLeft >= maxScroll - 10) {
+      nextBtn.style.opacity = '0.35';
+      nextBtn.style.pointerEvents = 'none';
+    } else {
+      nextBtn.style.opacity = '1';
+      nextBtn.style.pointerEvents = 'auto';
+    }
+  }
+
+  if (grid && prevBtn && nextBtn) {
+    const getScrollStep = () => {
+      const firstCard = grid.querySelector('.sq-product-card');
+      return firstCard ? firstCard.offsetWidth + 24 : 380;
+    };
+
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      smoothScrollGrid(grid.scrollLeft - getScrollStep());
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      smoothScrollGrid(grid.scrollLeft + getScrollStep());
+    });
+
+    grid.addEventListener('scroll', updateArrowState, { passive: true });
+    window.addEventListener('resize', updateArrowState, { passive: true });
+    setTimeout(updateArrowState, 150);
+  }
+}
+
+// Immediate execution fallback
+safeInitSquareHoverCards();
+
+window.initSquareHoverCards = initSquareHoverCards;
 
 console.log('%c Priyulabs – India\u2019s Smartest AI Retail OS Loaded Successfully! \uD83C\uDDEE\uD83C\uDDF3 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');
