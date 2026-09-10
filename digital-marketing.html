@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Marketing & Ads Services | Meta Ads, WhatsApp Commerce & Local SEO | Priyulabs Digital</title>
+  <meta name="description"
+    content="Accelerate your business with Priyulabs Digital Marketing & Ads — High-ROAS Meta (Facebook & Instagram) Ads, Automated WhatsApp Commerce, Google Maps Local SEO, and 3x customer growth engine for Indian retail and F&B brands." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('priyulabs_theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       DIGITAL MARKETING & ADS PAGE — DEDICATED STYLES
+       Scoped with .mkt- prefix to avoid style collisions
+    ══════════════════════════════════════════════════════════ */
+    .mkt-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(165deg, #090a18 0%, #151226 45%, #080a14 100%);
+      padding: clamp(100px, 15vh, 150px) 16px clamp(50px, 8vh, 80px);
+      color: #f8fafc;
+    }
+
+    .mkt-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(183, 110, 121, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: mkt-pulse 8s ease-in-out infinite alternate;
+    }
+
+    .mkt-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      right: -5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(226, 155, 136, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: mkt-pulse 10s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes mkt-pulse {
+      from { transform: scale(1) translate(0, 0); }
+      to   { transform: scale(1.15) translate(15px, -15px); }
+    }
+
+    .mkt-hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(24px, 4vw, 48px);
+      align-items: center;
+    }
+
+    .mkt-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(183, 110, 121, 0.18);
+      color: #fca5a5;
+      border: 1px solid rgba(183, 110, 121, 0.35);
+      font-size: clamp(11px, 2vw, 12.5px);
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .mkt-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 4.8vw, 54px);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .mkt-gradient-text {
+      background: linear-gradient(135deg, #e29b88 0%, #b76e79 50%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .mkt-hero-sub {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .mkt-hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .mkt-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--primary) 0%, #9e535e 100%);
+      color: #ffffff;
+      font-size: 15.5px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(183, 110, 121, 0.4);
+      transition: all 0.25s ease;
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mkt-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(183, 110, 121, 0.55);
+      color: #ffffff;
+    }
+
+    .mkt-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e2e8f0;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .mkt-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .mkt-hero-proof {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 18px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .mkt-hero-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    /* ── ROI SIMULATOR CARD IN HERO ── */
+    .mkt-sim-card {
+      background: rgba(20, 24, 42, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(183, 110, 121, 0.35);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(183, 110, 121, 0.15);
+      position: relative;
+    }
+
+    .mkt-sim-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mkt-sim-badge .badge-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      padding: 4px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+    }
+
+    .mkt-sim-badge .badge-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .mkt-slider-group {
+      margin-bottom: 20px;
+    }
+
+    .mkt-slider-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .mkt-slider-val {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .mkt-range {
+      width: 100%;
+      height: 7px;
+      border-radius: 6px;
+      background: #334155;
+      outline: none;
+      -webkit-appearance: none;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .mkt-sector-select {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(183, 110, 121, 0.3);
+      color: #f8fafc;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      margin-bottom: 18px;
+      cursor: pointer;
+    }
+
+    .mkt-sim-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .mkt-sim-metric {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .mkt-metric-num {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 3px;
+    }
+
+    .mkt-metric-num.highlight-green {
+      color: #34d399;
+    }
+
+    .mkt-metric-num.highlight-gold {
+      color: #fbbf24;
+    }
+
+    .mkt-metric-label {
+      font-size: 10.5px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .mkt-sim-cta {
+      width: 100%;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      border: none;
+      font-size: 13.5px;
+      font-weight: 800;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    .mkt-sim-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+      color: #ffffff;
+    }
+
+    /* ── TRUST BAR STRIP ── */
+    .mkt-trust-bar {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 16px;
+    }
+
+    .mkt-trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .mkt-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .mkt-trust-icon {
+      font-size: 20px;
+    }
+
+    /* ── 4 SERVICE PILLARS SECTION ── */
+    .mkt-section {
+      padding: clamp(50px, 8vw, 85px) 16px;
+      background: var(--bg-main);
+    }
+
+    .mkt-section-alt {
+      background: var(--bg-surface);
+    }
+
+    .mkt-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 48px;
+    }
+
+    .mkt-badge-sm {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: rgba(183, 110, 121, 0.1);
+      padding: 5px 14px;
+      border-radius: 50px;
+      border: 1px solid rgba(183, 110, 121, 0.25);
+      margin-bottom: 12px;
+    }
+
+    .mkt-title {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 3.8vw, 40px);
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .mkt-desc {
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    .mkt-services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .mkt-service-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mkt-service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 14px 34px -6px rgba(183, 110, 121, 0.18);
+    }
+
+    .mkt-card-top {
+      margin-bottom: 20px;
+    }
+
+    .mkt-card-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(183, 110, 121, 0.12);
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .mkt-card-title {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .mkt-card-desc {
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .mkt-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .mkt-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13.5px;
+      color: var(--text-body);
+      margin-bottom: 9px;
+      line-height: 1.45;
+    }
+
+    .mkt-check {
+      color: #10b981;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .mkt-card-stat {
+      background: var(--bg-subtle);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── ROADMAP STEPS ── */
+    .mkt-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .mkt-step-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px 20px;
+      position: relative;
+    }
+
+    .mkt-step-num {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--primary);
+      opacity: 0.4;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .mkt-step-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .mkt-step-text {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    /* ── PRICING CARDS ── */
+    .mkt-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1140px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .mkt-price-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .mkt-price-card.featured {
+      border: 2px solid var(--primary);
+      box-shadow: 0 16px 36px -6px rgba(183, 110, 121, 0.25);
+      transform: scale(1.03);
+    }
+
+    .mkt-featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary) 0%, #a35d68 100%);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .mkt-plan-name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .mkt-plan-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      min-height: 38px;
+    }
+
+    .mkt-price-amount {
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .mkt-price-cycle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .mkt-plan-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 24px;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .mkt-plan-btn.primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #9e535e 100%);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(183, 110, 121, 0.35);
+    }
+
+    .mkt-plan-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(183, 110, 121, 0.45);
+      color: #ffffff;
+    }
+
+    .mkt-plan-btn.secondary {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .mkt-plan-btn.secondary:hover {
+      background: var(--border-color);
+    }
+
+    /* ── AUDIT FORM & CTA ── */
+    .mkt-cta-box {
+      background: linear-gradient(135deg, #161a2e 0%, #201a2c 100%);
+      border: 1px solid rgba(183, 110, 121, 0.3);
+      border-radius: 24px;
+      padding: clamp(32px, 6vw, 56px) clamp(20px, 4vw, 48px);
+      max-width: 1100px;
+      margin: 0 auto;
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    .mkt-form {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .mkt-form-input {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-family: inherit;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .mkt-form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .mkt-hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .mkt-hero-ctas, .mkt-hero-proof {
+        justify-content: center;
+      }
+      .mkt-services-grid {
+        grid-template-columns: 1fr;
+      }
+      .mkt-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .mkt-pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+      .mkt-price-card.featured {
+        transform: none;
+      }
+      .mkt-cta-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mkt-steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .mkt-sim-grid {
+        grid-template-columns: 1fr;
+      }
+      .mkt-trust-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL NAVIGATION (Priyulabs Standard)
+  ══════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle">MARKETING</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+
+        <!-- Solutions Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="solutions.html" class="nav-link-title dropdown-trigger">
+            Solutions <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-dropdown-sm">
+            <div class="mega-dropdown-inner">
+              <div class="mega-column">
+                <a href="pos.html" class="square-sub-item">
+                  <strong>Smart POS</strong>
+                  <span>Fast billing, AI checkout &amp; offline mode</span>
+                </a>
+                <a href="index.html#attractions" class="square-sub-item">
+                  <strong>Complete Management System</strong>
+                  <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
+                </a>
+                <a href="website-builder.html" class="square-sub-item">
+                  <strong>Custom Website Building</strong>
+                  <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+                </a>
+                <a href="digital-marketing.html" class="square-sub-item" style="background: var(--bg-subtle);">
+                  <strong>Digital Marketing &amp; Ads</strong>
+                  <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li><a href="hospitality.html">Hospitality Tech</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#audit-form">Free Audit</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light or dark theme"
+          onclick="toggleGlobalTheme()">
+          <span class="theme-icon">🌓</span>
+        </button>
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal('marketing')">✨ ROI Playground</button>
+        <a href="#audit-form" class="btn-nav">Get Free Audit</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MOBILE DRILLDOWN DRAWER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-header-title" id="drawerHeaderTitle">Marketing Menu</div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-viewport">
+      <div class="drawer-panel drawer-panel-main active">
+        <div class="drawer-panel-scroll">
+          <nav class="drawer-nav-list">
+            <a href="index.html" class="drawer-nav-item drawer-link"><span>🏠 Main Platform Home</span></a>
+            <a href="website-builder.html" class="drawer-nav-item drawer-link"><span>🌐 Custom Website Studio</span></a>
+            <a href="pos.html" class="drawer-nav-item drawer-link"><span>🖥️ Smart POS Billing</span></a>
+            <a href="digital-marketing.html" class="drawer-nav-item drawer-link highlight"><span>📣 Digital Marketing &amp; Ads</span></a>
+            <a href="hospitality.html" class="drawer-nav-item drawer-link"><span>☕ Hospitality Tech</span></a>
+            <a href="#pricing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>💳 Ad Packages</span></a>
+            <a href="#audit-form" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>📞 Book Free ROI Call</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (High-Converting with Live Simulator)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="mkt-hero" id="hero">
+    <div class="mkt-hero-container">
+      <div class="mkt-hero-content">
+        <div class="mkt-eyebrow">
+          <span>🚀 DATA-BACKED PERFORMANCE ADS &amp; WHATSAPP GROWTH</span>
+        </div>
+
+        <h1 class="mkt-hero-title">
+          Turn Every Rupee into <span class="mkt-gradient-text">Verified Paying Customers.</span>
+        </h1>
+
+        <p class="mkt-hero-sub">
+          Stop burning budgets on vanity likes and boosting. We manage end-to-end <strong>Meta (Instagram &amp; Facebook) Ads, Google Local Search SEO, and Automated WhatsApp Commerce</strong> to bring actual footfall and direct online orders into your register.
+        </p>
+
+        <div class="mkt-hero-ctas">
+          <a href="#audit-form" class="mkt-btn-primary">
+            📞 Get Free 30-Day Growth Plan →
+          </a>
+        </div>
+
+        <div class="mkt-hero-proof">
+          <span>🛡️ MSME Certified</span>
+          <span>📈 3.8x – 5.2x Average ROAS</span>
+          <span>💬 Direct WhatsApp Lead Routing</span>
+        </div>
+      </div>
+
+      <!-- Live ROI Simulator Card -->
+      <div class="mkt-sim-card">
+        <div class="mkt-sim-badge">
+          <span class="badge-title">📊 Live Campaign ROI Estimator</span>
+          <span class="badge-tag">🟢 AI ESTIMATOR</span>
+        </div>
+
+        <div class="mkt-slider-group">
+          <div class="mkt-slider-label">
+            <span>Target Monthly Ad Spend:</span>
+            <span class="mkt-slider-val" id="mktSpendDisplay">₹25,000</span>
+          </div>
+          <input type="range" class="mkt-range" id="mktSpendRange" min="10000" max="200000" step="5000" value="25000"
+            oninput="calcMktRoi(this.value)">
+        </div>
+
+        <label style="font-size: 12px; color: #94a3b8; font-weight: 600; display: block; margin-bottom: 6px;">Select Business Category:</label>
+        <select class="mkt-sector-select" id="mktSectorSelect" onchange="calcMktRoi(document.getElementById('mktSpendRange').value)">
+          <option value="retail">🛒 Retail Store &amp; Supermarket (Footfall + Orders)</option>
+          <option value="cafe">☕ Cafe, Bakery &amp; Restaurant (Table Bookings + Delivery)</option>
+          <option value="ecom">🛍️ E-Commerce &amp; D2C Brand (Cart Purchases + WhatsApp)</option>
+          <option value="apparel">👗 Fashion, Jewelry &amp; Boutiques (Catalog Inquiries)</option>
+          <option value="health">💊 Pharmacy, Clinic &amp; Wellness (Consultation Leads)</option>
+        </select>
+
+        <div class="mkt-sim-grid">
+          <div class="mkt-sim-metric">
+            <div class="mkt-metric-num highlight-green" id="mktLeadsVal">320+</div>
+            <div class="mkt-metric-label">Verified Inquiries / Leads</div>
+          </div>
+          <div class="mkt-sim-metric">
+            <div class="mkt-metric-num" id="mktReachVal">95,000+</div>
+            <div class="mkt-metric-label">Local Hyper-Targeted Reach</div>
+          </div>
+          <div class="mkt-sim-metric">
+            <div class="mkt-metric-num highlight-gold" id="mktRoasVal">4.2x</div>
+            <div class="mkt-metric-label">Expected Return on Ads (ROAS)</div>
+          </div>
+          <div class="mkt-sim-metric">
+            <div class="mkt-metric-num" id="mktSalesVal">₹1,05,000</div>
+            <div class="mkt-metric-label">Estimated Revenue Generated</div>
+          </div>
+        </div>
+
+        <a href="#audit-form" class="mkt-sim-cta">
+          <span>🚀 Launch This Campaign for My Business</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TRUST ACCREDITATION BAR
+  ══════════════════════════════════════════════════════════ -->
+  <div class="mkt-trust-bar">
+    <div class="mkt-trust-inner">
+      <div class="mkt-trust-item">
+        <span class="mkt-trust-icon">🇮🇳</span>
+        <span>MSME Reg: UDYAM-OD-19-0177979</span>
+      </div>
+      <div class="mkt-trust-item">
+        <span class="mkt-trust-icon">🎯</span>
+        <span>₹1.8+ Crore Revenue Driven for Local Merchants</span>
+      </div>
+      <div class="mkt-trust-item">
+        <span class="mkt-trust-icon">💬</span>
+        <span>100% Verified WhatsApp Direct Inquiries</span>
+      </div>
+      <div class="mkt-trust-item">
+        <span class="mkt-trust-icon">⭐</span>
+        <span>4.9/5 Rating from 100+ Active Clients</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. 4 CORE PILLARS OF PERFORMANCE MARKETING
+  ══════════════════════════════════════════════════════════ -->
+  <section class="mkt-section" id="services">
+    <div class="container">
+      <div class="mkt-header">
+        <span class="mkt-badge-sm">Our 4 Core Digital Weapons</span>
+        <h2 class="mkt-title">Complete 360° Growth System That Sells</h2>
+        <p class="mkt-desc">
+          We combine hyper-local targeting, high-converting creative ad hooks, and automated WhatsApp nurturing to give you a continuous stream of buyers.
+        </p>
+      </div>
+
+      <div class="mkt-services-grid">
+
+        <!-- Pillar 1: Meta Ads -->
+        <div class="mkt-service-card">
+          <div class="mkt-card-top">
+            <div class="mkt-card-icon-wrap">🎯</div>
+            <h3 class="mkt-card-title">Meta (Facebook &amp; Instagram) Ads</h3>
+            <p class="mkt-card-desc">
+              Hyper-local geo-radius ads (1km to 15km around your store) designed to trigger immediate WhatsApp inquiries, store visits, and online orders.
+            </p>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> <strong>Click-to-WhatsApp Direct Ads:</strong> Customer taps ad and immediately opens a WhatsApp chat with you.</li>
+              <li><span class="mkt-check">✓</span> <strong>High-Hook Video &amp; Carousel Creatives:</strong> Custom-made promotional reels and offer carousels.</li>
+              <li><span class="mkt-check">✓</span> <strong>Lookalike &amp; Retargeting Pixel:</strong> Re-engage past website visitors and shoppers who abandoned carts.</li>
+            </ul>
+          </div>
+          <div class="mkt-card-stat">
+            <span>📈 Avg. Lead Cost: ₹12 – ₹28 per verified inquiry</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: WhatsApp Business Automation -->
+        <div class="mkt-service-card">
+          <div class="mkt-card-top">
+            <div class="mkt-card-icon-wrap">💬</div>
+            <h3 class="mkt-card-title">WhatsApp Commerce &amp; Funnels</h3>
+            <p class="mkt-card-desc">
+              98% of your customers open WhatsApp within 5 minutes. We set up automated catalog broadcasting, 1-click ordering, and automated review collection.
+            </p>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> <strong>Automated Product Catalog:</strong> Customers can view menus/products and order directly inside WhatsApp.</li>
+              <li><span class="mkt-check">✓</span> <strong>Abandoned Cart Recovery:</strong> Automatic friendly reminder discounts sent within 15 minutes of cart drop.</li>
+              <li><span class="mkt-check">✓</span> <strong>Festive &amp; Weekend Broadcasts:</strong> Reach your loyal customer base with 1-click WhatsApp alerts.</li>
+            </ul>
+          </div>
+          <div class="mkt-card-stat">
+            <span>⚡ Open Rate: 98% (Compared to 15% on standard email)</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Google Search & Local Maps SEO -->
+        <div class="mkt-service-card">
+          <div class="mkt-card-top">
+            <div class="mkt-card-icon-wrap">🔍</div>
+            <h3 class="mkt-card-title">Google Maps &amp; Local SEO (GMB)</h3>
+            <p class="mkt-card-desc">
+              Rank in the top 3 Google Maps "Near Me" search results when customers in your city search for your products or services.
+            </p>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> <strong>Google Business Profile (GBP) 100% Ranking Audit:</strong> Keyword optimization, geo-tagged photos, and category tuning.</li>
+              <li><span class="mkt-check">✓</span> <strong>5-Star Review Generation Engine:</strong> Automated QR codes and SMS/WhatsApp review triggers for happy shoppers.</li>
+              <li><span class="mkt-check">✓</span> <strong>Google Search Call Ads:</strong> Direct phone call generation for urgent local service and delivery needs.</li>
+            </ul>
+          </div>
+          <div class="mkt-card-stat">
+            <span>📍 Footfall Growth: +45% average in-store visits within 60 days</span>
+          </div>
+        </div>
+
+        <!-- Pillar 4: High-Converting Creative Studio -->
+        <div class="mkt-service-card">
+          <div class="mkt-card-top">
+            <div class="mkt-card-icon-wrap">🎨</div>
+            <h3 class="mkt-card-title">Ad Creative Studio &amp; Copywriting</h3>
+            <p class="mkt-card-desc">
+              Great ads fail with boring creatives. Our in-house design studio produces eye-catching video reels, 3D product mockups, and festival offer graphics.
+            </p>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> <strong>Scroll-Stopping Reel Ads:</strong> Short 15-second high-energy video hooks engineered for maximum CTR.</li>
+              <li><span class="mkt-check">✓</span> <strong>Bilingual Copywriting (English + Hinglish):</strong> Conversational copy that connects with Indian local consumers.</li>
+              <li><span class="mkt-check">✓</span> <strong>Continuous A/B Creative Testing:</strong> We swap underperforming creatives every 7 days to eliminate ad fatigue.</li>
+            </ul>
+          </div>
+          <div class="mkt-card-stat">
+            <span>🎯 Average Click-Through Rate (CTR): 3.8% (Industry avg is 1.1%)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. 4-STEP CAMPAIGN ROADMAP
+  ══════════════════════════════════════════════════════════ -->
+  <section class="mkt-section mkt-section-alt">
+    <div class="container">
+      <div class="mkt-header">
+        <span class="mkt-badge-sm">Our Scientific Process</span>
+        <h2 class="mkt-title">How We Scale Your Revenue in 4 Steps</h2>
+        <p class="mkt-desc">
+          No guesswork. A battle-tested 4-step framework tailored to retail and service businesses.
+        </p>
+      </div>
+
+      <div class="mkt-steps-grid">
+        <div class="mkt-step-box">
+          <div class="mkt-step-num">01</div>
+          <h4 class="mkt-step-title">Audit &amp; Local Geo-Mapping</h4>
+          <p class="mkt-step-text">We analyze your store radius, competitor promotions, top-selling margin items, and target buyer demographics.</p>
+        </div>
+
+        <div class="mkt-step-box">
+          <div class="mkt-step-num">02</div>
+          <h4 class="mkt-step-title">High-Hook Creative Production</h4>
+          <p class="mkt-step-text">Our studio scripts and designs high-CTR Instagram reels, carousel banners, and festive offer copy.</p>
+        </div>
+
+        <div class="mkt-step-box">
+          <div class="mkt-step-num">03</div>
+          <h4 class="mkt-step-title">Campaign Launch &amp; AI Tuning</h4>
+          <p class="mkt-step-text">We launch ads with custom retargeting pixels, Click-to-WhatsApp direct routing, and real-time budget scaling.</p>
+        </div>
+
+        <div class="mkt-step-box">
+          <div class="mkt-step-num">04</div>
+          <h4 class="mkt-step-title">WhatsApp Retargeting &amp; Reports</h4>
+          <p class="mkt-step-text">Leads flow straight into your POS / WhatsApp. You receive transparent weekly ROI sheets showing exact cost per sale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. TRANSPARENT PRICING & PACKAGES
+  ══════════════════════════════════════════════════════════ -->
+  <section class="mkt-section" id="pricing">
+    <div class="container">
+      <div class="mkt-header">
+        <span class="mkt-badge-sm">Transparent Retainers</span>
+        <h2 class="mkt-title">Simple Plans. Massive Returns.</h2>
+        <p class="mkt-desc">
+          Zero hidden fees. Full ownership of your ad accounts and leads database.
+        </p>
+      </div>
+
+      <div class="mkt-pricing-grid">
+
+        <!-- Plan 1: Local Booster -->
+        <div class="mkt-price-card">
+          <div>
+            <div class="mkt-plan-name">Local Booster</div>
+            <div class="mkt-plan-sub">Ideal for single-location retail stores, cafes &amp; clinics looking for steady footfall.</div>
+            <div class="mkt-price-amount">₹7,999</div>
+            <div class="mkt-price-cycle">per month + ad spend</div>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> Meta (FB &amp; IG) Click-to-WhatsApp Ads</li>
+              <li><span class="mkt-check">✓</span> 4 Custom Ad Creatives / Reels monthly</li>
+              <li><span class="mkt-check">✓</span> Google Maps (GBP) Profile Optimization</li>
+              <li><span class="mkt-check">✓</span> 1km – 10km Hyper-Local Radius Targeting</li>
+              <li><span class="mkt-check">✓</span> Bi-Weekly Performance Report</li>
+            </ul>
+          </div>
+          <a href="#audit-form" class="mkt-plan-btn secondary">Choose Local Booster →</a>
+        </div>
+
+        <!-- Plan 2: Growth Engine (Featured) -->
+        <div class="mkt-price-card featured">
+          <span class="mkt-featured-badge">MOST POPULAR • 4.5x ROAS</span>
+          <div>
+            <div class="mkt-plan-name">Growth Engine</div>
+            <div class="mkt-plan-sub">For scaling stores &amp; e-commerce brands wanting complete customer acquisition.</div>
+            <div class="mkt-price-amount">₹14,999</div>
+            <div class="mkt-price-cycle">per month + ad spend</div>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> Everything in Local Booster</li>
+              <li><span class="mkt-check">✓</span> <strong>Full Meta &amp; Google Search Ad Funnels</strong></li>
+              <li><span class="mkt-check">✓</span> <strong>Automated WhatsApp Catalog &amp; Cart Recovery</strong></li>
+              <li><span class="mkt-check">✓</span> 10 Custom Video Reels &amp; Creative Banners</li>
+              <li><span class="mkt-check">✓</span> Pixel Retargeting &amp; Custom Audience Mapping</li>
+              <li><span class="mkt-check">✓</span> Weekly Strategy Call &amp; Live Dashboard</li>
+            </ul>
+          </div>
+          <a href="#audit-form" class="mkt-plan-btn primary">Choose Growth Engine →</a>
+        </div>
+
+        <!-- Plan 3: Omnichannel Dominance -->
+        <div class="mkt-price-card">
+          <div>
+            <div class="mkt-plan-name">Omnichannel Dominance</div>
+            <div class="mkt-plan-sub">For multi-outlet franchises &amp; established brands requiring full-scale marketing.</div>
+            <div class="mkt-price-amount">₹24,999</div>
+            <div class="mkt-price-cycle">per month + ad spend</div>
+            <ul class="mkt-features-list">
+              <li><span class="mkt-check">✓</span> Everything in Growth Engine</li>
+              <li><span class="mkt-check">✓</span> <strong>Multi-Store Branch Ad Campaigns</strong></li>
+              <li><span class="mkt-check">✓</span> 3D Product Renders &amp; High-End Video Production</li>
+              <li><span class="mkt-check">✓</span> Custom Landing Page Creation &amp; Speed Tuning</li>
+              <li><span class="mkt-check">✓</span> Dedicated Senior Growth Manager</li>
+              <li><span class="mkt-check">✓</span> 24/7 Priority WhatsApp Hotline Support</li>
+            </ul>
+          </div>
+          <a href="#audit-form" class="mkt-plan-btn secondary">Choose Omnichannel →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. FREE AUDIT & STRATEGY CONSULTATION FORM
+  ══════════════════════════════════════════════════════════ -->
+  <section class="mkt-section" id="audit-form" style="padding-top: 20px;">
+    <div class="container">
+      <div class="mkt-cta-box">
+        <div>
+          <span class="mkt-badge-sm" style="color: #fca5a5; border-color: rgba(252, 165, 165, 0.3); background: rgba(252, 165, 165, 0.1);">Claim Free 30-Day Blueprint</span>
+          <h2 style="font-family: var(--font-heading); font-size: clamp(26px, 3.5vw, 38px); font-weight: 900; margin-bottom: 14px; line-height: 1.15;">
+            Get a Customized Ad &amp; WhatsApp Growth Strategy
+          </h2>
+          <p style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 24px;">
+            Book a 15-minute 1-on-1 strategy session with our performance growth lead. We will review your current ad performance or local presence and show you exact steps to achieve 3x–5x ROAS.
+          </p>
+          <div style="display: flex; gap: 16px; flex-direction: column; font-size: 13.5px; color: #94a3b8;">
+            <div>✅ <strong>100% Free</strong> &mdash; Zero commitment required.</div>
+            <div>✅ Includes local competitor audit report.</div>
+            <div>✅ WhatsApp direct connect within 30 minutes.</div>
+          </div>
+        </div>
+
+        <form class="mkt-form" id="mktLeadForm" onsubmit="handleMktFormSubmit(event)">
+          <h3 style="font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 14px; font-family: var(--font-heading);">
+            Request Your Free Audit
+          </h3>
+
+          <input type="text" class="mkt-form-input" id="mktBizName" placeholder="Your Business / Brand Name *" required />
+          <input type="tel" class="mkt-form-input" id="mktPhone" placeholder="WhatsApp / Phone Number *" required />
+          <input type="text" class="mkt-form-input" id="mktCity" placeholder="City / Location *" required />
+
+          <select class="mkt-form-input" id="mktBudget" style="cursor: pointer;">
+            <option value="" disabled selected>Select Monthly Ad Budget Goal</option>
+            <option value="₹10k - ₹25k">₹10,000 – ₹25,000 / month</option>
+            <option value="₹25k - ₹50k">₹25,000 – ₹50,000 / month</option>
+            <option value="₹50k - ₹1L">₹50,000 – ₹1,00,000 / month</option>
+            <option value="₹1L+">₹1,00,000+ / month</option>
+          </select>
+
+          <button type="submit" class="mkt-btn-primary" style="width: 100%; justify-content: center; margin-top: 6px;">
+            🔥 Get My Growth Blueprint Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/logo.svg" alt="Priyulabs" class="brand-logo-img" />
+            <span class="logo-title">PRIYULABS</span>
+          </div>
+          <p class="footer-desc">
+            Complete Digital Ecosystem for Indian Businesses — Custom Websites, POS Billing, ERP Inventory, Staff HRMS &amp; High-ROI Digital Marketing.
+          </p>
+          <div class="footer-contact">
+            <a href="tel:+917849074050">📞 +91 78490 74050</a>
+            <a href="mailto:contact@priyulabs.com">✉️ contact@priyulabs.com</a>
+          </div>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Core Solutions</h4>
+            <ul>
+              <li><a href="website-builder.html">Custom Websites</a></li>
+              <li><a href="pos.html">Smart POS Billing</a></li>
+              <li><a href="index.html#attractions">Complete ERP &amp; HRMS</a></li>
+              <li><a href="digital-marketing.html">Digital Marketing &amp; Ads</a></li>
+              <li><a href="hospitality.html">Hospitality Suite</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="index.html#about">About Priyulabs</a></li>
+              <li><a href="index.html#trust">Accreditations</a></li>
+              <li><a href="index.html#cta">Contact Support</a></li>
+              <li><a href="https://wa.me/917849074050" target="_blank">WhatsApp Direct</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Security &amp; Legal</h4>
+            <ul>
+              <li><a href="index.html#privacy">Privacy Policy</a></li>
+              <li><a href="index.html#terms">Terms of Service</a></li>
+              <li><a href="index.html#refund">Refund Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Priyulabs Digital Technologies Pvt. Ltd. All rights reserved. MSME Registered (UDYAM-OD-19-0177979).</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Contact Button -->
+  <a href="https://wa.me/917849074050?text=Hi%20Priyulabs%20Team%2C%20I%20want%20to%20grow%20my%20business%20with%20Digital%20Marketing%20and%20Ads!"
+    target="_blank" class="whatsapp-float" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+    </svg>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <!-- Global Modal & Toast Support Scripts -->
+  <script src="script.js"></script>
+
+  <script>
+    // ─── DYNAMIC ROI CALCULATOR SCRIPT ──────────────────────────────
+    function calcMktRoi(spend) {
+      spend = parseInt(spend, 10);
+      const display = document.getElementById('mktSpendDisplay');
+      if (display) display.textContent = '₹' + spend.toLocaleString('en-IN');
+
+      const sector = document.getElementById('mktSectorSelect')?.value || 'retail';
+      let cpl = 75; // Cost per lead approx
+      let roasMult = 4.2;
+
+      if (sector === 'cafe') { cpl = 55; roasMult = 4.8; }
+      else if (sector === 'ecom') { cpl = 85; roasMult = 4.0; }
+      else if (sector === 'apparel') { cpl = 65; roasMult = 4.5; }
+      else if (sector === 'health') { cpl = 95; roasMult = 3.8; }
+
+      const leads = Math.round(spend / cpl);
+      const reach = Math.round(spend * 3.8);
+      const estRevenue = Math.round(spend * roasMult);
+
+      document.getElementById('mktLeadsVal').textContent = leads.toLocaleString('en-IN') + '+';
+      document.getElementById('mktReachVal').textContent = reach.toLocaleString('en-IN') + '+';
+      document.getElementById('mktRoasVal').textContent = roasMult.toFixed(1) + 'x';
+      document.getElementById('mktSalesVal').textContent = '₹' + estRevenue.toLocaleString('en-IN');
+    }
+
+    function handleMktFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('mktBizName').value.trim();
+      const phone = document.getElementById('mktPhone').value.trim();
+      const city = document.getElementById('mktCity').value.trim();
+      const budget = document.getElementById('mktBudget').value || 'Not specified';
+
+      const msg = `Hi Priyulabs Team! I would like to get a Free Digital Marketing & Ads Growth Plan.%0A%0A*Business:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*City:* ${encodeURIComponent(city)}%0A*Budget:* ${encodeURIComponent(budget)}`;
+
+      if (window.showToast) {
+        showToast('🚀 Audit Request Received! Redirecting to WhatsApp...');
+      }
+      setTimeout(() => {
+        window.open(`https://wa.me/917849074050?text=${msg}`, '_blank');
+      }, 700);
+    }
+  </script>
+
+</body>
+
+</html>

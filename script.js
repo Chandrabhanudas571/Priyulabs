@@ -1,4 +1,4 @@
-// ─── THEME TOGGLE (LIGHT / DARK) ────────────────────────────────
+// â”€â”€â”€ THEME TOGGLE (LIGHT / DARK) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 let savedTheme = 'light';
 try {
@@ -43,12 +43,12 @@ if (themeToggleBtn) {
     } catch (e) { }
     applyTheme(newTheme);
     if (typeof showToast === 'function') {
-      showToast(newTheme === 'dark' ? '🌙 Dark Mode Activated' : '☀️ Light Mode Activated');
+      showToast(newTheme === 'dark' ? 'Dark Mode Activated' : 'Light Mode Activated');
     }
   });
 }
 
-// ─── NAVBAR SCROLL & ACTIVE STATE ──────────────────────────────
+// â”€â”€â”€ NAVBAR SCROLL & ACTIVE STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const navbar = document.getElementById('navbar');
 let isTicking = false;
 
@@ -68,7 +68,7 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-// ─── SQUARE-STYLE FULL-SCREEN DRILLDOWN MOBILE DRAWER ─────────
+// â”€â”€â”€ SQUARE-STYLE FULL-SCREEN DRILLDOWN MOBILE DRAWER â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const mobileDrawer = document.getElementById('mobileDrawer');
 const hamburger = document.getElementById('hamburger');
 const drawerCloseBtn = document.getElementById('drawerCloseBtn');
@@ -205,7 +205,7 @@ if (mobileDrawer) {
   window.closeMobileDrawer = closeMobileDrawer;
 }
 
-// ─── SMOOTH SCROLL FOR ANCHOR LINKS ─────────────────────────────
+// â”€â”€â”€ SMOOTH SCROLL FOR ANCHOR LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
@@ -216,9 +216,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ─── COUNTER ANIMATION ──────────────────────────────────────────
+// â”€â”€â”€ COUNTER ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix !== undefined ? el.dataset.suffix : (target === 100 ? '+' : (target === 10 ? ' min' : (target === 0 ? '%' : '')));
   const duration = 1600;
   const step = Math.max(1, target / (duration / 20));
   let current = 0;
@@ -228,30 +229,28 @@ function animateCounter(el) {
       current = target;
       clearInterval(timer);
     }
-    if (target === 100) {
-      el.textContent = Math.floor(current) + '+';
-    } else if (target === 0) {
-      el.textContent = '0%';
-    } else {
-      el.textContent = Math.floor(current) + (target === 10 ? ' min' : '');
-    }
+    el.textContent = Math.floor(current) + suffix;
   }, 20);
 }
 
-// ─── SQUARE-STYLE STAGGERED SCROLL REVEAL & COUNTERS OBSERVER ──
-const countersAnimated = new Set();
-
+// â”€â”€â”€ SQUARE-STYLE STAGGERED SCROLL REVEAL & COUNTERS OBSERVER â”€â”€
 function initSquareScrollReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.stat-number').forEach(el => animateCounter(el));
+    document.querySelectorAll('.stat-number').forEach(el => {
+      if (!el.classList.contains('counted')) {
+        el.classList.add('counted');
+        animateCounter(el);
+      }
+    });
     return;
   }
 
-  // Grid / multi-card containers with staggered micro-delays (Exclude horizontal swipe carousels so items are always 100% visible)
+  // Grid / multi-card containers with staggered micro-delays
   const staggerContainers = document.querySelectorAll(`
     .pvs-grid,
     .trust-grid,
     .hero-stats,
+    .hero-service-badges,
     .comp-grid-full,
     .upgrades-cards-wrap,
     .trust-stats-mini
@@ -261,7 +260,7 @@ function initSquareScrollReveal() {
     const children = Array.from(container.children).filter(el => !el.classList.contains('stat-divider') && !el.classList.contains('pvs-vs'));
     children.forEach((child, index) => {
       child.classList.add('reveal-item');
-      child.style.transitionDelay = `${Math.min(index * 0.09, 0.45)}s`;
+      child.style.transitionDelay = `${Math.min(index * 0.07, 0.42)}s`;
     });
   });
 
@@ -272,7 +271,8 @@ function initSquareScrollReveal() {
     .hero-title,
     .hero-desc,
     .hero-buttons,
-    .hero-voice-hook,
+    .hero-service-badges,
+    .hero-spotlight-card,
     .hero-visual,
     .hardware-strip,
     .serve-niche-banner,
@@ -299,19 +299,15 @@ function initSquareScrollReveal() {
         // Animate counter numbers inside intersecting element if present
         const stats = entry.target.querySelectorAll ? entry.target.querySelectorAll('.stat-number') : [];
         stats.forEach(st => {
-          const id = st.dataset.target;
-          if (id && !countersAnimated.has(id)) {
-            countersAnimated.add(id);
+          if (!st.classList.contains('counted')) {
+            st.classList.add('counted');
             animateCounter(st);
           }
         });
 
-        if (entry.target.classList.contains('stat-number')) {
-          const id = entry.target.dataset.target;
-          if (id && !countersAnimated.has(id)) {
-            countersAnimated.add(id);
-            animateCounter(entry.target);
-          }
+        if (entry.target.classList.contains('stat-number') && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          animateCounter(entry.target);
         }
       }
     });
@@ -324,59 +320,92 @@ function initSquareScrollReveal() {
   document.querySelectorAll('.stat-number').forEach(el => scrollObserver.observe(el));
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSquareScrollReveal);
-} else {
-  initSquareScrollReveal();
+// â”€â”€â”€ HERO SPOTLIGHT TICKER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let spotlightIdx = 0;
+let spotlightTimer = null;
+
+function setSpotlightIndex(idx) {
+  const items = document.querySelectorAll('#heroSpotlightTicker .ticker-item');
+  const dots = document.querySelectorAll('#spotlightDots .s-dot');
+  if (!items.length) return;
+  spotlightIdx = (idx + items.length) % items.length;
+  items.forEach((item, i) => {
+    item.classList.toggle('active', i === spotlightIdx);
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === spotlightIdx);
+  });
 }
 
-// ─── HERO LIVE VOICE POS SIMULATION ─────────────────────────────
+function initHeroSpotlight() {
+  const ticker = document.getElementById('heroSpotlightTicker');
+  if (!ticker) return;
+  if (spotlightTimer) clearInterval(spotlightTimer);
+  spotlightTimer = setInterval(() => {
+    const items = document.querySelectorAll('#heroSpotlightTicker .ticker-item');
+    if (items.length > 0) {
+      setSpotlightIndex((spotlightIdx + 1) % items.length);
+    }
+  }, 4200);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initSquareScrollReveal();
+    initHeroSpotlight();
+  });
+} else {
+  initSquareScrollReveal();
+  initHeroSpotlight();
+}
+
+// â”€â”€â”€ HERO LIVE VOICE POS SIMULATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let voiceSimIndex = 0;
 const voicePhrases = [
   {
     text: '"2 kg sugar and 1 litre fortune oil"',
     items: [
-      { name: 'Fortune Sunlite Refined Oil 1L', meta: 'HSN: 1512 • GST 5%', price: '₹145.00' },
-      { name: 'Madhur Pure Sugar 2Kg', meta: 'HSN: 1701 • GST 0%', price: '₹84.00' }
+      { name: 'Fortune Sunlite Refined Oil 1L', meta: 'HSN: 1512 â€¢ GST 5%', price: 'â‚¹145.00' },
+      { name: 'Madhur Pure Sugar 2Kg', meta: 'HSN: 1701 â€¢ GST 0%', price: 'â‚¹84.00' }
     ],
-    total: '₹229.00',
-    billBadge: '⚡ Auto-Billed: ₹229.00'
+    total: 'â‚¹229.00',
+    billBadge: 'âš¡ Auto-Billed: â‚¹229.00'
   },
   {
     text: '"5 packets noodles and 2 amul curd"',
     items: [
-      { name: 'Nestle Maggi Masala Noodles 70g (x5)', meta: 'HSN: 1902 • GST 12%', price: '₹70.00' },
-      { name: 'Amul Masti Dahi 400g Pouch (x2)', meta: 'HSN: 0403 • GST 5%', price: '₹74.00' }
+      { name: 'Nestle Maggi Masala Noodles 70g (x5)', meta: 'HSN: 1902 â€¢ GST 12%', price: 'â‚¹70.00' },
+      { name: 'Amul Masti Dahi 400g Pouch (x2)', meta: 'HSN: 0403 â€¢ GST 5%', price: 'â‚¹74.00' }
     ],
-    total: '₹144.00',
-    billBadge: '⚡ Auto-Billed: ₹144.00'
+    total: 'â‚¹144.00',
+    billBadge: 'âš¡ Auto-Billed: â‚¹144.00'
   },
   {
     text: '"1 packet aashirvaad flour 5kg and 1kg salt"',
     items: [
-      { name: 'Aashirvaad Shudh Chakki Atta 5kg', meta: 'HSN: 1101 • GST 0%', price: '₹225.00' },
-      { name: 'Tata Salt Vacuum Evaporated 1kg', meta: 'HSN: 2501 • GST 0%', price: '₹28.00' }
+      { name: 'Aashirvaad Shudh Chakki Atta 5kg', meta: 'HSN: 1101 â€¢ GST 0%', price: 'â‚¹225.00' },
+      { name: 'Tata Salt Vacuum Evaporated 1kg', meta: 'HSN: 2501 â€¢ GST 0%', price: 'â‚¹28.00' }
     ],
-    total: '₹253.00',
-    billBadge: '⚡ Auto-Billed: ₹253.00'
+    total: 'â‚¹253.00',
+    billBadge: 'âš¡ Auto-Billed: â‚¹253.00'
   },
   {
     text: '"2 packets surf excel 500g and 2 lux soap"',
     items: [
-      { name: 'Surf Excel Quick Wash Powder 500g (x2)', meta: 'HSN: 3402 • GST 18%', price: '₹156.00' },
-      { name: 'Lux Rose Soap Bar 100g (x2)', meta: 'HSN: 3401 • GST 18%', price: '₹68.00' }
+      { name: 'Surf Excel Quick Wash Powder 500g (x2)', meta: 'HSN: 3402 â€¢ GST 18%', price: 'â‚¹156.00' },
+      { name: 'Lux Rose Soap Bar 100g (x2)', meta: 'HSN: 3401 â€¢ GST 18%', price: 'â‚¹68.00' }
     ],
-    total: '₹224.00',
-    billBadge: '⚡ Auto-Billed: ₹224.00'
+    total: 'â‚¹224.00',
+    billBadge: 'âš¡ Auto-Billed: â‚¹224.00'
   },
   {
     text: '"3 bottles thums up 750ml and 2 packets chips"',
     items: [
-      { name: 'Thums Up Soft Drink 750ml (x3)', meta: 'HSN: 2202 • GST 28%', price: '₹135.00' },
-      { name: 'Lays Magic Masala Chips 50g (x2)', meta: 'HSN: 2005 • GST 12%', price: '₹40.00' }
+      { name: 'Thums Up Soft Drink 750ml (x3)', meta: 'HSN: 2202 â€¢ GST 28%', price: 'â‚¹135.00' },
+      { name: 'Lays Magic Masala Chips 50g (x2)', meta: 'HSN: 2005 â€¢ GST 12%', price: 'â‚¹40.00' }
     ],
-    total: '₹175.00',
-    billBadge: '⚡ Auto-Billed: ₹175.00'
+    total: 'â‚¹175.00',
+    billBadge: 'âš¡ Auto-Billed: â‚¹175.00'
   }
 ];
 
@@ -390,7 +419,7 @@ function simulateVoicePOS() {
   if (wave) wave.classList.add('active');
   if (quote) quote.innerHTML = `Listening... <em>"Recognizing voice items..."</em>`;
   if (badge) {
-    badge.textContent = '🎙️ Priyulabs AI Listening...';
+    badge.textContent = 'ðŸŽ™ï¸ Priyulabs AI Listening...';
     badge.style.background = 'rgba(79, 70, 229, 0.2)';
     badge.style.color = '#818cf8';
   }
@@ -425,20 +454,21 @@ function simulateVoicePOS() {
       liveTotal.textContent = curr.total;
     }
 
-    showToast(`🎙️ Voice Recognized: ${curr.text} → Bill ${curr.total}`);
+    showToast(`ðŸŽ™ï¸ Voice Recognized: ${curr.text} â†’ Bill ${curr.total}`);
   }, 900);
 }
 
-// ─── DEMO VIDEO & EXPERIENCE MODAL ──────────────────────────────
+// â”€â”€â”€ PRIYULABS INTERACTIVE 6-SERVICE DEMO PLAYGROUND ENGINE â”€â”€â”€â”€
 const demoModal = document.getElementById('demoModal');
 
-function openDemoModal(tab = 'voice') {
+function openDemoModal(tab = 'pos') {
   if (demoModal) {
     demoModal.classList.add('active');
     document.body.style.overflow = 'hidden';
     switchDemoTab(tab);
+    initDemoPlaygrounds();
   } else {
-    window.location.href = 'index.html#interactive-demo';
+    window.location.href = 'index.html#demoModal';
   }
 }
 
@@ -449,148 +479,569 @@ function closeDemoModal() {
   }
 }
 
-// Switch Demo Tabs
+// Switch Demo Tabs across all 6 services
 function switchDemoTab(tabKey) {
+  const aliasMap = {
+    'voice': 'pos',
+    'payments': 'pos',
+    'vision': 'erp',
+    'superapp': 'erp',
+    'gst': 'bundle'
+  };
+  const targetTab = aliasMap[tabKey] || tabKey;
+
   document.querySelectorAll('.demo-tab').forEach(tab => {
-    tab.classList.toggle('active', tab.dataset.tab === tabKey);
+    tab.classList.toggle('active', tab.dataset.tab === targetTab);
   });
   document.querySelectorAll('.demo-panel').forEach(panel => {
-    panel.classList.toggle('active', panel.id === `tab-${tabKey}`);
+    panel.classList.toggle('active', panel.id === `tab-${targetTab}`);
   });
 }
 
-// Demo Sim Actions: Voice POS
-function runSimVoice(phrase) {
-  const status = document.getElementById('voiceSimStatus');
-  const itemsContainer = document.getElementById('simReceiptItems');
-  const totalEl = document.getElementById('simReceiptTotal');
+// â”€â”€â”€ TAB 1: SMART POS BILLING ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const posProducts = [
+  { id: 'p1', name: 'Caramel Cold Frappe', price: 140, cat: 'cafe', emoji: 'â˜•', tax: 0.05 },
+  { id: 'p2', name: 'Veg Supreme Burger', price: 160, cat: 'cafe', emoji: 'ðŸ”', tax: 0.05 },
+  { id: 'p3', name: 'Farmhouse Pizza 8"', price: 280, cat: 'cafe', emoji: 'ðŸ•', tax: 0.05 },
+  { id: 'p4', name: 'Fortune Mustard Oil 1L', price: 145, cat: 'grocery', emoji: 'ðŸ§´', tax: 0.05 },
+  { id: 'p5', name: 'Basmati Rice Royal 5kg', price: 420, cat: 'grocery', emoji: 'ðŸŒ¾', tax: 0.05 },
+  { id: 'p6', name: 'Maggi Noodles 4-Pack', price: 60, cat: 'grocery', emoji: 'ðŸœ', tax: 0.05 },
+  { id: 'p7', name: 'Cotton Casual Shirt (M)', price: 799, cat: 'fashion', emoji: 'ðŸ‘”', tax: 0.12 },
+  { id: 'p8', name: 'Designer Silk Saree', price: 1499, cat: 'fashion', emoji: 'ðŸ‘—', tax: 0.12 }
+];
 
-  if (status) {
-    status.innerHTML = `<span class="status-indicator" style="background:#f59e0b"></span> Processing: "${phrase}"...`;
+let posCart = [
+  { id: 'p2', name: 'Veg Supreme Burger', price: 160, emoji: 'ðŸ”', qty: 2, tax: 0.05 },
+  { id: 'p1', name: 'Caramel Cold Frappe', price: 140, emoji: 'â˜•', qty: 1, tax: 0.05 }
+];
+
+function filterPosProducts(cat, btnEl) {
+  if (btnEl) {
+    document.querySelectorAll('.pos-cat-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  renderPosProducts(cat);
+}
+
+function renderPosProducts(filterCat = 'all') {
+  const grid = document.getElementById('posProductGrid');
+  if (!grid) return;
+  const filtered = filterCat === 'all' ? posProducts : posProducts.filter(p => p.cat === filterCat);
+  grid.innerHTML = filtered.map(p => `
+    <div class="pos-item-card" onclick="addPosToCart('${p.id}')">
+      <div class="pic-emoji">${p.emoji}</div>
+      <div class="pic-info">
+        <strong>${p.name}</strong>
+        <small>â‚¹${p.price}</small>
+      </div>
+      <button class="pic-add-btn">+ Add</button>
+    </div>
+  `).join('');
+}
+
+function addPosToCart(productId) {
+  const prod = posProducts.find(p => p.id === productId);
+  if (!prod) return;
+  const existing = posCart.find(item => item.id === productId);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    posCart.push({ ...prod, qty: 1 });
+  }
+  renderPosCart();
+  showToast(`âš¡ Added ${prod.name} to POS bill!`);
+}
+
+function updatePosQty(productId, delta) {
+  const item = posCart.find(i => i.id === productId);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    posCart = posCart.filter(i => i.id !== productId);
+  }
+  renderPosCart();
+}
+
+function removePosItem(productId) {
+  posCart = posCart.filter(i => i.id !== productId);
+  renderPosCart();
+}
+
+function clearPosCart() {
+  posCart = [];
+  renderPosCart();
+  showToast('ðŸ—‘ï¸ Cart cleared.');
+}
+
+function renderPosCart() {
+  const list = document.getElementById('posCartList');
+  const subtotalEl = document.getElementById('posSubtotal');
+  const taxEl = document.getElementById('posTax');
+  const totalEl = document.getElementById('posGrandTotal');
+  const successBox = document.getElementById('posPaySuccess');
+
+  if (successBox) successBox.style.display = 'none';
+
+  if (!list) return;
+
+  if (posCart.length === 0) {
+    list.innerHTML = `<div class="pos-empty-cart">ðŸ›’ Cart is empty. Click any product on left to start billing.</div>`;
+    if (subtotalEl) subtotalEl.textContent = 'â‚¹0.00';
+    if (taxEl) taxEl.textContent = 'â‚¹0.00';
+    if (totalEl) totalEl.textContent = 'â‚¹0.00';
+    return;
   }
 
-  setTimeout(() => {
-    const p = phrase.toLowerCase();
-    if (p.includes('sugar') || p.includes('cheeni') || p.includes('oil')) {
-      itemsContainer.innerHTML = `
-        <div class="r-row"><span>Sugar (2 Kg)</span><span>₹84.00</span></div>
-        <div class="r-row"><span>Fortune Mustard Oil (1L)</span><span>₹145.00</span></div>
-      `;
-      totalEl.textContent = '₹229.00';
-    } else if (p.includes('noodles') || p.includes('maggi') || p.includes('curd') || p.includes('dahi')) {
-      itemsContainer.innerHTML = `
-        <div class="r-row"><span>Maggi Noodles 70g (x5)</span><span>₹70.00</span></div>
-        <div class="r-row"><span>Amul Masti Dahi 400g (x2)</span><span>₹64.00</span></div>
-        <div class="r-row"><span>English Oven Brown Bread (1)</span><span>₹50.00</span></div>
-      `;
-      totalEl.textContent = '₹184.00';
-    } else {
-      itemsContainer.innerHTML = `
-        <div class="r-row"><span>Aashirvaad Whole Wheat Atta 1kg</span><span>₹55.00</span></div>
-        <div class="r-row"><span>Surf Excel Quick Wash 500g</span><span>₹78.00</span></div>
-      `;
-      totalEl.textContent = '₹133.00';
-    }
+  let subtotal = 0;
+  let tax = 0;
 
+  list.innerHTML = posCart.map(item => {
+    const itemSub = item.price * item.qty;
+    const itemTax = itemSub * (item.tax || 0.05);
+    subtotal += itemSub;
+    tax += itemTax;
+
+    return `
+      <div class="pos-cart-row">
+        <div class="pcr-left">
+          <span class="pcr-emoji">${item.emoji}</span>
+          <div>
+            <strong>${item.name}</strong>
+            <small>â‚¹${item.price} each</small>
+          </div>
+        </div>
+        <div class="pcr-right">
+          <div class="pcr-qty-ctrl">
+            <button onclick="updatePosQty('${item.id}', -1)">âˆ’</button>
+            <span>${item.qty}</span>
+            <button onclick="updatePosQty('${item.id}', 1)">+</button>
+          </div>
+          <strong class="pcr-price">â‚¹${itemSub.toFixed(2)}</strong>
+          <button class="pcr-del" onclick="removePosItem('${item.id}')" title="Remove">Ã—</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const grandTotal = subtotal + tax;
+  if (subtotalEl) subtotalEl.textContent = `â‚¹${subtotal.toFixed(2)}`;
+  if (taxEl) taxEl.textContent = `â‚¹${tax.toFixed(2)}`;
+  if (totalEl) totalEl.textContent = `â‚¹${grandTotal.toFixed(2)}`;
+}
+
+function runPosVoicePreset(phrase) {
+  showToast(`ðŸŽ™ï¸ Voice parsing: "${phrase}"`);
+  const status = document.getElementById('posStatusBar');
+  if (status) {
+    status.innerHTML = `<span class="status-indicator" style="background:#f59e0b"></span> ðŸ—£ï¸ AI Parsing: "${phrase}"...`;
+  }
+  setTimeout(() => {
+    if (phrase.includes('burger')) {
+      addPosToCart('p2');
+      addPosToCart('p1');
+    } else {
+      addPosToCart('p5');
+      addPosToCart('p4');
+    }
     if (status) {
-      status.innerHTML = `<span class="status-indicator" style="background:#10b981"></span> ✅ Priyulabs Bill Generated in 0.4s! Ready on Payment Terminal.`;
+      status.innerHTML = `<span class="status-indicator" style="background:#10b981"></span> âœ… AI Voice Bill Generated in 0.3s!`;
     }
   }, 400);
 }
 
-// Demo Sim Actions: Payment Terminal Push
-function simulatePinePush() {
-  const amtInput = document.getElementById('pineSimAmount');
-  const amt = amtInput ? amtInput.value : '750';
-  const display = document.querySelector('.pine-amt-display');
-  const status = document.querySelector('.pine-status-text');
-  const log = document.getElementById('pineLog');
-
-  if (display) display.textContent = `₹${parseFloat(amt).toFixed(2)}`;
-  if (status) {
-    status.textContent = 'PROCESSING PAYMENT ON TERMINAL...';
-    status.style.color = '#f59e0b';
-  }
-
-  setTimeout(() => {
-    if (status) {
-      status.textContent = '✅ PAYMENT SUCCESS • TRANSACTION #TX99182';
-      status.style.color = '#10b981';
-    }
-    if (log) {
-      const entry = document.createElement('div');
-      entry.className = 'log-item';
-      entry.style.color = '#34d399';
-      entry.textContent = `⚡ ₹${amt} received via UPI QR. Auto-Galla balanced!`;
-      log.prepend(entry);
-    }
-    showToast(`💳 ₹${amt} Payment Approved & Reconciled!`);
-  }, 1000);
+function simulateBarcodeScan() {
+  const randomProduct = posProducts[Math.floor(Math.random() * posProducts.length)];
+  addPosToCart(randomProduct.id);
+  showToast(`ðŸ“· Barcode Scanned (EAN-890123): Added ${randomProduct.name}!`);
 }
 
-// Demo Sim Actions: Vision AI Scanner
-function simulateVisionScan() {
-  const status = document.getElementById('visionStatus');
-  const invList = document.getElementById('visionInvList');
-
-  if (status) {
-    status.innerHTML = `<span>⏳ Priyulabs Vision AI scanning wholesale bill...</span>`;
+function executePosPayment() {
+  if (posCart.length === 0) {
+    showToast('âš ï¸ Please add at least one item to cart first.');
+    return;
   }
+  const totalEl = document.getElementById('posGrandTotal');
+  const paidAmt = document.getElementById('posPaidAmt');
+  const successBox = document.getElementById('posPaySuccess');
+  const payBtn = document.getElementById('btnPosPay');
+
+  if (payBtn) payBtn.textContent = 'â³ Transmitting to Payment Terminal...';
 
   setTimeout(() => {
-    if (invList) {
-      invList.innerHTML = `
-        <div class="inv-row">
-          <div>
-            <strong>Fortune Sunlite Refined Oil (15L Tin)</strong>
-            <small>HSN: 1512 • Batch: F2025B • Wholesaler: Gupta Bros</small>
-          </div>
-          <span>Qty: +12 Tins (₹23,400)</span>
-        </div>
-        <div class="inv-row">
-          <div>
-            <strong>Aashirvaad Shudh Chakki Atta 10kg</strong>
-            <small>HSN: 1101 • Batch: A2025 • Wholesaler: Gupta Bros</small>
-          </div>
-          <span>Qty: +40 Bags (₹15,200)</span>
-        </div>
-        <div class="inv-row">
-          <div>
-            <strong>MDH Deggi Mirch 100g</strong>
-            <small>HSN: 0910 • Batch: M881 • Wholesaler: Gupta Bros</small>
-          </div>
-          <span>Qty: +100 Pkts (₹7,800)</span>
-        </div>
-      `;
-    }
-    if (status) {
-      status.innerHTML = `<span style="color:#34d399">✅ Wholesale Invoice parsed! 3 products & ₹46,400 stock added.</span>`;
-    }
-    showToast('📷 Vision AI added 3 new wholesale products to inventory!');
-  }, 900);
+    if (paidAmt && totalEl) paidAmt.textContent = totalEl.textContent.replace('â‚¹', '');
+    if (successBox) successBox.style.display = 'block';
+    if (payBtn) payBtn.textContent = 'ðŸ’³ Pay via UPI QR / Pine Labs âš¡';
+    showToast(`âœ… Payment Approved! Invoice #PR-${Math.floor(1000 + Math.random() * 9000)} generated.`);
+  }, 600);
 }
 
-// Demo Sim Actions: GST Download
-function simulateGstDownload(type) {
-  const toast = document.getElementById('gstToast');
+function printPosInvoice() {
+  showToast('ðŸ–¨ï¸ Thermal Print signal sent (2-inch ESC/POS). Receipt Printed!');
+}
+
+function resetPosCart() {
+  posCart = [];
+  renderPosCart();
+  showToast('âœ¨ POS ready for new customer checkout.');
+}
+
+// â”€â”€â”€ TAB 2: ERP & STAFF HRMS ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let erpStockData = [
+  { id: 's1', name: 'Fortune Sunlite Refined Oil 1L', stock: 48, min: 10, status: 'In Stock' },
+  { id: 's2', name: 'Aashirvaad Chakki Atta 10kg', stock: 18, min: 8, status: 'In Stock' },
+  { id: 's3', name: 'Tata Tea Gold 500g', stock: 4, min: 6, status: 'Low Stock' },
+  { id: 's4', name: 'Dove Daily Shine Shampoo 180ml', stock: 3, min: 5, status: 'Low Stock' },
+  { id: 's5', name: 'Cadbury Dairy Milk Silk 60g', stock: 32, min: 12, status: 'In Stock' }
+];
+
+function renderErpStock() {
+  const tbody = document.getElementById('erpStockRows');
+  if (!tbody) return;
+  tbody.innerHTML = erpStockData.map(item => {
+    const isLow = item.stock <= item.min;
+    return `
+      <tr>
+        <td><strong>${item.name}</strong></td>
+        <td><span class="stock-qty-badge ${isLow ? 'low' : ''}">${item.stock} Units</span></td>
+        <td>
+          <span class="status-pill ${isLow ? 'pill-warning' : 'pill-success'}">
+            ${isLow ? 'âš ï¸ Low Stock Alert' : 'âœ… Healthy'}
+          </span>
+        </td>
+        <td>
+          <button class="btn-restock" onclick="reorderErpItem('${item.id}')">
+            ${isLow ? 'âš¡ Quick Reorder' : '+ Add Stock'}
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function simulateErpScanInvoice() {
+  const toast = document.getElementById('erpToastMsg');
   if (toast) {
-    toast.textContent = `✅ Generating ${type} JSON file... Download started!`;
-    toast.style.display = 'block';
+    toast.innerHTML = `<span>â³ Priyulabs Vision AI scanning wholesale tax invoice...</span>`;
   }
-  showToast(`📥 ${type} JSON export downloaded. Ready to file with CA!`);
+  setTimeout(() => {
+    erpStockData.forEach(item => {
+      item.stock += 25;
+      item.status = 'In Stock';
+    });
+    renderErpStock();
+    if (toast) {
+      toast.innerHTML = `<span style="color:#059669">âœ… Wholesale Invoice parsed! 5 SKUs updated with +125 units added to cloud ERP.</span>`;
+    }
+    showToast('ðŸ“· Vision AI OCR auto-logged 5 invoice items into ERP!');
+  }, 700);
 }
 
-// ─── POLICY MODAL (STARTUP INDIA / DPIIT COMPLIANT) ────────────
+function simulateErpSale() {
+  erpStockData.forEach(item => {
+    item.stock = Math.max(1, item.stock - Math.floor(Math.random() * 8 + 4));
+  });
+  renderErpStock();
+  showToast('ðŸ“‰ High-volume sale simulated! Low stock alerts triggered.');
+}
+
+function reorderErpItem(id) {
+  const item = erpStockData.find(s => s.id === id);
+  if (!item) return;
+  item.stock += 30;
+  renderErpStock();
+  showToast(`ðŸ“¦ Restocked +30 units of ${item.name}! Purchase order auto-sent.`);
+}
+
+function simulateHrmsCheckIn() {
+  const camStatus = document.getElementById('hrmsCamStatus');
+  const camBox = document.getElementById('hrmsCamBox');
+  if (camBox) camBox.classList.add('scanning');
+  if (camStatus) camStatus.innerHTML = `<span>ðŸ” Scanning Face & GPS Location (Store #104)...</span>`;
+
+  setTimeout(() => {
+    if (camBox) {
+      camBox.classList.remove('scanning');
+      camBox.classList.add('verified');
+    }
+    if (camStatus) {
+      camStatus.innerHTML = `<span style="color:#10b981;font-weight:700;">âœ… Rahul Sharma Clocked In at 09:02 AM â€¢ Geofence Match (0.01m)</span>`;
+    }
+    showToast('ðŸ¤³ Facial Biometric Attendance verified! Auto-logged into Payroll.');
+  }, 800);
+}
+
+// â”€â”€â”€ TAB 3: CUSTOM WEBSITE & STOREFRONT ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const wsIndustryTemplates = {
+  restaurant: {
+    headline: 'Fresh Artisanal Meals Delivered To Your Door',
+    sub: 'Order directly & get 20% flat discount on all combos today!',
+    catalog: [
+      { name: 'Gourmet Truffle Burger', price: 'â‚¹249', img: 'ðŸ”' },
+      { name: 'Wood-Fired Margherita', price: 'â‚¹349', img: 'ðŸ•' },
+      { name: 'Iced Hazelnut Latte', price: 'â‚¹179', img: 'â˜•' }
+    ]
+  },
+  fashion: {
+    headline: 'Contemporary Indian & Western Couture Collection',
+    sub: 'Shop trendy fashion with same-day local delivery & easy exchange.',
+    catalog: [
+      { name: 'Pure Linen Floral Kurti', price: 'â‚¹1,299', img: 'ðŸ‘—' },
+      { name: 'Slim Fit Cotton Blazer', price: 'â‚¹2,499', img: 'ðŸ§¥' },
+      { name: 'Handcrafted Leather Tote', price: 'â‚¹1,899', img: 'ðŸ‘œ' }
+    ]
+  },
+  grocery: {
+    headline: 'Fresh Farm Groceries & Supermarket Essentials',
+    sub: 'Order in 30 seconds on WhatsApp with free home delivery.',
+    catalog: [
+      { name: 'Organic Cold-Pressed Oil', price: 'â‚¹280', img: 'ðŸ§´' },
+      { name: 'Himalayan Organic Ghee', price: 'â‚¹650', img: 'ðŸ§ˆ' },
+      { name: 'Dry Fruits Festive Pack', price: 'â‚¹890', img: 'ðŸ¥œ' }
+    ]
+  },
+  clinic: {
+    headline: 'Specialized Healthcare & Instant Doctor Appointments',
+    sub: 'Book clinic visits & order prescription medicines online.',
+    catalog: [
+      { name: 'General Physician Consult', price: 'â‚¹500', img: 'ðŸ©º' },
+      { name: 'Full Body Health Checkup', price: 'â‚¹1,499', img: 'ðŸ§ª' },
+      { name: 'Immunity Care Booster Kit', price: 'â‚¹750', img: 'ðŸ’Š' }
+    ]
+  }
+};
+
+let currentWsIndustry = 'restaurant';
+let currentWsColor = '#b76e79';
+
+function setWsIndustry(ind, btnEl) {
+  currentWsIndustry = ind;
+  if (btnEl) {
+    document.querySelectorAll('.ws-ind-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  updateWsPreview();
+  showToast(`ðŸŒ Switched website template to ${ind.toUpperCase()}!`);
+}
+
+function setWsColor(color, bg, btnEl) {
+  currentWsColor = color;
+  if (btnEl) {
+    document.querySelectorAll('.ws-swatch').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  const siteHeader = document.getElementById('wsSiteHeader');
+  const siteHero = document.getElementById('wsSiteHero');
+  if (siteHeader) siteHeader.style.background = color;
+  if (siteHero) siteHero.style.background = `linear-gradient(135deg, ${color} 0%, #2b1118 100%)`;
+  showToast('ðŸŽ¨ Updated website brand theme color!');
+}
+
+function setWsDevice(device) {
+  const frame = document.getElementById('wsPreviewFrame');
+  const btnM = document.getElementById('wsBtnMobile');
+  const btnD = document.getElementById('wsBtnDesktop');
+  if (device === 'desktop') {
+    if (frame) frame.classList.add('desktop-mode');
+    if (btnD) btnD.classList.add('active');
+    if (btnM) btnM.classList.remove('active');
+  } else {
+    if (frame) frame.classList.remove('desktop-mode');
+    if (btnM) btnM.classList.add('active');
+    if (btnD) btnD.classList.remove('active');
+  }
+}
+
+function updateWsPreview() {
+  const brandInput = document.getElementById('wsInputBrand');
+  const brandName = brandInput ? brandInput.value : 'Priyulabs Store';
+  const logoEl = document.getElementById('wsSiteLogo');
+  const urlEl = document.getElementById('wsBrowserUrl');
+  const headlineEl = document.getElementById('wsHeroHeadline');
+  const subEl = document.getElementById('wsHeroSub');
+  const catalogEl = document.getElementById('wsSiteCatalog');
+
+  if (logoEl) logoEl.textContent = `âœ¨ ${brandName}`;
+  if (urlEl) {
+    const slug = brandName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    urlEl.textContent = `https://${slug || 'mystore'}.priyulabs.store`;
+  }
+
+  const tmpl = wsIndustryTemplates[currentWsIndustry] || wsIndustryTemplates.restaurant;
+  if (headlineEl) headlineEl.textContent = tmpl.headline;
+  if (subEl) subEl.textContent = tmpl.sub;
+
+  if (catalogEl) {
+    catalogEl.innerHTML = tmpl.catalog.map(item => `
+      <div class="ws-prod-card">
+        <span class="wpc-img">${item.img}</span>
+        <div class="wpc-details">
+          <strong>${item.name}</strong>
+          <span>${item.price}</span>
+        </div>
+        <button class="wpc-btn" onclick="showToast('ðŸ›ï¸ Added ${item.name} to cart!')">+ Add</button>
+      </div>
+    `).join('');
+  }
+}
+
+function simulateWsOrder() {
+  const brandInput = document.getElementById('wsInputBrand');
+  const brand = brandInput ? brandInput.value : 'Your Store';
+  showToast(`ðŸ“² Generated WhatsApp Order: "Hi ${brand}, I would like to order items from your online menu!"`);
+}
+
+// â”€â”€â”€ TAB 4: DIGITAL MARKETING & ADS ROI ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let mktGoal = 'footfall';
+
+function setMktGoal(goal, btnEl) {
+  mktGoal = goal;
+  if (btnEl) {
+    document.querySelectorAll('.mkt-goal-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  updateMktCalculation();
+}
+
+function updateMktCalculation() {
+  const slider = document.getElementById('mktBudgetSlider');
+  if (!slider) return;
+  const budget = parseInt(slider.value, 10);
+  const display = document.getElementById('mktBudgetDisplay');
+  const reachEl = document.getElementById('mktReach');
+  const leadsEl = document.getElementById('mktLeads');
+  const revEl = document.getElementById('mktRevenue');
+
+  if (display) display.textContent = `â‚¹${budget.toLocaleString('en-IN')} / month`;
+
+  const multiplier = mktGoal === 'footfall' ? 4.8 : mktGoal === 'online' ? 3.6 : 4.2;
+  const reach = Math.round(budget * multiplier);
+  const leads = Math.round(budget * 0.042);
+  const rev = Math.round(budget * 3.85);
+
+  if (reachEl) reachEl.textContent = `${reach.toLocaleString('en-IN')}+`;
+  if (leadsEl) leadsEl.textContent = `${leads}+`;
+  if (revEl) revEl.textContent = `â‚¹${rev.toLocaleString('en-IN')}`;
+}
+
+function setWaTemplate(type) {
+  const promoText = document.getElementById('waPromoText');
+  if (!promoText) return;
+
+  if (type === 'festive') {
+    promoText.textContent = 'Namaste! Special 40% FESTIVE DISCOUNT across all categories this weekend. Show this message at counter or order online!';
+  } else if (type === 'vip') {
+    promoText.textContent = 'Hello VIP Member! You have an exclusive â‚¹500 Cashback voucher waiting on your next bill above â‚¹1,999. Valid till Sunday.';
+  } else {
+    promoText.textContent = 'BUY 1 GET 1 FREE FLASH SALE! Buy any item today and get another item completely free. Hurry, offer valid till midnight!';
+  }
+  showToast(`ðŸ“£ WhatsApp broadcast template updated: ${type.toUpperCase()}!`);
+}
+
+// â”€â”€â”€ TAB 5: LOGO & BRAND STUDIO ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let currentBrandIcon = 'ðŸ‘‘';
+let currentBrandTheme = 'rosegold';
+
+function setBrandIcon(icon, btnEl) {
+  currentBrandIcon = icon;
+  if (btnEl) {
+    document.querySelectorAll('.brand-ic-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  updateBrandEngine();
+  showToast(`ðŸŽ¯ Logo icon changed to ${icon}!`);
+}
+
+function setBrandTheme(theme, btnEl) {
+  currentBrandTheme = theme;
+  if (btnEl) {
+    document.querySelectorAll('.brand-st-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  const grid = document.getElementById('brandMockupsGrid');
+  if (grid) {
+    grid.className = `brand-mockups-grid theme-${theme}`;
+  }
+  showToast(`âœ¨ Brand theme switched to ${theme.toUpperCase()}!`);
+}
+
+function updateBrandEngine() {
+  const nameInput = document.getElementById('brandNameInput');
+  const tagInput = document.getElementById('brandTaglineInput');
+  const name = nameInput ? nameInput.value || 'Crown Royale' : 'Crown Royale';
+  const tag = tagInput ? tagInput.value || 'Luxury & Trust Since 2024' : 'Luxury & Trust Since 2024';
+
+  document.querySelectorAll('.b-dyn-name').forEach(el => el.textContent = name);
+  document.querySelectorAll('.b-dyn-tag').forEach(el => el.textContent = tag);
+  document.querySelectorAll('.b-dyn-icon').forEach(el => el.textContent = currentBrandIcon);
+}
+
+// â”€â”€â”€ TAB 6: ALL-IN-ONE BUNDLE ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function updateBundleCalc() {
+  const checkboxes = document.querySelectorAll('.bundle-check-item input[type="checkbox"]');
+  let total = 0;
+  let count = 0;
+
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      total += parseInt(cb.dataset.price, 10);
+      count++;
+    }
+  });
+
+  const origPriceEl = document.getElementById('bundleOriginalPrice');
+  const discountEl = document.getElementById('bundleDiscount');
+  const finalPriceEl = document.getElementById('bundleFinalPrice');
+
+  let discount = 0;
+  let finalPrice = total;
+
+  if (count >= 5) {
+    discount = 28000;
+    finalPrice = 24999;
+  } else if (count >= 3) {
+    discount = Math.round(total * 0.35);
+    finalPrice = total - discount;
+  } else if (count >= 2) {
+    discount = Math.round(total * 0.20);
+    finalPrice = total - discount;
+  }
+
+  if (origPriceEl) origPriceEl.textContent = `â‚¹${total.toLocaleString('en-IN')}`;
+  if (discountEl) discountEl.textContent = `-â‚¹${discount.toLocaleString('en-IN')} (${count >= 5 ? '53%' : count >= 3 ? '35%' : '20%'} OFF)`;
+  if (finalPriceEl) finalPriceEl.textContent = `â‚¹${finalPrice.toLocaleString('en-IN')}`;
+}
+
+function launchCustomBundleWhatsApp() {
+  const selected = [];
+  document.querySelectorAll('.bundle-check-item input[type="checkbox"]:checked').forEach(cb => {
+    selected.push(cb.dataset.name);
+  });
+  const finalPrice = document.getElementById('bundleFinalPrice')?.textContent || 'â‚¹24,999';
+  const msg = encodeURIComponent(`Hello Priyulabs! I am interested in the All-in-One Business Stack with: ${selected.join(', ')} (Estimated Package: ${finalPrice}). Please share the proposal!`);
+  window.open(`https://wa.me/917849074050?text=${msg}`, '_blank');
+}
+
+function initDemoPlaygrounds() {
+  renderPosProducts('all');
+  renderPosCart();
+  renderErpStock();
+  updateWsPreview();
+  updateMktCalculation();
+  updateBrandEngine();
+  updateBundleCalc();
+}
+
+// â”€â”€â”€ POLICY MODAL (MSME UDYAM-OD-19-0177979) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const policyModal = document.getElementById('policyModal');
 const policyModalTitle = document.getElementById('policyModalTitle');
 const policyModalContent = document.getElementById('policyModalContent');
 
 const policies = {
   about: {
-    title: 'About Us – Priyulabs',
+    title: 'About Us â€“ Priyulabs',
     content: `
       <h4>Our Mission</h4>
-      <p><strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup recognized under the <strong>Startup India & DPIIT initiative</strong>. Our goal is to empower 1.2+ Crore local retail merchants, supermarkets, cafes, and apparel stores with AI-powered retail operating systems.</p>
+      <p><strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup registered under <strong>MSME (UDYAM-OD-19-0177979)</strong>. Our goal is to empower 1.2+ Crore local retail merchants, supermarkets, cafes, and apparel stores with AI-powered retail operating systems.</p>
       <h4>What We Solve</h4>
       <p>We eliminate fragmented retail workflows by unifying Voice POS billing, ERP inventory, staff selfie attendance, 1-Click GST filing, and zero-fraud payments into one single, offline-first dashboard.</p>
       <h4>Company &amp; Contact Info</h4>
@@ -601,7 +1052,7 @@ const policies = {
     `
   },
   privacy: {
-    title: 'Privacy Policy – Priyulabs',
+    title: 'Privacy Policy â€“ Priyulabs',
     content: `
       <h4>1. Data Protection & Sovereignty</h4>
       <p>Your store's financial data, customer numbers, billing history, and stock records are 100% encrypted using 256-bit AES encryption. Priyulabs stores all database records strictly on Tier-4 data centers located within the Republic of India.</p>
@@ -612,7 +1063,7 @@ const policies = {
     `
   },
   terms: {
-    title: 'Terms & Conditions – Priyulabs',
+    title: 'Terms & Conditions â€“ Priyulabs',
     content: `
       <h4>1. Free Trial & Subscriptions</h4>
       <p>New users are entitled to a 14-day full feature trial without credit card requirements. Setup and on-site hardware sync are provided free of cost during the trial phase.</p>
@@ -623,7 +1074,7 @@ const policies = {
     `
   },
   refund: {
-    title: 'Refund & Cancellation Policy – Priyulabs',
+    title: 'Refund & Cancellation Policy â€“ Priyulabs',
     content: `
       <h4>1. 30-Day Money-Back Guarantee</h4>
       <p>If you choose a paid annual subscription after your free trial and find that Priyulabs does not fit your store requirements, you can request a 100% full refund within 30 days of purchase.</p>
@@ -666,12 +1117,12 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// ─── SECTOR BREAKDOWN MODAL (TRADITIONAL BEFORE VS PRIYULABS AFTER) ───
+// â”€â”€â”€ SECTOR BREAKDOWN MODAL (TRADITIONAL BEFORE VS PRIYULABS AFTER) â”€â”€â”€
 const sectorModal = document.getElementById('sectorModal');
 
 const sectorDetailsData = {
   pos: {
-    emoji: '🖥️',
+    emoji: 'ðŸ–¥ï¸',
     badge: 'Next-Gen Point of Sale (POS)',
     title: 'Point of Sale (POS)',
     eyebrow: 'PRIYULABS NEXT-GEN RETAIL POS',
@@ -680,24 +1131,24 @@ const sectorDetailsData = {
     image: 'assets/pos_billing_preview.jpg',
     before: [
       'Clunky legacy desktop software freezing during peak billing rush hours',
-      'No internet outage protection — store stops billing when Wi-Fi drops',
+      'No internet outage protection â€” store stops billing when Wi-Fi drops',
       'Disconnected card swipe machines requiring manual price re-typing on EDC'
     ],
     after: [
-      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap a wholesaler invoice — AI auto-extracts items (name, qty, batch, MRP) and logs stock in under 2 seconds with zero manual entry',
+      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap a wholesaler invoice â€” AI auto-extracts items (name, qty, batch, MRP) and logs stock in under 2 seconds with zero manual entry',
       '<strong>100% Offline-First Engine:</strong> Keep billing without internet; automatically syncs to cloud when reconnected',
       '<strong>Bi-Directional EDC & UPI Push:</strong> Send exact invoice amounts directly to Pine Labs, Paytm & UPI QR screens with zero cashier theft'
     ],
-    techUpgrades: ['⚡ Sub-Second POS Billing', '📦 Vision AI Stock Detection', '🛡️ Expiry Shield Alerts', '💳 Bi-Directional EDC Sync', '📱 Dual Customer Screen'],
-    roi: '🚀 <strong>Proven Impact:</strong> 3x Faster Customer Checkout • 0% Dead-Stock Write-Offs • 100% Cash Reconciliation'
+    techUpgrades: ['âš¡ Sub-Second POS Billing', 'ðŸ“¦ Vision AI Stock Detection', 'ðŸ›¡ï¸ Expiry Shield Alerts', 'ðŸ’³ Bi-Directional EDC Sync', 'ðŸ“± Dual Customer Screen'],
+    roi: 'ðŸš€ <strong>Proven Impact:</strong> 3x Faster Customer Checkout â€¢ 0% Dead-Stock Write-Offs â€¢ 100% Cash Reconciliation'
   },
   supermarket: {
-    emoji: '🛒',
+    emoji: 'ðŸ›’',
     badge: 'High-Volume Retail & Grocery POS',
     title: 'Supermarkets, Grocery & Kirana',
     eyebrow: 'PRIYULABS FOR SUPERMARKETS & KIRANA',
     headline: 'Vision AI Stock Detection & Expiry Shield for high-volume grocery & Kirana',
-    heroDesc: 'Cut expired-stock losses to zero with Vision AI Stock Detection — snap a wholesale invoice, auto-log every item, and shield shelves across Kirana, Pharmacy & Supermarket from pre-expiry losses.',
+    heroDesc: 'Cut expired-stock losses to zero with Vision AI Stock Detection â€” snap a wholesale invoice, auto-log every item, and shield shelves across Kirana, Pharmacy & Supermarket from pre-expiry losses.',
     image: 'assets/sector_supermarket.jpg',
     before: [
       'Manual barcode searching & keyboard price typing creating long 10-minute billing queues',
@@ -705,15 +1156,15 @@ const sectorDetailsData = {
       'Stock expiry losses: Expired packets sitting unnoticed on back shelves causing customer loss'
     ],
     after: [
-      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap wholesaler invoices to auto-log stock & get pre-expiry alerts 7–30 days before expiry across Kirana, Pharmacy & Supermarket',
+      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap wholesaler invoices to auto-log stock & get pre-expiry alerts 7â€“30 days before expiry across Kirana, Pharmacy & Supermarket',
       '<strong>Direct Weighing Scale Sync:</strong> Weight transfers automatically from digital scale straight into POS bill',
       '<strong>Invoice OCR Auto-Stock Logging:</strong> AI extracts every line item (name, qty, batch, MRP) from wholesale bill photos in under 2 seconds'
     ],
-    techUpgrades: ['📦 Vision AI Stock Detection', '🛡️ Expiry Shield Alerts', '📷 Invoice OCR Auto-Log', '⚖️ Weighing Scale Sync', '📅 FEFO Batch Tracking'],
-    roi: '⚡ <strong>Proven Impact:</strong> 80% Faster Billing Queue • 0% Expired Stock Losses • 100% Cash Accuracy'
+    techUpgrades: ['ðŸ“¦ Vision AI Stock Detection', 'ðŸ›¡ï¸ Expiry Shield Alerts', 'ðŸ“· Invoice OCR Auto-Log', 'âš–ï¸ Weighing Scale Sync', 'ðŸ“… FEFO Batch Tracking'],
+    roi: 'âš¡ <strong>Proven Impact:</strong> 80% Faster Billing Queue â€¢ 0% Expired Stock Losses â€¢ 100% Cash Accuracy'
   },
   cafe: {
-    emoji: '☕',
+    emoji: 'â˜•',
     badge: 'Food & Beverage Operations OS',
     title: 'Cafes, Bakeries & QSR Restaurants',
     eyebrow: 'PRIYULABS FOR COFFEE SHOPS & CAFES',
@@ -730,11 +1181,11 @@ const sectorDetailsData = {
       '<strong>Instant KDS & Thermal KOT:</strong> Orders directly print in kitchen or appear on Chef Display Screen',
       '<strong>Recipe Ingredient ERP:</strong> Every dish sold automatically deducts exact raw milk, cheese & coffee stock'
     ],
-    techUpgrades: ['📱 Touchscreen Kiosk', '📲 Table QR Ordering', '🖥️ Kitchen KDS & KOT', '📊 Recipe ERP'],
-    roi: '🍽️ <strong>Proven Impact:</strong> 35% Higher Table Turnover • 100% KOT Delivery Accuracy • 0% Raw Waste'
+    techUpgrades: ['ðŸ“± Touchscreen Kiosk', 'ðŸ“² Table QR Ordering', 'ðŸ–¥ï¸ Kitchen KDS & KOT', 'ðŸ“Š Recipe ERP'],
+    roi: 'ðŸ½ï¸ <strong>Proven Impact:</strong> 35% Higher Table Turnover â€¢ 100% KOT Delivery Accuracy â€¢ 0% Raw Waste'
   },
   bakery: {
-    emoji: '🎂',
+    emoji: 'ðŸŽ‚',
     badge: 'Bakery & Confectionery Operations OS',
     title: 'Bakeries, Cake Shops & Confectionery',
     eyebrow: 'PRIYULABS FOR BAKERIES & CONFECTIONERY',
@@ -752,11 +1203,11 @@ const sectorDetailsData = {
       '<strong>Recipe Raw Material ERP:</strong> Auto-deduct exact flour, butter, chocolate & cream stock per batch produced',
       '<strong>Thermal Expiry Label Printing:</strong> Auto-print price, weight & shelf-life expiry stickers for packaged baked items'
     ],
-    techUpgrades: ['🎂 Custom Cake Order POS', '⚖️ Weigh-Scale Auto Sync', '📊 Recipe Batch ERP', '🏷️ Thermal Expiry Labeling', '🎥 Live Demo Video'],
-    roi: '🎂 <strong>Proven Impact:</strong> 45% Faster Billing • 100% Advance Order Delivery Accuracy • 0% Recipe Waste'
+    techUpgrades: ['ðŸŽ‚ Custom Cake Order POS', 'âš–ï¸ Weigh-Scale Auto Sync', 'ðŸ“Š Recipe Batch ERP', 'ðŸ·ï¸ Thermal Expiry Labeling', 'ðŸŽ¥ Live Demo Video'],
+    roi: 'ðŸŽ‚ <strong>Proven Impact:</strong> 45% Faster Billing â€¢ 100% Advance Order Delivery Accuracy â€¢ 0% Recipe Waste'
   },
   apparel: {
-    emoji: '🛍️',
+    emoji: 'ðŸ›ï¸',
     badge: 'Multi-Variant Fashion ERP',
     title: 'Apparel, Footwear & Fashion Boutiques',
     eyebrow: 'PRIYULABS FOR APPAREL & FASHION',
@@ -773,11 +1224,11 @@ const sectorDetailsData = {
       '<strong>Multi-Variant Stock Matrix:</strong> Complete stock visibility across sizes, colors & categories in 1 screen',
       '<strong>WhatsApp Digital Catalog:</strong> Send interactive digital product catalog directly to VIP customers'
     ],
-    techUpgrades: ['🏷️ Barcode Tag Printer', '👗 Multi-Variant Matrix', '💬 WhatsApp Store Catalog', '🔄 Exchange POS'],
-    roi: '👗 <strong>Proven Impact:</strong> 40% Repeat Customer Growth • 100% Size-Color Stock Control'
+    techUpgrades: ['ðŸ·ï¸ Barcode Tag Printer', 'ðŸ‘— Multi-Variant Matrix', 'ðŸ’¬ WhatsApp Store Catalog', 'ðŸ”„ Exchange POS'],
+    roi: 'ðŸ‘— <strong>Proven Impact:</strong> 40% Repeat Customer Growth â€¢ 100% Size-Color Stock Control'
   },
   pharmacy: {
-    emoji: '💊',
+    emoji: 'ðŸ’Š',
     badge: 'Pharma Compliance & Batch ERP',
     title: 'Pharmacies, Chemist & Medical Stores',
     eyebrow: 'PRIYULABS FOR PHARMACIES & CHEMISTS',
@@ -794,11 +1245,11 @@ const sectorDetailsData = {
       '<strong>FEFO Batch & Expiry Management:</strong> First-Expiry-First-Out auto dispatch warnings on cashier screen',
       '<strong>1-Click GSTR-1 & 3B Reports:</strong> Download audit-ready CA tax JSON files directly in 1 click'
     ],
-    techUpgrades: ['🔍 150k Salt Search Engine', '⚠️ FEFO Expiry Alerts', '📄 Doctor Rx Billing', '🧾 1-Click GST JSON'],
-    roi: '💊 <strong>Proven Impact:</strong> Zero Expired Medicine Losses • 100% Drug Inspector Compliance'
+    techUpgrades: ['ðŸ” 150k Salt Search Engine', 'âš ï¸ FEFO Expiry Alerts', 'ðŸ“„ Doctor Rx Billing', 'ðŸ§¾ 1-Click GST JSON'],
+    roi: 'ðŸ’Š <strong>Proven Impact:</strong> Zero Expired Medicine Losses â€¢ 100% Drug Inspector Compliance'
   },
   electronics: {
-    emoji: '⚡',
+    emoji: 'âš¡',
     badge: 'Serial & Warranty Management',
     title: 'Electronics, Mobiles & Hardware Supplies',
     eyebrow: 'PRIYULABS FOR ELECTRONICS & HARDWARE',
@@ -815,11 +1266,11 @@ const sectorDetailsData = {
       '<strong>SMS & WhatsApp Digital Warranty:</strong> Automated digital warranty card sent directly to customer mobile',
       '<strong>100% EDC Payment Terminal Sync:</strong> POS bill total auto-transfers to swipe machine with 0 errors'
     ],
-    techUpgrades: ['📱 IMEI & Serial Scanner', '💬 WhatsApp Digital Warranty', '💳 EDC Payment Sync', '🛡️ Auto Warranty POS'],
-    roi: '📱 <strong>Proven Impact:</strong> 0 Serial Audit Discrepancies • 100% Cash & Card Reconciliation'
+    techUpgrades: ['ðŸ“± IMEI & Serial Scanner', 'ðŸ’¬ WhatsApp Digital Warranty', 'ðŸ’³ EDC Payment Sync', 'ðŸ›¡ï¸ Auto Warranty POS'],
+    roi: 'ðŸ“± <strong>Proven Impact:</strong> 0 Serial Audit Discrepancies â€¢ 100% Cash & Card Reconciliation'
   },
   specialty: {
-    emoji: '💄',
+    emoji: 'ðŸ’„',
     badge: 'High-Value Tagging & Customer Loyalty',
     title: 'Cosmetics, Jewelry & Specialty Outlets',
     eyebrow: 'PRIYULABS FOR COSMETICS & JEWELRY',
@@ -836,11 +1287,11 @@ const sectorDetailsData = {
       '<strong>Automated Customer Loyalty Points:</strong> Auto-credit cashback points to customer mobile phone',
       '<strong>Festival Coupon & Gift Bundle POS:</strong> 1-Click festive discounts & gift hamper POS billing'
     ],
-    techUpgrades: ['💎 Jewelry Weight Scale Sync', '🎁 Auto Loyalty Points', '📦 Festival Gift Bundling', '🎟️ Digital Coupons'],
-    roi: '💎 <strong>Proven Impact:</strong> 50% Higher Customer Retention • 100% Billing Accuracy'
+    techUpgrades: ['ðŸ’Ž Jewelry Weight Scale Sync', 'ðŸŽ Auto Loyalty Points', 'ðŸ“¦ Festival Gift Bundling', 'ðŸŽŸï¸ Digital Coupons'],
+    roi: 'ðŸ’Ž <strong>Proven Impact:</strong> 50% Higher Customer Retention â€¢ 100% Billing Accuracy'
   },
   meat: {
-    emoji: '🥩',
+    emoji: 'ðŸ¥©',
     badge: 'Perishable Weight & Quick Billing',
     title: 'Meat, Fish & Poultry Outlets',
     eyebrow: 'PRIYULABS FOR MEAT & POULTRY OUTLETS',
@@ -854,11 +1305,11 @@ const sectorDetailsData = {
       '<strong>Rugged Waterproof POS & Weight Sync:</strong> Instant weight auto-capture from digital scale',
       '<strong>Fresh Stock Spoilage Counter:</strong> Real-time tracking of morning vs evening fresh inventory'
     ],
-    techUpgrades: ['🛡️ Waterproof Touch POS', '⚖️ Direct Scale Auto-Sync', '🥩 Daily Fresh Counter'],
-    roi: '⚡ <strong>Proven Impact:</strong> 3-Second Quick Checkout • 100% Hardware Protection'
+    techUpgrades: ['ðŸ›¡ï¸ Waterproof Touch POS', 'âš–ï¸ Direct Scale Auto-Sync', 'ðŸ¥© Daily Fresh Counter'],
+    roi: 'âš¡ <strong>Proven Impact:</strong> 3-Second Quick Checkout â€¢ 100% Hardware Protection'
   },
   mandi: {
-    emoji: '🌾',
+    emoji: 'ðŸŒ¾',
     badge: 'Bulk Mandi & Bahi-Khata Ledger',
     title: 'Grain & Mandi Wholesale Traders',
     eyebrow: 'PRIYULABS FOR GRAIN & MANDI WHOLESALE',
@@ -872,11 +1323,11 @@ const sectorDetailsData = {
       '<strong>WhatsApp Udhar Ledger:</strong> Automated WhatsApp payment reminders & interest calculations',
       '<strong>Gross vs Net Bag Weight Sync:</strong> Auto-deduct tare weight per sack automatically'
     ],
-    techUpgrades: ['💬 WhatsApp Udhar Reminders', '🌾 Gross-Net Bag Scale Sync', '📒 Digital Bahi-Khata'],
-    roi: '🌾 <strong>Proven Impact:</strong> 2x Faster Udhar Collection • 100% Bahi-Khata Accuracy'
+    techUpgrades: ['ðŸ’¬ WhatsApp Udhar Reminders', 'ðŸŒ¾ Gross-Net Bag Scale Sync', 'ðŸ“’ Digital Bahi-Khata'],
+    roi: 'ðŸŒ¾ <strong>Proven Impact:</strong> 2x Faster Udhar Collection â€¢ 100% Bahi-Khata Accuracy'
   },
   autoparts: {
-    emoji: '🚗',
+    emoji: 'ðŸš—',
     badge: 'Vehicle Model & Part Search',
     title: 'Auto Spare Parts & Accessories',
     eyebrow: 'PRIYULABS FOR AUTO SPARE PARTS',
@@ -890,11 +1341,11 @@ const sectorDetailsData = {
       '<strong>Smart Vehicle Model Lookup:</strong> Search spares by Car/Bike Model, OEM Code or Part Name',
       '<strong>Rack & Bin Location Display:</strong> Shows exact warehouse aisle & rack location of part'
     ],
-    techUpgrades: ['🚗 Vehicle OEM Model Search', '📍 Warehouse Bin Location', '📦 Multi-Brand Inventory'],
-    roi: '🚗 <strong>Proven Impact:</strong> 0 Wrong Part Dispatches • 10-Second Spare Search'
+    techUpgrades: ['ðŸš— Vehicle OEM Model Search', 'ðŸ“ Warehouse Bin Location', 'ðŸ“¦ Multi-Brand Inventory'],
+    roi: 'ðŸš— <strong>Proven Impact:</strong> 0 Wrong Part Dispatches â€¢ 10-Second Spare Search'
   },
   books: {
-    emoji: '📚',
+    emoji: 'ðŸ“š',
     badge: 'ISBN & Publisher Stock ERP',
     title: 'Bookstores & Stationery Outlets',
     eyebrow: 'PRIYULABS FOR BOOKSTORES & STATIONERY',
@@ -908,11 +1359,11 @@ const sectorDetailsData = {
       '<strong>ISBN Barcode Auto-Catalog:</strong> Scan ISBN barcode to auto-fill title, author & price',
       '<strong>1-Click School Bundle POS:</strong> Bill complete class stationery & book set in 1 tap'
     ],
-    techUpgrades: ['📚 ISBN Barcode Auto-Fetch', '🎒 1-Click School Kit POS', '🏷️ Publisher Ledger'],
-    roi: '📚 <strong>Proven Impact:</strong> 10x Faster Admission Season Billing'
+    techUpgrades: ['ðŸ“š ISBN Barcode Auto-Fetch', 'ðŸŽ’ 1-Click School Kit POS', 'ðŸ·ï¸ Publisher Ledger'],
+    roi: 'ðŸ“š <strong>Proven Impact:</strong> 10x Faster Admission Season Billing'
   },
   florists: {
-    emoji: '🌸',
+    emoji: 'ðŸŒ¸',
     badge: 'Fresh Floral & Event Order POS',
     title: 'Florists & Plant Nurseries',
     eyebrow: 'PRIYULABS FOR FLORISTS & NURSERIES',
@@ -926,11 +1377,11 @@ const sectorDetailsData = {
       '<strong>Event Advance Booking Ledger:</strong> Track token advance, delivery dates & final balance',
       '<strong>Fresh Stock Spoilage Monitor:</strong> Real-time alerts on floral batch shelf life'
     ],
-    techUpgrades: ['💐 Event Advance Ledger', '🌸 Fresh Shelf Life Alerts', '📅 Calendar Booking POS'],
-    roi: '🌸 <strong>Proven Impact:</strong> 0 Event Booking Mistakes • 100% Advance Tracking'
+    techUpgrades: ['ðŸ’ Event Advance Ledger', 'ðŸŒ¸ Fresh Shelf Life Alerts', 'ðŸ“… Calendar Booking POS'],
+    roi: 'ðŸŒ¸ <strong>Proven Impact:</strong> 0 Event Booking Mistakes â€¢ 100% Advance Tracking'
   },
   liquor: {
-    emoji: '🍷',
+    emoji: 'ðŸ·',
     badge: 'Excise Compliance & Bottle Scan',
     title: 'Liquor & Beverage Stores',
     eyebrow: 'PRIYULABS FOR LIQUOR OUTLETS',
@@ -944,11 +1395,11 @@ const sectorDetailsData = {
       '<strong>Automated Daily Excise Log:</strong> Auto-generates Brand & Size-wise excise logs for inspection',
       '<strong>0.5s High-Speed Scanner:</strong> Scan bottle holograms & 2D barcodes instantly'
     ],
-    techUpgrades: ['📜 Auto Excise Log Generator', '⚡ 0.5s Hologram Scanner', '🍷 Bottle Stock Matrix'],
-    roi: '🍷 <strong>Proven Impact:</strong> 100% Excise Audit Pass • Zero Rush Hour Queue Delay'
+    techUpgrades: ['ðŸ“œ Auto Excise Log Generator', 'âš¡ 0.5s Hologram Scanner', 'ðŸ· Bottle Stock Matrix'],
+    roi: 'ðŸ· <strong>Proven Impact:</strong> 100% Excise Audit Pass â€¢ Zero Rush Hour Queue Delay'
   },
   furniture: {
-    emoji: '🛋️',
+    emoji: 'ðŸ›‹ï¸',
     badge: 'Custom Order & Delivery Tracking',
     title: 'Furniture & Home Decor Showrooms',
     eyebrow: 'PRIYULABS FOR FURNITURE & HOME DECOR',
@@ -959,14 +1410,14 @@ const sectorDetailsData = {
       'Custom upholstery & size measurements untracked during factory manufacturing'
     ],
     after: [
-      '<strong>Order-to-Delivery Pipeline:</strong> Track Order → Manufacturing → Dispatch → Balance',
+      '<strong>Order-to-Delivery Pipeline:</strong> Track Order â†’ Manufacturing â†’ Dispatch â†’ Balance',
       '<strong>WhatsApp Delivery Updates:</strong> Automated SMS & WhatsApp status updates sent to buyer'
     ],
-    techUpgrades: ['🛋️ Custom Order Pipeline', '💬 WhatsApp Status Alerts', '💳 Balance Payment Sync'],
-    roi: '🛋️ <strong>Proven Impact:</strong> 100% On-Time Delivery • Zero Payment Leakage'
+    techUpgrades: ['ðŸ›‹ï¸ Custom Order Pipeline', 'ðŸ’¬ WhatsApp Status Alerts', 'ðŸ’³ Balance Payment Sync'],
+    roi: 'ðŸ›‹ï¸ <strong>Proven Impact:</strong> 100% On-Time Delivery â€¢ Zero Payment Leakage'
   },
   petcare: {
-    emoji: '🐶',
+    emoji: 'ðŸ¶',
     badge: 'Pet Health & Food Subscription',
     title: 'Pet Supplies & Vet Clinics',
     before: [
@@ -977,8 +1428,8 @@ const sectorDetailsData = {
       '<strong>Automated WhatsApp Vaccine Reminders:</strong> Auto-send vaccination alerts to pet parents',
       '<strong>Monthly Pet Food Subscription:</strong> 1-click repeat monthly order billing'
     ],
-    techUpgrades: ['💉 WhatsApp Vaccine Reminders', '🐶 Pet Patient Records', '📦 Food Subscription POS'],
-    roi: '🐶 <strong>Proven Impact:</strong> 60% Higher Pet Parent Retention'
+    techUpgrades: ['ðŸ’‰ WhatsApp Vaccine Reminders', 'ðŸ¶ Pet Patient Records', 'ðŸ“¦ Food Subscription POS'],
+    roi: 'ðŸ¶ <strong>Proven Impact:</strong> 60% Higher Pet Parent Retention'
   }
 };
 
@@ -995,7 +1446,7 @@ function closeSectorModal() {
   }
 }
 
-// ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ────────
+// â”€â”€â”€ CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) â”€â”€â”€â”€â”€â”€â”€â”€
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPl-7pp-g-VOMUDpP900zdOB8DhA8gS6sOrKwUeTTNclUtggc3UKg7_G2rJl3VjyRlMA/exec";
 
 const leadForm = document.getElementById('leadForm');
@@ -1024,7 +1475,7 @@ if (leadForm) {
       .then(() => {
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access 🚀";
+          button.innerHTML = "Submit & Get Early Access ðŸš€";
           button.style.opacity = '1';
         }
         const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
@@ -1044,7 +1495,7 @@ if (leadForm) {
         console.error('Google Sheet Submission Error:', err);
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access 🚀";
+          button.innerHTML = "Submit & Get Early Access ðŸš€";
           button.style.opacity = '1';
         }
         const errorText = "Something went wrong. Please try again.";
@@ -1062,7 +1513,7 @@ if (leadForm) {
   });
 }
 
-// ─── GLOBAL TOAST HELPER ─────────────────────────────────────────
+// â”€â”€â”€ GLOBAL TOAST HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function showToast(message) {
   const toast = document.getElementById('mainToast');
   if (!toast) return;
@@ -1073,7 +1524,7 @@ function showToast(message) {
   }, 4000);
 }
 
-// ─── SIDEBAR DEMO ITEM INTERACTION ──────────────────────────────
+// â”€â”€â”€ SIDEBAR DEMO ITEM INTERACTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.querySelectorAll('.sidebar-item').forEach(item => {
   item.addEventListener('click', () => {
     document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
@@ -1081,7 +1532,7 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
   });
 });
 
-// ─── SQUARE MEGA MENU TAB SWITCHER ──────────────────────────────
+// â”€â”€â”€ SQUARE MEGA MENU TAB SWITCHER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function switchMegaTab(tabKey) {
   document.querySelectorAll('.sq-cat-btn').forEach(btn => {
     const isTarget = btn.getAttribute('data-tab') === tabKey;
@@ -1093,7 +1544,44 @@ function switchMegaTab(tabKey) {
   });
 }
 
-// ─── FULLSCREEN VIDEO MAXIMIZE HELPER ─────────────────────────────
+// ─── MEGA MENU DROPDOWN CLOSE-ON-CLICK & CLICK-OUTSIDE ───────
+function initMegaMenuCloseHandlers() {
+  function closeAllMegaMenus() {
+    document.querySelectorAll('.mega-dropdown').forEach(dd => {
+      dd.classList.add('menu-closed');
+    });
+  }
+
+  // Dismiss dropdown on clicking any link inside mega dropdown
+  document.querySelectorAll('.mega-dropdown a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeAllMegaMenus();
+    });
+  });
+
+  // Re-enable dropdown on mouseleave so hover works again smoothly
+  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+    item.addEventListener('mouseleave', () => {
+      const dd = item.querySelector('.mega-dropdown');
+      if (dd) dd.classList.remove('menu-closed');
+    });
+  });
+
+  // Click outside to close open dropdowns
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      closeAllMegaMenus();
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMegaMenuCloseHandlers);
+} else {
+  initMegaMenuCloseHandlers();
+}
+
+// â”€â”€â”€ FULLSCREEN VIDEO MAXIMIZE HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function toggleBakeryFullscreen(elem) {
   if (!elem) return;
   if (elem.requestFullscreen) {
@@ -1105,7 +1593,7 @@ function toggleBakeryFullscreen(elem) {
   }
 }
 
-// ─── HERO ECOSYSTEM CONSOLE SWITCHER ────────────────────────────
+// â”€â”€â”€ HERO ECOSYSTEM CONSOLE SWITCHER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function switchHeroEcosystem(key) {
   const tabs = document.querySelectorAll('.c-tab-btn');
   tabs.forEach(btn => {
@@ -1128,7 +1616,7 @@ function switchHeroEcosystem(key) {
   });
 }
 
-// ─── CAROUSEL & SLIDER CONTROLS ─────────────────────────────────
+// â”€â”€â”€ CAROUSEL & SLIDER CONTROLS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function scrollCarousel(target, direction) {
   let container = typeof target === 'string' ? (document.getElementById(target) || document.querySelector(`.${target}`)) : target;
   if (!container) return;
@@ -1203,7 +1691,7 @@ function initCarouselDragScroll() {
       }
     }, { passive: true });
 
-    // ── TOUCH SWIPE HANDLERS (Mobile & Tablet Native Swipe) ──
+    // â”€â”€ TOUCH SWIPE HANDLERS (Mobile & Tablet Native Swipe) â”€â”€
     let touchStartX = 0;
     let touchStartScrollLeft = 0;
     let isSwiping = false;
@@ -1249,7 +1737,7 @@ if (document.readyState === 'loading') {
 }
 window.initCarouselDragScroll = initCarouselDragScroll;
 
-// ─── VIDEO INTERACTION & TOUCH HANDLER (SAFE PLAY/PAUSE) ────────
+// â”€â”€â”€ VIDEO INTERACTION & TOUCH HANDLER (SAFE PLAY/PAUSE) â”€â”€â”€â”€â”€â”€â”€â”€
 function initVideoTouchProtection() {
   const videoElements = document.querySelectorAll('video, .card-video-wrap, .sol-video-wrapper');
   videoElements.forEach(wrapper => {
@@ -1273,7 +1761,7 @@ document.addEventListener('DOMContentLoaded', initVideoTouchProtection);
 initVideoTouchProtection();
 window.initVideoTouchProtection = initVideoTouchProtection;
 
-// ─── SECTOR PICKER & CONTENT PANEL TOGGLE ──────────────────────
+// â”€â”€â”€ SECTOR PICKER & CONTENT PANEL TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function initSectorPicker() {
   const sectorBtns = document.querySelectorAll('.sector-pick-btn');
   if (!sectorBtns.length) return;
@@ -1318,14 +1806,42 @@ if (document.readyState === 'loading') {
   initSectorPicker();
 }
 
-// ─── GLOBAL WINDOW EXPORTS FOR MOBILE & DESKTOP EVENT HANDLERS ───
+// â”€â”€â”€ GLOBAL WINDOW EXPORTS FOR MOBILE & DESKTOP EVENT HANDLERS â”€â”€â”€
 window.openDemoModal = openDemoModal;
 window.closeDemoModal = closeDemoModal;
 window.switchDemoTab = switchDemoTab;
-window.runSimVoice = runSimVoice;
-window.simulatePinePush = simulatePinePush;
-window.simulateVisionScan = simulateVisionScan;
-window.simulateGstDownload = simulateGstDownload;
+window.filterPosProducts = filterPosProducts;
+window.addPosToCart = addPosToCart;
+window.updatePosQty = updatePosQty;
+window.removePosItem = removePosItem;
+window.clearPosCart = clearPosCart;
+window.runPosVoicePreset = runPosVoicePreset;
+window.simulateBarcodeScan = simulateBarcodeScan;
+window.executePosPayment = executePosPayment;
+window.printPosInvoice = printPosInvoice;
+window.resetPosCart = resetPosCart;
+window.simulateErpScanInvoice = simulateErpScanInvoice;
+window.simulateErpSale = simulateErpSale;
+window.reorderErpItem = reorderErpItem;
+window.simulateHrmsCheckIn = simulateHrmsCheckIn;
+window.setWsIndustry = setWsIndustry;
+window.setWsColor = setWsColor;
+window.setWsDevice = setWsDevice;
+window.updateWsPreview = updateWsPreview;
+window.simulateWsOrder = simulateWsOrder;
+window.setMktGoal = setMktGoal;
+window.updateMktCalculation = updateMktCalculation;
+window.setWaTemplate = setWaTemplate;
+window.setBrandIcon = setBrandIcon;
+window.setBrandTheme = setBrandTheme;
+window.updateBrandEngine = updateBrandEngine;
+window.updateBundleCalc = updateBundleCalc;
+window.launchCustomBundleWhatsApp = launchCustomBundleWhatsApp;
+window.initDemoPlaygrounds = initDemoPlaygrounds;
+window.runSimVoice = runPosVoicePreset;
+window.simulatePinePush = executePosPayment;
+window.simulateVisionScan = simulateErpScanInvoice;
+window.simulateGstDownload = function() { showToast('ðŸ“¥ GST JSON generated!'); };
 window.simulateVoicePOS = simulateVoicePOS;
 window.openPolicyModal = openPolicyModal;
 window.closePolicyModal = closePolicyModal;
@@ -1337,6 +1853,176 @@ window.showToast = showToast;
 window.toggleBakeryFullscreen = toggleBakeryFullscreen;
 window.handleLeadSubmit = handleLeadSubmit;
 window.initSectorPicker = initSectorPicker;
+window.setSpotlightIndex = setSpotlightIndex;
+window.initHeroSpotlight = initHeroSpotlight;
+window.initSquareMosaicShowcase = initSquareMosaicShowcase;
+window.toggleHeroVideoAudio = toggleHeroVideoAudio;
+window.toggleHeroVideoPlay = toggleHeroVideoPlay;
 
-console.log('%c Priyulabs – India’s Smartest AI Retail OS Loaded Successfully! 🇮🇳 ',
+// ── Hospitality Tech Coming Soon Modal Engine ──
+function openComingSoonModal(serviceName = 'Hospitality Tech', event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  const modal = document.getElementById('comingSoonModal');
+  const titleEl = modal ? modal.querySelector('.cs-title') : null;
+  if (titleEl && serviceName) {
+    titleEl.textContent = serviceName + ' is Coming Soon!';
+  }
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    window.location.href = 'hospitality.html';
+  }
+}
+
+function closeComingSoonModal() {
+  const modal = document.getElementById('comingSoonModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function handleWaitlistSubmit(event) {
+  if (event) event.preventDefault();
+  const input = document.getElementById('csContactInput');
+  const successBox = document.getElementById('csWlSuccess');
+  if (!input || !input.value.trim()) return;
+
+  const contactVal = input.value.trim();
+  console.log('[Waitlist] Registered contact:', contactVal);
+
+  if (successBox) {
+    successBox.style.display = 'block';
+  }
+  input.value = '';
+
+  if (typeof showToast === 'function') {
+    showToast('🎉 You have been added to the VIP Waitlist! We will reach out on launch day.');
+  }
+}
+
+window.openComingSoonModal = openComingSoonModal;
+window.closeComingSoonModal = closeComingSoonModal;
+window.handleWaitlistSubmit = handleWaitlistSubmit;
+
+// Close coming soon modal on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeComingSoonModal();
+  }
+});
+
+
+// ══════════════════════════════════════════════════════════════
+// HERO VIDEO SCROLL-BLUR & MANIFESTO ENGINE (100vh — ZERO EMPTY SPACE)
+// • Starts crystal clear on open
+// • Smoothly blurs and brings hero line on top as soon as user scrolls
+// ══════════════════════════════════════════════════════════════
+function initHeroVideoScroll() {
+  if (window.__heroVideoScrollerActive) return; // Handled directly by inline high-priority engine
+  const stage   = document.getElementById('heroStage') || document.getElementById('hero');
+  const video   = document.getElementById('heroBgVideo');
+  const tint    = document.getElementById('heroVideoTint');
+  const overlay = document.getElementById('heroManifestoOverlay');
+
+  if (!stage || !video) return;
+
+  video.muted = true;
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      const resume = () => {
+        video.play().catch(() => {});
+      };
+      window.addEventListener('click', resume, { once: true });
+      window.addEventListener('touchstart', resume, { once: true, passive: true });
+      window.addEventListener('scroll', resume, { once: true, passive: true });
+    });
+  }
+
+  let ticking = false;
+
+  function updateVideoHero() {
+    const rect = stage.getBoundingClientRect();
+    const stageHeight = stage.offsetHeight - window.innerHeight;
+    if (stageHeight <= 0) return;
+
+    const scrolled = Math.max(0, -rect.top);
+    const progress = Math.min(1, Math.max(0, scrolled / stageHeight));
+
+    if (video) {
+      const blur = (progress * 14).toFixed(1);
+      const bright = (1 - progress * 0.50).toFixed(2);
+      video.style.filter = `blur(${blur}px) brightness(${bright})`;
+    }
+
+    if (tint) {
+      tint.style.opacity = (progress * 0.80).toFixed(2);
+    }
+
+    if (overlay) {
+      const textProgress = Math.max(0, Math.min(1, (progress - 0.08) / 0.47));
+      overlay.style.opacity = textProgress.toFixed(2);
+      const translateY = (1 - textProgress) * 28;
+      const scale = (0.96 + textProgress * 0.04).toFixed(3);
+      overlay.style.transform = `translate(-50%, calc(-50% + ${translateY.toFixed(1)}px)) scale(${scale})`;
+      overlay.style.pointerEvents = textProgress > 0.3 ? 'auto' : 'none';
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateVideoHero);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateVideoHero();
+  window.__heroVideoScrollerActive = true;
+}
+
+// ── Audio Toggle ──
+function toggleHeroAudio() {
+  const video = document.getElementById('heroBgVideo');
+  const icon  = document.getElementById('heroAudioIcon');
+  const label = document.getElementById('heroAudioLabel');
+  if (!video) return;
+
+  if (video.muted) {
+    video.muted  = false;
+    video.volume = 1.0;
+    if (icon)  icon.textContent  = '🔊';
+    if (label) label.textContent = 'Sound On';
+    if (typeof showToast === 'function') showToast('🔊 Video audio unmuted');
+  } else {
+    video.muted = true;
+    if (icon)  icon.textContent  = '🔇';
+    if (label) label.textContent = 'Muted';
+    if (typeof showToast === 'function') showToast('🔇 Video audio muted');
+  }
+}
+window.toggleHeroAudio = toggleHeroAudio;
+
+// Backward-compat aliases
+window.toggleHeroVideoSound = toggleHeroAudio;
+window.toggleShowcaseVideoAudio = toggleHeroAudio;
+window.initCinematicVideoHero = initHeroVideoScroll;
+window.initVhsScrollHero = initHeroVideoScroll;
+window.initHeroPinnedScroll = initHeroVideoScroll;
+window.initShowcaseVideoScroll = initHeroVideoScroll;
+
+// Auto-init on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroVideoScroll);
+} else {
+  initHeroVideoScroll();
+}
+
+console.log('%c Priyulabs – India\u2019s Smartest AI Retail OS Loaded Successfully! \uD83C\uDDEE\uD83C\uDDF3 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');

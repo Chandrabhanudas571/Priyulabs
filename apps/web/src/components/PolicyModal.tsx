@@ -1,4 +1,4 @@
-﻿import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ShieldCheck, X } from 'lucide-react';
 
 export type PolicyType = 'about' | 'privacy' | 'terms' | 'refund';
@@ -11,13 +11,13 @@ interface PolicyModalProps {
 const policyData: Record<PolicyType, { title: string; subtitle: string; content: React.ReactNode }> = {
   about: {
     title: 'About Priyulabs Digital',
-    subtitle: 'Startup India & DPIIT Recognized SaaS Enterprise',
+    subtitle: 'MSME Certified SaaS Enterprise (UDYAM-OD-19-0177979)',
     content: (
       <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
         <h4 className="font-bold text-slate-900 dark:text-white">Our Mission</h4>
         <p>
-          <strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup recognized under the{' '}
-          <strong>Startup India & DPIIT initiative</strong>. Our goal is to empower 1.2+ Crore local retail merchants,
+          <strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup registered under{' '}
+          <strong>MSME (UDYAM-OD-19-0177979)</strong>. Our goal is to empower 1.2+ Crore local retail merchants,
           supermarkets, cafes, and apparel stores with AI-powered retail operating systems.
         </p>
         <h4 className="font-bold text-slate-900 dark:text-white">What We Solve</h4>
