@@ -1688,124 +1688,164 @@ permalink: /complete-management-system
   <!-- ══════════════════════════════════════════════════════════
        NAVBAR — PRIYULABS DIGITAL
   ══════════════════════════════════════════════════════════ -->
-  <nav class="navbar" id="mainNavbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
           <span class="logo-subtitle">MANAGEMENT SYSTEM</span>
         </div>
       </a>
-      <ul class="nav-links">
-        <!-- 1. Business Types Dropdown -->
+      <ul class="nav-links" id="navLinks">
+        <!-- 1. Business types Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="#business-types" class="nav-link-title dropdown-trigger">
-            Business Types <span class="drop-arrow">▾</span>
+          <a href="solutions.html" class="nav-link-title dropdown-trigger">
+            Business types <span class="drop-arrow">▾</span>
           </a>
-          <div class="mega-dropdown">
-            <div class="mega-dropdown-inner">
-              <!-- Column 1: Category Tabs -->
+          <div class="mega-dropdown square-mega-3col">
+            <div class="mega-dropdown-inner mega-3col-wrapper">
+
+              <!-- Column 1: Left Categories Tabs -->
               <div class="mega-col-left">
-                <div class="mega-sub-header">By Business Category</div>
-                <div class="sq-tab-item active" data-tab="tab-food">🍔 Food &amp; Beverage</div>
-                <div class="sq-tab-item" data-tab="tab-retail">🛒 Retail &amp; Grocery</div>
-                <div class="sq-tab-item" data-tab="tab-beauty">✂️ Lifestyle &amp; Fashion</div>
-                <div class="sq-tab-item" data-tab="tab-services">💊 Specialty &amp; Healthcare</div>
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onmouseenter="switchMegaTab('fnb')"
+                  onclick="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onmouseenter="switchMegaTab('retail')"
+                  onclick="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onmouseenter="switchMegaTab('beauty')"
+                  onclick="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onmouseenter="switchMegaTab('services')"
+                  onclick="switchMegaTab('services')">Services</button>
+                <a href="solutions.html" class="sq-all-types-link">All business types</a>
               </div>
 
-              <!-- Column 2: Specific Business Formats -->
-              <div class="mega-col-mid">
-                <div class="sq-tab-content active" id="tab-food">
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=cafe" class="sq-disc-item">☕ Cafes &amp; Bakeries</a>
-                  <a href="solutions.html?sector=supermarket" class="sq-disc-item">🍕 Fast Food &amp; QSR</a>
-                  <a href="hospitality.html" class="sq-disc-item">🍽️ Fine Dining &amp; Resto-bars</a>
+              <!-- Column 2: Discover (Specific Business Types) -->
+              <div class="mega-col-middle">
+                <div class="mega-sub-header">Discover</div>
+                <div class="sq-tab-content active" id="tab-fnb">
+                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb"
+                    class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="solutions.html?sector=qsr" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
+                    Food &amp; Takeaway</a>
+                  <a href="solutions.html?sector=cafes" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
+                    &amp; Chai Bars</a>
+                  <a href="solutions.html?sector=cloudkitchen" data-sector="cloudkitchen" data-cat="fnb"
+                    class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="solutions.html?sector=bakery" data-sector="bakery" data-cat="fnb"
+                    class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
+                  <a href="solutions.html?sector=bars" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs
+                    &amp; Breweries</a>
                 </div>
+
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="solutions.html?sector=supermarket" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=supermarket" class="sq-disc-item">🏪 Supermarkets &amp; Kirana</a>
-                  <a href="solutions.html?sector=meat" class="sq-disc-item">🥩 Meat &amp; Seafood Stores</a>
-                  <a href="solutions.html?sector=mandi" class="sq-disc-item">🥬 Fruits &amp; Vegetable Mandi</a>
+                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                    class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                  <a href="solutions.html?sector=electronics" data-sector="electronics" data-cat="retail"
+                    class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="solutions.html?sector=footwear" data-sector="footwear" data-cat="retail"
+                    class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="solutions.html?sector=jewellery" data-sector="jewellery" data-cat="retail"
+                    class="sq-disc-item">Jewellery &amp; Watch Outlets</a>
+                  <a href="solutions.html?sector=hardware" data-sector="hardware" data-cat="retail"
+                    class="sq-disc-item">Hardware, Sanitary &amp; Paint Stores</a>
+                  <a href="solutions.html?sector=pharmacy" data-sector="pharmacy" data-cat="retail"
+                    class="sq-disc-item">Pharmacies &amp; Medical Stores</a>
+                  <a href="solutions.html?sector=books" data-sector="books" data-cat="retail"
+                    class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
                 </div>
+
                 <div class="sq-tab-content" id="tab-beauty">
-                  <a href="solutions.html?sector=apparel" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=apparel" class="sq-disc-item">👗 Apparel &amp; Fashion Stores</a>
-                  <a href="solutions.html?sector=specialty" class="sq-disc-item">💄 Cosmetics &amp; Salons</a>
-                  <a href="solutions.html?sector=specialty" class="sq-disc-item">💎 Jewelry &amp; Luxury Gifts</a>
+                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                    class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                  <a href="solutions.html?sector=salons" data-sector="salons" data-cat="beauty"
+                    class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="solutions.html?sector=cosmetics" data-sector="cosmetics" data-cat="beauty"
+                    class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                  <a href="solutions.html?sector=eyewear" data-sector="eyewear" data-cat="beauty"
+                    class="sq-disc-item">Eyewear &amp; Optical Stores</a>
+                  <a href="solutions.html?sector=tailoring" data-sector="tailoring" data-cat="beauty"
+                    class="sq-disc-item">Tailoring &amp; Custom Designer Studios</a>
                 </div>
+
                 <div class="sq-tab-content" id="tab-services">
-                  <a href="solutions.html?sector=pharmacy" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=pharmacy" class="sq-disc-item">💊 Pharmacies &amp; Chemists</a>
-                  <a href="solutions.html?sector=electronics" class="sq-disc-item">⚡ Electronics &amp; Mobile Shops</a>
-                  <a href="solutions.html?sector=autoparts" class="sq-disc-item">🚗 Auto Spare Parts</a>
+                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
+                    Fitness Studios &amp; Yoga Centers</a>
+                  <a href="solutions.html?sector=garages" data-sector="garages" data-cat="services"
+                    class="sq-disc-item">Auto Garages, Car Wash &amp; Bike Service Centers</a>
+                  <a href="solutions.html?sector=laundry" data-sector="laundry" data-cat="services"
+                    class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+                  <a href="solutions.html?sector=repairs" data-sector="repairs" data-cat="services"
+                    class="sq-disc-item">Repair Centers (Mobile, Laptop, Appliances)</a>
+                  <a href="solutions.html?sector=coworking" data-sector="coworking" data-cat="services"
+                    class="sq-disc-item">Co-working Spaces &amp; Shared Offices</a>
                 </div>
               </div>
 
               <!-- Column 3: Capabilities -->
               <div class="mega-col-right">
-                <div class="mega-sub-header">System Capabilities</div>
-                <a href="#pos-showcase" class="sq-cap-item">⚡ Fast Point of Sale Billing</a>
-                <a href="#inventory" class="sq-cap-item">📦 Real-time Inventory ERP</a>
-                <a href="#staff" class="sq-cap-item">👥 Staff HRMS &amp; Permissions</a>
-                <a href="#customers" class="sq-cap-item">⭐ Customer Loyalty CRM</a>
-                <a href="#finance" class="sq-cap-item">📊 1-Click GST &amp; Finance Sync</a>
-                <a href="#analytics" class="sq-cap-item">📈 Real-time Executive Insights</a>
+                <div class="mega-sub-header">Capabilities</div>
+                <a href="index.html#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="solutions.html" class="sq-cap-item">Manage orders from one place</a>
+                <a href="index.html#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="solutions.html" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="index.html#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="index.html#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="index.html#attractions" class="sq-cap-item">📦 Vision AI Stock Detection &amp; Expiry Shield</a>
               </div>
+
             </div>
           </div>
         </li>
 
         <!-- 2. Solutions Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="solutions.html" class="nav-link-title dropdown-trigger">
+          <a href="index.html#attractions" class="nav-link-title dropdown-trigger">
             Solutions <span class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
                 <a href="pos.html" class="square-sub-item">
-                  <strong>🖥️ POS</strong>
+                  <strong>🖥️ Smart POS</strong>
                   <span>Fast billing, AI voice checkout &amp; offline mode</span>
                 </a>
-                <a href="complete-management-system.html" class="square-sub-item" style="background: var(--bg-subtle);">
+                <a href="complete-management-system.html" class="square-sub-item">
                   <strong>📊 Complete Management System</strong>
                   <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
                 </a>
-                <a href="/website-builder" class="square-sub-item">
-                  <strong>🌐 Website Building &amp; Digital Marketing</strong>
-                  <span>Custom websites, e-commerce stores &amp; WhatsApp marketing</span>
+                <a href="website-builder.html" class="square-sub-item">
+                  <strong>🌐 Custom Website Building</strong>
+                  <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+                </a>
+                <a href="digital-marketing.html" class="square-sub-item">
+                  <strong>📣 Digital Marketing &amp; Ads</strong>
+                  <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
                 </a>
               </div>
             </div>
           </div>
         </li>
 
-        <!-- 2B. Hospitality Tech Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="hospitality.html" class="nav-link-title dropdown-trigger">
-            Hospitality Tech <span class="drop-arrow">▾</span>
+        <!-- 2B. Hospitality Tech (Direct Click -> Coming Soon Modal, No Hover Dropdown) -->
+        <li>
+          <a href="javascript:void(0)" onclick="openComingSoonModal('Hospitality Tech', event)" class="nav-link-title"
+            style="cursor: pointer;">
+            Hospitality Tech <span class="nav-soon-pill">Soon</span>
           </a>
-          <div class="mega-dropdown square-dropdown-sm">
-            <div class="mega-dropdown-inner">
-              <div class="mega-column">
-                <a href="hospitality.html#product" class="square-sub-item">
-                  <strong>☕ Hospitality Product OS</strong>
-                  <span>Table layout management, QR menus &amp; POS billing</span>
-                </a>
-                <a href="hospitality.html#pricing" class="square-sub-item">
-                  <strong>💳 Hospitality Pricing</strong>
-                  <span>Plans for standalone cafes, bakeries &amp; hotels</span>
-                </a>
-              </div>
-            </div>
-          </div>
         </li>
 
-        <!-- 3. Pricing -->
-        <li><a href="index.html#problem">Pricing</a></li>
+        <!-- 4. Pricing -->
+        <li><a href="index.html#cta">Pricing</a></li>
 
-        <!-- 4. What's new -->
+        <!-- 5. What's new -->
         <li><a href="index.html#trust">What's new</a></li>
       </ul>
 
@@ -1836,12 +1876,14 @@ permalink: /complete-management-system
   </nav>
 
   <!-- ══════════════════════════════════════════════════════════
-       MOBILE DRILLDOWN DRAWER
+       FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
   ══════════════════════════════════════════════════════════ -->
   <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <!-- Top Header Bar inside Drawer -->
     <div class="drawer-header">
       <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
@@ -1849,88 +1891,308 @@ permalink: /complete-management-system
       </button>
       <div class="drawer-header-title" id="drawerHeaderTitle">Menu</div>
       <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
     </div>
 
+    <!-- Sliding Viewport Container -->
     <div class="drawer-viewport" id="drawerViewport">
-      <!-- LEVEL 1: MAIN MENU -->
+
+      <!-- ════ LEVEL 1: MAIN MENU ════ -->
       <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
         <div class="drawer-panel-scroll">
           <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
+              <span>Business types</span>
+              <span class="drawer-chevron">›</span>
+            </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelSolutions">
-              <span class="drawer-nav-text">Solutions</span>
+              <span>Solutions</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelHospitality">
-              <span class="drawer-nav-text">Hospitality Tech</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <a href="index.html#problem" class="drawer-nav-item" onclick="closeMobileDrawer();">
-              <span class="drawer-nav-text">Pricing</span>
+            <a href="javascript:void(0)" class="drawer-nav-item drawer-link"
+              onclick="openComingSoonModal('Hospitality Tech', event); closeMobileDrawer();">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
             </a>
-            <a href="index.html#trust" class="drawer-nav-item" onclick="closeMobileDrawer();">
-              <span class="drawer-nav-text">What's new</span>
+            <a href="index.html#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Pricing</span>
+            </a>
+            <a href="index.html#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>What's new</span>
+            </a>
+          </nav>
+
+          <div class="drawer-divider"></div>
+
+          <!-- Lower Utility Links & CTA -->
+          <div class="drawer-utility-links">
+            <a href="solutions.html" class="drawer-sublink">All Business Types Directory</a>
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">✨ Interactive
+              Demo &amp; Portfolio</button>
+            <a href="index.html#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
+          </div>
+
+          <div class="drawer-bottom-cta">
+            <a href="#cms-lead-form" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial
+              →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
+      <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
+        data-title="Business types">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Select Industry Category</div>
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
+              <span>☕ Food &amp; Beverage</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
+              <span>🛒 Retail</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
+              <span>👗 Beauty &amp; Fashion</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
+              <span>💊 Services</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="solutions.html" class="drawer-nav-item drawer-link highlight">
+              <span>✨ View All Business Types</span>
             </a>
           </nav>
         </div>
       </div>
 
-      <!-- LEVEL 2: SOLUTIONS -->
-      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain" data-title="Solutions">
+      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
+      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
+        data-title="Solutions">
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Core Products &amp; Services</div>
           <nav class="drawer-solution-cards">
             <a href="pos.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon">🖥️</div>
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2" />
+                  <path d="M8 21h8" />
+                  <path d="M12 17v4" />
+                </svg></div>
               <div class="drawer-sol-info">
-                <strong>POS</strong>
+                <strong>Smart POS</strong>
                 <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
               </div>
             </a>
-            <a href="complete-management-system.html" class="drawer-sol-card" onclick="closeMobileDrawer();" style="background: var(--bg-subtle);">
-              <div class="drawer-sol-icon">📊</div>
+            <a href="complete-management-system.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="18" x2="18" y1="20" y2="10" />
+                  <line x1="12" x2="12" y1="20" y2="4" />
+                  <line x1="6" x2="6" y1="20" y2="14" />
+                </svg></div>
               <div class="drawer-sol-info">
                 <strong>Complete Management System</strong>
                 <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
               </div>
             </a>
-            <a href="/website-builder" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon">🌐</div>
+            <a href="website-builder.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                  <path d="M2 12h20" />
+                </svg></div>
               <div class="drawer-sol-info">
-                <strong>Website Building &amp; Digital Marketing</strong>
-                <span>Custom websites, e-commerce stores &amp; WhatsApp marketing</span>
+                <strong>Custom Website Building</strong>
+                <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+              </div>
+            </a>
+            <a href="digital-marketing.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="m3 11 19-9-9 19-2-8-8-2z" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Digital Marketing &amp; Ads</strong>
+                <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
               </div>
             </a>
           </nav>
         </div>
       </div>
 
-      <!-- LEVEL 2: HOSPITALITY TECH -->
-      <div class="drawer-panel" id="drawerPanelHospitality" data-level="2" data-parent="drawerPanelMain" data-title="Hospitality Tech">
+      <!-- ════ LEVEL 2: HOSPITALITY TECH ════ -->
+      <div class="drawer-panel" id="drawerPanelHospitality" data-level="2" data-parent="drawerPanelMain"
+        data-title="Hospitality Tech">
         <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite</div>
+          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite • Coming Soon</div>
+          <div class="mega-soon-banner" style="margin: 10px 0 14px;">
+            <span class="pulse-dot"></span>
+            <span>🚀 In Active Beta • Launching Soon</span>
+          </div>
           <nav class="drawer-solution-cards">
-            <a href="hospitality.html#product" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon">☕</div>
+            <a href="javascript:void(0)" class="drawer-sol-card"
+              onclick="openComingSoonModal('Hospitality Product OS', event); closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+                  <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+                  <line x1="6" x2="6" y1="2" y2="4" />
+                  <line x1="10" x2="10" y1="2" y2="4" />
+                  <line x1="14" x2="14" y1="2" y2="4" />
+                </svg></div>
               <div class="drawer-sol-info">
-                <strong>Hospitality Product OS</strong>
+                <strong>Hospitality Product OS <span class="sub-badge-soon">Soon</span></strong>
                 <span>Table layout, QR menus &amp; instant POS billing</span>
               </div>
             </a>
-            <a href="hospitality.html#pricing" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon">💳</div>
+            <a href="javascript:void(0)" class="drawer-sol-card"
+              onclick="openComingSoonModal('Hospitality Pricing', event); closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="5" rx="2" />
+                  <line x1="2" x2="22" y1="10" y2="10" />
+                </svg></div>
               <div class="drawer-sol-info">
-                <strong>Hospitality Pricing</strong>
-                <span>Plans for standalone cafes, bakeries &amp; hotels</span>
+                <strong>Hospitality Pricing <span class="sub-badge-soon">Soon</span></strong>
+                <span>Plans tailored for cafes, bakeries, bars &amp; hotels</span>
+              </div>
+            </a>
+            <a href="javascript:void(0)" class="drawer-sol-card"
+              onclick="openComingSoonModal('Success Stories', event); closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Success Stories <span class="sub-badge-soon">Soon</span></strong>
+                <span>Case studies from upcoming Indian F&amp;B outlets</span>
+              </div>
+            </a>
+            <a href="javascript:void(0)" class="drawer-sol-card"
+              onclick="openComingSoonModal('VIP Early Access Demo', event); closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Join VIP Waitlist <span class="sub-badge-soon">50% Off</span></strong>
+                <span>Get early access on launch day</span>
               </div>
             </a>
           </nav>
         </div>
       </div>
+
+      <!-- ════ LEVEL 3: FOOD & BEVERAGE ════ -->
+      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Food &amp; Beverage">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Food &amp; Beverage Outlets</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link strong">Overview &amp; Features</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">Restaurants &amp; Fine Dining</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">QSR, Fast Food &amp; Takeaway</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">Cafes &amp; Chai Bars</a>
+            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link">Cloud Kitchens &amp; Catering</a>
+            <a href="solutions.html?sector=bakery" class="drawer-nav-item drawer-link">Bakeries &amp; Sweet Shops</a>
+            <a href="solutions.html?sector=liquor" class="drawer-nav-item drawer-link">Bars, Pubs &amp; Breweries</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: RETAIL ════ -->
+      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Retail">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Retail Formats</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=supermarket" class="drawer-nav-item drawer-link strong">Overview &amp;
+              Features</a>
+            <a href="solutions.html?sector=supermarket" class="drawer-nav-item drawer-link strong">Switch to
+              Priyulabs</a>
+            <a href="solutions.html?sector=supermarket" class="drawer-nav-item drawer-link">Grocery, Supermarkets &amp;
+              Kirana Stores</a>
+            <a href="solutions.html?sector=electronics" class="drawer-nav-item drawer-link">Electronics &amp; Mobile
+              Shops</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Footwear &amp; Leather
+              Stores</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Jewellery &amp; Watch
+              Outlets</a>
+            <a href="solutions.html?sector=autoparts" class="drawer-nav-item drawer-link">Hardware, Sanitary &amp; Paint
+              Stores</a>
+            <a href="solutions.html?sector=pharmacy" class="drawer-nav-item drawer-link">Pharmacies &amp; Medical
+              Stores</a>
+            <a href="solutions.html?sector=books" class="drawer-nav-item drawer-link">Bookstores &amp; Stationery
+              Outlets</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: BEAUTY & FASHION ════ -->
+      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Beauty &amp; Fashion">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Stores</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link strong">Overview &amp;
+              Features</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Clothing Brands &amp; Apparel
+              Boutiques</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Salons, Spas &amp; Beauty
+              Parlors</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Cosmetics &amp; Skincare
+              Stores</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Eyewear &amp; Optical
+              Stores</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Tailoring &amp; Custom Designer
+              Studios</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: SERVICES ════ -->
+      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Services">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Services &amp; Professional Businesses</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=pos" class="drawer-nav-item drawer-link strong">Overview &amp;
+              Features</a>
+            <a href="solutions.html?sector=pos" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
+            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Gyms, Fitness Studios &amp;
+              Yoga Centers</a>
+            <a href="solutions.html?sector=autoparts" class="drawer-nav-item drawer-link">Auto Garages, Car Wash &amp;
+              Bike Service Centers</a>
+            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Dry Cleaners &amp; Laundry
+              Shops</a>
+            <a href="solutions.html?sector=electronics" class="drawer-nav-item drawer-link">Repair Centers (Mobile,
+              Laptop, Appliances)</a>
+            <a href="solutions.html?sector=pos" class="drawer-nav-item drawer-link">Co-working Spaces &amp; Shared
+              Offices</a>
+          </nav>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -3455,6 +3717,129 @@ permalink: /complete-management-system
       </div>
       <div class="modal-footer">
         <button class="btn-primary-sm" onclick="closePolicyModal()">I Understand &amp; Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HOSPITALITY TECH COMING SOON MODAL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true"
+    onclick="if(event.target === this) closeComingSoonModal();">
+    <div class="modal-card coming-soon-card">
+      <button class="modal-close" onclick="closeComingSoonModal()" aria-label="Close modal">&times;</button>
+      <div class="coming-soon-body">
+        <div class="coming-soon-icon-wrap">
+          <span class="cs-icon-glow"></span>
+          <span class="cs-emoji">🛎️</span>
+        </div>
+
+        <div class="cs-eyebrow">
+          <span class="pulse-dot"></span>
+          <span>In Active Development • Launching Soon</span>
+        </div>
+
+        <h3 class="cs-title">Hospitality Tech is Coming Soon!</h3>
+        <p class="cs-subtitle">
+          Hum restaurants, cafes, bakeries aur hotels ke liye India ka smartest <strong>All-in-One F&amp;B Operating
+            System</strong> craft kar rahe hain. Ye service hamare upcoming release me live hogi.
+        </p>
+
+        <!-- Sneak Peek Feature Grid -->
+        <div class="cs-features-grid">
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                <path d="M12 18h.01" />
+              </svg></span>
+            <div>
+              <strong>QR Table Ordering &amp; Pay</strong>
+              <small>Contactless menus with instant UPI settlement</small>
+            </div>
+          </div>
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z" />
+                <path d="M6 17h12" />
+              </svg></span>
+            <div>
+              <strong>Live Kitchen Display (KDS)</strong>
+              <small>Real-time order tickets &amp; station routing</small>
+            </div>
+          </div>
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
+                <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1" />
+                <path d="M2 21h20" />
+                <path d="M7 8v3" />
+                <path d="M12 8v3" />
+                <path d="M17 8v3" />
+                <path d="M7 4h0.01" />
+                <path d="M12 4h0.01" />
+                <path d="M17 4h0.01" />
+              </svg></span>
+            <div>
+              <strong>Bakery &amp; Weight Scale ERP</strong>
+              <small>Custom cake bookings with Bluetooth scale sync</small>
+            </div>
+          </div>
+          <div class="cs-feat-item">
+            <span class="cs-feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10 22v-6.57" />
+                <path d="M12 11h.01" />
+                <path d="M12 7h.01" />
+                <path d="M14 15.43V22" />
+                <path d="M15 16a5 5 0 0 0-6 0" />
+                <path d="M16 11h.01" />
+                <path d="M16 7h.01" />
+                <path d="M8 11h.01" />
+                <path d="M8 7h.01" />
+                <rect x="4" y="2" width="16" height="20" rx="2" />
+              </svg></span>
+            <div>
+              <strong>Multi-Outlet Central Kitchen</strong>
+              <small>Recipe management &amp; automated raw material POs</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIP Early Access Waitlist Box -->
+        <div class="cs-waitlist-box">
+          <div class="cs-wl-title">
+            <span>✨ Be the First to Experience It</span>
+            <small>Join 200+ F&amp;B owners on the VIP early access list (Get 50% launch discount)</small>
+          </div>
+          <form class="cs-wl-form" onsubmit="handleWaitlistSubmit(event)">
+            <div class="cs-input-group">
+              <input type="text" class="cs-input" id="csContactInput"
+                placeholder="Enter your WhatsApp number or Email" required />
+              <button type="submit" class="cs-submit-btn">
+                <span>Notify Me 🚀</span>
+              </button>
+            </div>
+          </form>
+          <div class="cs-wl-success" id="csWlSuccess" style="display: none;">
+            ✅ <strong>You're on the VIP Waitlist!</strong> We will WhatsApp you with exclusive beta access as soon as
+            it launches.
+          </div>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="cs-footer-actions">
+          <a href="index.html#hardware" onclick="closeComingSoonModal()" class="cs-btn-secondary">
+            Explore Available Retail &amp; POS Systems →
+          </a>
+        </div>
       </div>
     </div>
   </div>
