@@ -622,20 +622,20 @@
                   onclick="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
                 <button type="button" class="sq-cat-btn" data-tab="services" onmouseenter="switchMegaTab('services')"
                   onclick="switchMegaTab('services')">Services</button>
-                <a href="solutions.html" class="sq-all-types-link">All business types</a>
+                <a href="business-types.html" class="sq-all-types-link">All business types</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=restaurants" data-sector="restaurants" data-cat="fnb" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="solutions.html?sector=qsr" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
-                  <a href="solutions.html?sector=cafes" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes &amp; Chai Bars</a>
-                  <a href="solutions.html?sector=cloudkitchen" data-sector="cloudkitchen" data-cat="fnb" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="solutions.html?sector=bakery" data-sector="bakery" data-cat="fnb" class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
-                  <a href="solutions.html?sector=bars" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
+                  <a href="restaurants-fine-dining.html" data-sector="restaurants" data-cat="fnb" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="restaurants-fine-dining.html" data-sector="restaurants" data-cat="fnb" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="qsr-fast-food.html" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
+                  <a href="cafes-chai-bars.html" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes &amp; Chai Bars</a>
+                  <a href="cloud-kitchens-catering.html" data-sector="cloudkitchen" data-cat="fnb" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="bakeries-shops.html" data-sector="bakery" data-cat="fnb" class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
+                  <a href="bars-pubs-breweries.html" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
@@ -779,7 +779,7 @@
       <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
         <div class="drawer-panel-scroll">
           <nav class="drawer-nav-list">
-            <a href="solutions.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+            <a href="business-types.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>Business types</span>
             </a>
             <a href="index.html#attractions" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
@@ -1102,110 +1102,25 @@
 
   <script src="script.js"></script>
   <script>
-    // Solutions Page Dynamic Sector & POS Switcher Script
-    document.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let targetSector = urlParams.get('sector') || 'grocery';
+    // Canonical 23 Business Types Definitions
+    // 1. 6 Dedicated F&B Pages
+    const dedicatedFnbPages = {
+      restaurants: 'restaurants-fine-dining.html',
+      qsr: 'qsr-fast-food.html',
+      cafes: 'cafes-chai-bars.html',
+      cloudkitchen: 'cloud-kitchens-catering.html',
+      bakery: 'bakeries-shops.html',
+      bars: 'bars-pubs-breweries.html'
+    };
 
-      // Category filter buttons logic
-      document.querySelectorAll('.sol-cat-filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter');
-          
-          document.querySelectorAll('.sol-cat-filter-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
+    // 2. 17 Supported Dynamic Solutions Sectors
+    const supportedDynamicSectors = [
+      'grocery', 'electronics', 'footwear', 'jewellery', 'hardware', 'pharmacy', 'books',
+      'clothing', 'salons', 'cosmetics', 'eyewear', 'tailoring',
+      'gyms', 'garages', 'laundry', 'repairs', 'coworking'
+    ];
 
-          const allSectorBtns = document.querySelectorAll('.sector-pick-btn');
-          let firstVisible = null;
-          allSectorBtns.forEach(sBtn => {
-            const cat = sBtn.getAttribute('data-cat');
-            if (filter === 'all' || cat === filter) {
-              sBtn.style.display = 'inline-flex';
-              if (!firstVisible) firstVisible = sBtn;
-            } else {
-              sBtn.style.display = 'none';
-            }
-          });
-
-          // If current active sector is now hidden, select first visible
-          const currentActive = document.querySelector('.sector-pick-btn.active');
-          if (currentActive && currentActive.style.display === 'none' && firstVisible) {
-            firstVisible.click();
-          }
-        });
-      });
-
-      // Add click listeners to all sector picker buttons
-      document.querySelectorAll('.sector-pick-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const key = btn.getAttribute('data-sector');
-          selectSectorView(key);
-          window.history.pushState({}, '', `solutions.html?sector=${key}`);
-        });
-      });
-
-      // Close mega-menu dropdown helper
-      function closeAllMegaDropdowns() {
-        document.querySelectorAll('.mega-dropdown').forEach(dropdown => {
-          dropdown.classList.add('menu-closed');
-        });
-      }
-
-      // Re-enable mega-menu dropdown on mouseleave of parent dropdown item
-      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-        item.addEventListener('mouseleave', () => {
-          const dd = item.querySelector('.mega-dropdown');
-          if (dd) dd.classList.remove('menu-closed');
-        });
-      });
-
-      // Handle clicking outside to close any open dropdowns
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.nav-item-dropdown')) {
-          closeAllMegaDropdowns();
-        }
-      });
-
-      // Handle in-page dropdown links with immediate close, category tab sync & smooth scroll
-      document.querySelectorAll('a[href*="solutions.html?sector="]').forEach(link => {
-        link.addEventListener('click', (e) => {
-          const href = link.getAttribute('href');
-          const sectorMatch = href.match(/sector=([a-z0-9_-]+)/i);
-          if (sectorMatch && sectorMatch[1]) {
-            e.preventDefault();
-            const key = sectorMatch[1];
-
-            // 1. Immediately close dropdown
-            closeAllMegaDropdowns();
-
-            // 2. Switch sector view and sync category tabs
-            selectSectorView(key);
-            window.history.pushState({}, '', `solutions.html?sector=${key}`);
-
-            // 3. Smoothly scroll viewport down to content section
-            const detailSection = document.querySelector('.sol-detail-section') || document.getElementById('solCatFilterWrap');
-            if (detailSection) {
-              const navOffset = 90;
-              const elemPos = detailSection.getBoundingClientRect().top + window.pageYOffset - navOffset;
-              window.scrollTo({ top: elemPos, behavior: 'smooth' });
-            }
-          }
-        });
-      });
-
-      // Also listen to any click inside .mega-col-middle or .square-mega-3col links
-      document.querySelectorAll('.mega-dropdown a').forEach(link => {
-        link.addEventListener('click', () => {
-          closeAllMegaDropdowns();
-        });
-      });
-
-      selectSectorView(targetSector);
-    });
-
-    // 23 Comprehensive Business Types Dataset (Exactly matching Business Types)
+    // 23 Comprehensive Business Types Dataset
     const allBusinessTypesData = {
       restaurants: {
         title: 'Restaurants & Fine Dining',
@@ -1464,25 +1379,12 @@
       }
     };
 
-    // Alias mapping for legacy links or alternate keys
-    const sectorKeyAliases = {
-      pos: 'grocery',
-      supermarket: 'grocery',
-      cafe: 'cafes',
-      apparel: 'clothing',
-      specialty: 'cosmetics',
-      autoparts: 'hardware',
-      liquor: 'bars',
-      meat: 'grocery',
-      mandi: 'hardware',
-      florists: 'grocery',
-      furniture: 'hardware',
-      petcare: 'grocery'
-    };
-
     function selectSectorView(rawKey) {
-      const key = sectorKeyAliases[rawKey] || rawKey;
-      const data = allBusinessTypesData[key] || allBusinessTypesData.grocery;
+      let key = rawKey;
+      if (!allBusinessTypesData[key]) {
+        key = 'grocery';
+      }
+      const data = allBusinessTypesData[key];
 
       // Subtle smooth transition
       const heroContainer = document.querySelector('.sq-sector-hero');
@@ -1494,7 +1396,7 @@
 
       // Highlight active button and smooth scroll tab into center
       document.querySelectorAll('.sector-pick-btn').forEach(btn => {
-        if (btn.getAttribute('data-sector') === key || btn.getAttribute('data-sector') === rawKey) {
+        if (btn.getAttribute('data-sector') === key) {
           btn.classList.add('active');
           btn.style.display = 'inline-flex';
           btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
@@ -1659,6 +1561,128 @@
         ctaText.textContent = `Book a live demo customized for ${data.title} and experience 10x faster operations.`;
       }
     }
+
+    // Export globally for script.js & external callers
+    window.selectSectorView = selectSectorView;
+
+    // Solutions Page Dynamic Sector & POS Switcher Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const rawSector = urlParams.get('sector');
+
+      // 1. If sector is one of the 6 dedicated F&B sectors, redirect to its dedicated page
+      if (rawSector && dedicatedFnbPages[rawSector]) {
+        window.location.replace(dedicatedFnbPages[rawSector]);
+        return;
+      }
+
+      // 2. If sector is one of the 17 dynamic sectors, select it. Otherwise fallback to grocery.
+      let targetSector = 'grocery';
+      if (rawSector && supportedDynamicSectors.includes(rawSector)) {
+        targetSector = rawSector;
+      }
+
+      // Category filter buttons logic
+      document.querySelectorAll('.sol-cat-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          document.querySelectorAll('.sol-cat-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const allSectorBtns = document.querySelectorAll('.sector-pick-btn');
+          let firstVisible = null;
+          allSectorBtns.forEach(sBtn => {
+            const cat = sBtn.getAttribute('data-cat');
+            if (filter === 'all' || cat === filter) {
+              sBtn.style.display = 'inline-flex';
+              if (!firstVisible) firstVisible = sBtn;
+            } else {
+              sBtn.style.display = 'none';
+            }
+          });
+
+          // If current active sector is now hidden, select first visible
+          const currentActive = document.querySelector('.sector-pick-btn.active');
+          if (currentActive && currentActive.style.display === 'none' && firstVisible) {
+            firstVisible.click();
+          }
+        });
+      });
+
+      // Add click listeners to all sector picker buttons
+      document.querySelectorAll('.sector-pick-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const key = btn.getAttribute('data-sector');
+          if (dedicatedFnbPages[key]) {
+            window.location.href = dedicatedFnbPages[key];
+          } else if (supportedDynamicSectors.includes(key)) {
+            selectSectorView(key);
+            window.history.pushState({}, '', `solutions.html?sector=${key}`);
+          }
+        });
+      });
+
+      // Close mega-menu dropdown helper
+      function closeAllMegaDropdowns() {
+        document.querySelectorAll('.mega-dropdown').forEach(dropdown => {
+          dropdown.classList.add('menu-closed');
+        });
+      }
+
+      // Re-enable mega-menu dropdown on mouseleave of parent dropdown item
+      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+        item.addEventListener('mouseleave', () => {
+          const dd = item.querySelector('.mega-dropdown');
+          if (dd) dd.classList.remove('menu-closed');
+        });
+      });
+
+      // Handle clicking outside to close any open dropdowns
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item-dropdown')) {
+          closeAllMegaDropdowns();
+        }
+      });
+
+      // Handle in-page dropdown links with immediate close, category tab sync & smooth scroll
+      document.querySelectorAll('a[href*="solutions.html?sector="]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          const sectorMatch = href.match(/sector=([a-z0-9_-]+)/i);
+          if (sectorMatch && sectorMatch[1]) {
+            const key = sectorMatch[1];
+            if (dedicatedFnbPages[key]) {
+              return; // Navigate naturally to dedicated page
+            }
+            if (supportedDynamicSectors.includes(key)) {
+              e.preventDefault();
+              closeAllMegaDropdowns();
+              selectSectorView(key);
+              window.history.pushState({}, '', `solutions.html?sector=${key}`);
+
+              const detailSection = document.querySelector('.sol-detail-section') || document.getElementById('solCatFilterWrap');
+              if (detailSection) {
+                const navOffset = 90;
+                const elemPos = detailSection.getBoundingClientRect().top + window.pageYOffset - navOffset;
+                window.scrollTo({ top: elemPos, behavior: 'smooth' });
+              }
+            }
+          }
+        });
+      });
+
+      // Also listen to any click inside .mega-dropdown a
+      document.querySelectorAll('.mega-dropdown a').forEach(link => {
+        link.addEventListener('click', () => {
+          closeAllMegaDropdowns();
+        });
+      });
+
+      selectSectorView(targetSector);
+    });
 </script>
 </body>
 

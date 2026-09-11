@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Types Directory &amp; Industry Solutions | Priyulabs Digital</title>
+  <meta name="description"
+    content="Browse all 23+ business types supported by Priyulabs AI Retail OS &amp; POS software — Food &amp; Beverage, Retail &amp; Supermarkets, Beauty &amp; Fashion, and Professional Services across India." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <script>
+    /* Prevent theme flash */
+    (function () {
+      try {
+        var saved = localStorage.getItem('priyulabs_theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       BUSINESS TYPES DIRECTORY — SCOPED STYLES (.bdir-)
+    ══════════════════════════════════════════════════════════ */
+    .bdir-hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.12) 0%, transparent 55%),
+                  var(--bg-main);
+      padding: clamp(100px, 14vh, 150px) 16px clamp(40px, 6vh, 70px);
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .bdir-hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bdir-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.28);
+      font-size: clamp(11px, 2vw, 12.5px);
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    .bdir-title {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .bdir-subtitle {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    /* Filter & Search Bar Controls */
+    .bdir-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .bdir-search-wrap {
+      width: 100%;
+      position: relative;
+    }
+
+    .bdir-search-input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      font-size: 15px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .bdir-search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+
+    .bdir-search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .bdir-filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .bdir-tab-btn {
+      padding: 9px 18px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+
+    .bdir-tab-btn:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border-color: var(--primary-light, #818cf8);
+    }
+
+    .bdir-tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Category Section Headers */
+    .bdir-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .bdir-section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 3.2vw, 28px);
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bdir-section-count {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Cards Grid */
+    .bdir-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 480px) {
+      .bdir-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bdir-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bdir-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-light, #818cf8);
+      box-shadow: 0 16px 36px rgba(99, 102, 241, 0.12);
+    }
+
+    .bdir-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .bdir-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .bdir-card-badge {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .bdir-card-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .bdir-card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .bdir-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .bdir-tag {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      color: var(--text-body);
+      border: 1px solid var(--border-color);
+    }
+
+    .bdir-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: auto;
+      transition: gap 0.2s ease;
+    }
+
+    .bdir-card:hover .bdir-card-cta {
+      gap: 10px;
+    }
+
+    /* Empty state */
+    .bdir-empty-state {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-color);
+      border-radius: 16px;
+      margin: 30px 0;
+    }
+
+    .bdir-empty-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .bdir-empty-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .bdir-empty-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Core Solutions Strip */
+    .bdir-core-banner {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: clamp(24px, 4vw, 36px);
+      margin: 40px 0 60px;
+    }
+
+    .bdir-core-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .bdir-core-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bdir-core-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NAVBAR — PRIYULABS DIGITAL
+  ══════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle">DIGITAL</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <!-- 1. Business types Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="business-types.html" class="nav-link-title dropdown-trigger active">
+            Business types <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-mega-3col">
+            <div class="mega-dropdown-inner mega-3col-wrapper">
+
+              <!-- Column 1: Left Categories Tabs -->
+              <div class="mega-col-left">
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onmouseenter="switchMegaTab('fnb')"
+                  onclick="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onmouseenter="switchMegaTab('retail')"
+                  onclick="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onmouseenter="switchMegaTab('beauty')"
+                  onclick="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onmouseenter="switchMegaTab('services')"
+                  onclick="switchMegaTab('services')">Services</button>
+                <a href="business-types.html" class="sq-all-types-link">All business types</a>
+              </div>
+
+              <!-- Column 2: Discover (Specific Business Types) -->
+              <div class="mega-col-middle">
+                <div class="mega-sub-header">Discover</div>
+                <div class="sq-tab-content active" id="tab-fnb">
+                  <a href="restaurants-fine-dining.html" data-sector="restaurants" data-cat="fnb"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="restaurants-fine-dining.html" data-sector="restaurants" data-cat="fnb"
+                    class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="qsr-fast-food.html" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
+                    Food &amp; Takeaway</a>
+                  <a href="cafes-chai-bars.html" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
+                    &amp; Chai Bars</a>
+                  <a href="cloud-kitchens-catering.html" data-sector="cloudkitchen" data-cat="fnb"
+                    class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="bakeries-shops.html" data-sector="bakery" data-cat="fnb"
+                    class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
+                  <a href="bars-pubs-breweries.html" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs
+                    &amp; Breweries</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-retail">
+                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                    class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                  <a href="solutions.html?sector=electronics" data-sector="electronics" data-cat="retail"
+                    class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="solutions.html?sector=footwear" data-sector="footwear" data-cat="retail"
+                    class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="solutions.html?sector=jewellery" data-sector="jewellery" data-cat="retail"
+                    class="sq-disc-item">Jewellery &amp; Watch Outlets</a>
+                  <a href="solutions.html?sector=hardware" data-sector="hardware" data-cat="retail"
+                    class="sq-disc-item">Hardware, Sanitary &amp; Paint Stores</a>
+                  <a href="solutions.html?sector=pharmacy" data-sector="pharmacy" data-cat="retail"
+                    class="sq-disc-item">Pharmacies &amp; Medical Stores</a>
+                  <a href="solutions.html?sector=books" data-sector="books" data-cat="retail"
+                    class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-beauty">
+                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                    class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                  <a href="solutions.html?sector=salons" data-sector="salons" data-cat="beauty"
+                    class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="solutions.html?sector=cosmetics" data-sector="cosmetics" data-cat="beauty"
+                    class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                  <a href="solutions.html?sector=eyewear" data-sector="eyewear" data-cat="beauty"
+                    class="sq-disc-item">Eyewear &amp; Optical Stores</a>
+                  <a href="solutions.html?sector=tailoring" data-sector="tailoring" data-cat="beauty"
+                    class="sq-disc-item">Tailoring &amp; Custom Designer Studios</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-services">
+                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
+                    Fitness Studios &amp; Yoga Centers</a>
+                  <a href="solutions.html?sector=garages" data-sector="garages" data-cat="services"
+                    class="sq-disc-item">Auto Garages, Car Wash &amp; Bike Service Centers</a>
+                  <a href="solutions.html?sector=laundry" data-sector="laundry" data-cat="services"
+                    class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+                  <a href="solutions.html?sector=repairs" data-sector="repairs" data-cat="services"
+                    class="sq-disc-item">Repair Centers (Mobile, Laptop, Appliances)</a>
+                  <a href="solutions.html?sector=coworking" data-sector="coworking" data-cat="services"
+                    class="sq-disc-item">Co-working Spaces &amp; Shared Offices</a>
+                </div>
+              </div>
+
+              <!-- Column 3: Capabilities -->
+              <div class="mega-col-right">
+                <div class="mega-sub-header">Capabilities</div>
+                <a href="index.html#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="solutions.html" class="sq-cap-item">Manage orders from one place</a>
+                <a href="index.html#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="solutions.html" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="index.html#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="index.html#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="index.html#attractions" class="sq-cap-item">📦 Vision AI Stock Detection &amp; Expiry Shield</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 2. Solutions Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="index.html#attractions" class="nav-link-title dropdown-trigger">
+            Solutions <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-dropdown-sm">
+            <div class="mega-dropdown-inner">
+              <div class="mega-column">
+                <a href="pos.html" class="square-sub-item">
+                  <strong>🖥️ Smart POS</strong>
+                  <span>Fast billing, AI voice checkout &amp; offline mode</span>
+                </a>
+                <a href="complete-management-system.html" class="square-sub-item">
+                  <strong>📊 Complete Management System</strong>
+                  <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
+                </a>
+                <a href="website-builder.html" class="square-sub-item">
+                  <strong>🌐 Custom Website Building</strong>
+                  <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+                </a>
+                <a href="digital-marketing.html" class="square-sub-item">
+                  <strong>📣 Digital Marketing &amp; Ads</strong>
+                  <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- 2B. Hospitality Tech -->
+        <li>
+          <a href="javascript:void(0)" onclick="openComingSoonModal('Hospitality Tech', event)" class="nav-link-title"
+            style="cursor: pointer;">
+            Hospitality Tech <span class="nav-soon-pill">Soon</span>
+          </a>
+        </li>
+
+        <!-- 4. Pricing -->
+        <li><a href="index.html#cta">Pricing</a></li>
+
+        <!-- 5. What's new -->
+        <li><a href="index.html#trust">What's new</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">✨ Interactive Demo</button>
+        <a href="#lead-form-dir" class="btn-nav">Start Free Trial</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FULL-SCREEN MOBILE DRILLDOWN DRAWER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span class="drawer-back-text">Back</span>
+      </button>
+      <div class="drawer-header-title" id="drawerHeaderTitle">Menu</div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-viewport" id="drawerViewport">
+      <!-- ════ LEVEL 1: MAIN MENU ════ -->
+      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
+        <div class="drawer-panel-scroll">
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
+              <span>Business types</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelSolutions">
+              <span>Solutions</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="javascript:void(0)" class="drawer-nav-item drawer-link"
+              onclick="openComingSoonModal('Hospitality Tech', event); closeMobileDrawer();">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
+            </a>
+            <a href="index.html#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Pricing</span>
+            </a>
+            <a href="index.html#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>What's new</span>
+            </a>
+          </nav>
+
+          <div class="drawer-divider"></div>
+
+          <div class="drawer-utility-links">
+            <a href="business-types.html" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">✨ Interactive
+              Demo &amp; Portfolio</button>
+            <a href="index.html#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
+          </div>
+
+          <div class="drawer-bottom-cta">
+            <a href="#lead-form-dir" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial
+              →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
+      <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
+        data-title="Business types">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Select Industry Category</div>
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
+              <span>☕ Food &amp; Beverage</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
+              <span>🛒 Retail</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
+              <span>👗 Beauty &amp; Fashion</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
+              <span>🔧 Services</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="business-types.html" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
+              <span>✨ View All Business Types</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
+      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
+        data-title="Solutions">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Core Products &amp; Services</div>
+          <nav class="drawer-solution-cards">
+            <a href="pos.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2" />
+                  <path d="M8 21h8" />
+                  <path d="M12 17v4" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Smart POS</strong>
+                <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
+              </div>
+            </a>
+            <a href="complete-management-system.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="18" x2="18" y1="20" y2="10" />
+                  <line x1="12" x2="12" y1="20" y2="4" />
+                  <line x1="6" x2="6" y1="20" y2="14" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Complete Management System</strong>
+                <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
+              </div>
+            </a>
+            <a href="website-builder.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                  <path d="M2 12h20" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Custom Website Building</strong>
+                <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+              </div>
+            </a>
+            <a href="digital-marketing.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="m3 11 19-9-9 19-2-8-8-2z" />
+                </svg></div>
+              <div class="drawer-sol-info">
+                <strong>Digital Marketing &amp; Ads</strong>
+                <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
+              </div>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: FOOD & BEVERAGE ════ -->
+      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Food &amp; Beverage">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Food &amp; Beverage Outlets</div>
+          <nav class="drawer-nav-list compact">
+            <a href="restaurants-fine-dining.html" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="restaurants-fine-dining.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Restaurants &amp; Fine Dining</a>
+            <a href="qsr-fast-food.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">QSR, Fast Food &amp; Takeaway</a>
+            <a href="cafes-chai-bars.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cafes &amp; Chai Bars</a>
+            <a href="cloud-kitchens-catering.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cloud Kitchens &amp; Catering</a>
+            <a href="bakeries-shops.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bakeries &amp; Sweet Shops</a>
+            <a href="bars-pubs-breweries.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bars, Pubs &amp; Breweries</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: RETAIL ════ -->
+      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Retail">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Retail Formats</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=grocery" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="solutions.html?sector=grocery" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Grocery, Supermarkets &amp; Kirana</a>
+            <a href="solutions.html?sector=electronics" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Electronics &amp; Mobile Shops</a>
+            <a href="solutions.html?sector=footwear" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Footwear &amp; Leather Stores</a>
+            <a href="solutions.html?sector=jewellery" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Jewellery &amp; Watch Outlets</a>
+            <a href="solutions.html?sector=hardware" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Hardware, Sanitary &amp; Paint</a>
+            <a href="solutions.html?sector=pharmacy" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Pharmacies &amp; Medical Stores</a>
+            <a href="solutions.html?sector=books" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bookstores &amp; Stationery</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: BEAUTY & FASHION ════ -->
+      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Beauty &amp; Fashion">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Stores</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=clothing" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="solutions.html?sector=clothing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Clothing Brands &amp; Boutiques</a>
+            <a href="solutions.html?sector=salons" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Salons, Spas &amp; Beauty Parlors</a>
+            <a href="solutions.html?sector=cosmetics" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cosmetics &amp; Skincare Stores</a>
+            <a href="solutions.html?sector=eyewear" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Eyewear &amp; Optical Stores</a>
+            <a href="solutions.html?sector=tailoring" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Tailoring &amp; Designer Studios</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: SERVICES ════ -->
+      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Services">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Services &amp; Professional Businesses</div>
+          <nav class="drawer-nav-list compact">
+            <a href="solutions.html?sector=gyms" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="solutions.html?sector=gyms" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Gyms, Fitness &amp; Yoga Centers</a>
+            <a href="solutions.html?sector=garages" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Auto Garages &amp; Bike Service</a>
+            <a href="solutions.html?sector=laundry" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Dry Cleaners &amp; Laundry Shops</a>
+            <a href="solutions.html?sector=repairs" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Repair Centers (Mobile, Laptop)</a>
+            <a href="solutions.html?sector=coworking" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Co-working Spaces &amp; Offices</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO SECTION — DIRECTORY HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bdir-hero">
+    <div class="bdir-hero-container">
+      <span class="bdir-eyebrow">⚡ Complete Business Types Directory</span>
+      <h1 class="bdir-title">Engineered For Your Specific Industry Workflow</h1>
+      <p class="bdir-subtitle">
+        Priyulabs Retail OS &amp; Management Suite is pre-configured with customized workflows, billing logic, and inventory controls across 23+ Indian retail &amp; service sectors.
+      </p>
+
+      <!-- Search & Filters -->
+      <div class="bdir-controls">
+        <div class="bdir-search-wrap">
+          <span class="bdir-search-icon">🔍</span>
+          <input type="text" id="bdirSearch" class="bdir-search-input" placeholder="Search by business name or feature (e.g. cafe, pharmacy, salon, barcode, expiry)..." autocomplete="off" />
+        </div>
+        <div class="bdir-filter-tabs" id="filterTabs">
+          <button type="button" class="bdir-tab-btn active" data-filter="all">All Industries (23)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="fnb">☕ Food &amp; Beverage (6)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="retail">🛒 Retail &amp; Grocery (7)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="beauty">👗 Beauty &amp; Fashion (5)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="services">🔧 Services (5)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN DIRECTORY CONTAINER
+  ══════════════════════════════════════════════════════════ -->
+  <main class="container" style="padding-top: 20px; padding-bottom: 80px;">
+
+    <!-- Empty search message -->
+    <div class="bdir-empty-state" id="bdirEmpty">
+      <div class="bdir-empty-icon">🔍</div>
+      <div class="bdir-empty-title">No matching business types found</div>
+      <div class="bdir-empty-desc">Try searching for keywords like "grocery", "cafe", "apparel", "salons", "hardware", or click "All Industries".</div>
+    </div>
+
+    <!-- ════ CATEGORY 1: FOOD & BEVERAGE ════ -->
+    <section class="bdir-cat-group" data-category="fnb">
+      <div class="bdir-section-header">
+        <h2 class="bdir-section-title">
+          <span>☕ Food &amp; Beverage</span>
+        </h2>
+        <span class="bdir-section-count">6 Formats</span>
+      </div>
+
+      <div class="bdir-grid">
+        <!-- 1. Restaurants & Fine Dining -->
+        <a href="restaurants-fine-dining.html" class="bdir-card" data-cat="fnb" data-title="Restaurants & Fine Dining table management captain pos split check kitchen display kot">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🍽️</div>
+              <span class="bdir-card-badge">F&amp;B</span>
+            </div>
+            <h3 class="bdir-card-title">Restaurants &amp; Fine Dining</h3>
+            <p class="bdir-card-desc">
+              Multi-course captain ordering, live table floor plan management, split checks, and thermal kitchen routing.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Captain Handheld POS</span>
+              <span class="bdir-tag">Table Floor Plan</span>
+              <span class="bdir-tag">Split Payments</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Restaurant Solutions →</div>
+        </a>
+
+        <!-- 2. QSR & Fast Food -->
+        <a href="qsr-fast-food.html" class="bdir-card" data-cat="fnb" data-title="QSR Fast Food Takeaway counter ordering token calling bump bar rapid billing">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🍔</div>
+              <span class="bdir-card-badge">F&amp;B</span>
+            </div>
+            <h3 class="bdir-card-title">QSR, Fast Food &amp; Takeaway</h3>
+            <p class="bdir-card-desc">
+              High-speed counter touchscreen checkout, token display calling screens, combo modifiers, and takeout bump-bars.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">1-Tap Combo POS</span>
+              <span class="bdir-tag">Token Display Screen</span>
+              <span class="bdir-tag">Sub-Second Queue</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore QSR Solutions →</div>
+        </a>
+
+        <!-- 3. Cafes & Chai Bars -->
+        <a href="cafes-chai-bars.html" class="bdir-card" data-cat="fnb" data-title="Cafes Chai Bars coffee milk bean recipe stock loyalty beans qr ordering">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">☕</div>
+              <span class="bdir-card-badge">F&amp;B</span>
+            </div>
+            <h3 class="bdir-card-title">Cafes &amp; Chai Bars</h3>
+            <p class="bdir-card-desc">
+              Fast counter ordering with sugar/milk modifiers, gram-level raw ingredient inventory deduction, and customer loyalty beans.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Gram-Level Recipe ERP</span>
+              <span class="bdir-tag">QR Table Menu</span>
+              <span class="bdir-tag">WhatsApp Loyalty</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Cafe Solutions →</div>
+        </a>
+
+        <!-- 4. Cloud Kitchens & Catering -->
+        <a href="cloud-kitchens-catering.html" class="bdir-card" data-cat="fnb" data-title="Cloud Kitchens Catering multi-brand swiggy zomato aggregator sync bulk catering">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">📦</div>
+              <span class="bdir-card-badge">F&amp;B</span>
+            </div>
+            <h3 class="bdir-card-title">Cloud Kitchens &amp; Catering</h3>
+            <p class="bdir-card-desc">
+              Unified delivery screen for multi-brand operations, automatic Swiggy/Zomato consolidation, and advance catering quotes.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Aggregator Consolidation</span>
+              <span class="bdir-tag">Central Production ERP</span>
+              <span class="bdir-tag">Catering Estimates</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Cloud Kitchen Solutions →</div>
+        </a>
+
+        <!-- 5. Bakeries & Sweet Shops -->
+        <a href="bakeries-shops.html" class="bdir-card" data-cat="fnb" data-title="Bakeries Sweet Shops custom cake booking weight scale expiry label demo video">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🎂</div>
+              <span class="bdir-card-badge">F&amp;B</span>
+            </div>
+            <h3 class="bdir-card-title">Bakeries &amp; Sweet Shops</h3>
+            <p class="bdir-card-desc">
+              Advance custom photo-cake bookings, instant scale-weight pastry checkout, raw flour/cream recipe tracking, and thermal expiry labels.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Custom Cake Booking</span>
+              <span class="bdir-tag">Direct Scale Auto-Sync</span>
+              <span class="bdir-tag">Expiry Label Printer</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Bakery Solutions →</div>
+        </a>
+
+        <!-- 6. Bars, Pubs & Breweries -->
+        <a href="bars-pubs-breweries.html" class="bdir-card" data-cat="fnb" data-title="Bars Pubs Breweries open bar tabs peg level excise compliance liquor inventory">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🍺</div>
+              <span class="bdir-card-badge">F&amp;B</span>
+            </div>
+            <h3 class="bdir-card-title">Bars, Pubs &amp; Breweries</h3>
+            <p class="bdir-card-desc">
+              1-Click open bar tab pre-authorization, peg-level dispensing spillage protection, and state excise compliance daily logs.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">1-Click Tab Vault</span>
+              <span class="bdir-tag">Peg-Level Control</span>
+              <span class="bdir-tag">Excise Register Auto-Log</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Bar Solutions →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════ CATEGORY 2: RETAIL & GROCERY ════ -->
+    <section class="bdir-cat-group" data-category="retail">
+      <div class="bdir-section-header">
+        <h2 class="bdir-section-title">
+          <span>🛒 Retail &amp; Supermarkets</span>
+        </h2>
+        <span class="bdir-section-count">7 Formats</span>
+      </div>
+
+      <div class="bdir-grid">
+        <!-- 7. Grocery, Supermarkets & Kirana -->
+        <a href="solutions.html?sector=grocery" class="bdir-card" data-cat="retail" data-title="Grocery Supermarkets Kirana Stores vision ai stock detection expiry shield weigh scale barcode scanner">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🛒</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Grocery &amp; Supermarkets</h3>
+            <p class="bdir-card-desc">
+              Vision AI stock detection &amp; invoice OCR, digital weighing scale sync, expiry shield alerts, and sub-second barcode cashiering.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Vision AI Invoice OCR</span>
+              <span class="bdir-tag">Weighing Scale Auto-Sync</span>
+              <span class="bdir-tag">Expiry Shield Alerts</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Supermarket Solutions →</div>
+        </a>
+
+        <!-- 8. Electronics & Mobile Shops -->
+        <a href="solutions.html?sector=electronics" class="bdir-card" data-cat="retail" data-title="Electronics Mobile Shops imei serial barcode whatsapp warranty emi edc payment sync">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">📱</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Electronics &amp; Mobile Shops</h3>
+            <p class="bdir-card-desc">
+              Exact 15-digit IMEI &amp; serial tracking on invoice, automated WhatsApp warranty certificates, and zero-error EDC terminal integration.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">IMEI / Serial Lock</span>
+              <span class="bdir-tag">Digital WhatsApp Warranty</span>
+              <span class="bdir-tag">Multi-Bank Paperless EMI</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Electronics Solutions →</div>
+        </a>
+
+        <!-- 9. Footwear & Leather Stores -->
+        <a href="solutions.html?sector=footwear" class="bdir-card" data-cat="retail" data-title="Footwear Leather Stores shoe box barcode size rack locator store credit exchange">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">👞</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Footwear &amp; Leather Stores</h3>
+            <p class="bdir-card-desc">
+              Durable box barcode printing with UK/India shoe sizes, backroom shelf locator, and easy customer exchange wallet.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Size-Variant Box Labels</span>
+              <span class="bdir-tag">Backroom Shelf Locator</span>
+              <span class="bdir-tag">1-Click Exchange POS</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Footwear Solutions →</div>
+        </a>
+
+        <!-- 10. Jewellery & Watch Outlets -->
+        <a href="solutions.html?sector=jewellery" class="bdir-card" data-cat="retail" data-title="Jewellery Watch Outlets karat purity making charges gold rate tag scanner festive loyalty">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">💍</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Jewellery &amp; Watch Outlets</h3>
+            <p class="bdir-card-desc">
+              Live karat purity &amp; making charges calculator, precision micro-tag scanner, hallmarking ledger, and VIP anniversary loyalty points.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Bullion Purity Calc</span>
+              <span class="bdir-tag">Micro-Tag Barcode</span>
+              <span class="bdir-tag">WhatsApp Festive Loyalty</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Jewellery Solutions →</div>
+        </a>
+
+        <!-- 11. Hardware, Sanitary & Paint -->
+        <a href="solutions.html?sector=hardware" class="bdir-card" data-cat="retail" data-title="Hardware Sanitary Paint Stores contractor udhar ledger multi-unit measurement paint tinting">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🔨</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Hardware &amp; Sanitary Stores</h3>
+            <p class="bdir-card-desc">
+              Trade builder credit (Udhar) bahi-khata ledger with WhatsApp UPI reminders, multi-unit conversions, and custom paint tinting vault.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">WhatsApp Udhar Ledger</span>
+              <span class="bdir-tag">Multi-Unit Converter</span>
+              <span class="bdir-tag">Paint Formula Vault</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Hardware Solutions →</div>
+        </a>
+
+        <!-- 12. Pharmacies & Medical Stores -->
+        <a href="solutions.html?sector=pharmacy" class="bdir-card" data-cat="retail" data-title="Pharmacies Medical Stores 150k medicine salt search fefo batch expiry schedule h gst json">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">💊</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Pharmacies &amp; Medical Stores</h3>
+            <p class="bdir-card-desc">
+              150,000+ medicine salt finder for generic substitutes, strict FEFO batch expiry alerts, doctor Rx billing, and 1-click GST JSON export.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">150k Salt Search</span>
+              <span class="bdir-tag">FEFO Expiry Shield</span>
+              <span class="bdir-tag">1-Click GST JSON Export</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Pharmacy Solutions →</div>
+        </a>
+
+        <!-- 13. Bookstores & Stationery Outlets -->
+        <a href="solutions.html?sector=books" class="bdir-card" data-cat="retail" data-title="Bookstores Stationery Outlets isbn barcode auto catalog school kit bundle publisher returns">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">📚</div>
+              <span class="bdir-card-badge">Retail</span>
+            </div>
+            <h3 class="bdir-card-title">Bookstores &amp; Stationery</h3>
+            <p class="bdir-card-desc">
+              Scan ISBN barcodes to auto-populate title &amp; author info, bundle class stationery kits in 1 tap, and manage publisher returns.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">ISBN Auto-Fetch</span>
+              <span class="bdir-tag">1-Click School Kit POS</span>
+              <span class="bdir-tag">Publisher Consignment ERP</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Bookstore Solutions →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════ CATEGORY 3: BEAUTY & FASHION ════ -->
+    <section class="bdir-cat-group" data-category="beauty">
+      <div class="bdir-section-header">
+        <h2 class="bdir-section-title">
+          <span>👗 Beauty &amp; Fashion</span>
+        </h2>
+        <span class="bdir-section-count">5 Formats</span>
+      </div>
+
+      <div class="bdir-grid">
+        <!-- 14. Clothing Brands & Boutiques -->
+        <a href="solutions.html?sector=clothing" class="bdir-card" data-cat="beauty" data-title="Clothing Brands Apparel Boutiques size color variant matrix custom tag printer whatsapp lookbook">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">👗</div>
+              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
+            </div>
+            <h3 class="bdir-card-title">Clothing Brands &amp; Boutiques</h3>
+            <p class="bdir-card-desc">
+              Multi-variant size &amp; color stock matrix, 1-tap custom barcode tag printer, and interactive WhatsApp digital VIP lookbooks.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Size-Color Matrix</span>
+              <span class="bdir-tag">1-Tap Tag Printer</span>
+              <span class="bdir-tag">WhatsApp Store Catalog</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Fashion Solutions →</div>
+        </a>
+
+        <!-- 15. Salons, Spas & Beauty Parlors -->
+        <a href="solutions.html?sector=salons" class="bdir-card" data-cat="beauty" data-title="Salons Spas Beauty Parlors stylist chair calendar commission payroll service billing supply tracker">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">✂️</div>
+              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
+            </div>
+            <h3 class="bdir-card-title">Salons, Spas &amp; Parlors</h3>
+            <p class="bdir-card-desc">
+              Real-time chair booking calendar, automated staff tips and tiered commission payroll, client treatment history, and back-bar tracking.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Chair Booking Calendar</span>
+              <span class="bdir-tag">Stylist Commission Engine</span>
+              <span class="bdir-tag">WhatsApp Reminders</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Salon Solutions →</div>
+        </a>
+
+        <!-- 16. Cosmetics & Skincare Stores -->
+        <a href="solutions.html?sector=cosmetics" class="bdir-card" data-cat="beauty" data-title="Cosmetics Skincare Stores tester batch tracking shade finder beauty profile loyalty cashback wallet">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">💄</div>
+              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
+            </div>
+            <h3 class="bdir-card-title">Cosmetics &amp; Skincare Stores</h3>
+            <p class="bdir-card-desc">
+              Tester bottle audit logs, customer skin tone &amp; foundation shade profile vault, and automated repeat purchase loyalty cashback.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Tester Inventory Audit</span>
+              <span class="bdir-tag">Beauty Profile Vault</span>
+              <span class="bdir-tag">Cashback Loyalty Wallet</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Cosmetics Solutions →</div>
+        </a>
+
+        <!-- 17. Eyewear & Optical Stores -->
+        <a href="solutions.html?sector=eyewear" class="bdir-card" data-cat="beauty" data-title="Eyewear Optical Stores prescription power rx billing frame tags lab lens fitting job sheet">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">👓</div>
+              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
+            </div>
+            <h3 class="bdir-card-title">Eyewear &amp; Optical Stores</h3>
+            <p class="bdir-card-desc">
+              Digital eye prescription power vault (Sph, Cyl, Axis, Add), lab lens grinding job sheets, and micro-tail optical frame tags.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Digital Eye Rx Vault</span>
+              <span class="bdir-tag">Lab Job-Sheet Dispatch</span>
+              <span class="bdir-tag">Frame Temple Tags</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Eyewear Solutions →</div>
+        </a>
+
+        <!-- 18. Tailoring & Designer Studios -->
+        <a href="solutions.html?sector=tailoring" class="bdir-card" data-cat="beauty" data-title="Tailoring Designer Studios body measurement vault master tailor job card trial tracking">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🪡</div>
+              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
+            </div>
+            <h3 class="bdir-card-title">Tailoring &amp; Designer Studios</h3>
+            <p class="bdir-card-desc">
+              25+ parameter client measurement profiles, barcoded master tailor job cards, fabric swatches, and automated trial notifications.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Cloud Measurement Vault</span>
+              <span class="bdir-tag">Master Tailor Job Cards</span>
+              <span class="bdir-tag">Trial Date Alerts</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Tailoring Solutions →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════ CATEGORY 4: SERVICES ════ -->
+    <section class="bdir-cat-group" data-category="services">
+      <div class="bdir-section-header">
+        <h2 class="bdir-section-title">
+          <span>🔧 Professional Services</span>
+        </h2>
+        <span class="bdir-section-count">5 Formats</span>
+      </div>
+
+      <div class="bdir-grid">
+        <!-- 19. Gyms, Fitness & Yoga -->
+        <a href="solutions.html?sector=gyms" class="bdir-card" data-cat="services" data-title="Gyms Fitness Studios Yoga Centers biometric turnstile check in trainer schedule membership renewals">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🏋️</div>
+              <span class="bdir-card-badge">Services</span>
+            </div>
+            <h3 class="bdir-card-title">Gyms &amp; Fitness Studios</h3>
+            <p class="bdir-card-desc">
+              Biometric turnstile access control, automated WhatsApp membership renewal links, and personal trainer commission schedules.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Biometric Turnstile Sync</span>
+              <span class="bdir-tag">WhatsApp Renewal Engine</span>
+              <span class="bdir-tag">Trainer PT Sessions</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Fitness Solutions →</div>
+        </a>
+
+        <!-- 20. Auto Garages & Bike Service -->
+        <a href="solutions.html?sector=garages" class="bdir-card" data-cat="services" data-title="Auto Garages Car Wash Bike Service Centers vehicle intake job card oem spares mechanic ledger periodic service">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🚗</div>
+              <span class="bdir-card-badge">Services</span>
+            </div>
+            <h3 class="bdir-card-title">Auto Garages &amp; Service</h3>
+            <p class="bdir-card-desc">
+              Digital vehicle intake inspection cards with defect photos, OEM spare parts requisition, mechanic labor ledgers, and 6-month service alerts.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Digital Vehicle Intake</span>
+              <span class="bdir-tag">OEM Spares Requisition</span>
+              <span class="bdir-tag">Periodic Service Alerts</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Garage Solutions →</div>
+        </a>
+
+        <!-- 21. Dry Cleaners & Laundry -->
+        <a href="solutions.html?sector=laundry" class="bdir-card" data-cat="services" data-title="Dry Cleaners Laundry Shops waterproof thermal tag stain defect photo log pickup ready alert">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">👔</div>
+              <span class="bdir-card-badge">Services</span>
+            </div>
+            <h3 class="bdir-card-title">Dry Cleaners &amp; Laundry</h3>
+            <p class="bdir-card-desc">
+              Waterproof thermal tags that survive wash and steam cycles, garment defect intake logs, and automated "Ready for Pickup" WhatsApp alerts.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Waterproof Wash Tags</span>
+              <span class="bdir-tag">Intake Camera Defect Log</span>
+              <span class="bdir-tag">WhatsApp Pickup Alerts</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Laundry Solutions →</div>
+        </a>
+
+        <!-- 22. Repair Centers (Mobile, Laptop) -->
+        <a href="solutions.html?sector=repairs" class="bdir-card" data-cat="services" data-title="Repair Centers Mobile Laptop Appliances ticket barcode bench tracker repair warranty status link">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🛠️</div>
+              <span class="bdir-card-badge">Services</span>
+            </div>
+            <h3 class="bdir-card-title">Device Repair Centers</h3>
+            <p class="bdir-card-desc">
+              Device ticket barcode intake, technician repair workbench stage tracker (Diagnosis -> Tested), and live online status link for customers.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Device Ticket Barcode</span>
+              <span class="bdir-tag">Bench Stage Tracker</span>
+              <span class="bdir-tag">Live SMS Status Link</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Repair Solutions →</div>
+        </a>
+
+        <!-- 23. Co-working Spaces & Offices -->
+        <a href="solutions.html?sector=coworking" class="bdir-card" data-cat="services" data-title="Coworking Spaces Shared Offices hot desk booking meeting room credits recurring invoicing cafeteria pos">
+          <div>
+            <div class="bdir-card-top">
+              <div class="bdir-card-icon">🏢</div>
+              <span class="bdir-card-badge">Services</span>
+            </div>
+            <h3 class="bdir-card-title">Co-working &amp; Shared Offices</h3>
+            <p class="bdir-card-desc">
+              Hot-desk &amp; meeting room credit deduction, automated recurring monthly GST rent invoicing, and cafeteria member ledger integration.
+            </p>
+            <div class="bdir-card-tags">
+              <span class="bdir-tag">Self-Serve Room Booking</span>
+              <span class="bdir-tag">Automated GST Invoicing</span>
+              <span class="bdir-tag">Cafeteria Ledger POS</span>
+            </div>
+          </div>
+          <div class="bdir-card-cta">Explore Co-working Solutions →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════ CORE PLATFORM PRODUCTS OVERVIEW BANNER ════ -->
+    <div class="bdir-core-banner">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <span class="bdir-card-badge" style="margin-bottom: 8px; display: inline-block;">Core Platform Systems</span>
+        <h3 style="font-family: var(--font-heading); font-size: clamp(20px, 3vw, 26px); font-weight: 800; color: var(--text-main); margin-bottom: 8px;">
+          Modular Software Solutions Built for Scale
+        </h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.5;">
+          Every business type connects natively with Priyulabs' core product ecosystem:
+        </p>
+      </div>
+
+      <div class="bdir-core-grid">
+        <a href="pos.html" class="bdir-core-card">
+          <span style="font-size: 22px;">🖥️</span>
+          <strong style="font-size: 15px; color: var(--text-main);">Smart POS System</strong>
+          <span style="font-size: 12.5px; color: var(--text-muted);">Lightning 2-sec billing, Vision AI &amp; offline mode</span>
+        </a>
+        <a href="complete-management-system.html" class="bdir-core-card">
+          <span style="font-size: 22px;">📊</span>
+          <strong style="font-size: 15px; color: var(--text-main);">Complete Management System</strong>
+          <span style="font-size: 12.5px; color: var(--text-muted);">Multi-store inventory ERP, Selfie HRMS &amp; GST ledger</span>
+        </a>
+        <a href="hospitality.html" class="bdir-core-card">
+          <span style="font-size: 22px;">☕</span>
+          <strong style="font-size: 15px; color: var(--text-main);">Hospitality Tech Suite</strong>
+          <span style="font-size: 12.5px; color: var(--text-muted);">Table floor plans, QR ordering &amp; kitchen display</span>
+        </a>
+        <a href="website-builder.html" class="bdir-core-card">
+          <span style="font-size: 22px;">🌐</span>
+          <strong style="font-size: 15px; color: var(--text-main);">Custom Website Builder</strong>
+          <span style="font-size: 12.5px; color: var(--text-muted);">High-converting e-commerce &amp; branded web stores</span>
+        </a>
+        <a href="digital-marketing.html" class="bdir-core-card">
+          <span style="font-size: 22px;">📣</span>
+          <strong style="font-size: 15px; color: var(--text-main);">Digital Marketing &amp; Ads</strong>
+          <span style="font-size: 12.5px; color: var(--text-muted);">Meta Ads, Google Local SEO &amp; WhatsApp commerce</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CTA LEAD FORM SECTION
+  ══════════════════════════════════════════════════════════ -->
+  <section class="cta-section" id="lead-form-dir" style="border-top: 1px solid var(--border-color); padding: clamp(60px, 8vw, 100px) 0;">
+    <div class="container">
+      <div class="cta-inner" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 60px); align-items: center;">
+        <div class="cta-text">
+          <span class="bdir-eyebrow" style="margin-bottom: 16px;">
+            🚀 Fast Onboarding &amp; Industry Demo
+          </span>
+          <h2 style="color: var(--text-main); font-family: var(--font-heading); font-size: clamp(28px, 4.2vw, 42px); font-weight: 900; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 16px;">
+            Get a 10-Minute Demo Tailored Specifically to Your Store.
+          </h2>
+          <p style="color: var(--text-muted); font-size: clamp(14.5px, 2.5vw, 16.5px); line-height: 1.6; margin-bottom: 24px;">
+            Our retail specialists will configure Priyulabs to your specific business type, demonstrate real-time barcode scanning and ERP sync, and get your team ready in under 30 minutes.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; font-weight: 700; font-size: 13.5px; margin-bottom: 24px; color: var(--text-body);">
+            <span><span style="color:#059669;">✓</span> 14-Day Full Free Trial</span>
+            <span><span style="color:#059669;">✓</span> Zero Setup Charges</span>
+            <span><span style="color:#059669;">✓</span> WhatsApp Support: <a href="tel:+917849074050" style="color: var(--primary); font-weight: 800;">+91 78490 74050</a></span>
+          </div>
+        </div>
+
+        <div class="cta-form-wrap">
+          <form class="cta-form" id="leadForm" style="background: var(--bg-surface); border-radius: 20px; padding: clamp(24px, 4vw, 36px); box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08); border: 1px solid var(--border-color);">
+            <h3 style="font-family: var(--font-heading); font-size: clamp(20px, 3vw, 24px); font-weight: 800; color: var(--text-main); margin-bottom: 8px;">
+              Request Live Industry Demo
+            </h3>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+              Submit your business details for instant demo scheduling:
+            </p>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="dirName" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Your Name *</label>
+              <input type="text" id="dirName" name="Name" placeholder="Enter your full name" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: var(--bg-surface);" />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="dirStore" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Business / Store Name *</label>
+              <input type="text" id="dirStore" name="StoreName" placeholder="Store name (e.g. Modern Retail / Blue Cafe)" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: var(--bg-surface);" />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+              <label for="dirPhone" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Phone / WhatsApp Number *</label>
+              <input type="tel" id="dirPhone" name="Mobile" placeholder="WhatsApp Number (+91 78490 74050)" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: var(--bg-surface);" />
+            </div>
+
+            <button type="submit" class="btn-primary full-width" style="width: 100%; padding: 14px 20px; font-size: 15.5px; font-weight: 800; border-radius: 12px; background: var(--primary); color: #fff; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);">
+              Schedule Industry Demo 🚀
+            </button>
+
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center; line-height: 1.4;">
+              🔒 100% confidential. No pushy sales calls.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+            <div class="logo-text-group">
+              <span class="logo-title">PRIYULABS</span>
+              <span class="logo-subtitle">DIGITAL</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Priyulabs Digital &mdash; India's comprehensive Retail AI OS, POS Billing, Inventory ERP &amp; Business Management Software across 23+ sectors.
+          </p>
+        </div>
+        <div class="footer-links-group">
+          <h4>Business Categories</h4>
+          <ul>
+            <li><a href="solutions.html?sector=restaurants">☕ Food &amp; Beverage</a></li>
+            <li><a href="solutions.html?sector=grocery">🛒 Retail &amp; Supermarkets</a></li>
+            <li><a href="solutions.html?sector=clothing">👗 Beauty &amp; Fashion</a></li>
+            <li><a href="solutions.html?sector=gyms">🔧 Professional Services</a></li>
+            <li><a href="business-types.html">✨ All 23 Business Types</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Core Products</h4>
+          <ul>
+            <li><a href="pos.html">🖥️ Smart POS</a></li>
+            <li><a href="complete-management-system.html">📊 Complete Management System</a></li>
+            <li><a href="hospitality.html">☕ Hospitality Suite</a></li>
+            <li><a href="website-builder.html">🌐 Custom Website Building</a></li>
+            <li><a href="digital-marketing.html">📣 Digital Marketing &amp; Ads</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Business Types Directory.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Coming Soon Modal -->
+  <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeComingSoonModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-badge">✨ COMING SOON</div>
+      <h3 class="modal-title" id="comingSoonTitle">Feature Coming Soon</h3>
+      <p class="modal-text">
+        We are putting the finishing touches on this product suite. Leave your details below and our team will notify you the moment it goes live with exclusive launch-day benefits.
+      </p>
+      <form class="modal-form" onsubmit="handleWaitlistSubmit(event)">
+        <input type="text" placeholder="Your Name" required class="modal-input" />
+        <input type="tel" placeholder="WhatsApp / Phone Number" required class="modal-input" />
+        <button type="submit" class="btn-primary full-width">Join Priority Waitlist</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Interactive Demo Modal -->
+  <div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card demo-modal-card">
+      <button class="modal-close" onclick="closeDemoModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-badge">✨ LIVE DEMO EXPLORER</div>
+      <h3 class="modal-title">Interactive Store Demonstration</h3>
+      <p class="modal-text">
+        Select your store format to launch a guided, interactive workflow demonstration:
+      </p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0;">
+        <a href="solutions.html?sector=grocery" class="sq-cap-item" style="padding: 10px; font-size: 13px;">🛒 Supermarket POS</a>
+        <a href="solutions.html?sector=cafes" class="sq-cap-item" style="padding: 10px; font-size: 13px;">☕ Cafe &amp; KOT POS</a>
+        <a href="solutions.html?sector=pharmacy" class="sq-cap-item" style="padding: 10px; font-size: 13px;">💊 Pharmacy ERP</a>
+        <a href="solutions.html?sector=clothing" class="sq-cap-item" style="padding: 10px; font-size: 13px;">👗 Fashion Boutique</a>
+      </div>
+      <a href="complete-management-system.html" class="btn-primary full-width" style="text-align: center; text-decoration: none;">Launch Complete CMS Walkthrough →</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Directory Interactive Filter & Live Search Script -->
+  <script>
+    (function () {
+      const searchInput = document.getElementById('bdirSearch');
+      const filterBtns = document.querySelectorAll('.bdir-tab-btn');
+      const cards = document.querySelectorAll('.bdir-card');
+      const catGroups = document.querySelectorAll('.bdir-cat-group');
+      const emptyState = document.getElementById('bdirEmpty');
+
+      let currentFilter = 'all';
+      let searchQuery = '';
+
+      function updateDirectoryView() {
+        let visibleCount = 0;
+        const q = searchQuery.toLowerCase().trim();
+
+        cards.forEach(card => {
+          const cat = card.getAttribute('data-cat');
+          const title = (card.getAttribute('data-title') || '').toLowerCase();
+          const matchesFilter = currentFilter === 'all' || cat === currentFilter;
+          const matchesSearch = !q || title.includes(q);
+
+          if (matchesFilter && matchesSearch) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Toggle section headers if they have visible cards
+        catGroups.forEach(group => {
+          const groupCat = group.getAttribute('data-category');
+          if (currentFilter !== 'all' && currentFilter !== groupCat) {
+            group.style.display = 'none';
+          } else {
+            const hasVisibleCards = Array.from(group.querySelectorAll('.bdir-card')).some(c => c.style.display !== 'none');
+            group.style.display = hasVisibleCards ? 'block' : 'none';
+          }
+        });
+
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter') || 'all';
+          updateDirectoryView();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          updateDirectoryView();
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

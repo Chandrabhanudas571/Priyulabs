@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bakeries &amp; Sweet Shops POS &amp; Weigh-Scale Software | Priyulabs Digital</title>
+  <meta name="description"
+    content="Priyulabs Bakery POS — Advance custom cake bookings, auto weigh-scale pastry billing, raw cream &amp; flour recipe ERP, and thermal batch expiry label printing." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('priyulabs_theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+  <style>
+    .fnb-hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 15%, rgba(99, 102, 241, 0.16) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 60%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
+                  var(--bg-main);
+      padding: clamp(100px, 14vh, 150px) 16px clamp(40px, 6vh, 70px);
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .fnb-hero-container {
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .fnb-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.12);
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.28);
+      font-size: clamp(11px, 2vw, 12.5px);
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .fnb-title {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5.2vw, 54px);
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .fnb-subtitle {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+    .fnb-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .fnb-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 40px 0;
+    }
+    @media (max-width: 768px) {
+      .fnb-grid-2 { grid-template-columns: 1fr; }
+    }
+    .fnb-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .fnb-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .fnb-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .fnb-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--text-body);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════ NAVBAR ════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle">BAKERIES &amp; SWEETS</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="complete-management-system.html">Complete Management System</a></li>
+        <li><a href="pos.html">Smart POS</a></li>
+        <li><a href="solutions.html">All Solutions</a></li>
+        <li><a href="business-types.html">Business Directory</a></li>
+        <li><a href="index.html#cta">Pricing</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-demo-nav" onclick="openDemoModal()">✨ Interactive Demo</button>
+        <a href="#fnb-lead-form" class="btn-nav">Start Free Trial</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ════ HERO SECTION ════ -->
+  <section class="fnb-hero">
+    <div class="fnb-hero-container">
+      <span class="fnb-eyebrow">PRIYULABS FOR BAKERIES &amp; SWEET SHOPS</span>
+      <h1 class="fnb-title">Advance custom cake booking &amp; weigh-scale auto-billing</h1>
+      <p class="fnb-subtitle">
+        Streamline custom photo-cake bookings, loose pastry weighing, recipe ingredient deduction, and thermal batch expiry labels.
+      </p>
+      <div class="fnb-hero-ctas">
+        <a href="#fnb-lead-form" class="btn-primary">Schedule Bakery Demo →</a>
+        <a href="complete-management-system.html" class="btn-secondary">Explore Complete CMS Suite</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ MAIN CONTENT ════ -->
+  <main class="container" style="padding: 40px 16px 80px;">
+    <div class="fnb-grid-2">
+      <div class="fnb-card" style="border-left: 4px solid #ef4444;">
+        <h3>Traditional Bakery Bottlenecks</h3>
+        <ul class="fnb-list">
+          <li><span>❌</span> <div>Custom cake delivery slips lost or misplaced during busy festival rushes</div></li>
+          <li><span>❌</span> <div>Manual weight-based pastry calculations causing cashier math errors</div></li>
+          <li><span>❌</span> <div>Spoiled cream &amp; dairy raw ingredients tracked loosely without recipe links</div></li>
+        </ul>
+      </div>
+      <div class="fnb-card" style="border-left: 4px solid #10b981;">
+        <h3>Priyulabs Smart Bakery Engine</h3>
+        <ul class="fnb-list">
+          <li><span>✅</span> <div><strong>Custom Cake Booking Vault:</strong> Delivery date, photo reference &amp; advance tokens</div></li>
+          <li><span>✅</span> <div><strong>Direct Scale Auto-Sync:</strong> 1-Second weight calculation directly on POS</div></li>
+          <li><span>✅</span> <div><strong>Thermal Expiry Label Printing:</strong> Auto-prints batch, price &amp; shelf-life tags</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Video Showcase if available -->
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; margin: 30px 0; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <video controls playsinline loop preload="metadata" style="width: 100%; border-radius: 12px; display: block;">
+        <source src="assets/bakery-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div style="margin-top: 14px; text-align: center;">
+        <strong style="font-size: 16px; color: var(--text-main);">Live Bakery POS Workflow Demonstration</strong>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">Watch weighing scale sync, custom cake logs, and thermal label printing in action.</p>
+      </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.12)); border: 1px solid var(--border-color); border-radius: 18px; padding: 24px; text-align: center; margin: 30px 0;">
+      <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">
+        🎂 Proven Bakery Impact
+      </h3>
+      <p style="font-size: 16px; color: var(--text-body); font-weight: 700;">
+        45% Faster Billing • 100% On-Time Custom Cake Delivery • 0% Recipe Waste
+      </p>
+    </div>
+  </main>
+
+  <!-- ════ LEAD FORM ════ -->
+  <section class="cta-section" id="fnb-lead-form" style="border-top: 1px solid var(--border-color); padding: 60px 0;">
+    <div class="container">
+      <div style="max-width: 600px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-sm);">
+        <h3 style="font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; text-align: center;">
+          Get Bakery POS Demo &amp; Quote
+        </h3>
+        <p style="font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 24px;">
+          Learn how custom cake booking vaults and scale integrations transform your bakery.
+        </p>
+        <form id="leadForm">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Your Name *</label>
+            <input type="text" name="Name" required placeholder="Enter full name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
+          </div>
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Bakery Name *</label>
+            <input type="text" name="StoreName" required placeholder="Bakery / Cake shop name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
+          </div>
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">WhatsApp / Phone Number *</label>
+            <input type="tel" name="Mobile" required placeholder="+91 98765 43210" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
+          </div>
+          <button type="submit" class="btn-primary full-width" style="width: 100%; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 10px; border: none; cursor: pointer; background: var(--primary); color: #fff;">
+            Schedule Live Bakery Walkthrough 🚀
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+            <div class="logo-text-group">
+              <span class="logo-title">PRIYULABS</span>
+              <span class="logo-subtitle">BAKERIES &amp; SWEETS</span>
+            </div>
+          </a>
+          <p class="footer-desc">Priyulabs Bakery POS Billing &amp; Cake Booking Software.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Bakeries &amp; Sweet Shops OS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
