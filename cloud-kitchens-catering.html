@@ -1,262 +1,1462 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cloud Kitchens &amp; Catering Management Software | Priyulabs Digital</title>
-  <meta name="description"
-    content="Priyulabs Cloud Kitchen OS — Manage multi-brand virtual kitchens, consolidate Swiggy &amp; Zomato delivery aggregators, batch production ERP, and automated catering quotes." />
+  <title>Cloud Kitchens, Ghost Kitchens &amp; Catering OS | Priyulabs Digital</title>
+  <meta name="description" content="The production operating system built to manage multiple virtual brands from one kitchen line, dispatch bulk catering batches on time, and maximize margin per square foot." />
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet">
-
-  <!-- Core Design System CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem('priyulabs_theme');
-        if (saved === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-      } catch (e) { }
-    })();
-  </script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    .fnb-hero {
-      position: relative;
-      overflow: hidden;
-      background: radial-gradient(circle at 50% 15%, rgba(99, 102, 241, 0.16) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 60%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
-                  var(--bg-main);
-      padding: clamp(100px, 14vh, 150px) 16px clamp(40px, 6vh, 70px);
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
+    /* ==========================================================
+       RESET & BASE STYLING (Square / Apple Ultra-Clean Aesthetic)
+    ========================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .fnb-hero-container {
-      max-width: 920px;
+
+    :root {
+      --bg-white: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --border-subtle: #f1f5f9;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --accent-indigo: #4f46e5;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-blue: #2563eb;
+      --accent-purple: #7c3aed;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: var(--font-display);
+    }
+
+    /* Container Utility */
+    .clean-container {
+      max-width: 1240px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
+      padding: 0 24px;
     }
-    .fnb-eyebrow {
+
+    /* ==========================================================
+       HEADER & NAVIGATION (Minimal Sticky)
+    ========================================================== */
+    .clean-nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 14px 24px;
+    }
+
+    .clean-nav-inner {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .clean-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .clean-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .clean-nav-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .clean-nav-link:hover {
+      color: #0f172a;
+    }
+
+    .clean-nav-link.active {
+      font-weight: 700;
+      color: #0f172a;
+      cursor: default;
+    }
+
+    /* Types Dropdown (Food & Beverage Only) */
+    .types-menu-wrap {
+      position: relative;
+    }
+
+    .types-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 320px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .types-menu-wrap:hover .types-menu-dropdown,
+    .types-menu-wrap:focus-within .types-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 8px 12px 6px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 6px;
+    }
+
+    .types-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.18s ease;
+    }
+
+    .types-menu-item:hover {
+      background: #f8fafc;
+      color: #0f172a;
+      transform: translateX(2px);
+    }
+
+    .types-menu-item.current {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 750;
+    }
+
+    .types-badge-curr {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .btn-solid-dark {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 12px;
+      text-decoration: none;
+      border: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      transition: background-color 0.15s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-solid-dark:hover {
+      background: #1e293b;
+    }
+
+    .btn-outline-clean {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-dark);
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline-clean:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================
+       1. HERO SECTION (Commercial Production Line Editorial)
+    ========================================================== */
+    .clean-hero-sec {
+      padding: 80px 0 90px;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .clean-hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(99, 102, 241, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(99, 102, 241, 0.28);
-      font-size: clamp(11px, 2vw, 12.5px);
-      font-weight: 800;
-      padding: 6px 16px;
-      border-radius: 50px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    .indigo-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4f46e5;
+    }
+
+    .clean-hero-title {
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.14;
+      color: var(--text-dark);
+      max-width: 960px;
+      margin: 0 auto 20px;
+    }
+
+    .text-accent-indigo {
+      color: #4f46e5;
+    }
+
+    .clean-hero-sub {
+      font-size: clamp(16px, 2.1vw, 20px);
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 36px;
+    }
+
+    .clean-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .clean-hero-visual-frame {
+      max-width: 1060px;
+      margin: 0 auto;
+      border-radius: var(--radius-xl);
+      padding: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+    }
+
+    .clean-hero-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #0f172a;
+      aspect-ratio: 16 / 9;
+    }
+
+    .clean-hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .clean-hero-overlay-card {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      max-width: 360px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    /* ==========================================================
+       2. THE 4 PILLARS (Alternating Rows)
+    ========================================================== */
+    .clean-pillars-sec {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+
+    .clean-sec-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 72px;
+    }
+
+    .clean-sec-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .clean-sec-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-dark);
       margin-bottom: 16px;
     }
-    .fnb-title {
-      font-family: var(--font-heading);
-      font-size: clamp(32px, 5.2vw, 54px);
+
+    .clean-sec-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+
+    .pillar-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .pillar-impact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .badge-indigo {
+      background: #eef2ff;
+      color: #4f46e5;
+      border: 1px solid #c7d2fe;
+    }
+
+    .badge-emerald {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-amber {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .pillar-heading {
+      font-size: clamp(24px, 2.8vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .pillar-box-problem {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .pillar-box-problem strong {
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .pillar-body-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .pillar-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pillar-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .pillar-visual-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+    }
+
+    .pillar-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar-visual-card:hover .pillar-img {
+      transform: scale(1.02);
+    }
+
+    /* ==========================================================
+       3. CORE PRODUCTION GRID (6 Minimalist White Cards)
+    ========================================================== */
+    .clean-grid-sec {
+      padding: 100px 0;
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cards-grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .clean-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .clean-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .card-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #eef2ff;
+      color: #4f46e5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 22px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .card-footer-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: #4f46e5;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    /* ==========================================================
+       4. METRICS THAT MATTER STRIP
+    ========================================================== */
+    .clean-metrics-sec {
+      padding: 72px 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .metrics-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: clamp(32px, 3.8vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .metric-value.indigo {
+      color: #4f46e5;
+    }
+
+    .metric-value.emerald {
+      color: #059669;
+    }
+
+    .metric-value.amber {
+      color: #d97706;
+    }
+
+    .metric-label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* ==========================================================
+       5. BOTTOM CONVERSION BANNER
+    ========================================================== */
+    .clean-cta-sec {
+      padding: 100px 0;
+      background: #0f172a;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .cta-heading {
+      font-size: clamp(30px, 4.5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 860px;
+      margin: 0 auto 16px;
+    }
+
+    .cta-sub {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    .btn-solid-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 16px 36px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn-solid-white:hover {
+      background: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       MODAL POPUPS
+    ========================================================== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid #e2e8f0;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: #64748b;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .modal-form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .modal-input:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pillar-row {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .pillar-row:nth-child(even) .pillar-text-col {
+        order: 1;
+      }
+      .pillar-row:nth-child(even) .pillar-visual-card {
+        order: 2;
+      }
+      .cards-grid-6 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .metrics-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid-6 {
+        grid-template-columns: 1fr;
+      }
+      .metrics-grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .clean-nav-links {
+        display: none;
+      }
+    }
+  
+    /* Bottom Conversion Banner */
+    .bottom-cta-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .bottom-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-title {
+      font-size: 42px;
       font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.12;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
-    .fnb-subtitle {
-      font-size: clamp(15px, 2.2vw, 18px);
-      color: var(--text-muted);
+
+    .bottom-cta-sub {
+      font-size: 17.5px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
       line-height: 1.6;
-      max-width: 760px;
-      margin: 0 auto 28px;
     }
-    .fnb-hero-ctas {
+
+    .bottom-cta-btns {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
       justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .fnb-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin: 40px 0;
+
+    .btn-light-solid {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    @media (max-width: 768px) {
-      .fnb-grid-2 { grid-template-columns: 1fr; }
+
+    .btn-light-solid:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
     }
-    .fnb-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .fnb-card h3 {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 16px;
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
     }
-    .fnb-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .fnb-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14.5px;
-      line-height: 1.55;
-      color: var(--text-body);
-    }
+
   </style>
 </head>
-
 <body>
 
-  <!-- ════ NAVBAR ════ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
-        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-        <div class="logo-text-group">
-          <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle">CLOUD KITCHENS</span>
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL SECONDARY SUB-NAV HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <header class="clean-nav-header">
+    <div class="clean-nav-inner">
+      <a href="index.html" class="clean-brand" aria-label="Priyulabs Digital Home">
+        <div style="background: #0f1422; border-radius: 12px; padding: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
+          <img src="assets/logo.svg" alt="Priyulabs" style="width: 24px; height: 24px; display: block;" />
+        </div>
+        <div style="display: flex; flex-direction: column; text-align: left;">
+          <span style="font-size: 16px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; line-height: 1.1; font-family: var(--font-display);">PRIYULABS</span>
+          <span style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; margin-top: 2px;">DIGITAL</span>
         </div>
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="complete-management-system.html">Complete Management System</a></li>
-        <li><a href="pos.html">Smart POS</a></li>
-        <li><a href="solutions.html">All Solutions</a></li>
-        <li><a href="business-types.html">Business Directory</a></li>
-        <li><a href="index.html#cta">Pricing</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
-          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <button class="btn-demo-nav" onclick="openDemoModal()">✨ Interactive Demo</button>
-        <a href="#fnb-lead-form" class="btn-nav">Start Free Trial</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
 
-  <!-- ════ HERO SECTION ════ -->
-  <section class="fnb-hero">
-    <div class="fnb-hero-container">
-      <span class="fnb-eyebrow">PRIYULABS FOR CLOUD KITCHENS &amp; CATERING</span>
-      <h1 class="fnb-title">Multi-brand central production &amp; online aggregator sync</h1>
-      <p class="fnb-subtitle">
-        Manage 5+ virtual food brands from a single kitchen terminal, consolidate Swiggy/Zomato orders, and automate bulk catering quotes.
-      </p>
-      <div class="fnb-hero-ctas">
-        <a href="#fnb-lead-form" class="btn-primary">Schedule Cloud Kitchen Demo →</a>
-        <a href="complete-management-system.html" class="btn-secondary">Explore Complete CMS Suite</a>
+      <ul class="clean-nav-links">
+        <li>
+          <a href="javascript:void(0)" class="clean-nav-link active">Overview</a>
+        </li>
+        <li class="types-menu-wrap">
+          <a href="javascript:void(0)" class="clean-nav-link">
+            <span>Types</span> <span style="font-size: 10px; color: #94a3b8;">▾</span>
+          </a>
+          <div class="types-menu-dropdown">
+            <div class="types-menu-header">Food &amp; Beverage Types</div>
+            <a href="restaurants-fine-dining.html" class="types-menu-item">
+              <span>🍽️ Restaurants &amp; Fine Dining</span>
+            </a>
+            <a href="qsr-fast-food.html" class="types-menu-item">
+              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
+            </a>
+            <a href="cafes-chai-bars.html" class="types-menu-item">
+              <span>☕ Cafes &amp; Chai Bars</span>
+            </a>
+            <a href="cloud-kitchens-catering.html" class="types-menu-item current">
+              <span>📦 Cloud Kitchens &amp; Catering</span>
+              <span class="types-badge-curr">Current</span>
+            </a>
+            <a href="bakeries-shops.html" class="types-menu-item">
+              <span>🥐 Bakeries &amp; Patisseries</span>
+            </a>
+            <a href="bars-pubs-breweries.html" class="types-menu-item">
+              <span>🍷 Bars, Pubs &amp; Breweries</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="#pillars" class="clean-nav-link">Switch Priyulabs</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn-solid-dark">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (Commercial Production Line Editorial)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-hero-sec">
+    <div class="clean-hero-badge">
+      <span class="indigo-dot"></span>
+      CLOUD KITCHENS, GHOST KITCHENS &amp; CATERING
+    </div>
+
+    <h1 class="clean-hero-title">
+      Multi-Brand Kitchens. Bulk Catering. <br />
+      <span class="text-accent-indigo">Zero Delivery Friction.</span>
+    </h1>
+
+    <p class="clean-hero-sub">
+      The production operating system built to manage multiple virtual brands from one kitchen line, dispatch bulk catering batches on time, and maximize margin per square foot.
+    </p>
+
+    <div class="clean-hero-actions">
+      <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
+        Get Started Today
+      </a>
+      <button onclick="openVideoModal()" class="btn-outline-clean">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        View Kitchen Operations Demo
+      </button>
+    </div>
+
+    <!-- Hero Visual Frame -->
+    <div class="clean-hero-visual-frame">
+      <div class="clean-hero-img-wrap">
+        <img
+          src="assets/cloud_kitchen_hero.jpg"
+          alt="Authentic commercial cloud kitchen production line with chefs plating multi-brand boxes and dual-screen KDS"
+        />
+        <!-- Active Multi-Brand Dispatch Overlay -->
+        <div class="clean-hero-overlay-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #4f46e5;"></span>
+              <strong style="font-size: 13px; color: #0f172a; text-transform: uppercase;">DISPATCH #CK-890</strong>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #4338ca; background: #eef2ff; padding: 2px 6px; border-radius: 4px;">MULTI-BRAND</span>
+          </div>
+          <div style="font-size: 12px; color: #334155; line-height: 1.6;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span>• Burger Hub (Swiggy #412)</span>
+              <strong style="color: #0f172a;">₹540</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span>• Spicy Wok (Zomato #209)</span>
+              <strong style="color: #0f172a;">₹680</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>• Fresh Box (Direct Web #88)</span>
+              <strong style="color: #0f172a;">₹1,250</strong>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; margin-top: 10px; padding-top: 8px; font-size: 11.5px;">
+            <span style="color: #64748b;">Central Line: Station 01</span>
+            <span style="color: #059669; font-weight: 700;">⚡ Dispatched in 4.2m</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ════ MAIN CONTENT ════ -->
-  <main class="container" style="padding: 40px 16px 80px;">
-    <div class="fnb-grid-2">
-      <div class="fnb-card" style="border-left: 4px solid #ef4444;">
-        <h3>Traditional Cloud Kitchen Challenges</h3>
-        <ul class="fnb-list">
-          <li><span>❌</span> <div>Juggling 4 separate aggregator tablets causing missed orders during rush</div></li>
-          <li><span>❌</span> <div>Raw material stockouts during unexpected bulk catering bookings</div></li>
-          <li><span>❌</span> <div>Manual re-entry of online orders into billing software</div></li>
-        </ul>
-      </div>
-      <div class="fnb-card" style="border-left: 4px solid #10b981;">
-        <h3>Priyulabs Unified Kitchen OS</h3>
-        <ul class="fnb-list">
-          <li><span>✅</span> <div><strong>Unified Delivery Screen:</strong> Consolidates all delivery aggregator channels</div></li>
-          <li><span>✅</span> <div><strong>Central Raw Material ERP:</strong> Batch production auto-replenishment alerts</div></li>
-          <li><span>✅</span> <div><strong>1-Click Catering Estimates:</strong> Fast booking quotes with advance token logs</div></li>
-        </ul>
-      </div>
-    </div>
-
-    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.12)); border: 1px solid var(--border-color); border-radius: 18px; padding: 24px; text-align: center; margin: 30px 0;">
-      <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">
-        🚀 Proven Production Impact
-      </h3>
-      <p style="font-size: 16px; color: var(--text-body); font-weight: 700;">
-        Zero Missed Delivery Orders • 50% Faster Kitchen Dispatch • 100% Raw Stock Control
-      </p>
-    </div>
-  </main>
-
-  <!-- ════ LEAD FORM ════ -->
-  <section class="cta-section" id="fnb-lead-form" style="border-top: 1px solid var(--border-color); padding: 60px 0;">
-    <div class="container">
-      <div style="max-width: 600px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-sm);">
-        <h3 style="font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; text-align: center;">
-          Get Cloud Kitchen Demo &amp; Quote
-        </h3>
-        <p style="font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 24px;">
-          Discover how unified aggregator screens and central recipe ERP streamline delivery brands.
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS — HOW OUR SOFTWARE EMPOWERS CLOUD KITCHENS & CATERING
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-pillars-sec" id="pillars">
+    <div class="clean-container">
+      <div class="clean-sec-header">
+        <span class="clean-sec-badge">The 4 Pillars of Production Efficiency</span>
+        <h2 class="clean-sec-title">How Our Software Empowers Cloud Kitchens &amp; Catering</h2>
+        <p class="clean-sec-desc">
+          Four dedicated solutions addressing the exact challenges of multi-brand cooking, central prep yields, and direct high-ticket catering sales.
         </p>
-        <form id="leadForm">
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Your Name *</label>
-            <input type="text" name="Name" required placeholder="Enter full name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
+      </div>
+
+      <!-- Pillar 1 -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-emerald">
+            ⚡ 1 Screen for All Brands &amp; Channels
           </div>
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Kitchen / Brand Name *</label>
-            <input type="text" name="StoreName" required placeholder="Cloud Kitchen / Brand name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
+          <h3 class="pillar-heading">
+            Pillar 1: Smart POS — Multi-Brand Hub on One Touch Screen
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Managing 4–5 separate delivery tablets (Swiggy, Zomato, direct orders) causing order drop-offs and dispatch errors.
           </div>
-          <div class="form-group" style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">WhatsApp / Phone Number *</label>
-            <input type="tel" name="Mobile" required placeholder="+91 98765 43210" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
+          <p class="pillar-body-text">
+            One unified screen receives, accepts, and routes tickets for all your virtual food brands simultaneously. Automatic item 86-ing (marking out of stock) across all aggregators in a single tap.
+          </p>
+          <ul class="pillar-checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Unified multi-brand ticket stream from Swiggy, Zomato &amp; Direct Web
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              1-Tap universal item 86-ing instantly across all food delivery platforms
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Color-coded brand routing directly to line stations (Grill, Fry, Packing)
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-visual-card">
+          <img
+            src="assets/cloud_kitchen_pos.jpg"
+            alt="Unified multi-brand touchscreen POS terminal in a commercial cloud kitchen"
+            class="pillar-img"
+          />
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="pillar-row">
+        <div class="pillar-visual-card" style="order: 1;">
+          <img
+            src="assets/cloud_kitchen_catering.jpg"
+            alt="Commercial central kitchen batch catering prep, raw ingredients, and branded box inventory"
+            class="pillar-img"
+          />
+        </div>
+        <div class="pillar-text-col" style="order: 2;">
+          <div class="pillar-impact-badge badge-indigo">
+            ⚖️ Real-Time Yield vs. Portion Costing
           </div>
-          <button type="submit" class="btn-primary full-width" style="width: 100%; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 10px; border: none; cursor: pointer; background: var(--primary); color: #fff;">
-            Schedule Live Cloud Kitchen Walkthrough 🚀
-          </button>
+          <h3 class="pillar-heading">
+            Pillar 2: Complete Management System — Central Prep, Batch Yield &amp; Packaging Stock
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Running out of custom-branded packaging boxes and miscalculating raw gravy/base prep yields for high-demand dinner slots.
+          </div>
+          <p class="pillar-body-text">
+            Smart central kitchen prep lists based on forecasted hourly demand. Granular deduction of raw produce, meat cuts, and distinct branded containers for every brand.
+          </p>
+          <ul class="pillar-checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Hourly prep batch forecast based on historical lunch &amp; dinner surges
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Automatic packaging deduction per order prevents stockout surprises
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Central commissary transfer tracking with inter-kitchen dispatch logs
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-emerald">
+            💰 Save Thousands in 3rd-Party Fees
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 3: Custom Website &amp; B2B Catering Engine — Direct Bulk Orders
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Losing 25–30% delivery commission on high-ticket party, corporate, and catering orders.
+          </div>
+          <p class="pillar-body-text">
+            Branded direct web ordering for family meal subscriptions, pre-scheduled corporate lunch drops, and an interactive catering menu builder with guest-count price estimators.
+          </p>
+          <ul class="pillar-checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Custom catering quote generator with guest count &amp; per-plate pricing
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Pre-scheduled corporate recurring lunch subscriptions with advance invoicing
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Zero aggregator commission on direct customers — protect 30% bottom line
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-visual-card" style="padding: 24px;">
+          <!-- Interactive Catering Quotation Builder UI Card -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
+              <div>
+                <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #4f46e5;">B2B CATERING ESTIMATOR</span>
+                <h4 style="font-size: 16px; font-weight: 800; color: #0f172a; margin-top: 2px;">Tech Park Corporate Lunch (80 Pax)</h4>
+              </div>
+              <span style="background: #ecfdf5; color: #059669; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">0% Commission</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+              <div style="background: #f8fafc; border: 1px solid #f1f5f9; padding: 12px; border-radius: 10px;">
+                <span style="font-size: 11.5px; color: #64748b; display: block;">Guest Count</span>
+                <strong style="font-size: 15px; color: #0f172a;">80 Guests</strong>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #f1f5f9; padding: 12px; border-radius: 10px;">
+                <span style="font-size: 11.5px; color: #64748b; display: block;">Per Plate Price</span>
+                <strong style="font-size: 15px; color: #0f172a;">₹350 / plate</strong>
+              </div>
+            </div>
+            <div style="border-top: 1px dashed #cbd5e1; padding-top: 14px; font-size: 13px; color: #334155; line-height: 1.8;">
+              <div style="display: flex; justify-content: space-between;">
+                <span>Total Catering Value:</span>
+                <strong style="color: #0f172a;">₹28,000</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; color: #059669; font-weight: 700;">
+                <span>Direct Savings vs. 28% Aggregator:</span>
+                <span>+₹7,840 Saved</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; color: #64748b; font-size: 12px;">
+                <span>Advance Deposit (50%):</span>
+                <span style="color: #0f172a; font-weight: 600;">₹14,000 Received (UPI)</span>
+              </div>
+            </div>
+            <div style="margin-top: 16px; background: #4f46e5; color: #ffffff; text-align: center; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 700;">
+              Automated Kitchen Prep Sheet Generated &rarr;
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="pillar-row">
+        <div class="pillar-visual-card" style="order: 1; padding: 24px;">
+          <!-- Targeted Delivery Funnel Mock -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
+              <div>
+                <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #d97706;">HYPER-LOCAL GEO FUNNEL</span>
+                <h4 style="font-size: 16px; font-weight: 800; color: #0f172a; margin-top: 2px;">3.5 km Delivery Radius Ads</h4>
+              </div>
+              <span style="background: #fffbeb; color: #b45309; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">ROAS 3.8x</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; background: #f8fafc; padding: 10px 14px; border-radius: 10px;">
+                <span style="color: #64748b;">Target Audience</span>
+                <strong style="color: #0f172a;">IT Park Hubs &amp; Late-Night Residents</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; background: #f8fafc; padding: 10px 14px; border-radius: 10px;">
+                <span style="color: #64748b;">Cost Per Acquisition (CAC)</span>
+                <strong style="color: #059669;">₹38 / Direct Customer</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; background: #f8fafc; padding: 10px 14px; border-radius: 10px;">
+                <span style="color: #64748b;">30-Day Repeat Order Rate</span>
+                <strong style="color: #0f172a;">42%</strong>
+              </div>
+            </div>
+            <div style="border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; font-size: 12.5px; color: #64748b;">
+              <span>Monthly Ad Spend: ₹12,000</span>
+              <strong style="color: #059669;">Generated: ₹45,600 Revenue</strong>
+            </div>
+          </div>
+        </div>
+        <div class="pillar-text-col" style="order: 2;">
+          <div class="pillar-impact-badge badge-amber">
+            📈 3.8x Higher Return on Ad Spend (ROAS)
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 4: Targeted Digital Marketing &amp; Ads — Hyper-Local Delivery Radius Dominance
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Virtual brands remain invisible to nearby customers without steep in-app discounting.
+          </div>
+          <p class="pillar-body-text">
+            Geo-fenced 3–5 km radius Meta and Google performance ad funnels targeting hungry office clusters and late-night residential zones, driving them straight to your zero-commission ordering portal.
+          </p>
+          <ul class="pillar-checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Laser-targeted 3–5 km radius delivery polygon geo-fencing
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Automated peak-hour ad scheduling (Lunch 11:30AM–2PM &amp; Late Night)
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              First-party customer data ownership (phone, address, repeat order history)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. CORE PRODUCTION GRID (6 Minimalist White Cards)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-grid-sec">
+    <div class="clean-container">
+      <div class="clean-sec-header">
+        <span class="clean-sec-badge">Core Production Architecture</span>
+        <h2 class="clean-sec-title">Engineered for High-Throughput Multi-Brand Kitchens</h2>
+        <p class="clean-sec-desc">
+          Every module built to prevent station logjams, track ingredients across brands, and ensure on-time delivery dispatch.
+        </p>
+      </div>
+
+      <div class="cards-grid-6">
+        <!-- Card 1 -->
+        <div class="clean-card">
+          <div>
+            <div class="card-icon-box">📦</div>
+            <h3 class="card-title">Unified Multi-Brand KDS</h3>
+            <p class="card-desc">
+              Color-coded dispatch display separating brands, prep stations (Fry, Grill, Packing), and runner handoffs.
+            </p>
+          </div>
+          <span class="card-footer-link">Zero Station Bottlenecks &rarr;</span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="clean-card">
+          <div>
+            <div class="card-icon-box">🛵</div>
+            <h3 class="card-title">Rider &amp; Courier Dispatch Board</h3>
+            <p class="card-desc">
+              Real-time rider assignment tracking with token alerts to minimize driver wait times at pickup counters.
+            </p>
+          </div>
+          <span class="card-footer-link">Faster Hand-Offs &rarr;</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="clean-card">
+          <div>
+            <div class="card-icon-box">📋</div>
+            <h3 class="card-title">Catering Quotation &amp; Contract Mode</h3>
+            <p class="card-desc">
+              Generate itemized event catering quotes, advance deposit invoices, and prep schedules instantly.
+            </p>
+          </div>
+          <span class="card-footer-link">B2B Contracts in 1 Tap &rarr;</span>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="clean-card">
+          <div>
+            <div class="card-icon-box">⚖️</div>
+            <h3 class="card-title">Yield &amp; Recipe Cost Control</h3>
+            <p class="card-desc">
+              Track standard recipes across shared ingredients (onions, oils, proteins) across all sub-brands.
+            </p>
+          </div>
+          <span class="card-footer-link">Accurate Portion Costing &rarr;</span>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="clean-card">
+          <div>
+            <div class="card-icon-box">📅</div>
+            <h3 class="card-title">Bulk Meal Subscription Billing</h3>
+            <p class="card-desc">
+              Automated recurring billing and scheduled dispatch sheets for weekly tiffin or corporate catering.
+            </p>
+          </div>
+          <span class="card-footer-link">Predictable Monthly Revenue &rarr;</span>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="clean-card">
+          <div>
+            <div class="card-icon-box">📊</div>
+            <h3 class="card-title">Central Master Dashboard</h3>
+            <p class="card-desc">
+              Live consolidated gross margin, outlet comparison, and vendor payout tracking across all cloud hubs.
+            </p>
+          </div>
+          <span class="card-footer-link">Total Multi-Hub Control &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. METRICS THAT MATTER STRIP
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-metrics-sec">
+    <div class="clean-container">
+      <div class="metrics-grid-4">
+        <div>
+          <div class="metric-value indigo">5-in-1</div>
+          <div class="metric-label">Virtual Brands on Single Terminal</div>
+        </div>
+        <div>
+          <div class="metric-value emerald">100%</div>
+          <div class="metric-label">Automated Multi-Aggregator Sync</div>
+        </div>
+        <div>
+          <div class="metric-value indigo">0</div>
+          <div class="metric-label">Packaging Stockouts During Peak Rush</div>
+        </div>
+        <div>
+          <div class="metric-value amber">30%</div>
+          <div class="metric-label">Margin Protection via Direct Web Orders</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION BANNER
+  ══════════════════════════════════════════════════════════ -->
+    <section class="bottom-cta-sec">
+    <div class="bottom-cta-box">
+      <h2 class="bottom-cta-title">Ready to Upgrade Your Cloud Kitchen &amp; Catering Operations?</h2>
+      <p class="bottom-cta-sub">
+        Centralize orders from Swiggy, Zomato, and direct web channels into a single KDS, automate raw material batch prep, and run multiple virtual brands from one kitchen.
+      </p>
+      <div class="bottom-cta-btns">
+        <a href="index.html#cta" class="btn-light-solid">
+          Get Started Today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20cloud%20kitchen%20and%20want%20to%20see%20a%20live%20POS%20demo." target="_blank" rel="noopener noreferrer" class="btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Chat with a Cloud Kitchen Specialist
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       DEMO MODAL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="demoModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeDemoModal()">&times;</button>
+      <div style="text-align: left;">
+        <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: #4f46e5; letter-spacing: 0.06em;">PRIYULABS CLOUD SUITE</span>
+        <h3 style="font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 4px; margin-bottom: 8px;">Book a 15-Min Cloud Kitchen Walkthrough</h3>
+        <p style="font-size: 13.5px; color: #64748b; margin-bottom: 24px;">Get a personalized demonstration on unifying multi-brand orders and managing bulk catering production.</p>
+
+        <form onsubmit="handleDemoSubmit(event)">
+          <div class="modal-form-group">
+            <label>Kitchen / Business Name</label>
+            <input type="text" id="demoName" class="modal-input" placeholder="e.g. Ghost Crafters / Urban Cloud Hub" required />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="modal-form-group">
+              <label>Number of Brands</label>
+              <select id="demoBrands" class="modal-input">
+                <option value="1 Brand">1 Virtual Brand</option>
+                <option value="2-3 Brands">2 - 3 Virtual Brands</option>
+                <option value="4-6 Brands">4 - 6 Virtual Brands</option>
+                <option value="7+ Brands">7+ Brands (Multi-Hub)</option>
+              </select>
+            </div>
+            <div class="modal-form-group">
+              <label>Operating Model</label>
+              <select id="demoModel" class="modal-input">
+                <option value="Cloud Kitchen Only">Cloud Kitchen Only</option>
+                <option value="Catering & Bulk Orders">Catering &amp; Bulk Orders</option>
+                <option value="Hybrid (Both)">Hybrid (Both)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="modal-form-group">
+              <label>City</label>
+              <input type="text" id="demoCity" class="modal-input" placeholder="e.g. Mumbai, Bengaluru" required />
+            </div>
+            <div class="modal-form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="demoPhone" class="modal-input" placeholder="+91 98765 43210" required />
+            </div>
+          </div>
+
+          <div style="margin-top: 12px;">
+            <button type="submit" class="btn-solid-dark" style="width: 100%; padding: 14px; background: #4f46e5; border-radius: 12px; font-weight: 700; font-size: 14.5px;">
+              Confirm Walkthrough on WhatsApp &rarr;
+            </button>
+          </div>
         </form>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ════ FOOTER ════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-            <div class="logo-text-group">
-              <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle">CLOUD KITCHENS</span>
-            </div>
-          </a>
-          <p class="footer-desc">Priyulabs Cloud Kitchen &amp; Catering Production ERP.</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Cloud Kitchens &amp; Catering OS.</p>
+  <!-- ══════════════════════════════════════════════════════════
+       VIDEO MODAL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="videoModal">
+    <div class="modal-card" style="max-width: 720px; padding: 0; overflow: hidden; background: #000000; border-color: #334155;">
+      <button class="modal-close" style="color: #ffffff; top: 12px; right: 16px; z-index: 10;" onclick="closeVideoModal()">&times;</button>
+      <video id="opsVideo" src="assets/pos-checkout.mp4" controls style="width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover;"></video>
+      <div style="padding: 16px 20px; background: #0f172a; text-align: left;">
+        <h4 style="color: #ffffff; font-size: 15px; font-weight: 700;">Priyulabs Cloud Kitchen &amp; Catering Engine Overview</h4>
+        <p style="color: #94a3b8; font-size: 12.5px; margin-top: 4px;">Showing multi-brand KDS routing, raw batch inventory yield tracking, and direct zero-commission catering orders.</p>
       </div>
     </div>
-  </footer>
+  </div>
 
-  <script src="script.js"></script>
+  <script>
+    function openDemoModal() {
+      document.getElementById('demoModal').classList.add('active');
+    }
+    function closeDemoModal() {
+      document.getElementById('demoModal').classList.remove('active');
+    }
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      modal.classList.add('active');
+      const vid = document.getElementById('opsVideo');
+      if (vid) vid.play();
+    }
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      modal.classList.remove('active');
+      const vid = document.getElementById('opsVideo');
+      if (vid) vid.pause();
+    }
+
+    function handleDemoSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('demoName').value;
+      const brands = document.getElementById('demoBrands').value;
+      const model = document.getElementById('demoModel').value;
+      const city = document.getElementById('demoCity').value;
+      const phone = document.getElementById('demoPhone').value;
+
+      const msg = "Hello Priyulabs! I would like to schedule a 15-minute Cloud Kitchen & Catering walkthrough for " + name + " (" + brands + ", Model: " + model + ", " + city + "). My phone is " + phone + ".";
+      window.open("https://wa.me/917849074050?text=" + encodeURIComponent(msg), '_blank');
+      closeDemoModal();
+    }
+  </script>
 </body>
 </html>

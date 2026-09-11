@@ -4,271 +4,1248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bakeries &amp; Sweet Shops POS &amp; Weigh-Scale Software | Priyulabs Digital</title>
+  <title> Bakeries &amp; Sweet Shops &amp; Management OS | Priyulabs Digital</title>
   <meta name="description"
-    content="Priyulabs Bakery POS — Advance custom cake bookings, auto weigh-scale pastry billing, raw cream &amp; flour recipe ERP, and thermal batch expiry label printing." />
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet">
-
-  <!-- Core Design System CSS -->
+    content="Next-gen retail operating system for artisan bakeries, patisseries, sourdough studios, and custom cake houses. High-speed counter billing, custom cake scheduling, oven batch timers, recipe costing, and zero-waste freshness tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem('priyulabs_theme');
-        if (saved === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-      } catch (e) { }
-    })();
-  </script>
-
   <style>
-    .fnb-hero {
-      position: relative;
-      overflow: hidden;
-      background: radial-gradient(circle at 50% 15%, rgba(99, 102, 241, 0.16) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 60%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
-                  var(--bg-main);
-      padding: clamp(100px, 14vh, 150px) 16px clamp(40px, 6vh, 70px);
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
+    /* Clean White Theme (Square / Apple Aesthetic) */
+    :root {
+      --bg-pure: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-slate: #475569;
+      --text-muted: #64748b;
+      --border-subtle: #e2e8f0;
+      --accent-dark: #0f172a;
+      --accent-amber: #d97706;
+      --accent-rose: #e11d48;
+      --accent-emerald: #059669;
+      --accent-indigo: #4f46e5;
     }
-    .fnb-hero-container {
-      max-width: 920px;
+
+    body {
+      background-color: var(--bg-pure);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sub-Navigation Bar */
+    .clean-subnav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 24px;
+    }
+
+    .clean-subnav-inner {
+      max-width: 1280px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
-    .fnb-eyebrow {
+
+    .clean-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .clean-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+    }
+
+    .clean-nav-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .clean-nav-link:hover {
+      color: #0f172a;
+    }
+
+    .clean-nav-link.active {
+      font-weight: 700;
+      color: #0f172a;
+      cursor: default;
+    }
+
+    /* Types Dropdown */
+    .types-menu-wrap {
+      position: relative;
+    }
+
+    .types-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 320px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .types-menu-wrap:hover .types-menu-dropdown,
+    .types-menu-wrap:focus-within .types-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 8px 12px 6px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 4px;
+    }
+
+    .types-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .types-menu-item:hover {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    .types-menu-item.current {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .types-badge-curr {
+      font-size: 10px;
+      font-weight: 700;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    .btn-solid-dark {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #0f172a;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-solid-dark:hover {
+      background: #1e293b;
+      border-color: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-clean {
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #cbd5e1;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline-clean:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* Hero Section */
+    .clean-hero-sec {
+      padding: 72px 24px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .clean-hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(99, 102, 241, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(99, 102, 241, 0.28);
-      font-size: clamp(11px, 2vw, 12.5px);
-      font-weight: 800;
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      border-radius: 999px;
       padding: 6px 16px;
-      border-radius: 50px;
-      text-transform: uppercase;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #c2410c;
       letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
-    .fnb-title {
-      font-family: var(--font-heading);
-      font-size: clamp(32px, 5.2vw, 54px);
+
+    .clean-hero-title {
+      font-size: 56px;
+      line-height: 1.1;
       font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      letter-spacing: -0.035em;
+      color: #0f172a;
+      max-width: 980px;
+      margin: 0 auto 20px;
     }
-    .fnb-subtitle {
-      font-size: clamp(15px, 2.2vw, 18px);
-      color: var(--text-muted);
+
+    .text-accent-amber {
+      color: var(--accent-amber);
+    }
+
+    .text-accent-rose {
+      color: var(--accent-rose);
+    }
+
+    .text-accent-emerald {
+      color: var(--accent-emerald);
+    }
+
+    .clean-hero-sub {
+      font-size: 18.5px;
       line-height: 1.6;
+      color: #475569;
       max-width: 760px;
-      margin: 0 auto 28px;
+      margin: 0 auto 36px;
+      font-weight: 400;
     }
-    .fnb-hero-ctas {
+
+    .clean-hero-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
       justify-content: center;
+      gap: 14px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
     }
-    .fnb-grid-2 {
+
+    .clean-hero-media-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12);
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .clean-hero-media-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .clean-hero-media-wrap:hover img {
+      transform: scale(1.015);
+    }
+
+    /* 4 Pillars Section */
+    .pillars-sec {
+      padding: 96px 24px;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .pillars-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 88px;
+    }
+
+    .pillar-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin: 40px 0;
+      align-items: center;
+      gap: 64px;
     }
-    @media (max-width: 768px) {
-      .fnb-grid-2 { grid-template-columns: 1fr; }
+
+    .pillar-row.reverse {
+      grid-template-columns: 1fr 1fr;
     }
-    .fnb-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
+
+    .pillar-row.reverse .pillar-text-col {
+      order: 2;
     }
-    .fnb-card h3 {
-      font-family: var(--font-heading);
-      font-size: 20px;
+
+    .pillar-row.reverse .pillar-media-col {
+      order: 1;
+    }
+
+    .pillar-eyebrow {
+      font-size: 11.5px;
       font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .fnb-list {
+
+    .pillar-title {
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+
+    .pillar-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #475569;
+      margin-bottom: 24px;
+    }
+
+    .pillar-checklist {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
-    .fnb-list li {
+
+    .pillar-check-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       font-size: 14.5px;
-      line-height: 1.55;
-      color: var(--text-body);
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .pillar-check-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ecfdf5;
+      color: #059669;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .pillar-media-col {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08);
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .pillar-media-col img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar-media-col:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Modern Interactive UI Card in Pillar 4 */
+    .commissary-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+    }
+
+    /* 6 Minimalist Feature Cards */
+    .features-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .features-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+
+    .features-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0f172a;
+      background: #e2e8f0;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .features-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .features-sub {
+      font-size: 16.5px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-clean-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-clean-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08);
+    }
+
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #0f172a;
+    }
+
+    .feature-card-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .feature-card-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+
+    .feature-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      background: #f1f5f9;
+      padding: 3px 10px;
+      border-radius: 6px;
+      width: fit-content;
+    }
+
+    /* Metrics Strip */
+    .metrics-sec {
+      padding: 64px 24px;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .metrics-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .metric-num {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      color: #0f172a;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric-label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    /* Bottom Conversion Banner */
+    .bottom-cta-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .bottom-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-title {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .bottom-cta-sub {
+      font-size: 17.5px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .bottom-cta-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-light-solid {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-light-solid:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Video Modal */
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .video-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .video-modal-content {
+      background: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      z-index: 10;
+      transition: background 0.15s;
+    }
+
+    .video-modal-close:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+      .clean-hero-title {
+        font-size: 44px;
+      }
+
+      .pillar-row,
+      .pillar-row.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .pillar-row.reverse .pillar-text-col {
+        order: 1;
+      }
+
+      .pillar-row.reverse .pillar-media-col {
+        order: 2;
+      }
+
+      .pillar-media-col img {
+        height: 320px;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .metrics-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .clean-nav-links {
+        display: none;
+      }
+
+      .clean-hero-title {
+        font-size: 34px;
+      }
+
+      .clean-hero-sub {
+        font-size: 16px;
+      }
+
+      .clean-hero-media-wrap img {
+        height: 300px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-cta-box {
+        padding: 40px 24px;
+      }
+
+      .bottom-cta-title {
+        font-size: 30px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ════ NAVBAR ════ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
-        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-        <div class="logo-text-group">
-          <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle">BAKERIES &amp; SWEETS</span>
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL SECONDARY SUB-NAVIGATION BAR
+  ══════════════════════════════════════════════════════════ -->
+  <header class="clean-subnav">
+    <div class="clean-subnav-inner">
+      <a href="index.html" class="clean-brand" aria-label="Priyulabs Home">
+        <div
+          style="background:#0f1422; border-radius:12px; padding:8px; display:flex; align-items:center; justify-content:center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <img src="assets/logo.svg" style="height:22px; width:22px; display:block;" alt="Priyulabs Logo" />
+        </div>
+        <div style="display:flex; flex-direction:column; text-align:left;">
+          <span
+            style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
+          <span
+            style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:#64748b; text-transform:uppercase; margin-top:2px;">DIGITAL</span>
         </div>
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="complete-management-system.html">Complete Management System</a></li>
-        <li><a href="pos.html">Smart POS</a></li>
-        <li><a href="solutions.html">All Solutions</a></li>
-        <li><a href="business-types.html">Business Directory</a></li>
-        <li><a href="index.html#cta">Pricing</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
-          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <button class="btn-demo-nav" onclick="openDemoModal()">✨ Interactive Demo</button>
-        <a href="#fnb-lead-form" class="btn-nav">Start Free Trial</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
 
-  <!-- ════ HERO SECTION ════ -->
-  <section class="fnb-hero">
-    <div class="fnb-hero-container">
-      <span class="fnb-eyebrow">PRIYULABS FOR BAKERIES &amp; SWEET SHOPS</span>
-      <h1 class="fnb-title">Advance custom cake booking &amp; weigh-scale auto-billing</h1>
-      <p class="fnb-subtitle">
-        Streamline custom photo-cake bookings, loose pastry weighing, recipe ingredient deduction, and thermal batch expiry labels.
-      </p>
-      <div class="fnb-hero-ctas">
-        <a href="#fnb-lead-form" class="btn-primary">Schedule Bakery Demo →</a>
-        <a href="complete-management-system.html" class="btn-secondary">Explore Complete CMS Suite</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ MAIN CONTENT ════ -->
-  <main class="container" style="padding: 40px 16px 80px;">
-    <div class="fnb-grid-2">
-      <div class="fnb-card" style="border-left: 4px solid #ef4444;">
-        <h3>Traditional Bakery Bottlenecks</h3>
-        <ul class="fnb-list">
-          <li><span>❌</span> <div>Custom cake delivery slips lost or misplaced during busy festival rushes</div></li>
-          <li><span>❌</span> <div>Manual weight-based pastry calculations causing cashier math errors</div></li>
-          <li><span>❌</span> <div>Spoiled cream &amp; dairy raw ingredients tracked loosely without recipe links</div></li>
-        </ul>
-      </div>
-      <div class="fnb-card" style="border-left: 4px solid #10b981;">
-        <h3>Priyulabs Smart Bakery Engine</h3>
-        <ul class="fnb-list">
-          <li><span>✅</span> <div><strong>Custom Cake Booking Vault:</strong> Delivery date, photo reference &amp; advance tokens</div></li>
-          <li><span>✅</span> <div><strong>Direct Scale Auto-Sync:</strong> 1-Second weight calculation directly on POS</div></li>
-          <li><span>✅</span> <div><strong>Thermal Expiry Label Printing:</strong> Auto-prints batch, price &amp; shelf-life tags</div></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Video Showcase if available -->
-    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; margin: 30px 0; max-width: 800px; margin-left: auto; margin-right: auto;">
-      <video controls playsinline loop preload="metadata" style="width: 100%; border-radius: 12px; display: block;">
-        <source src="assets/bakery-demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div style="margin-top: 14px; text-align: center;">
-        <strong style="font-size: 16px; color: var(--text-main);">Live Bakery POS Workflow Demonstration</strong>
-        <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">Watch weighing scale sync, custom cake logs, and thermal label printing in action.</p>
-      </div>
-    </div>
-
-    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.12)); border: 1px solid var(--border-color); border-radius: 18px; padding: 24px; text-align: center; margin: 30px 0;">
-      <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">
-        🎂 Proven Bakery Impact
-      </h3>
-      <p style="font-size: 16px; color: var(--text-body); font-weight: 700;">
-        45% Faster Billing • 100% On-Time Custom Cake Delivery • 0% Recipe Waste
-      </p>
-    </div>
-  </main>
-
-  <!-- ════ LEAD FORM ════ -->
-  <section class="cta-section" id="fnb-lead-form" style="border-top: 1px solid var(--border-color); padding: 60px 0;">
-    <div class="container">
-      <div style="max-width: 600px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-sm);">
-        <h3 style="font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; text-align: center;">
-          Get Bakery POS Demo &amp; Quote
-        </h3>
-        <p style="font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 24px;">
-          Learn how custom cake booking vaults and scale integrations transform your bakery.
-        </p>
-        <form id="leadForm">
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Your Name *</label>
-            <input type="text" name="Name" required placeholder="Enter full name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
-          </div>
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Bakery Name *</label>
-            <input type="text" name="StoreName" required placeholder="Bakery / Cake shop name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
-          </div>
-          <div class="form-group" style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">WhatsApp / Phone Number *</label>
-            <input type="tel" name="Mobile" required placeholder="+91 98765 43210" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
-          </div>
-          <button type="submit" class="btn-primary full-width" style="width: 100%; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 10px; border: none; cursor: pointer; background: var(--primary); color: #fff;">
-            Schedule Live Bakery Walkthrough 🚀
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ FOOTER ════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-            <div class="logo-text-group">
-              <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle">BAKERIES &amp; SWEETS</span>
-            </div>
+      <ul class="clean-nav-links">
+        <li>
+          <a href="javascript:void(0)" class="clean-nav-link active">Overview</a>
+        </li>
+        <li class="types-menu-wrap">
+          <a href="javascript:void(0)" class="clean-nav-link">
+            <span>Types</span>
+            <span style="font-size:10px; color:#94a3b8;">▾</span>
           </a>
-          <p class="footer-desc">Priyulabs Bakery POS Billing &amp; Cake Booking Software.</p>
+          <div class="types-menu-dropdown">
+            <div class="types-menu-header">Food &amp; Beverage Types</div>
+            <a href="restaurants-fine-dining.html" class="types-menu-item">
+              <span>🍽️ Restaurants &amp; Fine Dining</span>
+            </a>
+            <a href="qsr-fast-food.html" class="types-menu-item">
+              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
+            </a>
+            <a href="cafes-chai-bars.html" class="types-menu-item">
+              <span>☕ Cafes &amp; Chai Bars</span>
+            </a>
+            <a href="cloud-kitchens-catering.html" class="types-menu-item">
+              <span>📦 Cloud Kitchens &amp; Catering</span>
+            </a>
+            <a href="bakeries-shops.html" class="types-menu-item current">
+              <span>🥐 Bakeries &amp; Patisseries</span>
+              <span class="types-badge-curr">Current</span>
+            </a>
+            <a href="bars-pubs-breweries.html" class="types-menu-item">
+              <span>🍷 Bars, Pubs &amp; Breweries</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="#pillars" class="clean-nav-link">Switch Priyulabs</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn-solid-dark">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (Artisan Bakery & Patisserie Editorial)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-hero-sec">
+    <div class="clean-hero-badge">
+      <span style="width:7px; height:7px; border-radius:50%; background:#d97706; display:inline-block;"></span>
+      ARTISAN BAKERIES, PATISSERIES &amp; CAKE STUDIOS
+    </div>
+
+    <h1 class="clean-hero-title">
+      Fresh Ovens. Split-Second Billing. <br />
+      <span class="text-accent-amber">Zero Batch Spoilage.</span>
+    </h1>
+
+    <p class="clean-hero-sub">
+      From morning sourdough drops and rapid pastry counter queues to bespoke multi-tier celebration cakes and
+      ingredient recipe costing — an all-in-one operating platform engineered for modern artisan bakeries.
+    </p>
+
+    <div class="clean-hero-actions">
+      <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
+        Get Started Today
+      </a>
+      <button onclick="openVideoModal()" class="btn-outline-clean">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        View Bakery OS Demo
+      </button>
+    </div>
+
+    <div class="clean-hero-media-wrap">
+      <img src="assets/bakery_hero.jpg"
+        alt="Artisan bakery counter with fresh croissants, sourdough breads, tarts and modern touch POS register" />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS — HOW OUR SOFTWARE POWERS MODERN BAKERIES
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pillars-sec" id="pillars">
+    <div class="pillars-container">
+
+      <!-- PILLAR 1: High-Speed Pastry Counter Billing -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-eyebrow" style="color: #d97706;">
+            <span>PILLAR 01</span> • <span>SPEED &amp; CHECKOUT</span>
+          </div>
+          <h2 class="pillar-title">High-Speed Counter Billing &amp; Quick-Touch Modifiers</h2>
+          <p class="pillar-desc">
+            Morning pastry rushes cannot afford clunky multi-step screens. Priyulabs gives cashiers instant 1-tap grid
+            buttons for hot baguettes, croissants, morning buns, and coffee pairings with sub-second contactless
+            tap-to-pay.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Sub-0.8s checkout with visual bakery grid &amp; dual-screen customer facing display.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>1-tap modifier options for warming, slicing, custom box packaging, and beverage add-ons.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Automatic tare &amp; scale sync for artisanal loaves sold by variable weight.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col">
+          <img src="assets/bakery_scale_pos.jpg" alt="Modern dual-screen touch POS register with pastry checkout" />
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Bakeries &amp; Sweet Shops OS.</p>
+
+      <!-- PILLAR 2: Custom Celebration Cake Orders -->
+      <div class="pillar-row reverse">
+        <div class="pillar-text-col">
+          <div class="pillar-eyebrow" style="color: #e11d48;">
+            <span>PILLAR 02</span> • <span>CAKE STUDIO &amp; ADVANCE ORDERS</span>
+          </div>
+          <h2 class="pillar-title">Custom Cake Booking, Deposits &amp; Kitchen Dispatch</h2>
+          <p class="pillar-desc">
+            Never misplace a birthday message or custom cake delivery date again. Capture reference sketches, tier
+            sizes, sponge flavors, fillings, and advance deposits directly on the POS with automated kitchen KDS tokens.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Attach customer reference photos and piping inscriptions to the digital production ticket.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Automated advance deposit collection with balance reminder notifications via WhatsApp.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Live cake decorator KDS timeline sorted by promised delivery and pickup hour.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col">
+          <img src="assets/bakery_cake_chef.jpg"
+            alt="Artisan baker checking fresh batch inventory and pastry showcase" />
+        </div>
+      </div>
+
+      <!-- PILLAR 3: Oven Batch Production & Recipe Costing -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-eyebrow" style="color: #059669;">
+            <span>PILLAR 03</span> • <span>PRODUCTION &amp; FRESHNESS</span>
+          </div>
+          <h2 class="pillar-title">Deck Oven Batch Schedules &amp; Ingredient Margin Costing</h2>
+          <p class="pillar-desc">
+            Bake exact batch quantities based on historical weekday demand. Automatically deduct organic flour, French
+            butter, yeast, and premium chocolate from stock while monitoring real-time food cost per loaf.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Automated deck oven bake schedules for 6:00 AM, 11:30 AM, and 4:00 PM hot drops.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Gram-level recipe explosion deducting butter, eggs, vanilla, and flours upon production
+                entry.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Automated end-of-day markdown pricing to sell remaining day-bakes with zero waste.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col"
+          style="padding: 24px; background: #ffffff; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+          <div class="commissary-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <span
+                style="font-size:12px; font-weight:800; color:#059669; text-transform:uppercase; letter-spacing:0.06em;">LIVE
+                OVEN PRODUCTION SCHEDULE</span>
+              <span
+                style="font-size:11px; font-weight:700; background:#ecfdf5; color:#059669; padding:2px 8px; border-radius:6px;">Batch
+                #B-104</span>
+            </div>
+            <div style="font-size:16px; font-weight:800; color:#0f172a; margin-bottom:4px;">Artisan Sourdough Country
+              Loaves (36 Units)</div>
+            <div style="font-size:13px; color:#64748b; margin-bottom:14px;">Fermentation complete • Proofed 14 hrs •
+              Deck Oven #2 @ 245°C</div>
+            <div
+              style="display:flex; justify-content:space-between; font-size:12px; font-weight:600; color:#475569; border-top:1px solid #f1f5f9; pt:10px;">
+              <span>Organic T65 Flour: 18.2 kg</span>
+              <span>Hydration: 78%</span>
+              <span style="color:#059669;">Food Cost: ₹42 / loaf</span>
+            </div>
+          </div>
+          <div class="commissary-card" style="border-left: 4px solid #d97706;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-weight:700; font-size:14px; color:#0f172a;">Pain au Chocolat &amp; Almond
+                Croissants</span>
+              <span style="font-size:12px; font-weight:700; color:#d97706;">Baking: 12 min left</span>
+            </div>
+            <div style="font-size:12px; color:#64748b;">48 pieces scheduled for 11:30 AM warm counter display</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 4: Central Bakehouse & Wholesale Supply -->
+      <div class="pillar-row reverse">
+        <div class="pillar-text-col">
+          <div class="pillar-eyebrow" style="color: #4f46e5;">
+            <span>PILLAR 04</span> • <span>SCALE &amp; B2B WHOLESALE</span>
+          </div>
+          <h2 class="pillar-title">Central Commissary &amp; Wholesale Cafe Distribution</h2>
+          <p class="pillar-desc">
+            Supply local specialty cafes, fine hotels, and retail outlets from your central bakehouse. Generate
+            automated wholesale delivery challans, GST e-invoices, and packing slips per route with one click.
+          </p>
+          <ul class="pillar-checklist">
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Standing recurring B2B orders for daily morning delivery to partner coffee shops.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Consolidated bulk production sheet aggregating orders across all retail counters &amp; wholesale
+                accounts.</span>
+            </li>
+            <li class="pillar-check-item">
+              <span class="pillar-check-icon">✓</span>
+              <span>Integrated driver dispatch manifest and digital signature proof-of-delivery.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-media-col"
+          style="padding: 24px; background: #ffffff; display: flex; flex-direction: column; justify-content: center; gap: 14px;">
+          <div class="commissary-card" style="border-left: 4px solid #4f46e5;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:11px; font-weight:800; color:#4f46e5; text-transform:uppercase;">B2B WHOLESALE
+                MANIFEST</span>
+              <span style="font-size:11px; font-weight:700; color:#64748b;">Route: Downtown Morning</span>
+            </div>
+            <div style="font-size:15px; font-weight:800; color:#0f172a;">Blue Tokai &amp; Roastery Coffee Dispatch</div>
+            <div style="font-size:12.5px; color:#64748b; margin-top:4px;">45 Butter Croissants • 20 Sourdough Batards •
+              30 Danish Pastries</div>
+            <div
+              style="margin-top:10px; display:flex; justify-content:space-between; font-size:12px; font-weight:700; color:#059669;">
+              <span>Status: Packed &amp; Dispatched (06:15 AM)</span>
+              <span>E-Invoice: #INV-9204</span>
+            </div>
+          </div>
+          <div class="commissary-card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <div style="font-size:13.5px; font-weight:700; color:#0f172a;">Retail Outlet Transfer #4 (Mall Kiosk)
+                </div>
+                <div style="font-size:12px; color:#64748b;">Tray count: 8 chilled pastry crates</div>
+              </div>
+              <span
+                style="font-size:11px; font-weight:700; background:#f1f5f9; color:#475569; padding:4px 8px; border-radius:6px;">Transit
+                Synced</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. 6 MINIMALIST WHITE FEATURE CARDS
+  ══════════════════════════════════════════════════════════ -->
+  <section class="features-sec">
+    <div class="features-header">
+      <span class="features-badge">BAKERY OS SUITE</span>
+      <h2 class="features-title">Engineered for Every Aspect of Bakery Operations</h2>
+      <p class="features-sub">
+        Eliminate pen-and-paper booking books, guesswork dough prep, and counter congestion with purpose-built tools.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">⚡</div>
+          <h3 class="feature-card-title">1-Tap Fast-Counter POS</h3>
+          <p class="feature-card-desc">
+            Visual item photo matrix, fast combo bundling for coffee + pastry, barcode scanner sync, and instant UPI
+            soundbox/card terminal handshaking.
+          </p>
+        </div>
+        <span class="feature-tag">Under 0.8s Checkout</span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">🎂</div>
+          <h3 class="feature-card-title">Custom Cake KDS &amp; Deposits</h3>
+          <p class="feature-card-desc">
+            Dedicated pastry chef production board with customer reference photos, piping text, sponge flavor, delivery
+            time slot, and deposit tracking.
+          </p>
+        </div>
+        <span class="feature-tag">Zero Order Mistakes</span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">🥖</div>
+          <h3 class="feature-card-title">Oven Timers &amp; Batch Yields</h3>
+          <p class="feature-card-desc">
+            Track daily dough batches from bulk fermentation to oven exit. Real-time yield tracking calculates exact
+            finished units vs. raw dough weight.
+          </p>
+        </div>
+        <span class="feature-tag">Deck &amp; Convection Sync</span>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">⚖️</div>
+          <h3 class="feature-card-title">Ingredient Margin Costing</h3>
+          <p class="feature-card-desc">
+            Dynamic cost-per-gram calculation for butter, Belgian chocolate, flour, and eggs. Automatically update unit
+            cost when supplier commodity prices fluctuate.
+          </p>
+        </div>
+        <span class="feature-tag">Live Gross Margin %</span>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">🏷️</div>
+          <h3 class="feature-card-title">Freshness &amp; Markdown Pricing</h3>
+          <p class="feature-card-desc">
+            Print automated shelf-life expiration labels with barcode and batch date. Trigger scheduled "Happy Hour"
+            discounts on fresh bakes after 7:00 PM.
+          </p>
+        </div>
+        <span class="feature-tag">-35% Daily Waste</span>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-clean-card">
+        <div>
+          <div class="feature-icon-box">🚚</div>
+          <h3 class="feature-card-title">Wholesale B2B &amp; Multi-Outlet</h3>
+          <p class="feature-card-desc">
+            Central commissary supply management, automated standing orders for cafes and bistros, consolidated packing
+            lists, and GST B2B e-invoicing.
+          </p>
+        </div>
+        <span class="feature-tag">Automated Route Manifest</span>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. METRICS STRIP
+  ══════════════════════════════════════════════════════════ -->
+  <section class="metrics-sec">
+    <div class="metrics-container">
+      <div class="metric-block">
+        <div class="metric-num">0.8s</div>
+        <div class="metric-label">Avg Counter Checkout Speed</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num">100%</div>
+        <div class="metric-label">Custom Cake Order Accuracy</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num">99.8%</div>
+        <div class="metric-label">On-Time Morning Bake Dispatch</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-num">-35%</div>
+        <div class="metric-label">End-of-Day Batch Spoilage</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION BANNER
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bottom-cta-sec">
+    <div class="bottom-cta-box">
+      <h2 class="bottom-cta-title">Ready to Upgrade Your Bakery Operations?</h2>
+      <p class="bottom-cta-sub">
+        Join hundreds of artisan bakeries, sourdough workshops, and boutique patisseries using Priyulabs Digital to
+        increase checkout throughput, eliminate cake order errors, and maximize daily gross margins.
+      </p>
+      <div class="bottom-cta-btns">
+        <a href="index.html#cta" class="btn-light-solid">
+          Get Started Today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20bakery%20and%20want%20to%20see%20a%20live%20POS%20demo."
+          target="_blank" rel="noopener noreferrer" class="btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+          Chat with a Bakery Specialist
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+    <div class="video-modal-content" onclick="event.stopPropagation()">
+      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+      <div style="position:relative; padding-top:56.25%; width:100%; background:#000;">
+        <video id="bakeryDemoVideo" controls
+          style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;"
+          poster="assets/bakery_hero.jpg">
+          <source src="assets/bakery-demo.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
+  <script>
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('bakeryDemoVideo');
+      modal.classList.add('open');
+      if (video) video.play();
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('bakeryDemoVideo');
+      modal.classList.remove('open');
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+  </script>
 </body>
+
 </html>

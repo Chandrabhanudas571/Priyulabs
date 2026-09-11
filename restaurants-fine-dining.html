@@ -1,264 +1,1356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurants &amp; Fine Dining POS &amp; Table Management | Priyulabs Digital</title>
+  <title>Restaurants &amp; Fine Dining Operating System | Priyulabs</title>
   <meta name="description"
-    content="Priyulabs Restaurant OS &amp; POS — Sub-second table ordering straight to KDS, split checks, captain handheld POS, sommelier bar tab sync &amp; multi-course kitchen routing for Indian dining." />
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    content="Hospitality at its finest. Operations at full speed. All-in-one operating platform for fine dining restaurants, multi-table venues, and lounges." />
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
 
   <!-- Core Design System CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem('priyulabs_theme');
-        if (saved === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-      } catch (e) { }
-    })();
-  </script>
-
   <style>
-    .fnb-hero {
+    /* ==========================================================
+       ULTRA-CLEAN WHITE / OFF-WHITE AESTHETIC (SQUARE / APPLE / STRIPE)
+       ========================================================== */
+    :root {
+      --fd-white: #ffffff;
+      --fd-offwhite: #f8fafc;
+      --fd-subtle: #f1f5f9;
+      --fd-border: #e2e8f0;
+      --fd-border-strong: #cbd5e1;
+      --fd-text-dark: #0f172a;
+      --fd-text-slate: #475569;
+      --fd-text-muted: #64748b;
+      --fd-primary: #0f172a;
+      --fd-emerald: #059669;
+      --fd-emerald-bg: #ecfdf5;
+      --fd-emerald-border: #a7f3d0;
+    }
+
+    body {
+      background-color: var(--fd-white) !important;
+      color: var(--fd-text-dark) !important;
+      font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Light Clean Navbar Styling */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid var(--fd-border) !important;
+      position: sticky !important;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo-title {
+      color: var(--fd-text-dark) !important;
+    }
+
+    .navbar .logo-subtitle {
+      color: #64748b !important;
+    }
+
+    .clean-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .clean-nav-link {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #475569 !important;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .clean-nav-link:hover {
+      color: #0f172a !important;
+    }
+
+    .clean-nav-link.active {
+      color: #0f172a !important;
+      font-weight: 750;
+      cursor: default;
+    }
+
+    /* Types Dropdown (Food & Beverage Only) */
+    .types-menu-wrap {
       position: relative;
-      overflow: hidden;
-      background: radial-gradient(circle at 50% 15%, rgba(99, 102, 241, 0.16) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 60%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
-                  var(--bg-main);
-      padding: clamp(100px, 14vh, 150px) 16px clamp(40px, 6vh, 70px);
+    }
+
+    .types-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 320px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .types-menu-wrap:hover .types-menu-dropdown,
+    .types-menu-wrap:focus-within .types-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 8px 12px 6px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 6px;
+    }
+
+    .types-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.18s ease;
+    }
+
+    .types-menu-item:hover {
+      background: #f8fafc;
+      color: #0f172a;
+      transform: translateX(2px);
+    }
+
+    .types-menu-item.current {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 750;
+    }
+
+    .types-badge-curr {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    /* ─── 1. Hero Section (Clean Minimalist Editorial) ───────── */
+    .clean-hero-sec {
+      position: relative;
+      background: linear-gradient(180deg, var(--fd-offwhite) 0%, var(--fd-white) 100%);
+      padding: clamp(120px, 16vh, 160px) 20px clamp(60px, 10vh, 100px);
       text-align: center;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--fd-border);
     }
-    .fnb-hero-container {
-      max-width: 920px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    .fnb-eyebrow {
+
+    .clean-hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(99, 102, 241, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(99, 102, 241, 0.28);
-      font-size: clamp(11px, 2vw, 12.5px);
-      font-weight: 800;
-      padding: 6px 16px;
-      border-radius: 50px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    .clean-hero-badge .green-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .clean-hero-title {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(34px, 5.5vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      color: var(--fd-text-dark);
+      max-width: 960px;
+      margin: 0 auto 20px;
+    }
+
+    .clean-hero-title .muted-title {
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .clean-hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.6;
+      color: var(--fd-text-slate);
+      max-width: 780px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .clean-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .btn-solid-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 30px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-solid-dark:hover {
+      background: #1e293b;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.2);
+      color: #ffffff;
+    }
+
+    .btn-outline-clean {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid var(--fd-border-strong);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-outline-clean:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      transform: scale(1.02);
+      color: #0f172a;
+    }
+
+    /* Hero Visual Frame */
+    .clean-hero-visual-frame {
+      max-width: 1040px;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: 1px solid var(--fd-border);
+      background: #ffffff;
+      padding: 10px;
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .clean-hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: clamp(340px, 50vw, 540px);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f1f5f9;
+    }
+
+    .clean-hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .clean-hero-overlay-card {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 18px 20px;
+      text-align: left;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 640px) {
+      .clean-hero-overlay-card {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        max-width: none;
+      }
+    }
+
+    /* ─── 2. The 4 Pillars (Alternating Modern Split-Rows) ───── */
+    .clean-pillars-sec {
+      padding: clamp(80px, 12vh, 120px) 20px;
+      background: #ffffff;
+    }
+
+    .clean-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .clean-sec-header {
+      text-align: center;
+      margin-bottom: clamp(50px, 8vh, 80px);
+    }
+
+    .clean-sec-badge {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .clean-sec-title {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      color: var(--fd-text-dark);
+      letter-spacing: -0.025em;
+      line-height: 1.2;
       margin-bottom: 16px;
     }
-    .fnb-title {
-      font-family: var(--font-heading);
-      font-size: clamp(32px, 5.2vw, 54px);
+
+    .clean-sec-desc {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--fd-text-slate);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+      margin-bottom: clamp(70px, 10vh, 110px);
+    }
+
+    .pillar-row:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 960px) {
+      .pillar-row {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .pillar-row.reverse .pillar-img-col {
+        order: 2;
+      }
+
+      .pillar-row.reverse .pillar-text-col {
+        order: 1;
+      }
+    }
+
+    .pillar-impact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .badge-green {
+      background: var(--fd-emerald-bg);
+      color: var(--fd-emerald);
+      border: 1px solid var(--fd-emerald-border);
+    }
+
+    .badge-blue {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-purple {
+      background: #faf5ff;
+      color: #7e22ce;
+      border: 1px solid #e9d5ff;
+    }
+
+    .badge-amber {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .pillar-heading {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      color: var(--fd-text-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .pillar-box-problem {
+      background: var(--fd-offwhite);
+      border: 1px solid var(--fd-border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--fd-text-slate);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .pillar-box-problem strong {
+      color: var(--fd-text-dark);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pillar-body-text {
+      font-size: 15px;
+      color: var(--fd-text-slate);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .pillar-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pillar-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .pillar-bullets li svg {
+      width: 17px;
+      height: 17px;
+      color: #059669;
+      min-width: 17px;
+      margin-top: 2px;
+    }
+
+    .pillar-img-frame {
+      border-radius: 20px;
+      border: 1px solid var(--fd-border);
+      background: #f8fafc;
+      padding: 8px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pillar-img-frame:hover {
+      transform: scale(1.015);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .pillar-img-frame img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    /* ─── 3. Interactive Feature Matrix (Minimalist Cards) ───── */
+    .clean-features-sec {
+      padding: clamp(80px, 12vh, 120px) 20px;
+      background: var(--fd-offwhite);
+      border-top: 1px solid var(--fd-border);
+      border-bottom: 1px solid var(--fd-border);
+    }
+
+    .clean-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 960px) {
+      .clean-feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .clean-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .clean-feat-card {
+      background: #ffffff;
+      border: 1px solid var(--fd-border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .clean-feat-card:hover {
+      border-color: #94a3b8;
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08);
+    }
+
+    .clean-feat-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      color: #0f172a;
+    }
+
+    .clean-feat-card h4 {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--fd-text-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .clean-feat-card p {
+      font-size: 14px;
+      color: var(--fd-text-slate);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ─── 4. Metrics That Matter (Minimalist Numbers Strip) ──── */
+    .clean-metrics-sec {
+      padding: 70px 20px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--fd-border);
+    }
+
+    .clean-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .clean-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .clean-metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .clean-metric-col {
+      border-left: 2px solid #cbd5e1;
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .clean-metric-val {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(34px, 4vw, 48px);
       font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.12;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .clean-metric-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .clean-metric-sub {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* ─── 5. Bottom Conversion Section ──────────────────────── */
+    .clean-cta-sec {
+      padding: clamp(80px, 12vh, 120px) 20px;
+      background: var(--fd-offwhite);
+    }
+
+    .clean-cta-box {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--fd-border);
+      border-radius: 24px;
+      padding: clamp(40px, 6vw, 70px) 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    .clean-cta-box h2 {
+      font-family: var(--font-heading, 'Inter', sans-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .clean-cta-box p {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--fd-text-slate);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    /* Modal Form Styles */
+    .clean-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 20px;
+    }
+
+    .clean-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .clean-modal-card {
+      background: #ffffff;
+      border: 1px solid var(--fd-border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      padding: 32px 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .clean-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #f1f5f9;
+      border: none;
+      color: #64748b;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .clean-input {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: #0f172a;
+      outline: none;
+      box-sizing: border-box;
+      margin-top: 4px;
+      margin-bottom: 14px;
+    }
+
+    .clean-input:focus {
+      border-color: #0f172a;
+    }
+  
+    /* Bottom Conversion Banner */
+    .bottom-cta-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .bottom-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-title {
+      font-size: 42px;
+      font-weight: 900;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
-    .fnb-subtitle {
-      font-size: clamp(15px, 2.2vw, 18px);
-      color: var(--text-muted);
+
+    .bottom-cta-sub {
+      font-size: 17.5px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
       line-height: 1.6;
-      max-width: 760px;
-      margin: 0 auto 28px;
     }
-    .fnb-hero-ctas {
+
+    .bottom-cta-btns {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
       justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .fnb-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin: 40px 0;
+
+    .btn-light-solid {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    @media (max-width: 768px) {
-      .fnb-grid-2 { grid-template-columns: 1fr; }
+
+    .btn-light-solid:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
     }
-    .fnb-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .fnb-card h3 {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 16px;
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
     }
-    .fnb-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .fnb-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14.5px;
-      line-height: 1.55;
-      color: var(--text-body);
-    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- ════ NAVBAR ════ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
-        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-        <div class="logo-text-group">
-          <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle">RESTAURANTS &amp; DINING</span>
+  <!-- Global Clean Navigation Header -->
+  <header class="clean-nav-header" style="position: sticky; top: 0; z-index: 50; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid #e2e8f0; padding: 14px 24px;">
+    <div class="clean-nav-inner" style="width: 100%; max-width: 100%; margin: 0 auto; padding: 0 16px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="clean-brand" aria-label="Priyulabs Digital Home" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <div style="background: #0f1422; border-radius: 12px; padding: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
+          <img src="assets/logo.svg" alt="Priyulabs" style="width: 24px; height: 24px; display: block;" />
+        </div>
+        <div style="display: flex; flex-direction: column; text-align: left;">
+          <span style="font-size: 16px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; line-height: 1.1; font-family: var(--font-display, sans-serif);">PRIYULABS</span>
+          <span style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; margin-top: 2px;">DIGITAL</span>
         </div>
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="complete-management-system.html">Complete Management System</a></li>
-        <li><a href="pos.html">Smart POS</a></li>
-        <li><a href="solutions.html">All Solutions</a></li>
-        <li><a href="business-types.html">Business Directory</a></li>
-        <li><a href="index.html#cta">Pricing</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
-          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <button class="btn-demo-nav" onclick="openDemoModal()">✨ Interactive Demo</button>
-        <a href="#fnb-lead-form" class="btn-nav">Start Free Trial</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
 
-  <!-- ════ HERO SECTION ════ -->
-  <section class="fnb-hero">
-    <div class="fnb-hero-container">
-      <span class="fnb-eyebrow">PRIYULABS FOR RESTAURANTS &amp; FINE DINING</span>
-      <h1 class="fnb-title">Table management, sommelier billing &amp; kitchen display OS</h1>
-      <p class="fnb-subtitle">
-        Streamline multi-course dining, split checks, captain handheld ordering, and thermal kitchen routing across your dining floor.
-      </p>
-      <div class="fnb-hero-ctas">
-        <a href="#fnb-lead-form" class="btn-primary">Schedule Live Restaurant Demo →</a>
-        <a href="complete-management-system.html" class="btn-secondary">Explore Complete CMS Suite</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ MAIN CONTENT ════ -->
-  <main class="container" style="padding: 40px 16px 80px;">
-    <!-- Before vs After -->
-    <div class="fnb-grid-2">
-      <div class="fnb-card" style="border-left: 4px solid #ef4444;">
-        <h3>Traditional Restaurant Roadblocks</h3>
-        <ul class="fnb-list">
-          <li><span>❌</span> <div>Manual handwritten captain paper order slips causing delay &amp; kitchen errors</div></li>
-          <li><span>❌</span> <div>Slow checkout queue causing table turnover delays during peak dinner hours</div></li>
-          <li><span>❌</span> <div>Unreconciled kitchen order tickets (KOT) mismatches between bar and kitchen</div></li>
-        </ul>
-      </div>
-      <div class="fnb-card" style="border-left: 4px solid #10b981;">
-        <h3>Priyulabs Intelligent Restaurant OS</h3>
-        <ul class="fnb-list">
-          <li><span>✅</span> <div><strong>Captain Mobile POS:</strong> Sub-second table ordering straight to kitchen display</div></li>
-          <li><span>✅</span> <div><strong>Bi-Directional EDC Push:</strong> Table-side split payment reconciliation with zero theft</div></li>
-          <li><span>✅</span> <div><strong>Chef KDS Display:</strong> Real-time course sequencing (Starters → Mains → Desserts)</div></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ROI Banner -->
-    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.12)); border: 1px solid var(--border-color); border-radius: 18px; padding: 24px; text-align: center; margin: 30px 0;">
-      <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">
-        🚀 Proven Dining Impact
-      </h3>
-      <p style="font-size: 16px; color: var(--text-body); font-weight: 700;">
-        35% Higher Table Turnover • 100% KOT Delivery Accuracy • Zero Theft Checkouts
-      </p>
-    </div>
-  </main>
-
-  <!-- ════ LEAD FORM ════ -->
-  <section class="cta-section" id="fnb-lead-form" style="border-top: 1px solid var(--border-color); padding: 60px 0;">
-    <div class="container">
-      <div style="max-width: 600px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-sm);">
-        <h3 style="font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; text-align: center;">
-          Get Restaurant POS Demo &amp; Quote
-        </h3>
-        <p style="font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 24px;">
-          Experience captain ordering and live KOT routing tailored for your dining outlet.
-        </p>
-        <form id="leadForm">
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Your Name *</label>
-            <input type="text" name="Name" required placeholder="Enter full name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
-          </div>
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Restaurant Name *</label>
-            <input type="text" name="StoreName" required placeholder="Restaurant / Outlet name" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
-          </div>
-          <div class="form-group" style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">WhatsApp / Phone Number *</label>
-            <input type="tel" name="Mobile" required placeholder="+91 98765 43210" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main);" />
-          </div>
-          <button type="submit" class="btn-primary full-width" style="width: 100%; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 10px; border: none; cursor: pointer; background: var(--primary); color: #fff;">
-            Schedule Live Restaurant Walkthrough 🚀
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════ FOOTER ════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-            <div class="logo-text-group">
-              <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle">RESTAURANTS</span>
-            </div>
+      <ul class="clean-nav-links" style="display: flex; align-items: center; gap: 32px; list-style: none; font-size: 14px; font-weight: 500;">
+        <li>
+          <a href="javascript:void(0)" class="clean-nav-link active" style="cursor: default; font-weight: 700; color: #0f172a;">Overview</a>
+        </li>
+        <li class="types-menu-wrap">
+          <a href="javascript:void(0)" class="clean-nav-link" style="color: #475569; display: flex; align-items: center; gap: 4px;">
+            <span>Types</span> <span style="font-size: 10px; color: #94a3b8;">▾</span>
           </a>
-          <p class="footer-desc">Priyulabs Restaurant OS &amp; Captain POS Billing Software.</p>
+          <div class="types-menu-dropdown">
+            <div class="types-menu-header">Food &amp; Beverage Types</div>
+            <a href="restaurants-fine-dining.html" class="types-menu-item current">
+              <span>🍽️ Restaurants &amp; Fine Dining</span>
+              <span class="types-badge-curr">Current</span>
+            </a>
+            <a href="qsr-fast-food.html" class="types-menu-item">
+              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
+            </a>
+            <a href="cafes-chai-bars.html" class="types-menu-item">
+              <span>☕ Cafes &amp; Chai Bars</span>
+            </a>
+            <a href="cloud-kitchens-catering.html" class="types-menu-item">
+              <span>📦 Cloud Kitchens &amp; Catering</span>
+            </a>
+            <a href="bakeries-shops.html" class="types-menu-item">
+              <span>🥐 Bakeries &amp; Patisseries</span>
+            </a>
+            <a href="bars-pubs-breweries.html" class="types-menu-item">
+              <span>🍷 Bars, Pubs &amp; Breweries</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="#pillars" class="clean-nav-link" style="color: #475569; transition: color 0.15s ease;">Switch Priyulabs</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn-solid-dark" style="background: #0f172a; color: #ffffff; padding: 10px 20px; font-size: 14px; font-weight: 500; border-radius: 12px; text-decoration: none; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: background-color 0.15s ease;">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (Clean Minimalist Editorial)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-hero-sec">
+    <div class="clean-hero-badge">
+      <span class="green-dot"></span>
+      RESTAURANTS &amp; FINE DINING
+    </div>
+
+    <h1 class="clean-hero-title">
+      Hospitality at its finest. <br />
+      <span class="muted-title">Operations at full speed.</span>
+    </h1>
+
+    <p class="clean-hero-sub">
+      From split-second table-side billing to intelligent kitchen automation and automated diner growth — an all-in-one platform built to elevate every dining service.
+    </p>
+
+    <div class="clean-hero-actions">
+      <a href="index.html#cta" class="btn-solid-dark" style="text-decoration: none;">
+        Start Your Free Trial
+      </a>
+      <button onclick="openVideoModal()" class="btn-outline-clean">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Watch 2-Min Demo
+      </button>
+    </div>
+
+    <!-- Hero Visual Frame -->
+    <div class="clean-hero-visual-frame">
+      <div class="clean-hero-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80"
+          alt="Modern fine dining restaurant interior and service"
+        />
+        <!-- Active Tablet POS Interface Overlay -->
+        <div class="clean-hero-overlay-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+              <strong style="font-size: 13px; color: #0f172a; text-transform: uppercase;">Table 12 • Mains in Progress</strong>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #64748b; background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">4 Guests</span>
+          </div>
+          <div style="font-size: 12.5px; color: #334155; line-height: 1.6;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>2x Pan-Seared Chilean Sea Bass</span>
+              <strong style="color: #0f172a;">₹2,800</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>1x Truffle Wild Mushroom Risotto</span>
+              <strong style="color: #0f172a;">₹950</strong>
+            </div>
+            <div style="font-size: 11px; color: #64748b;">• Modifiers: Extra Shaved Black Truffle</div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; margin-top: 10px; padding-top: 8px; font-size: 11.5px;">
+            <span style="color: #64748b;">Captain: Vikramaditya</span>
+            <span style="color: #059669; font-weight: 700;">KOT Routed • 0.2s</span>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Restaurants &amp; Fine Dining OS.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS — HOW OUR SOFTWARE DIRECTLY IMPROVES FINE DINING
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-pillars-sec" id="pillars">
+    <div class="clean-container">
+      <div class="clean-sec-header">
+        <span class="clean-sec-badge">The 4 Pillars of Operational Excellence</span>
+        <h2 class="clean-sec-title">How Our Software Directly Improves Fine Dining Operations</h2>
+        <p class="clean-sec-desc">
+          Four dedicated solutions addressing the exact challenges of modern hospitality.
+        </p>
       </div>
+
+      <!-- Pillar 1 -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-green">
+            ⚡ 35% Faster Table Turnover
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 1: Smart POS — Zero Delays at the Table &amp; Front Counter
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Eliminates long bill processing delays and messy payment splits during peak rush hours.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            Table-side wireless captain ordering, 1-tap KOT transfer to kitchen/bar printers, item-wise or seat-wise split billing, and instant contactless tap payments.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Instant seat-wise bill splitting with split-tender support</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Direct Pine Labs/Paytm wireless EDC card push</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% offline continuity during dining room Wi-Fi drops</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80" alt="Table-side POS card payment" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2 (Alternating) -->
+      <div class="pillar-row reverse">
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80" alt="Chefs in commercial kitchen using KDS" />
+          </div>
+        </div>
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-blue">
+            🍳 Zero KOT Lost &amp; Controlled Food Shrinkage
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 2: Complete Management System — Total Control Over Food Cost &amp; Kitchen
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Stops inventory pilferage, recipe inconsistencies, and communication gaps between front staff and cooks.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            Live Kitchen Display System (KDS), automated ingredient deduction based on recipe yield, low-stock alerts before items run out, and multi-station routing.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Gram-level recipe ingredient depletion on every KOT punch</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Multi-station routing for starters, mains, and beverage counter</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automated low-stock threshold alerts sent to manager mobile app</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-row">
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-purple">
+            🌐 100% Commission-Free Direct Bookings
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 3: Custom Website &amp; Reservation Engine — Own Your Guests, Zero Commissions
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Reduces dependence on expensive third-party booking aggregators and high commission cuts.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            A bespoke, fast-loading restaurant website with 24/7 direct table reservations, interactive digital wine &amp; food menus, and guest dietary preference capture.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero-commission booking engine embedded on your own domain</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Interactive digital menus with wine pairings and allergens</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Private dining room and corporate banquet lead capture</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Fine dining presentation" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 4 (Alternating) -->
+      <div class="pillar-row reverse">
+        <div class="pillar-img-col">
+          <div class="pillar-img-frame">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80" alt="Lively restaurant atmosphere" />
+          </div>
+        </div>
+        <div class="pillar-text-col">
+          <div class="pillar-impact-badge badge-amber">
+            📈 Consistent Weekday Footfall Boost
+          </div>
+          <h3 class="pillar-heading">
+            Pillar 4: Targeted Digital Marketing &amp; Ads — Fill Tables on Slow Days
+          </h3>
+          <div class="pillar-box-problem">
+            <strong>The Problem Solved:</strong>
+            Fixes uneven footfall between weekday lulls and weekend rushes.
+          </div>
+          <p class="pillar-body-text">
+            <strong>How It Works:</strong>
+            Hyper-local geo-targeted Meta &amp; Google ad funnels, automated WhatsApp &amp; SMS campaigns for birthdays, anniversaries, and VIP dining privileges.
+          </p>
+          <ul class="pillar-bullets">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Geo-fenced Meta ad campaigns targeting high-net-worth diners</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Google Local SEO rank #1 for &quot;best fine dining near me&quot;</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automated WhatsApp anniversary and milestone dining invitations</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. INTERACTIVE FEATURE MATRIX / GRID (Minimalist Cards)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-features-sec">
+    <div class="clean-container">
+      <div class="clean-sec-header">
+        <span class="clean-sec-badge">Operational Capabilities</span>
+        <h2 class="clean-sec-title">Core features built for modern dining rooms</h2>
+        <p class="clean-sec-desc">
+          Minimalist, dependable tools designed to keep servers, hosts, and kitchen teams in perfect sync.
+        </p>
+      </div>
+
+      <div class="clean-feature-grid">
+        <!-- Card 1 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+          </div>
+          <h4>Interactive Floor &amp; Table Plan</h4>
+          <p>Visual real-time table statuses (Occupied, Reserved, Billed, Vacant) with drag-and-drop table joins and section captain assignments.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h4>Captain App for Waitstaff</h4>
+          <p>Handheld mobility for taking orders right beside guests with modifier groups, course staging, and instant wireless print triggers.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          </div>
+          <h4>Multi-Station KDS</h4>
+          <p>Distinct station views for hot kitchen, cold pantry, and bar dispatch with color-coded countdown timers and audible bump alerts.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/></svg>
+          </div>
+          <h4>Recipe Costing &amp; Central Purchasing</h4>
+          <p>Track raw material expenses down to each gram/portion, automate reorder alerts, and monitor vendor price fluctuations.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h4>Dynamic Staff Permissions</h4>
+          <p>Role-based access control for cashiers, captains, and managers to protect discounts, bill edits, and voided tickets.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="clean-feat-card">
+          <div class="clean-feat-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h4>Multi-Outlet Master Sync</h4>
+          <p>Real-time revenue, tax, and inventory consolidation across branches with central menu updates pushed in seconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. METRICS THAT MATTER (Minimalist Numbers Strip)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-metrics-sec">
+    <div class="clean-container">
+      <div class="clean-metrics-grid">
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">+30%</div>
+          <div class="clean-metric-label">+30% Faster Table Turn Rate</div>
+          <div class="clean-metric-sub">Eliminates billing queues and payment delays.</div>
+        </div>
+
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">0%</div>
+          <div class="clean-metric-label">0% Aggregator Commissions on Direct Bookings</div>
+          <div class="clean-metric-sub">On direct website &amp; reservation bookings.</div>
+        </div>
+
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">100%</div>
+          <div class="clean-metric-label">100% Real-time Recipe &amp; Inventory Sync</div>
+          <div class="clean-metric-sub">Automatic gram-level deduction per plate.</div>
+        </div>
+
+        <div class="clean-metric-col">
+          <div class="clean-metric-val">99.9%</div>
+          <div class="clean-metric-label">99.9% Offline-Ready Billing Uptime</div>
+          <div class="clean-metric-sub">Never drop transactions during network cuts.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION SECTION
+  ══════════════════════════════════════════════════════════ -->
+    <section class="bottom-cta-sec">
+    <div class="bottom-cta-box">
+      <h2 class="bottom-cta-title">Ready to Upgrade Your Restaurant Operations?</h2>
+      <p class="bottom-cta-sub">
+        Elevate guest dining experiences, streamline dynamic floor plans, empower staff with instant handheld KOTs, and eliminate table wait times with Priyulabs Digital.
+      </p>
+      <div class="bottom-cta-btns">
+        <a href="index.html#cta" class="btn-light-solid">
+          Get Started Today
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20restaurant%20and%20want%20to%20see%20a%20live%20POS%20demo." target="_blank" rel="noopener noreferrer" class="btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Chat with a Restaurant Specialist
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #ffffff; border-top: 1px solid #e2e8f0; padding: 50px 20px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap: 20px;">
+      <p style="margin: 0; color: #64748b; font-size: 13.5px;">© 2026 Priyulabs Digital. All Rights Reserved.</p>
+      <a href="index.html" style="color: #0f172a; text-decoration: none; font-weight: 600; font-size: 13.5px;">← Back to Main Platform</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Walkthrough Modal -->
+  <div class="clean-modal-overlay" id="walkthroughModal" onclick="if(event.target === this) closeWalkthroughModal();">
+    <div class="clean-modal-card">
+      <button class="clean-modal-close" onclick="closeWalkthroughModal()">&times;</button>
+      <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px;">Book a Live 1-on-1 Walkthrough</h3>
+      <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">Experience how Priyulabs upgrades your floor, kitchen &amp; reservations.</p>
+
+      <form onsubmit="handleWalkthroughSubmit(event)">
+        <label style="font-size: 12px; font-weight: 700; color: #334155;">Restaurant / Lounge Name</label>
+        <input type="text" id="wtRestName" class="clean-input" placeholder="e.g. Saffron Table &amp; Wine Bar" required />
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <label style="font-size: 12px; font-weight: 700; color: #334155;">WhatsApp Number</label>
+            <input type="tel" id="wtPhone" class="clean-input" placeholder="9876543210" required />
+          </div>
+          <div>
+            <label style="font-size: 12px; font-weight: 700; color: #334155;">Total Tables</label>
+            <select id="wtTables" class="clean-input">
+              <option value="10-25">10 – 25 Tables</option>
+              <option value="25-50">25 – 50 Tables</option>
+              <option value="50+">50+ Tables</option>
+              <option value="Multi-Outlet">Multi-Outlet Chain</option>
+            </select>
+          </div>
+        </div>
+
+        <label style="font-size: 12px; font-weight: 700; color: #334155;">City</label>
+        <input type="text" id="wtCity" class="clean-input" placeholder="e.g. Mumbai, Bengaluru" required />
+
+        <button type="submit" class="btn-solid-dark" style="width: 100%; padding: 13px; margin-top: 10px;">
+          Confirm Walkthrough →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="clean-modal-overlay" id="cleanVideoModal" onclick="if(event.target === this) closeVideoModal();">
+    <div class="clean-modal-card" style="max-width: 720px; padding: 10px; background: #000;">
+      <button class="clean-modal-close" style="background: rgba(255,255,255,0.2); color: #fff;" onclick="closeVideoModal()">&times;</button>
+      <video src="assets/pos-checkout.mp4" controls autoplay style="width: 100%; border-radius: 10px; display: block;"></video>
+    </div>
+  </div>
+
+  <script>
+    function openWalkthroughModal() {
+      document.getElementById('walkthroughModal').classList.add('active');
+    }
+    function closeWalkthroughModal() {
+      document.getElementById('walkthroughModal').classList.remove('active');
+    }
+    function openVideoModal() {
+      document.getElementById('cleanVideoModal').classList.add('active');
+    }
+    function closeVideoModal() {
+      document.getElementById('cleanVideoModal').classList.remove('active');
+    }
+
+    // Mobile navigation toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    }
+  </script>
 </body>
+
 </html>
