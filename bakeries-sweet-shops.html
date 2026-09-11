@@ -800,25 +800,25 @@
             <span style="font-size:10px; color:#94a3b8;">▾</span>
           </a>
           <div class="types-menu-dropdown">
-            <div class="types-menu-header">Food &amp; Beverage Types</div>
-            <a href="restaurants-fine-dining.html" class="types-menu-item">
-              <span>🍽️ Restaurants &amp; Fine Dining</span>
+            <div class="types-menu-header">FOOD &amp; BEVERAGE TYPES</div>
+            <a href="bakeries-sweet-shops.html" class="types-menu-item">
+              <span>🍽️ Restaurants & Fine Dining</span>
             </a>
-            <a href="qsr-fast-food.html" class="types-menu-item">
-              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
+            <a href="bakeries-sweet-shops.html" class="types-menu-item">
+              <span>⚡ QSR, Fast Food & Takeaway</span>
             </a>
-            <a href="cafes-chai-bars.html" class="types-menu-item">
-              <span>☕ Cafes &amp; Chai Bars</span>
+            <a href="bakeries-sweet-shops.html" class="types-menu-item">
+              <span>☕ Cafes & Chai Bars</span>
             </a>
-            <a href="cloud-kitchens-catering.html" class="types-menu-item">
-              <span>📦 Cloud Kitchens &amp; Catering</span>
+            <a href="bakeries-sweet-shops.html" class="types-menu-item">
+              <span>📦 Cloud Kitchens & Catering</span>
             </a>
-            <a href="bakeries-shops.html" class="types-menu-item current">
-              <span>🥐 Bakeries &amp; Patisseries</span>
+            <a href="bakeries-sweet-shops.html" class="types-menu-item current">
+              <span>🥐 Bakeries & Sweet Shops</span>
               <span class="types-badge-curr">Current</span>
             </a>
-            <a href="bars-pubs-breweries.html" class="types-menu-item">
-              <span>🍷 Bars, Pubs &amp; Breweries</span>
+            <a href="bakeries-sweet-shops.html" class="types-menu-item">
+              <span>🍷 Bars, Pubs & Breweries</span>
             </a>
           </div>
         </li>
@@ -856,12 +856,9 @@
       <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
         Get Started Today
       </a>
-      <button onclick="openVideoModal()" class="btn-outline-clean">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-        View Bakery OS Demo
-      </button>
+      <a href="#pillars" class="btn-outline-clean" style="text-decoration: none;">
+        View Bakery Features ↓
+      </a>
     </div>
 
     <div class="clean-hero-media-wrap">
@@ -1207,45 +1204,7 @@
       </div>
     </div>
   </section>
-
-  <!-- Video Modal -->
-  <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
-    <div class="video-modal-content" onclick="event.stopPropagation()">
-      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-      <div style="position:relative; padding-top:56.25%; width:100%; background:#000;">
-        <video id="bakeryDemoVideo" controls
-          style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;"
-          poster="assets/bakery_hero.jpg">
-          <source src="assets/bakery-demo.mp4" type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>
-      </div>
-    </div>
-  </div>
-
   <script src="script.js"></script>
-  <script>
-    function openVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const video = document.getElementById('bakeryDemoVideo');
-      modal.classList.add('open');
-      if (video) video.play();
-    }
-
-    function closeVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const video = document.getElementById('bakeryDemoVideo');
-      modal.classList.remove('open');
-      if (video) {
-        video.pause();
-        video.currentTime = 0;
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeVideoModal();
-    });
-  </script>
 </body>
 
 </html>

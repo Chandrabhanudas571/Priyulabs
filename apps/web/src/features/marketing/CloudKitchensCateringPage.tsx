@@ -33,7 +33,6 @@ const fadeAnim = {
 
 export function CloudKitchensCateringPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleDemoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -107,13 +106,12 @@ export function CloudKitchensCateringPage() {
               >
                 Get Started Today
               </a>
-              <button
-                onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-7 py-3.5 text-sm font-semibold text-[#0f172a] shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] active:scale-[0.99] cursor-pointer"
+              <a
+                href="#pillars"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-7 py-3.5 text-sm font-semibold text-[#0f172a] shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] active:scale-[0.99] cursor-pointer no-underline"
               >
-                <Play size={15} className="text-[#0f172a] fill-[#0f172a]" />
-                View Kitchen Operations Demo
-              </button>
+                View Kitchen Features ↓
+              </a>
             </motion.div>
           </div>
 
@@ -800,36 +798,6 @@ export function CloudKitchensCateringPage() {
                   </button>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ──────────────────────────────────────────────────────────
-          VIDEO WALKTHROUGH MODAL
-      ────────────────────────────────────────────────────────── */}
-      {videoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-black shadow-2xl border border-slate-800">
-            <button
-              onClick={() => setVideoModalOpen(false)}
-              className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-white hover:bg-slate-700"
-            >
-              &times;
-            </button>
-            <div className="aspect-16/9 w-full">
-              <video
-                src="/assets/pos-checkout.mp4"
-                autoPlay
-                controls
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="bg-slate-900 p-4 text-left">
-              <h4 className="text-sm font-bold text-white">Priyulabs Cloud Kitchen &amp; Catering Engine Overview</h4>
-              <p className="text-xs text-slate-400 mt-1">
-                Showing multi-brand KDS routing, raw batch inventory yield tracking, and direct zero-commission catering orders.
-              </p>
             </div>
           </div>
         </div>

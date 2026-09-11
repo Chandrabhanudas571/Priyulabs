@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grocery, Supermarkets &amp; Kirana Stores POS | Priyulabs Digital</title>
+  <meta name="description"
+    content="The unified retail engine built for high-footfall grocery stores, supermarkets, and modern Kiranas across India. Ultra-fast barcode billing, electronic scale sync, and automated stock reorders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --retail-emerald: #059669;
+      --retail-emerald-dark: #047857;
+      --retail-blue: #2563eb;
+      --retail-blue-dark: #1d4ed8;
+      --text-dark: #0f172a;
+      --text-slate: #475569;
+      --border-light: #e2e8f0;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       GLOBAL SECONDARY SUB-NAV
+    ══════════════════════════════════════════════════════════ */
+    .clean-subnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 24px;
+    }
+
+    .clean-subnav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .clean-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .clean-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+    }
+
+    .clean-nav-link {
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .clean-nav-link:hover {
+      color: #0f172a;
+    }
+
+    .clean-nav-link.active {
+      font-weight: 700;
+      color: #0f172a;
+      cursor: default;
+    }
+
+    /* Types Dropdown */
+    .types-menu-wrap {
+      position: relative;
+    }
+
+    .types-menu-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 330px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      text-align: left;
+    }
+
+    .types-menu-wrap:hover .types-menu-dropdown,
+    .types-menu-wrap:focus-within .types-menu-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      padding: 8px 12px 6px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 4px;
+    }
+
+    .types-menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .types-menu-item:hover {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .types-menu-item.current {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .types-badge-curr {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .btn-solid-dark {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-solid-dark:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-clean {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .btn-outline-clean:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       1. HERO SECTION (High-Throughput Retail Focus)
+    ══════════════════════════════════════════════════════════ */
+    .clean-hero-sec {
+      padding: 72px 24px 56px;
+      text-align: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .clean-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: var(--retail-emerald-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+
+    .clean-hero-title {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      font-size: clamp(34px, 5.5vw, 62px);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      color: #0f172a;
+      max-width: 1050px;
+      margin: 0 auto 20px;
+    }
+
+    .text-emerald-600 {
+      color: #059669;
+    }
+
+    .clean-hero-sub {
+      font-size: clamp(16px, 2vw, 19.5px);
+      line-height: 1.6;
+      color: #475569;
+      max-width: 820px;
+      margin: 0 auto 36px;
+    }
+
+    .clean-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    /* Hero Interactive UI Mockup: Retail POS Dashboard */
+    .retail-pos-mockup {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 24px;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      margin: 0 auto 72px;
+      text-align: left;
+    }
+
+    .mockup-top-bar {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .mockup-top-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mockup-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+      display: inline-block;
+    }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      background: #f8fafc;
+      min-height: 420px;
+    }
+
+    .mockup-col {
+      padding: 20px;
+      border-right: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mockup-col:last-child {
+      border-right: none;
+    }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .col-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Col 1: Barcode scan list */
+    .scan-feed-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .scan-feed-item.active-scan {
+      border-color: #3b82f6;
+      background: #eff6ff;
+      animation: pulseScan 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseScan {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3); }
+      70% { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+
+    .item-barcode {
+      font-family: monospace;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    /* Col 2: Electronic Scale Sync */
+    .scale-screen-card {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scale-screen-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .scale-digital-weight {
+      font-family: 'Plus Jakarta Sans', monospace;
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #34d399;
+      margin: 8px 0;
+    }
+
+    .scale-tag-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #94a3b8;
+      border-top: 1px solid #1e293b;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    /* Col 3: Checkout & QR */
+    .checkout-summary-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .qr-mock-box {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      margin: 12px 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS (Sticky Visual + Scrollable 4 Points)
+    ══════════════════════════════════════════════════════════ */
+    .pillars-sec {
+      padding: 96px 24px 120px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .pillars-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .sec-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .sec-badge {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--retail-emerald-dark);
+      background: #ecfdf5;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 14px;
+      border: 1px solid #a7f3d0;
+    }
+
+    .sec-title {
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin: 0 0 16px;
+    }
+
+    .sec-sub {
+      font-size: 17px;
+      color: #64748b;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Sticky Scroll Stage */
+    .sticky-scroll-stage {
+      display: grid;
+      grid-template-columns: 1fr 1.12fr;
+      gap: 56px;
+      align-items: start;
+      position: relative;
+      margin-top: 24px;
+    }
+
+    /* Left Sticky Column */
+    .sticky-col-left {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sticky-media-card {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      background: #0f172a;
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
+    }
+
+    .sticky-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: scale(0.96);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .sticky-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      z-index: 2;
+    }
+
+    .sticky-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sticky-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0) 40%, rgba(15, 23, 42, 0.78) 100%);
+      pointer-events: none;
+    }
+
+    .sticky-slide-top-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 3;
+    }
+
+    .sticky-slide-bottom-info {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      right: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 3;
+    }
+
+    .sticky-metric-pill {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sticky-metric-pill.emerald {
+      color: #047857;
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+
+    /* Quick tab switch buttons under the sticky image */
+    .sticky-nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: #f8fafc;
+      padding: 6px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .sticky-nav-tab {
+      flex: 1;
+      text-align: center;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: transparent;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .sticky-nav-tab:hover {
+      color: #0f172a;
+      background: #f1f5f9;
+    }
+
+    .sticky-nav-tab.active {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    /* Right Column - Scrolling Pillars (Clean Minimal 4-Point Architecture) */
+    .scroll-col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pillar-scroll-step {
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px 0;
+      transition: opacity 0.35s ease;
+      opacity: 0.35;
+    }
+
+    .pillar-scroll-step.active-target {
+      opacity: 1;
+    }
+
+    .pillar-step-title {
+      font-size: clamp(24px, 2.5vw, 30px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .pillar-step-divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 24px 0 28px;
+      width: 100%;
+    }
+
+    /* 4 Clean Minimal Item Rows */
+    .pillar-points-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .pillar-point-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .pillar-point-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      flex-shrink: 0;
+    }
+
+    .pillar-point-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.2;
+    }
+
+    .pillar-point-text {
+      font-size: 15.5px;
+      font-weight: 500;
+      color: #1e293b;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+        /* Mobile responsiveness */
+    @media (max-width: 960px) {
+      .sticky-scroll-stage {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .sticky-col-left {
+        position: relative;
+        top: 0;
+      }
+      .sticky-media-card {
+        height: 320px;
+      }
+      .scroll-col-right {
+        gap: 32px;
+      }
+      .pillar-scroll-card {
+        padding: 24px;
+      }
+    }
+    
+/* ══════════════════════════════════════════════════════════
+       3. HARDWARE & WORKFLOW INTEGRATION BAR
+    ══════════════════════════════════════════════════════════ */
+    .hardware-sec {
+      padding: 80px 24px;
+      background: #f8fafc;
+    }
+
+    .hardware-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hardware-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .hardware-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .hardware-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    .hardware-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .hardware-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 8px;
+    }
+
+    .hardware-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0 0 14px;
+    }
+
+    .hardware-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hw-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       4. CORE SUPERMARKET FEATURES (Matrix)
+    ══════════════════════════════════════════════════════════ */
+    .features-sec {
+      padding: 88px 24px;
+      background: #ffffff;
+    }
+
+    .features-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+    }
+
+    .feature-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #f0fdf4;
+      color: #059669;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+      margin: 0 0 10px;
+    }
+
+    .feature-desc {
+      font-size: 14.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .feature-tag-pill {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #059669;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION BANNER (Standardized Dark Container)
+    ══════════════════════════════════════════════════════════ */
+    .bottom-cta-sec {
+      padding: 88px 24px;
+      background: #f8fafc;
+    }
+
+    .bottom-cta-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-title {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .bottom-cta-sub {
+      font-size: 17.5px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .bottom-cta-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-light-solid {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-light-solid:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Modal for Walkthrough / Demo */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 480px;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+    }
+
+    @media (max-width: 1024px) {
+      .retail-pillars-grid { grid-template-columns: 1fr; }
+      .hardware-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .mockup-grid { grid-template-columns: 1fr; }
+      .mockup-col { border-right: none; border-bottom: 1px solid #e2e8f0; }
+    }
+
+    @media (max-width: 768px) {
+      .clean-nav-links { display: none; }
+      .clean-hero-title { font-size: 34px; }
+      .hardware-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .bottom-cta-box { padding: 40px 24px; }
+      .bottom-cta-title { font-size: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL SECONDARY SUB-NAVIGATION BAR
+  ══════════════════════════════════════════════════════════ -->
+  <header class="clean-subnav">
+    <div class="clean-subnav-inner">
+      <a href="index.html" class="clean-brand" aria-label="Priyulabs Home">
+        <div style="background:#0f1422; border-radius:12px; padding:8px; display:flex; align-items:center; justify-content:center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <img src="assets/logo.svg" style="height:22px; width:22px; display:block;" alt="Priyulabs Logo" />
+        </div>
+        <div style="display:flex; flex-direction:column; text-align:left;">
+          <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
+          <span style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:#64748b; text-transform:uppercase; margin-top:2px;">DIGITAL</span>
+        </div>
+      </a>
+
+            <ul class="clean-nav-links" style="display: flex; align-items: center; gap: 32px; list-style: none; font-size: 14px; margin: 0; padding: 0;">
+        <li>
+          <a href="#" class="clean-nav-link active" style="font-weight: 600; color: #0f172a; text-decoration: none; cursor: pointer;">Overview</a>
+        </li>
+        <li class="types-menu-wrap">
+          <a href="javascript:void(0)" class="clean-nav-link" style="color: #475569; display: flex; align-items: center; gap: 4px; font-weight: 500; text-decoration: none; cursor: pointer;">
+            <span>Types</span> <span style="font-size: 10px; color: #94a3b8;">▾</span>
+          </a>
+          <div class="types-menu-dropdown">
+            <div class="types-menu-header">RETAIL BUSINESS TYPES</div>
+            <a href="grocery-supermarkets-kirana.html" class="types-menu-item current">
+              <span>🛒 Grocery, Supermarkets & Kirana</span>
+              <span class="types-badge-curr">Current</span>
+            </a>
+            <a href="electronics-mobile-shops.html" class="types-menu-item">
+              <span>📱 Electronics & Mobile Shops</span>
+            </a>
+            <a href="footwear-leather-stores.html" class="types-menu-item">
+              <span>👞 Footwear & Leather Stores</span>
+            </a>
+            <a href="jewellery-shops.html" class="types-menu-item">
+              <span>💍 Jewellery Showrooms</span>
+            </a>
+            <a href="watch-stores.html" class="types-menu-item">
+              <span>⌚ Watch Stores & Horology</span>
+            </a>
+            <a href="solutions.html?sector=hardware" class="types-menu-item">
+              <span>🔧 Hardware, Sanitary & Paint</span>
+            </a>
+            <a href="bookstores-stationery.html" class="types-menu-item">
+              <span>📚 Bookstores & Stationery</span>
+            </a>
+          </div>
+        </li>
+        <li>
+          <a href="#pillars" class="clean-nav-link" style="color: #475569; font-weight: 500; text-decoration: none; transition: color 0.15s ease;">Switch Priyulabs</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn-solid-dark">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO SECTION (High-Throughput Retail Focus)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="clean-hero-sec">
+    <div class="clean-hero-badge">
+      <span class="mockup-pulse-dot" style="width:6px; height:6px;"></span>
+      GROCERY, SUPERMARKETS &amp; SMART KIRANA
+    </div>
+
+    <h1 class="clean-hero-title">
+      Thousands of SKUs. Split-Second Barcode Scans. <br />
+      <span class="text-emerald-600">Zero Inventory Leaks.</span>
+    </h1>
+
+    <p class="clean-hero-sub">
+      The unified retail engine built for high-footfall grocery stores and modern Kiranas — engineered for lightning-speed barcode billing, integrated weighing scales, and automated wholesale stock reorders.
+    </p>
+
+    <div class="clean-hero-actions">
+      <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
+        Get Started Today
+      </a>
+      <a href="#pillars" class="btn-outline-clean" style="text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        See Supermarket Billing Speed
+      </a>
+    </div>
+
+    <!-- Hero Interactive UI Mockup: Wide Retail POS Dashboard -->
+    <div class="retail-pos-mockup">
+      <div class="mockup-top-bar">
+        <div class="mockup-top-left">
+          <span class="mockup-pulse-dot"></span>
+          <span>PRIYULABS RETAIL ENGINE — COUNTER #02</span>
+          <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 6px; font-size: 11px;">100% OFFLINE READY</span>
+        </div>
+        <div>
+          <span style="color: #94a3b8; font-weight: 500;">Active Batch: #0821-EVENING</span>
+        </div>
+      </div>
+
+      <div class="mockup-grid">
+        <!-- Col 1: Rapid Line-Item Barcode Feed -->
+        <div class="mockup-col">
+          <div class="col-header">
+            <div class="col-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/></svg>
+              Rapid Barcode Feed
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 8px; border-radius: 6px;">4 Scans / Sec</span>
+          </div>
+
+          <div class="scan-feed-item active-scan">
+            <div>
+              <div style="font-weight: 700; color: #0f172a;">Aashirvaad Shudh Chakki Atta 5kg</div>
+              <div class="item-barcode">8901030384912 • Qty: 1</div>
+            </div>
+            <div style="font-weight: 800; color: #0f172a;">₹265.00</div>
+          </div>
+
+          <div class="scan-feed-item">
+            <div>
+              <div style="font-weight: 700; color: #0f172a;">Tata Salt Vacuum Evaporated 1kg</div>
+              <div class="item-barcode">8901058852332 • Qty: 2</div>
+            </div>
+            <div style="font-weight: 800; color: #0f172a;">₹56.00</div>
+          </div>
+
+          <div class="scan-feed-item">
+            <div>
+              <div style="font-weight: 700; color: #0f172a;">Fortune Kachi Ghani Mustard Oil 1L</div>
+              <div class="item-barcode">8906007284911 • Qty: 1</div>
+            </div>
+            <div style="font-weight: 800; color: #0f172a;">₹142.00</div>
+          </div>
+
+          <div class="scan-feed-item">
+            <div>
+              <div style="font-weight: 700; color: #0f172a;">Amul Pasteurised Butter 500g</div>
+              <div class="item-barcode">8901262010051 • Qty: 1</div>
+            </div>
+            <div style="font-weight: 800; color: #0f172a;">₹275.00</div>
+          </div>
+
+          <div style="margin-top: auto; padding-top: 12px; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; font-size: 12px; color: #64748b;">
+            <span>Omni 2D Laser: Connected</span>
+            <span style="color: #059669; font-weight: 700;">● Laser Standby</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Electronic Scale Weight Sync -->
+        <div class="mockup-col">
+          <div class="col-header">
+            <div class="col-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+              Electronic Scale Sync
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 2px 8px; border-radius: 6px;">RS-232 LIVE</span>
+          </div>
+
+          <div class="scale-screen-card">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #94a3b8;">
+              LOOSE COMMODITY WEIGHED
+            </div>
+            <div style="font-size: 16px; font-weight: 800; margin-top: 4px; color: #fff;">
+              Premium Yellow Moong Dal
+            </div>
+            <div class="scale-digital-weight">
+              1.450 <span style="font-size: 20px; color: #94a3b8;">KG</span>
+            </div>
+            <div class="scale-tag-row">
+              <span>Tare Deduction: 0.020 kg</span>
+              <span style="color: #34d399; font-weight: 700;">Rate: ₹140.00 / kg</span>
+            </div>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; font-size: 13px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span style="color: #64748b;">Net Calculated Price:</span>
+              <span style="font-weight: 800; color: #0f172a;">₹203.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: #059669;">
+              <span>Auto Barcode Sticker:</span>
+              <span style="font-weight: 700;">Punched into Cart ✓</span>
+            </div>
+          </div>
+
+          <div style="margin-top: auto; padding-top: 12px; border-top: 1px dashed #cbd5e1; font-size: 12px; color: #64748b; display: flex; justify-content: space-between;">
+            <span>Zero Manual Gram Error</span>
+            <span style="color: #2563eb; font-weight: 700;">Tare Calibrated</span>
+          </div>
+        </div>
+
+        <!-- Col 3: Checkout & UPI Split Payment -->
+        <div class="mockup-col">
+          <div class="col-header">
+            <div class="col-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+              1-Tap Settlement
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 8px; border-radius: 6px;">Bill Settled</span>
+          </div>
+
+          <div class="checkout-summary-card">
+            <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #64748b; margin-bottom: 6px;">
+              <span>Subtotal (5 Items):</span>
+              <span style="font-weight: 700; color: #0f172a;">₹941.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #059669; margin-bottom: 8px;">
+              <span>Store Member Savings:</span>
+              <span style="font-weight: 700;">-₹42.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 900; color: #0f172a; border-top: 1px solid #e2e8f0; padding-top: 8px; margin-bottom: 12px;">
+              <span>Grand Total:</span>
+              <span style="color: #059669;">₹899.00</span>
+            </div>
+
+            <div class="qr-mock-box">
+              <div style="font-size: 11px; font-weight: 800; color: #2563eb; text-transform: uppercase; margin-bottom: 6px;">
+                Dynamic UPI QR Pushed
+              </div>
+              <div style="font-size: 12.5px; font-weight: 700; color: #0f172a;">
+                Scan with GPay / PhonePe / Paytm
+              </div>
+              <div style="font-size: 11px; color: #059669; margin-top: 4px; font-weight: 600;">
+                ✓ Payment Received via Paytm Soundbox
+              </div>
+            </div>
+
+            <button style="margin-top: auto; width: 100%; background: #0f172a; color: #fff; border: none; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer;">
+              Auto-Kick Drawer &amp; Print Thermal Receipt ↵
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE 4 PILLARS (Sticky Visual + Scrollable 4 Points)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pillars-sec" id="pillars">
+    <div class="pillars-container">
+      <div class="sec-header">
+        <div class="sec-badge">Built for High-Footfall Retail Realities</div>
+        <h2 class="sec-title">The 4 Pillars of Modern Grocery Operations</h2>
+        <p class="sec-sub">
+          Engineered to eliminate rush-hour billing bottlenecks, stop shrinkage on loose grains, and win neighborhood customers back from quick-commerce apps.
+        </p>
+      </div>
+
+      <div class="sticky-scroll-stage">
+        <!-- Left Side: Sticky Visual Stage -->
+        <div class="sticky-col-left">
+          <div class="sticky-media-card">
+            <!-- Slide 0: Smart POS -->
+            <div class="sticky-slide active" data-pillar-slide="0">
+              <img src="assets/grocery_weighing_scale.jpg" alt="Certified electronic weighing scale integrated with supermarket POS for loose dal and grains" />
+              <div class="sticky-slide-overlay"></div>
+              <div class="sticky-slide-top-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/></svg>
+                Pillar 01 • Smart POS
+              </div>
+              <div class="sticky-slide-bottom-info">
+                <span class="sticky-metric-pill">
+                  ⚡ Under 1.5s Per Line-Item Checkout
+                </span>
+              </div>
+            </div>
+
+            <!-- Slide 1: Stock Management -->
+            <div class="sticky-slide" data-pillar-slide="1">
+              <img src="assets/grocery_aisle_inventory.jpg" alt="Supermarket FMCG grocery aisle inventory stock audit" />
+              <div class="sticky-slide-overlay"></div>
+              <div class="sticky-slide-top-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+                Pillar 02 • Inventory System
+              </div>
+              <div class="sticky-slide-bottom-info">
+                <span class="sticky-metric-pill emerald">
+                  🛡️ 99.2% Accurate Stock Reconciliation
+                </span>
+              </div>
+            </div>
+
+            <!-- Slide 2: Digital Storefront -->
+            <div class="sticky-slide" data-pillar-slide="2">
+              <img src="assets/grocery_quick_delivery.jpg" alt="Local supermarket quick commerce delivery packing" />
+              <div class="sticky-slide-overlay"></div>
+              <div class="sticky-slide-top-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                Pillar 03 • Local Quick Commerce
+              </div>
+              <div class="sticky-slide-bottom-info">
+                <span class="sticky-metric-pill emerald">
+                  🛵 Direct Neighborhood Quick-Delivery
+                </span>
+              </div>
+            </div>
+
+            <!-- Slide 3: Khata & Loyalty -->
+            <div class="sticky-slide" data-pillar-slide="3">
+              <img src="assets/grocery_upi_checkout.jpg" alt="Customer scanning UPI QR code at supermarket checkout" />
+              <div class="sticky-slide-overlay"></div>
+              <div class="sticky-slide-top-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Pillar 04 • Marketing &amp; Khata
+              </div>
+              <div class="sticky-slide-bottom-info">
+                <span class="sticky-metric-pill">
+                  📈 +32% Monthly Customer Basket Spend
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Interactive Tab Switcher -->
+          <div class="sticky-nav-tabs">
+            <button class="sticky-nav-tab active" onclick="scrollToPillar(0)">01 Smart POS</button>
+            <button class="sticky-nav-tab" onclick="scrollToPillar(1)">02 Inventory</button>
+            <button class="sticky-nav-tab" onclick="scrollToPillar(2)">03 Quick Store</button>
+            <button class="sticky-nav-tab" onclick="scrollToPillar(3)">04 Khata/Ads</button>
+          </div>
+        </div>
+
+        <!-- Right Side: Scrollable Pillars with 4 Distinct Points Each -->
+        <div class="scroll-col-right">
+          <!-- Pillar 1 -->
+          <div class="pillar-scroll-step active-target" id="pillar-card-0" data-pillar-index="0">
+            <h3 class="pillar-step-title">Take payments seamlessly &amp; bill ultra-fast</h3>
+            <div class="pillar-step-divider"></div>
+            <div class="pillar-points-list">
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/></svg>
+                </div>
+                <p class="pillar-point-text">Scan any barcode in sub-seconds — even wrinkled pouches and curved bottles.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+                </div>
+                <p class="pillar-point-text">Connect your existing certified electronic weighing scales with zero lock-in.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <p class="pillar-point-text">Keep billing without interruption during internet dropouts with offline mode.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h3v3H7zM14 7h3v3h-3zM7 14h3v3H7zM14 14h.01M17 14h.01M14 17h.01M17 17h.01"/></svg>
+                </div>
+                <p class="pillar-point-text">Show dynamic UPI QR codes on the customer screen with instant voice alerts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-scroll-step" id="pillar-card-1" data-pillar-index="1">
+            <h3 class="pillar-step-title">Keep inventory in check</h3>
+            <div class="pillar-step-divider"></div>
+            <div class="pillar-points-list">
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+                </div>
+                <p class="pillar-point-text">Auto-generate supplier purchase orders before fast-selling items run out.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <p class="pillar-point-text">Get batch-wise alerts 30 and 60 days before expiry to eliminate losses.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                </div>
+                <p class="pillar-point-text">Track real-time profit margins across loose grains and packaged goods.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+                </div>
+                <p class="pillar-point-text">Repackage 50 kg bulk commodity sacks into custom-labeled retail packs.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-scroll-step" id="pillar-card-2" data-pillar-index="2">
+            <h3 class="pillar-step-title">WhatsApp store &amp; neighborhood delivery</h3>
+            <div class="pillar-step-divider"></div>
+            <div class="pillar-points-list">
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
+                </div>
+                <p class="pillar-point-text">Take direct grocery orders from neighborhood homes with 0% commissions.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <p class="pillar-point-text">Share daily fresh vegetable rates and grocery lists via 1-click WhatsApp.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="16" height="13" x="1" y="6" rx="2"/><polygon points="17 8 20 8 23 11 23 16 17 16 17 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <p class="pillar-point-text">Automate recurring morning milk, bread, and egg daily subscription drops.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <p class="pillar-point-text">Manage live order dispatch with rider routing and automated SMS alerts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-scroll-step" id="pillar-card-3" data-pillar-index="3">
+            <h3 class="pillar-step-title">Customer khata &amp; loyalty rewards</h3>
+            <div class="pillar-step-divider"></div>
+            <div class="pillar-points-list">
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <p class="pillar-point-text">Track customer credit in a digital khata with automatic WhatsApp reminders.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <p class="pillar-point-text">Apply instant "Buy 2 Get 1" and bill-level savings right at checkout.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <p class="pillar-point-text">Run hyper-local ads targeting households within a 2 km store radius.</p>
+              </div>
+              <div class="pillar-point-item">
+                <div class="pillar-point-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+                <p class="pillar-point-text">Reward repeat grocery shoppers with points redeemable on monthly ration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- ══════════════════════════════════════════════════════════
+       3. DEDICATED HARDWARE & RETAIL WORKFLOW INTEGRATION BAR
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hardware-sec">
+    <div class="hardware-container">
+      <div class="sec-header" style="margin-bottom: 48px;">
+        <div class="sec-badge">Zero Hardware Lock-In</div>
+        <h2 class="sec-title">Plug-and-Play Retail Counter Hardware</h2>
+        <p class="sec-sub">
+          Seamless driver-free compatibility with your existing billing computers, laser scanners, and counter printers.
+        </p>
+      </div>
+
+      <div class="hardware-grid">
+        <!-- Hardware 1 -->
+        <div class="hardware-card">
+          <div class="hardware-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/></svg>
+          </div>
+          <h4 class="hardware-title">Barcode Scanners</h4>
+          <p class="hardware-desc">
+            1D/2D omnidirectional hands-free table scanners and wireless handheld laser guns for instant cart loading.
+          </p>
+          <div class="hardware-tags">
+            <span class="hw-tag">TVS</span>
+            <span class="hw-tag">Honeywell</span>
+            <span class="hw-tag">Zebra</span>
+            <span class="hw-tag">Datalogic</span>
+          </div>
+        </div>
+
+        <!-- Hardware 2 -->
+        <div class="hardware-card">
+          <div class="hardware-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          </div>
+          <h4 class="hardware-title">Touch POS &amp; Billing Terminals</h4>
+          <p class="hardware-desc">
+            Deploy on any standard Windows PC, desktop, laptop, or heavy-duty touchscreen POS counter machine with plug-and-play setup.
+          </p>
+          <div class="hardware-tags">
+            <span class="hw-tag">Windows PC</span>
+            <span class="hw-tag">Touch POS</span>
+            <span class="hw-tag">Posiflex</span>
+            <span class="hw-tag">Sunmi</span>
+          </div>
+        </div>
+
+        <!-- Hardware 3 -->
+        <div class="hardware-card">
+          <div class="hardware-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
+          </div>
+          <h4 class="hardware-title">Label &amp; Barcode Printers</h4>
+          <p class="hardware-desc">
+            Direct thermal barcode sticker printers for packaging loose dals, dry spices, and fresh bakery items.
+          </p>
+          <div class="hardware-tags">
+            <span class="hw-tag">TSC</span>
+            <span class="hw-tag">TVS Electronics</span>
+            <span class="hw-tag">Zebra</span>
+            <span class="hw-tag">Citizen</span>
+          </div>
+        </div>
+
+        <!-- Hardware 4 -->
+        <div class="hardware-card">
+          <div class="hardware-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect width="12" height="8" x="6" y="14" rx="1"/></svg>
+          </div>
+          <h4 class="hardware-title">Cash Drawers &amp; Printers</h4>
+          <p class="hardware-desc">
+            Heavy-duty auto-kick RJ-11 cash drawers and 2-inch/3-inch ultra-fast thermal receipt printers with paper cutters.
+          </p>
+          <div class="hardware-tags">
+            <span class="hw-tag">Epson</span>
+            <span class="hw-tag">Rugtek</span>
+            <span class="hw-tag">NGX</span>
+            <span class="hw-tag">Sewoo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. CORE SUPERMARKET FEATURES (Sharp Retail Matrix)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="features-sec">
+    <div class="features-container">
+      <div class="sec-header">
+        <div class="sec-badge">Full-Stack Retail Matrix</div>
+        <h2 class="sec-title">Engineered Specifically for Grocery Store Realities</h2>
+        <p class="sec-sub">
+          Everything from bulk sack breakdown and GST ITC filing to customer khata ledger management.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          </div>
+          <h3 class="feature-title">Loose Commodity Repackaging</h3>
+          <p class="feature-desc">
+            Convert 50 kg bulk sacks into 500g, 1 kg, and 2 kg consumer packs with auto-generated barcode labels, expiry dates, and lot numbers.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="feature-title">HSN &amp; Dynamic GST Invoicing</h3>
+          <p class="feature-desc">
+            Pre-configured Indian tax slabs (0%, 5%, 12%, 18%) with auto-calculated Input Tax Credit (ITC) reports ready for monthly CA audit.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+          </div>
+          <h3 class="feature-title">Udhar / Store Credit Ledger</h3>
+          <p class="feature-desc">
+            Digital Khatabook for trusted neighborhood customers with automated WhatsApp payment links and instant credit ceiling warnings.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="feature-title">BOGO &amp; Volume Pricing Engine</h3>
+          <p class="feature-desc">
+            Create dynamic promotional deals (Buy 2 Get 1 Free, flat ₹50 off above ₹1,499, or bundled grocery combos) that auto-apply on barcode scans.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="feature-title">Multi-Cashier Shift Handover</h3>
+          <p class="feature-desc">
+            Blind till audits at shift close to prevent cashier cash discrepancies. Cashiers enter drawer cash counts without viewing expected software totals.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="feature-title">Central Warehouse &amp; Branch Sync</h3>
+          <p class="feature-desc">
+            Manage stock transfers between your central godown and multiple retail outlets with inter-branch dispatch notes and centralized analytics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. BOTTOM CONVERSION BANNER (Standardized Dark Container)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bottom-cta-sec">
+    <div class="bottom-cta-box">
+      <h2 class="bottom-cta-title">Ready to turn your grocery counter into a high-speed retail powerhouse?</h2>
+      <p class="bottom-cta-sub">
+        Powering forward-thinking supermarkets, daily marts, and modern Kiranas across India.
+      </p>
+      <div class="bottom-cta-btns">
+        <a href="index.html#cta" class="btn-light-solid">
+          Schedule a 15-Minute Supermarket Demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20supermarket/grocery%20store%20and%20want%20to%20see%20a%20live%20retail%20POS%20demo." target="_blank" rel="noopener noreferrer" class="btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Chat with a Supermarket Specialist
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Modal -->
+  <div class="modal-overlay" id="demoModal" onclick="closeDemoModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeDemoModal()">&times;</button>
+      <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #059669; margin-bottom: 6px;">
+        PRIYULABS RETAIL SUITE
+      </div>
+      <h3 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 0 0 10px;">
+        Schedule a 15-Minute Retail Demo
+      </h3>
+      <p style="font-size: 14px; color: #64748b; margin: 0 0 20px; line-height: 1.5;">
+        See how Priyulabs automates sub-second barcode scans, digital scale sync, and supplier reordering for your supermarket or Kirana.
+      </p>
+
+      <form onsubmit="handleDemoSubmit(event)">
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Store / Supermarket Name</label>
+          <input type="text" id="storeName" required placeholder="e.g. Balaji Supermarket" style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; box-sizing: border-box;" />
+        </div>
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">WhatsApp / Phone Number</label>
+          <input type="tel" id="storePhone" required placeholder="+91 98765 43210" style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; box-sizing: border-box;" />
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 12.5px; font-weight: 700; color: #334155; margin-bottom: 6px;">Store Type</label>
+          <select id="storeType" style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; box-sizing: border-box; background: #fff;">
+            <option>Supermarket (2+ Billing Counters)</option>
+            <option>Modern Kirana &amp; Grocery Store</option>
+            <option>Wholesale &amp; Retail Grain Mart</option>
+            <option>Multi-Branch Retail Chain</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-solid-dark" style="width: 100%; justify-content: center; padding: 12px; font-size: 15px;">
+          Confirm Walkthrough on WhatsApp &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Sticky Scroll Image Animation
+    function switchPillarSlide(index) {
+      const slides = document.querySelectorAll('.sticky-slide');
+      const tabs = document.querySelectorAll('.sticky-nav-tab');
+      const cards = document.querySelectorAll('.pillar-scroll-step');
+
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      tabs.forEach((tab, idx) => {
+        if (idx === index) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      cards.forEach((card, idx) => {
+        if (idx === index) {
+          card.classList.add('active-target');
+        } else {
+          card.classList.remove('active-target');
+        }
+      });
+    }
+
+    function scrollToPillar(index) {
+      const card = document.getElementById('pillar-card-' + index);
+      if (card) {
+        const offset = 120;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = card.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Initialize Intersection Observer for Scroll Synchronization
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.pillar-scroll-step');
+      if (!cards.length) return;
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -40% 0px',
+        threshold: 0.2
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-pillar-index'), 10);
+            if (!isNaN(index)) {
+              switchPillarSlide(index);
+            }
+          }
+        });
+      }, observerOptions);
+
+      cards.forEach((card) => observer.observe(card));
+    });
+
+    function openDemoModal() {
+      document.getElementById('demoModal').classList.add('open');
+    }
+
+    function closeDemoModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('demoModal').classList.remove('open');
+    }
+
+    function handleDemoSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('storeName').value;
+      const phone = document.getElementById('storePhone').value;
+      const type = document.getElementById('storeType').value;
+      const msg = "Hello Priyulabs! I would like to schedule a 15-minute Supermarket & Kirana demo for " + name + " (" + type + "). My phone is " + phone + ".";
+      window.open("https://wa.me/917849074050?text=" + encodeURIComponent(msg), '_blank');
+      closeDemoModal();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDemoModal();
+    });
+  </script>
+</body>
+
+</html>

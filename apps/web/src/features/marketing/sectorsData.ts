@@ -1,4 +1,4 @@
-﻿export interface SectorInfo {
+export interface SectorInfo {
   id: string;
   category: 'fnb' | 'retail' | 'beauty' | 'services';
   title: string;
@@ -36,6 +36,28 @@ export const sectorsList: SectorInfo[] = [
     ],
     techUpgrades: ['Vision AI Stock Detection', 'Expiry Shield Alerts', 'Invoice OCR Auto-Log', 'Weighing Scale Sync', 'FEFO Batch Tracking'],
     roi: '80% Faster Billing Queue • 0% Expired Stock Losses • 100% Cash Accuracy',
+  },
+  {
+    id: 'hardware',
+    category: 'retail',
+    title: 'Hardware, Sanitary & Paint Stores',
+    badge: 'Hardware, Sanitary & Paint POS',
+    eyebrow: 'PRIYULABS FOR HARDWARE, SANITARY & PAINT',
+    headline: 'Contractor ledger, paint shade codes & bulk unit billing',
+    desc: 'Manage trade contractor credit (Udhar), convert meters to bundles, store custom tinting shade codes, and auto-dispatch WhatsApp ledgers.',
+    image: 'sector_electronics.jpg',
+    before: [
+      'Loose paper bahi-khata notebooks with uncollected contractor credit balances',
+      'Cashier confusion over multi-unit conversions (bags, bundles, square feet, running meters)',
+      'Lost customer records of custom mixed paint tinting codes for repeat orders',
+    ],
+    after: [
+      'WhatsApp Udhar Ledger: Automated payment reminders with 1-click UPI links',
+      'Multi-Unit Measurement Converter: Instant trade conversion in 1 tap directly on billing counter',
+      'Paint Tinting Formula Vault: Saves exact tinting recipe and color codes per contractor/project',
+    ],
+    techUpgrades: ['Contractor Udhar Ledger', 'Multi-Unit Converter', 'Paint Tinting Vault', 'Bulk Weighing Sync', 'Project Job Sheets'],
+    roi: '2x Faster Udhar Recovery • Zero Unit Conversion Errors • 100% Paint Shade Match',
   },
   {
     id: 'cafe',

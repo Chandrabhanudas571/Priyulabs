@@ -931,10 +931,9 @@
       <a href="index.html#cta" class="btn-solid-dark" style="text-decoration: none;">
         Start Your Free Trial
       </a>
-      <button onclick="openVideoModal()" class="btn-outline-clean">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Watch 2-Min Demo
-      </button>
+      <a href="#pillars" class="btn-outline-clean" style="text-decoration: none;">
+        Explore Restaurant Features ↓
+      </a>
     </div>
 
     <!-- Hero Visual Frame -->
@@ -1319,13 +1318,7 @@
     </div>
   </div>
 
-  <!-- Video Modal -->
-  <div class="clean-modal-overlay" id="cleanVideoModal" onclick="if(event.target === this) closeVideoModal();">
-    <div class="clean-modal-card" style="max-width: 720px; padding: 10px; background: #000;">
-      <button class="clean-modal-close" style="background: rgba(255,255,255,0.2); color: #fff;" onclick="closeVideoModal()">&times;</button>
-      <video src="assets/pos-checkout.mp4" controls autoplay style="width: 100%; border-radius: 10px; display: block;"></video>
-    </div>
-  </div>
+  
 
   <script>
     function openWalkthroughModal() {
@@ -1334,12 +1327,7 @@
     function closeWalkthroughModal() {
       document.getElementById('walkthroughModal').classList.remove('active');
     }
-    function openVideoModal() {
-      document.getElementById('cleanVideoModal').classList.add('active');
-    }
-    function closeVideoModal() {
-      document.getElementById('cleanVideoModal').classList.remove('active');
-    }
+    
 
     // Mobile navigation toggle
     const hamburger = document.getElementById('hamburger');

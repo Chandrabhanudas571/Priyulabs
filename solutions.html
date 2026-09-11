@@ -640,13 +640,12 @@
 
                 <div class="sq-tab-content" id="tab-retail">
                   <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
-                  <a href="solutions.html?sector=electronics" data-sector="electronics" data-cat="retail" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
-                  <a href="solutions.html?sector=footwear" data-sector="footwear" data-cat="retail" class="sq-disc-item">Footwear &amp; Leather Stores</a>
-                  <a href="solutions.html?sector=jewellery" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery &amp; Watch Outlets</a>
-                  <a href="solutions.html?sector=hardware" data-sector="hardware" data-cat="retail" class="sq-disc-item">Hardware, Sanitary &amp; Paint Stores</a>
-                  <a href="solutions.html?sector=pharmacy" data-sector="pharmacy" data-cat="retail" class="sq-disc-item">Pharmacies &amp; Medical Stores</a>
-                  <a href="solutions.html?sector=books" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                  <a href="grocery-supermarkets-kirana.html" data-sector="grocery" data-cat="retail" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                  <a href="electronics-mobile-shops.html" data-sector="electronics" data-cat="retail" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="footwear-leather-stores.html" data-sector="footwear" data-cat="retail" class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="jewellery-shops.html" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
+                  <a href="watch-stores.html" data-sector="watch" data-cat="retail" class="sq-disc-item">Watch Stores &amp; Horology Boutiques</a>
+                  <a href="bookstores-stationery.html" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-beauty">
@@ -910,9 +909,15 @@
         <p class="sq-hero-sub" id="sqHeroDesc">Streamline counter &amp; barcode billing, loose weight scale sync, batch
           expiry alerts and 1-click CA reports.</p>
 
-        <div class="sq-hero-ctas">
-          <a href="index.html#cta" class="sq-btn-outline">Get Started</a>
-          <a href="index.html#cta" class="sq-btn-solid">Contact Sales</a>
+        <div class="sq-hero-ctas" style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">
+          <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px; text-decoration: none; border-radius: 12px; background: #0f172a; color: #fff; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
+            Get Started Today
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#solUpgradesWrap" class="btn-outline-clean" id="sqHeroSecondaryCta" style="padding: 14px 28px; font-size: 15px; text-decoration: none; border-radius: 12px; border: 1px solid #cbd5e1; background: #fff; color: #1e293b; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); transition: all 0.2s ease;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span id="sqHeroSpeedBtnText">See Supermarket Billing Speed</span>
+          </a>
         </div>
 
         <!-- 3-Photo Visual Showcase Strip: Smooth Touch Swipeable on Mobile -->
@@ -1132,6 +1137,30 @@
         window.location.replace('cafes-chai-bars.html');
         return;
       }
+      if (targetSector === 'electronics') {
+        window.location.replace('electronics-mobile-shops.html');
+        return;
+      }
+      if (targetSector === 'footwear') {
+        window.location.replace('footwear-leather-stores.html');
+        return;
+      }
+      if (targetSector === 'jewellery' || targetSector === 'jewelry') {
+        window.location.replace('jewellery-shops.html');
+        return;
+      }
+      if (targetSector === 'watch' || targetSector === 'watches' || targetSector === 'horology') {
+        window.location.replace('watch-stores.html');
+        return;
+      }
+      if (targetSector === 'books' || targetSector === 'bookstore' || targetSector === 'stationery') {
+        window.location.replace('bookstores-stationery.html');
+        return;
+      }
+      if (targetSector === 'grocery' && window.location.search.includes('sector=grocery')) {
+        window.location.replace('grocery-supermarkets-kirana.html');
+        return;
+      }
 
       // Category filter buttons logic
       document.querySelectorAll('.sol-cat-filter-btn').forEach(btn => {
@@ -1179,6 +1208,38 @@
           }
           if (key === 'cafes') {
             window.location.href = 'cafes-chai-bars.html';
+            return;
+          }
+          if (key === 'bakery') {
+            window.location.href = 'bakeries-shops.html';
+            return;
+          }
+          if (key === 'bars') {
+            window.location.href = 'bars-pubs-breweries.html';
+            return;
+          }
+          if (key === 'electronics') {
+            window.location.href = 'electronics-mobile-shops.html';
+            return;
+          }
+          if (key === 'footwear') {
+            window.location.href = 'footwear-leather-stores.html';
+            return;
+          }
+          if (key === 'jewellery' || key === 'jewelry') {
+            window.location.href = 'jewellery-shops.html';
+            return;
+          }
+          if (key === 'watch' || key === 'watches' || key === 'horology') {
+            window.location.href = 'watch-stores.html';
+            return;
+          }
+          if (key === 'books' || key === 'bookstore' || key === 'stationery') {
+            window.location.href = 'bookstores-stationery.html';
+            return;
+          }
+          if (key === 'grocery') {
+            window.location.href = 'grocery-supermarkets-kirana.html';
             return;
           }
           e.preventDefault();
@@ -1573,6 +1634,28 @@
 
       const sub = document.getElementById('sqHeroDesc');
       if (sub) sub.textContent = data.heroDesc;
+
+      // Update Hero Secondary CTA Action Label
+      const speedLabels = {
+        hardware: 'See Hardware Billing Speed',
+        pharmacy: 'See Pharmacy Billing Speed',
+        grocery: 'See Supermarket Billing Speed',
+        supermarket: 'See Supermarket Billing Speed',
+        electronics: 'See Electronics Billing Speed',
+        footwear: 'See Footwear Billing Speed',
+        jewellery: 'See Jewellery Billing Speed',
+        books: 'See Bookstore Billing Speed',
+        restaurants: 'See Restaurant Billing Speed',
+        qsr: 'See QSR Billing Speed',
+        cafes: 'See Cafe Billing Speed',
+        cloudkitchen: 'See Kitchen Billing Speed',
+        bakery: 'See Bakery Billing Speed',
+        bars: 'See Bar Billing Speed',
+      };
+      const speedSpan = document.getElementById('sqHeroSpeedBtnText');
+      if (speedSpan) {
+        speedSpan.textContent = speedLabels[key] || `See ${data.title.split(' ')[0]} Billing Speed`;
+      }
 
       // Update Showcase Strip
       const img1 = document.getElementById('sqHeroImg1');

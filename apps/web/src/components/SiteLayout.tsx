@@ -29,13 +29,12 @@ const mobileCategoryGroups = [
     category: 'Retail & Grocery',
     icon: '🛒',
     items: [
-      { label: 'Grocery, Supermarkets & Kirana Stores', sector: 'supermarket' },
-      { label: 'Electronics & Mobile Shops', sector: 'electronics' },
-      { label: 'Footwear & Leather Stores', sector: 'apparel' },
-      { label: 'Jewellery & Watch Outlets', sector: 'specialty' },
-      { label: 'Hardware, Sanitary & Paint Stores', sector: 'pos' },
-      { label: 'Pharmacies & Medical Stores', sector: 'pharmacy' },
-      { label: 'Bookstores & Stationery Outlets', sector: 'pos' },
+      { label: 'Grocery, Supermarkets & Kirana Stores', sector: 'supermarket', to: '/retail/grocery-supermarkets-kirana' },
+      { label: 'Electronics & Mobile Shops', sector: 'electronics', to: '/retail/electronics-mobile-shops' },
+      { label: 'Footwear & Leather Stores', sector: 'apparel', to: '/retail/footwear-leather-stores' },
+      { label: 'Jewellery Showrooms & Bullion', sector: 'specialty', to: '/retail/jewellery-shops' },
+      { label: 'Watch Stores & Horology Boutiques', sector: 'specialty', to: '/retail/watch-stores' },
+      { label: 'Bookstores & Stationery Outlets', sector: 'specialty', to: '/retail/bookstores-stationery' },
     ],
   },
   {
@@ -78,23 +77,29 @@ export function SiteLayout({ children }: PropsWithChildren) {
   const location = useLocation();
 
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [typesDropdownOpen, setTypesDropdownOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('Food & Beverage');
   const megaMenuRef = useRef<HTMLDivElement>(null);
+  const typesDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close mega menu on click outside
+  // Close dropdowns on click outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
         setMegaMenuOpen(false);
+      }
+      if (typesDropdownRef.current && !typesDropdownRef.current.contains(event.target as Node)) {
+        setTypesDropdownOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mega menu on route change
+  // Close menus on route change
   useEffect(() => {
     setMegaMenuOpen(false);
+    setTypesDropdownOpen(false);
   }, [location.pathname, location.search]);
 
   useEffect(() => {
@@ -108,135 +113,283 @@ export function SiteLayout({ children }: PropsWithChildren) {
     setActiveSubMenu(null);
   }, [dark, location]);
 
+  const isBookstore =
+    location.pathname === '/retail/bookstores-stationery' ||
+    location.pathname === '/bookstores-stationery';
+  const isWatch =
+    location.pathname === '/retail/watch-stores' ||
+    location.pathname === '/watch-stores';
+  const isJewellery =
+    location.pathname === '/retail/jewellery-shops' ||
+    location.pathname === '/jewellery-shops';
+  const isFootwear =
+    location.pathname === '/retail/footwear-leather-stores' ||
+    location.pathname === '/footwear-leather-stores';
+  const isElectronics =
+    location.pathname === '/retail/electronics-mobile-shops' ||
+    location.pathname === '/electronics-mobile-shops';
+  const isGrocery =
+    location.pathname === '/retail/grocery-supermarkets-kirana' ||
+    location.pathname === '/grocery-supermarkets-kirana';
+
+  const isRetail =
+    location.pathname.startsWith('/retail') ||
+    isBookstore ||
+    isWatch ||
+    isJewellery ||
+    isFootwear ||
+    isElectronics ||
+    isGrocery ||
+    (location.pathname === '/solutions' &&
+      (location.search.includes('sector=hardware') ||
+        location.search.includes('sector=pharmacy')));
+
+  const isFnb =
+    location.pathname.startsWith('/food-beverage') ||
+    location.pathname.startsWith('/fnb') ||
+    [
+      '/restaurants-fine-dining',
+      '/qsr-fast-food',
+      '/cafes-chai-bars',
+      '/cloud-kitchens-catering',
+      '/bakeries-shops',
+      '/bakeries-sweet-shops',
+      '/bars-pubs-breweries',
+    ].includes(location.pathname);
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500 selection:text-white dark:bg-slate-950 dark:text-slate-100">
       {/* Sticky Global Navigation Bar */}
       <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 py-3.5 px-6 sm:px-12 flex items-center justify-between dark:border-slate-800 dark:bg-slate-950/95">
         {/* Left Branding */}
         <Link to="/" className="flex items-center gap-3 no-underline group" aria-label="Priyulabs Home">
-          <div className="rounded-xl bg-[#0f1422] p-2.5 shadow-sm flex items-center justify-center">
-            <img src="/assets/logo.svg" className="h-6 w-6" alt="Priyulabs Logo" />
+          {/* Squircle Logo Container */}
+          <div className="h-10 w-10 rounded-2xl bg-[#0f1422] p-2 flex items-center justify-center shadow-sm">
+            <img src="/assets/logo.svg" alt="Priyulabs" className="h-full w-full object-contain" />
           </div>
-          <div className="flex flex-col text-left">
-            <span className="text-base font-extrabold tracking-tight text-[#0f172a] dark:text-white leading-tight">
+
+          {/* 2-Line Text Stack */}
+          <div className="flex flex-col leading-tight text-left">
+            <span className="text-base font-bold text-[#0f172a] dark:text-white tracking-tight">
               PRIYULABS
             </span>
-            <span className="text-[10px] font-bold tracking-wider text-[#64748b] uppercase leading-none mt-0.5">
-              DIGITAL
-            </span>
+            {isBookstore ? (
+              <span className="text-xs font-semibold text-[#059669] tracking-wider uppercase">
+                BOOKSTORE RETAIL OS
+              </span>
+            ) : isWatch ? (
+              <span className="text-xs font-semibold text-[#0f766e] tracking-wider uppercase">
+                WATCH RETAIL OS
+              </span>
+            ) : isJewellery ? (
+              <span className="text-xs font-semibold text-[#d97706] tracking-wider uppercase">
+                JEWELLERY OS
+              </span>
+            ) : isFootwear ? (
+              <span className="text-xs font-semibold text-[#059669] tracking-wider uppercase">
+                FOOTWEAR &amp; LEATHER OS
+              </span>
+            ) : isElectronics ? (
+              <span className="text-xs font-semibold text-[#0284c7] tracking-wider uppercase">
+                ELECTRONICS OS
+              </span>
+            ) : isGrocery ? (
+              <span className="text-xs font-semibold text-[#16a34a] tracking-wider uppercase">
+                RETAIL &amp; GROCERY OS
+              </span>
+            ) : (
+              <span className="text-[10px] font-bold tracking-wider text-[#64748b] uppercase leading-none mt-0.5">
+                DIGITAL
+              </span>
+            )}
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        {location.pathname.startsWith('/food-beverage') ||
-        ['/restaurants-fine-dining', '/qsr-fast-food', '/cafes-chai-bars', '/cloud-kitchens-catering', '/bakeries-shops', '/bakeries-sweet-shops', '/bars-pubs-breweries'].includes(location.pathname) ? (
+        {isRetail || isFnb ? (
           <>
             {/* Center / Navigation Links */}
-            <div className="hidden items-center gap-8 md:flex text-sm font-medium">
-              <span className="font-bold text-[#0f172a] dark:text-white cursor-default">
+            <div className="hidden md:flex items-center gap-8 lg:gap-10">
+              <a
+                href="#"
+                className="text-sm font-semibold text-[#0f172a] dark:text-white cursor-pointer"
+              >
                 Overview
-              </span>
+              </a>
 
-              {/* Types Dropdown (Food & Beverage Only) */}
-              <div className="relative group">
+              {/* Types Dropdown (Context-Aware: Retail or Food & Beverage) */}
+              <div className="relative group" ref={typesDropdownRef}>
                 <button
                   type="button"
-                  className="flex items-center gap-1.5 text-slate-600 hover:text-[#0f172a] dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer"
+                  onClick={() => setTypesDropdownOpen((prev) => !prev)}
+                  className="flex items-center gap-1 text-sm font-medium text-[#475569] hover:text-[#0f172a] dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer"
                 >
                   <span>Types</span>
                   <span className="text-[10px] text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-transform">▾</span>
                 </button>
 
-                <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50">
+                <div
+                  className={`absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50 transition-all duration-150 ${
+                    typesDropdownOpen
+                      ? 'visible opacity-100'
+                      : 'invisible opacity-0 group-hover:visible group-hover:opacity-100'
+                  }`}
+                >
                   <div className="w-72 rounded-2xl border border-neutral-200 bg-white p-2 shadow-2xl dark:border-slate-800 dark:bg-slate-900">
-                    <div className="px-3 py-1.5 text-[10.5px] font-extrabold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 mb-1">
-                      Food &amp; Beverage Types
-                    </div>
-                    <Link
-                      to="/food-beverage/restaurants-fine-dining"
-                      className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
-                        location.pathname === '/food-beverage/restaurants-fine-dining'
-                          ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span>🍽️ Restaurants &amp; Fine Dining</span>
-                      {location.pathname === '/food-beverage/restaurants-fine-dining' && (
-                        <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">Current</span>
-                      )}
-                    </Link>
-                    <Link
-                      to="/food-beverage/qsr-fast-food"
-                      className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
-                        location.pathname === '/food-beverage/qsr-fast-food'
-                          ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span>⚡ QSR, Fast Food &amp; Takeaway</span>
-                      {location.pathname === '/food-beverage/qsr-fast-food' && (
-                        <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">Current</span>
-                      )}
-                    </Link>
-                    <Link
-                      to="/food-beverage/cafes-chai-bars"
-                      className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
-                        location.pathname === '/food-beverage/cafes-chai-bars'
-                          ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span>☕ Cafes &amp; Chai Bars</span>
-                      {location.pathname === '/food-beverage/cafes-chai-bars' && (
-                        <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">Current</span>
-                      )}
-                    </Link>
-                    <Link
-                      to="/food-beverage/cloud-kitchens-catering"
-                      className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
-                        location.pathname === '/food-beverage/cloud-kitchens-catering'
-                          ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span>📦 Cloud Kitchens &amp; Catering</span>
-                      {location.pathname === '/food-beverage/cloud-kitchens-catering' && (
-                        <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">Current</span>
-                      )}
-                    </Link>
-                    <Link
-                      to="/food-beverage/bakeries-shops"
-                      className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
-                        ['/food-beverage/bakeries-shops', '/bakeries-shops', '/food-beverage/bakeries-sweet-shops', '/bakeries-sweet-shops'].includes(location.pathname)
-                          ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span>🥐 Bakeries &amp; Patisseries</span>
-                      {['/food-beverage/bakeries-shops', '/bakeries-shops', '/food-beverage/bakeries-sweet-shops', '/bakeries-sweet-shops'].includes(location.pathname) && (
-                        <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">Current</span>
-                      )}
-                    </Link>
-                    <Link
-                      to="/food-beverage/bars-pubs-breweries"
-                      className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
-                        ['/food-beverage/bars-pubs-breweries', '/bars-pubs-breweries'].includes(location.pathname)
-                          ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span>🍷 Bars, Pubs &amp; Breweries</span>
-                      {['/food-beverage/bars-pubs-breweries', '/bars-pubs-breweries'].includes(location.pathname) && (
-                        <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">Current</span>
-                      )}
-                    </Link>
+                    {isRetail ? (
+                      <>
+                        <div className="px-3 py-1.5 text-[10.5px] font-extrabold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 mb-1">
+                          RETAIL BUSINESS TYPES
+                        </div>
+                        {[
+                          {
+                            label: '🛒 Grocery, Supermarkets & Kirana',
+                            to: '/retail/grocery-supermarkets-kirana',
+                            isActive:
+                              location.pathname === '/retail/grocery-supermarkets-kirana' ||
+                              location.pathname === '/grocery-supermarkets-kirana',
+                          },
+                          {
+                            label: '📱 Electronics & Mobile Shops',
+                            to: '/retail/electronics-mobile-shops',
+                            isActive:
+                              location.pathname === '/retail/electronics-mobile-shops' ||
+                              location.pathname === '/electronics-mobile-shops',
+                          },
+                          {
+                            label: '👞 Footwear & Leather Stores',
+                            to: '/retail/footwear-leather-stores',
+                            isActive:
+                              location.pathname === '/retail/footwear-leather-stores' ||
+                              location.pathname === '/footwear-leather-stores',
+                          },
+                          {
+                            label: '💍 Jewellery Showrooms',
+                            to: '/retail/jewellery-shops',
+                            isActive:
+                              location.pathname === '/retail/jewellery-shops' ||
+                              location.pathname === '/jewellery-shops',
+                          },
+                          {
+                            label: '⌚ Watch Stores & Horology',
+                            to: '/retail/watch-stores',
+                            isActive:
+                              location.pathname === '/retail/watch-stores' ||
+                              location.pathname === '/watch-stores',
+                          },
+                          {
+                            label: '🔧 Hardware, Sanitary & Paint',
+                            to: '/solutions?sector=hardware',
+                            isActive:
+                              location.pathname === '/solutions' &&
+                              location.search.includes('sector=hardware'),
+                          },
+                          {
+                            label: '📚 Bookstores & Stationery',
+                            to: '/retail/bookstores-stationery',
+                            isActive:
+                              location.pathname === '/retail/bookstores-stationery' ||
+                              location.pathname === '/bookstores-stationery',
+                          },
+                        ].map((item) => (
+                          <Link
+                            key={item.to}
+                            to={item.to}
+                            onClick={() => setTypesDropdownOpen(false)}
+                            className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
+                              item.isActive
+                                ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
+                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
+                            }`}
+                          >
+                            <span>{item.label}</span>
+                            {item.isActive && (
+                              <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">
+                                Current
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        <div className="px-3 py-1.5 text-[10.5px] font-extrabold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 mb-1">
+                          FOOD &amp; BEVERAGE TYPES
+                        </div>
+                        {[
+                          {
+                            label: '🍽️ Restaurants & Fine Dining',
+                            to: '/food-beverage/restaurants-fine-dining',
+                            isActive:
+                              location.pathname === '/food-beverage/restaurants-fine-dining' ||
+                              location.pathname === '/restaurants-fine-dining',
+                          },
+                          {
+                            label: '⚡ QSR, Fast Food & Takeaway',
+                            to: '/food-beverage/qsr-fast-food',
+                            isActive:
+                              location.pathname === '/food-beverage/qsr-fast-food' ||
+                              location.pathname === '/qsr-fast-food',
+                          },
+                          {
+                            label: '☕ Cafes & Chai Bars',
+                            to: '/food-beverage/cafes-chai-bars',
+                            isActive:
+                              location.pathname === '/food-beverage/cafes-chai-bars' ||
+                              location.pathname === '/cafes-chai-bars',
+                          },
+                          {
+                            label: '📦 Cloud Kitchens & Catering',
+                            to: '/food-beverage/cloud-kitchens-catering',
+                            isActive:
+                              location.pathname === '/food-beverage/cloud-kitchens-catering' ||
+                              location.pathname === '/cloud-kitchens-catering',
+                          },
+                          {
+                            label: '🥐 Bakeries & Sweet Shops',
+                            to: '/food-beverage/bakeries-shops',
+                            isActive: [
+                              '/food-beverage/bakeries-shops',
+                              '/bakeries-shops',
+                              '/food-beverage/bakeries-sweet-shops',
+                              '/bakeries-sweet-shops',
+                            ].includes(location.pathname),
+                          },
+                          {
+                            label: '🍷 Bars, Pubs & Breweries',
+                            to: '/food-beverage/bars-pubs-breweries',
+                            isActive:
+                              location.pathname === '/food-beverage/bars-pubs-breweries' ||
+                              location.pathname === '/bars-pubs-breweries',
+                          },
+                        ].map((item) => (
+                          <Link
+                            key={item.to}
+                            to={item.to}
+                            onClick={() => setTypesDropdownOpen(false)}
+                            className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
+                              item.isActive
+                                ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
+                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
+                            }`}
+                          >
+                            <span>{item.label}</span>
+                            {item.isActive && (
+                              <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">
+                                Current
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
 
               <a
                 href="#pillars"
-                className="text-slate-600 hover:text-[#0f172a] dark:text-slate-300 dark:hover:text-white transition-colors"
+                className="text-sm font-medium text-[#475569] hover:text-[#0f172a] dark:text-slate-300 dark:hover:text-white transition-colors"
               >
                 Switch Priyulabs
               </a>

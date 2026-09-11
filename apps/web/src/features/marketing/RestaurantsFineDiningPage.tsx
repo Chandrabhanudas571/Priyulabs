@@ -44,7 +44,6 @@ const fadeAnim = {
 
 export function RestaurantsFineDiningPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleDemoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -118,13 +117,12 @@ export function RestaurantsFineDiningPage() {
               >
                 Start Your Free Trial
               </a>
-              <button
-                onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] cursor-pointer"
+              <a
+                href="#pillars"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] cursor-pointer no-underline"
               >
-                <Play size={15} className="fill-slate-800 text-slate-800" />
-                Watch 2-Min Demo
-              </button>
+                Explore Restaurant Features ↓
+              </a>
             </motion.div>
           </div>
 
@@ -137,7 +135,7 @@ export function RestaurantsFineDiningPage() {
           >
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-100">
               <img
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80"
+                src="/assets/restaurant_hero.jpg"
                 alt="Modern fine dining restaurant interior and service"
                 className="h-full w-full object-cover"
               />
@@ -245,7 +243,7 @@ export function RestaurantsFineDiningPage() {
               <div className="lg:col-span-6">
                 <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-[#f8fafc] p-2 sm:p-3 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.01]">
                   <img
-                    src="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80"
+                    src="/assets/restaurant_table_pos.jpg"
                     alt="Fast table-side POS payment"
                     className="aspect-[4/3] w-full rounded-xl object-cover"
                   />
@@ -258,7 +256,7 @@ export function RestaurantsFineDiningPage() {
               <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-[#f8fafc] p-2 sm:p-3 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.01]">
                   <img
-                    src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80"
+                    src="/assets/restaurant_kds_kitchen.jpg"
                     alt="Chefs in professional kitchen using KDS"
                     className="aspect-[4/3] w-full rounded-xl object-cover"
                   />
@@ -349,7 +347,7 @@ export function RestaurantsFineDiningPage() {
               <div className="lg:col-span-6">
                 <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-[#f8fafc] p-2 sm:p-3 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.01]">
                   <img
-                    src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+                    src="/assets/restaurant_menu_direct.jpg"
                     alt="Fine dining presentation and direct digital menu"
                     className="aspect-[4/3] w-full rounded-xl object-cover"
                   />
@@ -362,7 +360,7 @@ export function RestaurantsFineDiningPage() {
               <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-[#f8fafc] p-2 sm:p-3 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.01]">
                   <img
-                    src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80"
+                    src="/assets/restaurant_atmosphere.jpg"
                     alt="Busy restaurant dining room with happy guests"
                     className="aspect-[4/3] w-full rounded-xl object-cover"
                   />
@@ -649,38 +647,6 @@ export function RestaurantsFineDiningPage() {
                 ✅ Opening WhatsApp with your walkthrough details...
               </div>
             )}
-          </motion.div>
-        </div>
-      )}
-
-      {/* ──────────────────────────────────────────────────────────
-          VIDEO MODAL
-      ────────────────────────────────────────────────────────── */}
-      {videoModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setVideoModalOpen(false);
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.96 }}
-            className="w-full max-w-3xl rounded-2xl border border-neutral-200 bg-black p-2 shadow-2xl overflow-hidden relative"
-          >
-            <button
-              onClick={() => setVideoModalOpen(false)}
-              className="absolute top-4 right-4 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black cursor-pointer"
-            >
-              ✕
-            </button>
-            <video
-              src="/assets/pos-checkout.mp4"
-              controls
-              autoPlay
-              className="aspect-[16/9] w-full rounded-xl object-cover"
-            />
           </motion.div>
         </div>
       )}

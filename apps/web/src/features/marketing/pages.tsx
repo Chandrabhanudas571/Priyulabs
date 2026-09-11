@@ -8,6 +8,12 @@ export * from './CafesChaiBarsPage';
 export * from './CloudKitchensCateringPage';
 export * from './BakeriesSweetShopsPage';
 export * from './BarsPubsBreweriesPage';
+export * from './GrocerySupermarketsKiranaPage';
+export * from './ElectronicsMobileShopsPage';
+export * from './FootwearLeatherStoresPage';
+export * from './JewelleryShopsPage';
+export * from './WatchStoresPage';
+export * from './BookstoresStationeryPage';
 export * from './sectorsData';
 export * from './LeadSection';
 
