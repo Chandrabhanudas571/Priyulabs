@@ -1,4 +1,4 @@
-﻿import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   BarChart3,
@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { sectorsList } from './sectorsData';
 import { LeadSection } from './LeadSection';
+import { SquareHoverCards } from './SquareHoverCards';
 
 const fadeAnim = {
   initial: { opacity: 0, y: 16 },
@@ -201,39 +202,8 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 4 Core Pillars */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8">
-        <motion.div {...fadeAnim} className="text-center">
-          <span className="text-xs font-bold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
-            Unifying Fragmented Retail Workflows
-          </span>
-          <h2 className="mt-2 text-3xl font-black text-slate-900 dark:text-white sm:text-5xl">
-            Four powerful pillars. One operating layer.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
-            Say goodbye to clunky disconnected tools. Run point-of-sale, stock, team attendance, and tax compliance
-            from a single unified screen.
-          </p>
-        </motion.div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {platformFeatures.map(({ icon: Icon, title, text }) => (
-            <motion.article
-              {...fadeAnim}
-              key={title}
-              className="flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-7 shadow-sm transition hover:shadow-md hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900"
-            >
-              <div>
-                <div className="inline-flex rounded-2xl bg-indigo-50 p-3.5 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
-                  <Icon size={24} />
-                </div>
-                <h3 className="mt-5 text-xl font-bold text-slate-900 dark:text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{text}</p>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+      {/* 4 Core Pillars (Square Video Hover Cards) */}
+      <SquareHoverCards />
 
       {/* Business Types Grid */}
       <section className="mx-auto max-w-7xl px-6 sm:px-8">
@@ -322,10 +292,10 @@ export function HomePage() {
 
               <div className="mt-8">
                 <Link
-                  to="/solutions?sector=bakery"
+                  to="/food-beverage/bakeries-shops"
                   className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 font-bold text-white transition hover:bg-indigo-700"
                 >
-                  View Bakery Solution Deep-Dive
+                  View Bakery & Patisserie Solution Deep-Dive
                   <ArrowRight size={16} />
                 </Link>
               </div>

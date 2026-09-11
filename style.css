@@ -2543,6 +2543,358 @@ iframe {
   background: var(--bg-surface);
 }
 
+/* ─── 4 SLEEK SHOWCASE CARDS (SQUARE STYLE) ────────────────────────── */
+.sq-showcase-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.sq-bar-link {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  transition: opacity 0.2s ease;
+}
+
+.sq-bar-link:hover {
+  opacity: 0.7;
+}
+
+.sq-slider-arrows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sq-arrow-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-main);
+  padding: 6px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sq-arrow-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.7;
+}
+
+.sq-cards-grid {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 6px 0 16px;
+  position: relative;
+}
+
+.sq-cards-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.sq-product-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: calc((100% - 48px) / 3);
+  max-width: calc((100% - 48px) / 3);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: flex-basis, min-width, max-width;
+  transition: flex-basis 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              min-width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth expansion towards the right side by ~5.3cm (200px) on hover */
+.sq-product-card.is-hovered,
+.sq-product-card:hover,
+.sq-product-card.is-active {
+  flex: 0 0 calc(((100% - 48px) / 3) + 200px);
+  min-width: calc(((100% - 48px) / 3) + 200px);
+  max-width: calc(((100% - 48px) / 3) + 200px);
+  z-index: 10;
+}
+
+/* Invisible boundary bridge eliminating gap dead-zones when moving between cards */
+.sq-product-card::after {
+  content: '';
+  position: absolute;
+  inset: -6px -12px;
+  z-index: 8;
+  pointer-events: auto;
+}
+
+/* Sibling cards slightly dim for focus when a card is hovered */
+.sq-cards-grid.has-active-card .sq-product-card:not(.is-hovered):not(.is-active) {
+  opacity: 0.88;
+}
+
+.sq-product-box {
+  width: 100%;
+  height: 400px;
+  background: #f1f3f5;
+  border-radius: 20px; /* rounded-2xl */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  transform: translateZ(0);
+  will-change: box-shadow;
+  transition: box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .sq-product-box {
+  background: #18191f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* STRICT: Only width increases - NO vertical height or scale changes! */
+.sq-product-card.is-hovered .sq-product-box,
+.sq-product-card:hover .sq-product-box,
+.sq-product-card.is-active .sq-product-box {
+  transform: none;
+  box-shadow: 0 22px 48px -8px rgba(15, 23, 42, 0.22);
+}
+
+/* Static Thumbnail Photo Layer */
+.sq-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.sq-product-card.is-hovered .sq-card-img,
+.sq-product-card:hover .sq-card-img,
+.sq-product-card.is-active .sq-card-img {
+  transform: scale(1.05);
+}
+
+/* Autoplaying Looping Hover Video Layer */
+.sq-card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: translateZ(0);
+  will-change: opacity;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sq-product-card.is-hovered .sq-card-video,
+.sq-product-card:hover .sq-card-video,
+.sq-product-card.is-active .sq-card-video {
+  opacity: 1;
+}
+
+/* Dark Bottom-Gradient Overlay (bottom 40% of card) */
+.sq-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 30%,
+    rgba(0, 0, 0, 0.20) 50%,
+    transparent 75%
+  );
+  opacity: 0;
+  transform: translateZ(0);
+  will-change: opacity;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sq-product-card.is-hovered .sq-card-gradient,
+.sq-product-card:hover .sq-card-gradient,
+.sq-product-card.is-active .sq-card-gradient {
+  opacity: 1;
+}
+
+/* Inside Bottom Overlay Info (fades and slides up on hover: translate-y-0 opacity-100) */
+.sq-card-overlay-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px 18px 18px;
+  z-index: 4;
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  will-change: opacity, transform;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.sq-product-card.is-hovered .sq-card-overlay-content,
+.sq-product-card:hover .sq-card-overlay-content,
+.sq-product-card.is-active .sq-card-overlay-content {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.sq-card-badge {
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c7d2fe;
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.sq-card-inner-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
+}
+
+.sq-card-subtitle {
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.sq-card-arrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sq-card-arrow-badge svg {
+  transition: transform 0.2s ease;
+}
+
+.sq-product-card:hover .sq-card-arrow-badge svg,
+.sq-product-card.is-active .sq-card-arrow-badge svg,
+.sq-product-card.is-hovered .sq-card-arrow-badge svg {
+  transform: translateX(3px);
+}
+
+.sq-product-info {
+  padding: 2px 0 0 2px;
+}
+
+.sq-product-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  line-height: 1.4;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  display: inline-block;
+}
+
+.sq-product-card:hover .sq-product-title,
+.sq-product-card.is-active .sq-product-title,
+.sq-product-card.is-hovered .sq-product-title {
+  opacity: 0.85;
+  color: var(--primary, #b76e79);
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .sq-cards-grid {
+    gap: 20px;
+  }
+  .sq-product-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+    min-width: calc((100% - 20px) / 2);
+    max-width: calc((100% - 20px) / 2);
+  }
+  .sq-product-card.is-hovered,
+  .sq-product-card:hover,
+  .sq-product-card.is-active {
+    flex: 0 0 calc(((100% - 20px) / 2) + 140px);
+    min-width: calc(((100% - 20px) / 2) + 140px);
+    max-width: calc(((100% - 20px) / 2) + 140px);
+  }
+  .sq-product-box {
+    height: 370px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sq-cards-grid {
+    gap: 16px;
+    padding-right: 24px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .sq-product-card {
+    flex: 0 0 84%;
+    min-width: 84%;
+    max-width: 84%;
+    scroll-snap-align: start;
+  }
+
+  .sq-product-box {
+    height: 340px;
+  }
+}
+
 .attr-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -3474,7 +3826,9 @@ iframe {
   letter-spacing: 0.05em;
 }
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 13px 16px;
   background: var(--bg-main);
@@ -3485,17 +3839,55 @@ iframe {
   font-family: var(--font-body);
   transition: all 0.2s ease;
   outline: none;
+  box-sizing: border-box;
 }
 
-.form-group input:focus {
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 85px;
+  line-height: 1.5;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   background: #ffffff;
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(183, 110, 121, 0.12);
 }
 
-[data-theme="dark"] .form-group input {
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
   background: var(--bg-surface);
   color: #ffffff;
+  border-color: var(--border-highlight);
+}
+
+[data-theme="dark"] .form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .form-privacy {
