@@ -28,7 +28,6 @@ const fadeAnim = {
 
 export function QsrFastFoodPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleDemoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -101,13 +100,12 @@ export function QsrFastFoodPage() {
               >
                 Get Started Today
               </a>
-              <button
-                onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] cursor-pointer"
+              <a
+                href="#pillars"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] cursor-pointer no-underline"
               >
-                <Play size={15} className="fill-slate-800 text-slate-800" />
-                See QSR Demo
-              </button>
+                See QSR Features ↓
+              </a>
             </motion.div>
           </div>
 
@@ -647,34 +645,6 @@ export function QsrFastFoodPage() {
               </div>
             </form>
           </motion.div>
-        </div>
-      )}
-
-      {/* ──────────────────────────────────────────────────────────
-          VIDEO MODAL
-      ────────────────────────────────────────────────────────── */}
-      {videoModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-          onClick={() => setVideoModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-black shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setVideoModalOpen(false)}
-              className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/30"
-            >
-              ✕
-            </button>
-            <video
-              src="/assets/pos-checkout.mp4"
-              controls
-              autoPlay
-              className="w-full rounded-2xl aspect-16/9"
-            />
-          </div>
         </div>
       )}
     </div>

@@ -23,7 +23,6 @@ const fadeAnim = {
 };
 
 export function BarsPubsBreweriesPage() {
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-amber-500 selection:text-white">
@@ -72,13 +71,12 @@ export function BarsPubsBreweriesPage() {
             Get Started Today
             <ArrowRight size={16} />
           </a>
-          <button
-            onClick={() => setVideoModalOpen(true)}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
+          <a
+            href="#pillars"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50 no-underline cursor-pointer"
           >
-            <Play size={16} className="text-slate-900 fill-slate-900" />
-            Explore Bar OS Demo
-          </button>
+            Explore Bar OS Features ↓
+          </a>
         </motion.div>
 
         {/* Hero Visual with Active Bar POS Interface Overlay */}
@@ -438,37 +436,6 @@ export function BarsPubsBreweriesPage() {
           </div>
         </div>
       </section>
-
-      {/* Video Demo Modal */}
-      {videoModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
-          onClick={() => setVideoModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-black shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setVideoModalOpen(false)}
-              className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white transition hover:bg-white/40"
-            >
-              <X size={20} />
-            </button>
-            <div className="aspect-video w-full">
-              <video
-                controls
-                autoPlay
-                className="h-full w-full object-cover"
-                poster="/assets/bar_hero.jpg"
-              >
-                <source src="/assets/pos-checkout.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { Cpu, Monitor, Server, Code2 } from 'lucide-react';
+import { Cpu, Monitor, Server, Code2, ArrowRight, Zap } from 'lucide-react';
 import { sectorsList } from './sectorsData';
 import { LeadSection } from './LeadSection';
 
@@ -127,6 +127,66 @@ const getSectorUpgrades = (sectorId: string, sectorTitle: string) => {
         title: 'FSSAI Expiry & Barcode Pipeline',
         desc: 'Automated compliance generation of batch numbers, nutritional metrics, and packaging date labels.',
         spec: 'FSSAI compliant format'
+      }
+    ],
+    hardware: [
+      {
+        type: 'cpu',
+        category: 'Hardware / Processing',
+        title: 'Industrial Heavy-Duty Edge Unit',
+        desc: 'Built for rugged hardware store environments, supporting long-range barcode laser scanners, weighing scales, and multi-terminal sync.',
+        spec: 'IP54 dust-resistant chassis'
+      },
+      {
+        type: 'monitor',
+        category: 'Display / Workstation',
+        title: 'Contractor & Dual-Screen Workstation',
+        desc: 'Wide operator touch console with split-view contractor Udhar ledger and live stock conversion calculator.',
+        spec: 'Anti-scratch capacitive display'
+      },
+      {
+        type: 'server',
+        category: 'Infrastructure / Cloud / Storage',
+        title: 'Multi-Unit Inventory & Paint Cloud Ledger',
+        desc: 'Real-time synchronization across bundles, meters, bags, and custom tinting formula codes.',
+        spec: 'Automated credit limit alerts'
+      },
+      {
+        type: 'code2',
+        category: 'Software / Engineering',
+        title: 'WhatsApp Udhar & UPI Auto-Reminder API',
+        desc: 'Automated ledger statements dispatched to contractors via WhatsApp with embedded instant payment links.',
+        spec: 'Automated reconciliation webhooks'
+      }
+    ],
+    pharmacy: [
+      {
+        type: 'cpu',
+        category: 'Hardware / Processing',
+        title: 'High-Speed Medical Barcode Engine',
+        desc: 'Sub-second 2D DataMatrix and QR scanner reading tiny medicine batch codes and expiry dates.',
+        spec: 'Sub-50ms barcode decode'
+      },
+      {
+        type: 'monitor',
+        category: 'Display / Workstation',
+        title: 'Prescription & Chemist Workstation',
+        desc: 'Fast salt-search interface displaying generic substitutes, strip vs tablet counters, and doctor notes.',
+        spec: 'Ergonomic dual-panel display'
+      },
+      {
+        type: 'server',
+        category: 'Infrastructure / Cloud / Storage',
+        title: '150,000+ Salt & Schedule H Cloud Vault',
+        desc: 'Real-time database of drug compositions, restricted Schedule H/X compliance logs, and FEFO expiry tracking.',
+        spec: 'Automated CDSCO compliance audit'
+      },
+      {
+        type: 'code2',
+        category: 'Software / Engineering',
+        title: '1-Click GSTR-1 & Doctor Prescription API',
+        desc: 'Instant export of CA-ready GST filing JSON and automated refill reminders sent to patients.',
+        spec: 'HIPAA & CDSCO aligned protocol'
       }
     ]
   };
@@ -300,6 +360,38 @@ export function SolutionsPage() {
                 🚀 {currentSector.roi}
               </div>
 
+              {/* Standard Sector Hero Actions */}
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <a
+                  href="/#cta"
+                  className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-slate-800 hover:-translate-y-0.5 no-underline"
+                >
+                  Get Started Today
+                  <ArrowRight size={16} />
+                </a>
+                <a
+                  href="#systemUpgrades"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50 no-underline cursor-pointer shadow-xs"
+                >
+                  <Zap size={16} className="text-emerald-600" />
+                  {currentSector.id === 'hardware'
+                    ? 'See Hardware Billing Speed'
+                    : currentSector.id === 'pharmacy'
+                    ? 'See Pharmacy Billing Speed'
+                    : currentSector.id === 'supermarket'
+                    ? 'See Supermarket Billing Speed'
+                    : currentSector.id === 'electronics'
+                    ? 'See Electronics Billing Speed'
+                    : currentSector.id === 'footwear'
+                    ? 'See Footwear Billing Speed'
+                    : currentSector.id === 'jewellery'
+                    ? 'See Jewellery Billing Speed'
+                    : currentSector.id === 'books'
+                    ? 'See Bookstore Billing Speed'
+                    : `See ${currentSector.title.split(' ')[0]} Billing Speed`}
+                </a>
+              </div>
+
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
                 <div className="rounded-2xl border border-rose-200 bg-rose-50/50 p-5 dark:border-rose-950 dark:bg-rose-950/20">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400">
@@ -331,7 +423,7 @@ export function SolutionsPage() {
               </div>
 
               {/* Key Hardware & Software Upgrades Grid */}
-              <div className="mt-12 border-t border-neutral-200/70 pt-10 dark:border-neutral-800/70">
+              <div id="systemUpgrades" className="mt-12 border-t border-neutral-200/70 pt-10 dark:border-neutral-800/70">
                 <div className="mb-8">
                   <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-neutral-100/70 px-3 py-1 text-[11px] font-semibold tracking-wider text-neutral-600 uppercase dark:border-neutral-800 dark:bg-neutral-800/60 dark:text-neutral-400">
                     <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
@@ -346,7 +438,7 @@ export function SolutionsPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                  {getSectorUpgrades(currentSector.id, currentSector.name).map((card) => (
+                  {getSectorUpgrades(currentSector.id, currentSector.title).map((card) => (
                     <div
                       key={card.title}
                       className="group relative flex flex-col items-start justify-between rounded-2xl border border-neutral-200 bg-white p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-200/50 dark:border-neutral-800 dark:bg-neutral-900/90 dark:hover:border-neutral-700 dark:hover:shadow-none"

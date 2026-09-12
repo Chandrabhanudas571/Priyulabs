@@ -32,7 +32,6 @@ const fadeAnim = {
 
 export function CafesChaiBarsPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleDemoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -105,13 +104,12 @@ export function CafesChaiBarsPage() {
               >
                 Get Started Today
               </a>
-              <button
-                onClick={() => setVideoModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-7 py-3.5 text-sm font-semibold text-[#0f172a] shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] active:scale-[0.99] cursor-pointer"
+              <a
+                href="#pillars"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-7 py-3.5 text-sm font-semibold text-[#0f172a] shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] active:scale-[0.99] cursor-pointer no-underline"
               >
-                <Play size={15} className="text-[#0f172a] fill-[#0f172a]" />
-                See Cafe Demo
-              </button>
+                See Cafe Features ↓
+              </a>
             </motion.div>
           </div>
 
@@ -691,34 +689,6 @@ export function CafesChaiBarsPage() {
                 {submitted ? 'Connecting to WhatsApp...' : 'Confirm Cafe Walkthrough &rarr;'}
               </button>
             </form>
-          </div>
-        </div>
-      )}
-
-      {/* VIDEO PREVIEW MODAL */}
-      {videoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm">
-          <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-black shadow-2xl border border-slate-800">
-            <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
-              <div className="flex items-center gap-2 text-white text-xs font-bold">
-                <span className="h-2 w-2 rounded-full bg-amber-500"></span>
-                Priyulabs Cafe &amp; Chai Bar Platform Preview
-              </div>
-              <button
-                onClick={() => setVideoModalOpen(false)}
-                className="text-slate-400 hover:text-white text-sm"
-              >
-                ✕ Close
-              </button>
-            </div>
-            <div className="aspect-video w-full bg-slate-950 flex items-center justify-center">
-              <video
-                src="/assets/pos-checkout.mp4"
-                controls
-                autoPlay
-                className="h-full w-full object-cover"
-              />
-            </div>
           </div>
         </div>
       )}
