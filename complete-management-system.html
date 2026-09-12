@@ -10,7 +10,7 @@ permalink: /complete-management-system
   <title>Complete Management System | Priyulabs Digital</title>
   <meta name="description"
     content="Priyulabs Complete Management System brings POS, inventory, staff management, customers, GST, finance and business insights together in one connected platform." />
-  
+
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Complete Management System | Priyulabs Digital" />
@@ -1680,7 +1680,494 @@ permalink: /complete-management-system
         transition: none !important;
       }
     }
-  </style>
+
+    /* ══════════════════════════════════════════════════════════
+       HERO FIX: PROPER VERTICAL ALIGNMENT BELOW FIXED NAVBAR
+    ══════════════════════════════════════════════════════════ */
+    .cms-hero {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: calc(76px + clamp(30px, 6vh, 70px)) !important;
+      padding-bottom: clamp(60px, 8vh, 100px) !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      box-sizing: border-box !important;
+      background: #070a12 !important;
+      color: #f8fafc !important;
+      z-index: 1;
+    }
+
+    .cms-hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      width: 100%;
+      margin: 0 auto !important;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      pointer-events: auto;
+    }
+
+    .cms-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 5.8vw, 64px) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.03em !important;
+      margin: 4px 0 8px !important;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       REVEAL & VISIBILITY SAFETY: CONTENT IS NEVER BLANK/HIDDEN
+    ══════════════════════════════════════════════════════════ */
+    .cms-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Smooth entrance when JS IntersectionObserver is active */
+    html.js-ready .cms-reveal:not(.is-revealed) {
+      opacity: 0.15;
+      transform: translateY(16px) scale(0.99);
+    }
+
+    html.js-ready .cms-reveal.is-revealed {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       CONNECTED BUSINESS OS DATA-FLOW SPINE & CONNECTORS
+    ══════════════════════════════════════════════════════════ */
+    .cms-sys-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: -10px auto -10px;
+      position: relative;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .cms-sys-line {
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.1) 0%, #6366f1 50%, rgba(99, 102, 241, 0.1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cms-sys-pulse {
+      position: absolute;
+      top: -10px;
+      left: -2px;
+      width: 6px;
+      height: 14px;
+      border-radius: 4px;
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+      animation: cmsFlowDown 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes cmsFlowDown {
+      0% { top: -14px; opacity: 0; }
+      30% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 40px; opacity: 0; }
+    }
+
+    .cms-sys-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary, #6366f1);
+      margin: 4px 0;
+      pointer-events: auto;
+    }
+
+    [data-theme="dark"] .cms-sys-pill {
+      background: #0f172a;
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #a5b4fc;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .cms-sys-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+      animation: cmsPulseDot 1.8s infinite;
+    }
+
+    @keyframes cmsPulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.7); opacity: 0.5; }
+    }
+
+    .cms-sys-connect-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(99, 102, 241, 0.08);
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      margin-bottom: 12px;
+    }
+
+    [data-theme="dark"] .cms-sys-connect-tag {
+      background: rgba(99, 102, 241, 0.16);
+      border-color: rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       CAPABILITY QUICK-JUMP NAVIGATOR (FIXED & RELIABLE)
+    ══════════════════════════════════════════════════════════ */
+    .cms-section,
+    #cms-lead-form,
+    #pos-billing,
+    #inventory-ops,
+    #staff-hrms,
+    #customers-loyalty,
+    #finance-analytics,
+    #ai-automation,
+    #business-types,
+    #devices,
+    #ecosystem {
+      scroll-margin-top: 130px;
+    }
+
+    .cms-cap-nav {
+      position: sticky;
+      top: 68px;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      padding: 8px 16px;
+      transition: all 0.25s ease;
+    }
+
+    [data-theme="dark"] .cms-cap-nav {
+      background: rgba(15, 23, 42, 0.94);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .cms-cap-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 2px 4px;
+    }
+
+    .cms-cap-nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cms-cap-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 15px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .cms-cap-nav-pill:hover {
+      color: var(--primary);
+      border-color: var(--primary-light);
+      background: var(--bg-subtle);
+      transform: translateY(-1px);
+    }
+
+    .cms-cap-nav-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 3px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .cms-cap-nav-num {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.08);
+      font-size: 10.5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    [data-theme="dark"] .cms-cap-nav-num {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .cms-cap-nav-pill.active .cms-cap-nav-num {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Ambient Orbs */
+    .cms-orb-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .cms-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(75px);
+      opacity: 0.12;
+      animation: cmsOrbFloat 20s ease-in-out infinite alternate;
+    }
+
+    [data-theme="dark"] .cms-orb {
+      opacity: 0.16;
+    }
+
+    .cms-orb-primary {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0) 70%);
+      top: -100px;
+      right: -80px;
+    }
+
+    .cms-orb-accent {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
+      bottom: -100px;
+      left: -80px;
+      animation-delay: -7s;
+    }
+
+    .cms-orb-emerald {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0) 70%);
+      top: 20%;
+      left: 10%;
+      animation-delay: -12s;
+    }
+
+    .cms-orb-cyan {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0) 70%);
+      top: 15%;
+      right: 15%;
+      animation-delay: -4s;
+    }
+
+    @keyframes cmsOrbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -25px) scale(1.06); }
+      100% { transform: translate(-25px, 30px) scale(0.96); }
+    }
+
+    /* KPI Grid & Progress */
+    .cms-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .cms-progress-bar {
+      width: 100%;
+      height: 7px;
+      background: var(--bg-subtle, #e2e8f0);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 8px 0 4px;
+      position: relative;
+    }
+
+    [data-theme="dark"] .cms-progress-bar {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .cms-progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #6366f1, #38bdf8);
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cms-progress-fill.fill-warning {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+
+    .cms-progress-fill.fill-success {
+      background: linear-gradient(90deg, #10b981, #34d399);
+    }
+
+    .cms-chart-path {
+      stroke-dasharray: 800;
+      stroke-dashoffset: 800;
+      transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cms-chart-card.is-revealed .cms-chart-path,
+    .cms-chart-path {
+      stroke-dashoffset: 0;
+    }
+
+    .cms-data-sync-banner {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    /* AI Business Brain Visual Core */
+    .cms-ai-brain-hub {
+      background: linear-gradient(145deg, #0b0f19 0%, #171e2e 100%);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 24px;
+      padding: 32px 24px;
+      margin-top: 28px;
+      color: #ffffff;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cms-ai-brain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px) {
+      .cms-ai-brain-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .cms-ai-stream-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cms-ai-stream-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .cms-ai-stream-card:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateX(4px);
+    }
+
+    .cms-ai-core-box {
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(15, 23, 42, 0.8) 80%);
+      border: 2px solid rgba(99, 102, 241, 0.5);
+      border-radius: 20px;
+      padding: 28px 18px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.25);
+      position: relative;
+    }
+
+    .cms-ai-core-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-bottom: 12px;
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.6);
+      animation: cmsPulseCore 3s ease-in-out infinite;
+    }
+
+    @keyframes cmsPulseCore {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(99, 102, 241, 0.6); }
+      50% { transform: scale(1.06); box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); }
+    }
+
+    .cms-ai-core-title {
+      font-size: 17px;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+</style>
 </head>
 
 <body>
@@ -2178,8 +2665,8 @@ permalink: /complete-management-system
   <section class="cms-hero" id="hero">
     <!-- Video background / Fallback container -->
     <div class="cms-hero-video-wrap">
-      <video class="cms-hero-video" autoplay muted loop playsinline poster="assets/complete-management-system-poster.jpg">
-        <source src="assets/complete-management-system-bg.mp4" type="video/mp4" />
+      <video class="cms-hero-video" autoplay muted loop playsinline poster="assets/hero_platform_showcase.jpg">
+        <source src="assets/Create_a_premium_cinematic_tec (1).mp4" type="video/mp4" />
       </video>
       <div class="cms-hero-video-overlay"></div>
     </div>
@@ -2190,12 +2677,12 @@ permalink: /complete-management-system
         <span class="cms-eyebrow-dot"></span>
         PRIYULABS COMPLETE MANAGEMENT SYSTEM
       </div>
-      
+
       <h1 class="cms-hero-title">
         One system.<br />
         <span class="cms-gradient-text">Your entire business.</span>
       </h1>
-      
+
       <p class="cms-hero-desc">
         Manage sales, inventory, customers, staff, finance and business insights from one connected platform.
       </p>
@@ -2220,90 +2707,55 @@ permalink: /complete-management-system
       </svg>
     </a>
   </section>
-
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 2: INTRODUCE THE SYSTEM (7 PILLARS)
+       MINIMAL CAPABILITY QUICK-JUMP NAVIGATOR (STICKY)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section" id="overview">
-    <div class="container">
-      <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">UNIFIED ARCHITECTURE</span>
-        <h2 class="cms-section-title">Everything your business needs.<br />Connected in one place.</h2>
-        <p class="cms-section-desc">
-          Priyulabs brings your essential business operations together so your team can work faster, stay organized, and make better decisions.
-        </p>
-      </div>
-
-      <div class="cms-hub-grid">
-        <!-- 1. Smart POS -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">🖥️</div>
-          <h3 class="cms-hub-card-title">SMART POS</h3>
-          <p class="cms-hub-card-desc">Sub-second counter billing, custom discounts, barcode lookup, and instant UPI QR payments.</p>
-          <span class="cms-hub-card-tag">Front-of-house Engine →</span>
-        </div>
-
-        <!-- 2. Inventory -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">📦</div>
-          <h3 class="cms-hub-card-title">INVENTORY</h3>
-          <p class="cms-hub-card-desc">Automatic live stock deduction on every checkout, low-stock threshold alerts, and batch tracking.</p>
-          <span class="cms-hub-card-tag">Real-Time Stock ERP →</span>
-        </div>
-
-        <!-- 3. Staff -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">👥</div>
-          <h3 class="cms-hub-card-title">STAFF</h3>
-          <p class="cms-hub-card-desc">Shift attendance tracking, role-based register permissions, and sales performance indicators.</p>
-          <span class="cms-hub-card-tag">Team &amp; HRMS Hub →</span>
-        </div>
-
-        <!-- 4. Customers -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">⭐</div>
-          <h3 class="cms-hub-card-title">CUSTOMERS</h3>
-          <p class="cms-hub-card-desc">Automatic customer profiles at checkout, loyalty rewards, purchase history, and targeted re-engagement.</p>
-          <span class="cms-hub-card-tag">Connected CRM →</span>
-        </div>
-
-        <!-- 5. GST & Finance -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">📊</div>
-          <h3 class="cms-hub-card-title">GST &amp; FINANCE</h3>
-          <p class="cms-hub-card-desc">Instant tax invoices, CGST/SGST/IGST breakdown, expense tracking, and cash register reconciliation.</p>
-          <span class="cms-hub-card-tag">Financial Clarity →</span>
-        </div>
-
-        <!-- 6. Analytics -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">📈</div>
-          <h3 class="cms-hub-card-title">ANALYTICS</h3>
-          <p class="cms-hub-card-desc">Revenue trend graphs, top-selling product rankings, and peak trading hour analysis.</p>
-          <span class="cms-hub-card-tag">Executive Intelligence →</span>
-        </div>
-
-        <!-- 7. Automation -->
-        <div class="cms-hub-card cms-reveal">
-          <div class="cms-hub-card-icon">⚡</div>
-          <h3 class="cms-hub-card-title">AUTOMATION</h3>
-          <p class="cms-hub-card-desc">Automated stock warnings, customer win-back suggestions, and end-of-day summary reports.</p>
-          <span class="cms-hub-card-tag">Proactive Alerts →</span>
-        </div>
-      </div>
+  <nav class="cms-cap-nav" id="cmsCapNav" aria-label="Capability Quick-Jump">
+    <div class="cms-cap-nav-inner" id="cmsCapNavInner">
+      <a href="#pos-billing" class="cms-cap-nav-pill active" data-target="pos-billing">
+        <span class="cms-cap-nav-num">1</span>
+        <span>POS &amp; Billing</span>
+      </a>
+      <a href="#inventory-ops" class="cms-cap-nav-pill" data-target="inventory-ops">
+        <span class="cms-cap-nav-num">2</span>
+        <span>Inventory &amp; Ops</span>
+      </a>
+      <a href="#staff-hrms" class="cms-cap-nav-pill" data-target="staff-hrms">
+        <span class="cms-cap-nav-num">3</span>
+        <span>Staff &amp; HRMS</span>
+      </a>
+      <a href="#customers-loyalty" class="cms-cap-nav-pill" data-target="customers-loyalty">
+        <span class="cms-cap-nav-num">4</span>
+        <span>Customers &amp; Loyalty</span>
+      </a>
+      <a href="#finance-analytics" class="cms-cap-nav-pill" data-target="finance-analytics">
+        <span class="cms-cap-nav-num">5</span>
+        <span>Finance &amp; Analytics</span>
+      </a>
+      <a href="#ai-automation" class="cms-cap-nav-pill" data-target="ai-automation">
+        <span class="cms-cap-nav-num">6</span>
+        <span>AI &amp; Automation</span>
+      </a>
     </div>
-  </section>
+  </nav>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 3: SMART POS SHOWCASE
+       CAPABILITY 1: SMART POS & BILLING
+       (Combines: Smart POS + GST Invoicing + Universal Payments)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section cms-section-alt" id="pos-showcase">
+  <section class="cms-section cms-section-alt" id="pos-billing">
+    <div class="cms-orb-bg">
+      <div class="cms-orb cms-orb-primary"></div>
+    </div>
     <div class="container">
       <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">HIGH-SPEED CHECKOUT</span>
-        <h2 class="cms-section-title">Sell faster. Get paid faster.</h2>
+        <div class="cms-sys-connect-tag">
+          <span class="cms-sys-flow-dot"></span>
+          System Step 1 of 6 • Live Transaction Stream
+        </div>
+        <h2 class="cms-section-title">Sub-Second Billing. GST Invoicing. Instant Payments.</h2>
         <p class="cms-section-desc">
-          Engineered for rapid rush-hour billing with fluid touch controls, barcode scanning, custom discounts, and zero-latency payment capture.
+          Engineered for high-volume rush hours with rapid touch navigation, barcode lookup, automated 1-click GST tax invoices, and zero-latency UPI QR &amp; EDC card sync.
         </p>
       </div>
 
@@ -2313,8 +2765,8 @@ permalink: /complete-management-system
         <div class="cms-pos-topbar">
           <div style="display: flex; align-items: center; gap: 12px;">
             <strong>PRIYULABS POS v4.2</strong>
-            <span class="cms-pos-status-pill">● System Online</span>
-            <span style="color: #94a3b8;">Terminal #01 (Main Counter)</span>
+            <span class="cms-pos-status-pill">● Terminal Online</span>
+            <span style="color: #94a3b8;">Counter #01 (Main Register)</span>
           </div>
           <div style="display: flex; align-items: center; gap: 14px; color: #cbd5e1;">
             <span>Cashier: <strong>Rahul S.</strong></span>
@@ -2331,49 +2783,49 @@ permalink: /complete-management-system
               <span>Search products, barcodes, or SKU...</span>
             </div>
             <div class="cms-pos-tabs">
-              <button class="cms-pos-tab active">All Items</button>
-              <button class="cms-pos-tab">Beverages</button>
-              <button class="cms-pos-tab">Bakery</button>
-              <button class="cms-pos-tab">Apparel</button>
-              <button class="cms-pos-tab">Grocery</button>
+              <button type="button" class="cms-pos-tab active">All Items</button>
+              <button type="button" class="cms-pos-tab">Beverages</button>
+              <button type="button" class="cms-pos-tab">Bakery</button>
+              <button type="button" class="cms-pos-tab">Apparel</button>
+              <button type="button" class="cms-pos-tab">Grocery</button>
             </div>
             <div class="cms-pos-grid">
-              <div class="cms-pos-item">
+              <div class="cms-pos-item" onclick="triggerPosClick('Cold Brew Coffee', '₹180.00');">
                 <div class="cms-pos-item-icon">☕</div>
                 <div>
                   <div class="cms-pos-item-name">Cold Brew Coffee</div>
                   <div class="cms-pos-item-price">₹180.00</div>
                 </div>
               </div>
-              <div class="cms-pos-item">
+              <div class="cms-pos-item" onclick="triggerPosClick('Butter Croissant', '₹120.00');">
                 <div class="cms-pos-item-icon">🥐</div>
                 <div>
                   <div class="cms-pos-item-name">Butter Croissant</div>
                   <div class="cms-pos-item-price">₹120.00</div>
                 </div>
               </div>
-              <div class="cms-pos-item">
+              <div class="cms-pos-item" onclick="triggerPosClick('Organic Green Tea', '₹90.00');">
                 <div class="cms-pos-item-icon">🍵</div>
                 <div>
                   <div class="cms-pos-item-name">Organic Green Tea</div>
                   <div class="cms-pos-item-price">₹90.00</div>
                 </div>
               </div>
-              <div class="cms-pos-item">
+              <div class="cms-pos-item" onclick="triggerPosClick('Paneer Panini', '₹160.00');">
                 <div class="cms-pos-item-icon">🥪</div>
                 <div>
                   <div class="cms-pos-item-name">Paneer Panini</div>
                   <div class="cms-pos-item-price">₹160.00</div>
                 </div>
               </div>
-              <div class="cms-pos-item">
+              <div class="cms-pos-item" onclick="triggerPosClick('Dark Truffle Cake', '₹220.00');">
                 <div class="cms-pos-item-icon">🍰</div>
                 <div>
                   <div class="cms-pos-item-name">Dark Truffle Cake</div>
                   <div class="cms-pos-item-price">₹220.00</div>
                 </div>
               </div>
-              <div class="cms-pos-item">
+              <div class="cms-pos-item" onclick="triggerPosClick('Mango Smoothie', '₹150.00');">
                 <div class="cms-pos-item-icon">🥤</div>
                 <div>
                   <div class="cms-pos-item-name">Mango Smoothie</div>
@@ -2403,7 +2855,7 @@ permalink: /complete-management-system
                 <span>₹90.00</span>
               </div>
             </div>
-            
+
             <div class="cms-pos-totals">
               <div class="cms-pos-total-row">
                 <span>Subtotal</span>
@@ -2419,162 +2871,196 @@ permalink: /complete-management-system
               </div>
               <div class="cms-pos-total-row cms-pos-grand-total">
                 <span>Grand Total</span>
-                <span>₹556.50</span>
+                <span style="color: #38bdf8;">₹556.50</span>
               </div>
             </div>
 
             <!-- Payment Methods -->
             <div class="cms-pos-pay-actions">
-              <button class="cms-pos-pay-btn active">⚡ UPI QR</button>
-              <button class="cms-pos-pay-btn">💳 Card</button>
-              <button class="cms-pos-pay-btn">💵 Cash</button>
-              <button class="cms-pos-pay-btn">⚖️ Split</button>
+              <button type="button" class="cms-pos-pay-btn active">⚡ UPI QR</button>
+              <button type="button" class="cms-pos-pay-btn">💳 Card</button>
+              <button type="button" class="cms-pos-pay-btn">💵 Cash</button>
+              <button type="button" class="cms-pos-pay-btn">⚖️ Split</button>
             </div>
 
-            <button class="cms-pos-checkout-btn">
-              <span>✓ Pay ₹556.50 &amp; Print Receipt</span>
+            <button type="button" class="cms-pos-checkout-btn" id="posPayDemoBtn" onclick="simulateCheckoutFlow();">
+              <span>✓ Pay ₹556.50 &amp; Auto-Sync System</span>
             </button>
           </div>
         </div>
+
+        <!-- Connection Signal Footer -->
+        <div class="cms-data-sync-banner">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="cms-sys-flow-dot"></span>
+            <span><strong>System Flow Signal:</strong> Every sale auto-deducts stock from Inventory &amp; updates Finance cash ledger in &lt;40ms.</span>
+          </div>
+          <span style="color: #38bdf8; font-weight: 700;">Live Event Sync Active ⚡</span>
+        </div>
       </div>
 
-      <!-- Feature Checklist Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 36px;">
-        <div class="cms-card cms-reveal">
-          <strong>⚡ Sub-Second Billing</strong>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Instant barcode scan, quick keys, and rapid touch navigation.</p>
+      <!-- Feature Checklist Grid (Staggered) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px;">
+        <div class="cms-card cms-reveal cms-stagger-1">
+          <div class="cms-card-icon">⚡</div>
+          <strong style="color: var(--text-main); font-size: 15px;">Sub-Second Touch Billing</strong>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Instant barcode scanning, quick keys, modifiers, and high-speed counter checkout.</p>
         </div>
-        <div class="cms-card cms-reveal">
-          <strong>🧾 1-Click GST Invoices</strong>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Compliant thermal receipts, digital WhatsApp bills, and PDF export.</p>
+        <div class="cms-card cms-reveal cms-stagger-2">
+          <div class="cms-card-icon">🧾</div>
+          <strong style="color: var(--text-main); font-size: 15px;">1-Click GST Invoices</strong>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Compliant B2C/B2B thermal receipts, digital WhatsApp invoices, and tax breakdown.</p>
         </div>
-        <div class="cms-card cms-reveal">
-          <strong>💳 Universal Payments</strong>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Dynamic on-screen UPI QR, EDC card sync, cash drawer control, and split bills.</p>
+        <div class="cms-card cms-reveal cms-stagger-3">
+          <div class="cms-card-icon">💳</div>
+          <strong style="color: var(--text-main); font-size: 15px;">Zero-Fraud Universal Payments</strong>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Dynamic on-screen UPI QR, EDC card sync, split tender, and cash drawer balance lock.</p>
         </div>
-        <div class="cms-card cms-reveal">
-          <strong>🔄 Returns &amp; Customer Lookup</strong>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Instant inventory restocking upon refund and quick phone-number CRM.</p>
+        <div class="cms-card cms-reveal cms-stagger-4">
+          <div class="cms-card-icon">🔄</div>
+          <strong style="color: var(--text-main); font-size: 15px;">Returns &amp; Customer Lookup</strong>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Instant inventory restocking upon return and fast customer phone-number CRM lookup.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- DATA FLOW CONNECTOR 1 -> 2 -->
+  <div class="cms-sys-connector" aria-hidden="true">
+    <div class="cms-sys-line"><div class="cms-sys-pulse"></div></div>
+    <div class="cms-sys-pill">
+      <span class="cms-sys-dot"></span>
+      <span>POS Checkout Data ➔ Live Inventory Stock Depletion</span>
+    </div>
+    <div class="cms-sys-line"><div class="cms-sys-pulse" style="animation-delay: -1.1s;"></div></div>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 4: INVENTORY MANAGEMENT
+       CAPABILITY 2: INVENTORY & OPERATIONS
+       (Combines: Inventory + Stock Management + Multi-Store Operations)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section" id="inventory">
+  <section class="cms-section" id="inventory-ops">
+    <div class="cms-orb-bg">
+      <div class="cms-orb cms-orb-accent"></div>
+    </div>
     <div class="container">
       <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">REAL-TIME INVENTORY</span>
-        <h2 class="cms-section-title">Know what you have.<br />Before you need it.</h2>
+        <div class="cms-sys-connect-tag">
+          <span class="cms-sys-flow-dot"></span>
+          System Step 2 of 6 • Stock ERP &amp; Auto-Deductions
+        </div>
+        <h2 class="cms-section-title">Real-Time Stock ERP &amp; Multi-Store Operations.</h2>
         <p class="cms-section-desc">
-          Every transaction at the counter immediately updates your inventory records. No guesswork, no end-of-day counting headaches.
+          Every transaction at the counter immediately updates your inventory records and inter-branch stock levels across all locations in real time.
         </p>
       </div>
 
-      <!-- Inventory KPI Row -->
-      <div class="cms-inventory-kpi-grid cms-reveal">
-        <div class="cms-kpi-box">
+      <!-- Inventory KPI Row (Animated Counters) -->
+      <div class="cms-kpi-grid cms-reveal">
+        <div class="cms-kpi-box cms-stagger-1">
           <div class="cms-kpi-label">Total Products</div>
-          <div class="cms-kpi-value">1,482</div>
+          <div class="cms-kpi-value" data-counter="1482">1,482</div>
+          <div class="cms-progress-bar"><div class="cms-progress-fill fill-success" style="width: 88%;"></div></div>
           <span class="cms-kpi-badge cms-badge-success">Across 24 Categories</span>
         </div>
-        <div class="cms-kpi-box">
+        <div class="cms-kpi-box cms-stagger-2">
           <div class="cms-kpi-label">Low Stock Items</div>
-          <div class="cms-kpi-value" style="color: var(--amber);">12</div>
+          <div class="cms-kpi-value" data-counter="12" style="color: var(--amber);">12</div>
+          <div class="cms-progress-bar"><div class="cms-progress-fill fill-warning" style="width: 25%;"></div></div>
           <span class="cms-kpi-badge cms-badge-warning">Reorder Recommended</span>
         </div>
-        <div class="cms-kpi-box">
+        <div class="cms-kpi-box cms-stagger-3">
           <div class="cms-kpi-label">Out of Stock</div>
-          <div class="cms-kpi-value" style="color: var(--rose);">3</div>
+          <div class="cms-kpi-value" data-counter="3" style="color: var(--rose);">3</div>
+          <div class="cms-progress-bar"><div class="cms-progress-fill" style="width: 6%; background: var(--rose);"></div></div>
           <span class="cms-kpi-badge cms-badge-danger">Action Required</span>
         </div>
-        <div class="cms-kpi-box">
+        <div class="cms-kpi-box cms-stagger-4">
           <div class="cms-kpi-label">Total Inventory Value</div>
-          <div class="cms-kpi-value">₹18,42,000</div>
+          <div class="cms-kpi-value" data-counter="1842000" data-prefix="₹">₹18,42,000</div>
+          <div class="cms-progress-bar"><div class="cms-progress-fill" style="width: 95%;"></div></div>
           <span class="cms-kpi-badge cms-badge-success">Updated 1 min ago</span>
         </div>
       </div>
 
-      <!-- Interactive Demonstration: Live Sale → Stock Deduction -->
-      <div class="cms-live-sync-demo cms-reveal">
-        <div class="cms-live-demo-info">
-          <span class="cms-live-pulse-dot"></span>
-          <div>
-            <strong>Interactive Simulation: Live POS Sale to Stock Sync</strong>
-            <div style="font-size: 12.5px; color: var(--text-muted);">
-              Click the button to simulate a sale and watch stock deduct automatically.
+      <!-- Bento Showcase for Inventory Workflows -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 24px;">
+        <!-- Live Sale Stock Deduction Interactive Simulator -->
+        <div class="cms-bento-card cms-reveal">
+          <span class="cms-kpi-badge cms-badge-success" style="margin-bottom: 12px;">⚡ Live Simulation Demo</span>
+          <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">
+            Auto-Deducting Inventory in Action
+          </h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">
+            Click below to simulate a live counter sale and watch stock instantly decrease:
+          </p>
+
+          <div style="background: var(--bg-subtle); padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong>Artisan Dark Roast Coffee (500g)</strong>
+              <span id="demoStockVal" style="font-size: 16px; font-weight: 800; color: var(--primary);">24 Units</span>
+            </div>
+            <div class="cms-progress-bar">
+              <div class="cms-progress-fill" id="demoStockProgress" style="width: 48%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted);">
+              <span>SKU: COF-DARK-500</span>
+              <span>Reorder threshold: 10 units</span>
+            </div>
+          </div>
+
+          <button type="button" class="cms-btn cms-btn-primary" id="simSaleBtn" onclick="simulateSaleDemo()" style="width: 100%; justify-content: center; font-size: 13.5px;">
+            ⚡ Simulate Counter Sale (-1 Unit)
+          </button>
+        </div>
+
+        <!-- Multi-Store & Inter-Branch Stock Transfers -->
+        <div class="cms-bento-card cms-reveal">
+          <span class="cms-kpi-badge cms-badge-purple" style="margin-bottom: 12px;">🏢 Multi-Store Operations</span>
+          <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">
+            Inter-Store Transfers &amp; Central Warehouse
+          </h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">
+            Move inventory smoothly between central storage and branch outlets with live transit tracking.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12.5px; padding: 8px 12px; background: var(--bg-subtle); border-radius: 8px;">
+              <span>Central Warehouse → Outlet #01 (Indiranagar)</span>
+              <span class="cms-kpi-badge cms-badge-success">Completed</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12.5px; padding: 8px 12px; background: var(--bg-subtle); border-radius: 8px;">
+              <span>Outlet #02 (Koramangala) → Outlet #03 (Whitefield)</span>
+              <span class="cms-kpi-badge cms-badge-warning">In Transit (ETA 2h)</span>
             </div>
           </div>
         </div>
-        <button type="button" class="cms-sim-btn" id="simSaleBtn" onclick="simulateSaleDemo()">
-          ⚡ Simulate Sale of 'Artisan Dark Roast'
-        </button>
-      </div>
-
-      <!-- Inventory Table -->
-      <div class="cms-table-wrap cms-reveal">
-        <table class="cms-table">
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>SKU</th>
-              <th>Category</th>
-              <th>Current Stock</th>
-              <th>Unit Price</th>
-              <th>Stock Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Artisan Dark Roast Coffee Beans (500g)</strong></td>
-              <td><code>SKU-COF-841</code></td>
-              <td>Beverages</td>
-              <td>
-                <span class="cms-stock-highlight" id="demoStockVal">24 Units</span>
-              </td>
-              <td>₹450.00</td>
-              <td><span class="cms-kpi-badge cms-badge-success">In Stock</span></td>
-            </tr>
-            <tr>
-              <td><strong>French Butter Pastry Flours</strong></td>
-              <td><code>SKU-BAK-109</code></td>
-              <td>Bakery Supplies</td>
-              <td><span>8 Bags</span></td>
-              <td>₹1,200.00</td>
-              <td><span class="cms-kpi-badge cms-badge-warning">Low Stock (Threshold: 10)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Organic Assam Black Leaf Tea (250g)</strong></td>
-              <td><code>SKU-TEA-302</code></td>
-              <td>Beverages</td>
-              <td><span>64 Units</span></td>
-              <td>₹280.00</td>
-              <td><span class="cms-kpi-badge cms-badge-success">In Stock</span></td>
-            </tr>
-            <tr>
-              <td><strong>Belgian Cocoa Powder (1kg)</strong></td>
-              <td><code>SKU-BAK-784</code></td>
-              <td>Bakery Supplies</td>
-              <td><span>0 Units</span></td>
-              <td>₹890.00</td>
-              <td><span class="cms-kpi-badge cms-badge-danger">Out of Stock</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
 
+  <!-- DATA FLOW CONNECTOR 2 -> 3 -->
+  <div class="cms-sys-connector" aria-hidden="true">
+    <div class="cms-sys-line"><div class="cms-sys-pulse"></div></div>
+    <div class="cms-sys-pill">
+      <span class="cms-sys-dot"></span>
+      <span>Stock Movements ➔ Staff Dispatch &amp; Shift Management</span>
+    </div>
+    <div class="cms-sys-line"><div class="cms-sys-pulse" style="animation-delay: -1.1s;"></div></div>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 5: STAFF MANAGEMENT & HRMS
+       CAPABILITY 3: STAFF & HRMS
+       (Combines: Staff + Attendance + HRMS + Payroll/Team Management)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section cms-section-alt" id="staff">
+  <section class="cms-section cms-section-alt" id="staff-hrms">
     <div class="container">
       <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">TEAM &amp; HRMS</span>
-        <h2 class="cms-section-title">Your team. Organized.</h2>
+        <div class="cms-sys-connect-tag">
+          <span class="cms-sys-flow-dot"></span>
+          System Step 3 of 6 • Team Activity &amp; Role Security
+        </div>
+        <h2 class="cms-section-title">Your Team Organized. Roles Secured. Attendance Synced.</h2>
         <p class="cms-section-desc">
           Manage employee shifts, attendance records, role permissions, and cashier sales performance from a clean, unified dashboard.
         </p>
@@ -2582,14 +3068,14 @@ permalink: /complete-management-system
 
       <div class="cms-staff-grid">
         <!-- Staff Card 1 -->
-        <div class="cms-staff-card cms-reveal">
+        <div class="cms-staff-card cms-reveal cms-stagger-1">
           <div class="cms-staff-header">
             <div class="cms-staff-avatar">RS</div>
             <div class="cms-staff-meta">
               <div class="cms-staff-name">Rahul Sharma</div>
               <div class="cms-staff-role">Head Cashier • Terminal 1</div>
             </div>
-            <span class="cms-kpi-badge cms-badge-success">On Shift</span>
+            <span class="cms-kpi-badge cms-badge-success">● On Shift</span>
           </div>
           <div class="cms-staff-stats">
             <div>
@@ -2605,20 +3091,20 @@ permalink: /complete-management-system
               <span>Attendance</span>
             </div>
           </div>
-          <div style="font-size: 12px; color: var(--text-muted);">
+          <div style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
             🔒 <strong>Permissions:</strong> Billing, UPI refunds up to ₹500, Daily Shift Close.
           </div>
         </div>
 
         <!-- Staff Card 2 -->
-        <div class="cms-staff-card cms-reveal">
+        <div class="cms-staff-card cms-reveal cms-stagger-2">
           <div class="cms-staff-header">
             <div class="cms-staff-avatar" style="background: var(--accent-bg); color: var(--accent);">AP</div>
             <div class="cms-staff-meta">
               <div class="cms-staff-name">Ananya Patel</div>
               <div class="cms-staff-role">Store Floor Manager</div>
             </div>
-            <span class="cms-kpi-badge cms-badge-success">On Shift</span>
+            <span class="cms-kpi-badge cms-badge-success">● On Shift</span>
           </div>
           <div class="cms-staff-stats">
             <div>
@@ -2634,20 +3120,20 @@ permalink: /complete-management-system
               <span>Compliance</span>
             </div>
           </div>
-          <div style="font-size: 12px; color: var(--text-muted);">
+          <div style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
             🔒 <strong>Permissions:</strong> Full Catalog Edit, Discount Authorizations, Staff Rosters.
           </div>
         </div>
 
         <!-- Staff Card 3 -->
-        <div class="cms-staff-card cms-reveal">
+        <div class="cms-staff-card cms-reveal cms-stagger-3">
           <div class="cms-staff-header">
             <div class="cms-staff-avatar" style="background: var(--cyan-bg); color: var(--cyan);">VK</div>
             <div class="cms-staff-meta">
               <div class="cms-staff-name">Vikram Kumar</div>
               <div class="cms-staff-role">Inventory &amp; Dispatch Lead</div>
             </div>
-            <span class="cms-kpi-badge cms-badge-warning">Break</span>
+            <span class="cms-kpi-badge cms-badge-warning">● On Break</span>
           </div>
           <div class="cms-staff-stats">
             <div>
@@ -2663,24 +3149,49 @@ permalink: /complete-management-system
               <span>Accuracy</span>
             </div>
           </div>
-          <div style="font-size: 12px; color: var(--text-muted);">
+          <div style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
             🔒 <strong>Permissions:</strong> Inward Goods Entry, Supplier PO Dispatch, Stock Adjustments.
           </div>
         </div>
       </div>
+
+      <!-- Quick HRMS Capabilities Strip -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px;" class="cms-reveal">
+        <span class="cms-hero-badge" style="background: var(--bg-card); color: var(--text-main);">📸 Selfie / Biometric Attendance</span>
+        <span class="cms-hero-badge" style="background: var(--bg-card); color: var(--text-main);">📅 Smart Shift Scheduling</span>
+        <span class="cms-hero-badge" style="background: var(--bg-card); color: var(--text-main);">💰 Commission &amp; Incentive Tracking</span>
+        <span class="cms-hero-badge" style="background: var(--bg-card); color: var(--text-main);">🛡️ Role-Based Cash Register Lock</span>
+      </div>
     </div>
   </section>
 
+  <!-- DATA FLOW CONNECTOR 3 -> 4 -->
+  <div class="cms-sys-connector" aria-hidden="true">
+    <div class="cms-sys-line"><div class="cms-sys-pulse"></div></div>
+    <div class="cms-sys-pill">
+      <span class="cms-sys-dot"></span>
+      <span>Counter Service ➔ Customer CRM Profile &amp; Loyalty Points</span>
+    </div>
+    <div class="cms-sys-line"><div class="cms-sys-pulse" style="animation-delay: -1.1s;"></div></div>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 6: CUSTOMER MANAGEMENT
+       CAPABILITY 4: CUSTOMERS & LOYALTY
+       (Combines: Customer Management + CRM + Loyalty + Purchase History + Engagement)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section" id="customers">
+  <section class="cms-section" id="customers-loyalty">
+    <div class="cms-orb-bg">
+      <div class="cms-orb cms-orb-emerald"></div>
+    </div>
     <div class="container">
       <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">CONNECTED CRM</span>
-        <h2 class="cms-section-title">Turn every transaction into a relationship.</h2>
+        <div class="cms-sys-connect-tag">
+          <span class="cms-sys-flow-dot"></span>
+          System Step 4 of 6 • Customer CRM &amp; Loyalty Engine
+        </div>
+        <h2 class="cms-section-title">Turn Every Transaction into a Loyal Relationship.</h2>
         <p class="cms-section-desc">
-          Capture customer details effortlessly during checkout to build rich buying profiles, reward repeat visits, and re-engage loyal shoppers.
+          Capture customer details effortlessly during checkout to build 360° buying profiles, reward repeat visits, and re-engage dormant shoppers automatically.
         </p>
       </div>
 
@@ -2692,23 +3203,23 @@ permalink: /complete-management-system
           <div style="font-size: 13.5px; color: var(--text-muted);">
             📱 +91 98765 43210 • Member since March 2025
           </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 8px;">
+
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px;">
             <div class="cms-kpi-box" style="padding: 12px;">
               <div class="cms-kpi-label">Total Spend</div>
-              <div style="font-size: 18px; font-weight: 800; color: var(--text-main);">₹34,850</div>
+              <div style="font-size: 18px; font-weight: 800; color: var(--text-main);" data-counter="34850" data-prefix="₹">₹34,850</div>
             </div>
             <div class="cms-kpi-box" style="padding: 12px;">
               <div class="cms-kpi-label">Total Visits</div>
-              <div style="font-size: 18px; font-weight: 800; color: var(--text-main);">28 Visits</div>
+              <div style="font-size: 18px; font-weight: 800; color: var(--text-main);" data-counter="28" data-suffix=" Visits">28 Visits</div>
             </div>
             <div class="cms-kpi-box" style="padding: 12px;">
               <div class="cms-kpi-label">Avg Order Value</div>
-              <div style="font-size: 18px; font-weight: 800; color: var(--text-main);">₹1,245</div>
+              <div style="font-size: 18px; font-weight: 800; color: var(--text-main);" data-counter="1245" data-prefix="₹">₹1,245</div>
             </div>
             <div class="cms-kpi-box" style="padding: 12px;">
               <div class="cms-kpi-label">Loyalty Balance</div>
-              <div style="font-size: 18px; font-weight: 800; color: var(--emerald);">680 Pts</div>
+              <div style="font-size: 18px; font-weight: 800; color: var(--emerald);" data-counter="680" data-suffix=" Pts">680 Pts</div>
             </div>
           </div>
         </div>
@@ -2716,7 +3227,7 @@ permalink: /complete-management-system
         <!-- Recent Activity Feed -->
         <div>
           <div style="font-weight: 800; font-size: 14px; margin-bottom: 10px; color: var(--text-main);">
-            ⚡ Real-time Data Link: POS Checkout → Customer Profile
+            ⚡ Real-time Link: POS Checkout → Customer CRM Profile
           </div>
           <div class="cms-history-timeline">
             <div class="cms-timeline-item">
@@ -2746,112 +3257,70 @@ permalink: /complete-management-system
     </div>
   </section>
 
+  <!-- DATA FLOW CONNECTOR 4 -> 5 -->
+  <div class="cms-sys-connector" aria-hidden="true">
+    <div class="cms-sys-line"><div class="cms-sys-pulse"></div></div>
+    <div class="cms-sys-pill">
+      <span class="cms-sys-dot"></span>
+      <span>Billing Revenues &amp; COGS ➔ Real-Time Financial P&amp;L</span>
+    </div>
+    <div class="cms-sys-line"><div class="cms-sys-pulse" style="animation-delay: -1.1s;"></div></div>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 7: GST & FINANCE
+       CAPABILITY 5: FINANCE & ANALYTICS
+       (Combines: Finance + Cash Management + Business Analytics + Reports + Revenue Insights)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section cms-section-alt" id="finance">
+  <section class="cms-section cms-section-alt" id="finance-analytics">
     <div class="container">
       <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">FINANCIAL OVERVIEW</span>
-        <h2 class="cms-section-title">Your sales. Your expenses.<br />Your GST. One place.</h2>
+        <div class="cms-sys-connect-tag">
+          <span class="cms-sys-flow-dot"></span>
+          System Step 5 of 6 • Executive Finance &amp; Visual Intelligence
+        </div>
+        <h2 class="cms-section-title">Financial Clarity &amp; Executive Visual Intelligence.</h2>
         <p class="cms-section-desc">
-          View your daily collections, track supplier expenses, reconcile multiple payment channels, and generate clean tax summaries without bookkeeping stress.
+          Track daily collections, monitor cash drawer reconciliation, analyze GST output liabilities, and uncover peak revenue trends from intuitive visual charts.
         </p>
       </div>
 
-      <div class="cms-finance-grid cms-reveal">
-        <div class="cms-kpi-box">
+      <!-- Financial KPI Row -->
+      <div class="cms-kpi-grid cms-reveal">
+        <div class="cms-kpi-box cms-stagger-1">
           <div class="cms-kpi-label">Gross Revenue (Month)</div>
-          <div class="cms-kpi-value">₹4,82,500</div>
+          <div class="cms-kpi-value" data-counter="482500" data-prefix="₹">₹4,82,500</div>
           <span class="cms-kpi-badge cms-badge-success">+14.2% vs last month</span>
         </div>
-        <div class="cms-kpi-box">
+        <div class="cms-kpi-box cms-stagger-2">
           <div class="cms-kpi-label">Operating Expenses</div>
-          <div class="cms-kpi-value">₹1,94,200</div>
+          <div class="cms-kpi-value" data-counter="194200" data-prefix="₹">₹1,94,200</div>
           <span class="cms-kpi-badge cms-badge-warning">Purchases &amp; Overheads</span>
         </div>
-        <div class="cms-kpi-label cms-kpi-box">
+        <div class="cms-kpi-box cms-stagger-3">
           <div class="cms-kpi-label">Net Operating Cash Flow</div>
-          <div class="cms-kpi-value" style="color: var(--emerald);">₹2,88,300</div>
+          <div class="cms-kpi-value" data-counter="288300" data-prefix="₹" style="color: var(--emerald);">₹2,88,300</div>
           <span class="cms-kpi-badge cms-badge-success">Healthy Liquidity</span>
         </div>
-        <div class="cms-kpi-box">
+        <div class="cms-kpi-box cms-stagger-4">
           <div class="cms-kpi-label">Net GST Output Liability</div>
-          <div class="cms-kpi-value" style="color: var(--primary);">₹41,850</div>
+          <div class="cms-kpi-value" data-counter="41850" data-prefix="₹" style="color: var(--primary);">₹41,850</div>
           <span class="cms-kpi-badge cms-badge-purple">Calculated from 1,240 bills</span>
         </div>
       </div>
 
-      <!-- GST Breakdown & Invoicing Summary -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-        <div class="cms-tax-breakdown cms-reveal">
-          <strong style="font-size: 15px; color: var(--text-main);">📑 GST Tax Summary (Current Cycle)</strong>
-          <div class="cms-tax-row">
-            <span>CGST Collection (2.5% / 6% / 9%)</span>
-            <span>₹20,925.00</span>
-          </div>
-          <div class="cms-tax-row">
-            <span>SGST Collection (2.5% / 6% / 9%)</span>
-            <span>₹20,925.00</span>
-          </div>
-          <div class="cms-tax-row">
-            <span>IGST Collection (Interstate)</span>
-            <span>₹0.00</span>
-          </div>
-          <div class="cms-tax-row">
-            <span>Total GST Collected on Sales</span>
-            <span>₹41,850.00</span>
-          </div>
-        </div>
-
-        <div class="cms-tax-breakdown cms-reveal">
-          <strong style="font-size: 15px; color: var(--text-main);">💳 Payment Channel Reconciliation</strong>
-          <div class="cms-tax-row">
-            <span>UPI QR / Digital Transfers</span>
-            <span>62% (₹2,99,150)</span>
-          </div>
-          <div class="cms-tax-row">
-            <span>Credit &amp; Debit Cards (EDC)</span>
-            <span>26% (₹1,25,450)</span>
-          </div>
-          <div class="cms-tax-row">
-            <span>Cash Drawer Collections</span>
-            <span>12% (₹57,900)</span>
-          </div>
-          <div class="cms-tax-row">
-            <span>100% Reconciled to Day-End Ledger</span>
-            <span style="color: var(--emerald);">✓ Matched</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 8: BUSINESS ANALYTICS
-  ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section" id="analytics">
-    <div class="container">
-      <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">VISUAL INSIGHTS</span>
-        <h2 class="cms-section-title">Don't just see your numbers.<br />Understand them.</h2>
-        <p class="cms-section-desc">
-          Transform daily transaction data into intuitive trends. Identify your peak revenue hours, best-selling product categories, and overall business momentum.
-        </p>
-      </div>
-
+      <!-- Visual Analytics Grid -->
       <div class="cms-analytics-grid cms-reveal">
         <!-- Revenue Trend SVG Chart -->
         <div class="cms-chart-card">
           <div class="cms-chart-header">
             <div>
               <div class="cms-chart-title">Weekly Revenue Velocity</div>
-              <div style="font-size: 12.5px; color: var(--text-muted);">Mon — Sun Performance Growth</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Mon — Sun Performance Growth</div>
             </div>
             <span class="cms-kpi-badge cms-badge-success">+18.5% Growth</span>
           </div>
-          
-          <!-- Styled SVG Bezier Line Chart -->
+
+          <!-- Styled SVG Bezier Line Chart with drawing animation -->
           <svg class="cms-svg-chart" viewBox="0 0 500 160" preserveAspectRatio="none">
             <defs>
               <linearGradient id="cmsChartGrad" x1="0" y1="0" x2="0" y2="1">
@@ -2859,15 +3328,11 @@ permalink: /complete-management-system
                 <stop offset="100%" stop-color="#6366f1" stop-opacity="0.0"></stop>
               </linearGradient>
             </defs>
-            <!-- Grid Lines -->
             <line x1="0" y1="40" x2="500" y2="40" stroke="rgba(150,150,150,0.15)" stroke-dasharray="4"></line>
             <line x1="0" y1="90" x2="500" y2="90" stroke="rgba(150,150,150,0.15)" stroke-dasharray="4"></line>
             <line x1="0" y1="140" x2="500" y2="140" stroke="rgba(150,150,150,0.15)" stroke-dasharray="4"></line>
-            <!-- Chart Area Fill -->
             <path d="M 0 130 Q 70 100 140 110 T 280 60 T 420 40 T 500 20 L 500 160 L 0 160 Z" fill="url(#cmsChartGrad)"></path>
-            <!-- Chart Stroke Line -->
-            <path d="M 0 130 Q 70 100 140 110 T 280 60 T 420 40 T 500 20" fill="none" stroke="#4f46e5" stroke-width="3.5" stroke-linecap="round"></path>
-            <!-- Data Points -->
+            <path class="cms-chart-path" d="M 0 130 Q 70 100 140 110 T 280 60 T 420 40 T 500 20" fill="none" stroke="#4f46e5" stroke-width="3.5" stroke-linecap="round"></path>
             <circle cx="140" cy="110" r="5" fill="#4f46e5" stroke="#ffffff" stroke-width="2"></circle>
             <circle cx="280" cy="60" r="5" fill="#4f46e5" stroke="#ffffff" stroke-width="2"></circle>
             <circle cx="420" cy="40" r="5" fill="#4f46e5" stroke="#ffffff" stroke-width="2"></circle>
@@ -2895,7 +3360,7 @@ permalink: /complete-management-system
                 <span>482 sold (₹86.7K)</span>
               </div>
               <div class="cms-rank-track">
-                <div class="cms-rank-fill" style="width: 90%;"></div>
+                <div class="cms-rank-fill" data-width="90%" style="width: 90%;"></div>
               </div>
             </div>
 
@@ -2905,7 +3370,7 @@ permalink: /complete-management-system
                 <span>310 sold (₹1.39L)</span>
               </div>
               <div class="cms-rank-track">
-                <div class="cms-rank-fill" style="width: 75%;"></div>
+                <div class="cms-rank-fill" data-width="75%" style="width: 75%;"></div>
               </div>
             </div>
 
@@ -2915,7 +3380,7 @@ permalink: /complete-management-system
                 <span>284 sold (₹34.0K)</span>
               </div>
               <div class="cms-rank-track">
-                <div class="cms-rank-fill" style="width: 62%;"></div>
+                <div class="cms-rank-fill" data-width="62%" style="width: 62%;"></div>
               </div>
             </div>
 
@@ -2925,182 +3390,195 @@ permalink: /complete-management-system
                 <span>195 sold (₹17.5K)</span>
               </div>
               <div class="cms-rank-track">
-                <div class="cms-rank-fill" style="width: 45%;"></div>
+                <div class="cms-rank-fill" data-width="45%" style="width: 45%;"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- GST Breakdown & Invoicing Summary -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
+        <div class="cms-tax-breakdown cms-reveal">
+          <strong style="font-size: 14.5px; color: var(--text-main);">📑 GST Tax Summary (Current Cycle)</strong>
+          <div class="cms-tax-row">
+            <span>CGST Collection (2.5% / 6% / 9%)</span>
+            <span>₹20,925.00</span>
+          </div>
+          <div class="cms-tax-row">
+            <span>SGST Collection (2.5% / 6% / 9%)</span>
+            <span>₹20,925.00</span>
+          </div>
+          <div class="cms-tax-row">
+            <span>Total GST Collected on Sales</span>
+            <span>₹41,850.00</span>
+          </div>
+        </div>
+
+        <div class="cms-tax-breakdown cms-reveal">
+          <strong style="font-size: 14.5px; color: var(--text-main);">💳 Payment Channel Reconciliation</strong>
+          <div class="cms-tax-row">
+            <span>UPI QR / Digital Transfers</span>
+            <span>62% (₹2,99,150)</span>
+          </div>
+          <div class="cms-tax-row">
+            <span>Credit &amp; Debit Cards (EDC)</span>
+            <span>26% (₹1,25,450)</span>
+          </div>
+          <div class="cms-tax-row">
+            <span>Cash Drawer Reconciliation</span>
+            <span style="color: var(--emerald);">✓ 100% Matched</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- DATA FLOW CONNECTOR 5 -> 6 -->
+  <div class="cms-sys-connector" aria-hidden="true">
+    <div class="cms-sys-line"><div class="cms-sys-pulse"></div></div>
+    <div class="cms-sys-pill">
+      <span class="cms-sys-dot"></span>
+      <span>Omnichannel Telemetry ➔ Central AI Neural Core</span>
+    </div>
+    <div class="cms-sys-line"><div class="cms-sys-pulse" style="animation-delay: -1.1s;"></div></div>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 9: INTELLIGENCE & AUTOMATION ALERTS
+       CAPABILITY 6: AI & AUTOMATION (THE VISUAL CLIMAX)
+       (Combines: AI Automation + Smart Alerts + Recommendations + Real-Time Business Sync)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section cms-section-alt" id="intelligence">
+  <section class="cms-section" id="ai-automation">
+    <div class="cms-orb-bg">
+      <div class="cms-orb cms-orb-cyan"></div>
+    </div>
     <div class="container">
       <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">SMART ALERTS</span>
-        <h2 class="cms-section-title">Your business shouldn't wait<br />for you to notice.</h2>
+        <div class="cms-sys-connect-tag">
+          <span class="cms-sys-flow-dot"></span>
+          System Step 6 of 6 • Central AI Business Brain
+        </div>
+        <h2 class="cms-section-title">All Your Business Data Becomes Intelligent.</h2>
         <p class="cms-section-desc">
-          Automated monitoring surfaces critical business signals before they turn into lost sales or operational snags.
+          Priyulabs AI synthesizes live telemetry from POS transactions, stock depletion, staff schedules, customer loyalty, and finance ledgers into proactive executive intelligence.
         </p>
       </div>
 
+      <!-- Connected AI Business Brain Visual Core -->
+      <div class="cms-ai-brain-hub cms-reveal">
+        <div class="cms-ai-brain-grid">
+          <!-- Left Column: Input Data Streams -->
+          <div class="cms-ai-stream-column">
+            <div style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
+              ⚡ Incoming Subsystem Streams
+            </div>
+            <div class="cms-ai-stream-card">
+              <span>🛒 1. POS &amp; Bills Stream</span>
+              <span style="color: #34d399; font-size: 11px;">● Live Feed</span>
+            </div>
+            <div class="cms-ai-stream-card">
+              <span>📦 2. Stock Depletion Rate</span>
+              <span style="color: #38bdf8; font-size: 11px;">● Synced</span>
+            </div>
+            <div class="cms-ai-stream-card">
+              <span>👥 3. Staff Rosters &amp; Sales</span>
+              <span style="color: #a855f7; font-size: 11px;">● Active</span>
+            </div>
+            <div class="cms-ai-stream-card">
+              <span>⭐ 4. Customer Buying Habits</span>
+              <span style="color: #fbbf24; font-size: 11px;">● 360° Profile</span>
+            </div>
+            <div class="cms-ai-stream-card">
+              <span>📊 5. Cash Flow &amp; Margins</span>
+              <span style="color: #34d399; font-size: 11px;">● Ledger Live</span>
+            </div>
+          </div>
+
+          <!-- Center Column: Central AI Core Hub -->
+          <div class="cms-ai-core-box">
+            <div class="cms-ai-core-icon">🧠</div>
+            <div class="cms-ai-core-title">Priyulabs Neural Core</div>
+            <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.45; margin-bottom: 12px;">
+              Autonomous multi-signal synthesis engine evaluating over 40+ operational parameters every second.
+            </p>
+            <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 11.5px; font-weight: 700;">
+              <span>⚡ Latency: &lt; 180ms</span>
+              <span>• Zero Data Silos</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Predictive Actions & Outputs -->
+          <div class="cms-ai-stream-column">
+            <div style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">
+              🔮 Intelligent Outputs &amp; Alerts
+            </div>
+            <div class="cms-ai-stream-card" style="border-left: 3px solid #f59e0b;">
+              <span>⚠️ Predictive Restock Trigger</span>
+              <span style="color: #fbbf24; font-weight: 700;">Auto-PO</span>
+            </div>
+            <div class="cms-ai-stream-card" style="border-left: 3px solid #3b82f6;">
+              <span>💬 Dormant VIP Re-engagement</span>
+              <span style="color: #60a5fa; font-weight: 700;">WhatsApp</span>
+            </div>
+            <div class="cms-ai-stream-card" style="border-left: 3px solid #10b981;">
+              <span>📈 Weekend Staffing Optimizer</span>
+              <span style="color: #34d399; font-weight: 700;">+2 Roster</span>
+            </div>
+            <div class="cms-ai-stream-card" style="border-left: 3px solid #a855f7;">
+              <span>🛡️ Cash Drawer Anomaly Guard</span>
+              <span style="color: #c084fc; font-weight: 700;">Zero Leakage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proactive Smart Alerts Grid -->
       <div class="cms-alerts-grid">
-        <!-- Alert 1 -->
-        <div class="cms-alert-card cms-reveal">
+        <div class="cms-alert-card cms-reveal cms-stagger-1">
           <span class="cms-alert-badge cms-alert-badge-warning">Inventory Alert</span>
           <div class="cms-alert-title">"12 products may run out soon."</div>
           <p class="cms-alert-desc">
             Fast-moving items like Pastry Flour and Whole Milk are tracking below safety buffer levels based on current velocity.
           </p>
-          <div class="cms-alert-footer">Example intelligent insight</div>
+          <div class="cms-alert-footer">AI buffer prediction</div>
         </div>
 
-        <!-- Alert 2 -->
-        <div class="cms-alert-card cms-reveal">
+        <div class="cms-alert-card cms-reveal cms-stagger-2">
           <span class="cms-alert-badge cms-alert-badge-info">Customer Insight</span>
           <div class="cms-alert-title">"47 customers haven't returned recently."</div>
           <p class="cms-alert-desc">
-            Customers with high previous frequency have been inactive for over 30 days. Send an automatic WhatsApp reconnect promo.
+            Customers with high previous frequency have been inactive for over 30 days. Automated WhatsApp reconnect promo prepared.
           </p>
-          <div class="cms-alert-footer">Example intelligent insight</div>
+          <div class="cms-alert-footer">Win-back automation</div>
         </div>
 
-        <!-- Alert 3 -->
-        <div class="cms-alert-card cms-reveal">
+        <div class="cms-alert-card cms-reveal cms-stagger-3">
           <span class="cms-alert-badge cms-alert-badge-success">Sales Insight</span>
-          <div class="cms-alert-title">"Saturday sales are performing above your weekly average."</div>
+          <div class="cms-alert-title">"Saturday sales are performing 28% above average."</div>
           <p class="cms-alert-desc">
-            Weekend afternoon transactions surged 28%. Optimize shift scheduling for 2 extra counter staff this Saturday.
+            Weekend afternoon transactions surged. Shift recommendation: assign 2 extra counter staff this Saturday.
           </p>
-          <div class="cms-alert-footer">Example intelligent insight</div>
+          <div class="cms-alert-footer">Staffing optimization</div>
         </div>
 
-        <!-- Alert 4 -->
-        <div class="cms-alert-card cms-reveal">
+        <div class="cms-alert-card cms-reveal cms-stagger-4">
           <span class="cms-alert-badge cms-alert-badge-purple">Business Alert</span>
-          <div class="cms-alert-title">"Inventory value has changed significantly."</div>
+          <div class="cms-alert-title">"Inventory valuation shifted significantly."</div>
           <p class="cms-alert-desc">
             New purchase batch inwarded today increased total warehouse asset valuation by ₹1.24L across 4 categories.
           </p>
-          <div class="cms-alert-footer">Example intelligent insight</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 10: MULTI-LOCATION COMMAND CENTER
-  ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section" id="multi-location">
-    <div class="container">
-      <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">ENTERPRISE SCALE</span>
-        <h2 class="cms-section-title">One business. Multiple locations.<br />One command center.</h2>
-        <p class="cms-section-desc">
-          Manage multiple outlets from a single unified screen. Track live store sales, shift rosters, and stock transfers across branches in real time.
-        </p>
-      </div>
-
-      <div class="cms-locations-grid">
-        <!-- Location 1: Bhubaneswar -->
-        <div class="cms-location-card cms-reveal">
-          <div class="cms-location-head">
-            <div class="cms-location-city">📍 Bhubaneswar Flagship</div>
-            <span class="cms-kpi-badge cms-badge-success">Live Store</span>
-          </div>
-          <div class="cms-location-stats">
-            <div>
-              <strong>Sales Today:</strong><br />₹1,48,200
-            </div>
-            <div>
-              <strong>Orders:</strong><br />284 Bills
-            </div>
-            <div>
-              <strong>Staff on Duty:</strong><br />8 Members
-            </div>
-            <div>
-              <strong>Stock Status:</strong><br />98% Optimal
-            </div>
-          </div>
-        </div>
-
-        <!-- Location 2: Cuttack -->
-        <div class="cms-location-card cms-reveal">
-          <div class="cms-location-head">
-            <div class="cms-location-city">📍 Cuttack Branch</div>
-            <span class="cms-kpi-badge cms-badge-success">Live Store</span>
-          </div>
-          <div class="cms-location-stats">
-            <div>
-              <strong>Sales Today:</strong><br />₹94,500
-            </div>
-            <div>
-              <strong>Orders:</strong><br />172 Bills
-            </div>
-            <div>
-              <strong>Staff on Duty:</strong><br />5 Members
-            </div>
-            <div>
-              <strong>Stock Status:</strong><br />95% Optimal
-            </div>
-          </div>
-        </div>
-
-        <!-- Location 3: Puri -->
-        <div class="cms-location-card cms-reveal">
-          <div class="cms-location-head">
-            <div class="cms-location-city">📍 Puri Coastal Store</div>
-            <span class="cms-kpi-badge cms-badge-success">Live Store</span>
-          </div>
-          <div class="cms-location-stats">
-            <div>
-              <strong>Sales Today:</strong><br />₹1,12,800
-            </div>
-            <div>
-              <strong>Orders:</strong><br />210 Bills
-            </div>
-            <div>
-              <strong>Staff on Duty:</strong><br />6 Members
-            </div>
-            <div>
-              <strong>Stock Status:</strong><br />92% Optimal
-            </div>
-          </div>
+          <div class="cms-alert-footer">Live asset recalculation</div>
         </div>
       </div>
 
-      <!-- Owner Command Hub Banner -->
-      <div class="cms-command-hub cms-reveal">
-        <div>
-          <div class="cms-command-title">👑 Unified Owner Command Center</div>
-          <p style="color: #cbd5e1; font-size: 14px; margin-top: 4px; max-width: 600px;">
-            Total Chain Revenue Today: <strong>₹3,55,500</strong> across 3 active branches. Inter-store stock transfers synced in real time.
-          </p>
-        </div>
-        <button type="button" class="cms-btn cms-btn-primary" onclick="openDemoModal()">
-          Open Master Console ✨
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 11: THE CONNECTED BUSINESS WORKFLOW
-  ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section cms-section-alt" id="connected-workflow">
-    <div class="container">
-      <div class="cms-header-center cms-reveal">
-        <span class="cms-section-eyebrow">AUTOMATED DATA SYNC</span>
-        <h2 class="cms-section-title">One sale.<br />Everything updated.</h2>
-        <p class="cms-section-desc">
-          When a cashier rings up a single item, Priyulabs instantly synchronizes every related operational department in less than 200 milliseconds.
-        </p>
+      <!-- 7-Step Instant Connected Workflow Chain -->
+      <div class="cms-header-center cms-reveal" style="margin-top: 36px; margin-bottom: 20px;">
+        <span class="cms-section-eyebrow" style="background: var(--bg-subtle);">CONNECTED ARCHITECTURE</span>
+        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-top: 4px;">
+          One Sale. Everything Updated in &lt;200ms.
+        </h3>
       </div>
 
-      <!-- Interactive Connected Workflow Chain -->
       <div class="cms-workflow-chain">
         <div class="cms-workflow-step cms-reveal active-step">
           <div class="cms-step-num">1</div>
@@ -3167,11 +3645,7 @@ permalink: /complete-management-system
       </div>
     </div>
   </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 12: BUSINESS TYPES
-  ══════════════════════════════════════════════════════════ -->
-  <section class="cms-section" id="business-types">
+<section class="cms-section" id="business-types">
     <div class="container">
       <div class="cms-header-center cms-reveal">
         <span class="cms-section-eyebrow">TAILORED INDUSTRY SOLUTIONS</span>
@@ -3568,7 +4042,7 @@ permalink: /complete-management-system
               <label class="cms-form-label" for="cmsName">Your Name *</label>
               <input type="text" id="cmsName" class="cms-form-input" placeholder="e.g. Rajesh Mohanty" required />
             </div>
-            
+
             <div class="cms-form-group">
               <label class="cms-form-label" for="cmsBusiness">Business / Store Name *</label>
               <input type="text" id="cmsBusiness" class="cms-form-input" placeholder="e.g. Royal Cafe &amp; Bakery" required />
@@ -3837,37 +4311,231 @@ permalink: /complete-management-system
   <!-- Page-specific Scoped Scripts -->
   <script>
     (function () {
-      // 1. Scroll Reveal with IntersectionObserver
-      function initCmsScrollReveal() {
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          document.querySelectorAll('.cms-reveal').forEach(function (el) {
+      'use strict';
+
+      function initCmsPage() {
+        // Mark document as ready for gentle entrance transitions
+        document.documentElement.classList.add('js-ready');
+
+        // 1. Scroll Reveal IntersectionObserver with instant fallback
+        var revealElements = document.querySelectorAll('.cms-reveal, .cms-chart-card');
+
+        if ('IntersectionObserver' in window) {
+          var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                var rankFills = entry.target.querySelectorAll('.cms-rank-fill');
+                rankFills.forEach(function (fill) {
+                  var targetWidth = fill.getAttribute('data-width');
+                  if (targetWidth) fill.style.width = targetWidth;
+                });
+              }
+            });
+          }, {
+            threshold: 0.05,
+            rootMargin: '50px 0px 50px 0px'
+          });
+
+          revealElements.forEach(function (el) {
+            revealObserver.observe(el);
+          });
+        } else {
+          // Fallback: reveal all immediately
+          revealElements.forEach(function (el) {
             el.classList.add('is-revealed');
           });
-          return;
         }
 
-        if (!('IntersectionObserver' in window)) {
-          document.querySelectorAll('.cms-reveal').forEach(function (el) {
+        // Safety timeout: ensure everything is visible after 800ms regardless
+        setTimeout(function () {
+          revealElements.forEach(function (el) {
             el.classList.add('is-revealed');
           });
-          return;
+        }, 800);
+
+        // 2. Metric / Number Counter Animation on Viewport Entry
+        if ('IntersectionObserver' in window) {
+          var counterObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                var el = entry.target;
+                var rawTarget = el.getAttribute('data-counter');
+                if (!rawTarget) return;
+
+                var targetNum = parseFloat(rawTarget);
+                var prefix = el.getAttribute('data-prefix') || '';
+                var suffix = el.getAttribute('data-suffix') || '';
+                var duration = 1100;
+                var startTime = null;
+
+                function step(timestamp) {
+                  if (!startTime) startTime = timestamp;
+                  var progress = Math.min((timestamp - startTime) / duration, 1);
+                  var easeProgress = 1 - Math.pow(1 - progress, 3);
+                  var currentVal = Math.floor(easeProgress * targetNum);
+
+                  var formatted = (prefix === '₹' || targetNum >= 1000)
+                    ? currentVal.toLocaleString('en-IN')
+                    : currentVal;
+
+                  el.textContent = prefix + formatted + suffix;
+
+                  if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                  } else {
+                    var finalFormatted = (prefix === '₹' || targetNum >= 1000)
+                      ? targetNum.toLocaleString('en-IN')
+                      : targetNum;
+                    el.textContent = prefix + finalFormatted + suffix;
+                  }
+                }
+
+                window.requestAnimationFrame(step);
+                observer.unobserve(el);
+              }
+            });
+          }, {
+            threshold: 0.1
+          });
+
+          document.querySelectorAll('[data-counter]').forEach(function (el) {
+            counterObserver.observe(el);
+          });
         }
 
-        var revealObserver = new IntersectionObserver(function (entries, observer) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
+        // ══════════════════════════════════════════════════════════
+        // 3. ROCK-SOLID PROGRAMMATIC CAPABILITY NAVIGATION & SCROLL-SPY
+        // ══════════════════════════════════════════════════════════
+        var capPills = document.querySelectorAll('.cms-cap-nav-pill');
+        var navContainer = document.getElementById('cmsCapNavInner');
+        var capSections = [
+          'pos-billing',
+          'inventory-ops',
+          'staff-hrms',
+          'customers-loyalty',
+          'finance-analytics',
+          'ai-automation'
+        ];
+
+        var isProgrammaticScrolling = false;
+        var scrollUnlockTimer = null;
+
+        function scrollToSection(targetId) {
+          var targetEl = document.getElementById(targetId);
+          if (!targetEl) return;
+
+          isProgrammaticScrolling = true;
+          if (scrollUnlockTimer) clearTimeout(scrollUnlockTimer);
+
+          // 1. Immediately update active state on pills
+          capPills.forEach(function (pill) {
+            var t = pill.getAttribute('data-target') || pill.getAttribute('href').replace('#', '');
+            if (t === targetId) {
+              pill.classList.add('active');
+              // Horizontally scroll the nav container ONLY (never window)
+              if (navContainer) {
+                var pLeft = pill.offsetLeft;
+                var pWidth = pill.offsetWidth;
+                var cWidth = navContainer.offsetWidth;
+                navContainer.scrollTo({
+                  left: pLeft - (cWidth / 2) + (pWidth / 2),
+                  behavior: 'smooth'
+                });
+              }
+            } else {
+              pill.classList.remove('active');
             }
           });
-        }, {
-          threshold: 0.08,
-          rootMargin: '0px 0px -20px 0px'
+
+          // 2. Programmatic smooth scroll to target with precise navbar offset
+          var navOffset = 132; // Navbar (68px) + CapNav (~50px) + 14px buffer
+          var elementTop = targetEl.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+          var targetTop = Math.max(0, elementTop - navOffset);
+
+          window.scrollTo({
+            top: targetTop,
+            behavior: 'smooth'
+          });
+
+          // 3. Unlock after smooth scroll concludes
+          scrollUnlockTimer = setTimeout(function () {
+            isProgrammaticScrolling = false;
+          }, 950);
+        }
+
+        // Attach click listeners to navigation pills
+        capPills.forEach(function (pill) {
+          pill.addEventListener('click', function (e) {
+            e.preventDefault();
+            var targetId = pill.getAttribute('data-target') || pill.getAttribute('href').replace('#', '');
+            scrollToSection(targetId);
+          });
         });
 
-        document.querySelectorAll('.cms-reveal').forEach(function (el) {
-          revealObserver.observe(el);
-        });
+        // Attach click listener to hero scroll indicator
+        var heroScrollBtn = document.querySelector('.cms-scroll-indicator');
+        if (heroScrollBtn) {
+          heroScrollBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollToSection('pos-billing');
+          });
+        }
+
+        // Window Scroll Spy for manual scrolling (never overrides programmatic clicks)
+        var scrollTicking = false;
+        window.addEventListener('scroll', function () {
+          if (isProgrammaticScrolling) return;
+
+          if (!scrollTicking) {
+            window.requestAnimationFrame(function () {
+              var scrollPos = (window.pageYOffset || document.documentElement.scrollTop) + 160;
+              var currentSectionId = null;
+
+              // Find which section header has been crossed
+              for (var i = capSections.length - 1; i >= 0; i--) {
+                var sec = document.getElementById(capSections[i]);
+                if (sec && scrollPos >= sec.offsetTop) {
+                  currentSectionId = capSections[i];
+                  break;
+                }
+              }
+
+              // If scrolled above section 1, default to section 1 if close
+              if (!currentSectionId && capSections.length > 0) {
+                var firstSec = document.getElementById(capSections[0]);
+                if (firstSec && (window.pageYOffset || document.documentElement.scrollTop) + 350 >= firstSec.offsetTop) {
+                  currentSectionId = capSections[0];
+                }
+              }
+
+              if (currentSectionId) {
+                capPills.forEach(function (pill) {
+                  var t = pill.getAttribute('data-target') || pill.getAttribute('href').replace('#', '');
+                  if (t === currentSectionId) {
+                    if (!pill.classList.contains('active')) {
+                      pill.classList.add('active');
+                      if (navContainer) {
+                        var pLeft = pill.offsetLeft;
+                        var pWidth = pill.offsetWidth;
+                        var cWidth = navContainer.offsetWidth;
+                        navContainer.scrollTo({
+                          left: pLeft - (cWidth / 2) + (pWidth / 2),
+                          behavior: 'smooth'
+                        });
+                      }
+                    }
+                  } else {
+                    pill.classList.remove('active');
+                  }
+                });
+              }
+
+              scrollTicking = false;
+            });
+            scrollTicking = true;
+          }
+        }, { passive: true });
 
         // Ensure hero background video plays smoothly
         var heroVid = document.querySelector('.cms-hero-video');
@@ -3875,7 +4543,7 @@ permalink: /complete-management-system
           var playPromise = heroVid.play();
           if (playPromise !== undefined) {
             playPromise.catch(function () {
-              // Autoplay restrictions: poster fallback remains active
+              // Autoplay restrictions fallback
             });
           }
         }
@@ -3883,13 +4551,17 @@ permalink: /complete-management-system
 
       // Initialize on DOM load
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCmsScrollReveal);
+        document.addEventListener('DOMContentLoaded', initCmsPage);
       } else {
-        initCmsScrollReveal();
+        initCmsPage();
       }
     })();
 
-    // 2. Business Type Selector Tabs
+    // ══════════════════════════════════════════════════════════
+    // INTERACTIVE UI SIMULATIONS
+    // ══════════════════════════════════════════════════════════
+
+    // 1. Business Type Selector Tabs
     function switchBizTab(tabKey) {
       document.querySelectorAll('.cms-biz-tab-btn').forEach(function (btn) {
         btn.classList.remove('active');
@@ -3905,10 +4577,11 @@ permalink: /complete-management-system
       if (activePanel) activePanel.classList.add('active');
     }
 
-    // 3. Interactive Live Sale Simulation
+    // 2. Interactive Live Sale Simulation
     var currentSimStock = 24;
     function simulateSaleDemo() {
       var stockEl = document.getElementById('demoStockVal');
+      var progressEl = document.getElementById('demoStockProgress');
       var btn = document.getElementById('simSaleBtn');
       if (!stockEl || !btn) return;
 
@@ -3916,20 +4589,53 @@ permalink: /complete-management-system
         var oldVal = currentSimStock;
         currentSimStock -= 1;
         stockEl.textContent = currentSimStock + ' Units (Sold -1)';
-        stockEl.classList.add('cms-stock-changed');
+        stockEl.style.color = currentSimStock <= 10 ? '#f59e0b' : '#6366f1';
+
+        if (progressEl) {
+          var pct = Math.max(5, (currentSimStock / 50) * 100);
+          progressEl.style.width = pct + '%';
+          if (currentSimStock <= 10) progressEl.classList.add('fill-warning');
+        }
 
         btn.disabled = true;
-        btn.textContent = '✓ Sold! Stock: ' + oldVal + ' → ' + currentSimStock + ' (Synced)';
+        btn.textContent = '✓ Sold! Stock: ' + oldVal + ' → ' + currentSimStock + ' (Synced Live)';
 
         setTimeout(function () {
-          stockEl.classList.remove('cms-stock-changed');
           btn.disabled = false;
           btn.textContent = '⚡ Simulate Another Sale (' + currentSimStock + ' left)';
-        }, 1200);
+        }, 1100);
       } else {
         stockEl.textContent = '0 Units (Out of Stock)';
         btn.textContent = '⚠️ Out of Stock (Reorder Alert Triggered)';
+        if (progressEl) progressEl.style.width = '0%';
       }
+    }
+
+    // 3. POS Interactive Demo
+    function triggerPosClick(name, price) {
+      var btn = document.getElementById('posPayDemoBtn');
+      if (btn) {
+        btn.style.transform = 'scale(1.02)';
+        setTimeout(function () { btn.style.transform = 'none'; }, 200);
+      }
+    }
+
+    function simulateCheckoutFlow() {
+      var btn = document.getElementById('posPayDemoBtn');
+      if (!btn) return;
+      var originalText = btn.innerHTML;
+      btn.innerHTML = '<span>⚡ Processing UPI QR &amp; Syncing ERP...</span>';
+      btn.disabled = true;
+
+      setTimeout(function () {
+        btn.innerHTML = '<span>✓ Paid ₹556.50 • Tax Invoice Generated &amp; Synced!</span>';
+        btn.style.background = 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)';
+        setTimeout(function () {
+          btn.innerHTML = originalText;
+          btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+          btn.disabled = false;
+        }}, 1800);
+      }, 700);
     }
 
     // 4. Lead Form Handler
@@ -3960,7 +4666,23 @@ permalink: /complete-management-system
         }
       }, 900);
     }
+
+    // 5. Demo Modal Handlers
+    function openDemoModal() {
+      var modal = document.getElementById('demoModal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeDemoModal() {
+      var modal = document.getElementById('demoModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function handleDemoModalSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! Our solutions consultant will reach out via WhatsApp to confirm your personalized demo slot.');
+      closeDemoModal();
+    }
   </script>
 </body>
-
 </html>
