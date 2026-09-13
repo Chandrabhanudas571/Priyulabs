@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <base href="/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Business Types Directory &amp; Industry Solutions | Priyulabs Digital</title>
@@ -392,7 +393,7 @@
   ══════════════════════════════════════════════════════════ -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+      <a href="/" class="logo" aria-label="Priyulabs Digital Home">
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
@@ -402,105 +403,91 @@
       <ul class="nav-links" id="navLinks">
         <!-- 1. Business types Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="business-types.html" class="nav-link-title dropdown-trigger active">
-            Business types <span class="drop-arrow">▾</span>
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger active">Business types <span class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-mega-3col">
             <div class="mega-dropdown-inner mega-3col-wrapper">
 
               <!-- Column 1: Left Categories Tabs -->
               <div class="mega-col-left">
-                <button type="button" class="sq-cat-btn active" data-tab="fnb" onmouseenter="switchMegaTab('fnb')"
-                  onclick="switchMegaTab('fnb')">Food &amp; Beverage</button>
-                <button type="button" class="sq-cat-btn" data-tab="retail" onmouseenter="switchMegaTab('retail')"
-                  onclick="switchMegaTab('retail')">Retail</button>
-                <button type="button" class="sq-cat-btn" data-tab="beauty" onmouseenter="switchMegaTab('beauty')"
-                  onclick="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
-                <button type="button" class="sq-cat-btn" data-tab="services" onmouseenter="switchMegaTab('services')"
-                  onclick="switchMegaTab('services')">Services</button>
-                <a href="business-types.html" class="sq-all-types-link">All business types</a>
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')" onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="/business-types" class="sq-all-types-link">All business types</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="restaurants-fine-dining.html" data-sector="restaurants" data-cat="fnb"
+                  <a href="/restaurants-fine-dining" data-sector="restaurants" data-cat="fnb"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="restaurants-fine-dining.html" data-sector="restaurants" data-cat="fnb"
+                  <a href="/restaurants-fine-dining" data-sector="restaurants" data-cat="fnb"
                     class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="qsr-fast-food.html" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
+                  <a href="/qsr-fast-food" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
                     Food &amp; Takeaway</a>
-                  <a href="cafes-chai-bars.html" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
+                  <a href="/cafes-chai-bars" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
                     &amp; Chai Bars</a>
-                  <a href="cloud-kitchens-catering.html" data-sector="cloudkitchen" data-cat="fnb"
+                  <a href="/cloud-kitchens-catering" data-sector="cloudkitchen" data-cat="fnb"
                     class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="bakeries-shops.html" data-sector="bakery" data-cat="fnb"
+                  <a href="/bakeries-shops" data-sector="bakery" data-cat="fnb"
                     class="sq-disc-item">Bakeries &amp; Sweet Shops</a>
-                  <a href="bars-pubs-breweries.html" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs
+                  <a href="/bars-pubs-breweries" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars, Pubs
                     &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                  <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                  <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
                     class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
-                  <a href="solutions.html?sector=electronics" data-sector="electronics" data-cat="retail"
+                  <a href="/solutions?sector=electronics" data-sector="electronics" data-cat="retail"
                     class="sq-disc-item">Electronics &amp; Mobile Shops</a>
-                  <a href="solutions.html?sector=footwear" data-sector="footwear" data-cat="retail"
+                  <a href="/solutions?sector=footwear" data-sector="footwear" data-cat="retail"
                     class="sq-disc-item">Footwear &amp; Leather Stores</a>
-                  <a href="solutions.html?sector=jewellery" data-sector="jewellery" data-cat="retail"
+                  <a href="/solutions?sector=jewellery" data-sector="jewellery" data-cat="retail"
                     class="sq-disc-item">Jewellery &amp; Watch Outlets</a>
-                  <a href="solutions.html?sector=hardware" data-sector="hardware" data-cat="retail"
+                  <a href="/solutions?sector=hardware" data-sector="hardware" data-cat="retail"
                     class="sq-disc-item">Hardware, Sanitary &amp; Paint Stores</a>
-                  <a href="solutions.html?sector=pharmacy" data-sector="pharmacy" data-cat="retail"
+                  <a href="/solutions?sector=pharmacy" data-sector="pharmacy" data-cat="retail"
                     class="sq-disc-item">Pharmacies &amp; Medical Stores</a>
-                  <a href="solutions.html?sector=books" data-sector="books" data-cat="retail"
+                  <a href="/solutions?sector=books" data-sector="books" data-cat="retail"
                     class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-beauty">
-                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
                     class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
-                  <a href="solutions.html?sector=salons" data-sector="salons" data-cat="beauty"
+                  <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty"
                     class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
-                  <a href="solutions.html?sector=cosmetics" data-sector="cosmetics" data-cat="beauty"
+                  <a href="/beauty-fashion/cosmetics" data-sector="cosmetics" data-cat="beauty"
                     class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
-                  <a href="solutions.html?sector=eyewear" data-sector="eyewear" data-cat="beauty"
-                    class="sq-disc-item">Eyewear &amp; Optical Stores</a>
-                  <a href="solutions.html?sector=tailoring" data-sector="tailoring" data-cat="beauty"
-                    class="sq-disc-item">Tailoring &amp; Custom Designer Studios</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-services">
-                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services"
+                  <a href="/services/gyms" data-sector="gyms" data-cat="services"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
+                  <a href="/services/gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
                     Fitness Studios &amp; Yoga Centers</a>
-                  <a href="solutions.html?sector=garages" data-sector="garages" data-cat="services"
-                    class="sq-disc-item">Auto Garages, Car Wash &amp; Bike Service Centers</a>
-                  <a href="solutions.html?sector=laundry" data-sector="laundry" data-cat="services"
+                  
+                  <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services"
                     class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
-                  <a href="solutions.html?sector=repairs" data-sector="repairs" data-cat="services"
-                    class="sq-disc-item">Repair Centers (Mobile, Laptop, Appliances)</a>
-                  <a href="solutions.html?sector=coworking" data-sector="coworking" data-cat="services"
-                    class="sq-disc-item">Co-working Spaces &amp; Shared Offices</a>
                 </div>
               </div>
 
               <!-- Column 3: Capabilities -->
               <div class="mega-col-right">
                 <div class="mega-sub-header">Capabilities</div>
-                <a href="index.html#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
-                <a href="solutions.html" class="sq-cap-item">Manage orders from one place</a>
-                <a href="index.html#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
-                <a href="solutions.html" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
-                <a href="index.html#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
-                <a href="index.html#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="index.html#attractions" class="sq-cap-item">📦 Vision AI Stock Detection &amp; Expiry Shield</a>
+                <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
+                <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
               </div>
 
             </div>
@@ -509,26 +496,25 @@
 
         <!-- 2. Solutions Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="index.html#attractions" class="nav-link-title dropdown-trigger">
-            Solutions <span class="drop-arrow">▾</span>
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Solutions <span class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
-                <a href="pos.html" class="square-sub-item">
-                  <strong>🖥️ Smart POS</strong>
+                <a href="/pos" class="square-sub-item">
+                  <strong>Smart POS</strong>
                   <span>Fast billing, AI voice checkout &amp; offline mode</span>
                 </a>
-                <a href="complete-management-system.html" class="square-sub-item">
-                  <strong>📊 Complete Management System</strong>
+                <a href="/complete-management-system" class="square-sub-item">
+                  <strong>Complete Management System</strong>
                   <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
                 </a>
-                <a href="website-builder.html" class="square-sub-item">
-                  <strong>🌐 Custom Website Building</strong>
+                <a href="/website-builder" class="square-sub-item">
+                  <strong>Custom Website Building</strong>
                   <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
                 </a>
-                <a href="digital-marketing.html" class="square-sub-item">
-                  <strong>📣 Digital Marketing &amp; Ads</strong>
+                <a href="/digital-marketing" class="square-sub-item">
+                  <strong>Digital Marketing &amp; Ads</strong>
                   <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
                 </a>
               </div>
@@ -538,17 +524,16 @@
 
         <!-- 2B. Hospitality Tech -->
         <li>
-          <a href="javascript:void(0)" onclick="openComingSoonModal('Hospitality Tech', event)" class="nav-link-title"
-            style="cursor: pointer;">
+          <a href="/hospitality" class="nav-link-title">
             Hospitality Tech <span class="nav-soon-pill">Soon</span>
           </a>
         </li>
 
         <!-- 4. Pricing -->
-        <li><a href="index.html#cta">Pricing</a></li>
+        <li><a href="/#cta">Pricing</a></li>
 
         <!-- 5. What's new -->
-        <li><a href="index.html#trust">What's new</a></li>
+        <li><a href="/#trust">What's new</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -568,7 +553,7 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">✨ Interactive Demo</button>
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive Demo</button>
         <a href="#lead-form-dir" class="btn-nav">Start Free Trial</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -613,14 +598,13 @@
               <span>Solutions</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <a href="javascript:void(0)" class="drawer-nav-item drawer-link"
-              onclick="openComingSoonModal('Hospitality Tech', event); closeMobileDrawer();">
+            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
               <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
             </a>
-            <a href="index.html#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+            <a href="/#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>Pricing</span>
             </a>
-            <a href="index.html#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+            <a href="/#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>What's new</span>
             </a>
           </nav>
@@ -628,10 +612,10 @@
           <div class="drawer-divider"></div>
 
           <div class="drawer-utility-links">
-            <a href="business-types.html" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">✨ Interactive
+            <a href="/business-types" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive
               Demo &amp; Portfolio</button>
-            <a href="index.html#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
+            <a href="/#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
           </div>
 
           <div class="drawer-bottom-cta">
@@ -648,23 +632,23 @@
           <div class="drawer-panel-eyebrow">Select Industry Category</div>
           <nav class="drawer-nav-list">
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
-              <span>☕ Food &amp; Beverage</span>
+              <span>Food &amp; Beverage</span>
               <span class="drawer-chevron">›</span>
             </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
-              <span>🛒 Retail</span>
+              <span>Retail</span>
               <span class="drawer-chevron">›</span>
             </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
-              <span>👗 Beauty &amp; Fashion</span>
+              <span>Beauty &amp; Fashion</span>
               <span class="drawer-chevron">›</span>
             </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
-              <span>🔧 Services</span>
+              <span> Services</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <a href="business-types.html" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
-              <span>✨ View All Business Types</span>
+            <a href="/business-types" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
+              <span>View All Business Types</span>
             </a>
           </nav>
         </div>
@@ -676,7 +660,7 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Core Products &amp; Services</div>
           <nav class="drawer-solution-cards">
-            <a href="pos.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/pos" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -689,7 +673,7 @@
                 <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
               </div>
             </a>
-            <a href="complete-management-system.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/complete-management-system" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -702,7 +686,7 @@
                 <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
               </div>
             </a>
-            <a href="website-builder.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/website-builder" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -715,7 +699,7 @@
                 <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
               </div>
             </a>
-            <a href="digital-marketing.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/digital-marketing" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -736,13 +720,13 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Food &amp; Beverage Outlets</div>
           <nav class="drawer-nav-list compact">
-            <a href="restaurants-fine-dining.html" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
-            <a href="restaurants-fine-dining.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Restaurants &amp; Fine Dining</a>
-            <a href="qsr-fast-food.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">QSR, Fast Food &amp; Takeaway</a>
-            <a href="cafes-chai-bars.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cafes &amp; Chai Bars</a>
-            <a href="cloud-kitchens-catering.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cloud Kitchens &amp; Catering</a>
-            <a href="bakeries-shops.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bakeries &amp; Sweet Shops</a>
-            <a href="bars-pubs-breweries.html" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bars, Pubs &amp; Breweries</a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Restaurants &amp; Fine Dining</a>
+            <a href="/qsr-fast-food" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">QSR, Fast Food &amp; Takeaway</a>
+            <a href="/cafes-chai-bars" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cafes &amp; Chai Bars</a>
+            <a href="/cloud-kitchens-catering" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cloud Kitchens &amp; Catering</a>
+            <a href="/bakeries-shops" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bakeries &amp; Sweet Shops</a>
+            <a href="/bars-pubs-breweries" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bars, Pubs &amp; Breweries</a>
           </nav>
         </div>
       </div>
@@ -753,14 +737,14 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Retail Formats</div>
           <nav class="drawer-nav-list compact">
-            <a href="solutions.html?sector=grocery" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
-            <a href="solutions.html?sector=grocery" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Grocery, Supermarkets &amp; Kirana</a>
-            <a href="solutions.html?sector=electronics" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Electronics &amp; Mobile Shops</a>
-            <a href="solutions.html?sector=footwear" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Footwear &amp; Leather Stores</a>
-            <a href="solutions.html?sector=jewellery" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Jewellery &amp; Watch Outlets</a>
-            <a href="solutions.html?sector=hardware" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Hardware, Sanitary &amp; Paint</a>
-            <a href="solutions.html?sector=pharmacy" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Pharmacies &amp; Medical Stores</a>
-            <a href="solutions.html?sector=books" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bookstores &amp; Stationery</a>
+            <a href="/solutions?sector=grocery" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/solutions?sector=grocery" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Grocery, Supermarkets &amp; Kirana</a>
+            <a href="/solutions?sector=electronics" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Electronics &amp; Mobile Shops</a>
+            <a href="/solutions?sector=footwear" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Footwear &amp; Leather Stores</a>
+            <a href="/solutions?sector=jewellery" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Jewellery &amp; Watch Outlets</a>
+            <a href="/solutions?sector=hardware" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Hardware, Sanitary &amp; Paint</a>
+            <a href="/solutions?sector=pharmacy" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Pharmacies &amp; Medical Stores</a>
+            <a href="/solutions?sector=books" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bookstores &amp; Stationery</a>
           </nav>
         </div>
       </div>
@@ -771,12 +755,10 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Stores</div>
           <nav class="drawer-nav-list compact">
-            <a href="solutions.html?sector=clothing" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
-            <a href="solutions.html?sector=clothing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Clothing Brands &amp; Boutiques</a>
-            <a href="solutions.html?sector=salons" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Salons, Spas &amp; Beauty Parlors</a>
-            <a href="solutions.html?sector=cosmetics" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cosmetics &amp; Skincare Stores</a>
-            <a href="solutions.html?sector=eyewear" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Eyewear &amp; Optical Stores</a>
-            <a href="solutions.html?sector=tailoring" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Tailoring &amp; Designer Studios</a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Clothing Brands &amp; Boutiques</a>
+            <a href="/beauty-fashion/salons" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Salons, Spas &amp; Beauty Parlors</a>
+            <a href="/beauty-fashion/cosmetics" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cosmetics &amp; Skincare Stores</a>
           </nav>
         </div>
       </div>
@@ -787,12 +769,10 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Services &amp; Professional Businesses</div>
           <nav class="drawer-nav-list compact">
-            <a href="solutions.html?sector=gyms" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
-            <a href="solutions.html?sector=gyms" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Gyms, Fitness &amp; Yoga Centers</a>
-            <a href="solutions.html?sector=garages" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Auto Garages &amp; Bike Service</a>
-            <a href="solutions.html?sector=laundry" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Dry Cleaners &amp; Laundry Shops</a>
-            <a href="solutions.html?sector=repairs" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Repair Centers (Mobile, Laptop)</a>
-            <a href="solutions.html?sector=coworking" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Co-working Spaces &amp; Offices</a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Gyms, Fitness &amp; Yoga Centers</a>
+            
+            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Dry Cleaners &amp; Laundry Shops</a>
           </nav>
         </div>
       </div>
@@ -804,7 +784,7 @@
   ══════════════════════════════════════════════════════════ -->
   <section class="bdir-hero">
     <div class="bdir-hero-container">
-      <span class="bdir-eyebrow">⚡ Complete Business Types Directory</span>
+      <span class="bdir-eyebrow"> Complete Business Types Directory</span>
       <h1 class="bdir-title">Engineered For Your Specific Industry Workflow</h1>
       <p class="bdir-subtitle">
         Priyulabs Retail OS &amp; Management Suite is pre-configured with customized workflows, billing logic, and inventory controls across 23+ Indian retail &amp; service sectors.
@@ -813,15 +793,15 @@
       <!-- Search & Filters -->
       <div class="bdir-controls">
         <div class="bdir-search-wrap">
-          <span class="bdir-search-icon">🔍</span>
+          <span class="bdir-search-icon"></span>
           <input type="text" id="bdirSearch" class="bdir-search-input" placeholder="Search by business name or feature (e.g. cafe, pharmacy, salon, barcode, expiry)..." autocomplete="off" />
         </div>
         <div class="bdir-filter-tabs" id="filterTabs">
           <button type="button" class="bdir-tab-btn active" data-filter="all">All Industries (23)</button>
-          <button type="button" class="bdir-tab-btn" data-filter="fnb">☕ Food &amp; Beverage (6)</button>
-          <button type="button" class="bdir-tab-btn" data-filter="retail">🛒 Retail &amp; Grocery (7)</button>
-          <button type="button" class="bdir-tab-btn" data-filter="beauty">👗 Beauty &amp; Fashion (5)</button>
-          <button type="button" class="bdir-tab-btn" data-filter="services">🔧 Services (5)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="fnb">Food &amp; Beverage (6)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="retail"> Retail &amp; Grocery (7)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="beauty"> Beauty &amp; Fashion (5)</button>
+          <button type="button" class="bdir-tab-btn" data-filter="services"> Services (5)</button>
         </div>
       </div>
     </div>
@@ -834,7 +814,7 @@
 
     <!-- Empty search message -->
     <div class="bdir-empty-state" id="bdirEmpty">
-      <div class="bdir-empty-icon">🔍</div>
+      <div class="bdir-empty-icon"></div>
       <div class="bdir-empty-title">No matching business types found</div>
       <div class="bdir-empty-desc">Try searching for keywords like "grocery", "cafe", "apparel", "salons", "hardware", or click "All Industries".</div>
     </div>
@@ -843,17 +823,17 @@
     <section class="bdir-cat-group" data-category="fnb">
       <div class="bdir-section-header">
         <h2 class="bdir-section-title">
-          <span>☕ Food &amp; Beverage</span>
+          <span>Food &amp; Beverage</span>
         </h2>
         <span class="bdir-section-count">6 Formats</span>
       </div>
 
       <div class="bdir-grid">
         <!-- 1. Restaurants & Fine Dining -->
-        <a href="restaurants-fine-dining.html" class="bdir-card" data-cat="fnb" data-title="Restaurants & Fine Dining table management captain pos split check kitchen display kot">
+        <a href="/restaurants-fine-dining" class="bdir-card" data-cat="fnb" data-title="Restaurants & Fine Dining table management captain pos split check kitchen display kot">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🍽️</div>
+              <div class="bdir-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2"></path><path d="M15 2v10a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V2"></path><path d="M9 22v-6"></path><path d="M15 22v-6"></path></svg></div>
               <span class="bdir-card-badge">F&amp;B</span>
             </div>
             <h3 class="bdir-card-title">Restaurants &amp; Fine Dining</h3>
@@ -870,10 +850,10 @@
         </a>
 
         <!-- 2. QSR & Fast Food -->
-        <a href="qsr-fast-food.html" class="bdir-card" data-cat="fnb" data-title="QSR Fast Food Takeaway counter ordering token calling bump bar rapid billing">
+        <a href="/qsr-fast-food" class="bdir-card" data-cat="fnb" data-title="QSR Fast Food Takeaway counter ordering token calling bump bar rapid billing">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🍔</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">F&amp;B</span>
             </div>
             <h3 class="bdir-card-title">QSR, Fast Food &amp; Takeaway</h3>
@@ -890,10 +870,10 @@
         </a>
 
         <!-- 3. Cafes & Chai Bars -->
-        <a href="cafes-chai-bars.html" class="bdir-card" data-cat="fnb" data-title="Cafes Chai Bars coffee milk bean recipe stock loyalty beans qr ordering">
+        <a href="/cafes-chai-bars" class="bdir-card" data-cat="fnb" data-title="Cafes Chai Bars coffee milk bean recipe stock loyalty beans qr ordering">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">☕</div>
+              <div class="bdir-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg></div>
               <span class="bdir-card-badge">F&amp;B</span>
             </div>
             <h3 class="bdir-card-title">Cafes &amp; Chai Bars</h3>
@@ -910,10 +890,10 @@
         </a>
 
         <!-- 4. Cloud Kitchens & Catering -->
-        <a href="cloud-kitchens-catering.html" class="bdir-card" data-cat="fnb" data-title="Cloud Kitchens Catering multi-brand swiggy zomato aggregator sync bulk catering">
+        <a href="/cloud-kitchens-catering" class="bdir-card" data-cat="fnb" data-title="Cloud Kitchens Catering multi-brand swiggy zomato aggregator sync bulk catering">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">📦</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">F&amp;B</span>
             </div>
             <h3 class="bdir-card-title">Cloud Kitchens &amp; Catering</h3>
@@ -930,10 +910,10 @@
         </a>
 
         <!-- 5. Bakeries & Sweet Shops -->
-        <a href="bakeries-shops.html" class="bdir-card" data-cat="fnb" data-title="Bakeries Sweet Shops custom cake booking weight scale expiry label demo video">
+        <a href="/bakeries-shops" class="bdir-card" data-cat="fnb" data-title="Bakeries Sweet Shops custom cake booking weight scale expiry label demo video">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🎂</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">F&amp;B</span>
             </div>
             <h3 class="bdir-card-title">Bakeries &amp; Sweet Shops</h3>
@@ -950,10 +930,10 @@
         </a>
 
         <!-- 6. Bars, Pubs & Breweries -->
-        <a href="bars-pubs-breweries.html" class="bdir-card" data-cat="fnb" data-title="Bars Pubs Breweries open bar tabs peg level excise compliance liquor inventory">
+        <a href="/bars-pubs-breweries" class="bdir-card" data-cat="fnb" data-title="Bars Pubs Breweries open bar tabs peg level excise compliance liquor inventory">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🍺</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">F&amp;B</span>
             </div>
             <h3 class="bdir-card-title">Bars, Pubs &amp; Breweries</h3>
@@ -975,17 +955,17 @@
     <section class="bdir-cat-group" data-category="retail">
       <div class="bdir-section-header">
         <h2 class="bdir-section-title">
-          <span>🛒 Retail &amp; Supermarkets</span>
+          <span> Retail &amp; Supermarkets</span>
         </h2>
         <span class="bdir-section-count">7 Formats</span>
       </div>
 
       <div class="bdir-grid">
         <!-- 7. Grocery, Supermarkets & Kirana -->
-        <a href="solutions.html?sector=grocery" class="bdir-card" data-cat="retail" data-title="Grocery Supermarkets Kirana Stores vision ai stock detection expiry shield weigh scale barcode scanner">
+        <a href="/solutions?sector=grocery" class="bdir-card" data-cat="retail" data-title="Grocery Supermarkets Kirana Stores vision ai stock detection expiry shield weigh scale barcode scanner">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🛒</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Grocery &amp; Supermarkets</h3>
@@ -1002,10 +982,10 @@
         </a>
 
         <!-- 8. Electronics & Mobile Shops -->
-        <a href="solutions.html?sector=electronics" class="bdir-card" data-cat="retail" data-title="Electronics Mobile Shops imei serial barcode whatsapp warranty emi edc payment sync">
+        <a href="/solutions?sector=electronics" class="bdir-card" data-cat="retail" data-title="Electronics Mobile Shops imei serial barcode whatsapp warranty emi edc payment sync">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">📱</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Electronics &amp; Mobile Shops</h3>
@@ -1022,10 +1002,10 @@
         </a>
 
         <!-- 9. Footwear & Leather Stores -->
-        <a href="solutions.html?sector=footwear" class="bdir-card" data-cat="retail" data-title="Footwear Leather Stores shoe box barcode size rack locator store credit exchange">
+        <a href="/solutions?sector=footwear" class="bdir-card" data-cat="retail" data-title="Footwear Leather Stores shoe box barcode size rack locator store credit exchange">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">👞</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Footwear &amp; Leather Stores</h3>
@@ -1042,10 +1022,10 @@
         </a>
 
         <!-- 10. Jewellery & Watch Outlets -->
-        <a href="solutions.html?sector=jewellery" class="bdir-card" data-cat="retail" data-title="Jewellery Watch Outlets karat purity making charges gold rate tag scanner festive loyalty">
+        <a href="/solutions?sector=jewellery" class="bdir-card" data-cat="retail" data-title="Jewellery Watch Outlets karat purity making charges gold rate tag scanner festive loyalty">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">💍</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Jewellery &amp; Watch Outlets</h3>
@@ -1062,10 +1042,10 @@
         </a>
 
         <!-- 11. Hardware, Sanitary & Paint -->
-        <a href="solutions.html?sector=hardware" class="bdir-card" data-cat="retail" data-title="Hardware Sanitary Paint Stores contractor udhar ledger multi-unit measurement paint tinting">
+        <a href="/solutions?sector=hardware" class="bdir-card" data-cat="retail" data-title="Hardware Sanitary Paint Stores contractor udhar ledger multi-unit measurement paint tinting">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🔨</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Hardware &amp; Sanitary Stores</h3>
@@ -1082,10 +1062,10 @@
         </a>
 
         <!-- 12. Pharmacies & Medical Stores -->
-        <a href="solutions.html?sector=pharmacy" class="bdir-card" data-cat="retail" data-title="Pharmacies Medical Stores 150k medicine salt search fefo batch expiry schedule h gst json">
+        <a href="/solutions?sector=pharmacy" class="bdir-card" data-cat="retail" data-title="Pharmacies Medical Stores 150k medicine salt search fefo batch expiry schedule h gst json">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">💊</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Pharmacies &amp; Medical Stores</h3>
@@ -1102,10 +1082,10 @@
         </a>
 
         <!-- 13. Bookstores & Stationery Outlets -->
-        <a href="solutions.html?sector=books" class="bdir-card" data-cat="retail" data-title="Bookstores Stationery Outlets isbn barcode auto catalog school kit bundle publisher returns">
+        <a href="/solutions?sector=books" class="bdir-card" data-cat="retail" data-title="Bookstores Stationery Outlets isbn barcode auto catalog school kit bundle publisher returns">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">📚</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Retail</span>
             </div>
             <h3 class="bdir-card-title">Bookstores &amp; Stationery</h3>
@@ -1127,17 +1107,17 @@
     <section class="bdir-cat-group" data-category="beauty">
       <div class="bdir-section-header">
         <h2 class="bdir-section-title">
-          <span>👗 Beauty &amp; Fashion</span>
+          <span>Beauty &amp; Fashion</span>
         </h2>
         <span class="bdir-section-count">5 Formats</span>
       </div>
 
       <div class="bdir-grid">
         <!-- 14. Clothing Brands & Boutiques -->
-        <a href="solutions.html?sector=clothing" class="bdir-card" data-cat="beauty" data-title="Clothing Brands Apparel Boutiques size color variant matrix custom tag printer whatsapp lookbook">
+        <a href="/beauty-fashion/apparel" class="bdir-card" data-cat="beauty" data-title="Clothing Brands Apparel Boutiques size color variant matrix custom tag printer whatsapp lookbook">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">👗</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Beauty &amp; Fashion</span>
             </div>
             <h3 class="bdir-card-title">Clothing Brands &amp; Boutiques</h3>
@@ -1154,10 +1134,10 @@
         </a>
 
         <!-- 15. Salons, Spas & Beauty Parlors -->
-        <a href="solutions.html?sector=salons" class="bdir-card" data-cat="beauty" data-title="Salons Spas Beauty Parlors stylist chair calendar commission payroll service billing supply tracker">
+        <a href="/beauty-fashion/salons" class="bdir-card" data-cat="beauty" data-title="Salons Spas Beauty Parlors stylist chair calendar commission payroll service billing supply tracker">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">✂️</div>
+              <div class="bdir-card-icon">️</div>
               <span class="bdir-card-badge">Beauty &amp; Fashion</span>
             </div>
             <h3 class="bdir-card-title">Salons, Spas &amp; Parlors</h3>
@@ -1174,10 +1154,10 @@
         </a>
 
         <!-- 16. Cosmetics & Skincare Stores -->
-        <a href="solutions.html?sector=cosmetics" class="bdir-card" data-cat="beauty" data-title="Cosmetics Skincare Stores tester batch tracking shade finder beauty profile loyalty cashback wallet">
+        <a href="/beauty-fashion/cosmetics" class="bdir-card" data-cat="beauty" data-title="Cosmetics Skincare Stores tester batch tracking shade finder beauty profile loyalty cashback wallet">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">💄</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Beauty &amp; Fashion</span>
             </div>
             <h3 class="bdir-card-title">Cosmetics &amp; Skincare Stores</h3>
@@ -1193,63 +1173,21 @@
           <div class="bdir-card-cta">Explore Cosmetics Solutions →</div>
         </a>
 
-        <!-- 17. Eyewear & Optical Stores -->
-        <a href="solutions.html?sector=eyewear" class="bdir-card" data-cat="beauty" data-title="Eyewear Optical Stores prescription power rx billing frame tags lab lens fitting job sheet">
-          <div>
-            <div class="bdir-card-top">
-              <div class="bdir-card-icon">👓</div>
-              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
-            </div>
-            <h3 class="bdir-card-title">Eyewear &amp; Optical Stores</h3>
-            <p class="bdir-card-desc">
-              Digital eye prescription power vault (Sph, Cyl, Axis, Add), lab lens grinding job sheets, and micro-tail optical frame tags.
-            </p>
-            <div class="bdir-card-tags">
-              <span class="bdir-tag">Digital Eye Rx Vault</span>
-              <span class="bdir-tag">Lab Job-Sheet Dispatch</span>
-              <span class="bdir-tag">Frame Temple Tags</span>
-            </div>
-          </div>
-          <div class="bdir-card-cta">Explore Eyewear Solutions →</div>
-        </a>
-
-        <!-- 18. Tailoring & Designer Studios -->
-        <a href="solutions.html?sector=tailoring" class="bdir-card" data-cat="beauty" data-title="Tailoring Designer Studios body measurement vault master tailor job card trial tracking">
-          <div>
-            <div class="bdir-card-top">
-              <div class="bdir-card-icon">🪡</div>
-              <span class="bdir-card-badge">Beauty &amp; Fashion</span>
-            </div>
-            <h3 class="bdir-card-title">Tailoring &amp; Designer Studios</h3>
-            <p class="bdir-card-desc">
-              25+ parameter client measurement profiles, barcoded master tailor job cards, fabric swatches, and automated trial notifications.
-            </p>
-            <div class="bdir-card-tags">
-              <span class="bdir-tag">Cloud Measurement Vault</span>
-              <span class="bdir-tag">Master Tailor Job Cards</span>
-              <span class="bdir-tag">Trial Date Alerts</span>
-            </div>
-          </div>
-          <div class="bdir-card-cta">Explore Tailoring Solutions →</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ════ CATEGORY 4: SERVICES ════ -->
+        <!-- ════ CATEGORY 4: SERVICES ════ -->
     <section class="bdir-cat-group" data-category="services">
       <div class="bdir-section-header">
         <h2 class="bdir-section-title">
-          <span>🔧 Professional Services</span>
+          <span> Professional Services</span>
         </h2>
         <span class="bdir-section-count">5 Formats</span>
       </div>
 
       <div class="bdir-grid">
         <!-- 19. Gyms, Fitness & Yoga -->
-        <a href="solutions.html?sector=gyms" class="bdir-card" data-cat="services" data-title="Gyms Fitness Studios Yoga Centers biometric turnstile check in trainer schedule membership renewals">
+        <a href="/services/gyms" class="bdir-card" data-cat="services" data-title="Gyms Fitness Studios Yoga Centers biometric turnstile check in trainer schedule membership renewals">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">🏋️</div>
+              <div class="bdir-card-icon">️</div>
               <span class="bdir-card-badge">Services</span>
             </div>
             <h3 class="bdir-card-title">Gyms &amp; Fitness Studios</h3>
@@ -1265,31 +1203,11 @@
           <div class="bdir-card-cta">Explore Fitness Solutions →</div>
         </a>
 
-        <!-- 20. Auto Garages & Bike Service -->
-        <a href="solutions.html?sector=garages" class="bdir-card" data-cat="services" data-title="Auto Garages Car Wash Bike Service Centers vehicle intake job card oem spares mechanic ledger periodic service">
-          <div>
-            <div class="bdir-card-top">
-              <div class="bdir-card-icon">🚗</div>
-              <span class="bdir-card-badge">Services</span>
-            </div>
-            <h3 class="bdir-card-title">Auto Garages &amp; Service</h3>
-            <p class="bdir-card-desc">
-              Digital vehicle intake inspection cards with defect photos, OEM spare parts requisition, mechanic labor ledgers, and 6-month service alerts.
-            </p>
-            <div class="bdir-card-tags">
-              <span class="bdir-tag">Digital Vehicle Intake</span>
-              <span class="bdir-tag">OEM Spares Requisition</span>
-              <span class="bdir-tag">Periodic Service Alerts</span>
-            </div>
-          </div>
-          <div class="bdir-card-cta">Explore Garage Solutions →</div>
-        </a>
-
         <!-- 21. Dry Cleaners & Laundry -->
-        <a href="solutions.html?sector=laundry" class="bdir-card" data-cat="services" data-title="Dry Cleaners Laundry Shops waterproof thermal tag stain defect photo log pickup ready alert">
+        <a href="/services/dry-cleaners" class="bdir-card" data-cat="services" data-title="Dry Cleaners Laundry Shops waterproof thermal tag stain defect photo log pickup ready alert">
           <div>
             <div class="bdir-card-top">
-              <div class="bdir-card-icon">👔</div>
+              <div class="bdir-card-icon"></div>
               <span class="bdir-card-badge">Services</span>
             </div>
             <h3 class="bdir-card-title">Dry Cleaners &amp; Laundry</h3>
@@ -1305,49 +1223,7 @@
           <div class="bdir-card-cta">Explore Laundry Solutions →</div>
         </a>
 
-        <!-- 22. Repair Centers (Mobile, Laptop) -->
-        <a href="solutions.html?sector=repairs" class="bdir-card" data-cat="services" data-title="Repair Centers Mobile Laptop Appliances ticket barcode bench tracker repair warranty status link">
-          <div>
-            <div class="bdir-card-top">
-              <div class="bdir-card-icon">🛠️</div>
-              <span class="bdir-card-badge">Services</span>
-            </div>
-            <h3 class="bdir-card-title">Device Repair Centers</h3>
-            <p class="bdir-card-desc">
-              Device ticket barcode intake, technician repair workbench stage tracker (Diagnosis -> Tested), and live online status link for customers.
-            </p>
-            <div class="bdir-card-tags">
-              <span class="bdir-tag">Device Ticket Barcode</span>
-              <span class="bdir-tag">Bench Stage Tracker</span>
-              <span class="bdir-tag">Live SMS Status Link</span>
-            </div>
-          </div>
-          <div class="bdir-card-cta">Explore Repair Solutions →</div>
-        </a>
-
-        <!-- 23. Co-working Spaces & Offices -->
-        <a href="solutions.html?sector=coworking" class="bdir-card" data-cat="services" data-title="Coworking Spaces Shared Offices hot desk booking meeting room credits recurring invoicing cafeteria pos">
-          <div>
-            <div class="bdir-card-top">
-              <div class="bdir-card-icon">🏢</div>
-              <span class="bdir-card-badge">Services</span>
-            </div>
-            <h3 class="bdir-card-title">Co-working &amp; Shared Offices</h3>
-            <p class="bdir-card-desc">
-              Hot-desk &amp; meeting room credit deduction, automated recurring monthly GST rent invoicing, and cafeteria member ledger integration.
-            </p>
-            <div class="bdir-card-tags">
-              <span class="bdir-tag">Self-Serve Room Booking</span>
-              <span class="bdir-tag">Automated GST Invoicing</span>
-              <span class="bdir-tag">Cafeteria Ledger POS</span>
-            </div>
-          </div>
-          <div class="bdir-card-cta">Explore Co-working Solutions →</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ════ CORE PLATFORM PRODUCTS OVERVIEW BANNER ════ -->
+        <!-- ════ CORE PLATFORM PRODUCTS OVERVIEW BANNER ════ -->
     <div class="bdir-core-banner">
       <div style="text-align: center; max-width: 680px; margin: 0 auto;">
         <span class="bdir-card-badge" style="margin-bottom: 8px; display: inline-block;">Core Platform Systems</span>
@@ -1360,28 +1236,28 @@
       </div>
 
       <div class="bdir-core-grid">
-        <a href="pos.html" class="bdir-core-card">
-          <span style="font-size: 22px;">🖥️</span>
+        <a href="/pos" class="bdir-core-card">
+          <span class="icon-squircle" style="color:#059669;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
           <strong style="font-size: 15px; color: var(--text-main);">Smart POS System</strong>
           <span style="font-size: 12.5px; color: var(--text-muted);">Lightning 2-sec billing, Vision AI &amp; offline mode</span>
         </a>
-        <a href="complete-management-system.html" class="bdir-core-card">
-          <span style="font-size: 22px;">📊</span>
+        <a href="/complete-management-system" class="bdir-core-card">
+          <span style="font-size: 22px;"></span>
           <strong style="font-size: 15px; color: var(--text-main);">Complete Management System</strong>
           <span style="font-size: 12.5px; color: var(--text-muted);">Multi-store inventory ERP, Selfie HRMS &amp; GST ledger</span>
         </a>
-        <a href="hospitality.html" class="bdir-core-card">
-          <span style="font-size: 22px;">☕</span>
+        <a href="/hospitality" class="bdir-core-card">
+          <span class="icon-squircle" style="color:#d97706;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg></span>
           <strong style="font-size: 15px; color: var(--text-main);">Hospitality Tech Suite</strong>
           <span style="font-size: 12.5px; color: var(--text-muted);">Table floor plans, QR ordering &amp; kitchen display</span>
         </a>
-        <a href="website-builder.html" class="bdir-core-card">
-          <span style="font-size: 22px;">🌐</span>
+        <a href="/website-builder" class="bdir-core-card">
+          <span style="font-size: 22px;"></span>
           <strong style="font-size: 15px; color: var(--text-main);">Custom Website Builder</strong>
           <span style="font-size: 12.5px; color: var(--text-muted);">High-converting e-commerce &amp; branded web stores</span>
         </a>
-        <a href="digital-marketing.html" class="bdir-core-card">
-          <span style="font-size: 22px;">📣</span>
+        <a href="/digital-marketing" class="bdir-core-card">
+          <span class="icon-squircle" style="color:#e11d48;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2z"></path></svg></span>
           <strong style="font-size: 15px; color: var(--text-main);">Digital Marketing &amp; Ads</strong>
           <span style="font-size: 12.5px; color: var(--text-muted);">Meta Ads, Google Local SEO &amp; WhatsApp commerce</span>
         </a>
@@ -1398,7 +1274,7 @@
       <div class="cta-inner" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 60px); align-items: center;">
         <div class="cta-text">
           <span class="bdir-eyebrow" style="margin-bottom: 16px;">
-            🚀 Fast Onboarding &amp; Industry Demo
+            Fast Onboarding &amp; Industry Demo
           </span>
           <h2 style="color: var(--text-main); font-family: var(--font-heading); font-size: clamp(28px, 4.2vw, 42px); font-weight: 900; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 16px;">
             Get a 10-Minute Demo Tailored Specifically to Your Store.
@@ -1407,9 +1283,9 @@
             Our retail specialists will configure Priyulabs to your specific business type, demonstrate real-time barcode scanning and ERP sync, and get your team ready in under 30 minutes.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 14px; font-weight: 700; font-size: 13.5px; margin-bottom: 24px; color: var(--text-body);">
-            <span><span style="color:#059669;">✓</span> 14-Day Full Free Trial</span>
-            <span><span style="color:#059669;">✓</span> Zero Setup Charges</span>
-            <span><span style="color:#059669;">✓</span> WhatsApp Support: <a href="tel:+917849074050" style="color: var(--primary); font-weight: 800;">+91 78490 74050</a></span>
+            <span><span style="color:#059669;"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span> 14-Day Full Free Trial</span>
+            <span><span style="color:#059669;"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Zero Setup Charges</span>
+            <span><span style="color:#059669;"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span> WhatsApp Support: <a href="tel:+917849074050" style="color: var(--primary); font-weight: 800;">+91 78490 74050</a></span>
           </div>
         </div>
 
@@ -1438,11 +1314,11 @@
             </div>
 
             <button type="submit" class="btn-primary full-width" style="width: 100%; padding: 14px 20px; font-size: 15.5px; font-weight: 800; border-radius: 12px; background: var(--primary); color: #fff; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);">
-              Schedule Industry Demo 🚀
+              Schedule Industry Demo 
             </button>
 
             <p style="font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center; line-height: 1.4;">
-              🔒 100% confidential. No pushy sales calls.
+               100% confidential. No pushy sales calls.
             </p>
           </form>
         </div>
@@ -1457,7 +1333,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="index.html" class="logo">
+          <a href="/" class="logo">
             <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
             <div class="logo-text-group">
               <span class="logo-title">PRIYULABS</span>
@@ -1471,21 +1347,21 @@
         <div class="footer-links-group">
           <h4>Business Categories</h4>
           <ul>
-            <li><a href="solutions.html?sector=restaurants">☕ Food &amp; Beverage</a></li>
-            <li><a href="solutions.html?sector=grocery">🛒 Retail &amp; Supermarkets</a></li>
-            <li><a href="solutions.html?sector=clothing">👗 Beauty &amp; Fashion</a></li>
-            <li><a href="solutions.html?sector=gyms">🔧 Professional Services</a></li>
-            <li><a href="business-types.html">✨ All 23 Business Types</a></li>
+            <li><a href="/solutions?sector=restaurants">Food &amp; Beverage</a></li>
+            <li><a href="/solutions?sector=grocery"> Retail &amp; Supermarkets</a></li>
+            <li><a href="/beauty-fashion/apparel">Beauty &amp; Fashion</a></li>
+            <li><a href="/solutions?sector=gyms"> Professional Services</a></li>
+            <li><a href="/business-types">All 23 Business Types</a></li>
           </ul>
         </div>
         <div class="footer-links-group">
           <h4>Core Products</h4>
           <ul>
-            <li><a href="pos.html">🖥️ Smart POS</a></li>
-            <li><a href="complete-management-system.html">📊 Complete Management System</a></li>
-            <li><a href="hospitality.html">☕ Hospitality Suite</a></li>
-            <li><a href="website-builder.html">🌐 Custom Website Building</a></li>
-            <li><a href="digital-marketing.html">📣 Digital Marketing &amp; Ads</a></li>
+            <li><a href="/pos">Smart POS</a></li>
+            <li><a href="/complete-management-system"> Complete Management System</a></li>
+            <li><a href="/hospitality">Hospitality Suite</a></li>
+            <li><a href="/website-builder"> Custom Website Building</a></li>
+            <li><a href="/digital-marketing">Digital Marketing &amp; Ads</a></li>
           </ul>
         </div>
       </div>
@@ -1499,7 +1375,7 @@
   <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-card">
       <button class="modal-close" onclick="closeComingSoonModal()" aria-label="Close modal">&times;</button>
-      <div class="modal-badge">✨ COMING SOON</div>
+      <div class="modal-badge">COMING SOON</div>
       <h3 class="modal-title" id="comingSoonTitle">Feature Coming Soon</h3>
       <p class="modal-text">
         We are putting the finishing touches on this product suite. Leave your details below and our team will notify you the moment it goes live with exclusive launch-day benefits.
@@ -1516,18 +1392,18 @@
   <div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-card demo-modal-card">
       <button class="modal-close" onclick="closeDemoModal()" aria-label="Close modal">&times;</button>
-      <div class="modal-badge">✨ LIVE DEMO EXPLORER</div>
+      <div class="modal-badge">LIVE DEMO EXPLORER</div>
       <h3 class="modal-title">Interactive Store Demonstration</h3>
       <p class="modal-text">
         Select your store format to launch a guided, interactive workflow demonstration:
       </p>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0;">
-        <a href="solutions.html?sector=grocery" class="sq-cap-item" style="padding: 10px; font-size: 13px;">🛒 Supermarket POS</a>
-        <a href="solutions.html?sector=cafes" class="sq-cap-item" style="padding: 10px; font-size: 13px;">☕ Cafe &amp; KOT POS</a>
-        <a href="solutions.html?sector=pharmacy" class="sq-cap-item" style="padding: 10px; font-size: 13px;">💊 Pharmacy ERP</a>
-        <a href="solutions.html?sector=clothing" class="sq-cap-item" style="padding: 10px; font-size: 13px;">👗 Fashion Boutique</a>
+        <a href="/solutions?sector=grocery" class="sq-cap-item" style="padding: 10px; font-size: 13px;"> Supermarket POS</a>
+        <a href="/solutions?sector=cafes" class="sq-cap-item" style="padding: 10px; font-size: 13px;"> Cafe &amp; KOT POS</a>
+        <a href="/solutions?sector=pharmacy" class="sq-cap-item" style="padding: 10px; font-size: 13px;"> Pharmacy ERP</a>
+        <a href="/beauty-fashion/apparel" class="sq-cap-item" style="padding: 10px; font-size: 13px;"> Fashion Boutique</a>
       </div>
-      <a href="complete-management-system.html" class="btn-primary full-width" style="text-align: center; text-decoration: none;">Launch Complete CMS Walkthrough →</a>
+      <a href="/complete-management-system" class="btn-primary full-width" style="text-align: center; text-decoration: none;">Launch Complete CMS Walkthrough →</a>
     </div>
   </div>
 

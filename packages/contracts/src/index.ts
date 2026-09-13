@@ -6,6 +6,7 @@ export interface LeadDto {
   storeName: string;
   mobile: string;
   sector?: string;
+  businessType?: string;
   source?: string;
   createdAt?: string;
 }

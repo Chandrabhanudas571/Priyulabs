@@ -205,15 +205,43 @@ if (mobileDrawer) {
   window.closeMobileDrawer = closeMobileDrawer;
 }
 
-// â”€â”€â”€ SMOOTH SCROLL FOR ANCHOR LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// ─── SMOOTH SCROLL FOR ANCHOR & HOME CTA LINKS ─────────────
+document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const href = this.getAttribute('href');
+    if (!href) return;
+    const isHomeHash = href.startsWith('/#');
+    const hash = isHomeHash ? href.slice(1) : href;
+
+    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html') || window.location.pathname === '';
+    if (isHomeHash && !isHomePage) {
+      return;
     }
+
+    try {
+      const target = document.querySelector(hash);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.history && window.history.pushState) {
+          window.history.pushState(null, null, hash);
+        }
+      }
+    } catch (err) {}
   });
+});
+
+window.addEventListener('load', function () {
+  if (window.location.hash) {
+    try {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+    } catch (err) {}
+  }
 });
 
 // â”€â”€â”€ COUNTER ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -1533,6 +1561,8 @@ if (leadForm) {
     const customReqTextarea = leadForm.querySelector('#customRequirement');
 
     const selectedService = serviceCategorySelect ? serviceCategorySelect.value : '';
+    const businessTypeSelect = leadForm.querySelector('#businessType');
+    const selectedBusinessType = businessTypeSelect ? businessTypeSelect.value : '';
     const customReq = customReqTextarea ? customReqTextarea.value.trim() : '';
 
     // Validate 100-word restriction if Custom is selected
@@ -1562,12 +1592,15 @@ if (leadForm) {
     }
 
     const formData = new FormData(leadForm);
+    if (selectedBusinessType) {
+      formData.set('BusinessType', selectedBusinessType);
+    }
     // Backward-compatible mapping for StoreName column in Google Sheets
     if (selectedService === 'Custom') {
       formData.set('StoreName', `Custom: ${customReq.slice(0, 80)}`);
       formData.set('Category', 'Custom');
     } else if (selectedService) {
-      formData.set('StoreName', selectedService);
+      formData.set('StoreName', selectedBusinessType || selectedService);
       formData.set('Category', selectedService);
     }
 
@@ -1579,7 +1612,7 @@ if (leadForm) {
       .then(() => {
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access 🚀";
+          button.innerHTML = "Submit & Get Early Access";
           button.style.opacity = '1';
         }
         const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
@@ -1610,7 +1643,7 @@ if (leadForm) {
         console.error('Google Sheet Submission Error:', err);
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access 🚀";
+          button.innerHTML = "Submit & Get Early Access";
           button.style.opacity = '1';
         }
         const errorText = "Something went wrong. Please try again.";
@@ -1647,7 +1680,7 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
   });
 });
 
-// â”€â”€â”€ SQUARE MEGA MENU TAB SWITCHER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── SQUARE MEGA MENU TAB SWITCHER ────────────────────────
 function switchMegaTab(tabKey) {
   document.querySelectorAll('.sq-cat-btn').forEach(btn => {
     const isTarget = btn.getAttribute('data-tab') === tabKey;
@@ -1659,33 +1692,76 @@ function switchMegaTab(tabKey) {
   });
 }
 
-// ─── MEGA MENU DROPDOWN CLOSE-ON-CLICK & CLICK-OUTSIDE ───────
+function initMegaMenuHoverTabs() {
+  document.querySelectorAll('.sq-cat-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      const tabKey = btn.getAttribute('data-tab');
+      if (tabKey) switchMegaTab(tabKey);
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMegaMenuHoverTabs);
+} else {
+  initMegaMenuHoverTabs();
+}
+
+// ─── DUAL-TRIGGER (HOVER-TO-PREVIEW & CLICK-TO-PIN) DROPDOWN HANDLERS ───────
 function initMegaMenuCloseHandlers() {
-  function closeAllMegaMenus() {
-    document.querySelectorAll('.mega-dropdown').forEach(dd => {
-      dd.classList.add('menu-closed');
+  function closeAllMenus() {
+    document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+      item.classList.remove('open', 'pinned');
+    });
+    document.querySelectorAll('.types-menu-wrap').forEach(item => {
+      item.classList.remove('open', 'pinned');
     });
   }
 
-  // Dismiss dropdown on clicking any link inside mega dropdown
-  document.querySelectorAll('.mega-dropdown a').forEach(link => {
+  // Toggle "Business types ▾" / "Solutions ▾" dropdown on click (Click-to-Pin)
+  document.querySelectorAll('.nav-item-dropdown .dropdown-trigger, .nav-item-dropdown > a, .nav-item-dropdown > button').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      const parent = trigger.closest('.nav-item-dropdown');
+      if (!parent) return;
+      const hasDropdown = parent.querySelector('.mega-dropdown');
+      if (hasDropdown) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isPinned = parent.classList.contains('pinned');
+        closeAllMenus();
+        if (!isPinned) {
+          parent.classList.add('open', 'pinned');
+        }
+      }
+    });
+  });
+
+  // Toggle "Types ▾" dropdown in Retail / F&B headers on click (Click-to-Pin)
+  document.querySelectorAll('.types-menu-wrap > a, .types-menu-wrap > button').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      const parent = trigger.closest('.types-menu-wrap');
+      if (!parent) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const isPinned = parent.classList.contains('pinned');
+      closeAllMenus();
+      if (!isPinned) {
+        parent.classList.add('open', 'pinned');
+      }
+    });
+  });
+
+  // Dismiss dropdown when clicking any sector/page link inside
+  document.querySelectorAll('.mega-dropdown a, .types-menu-dropdown a').forEach(link => {
     link.addEventListener('click', () => {
-      closeAllMegaMenus();
+      closeAllMenus();
     });
   });
 
-  // Re-enable dropdown on mouseleave so hover works again smoothly
-  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-    item.addEventListener('mouseleave', () => {
-      const dd = item.querySelector('.mega-dropdown');
-      if (dd) dd.classList.remove('menu-closed');
-    });
-  });
-
-  // Click outside to close open dropdowns
+  // Click outside listener: close pinned/open dropdown if click target is outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav-item-dropdown')) {
-      closeAllMegaMenus();
+    if (!e.target.closest('.nav-item-dropdown') && !e.target.closest('.types-menu-wrap')) {
+      closeAllMenus();
     }
   });
 }
@@ -2034,7 +2110,7 @@ function handleWaitlistSubmit(event) {
   input.value = '';
 
   if (typeof showToast === 'function') {
-    showToast('🎉 You have been added to the VIP Waitlist! We will reach out on launch day.');
+    showToast('You have been added to the VIP Waitlist! We will reach out on launch day.');
   }
 }
 
@@ -2130,14 +2206,14 @@ function toggleHeroAudio() {
   if (video.muted) {
     video.muted  = false;
     video.volume = 1.0;
-    if (icon)  icon.textContent  = '🔊';
+    if (icon)  icon.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
     if (label) label.textContent = 'Sound On';
-    if (typeof showToast === 'function') showToast('🔊 Video audio unmuted');
+    if (typeof showToast === 'function') showToast('Video audio unmuted');
   } else {
     video.muted = true;
-    if (icon)  icon.textContent  = '🔇';
+    if (icon)  icon.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
     if (label) label.textContent = 'Muted';
-    if (typeof showToast === 'function') showToast('🔇 Video audio muted');
+    if (typeof showToast === 'function') showToast('Video audio muted');
   }
 }
 window.toggleHeroAudio = toggleHeroAudio;
@@ -2243,7 +2319,7 @@ function initSquareHoverCards() {
   }
 
   cards.forEach((card, index) => {
-    const video = card.querySelector('.sq-card-video');
+    const video = card.querySelector('video');
     const box = card.querySelector('.sq-product-box');
     const titleLink = card.querySelector('.sq-product-title');
     let playPromise = null;
@@ -2271,6 +2347,8 @@ function initSquareHoverCards() {
     }
 
     function gracefulStopVideo() {
+      if (!video) return;
+      // Pauses on mouseleave
       if (!video) return;
       if (fadeOutTimeout) clearTimeout(fadeOutTimeout);
       fadeOutTimeout = setTimeout(() => {

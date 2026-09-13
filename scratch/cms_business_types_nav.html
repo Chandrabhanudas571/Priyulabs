@@ -1,0 +1,116 @@
+<!-- 1. Business types Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span class="drop-arrow">▾</span>
+          </a>
+          <div class="mega-dropdown square-mega-3col">
+            <div class="mega-dropdown-inner mega-3col-wrapper">
+
+              <!-- Column 1: Left Categories Tabs -->
+              <div class="mega-col-left">
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')" onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="/business-types" class="sq-all-types-link">All business types</a>
+              </div>
+
+              <!-- Column 2: Specific Business Formats -->
+              <div class="mega-col-mid">
+                <div class="sq-tab-content active" id="tab-food">
+                  <a href="/solutions?sector=cafe"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/solutions?sector=cafe" class="sq-disc-item">Cafes &amp; Bakeries</a>
+                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Fast Food &amp; QSR</a>
+                  <a href="/hospitality" class="sq-disc-item">️ Fine Dining &amp; Resto-bars</a>
+                  <!-- Column 2: Discover (Specific Business Types) -->
+                  <div class="mega-col-middle">
+                    <div class="mega-sub-header">Discover</div>
+                    <div class="sq-tab-content active" id="tab-fnb">
+                      <a href="/restaurants-fine-dining" data-sector="restaurants" data-cat="fnb"
+                        class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                      <a href="/restaurants-fine-dining" data-sector="restaurants" data-cat="fnb"
+                        class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                      <a href="/qsr-fast-food" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
+                        Food &amp; Takeaway</a>
+                      <a href="/cafes-chai-bars" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
+                        &amp; Chai Bars</a>
+                      <a href="/cloud-kitchens-catering" data-sector="cloudkitchen" data-cat="fnb"
+                        class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                      <a href="/bakeries-shops" data-sector="bakery" data-cat="fnb" class="sq-disc-item">Bakeries
+                        &amp; Sweet Shops</a>
+                      <a href="/bars-pubs-breweries" data-sector="bars" data-cat="fnb" class="sq-disc-item">Bars,
+                        Pubs
+                        &amp; Breweries</a>
+                    </div>
+
+                    <div class="sq-tab-content" id="tab-retail">
+                      <a href="/grocery-supermarkets-kirana"
+                        class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                      <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Supermarkets &amp; Kirana</a>
+                      <a href="/solutions?sector=meat" class="sq-disc-item">Meat &amp; Seafood Stores</a>
+                      <a href="/solutions?sector=mandi" class="sq-disc-item">Fruits &amp; Vegetable Mandi</a>
+                      <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
+                        class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                      <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
+                        class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                      <a href="/solutions?sector=electronics" data-sector="electronics" data-cat="retail"
+                        class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                      <a href="/solutions?sector=footwear" data-sector="footwear" data-cat="retail"
+                        class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                      <a href="/solutions?sector=jewellery" data-sector="jewellery" data-cat="retail"
+                        class="sq-disc-item">Jewellery &amp; Watch Outlets</a>
+                      <a href="/solutions?sector=hardware" data-sector="hardware" data-cat="retail"
+                        class="sq-disc-item">Hardware, Sanitary &amp; Paint Stores</a>
+                      <a href="/solutions?sector=pharmacy" data-sector="pharmacy" data-cat="retail"
+                        class="sq-disc-item">Pharmacies &amp; Medical Stores</a>
+                      <a href="/solutions?sector=books" data-sector="books" data-cat="retail"
+                        class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                    </div>
+
+                    <div class="sq-tab-content" id="tab-beauty">
+                      <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
+                        class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                      <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
+                        class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                      <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty"
+                        class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                      <a href="/beauty-fashion/cosmetics" data-sector="cosmetics" data-cat="beauty"
+                        class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                    </div>
+
+                    <div class="sq-tab-content" id="tab-services">
+                      <a href="/solutions?sector=pharmacy"
+                        class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                      <a href="/solutions?sector=pharmacy" class="sq-disc-item">Pharmacies &amp; Chemists</a>
+                      <a href="/electronics-mobile-shops" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                      <a href="/solutions?sector=autoparts" class="sq-disc-item">Auto Spare Parts</a>
+                      <a href="/services/gyms" data-sector="gyms" data-cat="services"
+                        class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                      <a href="/services/gyms" data-sector="gyms" data-cat="services"
+                        class="sq-disc-item">Gyms,
+                        Fitness Studios &amp; Yoga Centers</a>
+                      
+                      <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services"
+                        class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+                    </div>
+                  </div>
+
+                  <!-- Column 3: Capabilities -->
+                  <div class="mega-col-right">
+                    <div class="mega-sub-header">Capabilities</div>
+                    <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                    <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
+                    <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                    <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                    <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                    <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register
+                      Sync</a>
+                    <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry
+                      Shield</a>
+                  </div>
+
+                </div>
+              </div>
+        </li>
+
+        <!-- 2. Solutions

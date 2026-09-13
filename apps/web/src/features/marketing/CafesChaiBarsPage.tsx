@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
-  MessageCircle, motion } from 'framer-motion';
-import {
+  MessageCircle,
   BarChart3,
   CheckCircle2,
   ChevronRight,
@@ -20,6 +20,7 @@ import {
   TrendingUp,
   Truck,
   Zap,
+  X,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -27,7 +28,7 @@ const fadeAnim = {
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.4 },
 };
 
 export function CafesChaiBarsPage() {
@@ -98,8 +99,7 @@ export function CafesChaiBarsPage() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mt-9 flex flex-wrap items-center justify-center gap-4"
             >
-              <a
-                href="/#contact"
+              <a href="/#free-trial"
                 className="inline-flex items-center justify-center rounded-xl bg-[#0f172a] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-slate-800 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] cursor-pointer no-underline"
               >
                 Get Started Today
@@ -111,6 +111,22 @@ export function CafesChaiBarsPage() {
                 See Cafe Features ↓
               </a>
             </motion.div>
+
+          {/* 4 Core Solutions Sub-Strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-10 mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-2xl border border-neutral-200/70 bg-white/80 backdrop-blur-sm px-6 py-3 text-xs md:text-[13px] font-medium text-neutral-600 shadow-xs dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300"
+          >
+            <span>Split-Bill Barista Terminal</span>
+            <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+            <span>Milk & Syrup Depletion Inventory</span>
+            <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+            <span>Loyalty Wallet Web-App</span>
+            <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+            <span>College & Workspace Footfall Boosters</span>
+          </motion.div>
           </div>
 
           {/* Hero Visual Frame */}
@@ -146,14 +162,14 @@ export function CafesChaiBarsPage() {
                   </div>
                   <div className="mt-2.5 pt-2 border-t border-neutral-100 flex items-center justify-between text-[11px] text-slate-500">
                     <span>Barista Station: Bar 01</span>
-                    <span className="font-bold text-emerald-600">⚡ Tagged in 1.8s</span>
+                    <span className="font-bold text-emerald-600">Tagged in 1.8s</span>
                   </div>
                 </div>
 
                 {/* Digital Loyalty Pill */}
                 <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 rounded-xl bg-[#0f172a]/95 text-white px-4 py-2.5 shadow-xl backdrop-blur-md border border-slate-700 text-left flex items-center gap-3">
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 font-bold text-sm">
-                    ☕
+                    
                   </div>
                   <div>
                     <div className="text-xs font-bold">Stamp 6 of 7 Collected</div>
@@ -579,33 +595,137 @@ export function CafesChaiBarsPage() {
       {/* ──────────────────────────────────────────────────────────
           5. BOTTOM CONVERSION BANNER
       ────────────────────────────────────────────────────────── */}
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-5xl px-6 sm:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-slate-950 px-8 py-16 text-center text-white sm:px-14">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
-              Ready to Upgrade Your Cafe &amp; Chai Bar Operations?
+            {/* ──────────────────────────────────────────────────────────
+          WHITE EDITORIAL TRUST BOTTOM CTA
+      ────────────────────────────────────────────────────────── */}
+            {/* ──────────────────────────────────────────────────────────
+          WHITE EDITORIAL TRUST BOTTOM CTA (CAFES & CHAI BARS)
+      ────────────────────────────────────────────────────────── */}
+      <section className="py-16 px-4 md:px-8 bg-neutral-50 flex justify-center">
+        <div className="clean-cta-container relative max-w-[1180px] w-full min-h-[500px] rounded-[28px] overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center gap-10 p-8 md:p-14 bg-white border border-slate-200 shadow-sm">
+          
+          {/* Background Photography (Artisanal Coffee & Chai Counter) */}
+          <div
+            className="bg-image-layer absolute inset-0 bg-cover bg-right opacity-100 z-1"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80')" }}
+          />
+          
+          {/* Directional White Fade Overlay */}
+          <div
+            className="bg-overlay-layer absolute inset-0 z-2 pointer-events-none"
+            style={{ background: 'linear-gradient(90deg, #ffffff 0%, #ffffff 44%, rgba(255, 255, 255, 0.75) 58%, rgba(255, 255, 255, 0.12) 80%, rgba(255, 255, 255, 0) 100%)' }}
+          />
+
+          {/* Left Content Column (7 cols) */}
+          <div className="content-left relative z-10 lg:col-span-7 flex flex-col items-start">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-3.5 py-1.5 rounded-full text-[11px] font-bold tracking-wider text-slate-600 uppercase mb-5">
+              HIGH-VELOCITY CAFE & CHAI SYSTEM
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-[1.18] tracking-tight mb-4">
+              Serve More Cups Faster with <span className="text-orange-600">Zero Billing Lag</span>
             </h2>
-            <p className="mt-4 max-w-xl mx-auto text-base text-slate-400">
-              From 15-second morning rush billing to milk-steaming customizations and automated loyalty rewards — take control of your beverage business with Priyulabs Digital.
+
+            {/* Description */}
+            <p className="text-slate-600 text-sm md:text-[15px] leading-relaxed max-w-[500px] mb-8">
+              Speed through peak morning rushes with rapid counter checkout, track milk, tea leaves, and syrup batch depletion automatically, and turn casual sippers into daily regulars with built-in digital loyalty wallets.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+
+            {/* Action Buttons with Working Routing */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center', marginBottom: '28px' }}>
+              {/* Start Free Trial (Redirects to Home page trial section) */}
               <a
-                href="/#cta"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-slate-950 shadow-md transition hover:bg-slate-100 hover:-translate-y-0.5"
+                href="/#free-trial"
+                style={{ background: '#ea580c', color: '#ffffff', fontWeight: 600, fontSize: '14px', padding: '13px 26px', borderRadius: '14px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 12px rgba(234, 88, 12, 0.25)', transition: 'all 0.2s ease' }}
               >
-                Get Started Today
-                <ArrowRight size={16} />
+                Start Free Trial
+                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
+
+              {/* Chat on WhatsApp (Official Number: 7849074050) */}
               <a
-                href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20cafe%20and%20want%20to%20see%20a%20live%20POS%20demo."
+                href="https://wa.me/917849074050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition hover:bg-slate-850 hover:border-slate-600"
+                style={{ background: '#ffffff', color: '#0f172a', fontWeight: 600, fontSize: '14px', padding: '12px 22px', borderRadius: '14px', textDecoration: 'none', border: '1px solid #cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)', transition: 'all 0.2s ease' }}
               >
-                <MessageCircle size={18} />
-                Chat with a Cafe Specialist
+                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+                Chat on WhatsApp
               </a>
             </div>
+
+            {/* Mandatory Bottom Trust Strip */}
+            <div className="flex flex-wrap gap-5 text-[13px] font-semibold text-slate-700">
+              <span className="inline-flex items-center gap-2">
+                <svg width="15" height="15" fill="none" stroke="#ea580c" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                Complete Setup
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <svg width="15" height="15" fill="none" stroke="#ea580c" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                Easy to access
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <svg width="15" height="15" fill="none" stroke="#ea580c" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                24/7 Service
+              </span>
+            </div>
+          </div>
+
+          {/* Right Trust Stack (5 cols) */}
+          <div className="content-right relative z-10 lg:col-span-5 flex flex-col gap-3.5">
+            
+            {/* Card 1: Made in India */}
+            <div className="bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-4 md:px-5 flex items-center justify-between shadow-xs transition hover:border-slate-300">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-[14px] bg-slate-900 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-[15px] font-bold text-slate-900">Made in India</div>
+                  <div className="text-xs text-slate-500 font-medium">Engineered for Indian Businesses</div>
+                </div>
+              </div>
+              <span className="bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">National</span>
+            </div>
+
+            {/* Card 2: SECURE SSL Encryption */}
+            <div className="bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-4 md:px-5 flex items-center justify-between shadow-xs transition hover:border-slate-300">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-[14px] bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-[15px] font-bold text-emerald-600">SECURE</div>
+                  <div className="text-xs text-slate-500 font-medium">SSL 256-Bit Bank Encryption</div>
+                </div>
+              </div>
+              <span className="bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Verified</span>
+            </div>
+
+            {/* Card 3: Trusted by MSME's */}
+            <div className="bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-4 md:px-5 flex items-center justify-between shadow-xs transition hover:border-slate-300">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-[14px] bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-[15px] font-bold text-slate-900">Trusted by MSME's</div>
+                  <div className="text-xs text-slate-500 font-mono tracking-tight">Udyam: UDYAM-OD-19-0177979</div>
+                </div>
+              </div>
+              <span className="bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Certified</span>
+            </div>
+
           </div>
         </div>
       </section>
@@ -619,9 +739,7 @@ export function CafesChaiBarsPage() {
             <button
               onClick={() => setDemoModalOpen(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
-            >
-              ✕
-            </button>
+            ><X size={18} /></button>
             <h3 className="text-xl font-bold text-slate-900">
               Schedule a 15-Minute Cafe Walkthrough
             </h3>

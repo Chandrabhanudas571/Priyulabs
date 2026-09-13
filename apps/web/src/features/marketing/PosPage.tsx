@@ -1,5 +1,5 @@
-﻿import { motion } from 'framer-motion';
-import { BarChart3, CloudOff, CreditCard } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { BarChart3, CloudOff, CreditCard, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LeadSection } from './LeadSection';
 
@@ -112,14 +112,15 @@ export function PosPage() {
                 Plug and play with your existing thermal printers, laser barcode scanners, cash drawers, and customer
                 facing pole displays without expensive proprietary lock-in.
               </p>
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-6 flex flex-wrap gap-2.5">
                 {['EPSON & TVS Thermal Printers', 'Honeywell 2D Scanners', 'Pine Labs Android EDC', 'Paytm Soundbox', 'Essae Weighing Scales'].map(
                   (hw) => (
                     <span
                       key={hw}
-                      className="rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-800 shadow-sm dark:bg-slate-800 dark:text-slate-200"
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-neutral-50 border border-neutral-200/80 px-4 py-2 text-xs font-medium text-neutral-700 dark:bg-slate-800/80 dark:border-slate-700 dark:text-slate-300"
                     >
-                      ✓ {hw}
+                      <Check size={13} className="text-emerald-600" />
+                      {hw}
                     </span>
                   )
                 )}

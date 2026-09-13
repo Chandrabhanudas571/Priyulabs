@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { Cpu, Monitor, Server, Code2, ArrowRight, Zap } from 'lucide-react';
+import { Cpu, Monitor, Server, Code2, ArrowRight, Zap, X, Check, TrendingUp } from 'lucide-react';
 import { sectorsList } from './sectorsData';
 import { LeadSection } from './LeadSection';
 
@@ -280,10 +280,10 @@ export function SolutionsPage() {
           <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2">Filter:</span>
           {[
             { id: 'all', label: 'All Industries' },
-            { id: 'fnb', label: '☕ Food & Beverage' },
-            { id: 'retail', label: '🛒 Retail & Grocery' },
-            { id: 'beauty', label: '👗 Fashion & Beauty' },
-            { id: 'services', label: '💊 Pharmacy & Services' },
+            { id: 'fnb', label: 'Food & Beverage' },
+            { id: 'retail', label: 'Retail & Grocery' },
+            { id: 'beauty', label: 'Fashion & Beauty' },
+            { id: 'services', label: 'Pharmacy & Services' },
           ].map((cat) => (
             <button
               key={cat.id}
@@ -356,14 +356,14 @@ export function SolutionsPage() {
                 {currentSector.desc}
               </p>
 
-              <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50/80 p-4 text-sm font-bold text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300">
-                🚀 {currentSector.roi}
+              <div className="mt-6 flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50/80 p-4 text-sm font-bold text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300">
+                <TrendingUp size={18} className="text-emerald-600 shrink-0" />
+                <span>{currentSector.roi}</span>
               </div>
 
               {/* Standard Sector Hero Actions */}
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href="/#cta"
+                <a href="/#free-trial"
                   className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-slate-800 hover:-translate-y-0.5 no-underline"
                 >
                   Get Started Today
@@ -392,6 +392,90 @@ export function SolutionsPage() {
                 </a>
               </div>
 
+              {/* 4 Core Solutions Sub-Strip */}
+              {(() => {
+                const pillarsMap: Record<string, string[]> = {
+                  hardware: [
+                    'Multi-Unit Dimension Billing POS',
+                    'Contractor Credit & Ledger ERP',
+                    'Digital B2B Supply Catalog',
+                    'Local Builder Contractor Ad Boosters'
+                  ],
+                  supermarket: [
+                    'Scale-Synced Voice Checkout POS',
+                    'Expiry-Shield Warehouse ERP',
+                    '10-Minute Local Ordering Webstore',
+                    'Neighborhood WhatsApp Re-Order Ads'
+                  ],
+                  cafe: [
+                    'Split-Bill Barista Terminal',
+                    'Milk & Syrup Depletion Inventory',
+                    'Loyalty Wallet Web-App',
+                    'College & Workspace Footfall Boosters'
+                  ],
+                  bakery: [
+                    'Weight & Piece Dual-Mode POS',
+                    'Daily Shelf-Life & Recipe Batching',
+                    'Custom Cake Pre-Order Portal',
+                    'Birthday & Celebration Local Meta Ads'
+                  ],
+                  electronics: [
+                    'IMEI / Serial Rapid Billing EDC',
+                    'Warranty & Multi-Branch Cloud ERP',
+                    'Brand-Compliant Online Showcase',
+                    'Local Product Launch & Exchange Campaigns'
+                  ],
+                  footwear: [
+                    'Barcode Size-Grid Terminal',
+                    'Store-to-Floor Shrinkage Control ERP',
+                    'Shoe-Care Online D2C Store',
+                    'Festive Seasonal Walk-In Ads'
+                  ],
+                  jewellery: [
+                    'HUID Scale-Synced Invoicing Desk',
+                    'Bullion Ledger & Metal Karat ERP',
+                    'Private Luxury Client Portal',
+                    'HNW Bridal Shopper Acquisition'
+                  ],
+                  books: [
+                    'ISBN Rapid Batch Checkout',
+                    'Institutional Order & Library ERP',
+                    'Curated Readers\' Web Bookstore',
+                    'School & College Season Promo Campaigns'
+                  ],
+                  clothing: [
+                    'Dual-Screen Matrix Billing POS',
+                    'Multi-Store Inventory & Alteration Tracker',
+                    'Live WhatsApp Web Catalog & Lookbook',
+                    'Targeted Instagram Footfall Campaigns'
+                  ],
+                  salons: [
+                    'Android Smart EDC & Chair Checkout',
+                    'Bio-metric Staff HRMS & Backbar ERP',
+                    'Self-Serve 24/7 Booking Portal',
+                    'Automated Local VIP Retention Ads'
+                  ],
+                  cosmetics: [
+                    'FEFO Smart Counter Checkout',
+                    'Tester Stock & BA Commission Ledger',
+                    'Interactive Routine Builder Storefront',
+                    'Hyper-Local Google & Meta Ad Automation'
+                  ]
+                };
+                const pillars = pillarsMap[currentSector.id] || pillarsMap['supermarket'];
+                return (
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-2xl border border-neutral-200/70 bg-white/80 backdrop-blur-sm px-4 py-3 text-xs md:text-[13px] font-medium text-neutral-600 shadow-xs dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300">
+                    <span>{pillars[0]}</span>
+                    <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+                    <span>{pillars[1]}</span>
+                    <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+                    <span>{pillars[2]}</span>
+                    <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+                    <span>{pillars[3]}</span>
+                  </div>
+                );
+              })()}
+
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
                 <div className="rounded-2xl border border-rose-200 bg-rose-50/50 p-5 dark:border-rose-950 dark:bg-rose-950/20">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400">
@@ -399,8 +483,8 @@ export function SolutionsPage() {
                   </h4>
                   <ul className="mt-3 space-y-2.5 text-xs font-semibold text-rose-950 dark:text-rose-200">
                     {currentSector.before.map((b, idx) => (
-                      <li key={idx} className="flex gap-2">
-                        <span className="text-rose-500 shrink-0">✕</span>
+                      <li key={idx} className="flex gap-2 items-start">
+                        <X size={13} className="text-rose-500 shrink-0 mt-0.5" strokeWidth={2.5} />
                         <span>{b}</span>
                       </li>
                     ))}
@@ -413,8 +497,8 @@ export function SolutionsPage() {
                   </h4>
                   <ul className="mt-3 space-y-2.5 text-xs font-semibold text-indigo-950 dark:text-indigo-200">
                     {currentSector.after.map((a, idx) => (
-                      <li key={idx} className="flex gap-2">
-                        <span className="text-emerald-600 shrink-0">✓</span>
+                      <li key={idx} className="flex gap-2 items-start">
+                        <Check size={13} className="text-emerald-600 shrink-0 mt-0.5" strokeWidth={2.5} />
                         <span>{a}</span>
                       </li>
                     ))}

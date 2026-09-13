@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <base href="/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Priyulabs – India’s Smartest AI Retail OS | Run Your Business on Autopilot</title>
@@ -22,7 +23,7 @@
   ══════════════════════════════════════════════════════════ -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo" aria-label="Priyulabs Digital Home">
+      <a href="/" class="logo" aria-label="Priyulabs Digital Home">
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
@@ -32,90 +33,78 @@
       <ul class="nav-links" id="navLinks">
         <!-- 1. Business types Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="solutions.html" class="nav-link-title dropdown-trigger">
-            Business types <span class="drop-arrow">▾</span>
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span
+              class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-mega-3col">
             <div class="mega-dropdown-inner mega-3col-wrapper">
 
               <!-- Column 1: Left Categories Tabs -->
               <div class="mega-col-left">
-                <button type="button" class="sq-cat-btn active" data-tab="fnb" onmouseenter="switchMegaTab('fnb')"
-                  onclick="switchMegaTab('fnb')">Food &amp; Beverage</button>
-                <button type="button" class="sq-cat-btn" data-tab="retail" onmouseenter="switchMegaTab('retail')"
-                  onclick="switchMegaTab('retail')">Retail</button>
-                <button type="button" class="sq-cat-btn" data-tab="beauty" onmouseenter="switchMegaTab('beauty')"
-                  onclick="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
-                <button type="button" class="sq-cat-btn" data-tab="services" onmouseenter="switchMegaTab('services')"
-                  onclick="switchMegaTab('services')">Services</button>
-                <a href="solutions.html" class="sq-all-types-link">All business types</a>
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')"
+                  onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')"
+                  onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')"
+                  onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
+                  onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="/solutions" class="sq-all-types-link">All business types</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="restaurants-fine-dining.html"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="restaurants-fine-dining.html"
-                    class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="qsr-fast-food.html" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
+                  <a href="/restaurants-fine-dining" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/restaurants-fine-dining" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="/qsr-fast-food" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
                     Food &amp; Takeaway</a>
-                  <a href="cafes-chai-bars.html" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
+                  <a href="/cafes-chai-bars" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
                     &amp; Chai Bars</a>
-                  <a href="cloud-kitchens-catering.html" data-sector="cloudkitchen" data-cat="fnb"
+                  <a href="/cloud-kitchens-catering" data-sector="cloudkitchen" data-cat="fnb"
                     class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="bakeries-shops.html"
-                    class="sq-disc-item">Bakeries &amp; Patisseries</a>
-                  <a href="bars-pubs-breweries.html" class="sq-disc-item">Bars, Pubs
+                  <a href="/bakeries-shops" class="sq-disc-item">Bakeries &amp; Patisseries</a>
+                  <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs
                     &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="solutions.html?sector=grocery" data-sector="grocery" data-cat="retail"
+                  <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="grocery-supermarkets-kirana.html" data-sector="grocery" data-cat="retail"
+                  <a href="/grocery-supermarkets-kirana" data-sector="grocery" data-cat="retail"
                     class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
-                  <a href="electronics-mobile-shops.html" data-sector="electronics" data-cat="retail"
+                  <a href="/electronics-mobile-shops" data-sector="electronics" data-cat="retail"
                     class="sq-disc-item">Electronics &amp; Mobile Shops</a>
-                  <a href="footwear-leather-stores.html" data-sector="footwear" data-cat="retail"
+                  <a href="/footwear-leather-stores" data-sector="footwear" data-cat="retail"
                     class="sq-disc-item">Footwear &amp; Leather Stores</a>
-                  <a href="jewellery-shops.html" data-sector="jewellery" data-cat="retail"
-                    class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
-                  <a href="watch-stores.html" data-sector="watch" data-cat="retail"
-                    class="sq-disc-item">Watch Stores &amp; Horology Boutiques</a>
-                  <a href="bookstores-stationery.html" data-sector="books" data-cat="retail"
-                    class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                  <a href="/jewellery-shops" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery
+                    Showrooms &amp; Bullion</a>
+                  <a href="/watch-stores" data-sector="watch" data-cat="retail" class="sq-disc-item">Watch Stores &amp;
+                    Horology Boutiques</a>
+                  <a href="/bookstores-stationery" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores
+                    &amp; Stationery Outlets</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-beauty">
-                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=clothing" data-sector="clothing" data-cat="beauty"
+                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
                     class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
-                  <a href="solutions.html?sector=salons" data-sector="salons" data-cat="beauty"
-                    class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
-                  <a href="solutions.html?sector=cosmetics" data-sector="cosmetics" data-cat="beauty"
+                  <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty" class="sq-disc-item">Salons,
+                    Spas &amp; Beauty Parlors</a>
+                  <a href="/beauty-fashion/cosmetics" data-sector="cosmetics" data-cat="beauty"
                     class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
-                  <a href="solutions.html?sector=eyewear" data-sector="eyewear" data-cat="beauty"
-                    class="sq-disc-item">Eyewear &amp; Optical Stores</a>
-                  <a href="solutions.html?sector=tailoring" data-sector="tailoring" data-cat="beauty"
-                    class="sq-disc-item">Tailoring &amp; Custom Designer Studios</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-services">
-                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services"
+                  <a href="/services/gyms" data-sector="gyms" data-cat="services"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="solutions.html?sector=gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
+                  <a href="/services/gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
                     Fitness Studios &amp; Yoga Centers</a>
-                  <a href="solutions.html?sector=garages" data-sector="garages" data-cat="services"
-                    class="sq-disc-item">Auto Garages, Car Wash &amp; Bike Service Centers</a>
-                  <a href="solutions.html?sector=laundry" data-sector="laundry" data-cat="services"
-                    class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
-                  <a href="solutions.html?sector=repairs" data-sector="repairs" data-cat="services"
-                    class="sq-disc-item">Repair Centers (Mobile, Laptop, Appliances)</a>
-                  <a href="solutions.html?sector=coworking" data-sector="coworking" data-cat="services"
-                    class="sq-disc-item">Co-working Spaces &amp; Shared Offices</a>
+
+                  <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services" class="sq-disc-item">Dry
+                    Cleaners &amp; Laundry Shops</a>
                 </div>
               </div>
 
@@ -123,12 +112,12 @@
               <div class="mega-col-right">
                 <div class="mega-sub-header">Capabilities</div>
                 <a href="#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
-                <a href="solutions.html" class="sq-cap-item">Manage orders from one place</a>
+                <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
                 <a href="#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
-                <a href="solutions.html" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
                 <a href="#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
                 <a href="#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="#attractions" class="sq-cap-item">📦 Vision AI Stock Detection &amp; Expiry Shield</a>
+                <a href="#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
               </div>
 
             </div>
@@ -137,26 +126,26 @@
 
         <!-- 2. Solutions Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="#attractions" class="nav-link-title dropdown-trigger">
-            Solutions <span class="drop-arrow">▾</span>
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Solutions <span
+              class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
-                <a href="pos.html" class="square-sub-item">
-                  <strong>🖥️ Smart POS</strong>
+                <a href="/pos" class="square-sub-item">
+                  <strong>Smart POS</strong>
                   <span>Fast billing, AI voice checkout &amp; offline mode</span>
                 </a>
-                <a href="complete-management-system.html" class="square-sub-item">
-                  <strong>📊 Complete Management System</strong>
+                <a href="/complete-management-system" class="square-sub-item">
+                  <strong>Complete Management System</strong>
                   <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
                 </a>
-                <a href="website-builder.html" class="square-sub-item">
-                  <strong>🌐 Custom Website Building</strong>
+                <a href="/website-builder" class="square-sub-item">
+                  <strong>Custom Website Building</strong>
                   <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
                 </a>
-                <a href="digital-marketing.html" class="square-sub-item">
-                  <strong>📣 Digital Marketing &amp; Ads</strong>
+                <a href="/digital-marketing" class="square-sub-item">
+                  <strong>Digital Marketing &amp; Ads</strong>
                   <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
                 </a>
               </div>
@@ -166,8 +155,7 @@
 
         <!-- 2B. Hospitality Tech (Direct Click -> Coming Soon Modal, No Hover Dropdown) -->
         <li>
-          <a href="javascript:void(0)" onclick="openComingSoonModal('Hospitality Tech', event)" class="nav-link-title"
-            style="cursor: pointer;">
+          <a href="/hospitality" class="nav-link-title">
             Hospitality Tech <span class="nav-soon-pill">Soon</span>
           </a>
         </li>
@@ -179,7 +167,12 @@
         <li><a href="#trust">What's new</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">✨ Interactive Demo</button>
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()"><svg class="inline-sparkle" width="13"
+            height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;">
+            <path
+              d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+          </svg>Interactive Demo</button>
         <a href="#cta" class="btn-nav">Start Free Trial</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -227,34 +220,14 @@
               <span>Solutions</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <a href="javascript:void(0)" class="drawer-nav-item drawer-link"
-              onclick="openComingSoonModal('Hospitality Tech', event); closeMobileDrawer();">
-              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
-            </a>
-            <a href="index.html#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Pricing</span>
-            </a>
-            <a href="index.html#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>What's new</span>
-            </a>
+
+            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link">Dry Cleaners &amp; Laundry
+              Shops</a>
           </nav>
-
-          <div class="drawer-divider"></div>
-
-          <!-- Lower Utility Links & CTA -->
-          <div class="drawer-utility-links">
-            <a href="solutions.html" class="drawer-sublink">All Business Types Directory</a>
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">✨ Interactive
-              Demo &amp; Portfolio</button>
-            <a href="index.html#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
-          </div>
-
-          <div class="drawer-bottom-cta">
-            <a href="index.html#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial
-              →</a>
-          </div>
         </div>
       </div>
+
+
 
       <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
       <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
@@ -263,23 +236,23 @@
           <div class="drawer-panel-eyebrow">Select Industry Category</div>
           <nav class="drawer-nav-list">
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
-              <span>☕ Food &amp; Beverage</span>
+              <span>Food &amp; Beverage</span>
               <span class="drawer-chevron">›</span>
             </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
-              <span>🛒 Retail</span>
+              <span>Retail</span>
               <span class="drawer-chevron">›</span>
             </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
-              <span>👗 Beauty &amp; Fashion</span>
+              <span>Beauty &amp; Fashion</span>
               <span class="drawer-chevron">›</span>
             </button>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
-              <span>💊 Services</span>
+              <span> Services</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <a href="solutions.html" class="drawer-nav-item drawer-link highlight">
-              <span>✨ View All Business Types</span>
+            <a href="/business-types" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
+              <span>View All Business Types</span>
             </a>
           </nav>
         </div>
@@ -291,7 +264,7 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Core Products &amp; Services</div>
           <nav class="drawer-solution-cards">
-            <a href="pos.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/pos" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -304,7 +277,7 @@
                 <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
               </div>
             </a>
-            <a href="complete-management-system.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/complete-management-system" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -317,7 +290,7 @@
                 <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
               </div>
             </a>
-            <a href="website-builder.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/website-builder" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -330,7 +303,7 @@
                 <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
               </div>
             </a>
-            <a href="digital-marketing.html" class="drawer-sol-card" onclick="closeMobileDrawer();">
+            <a href="/digital-marketing" class="drawer-sol-card" onclick="closeMobileDrawer();">
               <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -345,89 +318,26 @@
         </div>
       </div>
 
-      <!-- ════ LEVEL 2: HOSPITALITY TECH ════ -->
-      <div class="drawer-panel" id="drawerPanelHospitality" data-level="2" data-parent="drawerPanelMain"
-        data-title="Hospitality Tech">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite • Coming Soon</div>
-          <div class="mega-soon-banner" style="margin: 10px 0 14px;">
-            <span class="pulse-dot"></span>
-            <span>🚀 In Active Beta • Launching Soon</span>
-          </div>
-          <nav class="drawer-solution-cards">
-            <a href="javascript:void(0)" class="drawer-sol-card"
-              onclick="openComingSoonModal('Hospitality Product OS', event); closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-                  <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-                  <line x1="6" x2="6" y1="2" y2="4" />
-                  <line x1="10" x2="10" y1="2" y2="4" />
-                  <line x1="14" x2="14" y1="2" y2="4" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Hospitality Product OS <span class="sub-badge-soon">Soon</span></strong>
-                <span>Table layout, QR menus &amp; instant POS billing</span>
-              </div>
-            </a>
-            <a href="javascript:void(0)" class="drawer-sol-card"
-              onclick="openComingSoonModal('Hospitality Pricing', event); closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect width="20" height="14" x="2" y="5" rx="2" />
-                  <line x1="2" x2="22" y1="10" y2="10" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Hospitality Pricing <span class="sub-badge-soon">Soon</span></strong>
-                <span>Plans tailored for cafes, bakeries, bars &amp; hotels</span>
-              </div>
-            </a>
-            <a href="javascript:void(0)" class="drawer-sol-card"
-              onclick="openComingSoonModal('Success Stories', event); closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Success Stories <span class="sub-badge-soon">Soon</span></strong>
-                <span>Case studies from upcoming Indian F&amp;B outlets</span>
-              </div>
-            </a>
-            <a href="javascript:void(0)" class="drawer-sol-card"
-              onclick="openComingSoonModal('VIP Early Access Demo', event); closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Join VIP Waitlist <span class="sub-badge-soon">50% Off</span></strong>
-                <span>Get early access on launch day</span>
-              </div>
-            </a>
-          </nav>
-        </div>
-      </div>
-
       <!-- ════ LEVEL 3: FOOD & BEVERAGE ════ -->
       <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
         data-title="Food &amp; Beverage">
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Food &amp; Beverage Outlets</div>
           <nav class="drawer-nav-list compact">
-            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link strong">Overview &amp; Features</a>
-            <a href="solutions.html?sector=cafe" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
-            <a href="restaurants-fine-dining.html" class="drawer-nav-item drawer-link">Restaurants &amp; Fine Dining</a>
-            <a href="qsr-fast-food.html" class="drawer-nav-item drawer-link">QSR, Fast Food &amp; Takeaway</a>
-            <a href="cafes-chai-bars.html" class="drawer-nav-item drawer-link">Cafes &amp; Chai Bars</a>
-            <a href="cloud-kitchens-catering.html" class="drawer-nav-item drawer-link">Cloud Kitchens &amp; Catering</a>
-            <a href="bakeries-shops.html" class="drawer-nav-item drawer-link">Bakeries &amp; Patisseries</a>
-            <a href="solutions.html?sector=liquor" class="drawer-nav-item drawer-link">Bars, Pubs &amp; Breweries</a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link strong"
+              onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Restaurants &amp; Fine Dining</a>
+            <a href="/qsr-fast-food" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">QSR, Fast Food
+              &amp; Takeaway</a>
+            <a href="/cafes-chai-bars" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cafes &amp;
+              Chai Bars</a>
+            <a href="/cloud-kitchens-catering" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Cloud
+              Kitchens &amp; Catering</a>
+            <a href="/bakeries-shops" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bakeries &amp;
+              Sweet Shops</a>
+            <a href="/bars-pubs-breweries" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Bars, Pubs
+              &amp; Breweries</a>
           </nav>
         </div>
       </div>
@@ -438,22 +348,22 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Retail Formats</div>
           <nav class="drawer-nav-list compact">
-            <a href="grocery-supermarkets-kirana.html" class="drawer-nav-item drawer-link strong">Overview &amp;
-              Features</a>
-            <a href="grocery-supermarkets-kirana.html" class="drawer-nav-item drawer-link strong">Switch to
-              Priyulabs</a>
-            <a href="grocery-supermarkets-kirana.html" class="drawer-nav-item drawer-link">Grocery, Supermarkets &amp;
-              Kirana Stores</a>
-            <a href="electronics-mobile-shops.html" class="drawer-nav-item drawer-link">Electronics &amp; Mobile
-              Shops</a>
-            <a href="footwear-leather-stores.html" class="drawer-nav-item drawer-link">Footwear &amp; Leather
-              Stores</a>
-            <a href="jewellery-shops.html" class="drawer-nav-item drawer-link">Jewellery Showrooms &amp;
-              Bullion</a>
-            <a href="watch-stores.html" class="drawer-nav-item drawer-link">Watch Stores &amp; Horology
-              Boutiques</a>
-            <a href="bookstores-stationery.html" class="drawer-nav-item drawer-link">Bookstores &amp; Stationery
-              Outlets</a>
+            <a href="/solutions?sector=grocery" class="drawer-nav-item drawer-link strong"
+              onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/solutions?sector=grocery" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Grocery, Supermarkets &amp; Kirana</a>
+            <a href="/solutions?sector=electronics" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Electronics &amp; Mobile Shops</a>
+            <a href="/solutions?sector=footwear" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Footwear &amp; Leather Stores</a>
+            <a href="/solutions?sector=jewellery" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Jewellery &amp; Watch Outlets</a>
+            <a href="/solutions?sector=hardware" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Hardware, Sanitary &amp; Paint</a>
+            <a href="/solutions?sector=pharmacy" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Pharmacies &amp; Medical Stores</a>
+            <a href="/solutions?sector=books" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Bookstores &amp; Stationery</a>
           </nav>
         </div>
       </div>
@@ -464,19 +374,14 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Stores</div>
           <nav class="drawer-nav-list compact">
-            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link strong">Overview &amp;
-              Features</a>
-            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
-            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Clothing Brands &amp; Apparel
-              Boutiques</a>
-            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Salons, Spas &amp; Beauty
-              Parlors</a>
-            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Cosmetics &amp; Skincare
-              Stores</a>
-            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Eyewear &amp; Optical
-              Stores</a>
-            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Tailoring &amp; Custom Designer
-              Studios</a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link strong"
+              onclick="closeMobileDrawer();">Overview &amp; Features</a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Clothing Brands &amp; Boutiques</a>
+            <a href="/beauty-fashion/salons" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Salons,
+              Spas &amp; Beauty Parlors</a>
+            <a href="/beauty-fashion/cosmetics" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer();">Cosmetics &amp; Skincare Stores</a>
           </nav>
         </div>
       </div>
@@ -487,24 +392,23 @@
         <div class="drawer-panel-scroll">
           <div class="drawer-panel-eyebrow">Services &amp; Professional Businesses</div>
           <nav class="drawer-nav-list compact">
-            <a href="solutions.html?sector=pos" class="drawer-nav-item drawer-link strong">Overview &amp;
-              Features</a>
-            <a href="solutions.html?sector=pos" class="drawer-nav-item drawer-link strong">Switch to Priyulabs</a>
-            <a href="solutions.html?sector=specialty" class="drawer-nav-item drawer-link">Gyms, Fitness Studios &amp;
-              Yoga Centers</a>
-            <a href="solutions.html?sector=autoparts" class="drawer-nav-item drawer-link">Auto Garages, Car Wash &amp;
-              Bike Service Centers</a>
-            <a href="solutions.html?sector=apparel" class="drawer-nav-item drawer-link">Dry Cleaners &amp; Laundry
-              Shops</a>
-            <a href="solutions.html?sector=repairs" class="drawer-nav-item drawer-link">Repair Centers (Mobile,
-              Laptop, Appliances)</a>
-            <a href="solutions.html?sector=pos" class="drawer-nav-item drawer-link">Co-working Spaces &amp; Shared
-              Offices</a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link strong" onclick="closeMobileDrawer();">Overview
+              &amp; Features</a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Gyms, Fitness
+              &amp; Yoga Centers</a>
+
+            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">Dry
+              Cleaners &amp; Laundry Shops</a>
           </nav>
         </div>
       </div>
-
     </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO SECTION — DIRECTORY HEADER
+  ══════════════════════════════════════════════════════════ -->
+  </div>
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
@@ -972,7 +876,7 @@
       <span>Vision AI Purchase</span> <span class="mdot">✦</span>
       <span>EDC &amp; Dynamic QR</span> <span class="mdot">✦</span>
       <span>Cash Register Reconciliation</span> <span class="mdot">✦</span>
-      <span>1-Click GST &amp; E-Way Bill</span> <span class="mdot">✦</span>
+      <span>1-Click GST Bills &amp; Sales Reports</span> <span class="mdot">✦</span>
       <span>Selfie HRMS Attendance</span> <span class="mdot">✦</span>
       <span>WhatsApp Web Catalog</span> <span class="mdot">✦</span>
       <span>100% Offline POS</span> <span class="mdot">✦</span>
@@ -982,7 +886,7 @@
       <span>Vision AI Purchase</span> <span class="mdot">✦</span>
       <span>EDC &amp; Dynamic QR</span> <span class="mdot">✦</span>
       <span>Cash Register Reconciliation</span> <span class="mdot">✦</span>
-      <span>1-Click GST &amp; E-Way Bill</span> <span class="mdot">✦</span>
+      <span>1-Click GST Bill &amp; Daily Sales Report</span> <span class="mdot">✦</span>
       <span>Selfie HRMS Attendance</span> <span class="mdot">✦</span>
       <span>WhatsApp Web Catalog</span> <span class="mdot">✦</span>
       <span>100% Offline POS</span> <span class="mdot">✦</span>
@@ -1035,22 +939,24 @@
       <!-- 4 Sleek Cards (Square.com Interactive Hover Video Cards) -->
       <div class="sq-cards-grid" id="sqCardsGrid">
         <!-- Card 1: Smart POS -->
-        <div class="sq-product-card" data-aos>
-          <div class="sq-product-box">
-            <!-- Static Thumbnail Photo -->
-            <img src="assets/pos_billing_preview.jpg" alt="Smart POS Counter Billing" class="sq-card-img"
-              loading="lazy" />
-            <!-- Real HTML5 Video Embedding -->
-            <video src="assets/pos-checkout.mp4" muted loop playsinline preload="metadata"
-              class="sq-card-video"></video>
-            <!-- Dark Bottom-Gradient Overlay -->
-            <div class="sq-card-gradient"></div>
-            <!-- Inside Bottom Overlay Info (Title & description smoothly slide up on hover) -->
-            <div class="sq-card-overlay-content">
-              <span class="sq-card-badge">Card 01</span>
-              <h3 class="sq-card-inner-title">Smart POS</h3>
-              <p class="sq-card-subtitle">Fast checkouts, contactless billing &amp; live receipting.</p>
-              <span class="sq-card-arrow-badge">
+        <div class="sq-product-card" data-aos onclick="window.location.href='/pos'">
+          <div class="deal-card" style="position: relative; width: 100%; height: 260px; border-radius: 20px; overflow: hidden; background: #0f172a; cursor: pointer;">
+            <video 
+              muted 
+              loop 
+              playsinline 
+              preload="auto"
+              class="deal-video"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+              <source src="./card1-pos.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%); pointer-events: none; z-index: 2;"></div>
+            <div class="sq-card-overlay-content" style="position: absolute; inset: 0; pointer-events: none; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px;">
+              <span class="sq-card-badge" style="pointer-events: none;">Card 01</span>
+              <h3 class="sq-card-inner-title" style="pointer-events: none;">Smart POS</h3>
+              <p class="sq-card-subtitle" style="pointer-events: none;">Fast checkouts, contactless billing &amp; live receipting.</p>
+              <span class="sq-card-arrow-badge" style="pointer-events: none;">
                 <span>Explore Solution</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1061,27 +967,29 @@
             </div>
           </div>
           <div class="sq-product-info">
-            <a href="pos.html" class="sq-product-title">Smart POS</a>
+            <a href="/pos" class="sq-product-title">Smart POS</a>
           </div>
         </div>
 
         <!-- Card 2: Complete Management System -->
-        <div class="sq-product-card" data-aos>
-          <div class="sq-product-box">
-            <!-- Static Thumbnail Photo -->
-            <img src="assets/inventory_ocr_preview.jpg" alt="Complete Management System & Inventory ERP"
-              class="sq-card-img" loading="lazy" />
-            <!-- Real HTML5 Video Embedding -->
-            <video src="assets/warehouse-inventory.mp4" muted loop playsinline preload="metadata"
-              class="sq-card-video"></video>
-            <!-- Dark Bottom-Gradient Overlay -->
-            <div class="sq-card-gradient"></div>
-            <!-- Inside Bottom Overlay Info (Title & description smoothly slide up on hover) -->
-            <div class="sq-card-overlay-content">
-              <span class="sq-card-badge">Card 02</span>
-              <h3 class="sq-card-inner-title">Complete Management System</h3>
-              <p class="sq-card-subtitle">Real-time AI inventory tracking &amp; automated accounting.</p>
-              <span class="sq-card-arrow-badge">
+        <div class="sq-product-card" data-aos onclick="window.location.href='/complete-management-system'">
+          <div class="deal-card" style="position: relative; width: 100%; height: 260px; border-radius: 20px; overflow: hidden; background: #0f172a; cursor: pointer;">
+            <video 
+              muted 
+              loop 
+              playsinline 
+              preload="auto"
+              class="deal-video"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+              <source src="./card2-management.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%); pointer-events: none; z-index: 2;"></div>
+            <div class="sq-card-overlay-content" style="position: absolute; inset: 0; pointer-events: none; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px;">
+              <span class="sq-card-badge" style="pointer-events: none;">Card 02</span>
+              <h3 class="sq-card-inner-title" style="pointer-events: none;">Complete Management System</h3>
+              <p class="sq-card-subtitle" style="pointer-events: none;">Real-time AI inventory tracking &amp; automated accounting.</p>
+              <span class="sq-card-arrow-badge" style="pointer-events: none;">
                 <span>Explore Solution</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1092,27 +1000,29 @@
             </div>
           </div>
           <div class="sq-product-info">
-            <a href="solutions.html" class="sq-product-title">Complete Management System</a>
+            <a href="/complete-management-system" class="sq-product-title">Complete Management System</a>
           </div>
         </div>
 
         <!-- Card 3: Website & Store Building -->
-        <div class="sq-product-card" data-aos>
-          <div class="sq-product-box">
-            <!-- Static Thumbnail Photo -->
-            <img src="assets/website-builder-bg-poster.jpg" alt="Website & Store Building" class="sq-card-img"
-              loading="lazy" />
-            <!-- Real HTML5 Video Embedding -->
-            <video src="assets/website-builder-mockup.mp4" muted loop playsinline preload="metadata"
-              class="sq-card-video"></video>
-            <!-- Dark Bottom-Gradient Overlay -->
-            <div class="sq-card-gradient"></div>
-            <!-- Inside Bottom Overlay Info (Title & description smoothly slide up on hover) -->
-            <div class="sq-card-overlay-content">
-              <span class="sq-card-badge">Card 03</span>
-              <h3 class="sq-card-inner-title">Website &amp; Store Building</h3>
-              <p class="sq-card-subtitle">Launch custom branded e-commerce storefronts in minutes.</p>
-              <span class="sq-card-arrow-badge">
+        <div class="sq-product-card" data-aos onclick="window.location.href='/website-builder'">
+          <div class="deal-card" style="position: relative; width: 100%; height: 260px; border-radius: 20px; overflow: hidden; background: #0f172a; cursor: pointer;">
+            <video 
+              muted 
+              loop 
+              playsinline 
+              preload="auto"
+              class="deal-video"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+              <source src="./card3-website.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%); pointer-events: none; z-index: 2;"></div>
+            <div class="sq-card-overlay-content" style="position: absolute; inset: 0; pointer-events: none; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px;">
+              <span class="sq-card-badge" style="pointer-events: none;">Card 03</span>
+              <h3 class="sq-card-inner-title" style="pointer-events: none;">Website &amp; Store Building</h3>
+              <p class="sq-card-subtitle" style="pointer-events: none;">Launch custom branded e-commerce storefronts in minutes.</p>
+              <span class="sq-card-arrow-badge" style="pointer-events: none;">
                 <span>Explore Solution</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1123,27 +1033,29 @@
             </div>
           </div>
           <div class="sq-product-info">
-            <a href="website-builder.html" class="sq-product-title">Website &amp; Store Building</a>
+            <a href="/website-builder" class="sq-product-title">Website &amp; Store Building</a>
           </div>
         </div>
 
         <!-- Card 4: Digital Marketing & Ads -->
-        <div class="sq-product-card" data-aos>
-          <div class="sq-product-box">
-            <!-- Static Thumbnail Photo -->
-            <img src="assets/gst_payment_preview.jpg" alt="Digital Marketing & Ads" class="sq-card-img"
-              loading="lazy" />
-            <!-- Real HTML5 Video Embedding -->
-            <video src="assets/marketing-charts.mp4" muted loop playsinline preload="metadata"
-              class="sq-card-video"></video>
-            <!-- Dark Bottom-Gradient Overlay -->
-            <div class="sq-card-gradient"></div>
-            <!-- Inside Bottom Overlay Info (Title & description smoothly slide up on hover) -->
-            <div class="sq-card-overlay-content">
-              <span class="sq-card-badge">Card 04</span>
-              <h3 class="sq-card-inner-title">Digital Marketing &amp; Ads</h3>
-              <p class="sq-card-subtitle">Automated campaign funnels across Google and social channels.</p>
-              <span class="sq-card-arrow-badge">
+        <div class="sq-product-card" data-aos onclick="window.location.href='/digital-marketing'">
+          <div class="deal-card" style="position: relative; width: 100%; height: 260px; border-radius: 20px; overflow: hidden; background: #0f172a; cursor: pointer;">
+            <video 
+              muted 
+              loop 
+              playsinline 
+              preload="auto"
+              class="deal-video"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+              <source src="./card4-marketing.mp4" type="video/mp4">
+            </video>
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%); pointer-events: none; z-index: 2;"></div>
+            <div class="sq-card-overlay-content" style="position: absolute; inset: 0; pointer-events: none; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px;">
+              <span class="sq-card-badge" style="pointer-events: none;">Card 04</span>
+              <h3 class="sq-card-inner-title" style="pointer-events: none;">Digital Marketing &amp; Ads</h3>
+              <p class="sq-card-subtitle" style="pointer-events: none;">Automated campaign funnels across Google and social channels.</p>
+              <span class="sq-card-arrow-badge" style="pointer-events: none;">
                 <span>Explore Solution</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1154,11 +1066,9 @@
             </div>
           </div>
           <div class="sq-product-info">
-            <a href="digital-marketing.html" class="sq-product-title">Digital Marketing &amp; Ads</a>
+            <a href="/digital-marketing" class="sq-product-title">Digital Marketing &amp; Ads</a>
           </div>
-        </div>
-      </div>
-    </div>
+        </div></div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
@@ -1195,7 +1105,7 @@
             <div class="author-avatar">PM</div>
             <div>
               <strong>Prakash Mohapatra</strong>
-              <small>Mohapatra Textiles, Bhubaneswar</small>
+              <small>Suman Textiles, Bhubaneswar</small>
             </div>
           </div>
         </div>
@@ -1229,250 +1139,528 @@
         </p>
       </div>
 
-      <div class="serve-grid" id="serveGrid">
+      <div class="who-we-serve-grid" id="serveGrid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; max-width: 1240px; margin: 0 auto; padding: 20px 0;">
 
-        <!-- Box 1: Supermarkets & Kirana -->
-        <div class="serve-card" data-aos>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="8" cy="21" r="1" />
-              <circle cx="19" cy="21" r="1" />
-              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-            </svg></div>
-          <h3>Supermarkets &amp; Kirana</h3>
-          <p class="serve-sub">High-volume grocery, FMCG &amp; daily essentials stores.</p>
+        <!-- CARD 1: CAFE & FINE DINE -->
+        <div class="serve-card"
+          style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04); position: relative;">
+          <div>
+            <!-- Top Icon & Badges -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #fff7ed; display: flex; align-items: center; justify-content: center; color: #ea580c;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" />
+                </svg>
+              </div>
+              <span
+                style="background: #ffedd5; color: #c2410c; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Most
+                Popular</span>
+            </div>
 
-          <div class="serve-photo-preview">
-            <img src="assets/sector_supermarket.jpg" alt="Supermarkets & Kirana Stores" class="serve-mini-img" />
-            <div class="serve-img-tag">Supermarkets &amp; Kirana</div>
+            <!-- Exact Heading from Business Types -->
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+              Fine Dine &amp; Cafes</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0; line-height: 1.5;">Modern dine-in cafes,
+              bistros, bakeries &amp; table-service restaurants.</p>
+
+            <!-- Media Container -->
+            <div
+              style="position: relative; width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;">
+              <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+                alt="Fine Dine and Cafes" style="width: 100%; height: 100%; object-fit: cover;" />
+              <span
+                style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Fine
+                Dine &amp; Cafes</span>
+            </div>
+
+            <!-- Sector Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Instant
+                KOT Display</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Table
+                Management</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">QR
+                Digital Menu</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Recipe
+                Costing</span>
+            </div>
+
+            <!-- Bullet Features -->
+            <ul
+              style="list-style: none; padding: 0; margin: 0 0 28px 0; color: #334155; font-size: 13.5px; line-height: 2;">
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Captain App mobile ordering</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Split billing &amp; merged tables</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Direct Swiggy &amp; Zomato sync</li>
+            </ul>
           </div>
 
-          <div class="serve-tag-box">
-            <span class="serve-tag">Fast barcode checkout</span>
-            <span class="serve-tag">Expiry alerts</span>
-            <span class="serve-tag">Vision AI Stock Detection</span>
-            <span class="serve-tag">Loose weight scale sync</span>
-          </div>
-          <ul class="serve-features">
-            <li>Fast barcode &amp; loose scale billing</li>
-            <li>Batch &amp; expiry alerts</li>
-            <li>Vision AI Stock Detection &amp; Expiry Shield</li>
-          </ul>
-          <a href="grocery-supermarkets-kirana.html" class="serve-btn">Explore Kirana Solutions →</a>
+          <!-- Dedicated Page Link -->
+          <a href="/food-beverage/fine-dine"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 0; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+            Explore Cafe Solutions →
+          </a>
         </div>
 
-        <!-- Box 2: Cafes & Restaurants -->
-        <div class="serve-card serve-featured" data-aos>
-          <div class="serve-badge-top">Most Popular</div>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-              <line x1="6" x2="6" y1="2" y2="4" />
-              <line x1="10" x2="10" y1="2" y2="4" />
-              <line x1="14" x2="14" y1="2" y2="4" />
-            </svg></div>
-          <h3>Cafes &amp; Restaurants</h3>
-          <p class="serve-sub">Quick service restaurants, cafes &amp; fine dining.</p>
+        <!-- CARD 2: SALON & WELLNESS -->
+        <div class="serve-card"
+          style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04); position: relative;">
+          <div>
+            <!-- Top Icon & Badges -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #fdf2f8; display: flex; align-items: center; justify-content: center; color: #db2777;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="6" cy="6" r="3" />
+                  <circle cx="6" cy="18" r="3" />
+                  <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                  <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                  <line x1="8.12" y1="8.12" x2="12" y2="12" />
+                </svg>
+              </div>
+              <span
+                style="background: #fce7f3; color: #be185d; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Top
+                Rated</span>
+            </div>
 
-          <div class="serve-photo-preview">
-            <img src="assets/sector_cafe.jpg" alt="Cafes & Restaurants POS" class="serve-mini-img" />
-            <div class="serve-img-tag">Cafes &amp; Dine-In</div>
+            <!-- Exact Heading from Business Types -->
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+              Salons, Spas &amp; Wellness</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0; line-height: 1.5;">Luxury salons, hair spas,
+              dermat clinics &amp; unisex grooming parlours.</p>
+
+            <!-- Media Container -->
+            <div
+              style="position: relative; width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;">
+              <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
+                alt="Salons and Spas" style="width: 100%; height: 100%; object-fit: cover;" />
+              <span
+                style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Salons
+                &amp; Spas</span>
+            </div>
+
+            <!-- Sector Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Slot
+                Booking Calendar</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Staff
+                Commission Engine</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Package
+                Ledgers</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">WhatsApp
+                Reminders</span>
+            </div>
+
+            <!-- Bullet Features -->
+            <ul
+              style="list-style: none; padding: 0; margin: 0 0 28px 0; color: #334155; font-size: 13.5px; line-height: 2;">
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#db2777" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Automated stylist appointment scheduling</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#db2777" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Professional salon consumable consumption</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#db2777" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Prepaid membership wallet &amp; rewards</li>
+            </ul>
           </div>
 
-          <div class="serve-tag-box">
-            <span class="serve-tag">KOT print &amp; display</span>
-            <span class="serve-tag">Table management</span>
-            <span class="serve-tag">Self-order QR</span>
-            <span class="serve-tag">Recipe costing</span>
-          </div>
-          <ul class="serve-features">
-            <li>Instant KOT token printing</li>
-            <li>Interactive table layout &amp; split bills</li>
-            <li>Self-order QR code menus</li>
-          </ul>
-          <a href="solutions.html?sector=cafe" class="serve-btn">Explore Cafe Solutions →</a>
+          <!-- Dedicated Page Link -->
+          <a href="/beauty-fashion/salons"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 0; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+            Explore Salon Solutions →
+          </a>
         </div>
 
-        <!-- Box 2B: Bakeries & Confectionery (Featured Video Demo) -->
-        <div class="serve-card serve-featured"
-          style="border-color: rgba(183, 110, 121, 0.4); box-shadow: 0 10px 30px rgba(183, 110, 121, 0.12);" data-aos>
-          <div class="serve-badge-top" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">Video Demo
-            Included</div>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
-              <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1" />
-              <path d="M2 21h20" />
-              <path d="M7 8v3" />
-              <path d="M12 8v3" />
-              <path d="M17 8v3" />
-              <path d="M7 4h0.01" />
-              <path d="M12 4h0.01" />
-              <path d="M17 4h0.01" />
-            </svg></div>
-          <h3>Bakeries &amp; Confectionery</h3>
-          <p class="serve-sub">Cake shops, sweet marts &amp; artisanal bakeries.</p>
+        <!-- CARD 3: GROCERY & SUPERMARKET -->
+        <div class="serve-card"
+          style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04); position: relative;">
+          <div>
+            <!-- Top Icon & Badges -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+              </div>
+              <span
+                style="background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">High
+                Volume</span>
+            </div>
 
-          <!-- Safe Video Player: plays directly inline without redirecting -->
-          <div class="card-video-wrap"
-            style="position: relative; margin: 16px 0; border-radius: 14px; overflow: hidden; border: 2px solid rgba(183, 110, 121, 0.5); background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
-            <video id="bakeryIndexVideo" controls playsinline loop preload="metadata"
-              style="display: block; width: 100%; height: auto; border-radius: 12px; aspect-ratio: 16 / 9; object-fit: cover;">
-              <source src="assets/bakery-demo.mp4" type="video/mp4">
-              <source src="bakery-demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+            <!-- Exact Heading from Business Types -->
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+              Grocery &amp; Supermarkets</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0; line-height: 1.5;">Supermarkets, departmental
+              stores, kirana marts &amp; FMCG retail chains.</p>
+
+            <!-- Media Container -->
+            <div
+              style="position: relative; width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;">
+              <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=80"
+                alt="Grocery and Supermarkets" style="width: 100%; height: 100%; object-fit: cover;" />
+              <span
+                style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Supermarkets</span>
+            </div>
+
+            <!-- Sector Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Fast
+                Barcode Scan</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Weighing
+                Scale Sync</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Expiry
+                Shield</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Khata
+                &amp; Udhar Ledger</span>
+            </div>
+
+            <!-- Bullet Features -->
+            <ul
+              style="list-style: none; padding: 0; margin: 0 0 28px 0; color: #334155; font-size: 13.5px; line-height: 2;">
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#2563eb" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Sub-second checkout during evening peak rushes</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#2563eb" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Real-time loose items gram tare weight billing</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#2563eb" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Automated supplier purchase order reconciliations</li>
+            </ul>
           </div>
 
-          <div class="serve-tag-box">
-            <span class="serve-tag">Custom cake order POS</span>
-            <span class="serve-tag">Weight scale auto sync</span>
-            <span class="serve-tag">Recipe batch ERP</span>
-            <span class="serve-tag">Expiry label printing</span>
-          </div>
-          <ul class="serve-features">
-            <li>Advance custom cake booking with photo tags</li>
-            <li>Pastry weigh-scale auto checkout</li>
-            <li>Thermal price &amp; shelf-life expiry sticker printer</li>
-          </ul>
-          <a href="bakeries-shops.html" class="serve-btn"
-            style="background: var(--primary); color: #fff;">Explore Bakery Sector Details →</a>
+          <!-- Dedicated Page Link -->
+          <a href="/retail/grocery"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 0; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+            Explore Supermarket Solutions →
+          </a>
         </div>
 
-        <!-- Box 3: Apparel & Fashion -->
-        <div class="serve-card" data-aos>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z" />
-            </svg></div>
-          <h3>Apparel &amp; Fashion</h3>
-          <p class="serve-sub">Clothing stores, footwear, showrooms &amp; boutiques.</p>
+        <!-- CARD 4: CLOTHING & APPAREL BOUTIQUES -->
+        <div class="serve-card"
+          style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04); position: relative;">
+          <div>
+            <!-- Top Icon & Badges -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #f5f3ff; display: flex; align-items: center; justify-content: center; color: #7c3aed;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
+                </svg>
+              </div>
+              <span
+                style="background: #ede9fe; color: #6d28d9; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Size-Color
+                Matrix</span>
+            </div>
 
-          <div class="serve-photo-preview">
-            <img src="assets/sector_fashion.jpg" alt="Apparel & Fashion Boutique POS" class="serve-mini-img" />
-            <div class="serve-img-tag">Apparel &amp; Fashion</div>
+            <!-- Exact Heading from Business Types -->
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+              Clothing Brands &amp; Boutiques</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0; line-height: 1.5;">Fashion boutiques, ethnic
+              wear showrooms, designer labels &amp; garment retailers.</p>
+
+            <!-- Media Container -->
+            <div
+              style="position: relative; width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;">
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
+                alt="Clothing Brands and Apparel Boutiques" style="width: 100%; height: 100%; object-fit: cover;" />
+              <span
+                style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Clothing
+                &amp; Fashion</span>
+            </div>
+
+            <!-- Sector Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Size
+                &amp; Color Matrix</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Barcode
+                Tag Printing</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Alteration
+                Tracking</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Seasonal
+                Collections</span>
+            </div>
+
+            <!-- Bullet Features -->
+            <ul
+              style="list-style: none; padding: 0; margin: 0 0 28px 0; color: #334155; font-size: 13.5px; line-height: 2;">
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#7c3aed" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Matrix billing with instant size, color &amp; style variant lookup</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#7c3aed" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Fast barcode label &amp; garment price tag generation</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#7c3aed" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Trial room alteration status &amp; WhatsApp pickup alerts</li>
+            </ul>
           </div>
 
-          <div class="serve-tag-box">
-            <span class="serve-tag">Size/color matrix</span>
-            <span class="serve-tag">Barcode printing</span>
-            <span class="serve-tag">WhatsApp catalog</span>
-            <span class="serve-tag">Returns management</span>
-          </div>
-          <ul class="serve-features">
-            <li>Multi-variant matrix (Size/Color)</li>
-            <li>Custom barcode generator</li>
-            <li>1-Click WhatsApp store catalog</li>
-          </ul>
-          <a href="solutions.html?sector=apparel" class="serve-btn">Explore Fashion Solutions →</a>
+          <!-- Dedicated Page Link -->
+          <a href="/beauty-fashion/clothing"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 0; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+            Explore Fashion Solutions →
+          </a>
         </div>
 
-        <!-- Box 4: Pharmacies & Chemist -->
-        <div class="serve-card" data-aos>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" />
-              <path d="m8.5 8.5 7 7" />
-            </svg></div>
-          <h3>Pharmacies &amp; Chemist</h3>
-          <p class="serve-sub">Retail medical stores, pharmacies &amp; drug distributors.</p>
+        <!-- CARD 5: GYMS & FITNESS STUDIOS -->
+        <div class="serve-card"
+          style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04); position: relative;">
+          <div>
+            <!-- Top Icon & Badges -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #fff1f2; display: flex; align-items: center; justify-content: center; color: #e11d48;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M6.5 6.5h11M6.5 17.5h11M6 4v16M18 4v16M2 8v8M22 8v8M4 7v10M20 7v10" />
+                </svg>
+              </div>
+              <span
+                style="background: #ffe4e6; color: #be123c; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">Biometric
+                Access</span>
+            </div>
 
-          <div class="serve-photo-preview">
-            <img src="assets/sector_pharmacy.jpg" alt="Pharmacies & Chemist Medical Stores" class="serve-mini-img" />
-            <div class="serve-img-tag">Pharmacy &amp; Healthcare</div>
+            <!-- Exact Heading from Business Types -->
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+              Gyms &amp; Fitness Studios</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0; line-height: 1.5;">Fitness centers, CrossFit
+              boxes, pilates clubs, yoga studios &amp; personal training.</p>
+
+            <!-- Media Container -->
+            <div
+              style="position: relative; width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
+                alt="Gyms and Fitness Studios" style="width: 100%; height: 100%; object-fit: cover;" />
+              <span
+                style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Gyms
+                &amp; Fitness</span>
+            </div>
+
+            <!-- Sector Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Biometric
+                Gate Sync</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Membership
+                Plans</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Trainer
+                Commissions</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Recurring
+                UPI Alerts</span>
+            </div>
+
+            <!-- Bullet Features -->
+            <ul
+              style="list-style: none; padding: 0; margin: 0 0 28px 0; color: #334155; font-size: 13.5px; line-height: 2;">
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#e11d48" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Fingerprint &amp; facial-recognition turnstile access control</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#e11d48" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Automated WhatsApp fee reminders &amp; UPI subscription collections</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#e11d48" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Trainer batch schedules, member workout logs &amp; locker tracking</li>
+            </ul>
           </div>
 
-          <div class="serve-tag-box">
-            <span class="serve-tag">Batch/Expiry tracking</span>
-            <span class="serve-tag">Prescription billing</span>
-            <span class="serve-tag">Salt/Substitute search</span>
-            <span class="serve-tag">HSN GST tax</span>
-          </div>
-          <ul class="serve-features">
-            <li>Batch &amp; strip expiry management</li>
-            <li>Prescription &amp; doctor records</li>
-            <li>Instant medicine salt search</li>
-          </ul>
-          <a href="solutions.html?sector=pharmacy" class="serve-btn">Explore Pharma Solutions →</a>
+          <!-- Dedicated Page Link -->
+          <a href="/services/gyms"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 0; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+            Explore Gym Solutions →
+          </a>
         </div>
 
-        <!-- Box 5: Electronics & Hardware -->
-        <div class="serve-card" data-aos>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
-            </svg></div>
-          <h3>Electronics &amp; Hardware</h3>
-          <p class="serve-sub">Mobile shops, consumer electronics &amp; hardware tools.</p>
+        <!-- CARD 6: ELECTRONICS & MOBILE SHOPS -->
+        <div class="serve-card"
+          style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04); position: relative;">
+          <div>
+            <!-- Top Icon & Badges -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #f0f9ff; display: flex; align-items: center; justify-content: center; color: #0284c7;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
+                </svg>
+              </div>
+              <span
+                style="background: #e0f2fe; color: #0369a1; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;">IMEI
+                &amp; Serial Track</span>
+            </div>
 
-          <div class="serve-photo-preview">
-            <img src="assets/sector_electronics.jpg" alt="Electronics & Mobile Retail Showrooms"
-              class="serve-mini-img" />
-            <div class="serve-img-tag">Electronics &amp; Mobile</div>
+            <!-- Exact Heading from Business Types -->
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; letter-spacing: -0.02em;">
+              Electronics &amp; Mobile Shops</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0; line-height: 1.5;">Smartphones, gadget
+              showrooms, laptop dealers &amp; consumer electronics stores.</p>
+
+            <!-- Media Container -->
+            <div
+              style="position: relative; width: 100%; height: 180px; border-radius: 16px; overflow: hidden; margin-bottom: 20px;">
+              <img src="assets/electronics_showroom_display.jpg" alt="Electronics and Mobile Shops"
+                style="width: 100%; height: 100%; object-fit: cover;" />
+              <span
+                style="position: absolute; bottom: 12px; left: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;">Electronics
+                &amp; Mobile</span>
+            </div>
+
+            <!-- Sector Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Dual
+                IMEI Scanning</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Serial
+                Warranty Shield</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Bajaj
+                &amp; Pine Labs EMI</span>
+              <span
+                style="background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px;">Distributor
+                GST Sync</span>
+            </div>
+
+            <!-- Bullet Features -->
+            <ul
+              style="list-style: none; padding: 0; margin: 0 0 28px 0; color: #334155; font-size: 13.5px; line-height: 2;">
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#0284c7" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Dual IMEI &amp; serial number scanning with automated warranty ledger</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#0284c7" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Zero-cost &amp; split EMI integration (Pine Labs, Bajaj Finserv, Cards)</li>
+              <li style="display: flex; align-items: center; gap: 8px;"><svg width="14" height="14" fill="none"
+                  stroke="#0284c7" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg> Direct distributor purchase bill auto-fill with 1-click GST filing</li>
+            </ul>
           </div>
 
-          <div class="serve-tag-box">
-            <span class="serve-tag">IMEI/Serial tracking</span>
-            <span class="serve-tag">Warranty tracking</span>
-            <span class="serve-tag">Supplier ledger</span>
-            <span class="serve-tag">EDC payment sync</span>
-          </div>
-          <ul class="serve-features">
-            <li>IMEI &amp; serial number tracking</li>
-            <li>Automatic warranty prints</li>
-            <li>Integrated EDC card terminal</li>
-          </ul>
-          <a href="electronics-mobile-shops.html" class="serve-btn">Explore Electronics Solutions →</a>
-        </div>
-
-        <!-- Box 6: Cosmetics, Jewelry & Gifts -->
-        <div class="serve-card" data-aos>
-          <div class="serve-emoji"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 3h12l4 6-10 13L2 9Z" />
-              <path d="M11 3 8 9l4 13 4-13-3-6" />
-              <path d="M2 9h20" />
-            </svg></div>
-          <h3>Cosmetics &amp; Specialty</h3>
-          <p class="serve-sub">Beauty outlets, jewelry showrooms, gift &amp; toy stores.</p>
-
-          <div class="serve-photo-preview">
-            <img src="assets/sector_cosmetics.jpg" alt="Cosmetics & Jewelry Luxury Outlets" class="serve-mini-img" />
-            <div class="serve-img-tag">Cosmetics &amp; Jewelry</div>
-          </div>
-
-          <div class="serve-tag-box">
-            <span class="serve-tag">Weight/Jewelry billing</span>
-            <span class="serve-tag">Loyalty points</span>
-            <span class="serve-tag">Gift vouchers</span>
-            <span class="serve-tag">Festival coupons</span>
-          </div>
-          <ul class="serve-features">
-            <li>Jewelry weight &amp; tag billing</li>
-            <li>Customer loyalty points</li>
-            <li>Gift wrapping &amp; coupon sync</li>
-          </ul>
-          <a href="solutions.html?sector=specialty" class="serve-btn">Explore Specialty Solutions →</a>
+          <!-- Dedicated Page Link -->
+          <a href="/retail/electronics"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 0; border-radius: 12px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+            Explore Electronics Solutions →
+          </a>
         </div>
 
       </div>
 
       <!-- Additional Sectors Chips Banner -->
-      <div class="serve-niche-banner" data-aos>
-        <h4>Also Serving 15+ Retail Formats Across India (Click Any Sector to View Dedicated Solutions Page):
-        </h4>
-        <div class="niche-chips-wrap">
-          <a href="solutions.html?sector=meat" class="niche-chip">Meat &amp; Fish Outlets</a>
-          <a href="solutions.html?sector=mandi" class="niche-chip">Grain &amp; Mandi Wholesale</a>
-          <a href="solutions.html?sector=autoparts" class="niche-chip">Auto Spare Parts</a>
-          <a href="solutions.html?sector=books" class="niche-chip">Books &amp; Stationery</a>
-          <a href="solutions.html?sector=florists" class="niche-chip">Florists &amp; Nurseries</a>
-          <a href="solutions.html?sector=liquor" class="niche-chip">Liquor &amp; Beverage Outlets</a>
-          <a href="solutions.html?sector=furniture" class="niche-chip">Furniture &amp; Home Decor</a>
-          <a href="solutions.html?sector=petcare" class="niche-chip">Pet Supplies &amp; Vet Care</a>
+      <div style="width: 100%; display: flex; justify-content: center; padding: 20px 20px 40px;" data-aos>
+        <div
+          style="max-width: 1140px; width: 100%; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 36px 32px; box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05); text-align: center; box-sizing: border-box;">
+
+          <!-- Heading -->
+          <h4 style="color: #0f172a; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 22px 0;">
+            Also Serving Dedicated Industry Formats Across India (Click Any Sector to View Solutions Page):
+          </h4>
+
+          <!-- Verified Active Sector Pills Grid / Flex -->
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 12px; align-items: center;">
+
+            <!-- Food & Beverage Formats -->
+            <a href="/food-beverage/fine-dine" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Fine Dine &amp; Cafes
+            </a>
+            <a href="/food-beverage/qsr" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              QSR &amp; Fast Food
+            </a>
+            <a href="/food-beverage/cloud-kitchens" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Cloud Kitchens
+            </a>
+            <a href="/food-beverage/food-trucks" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Food Trucks &amp; Kiosks
+            </a>
+            <a href="/food-beverage/bakeries" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Bakeries &amp; Patisseries
+            </a>
+            <a href="/food-beverage/bars-pubs" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Bars, Pubs &amp; Breweries
+            </a>
+
+            <!-- Retail Formats -->
+            <a href="/retail/grocery" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Grocery &amp; Supermarkets
+            </a>
+            <a href="/retail/electronics" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Electronics &amp; Mobile
+            </a>
+            <a href="/retail/footwear" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Footwear &amp; Leather
+            </a>
+            <a href="/retail/jewellery" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Jewellery &amp; Bullion
+            </a>
+            <a href="/retail/watches" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Watch Stores &amp; Horology
+            </a>
+            <a href="/retail/bookstores" class="niche-chip"
+              style="background: #ffffff; border: 1px solid #cbd5e1; color: #334155; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+              Bookstores &amp; Stationery
+            </a>
+
+          </div>
         </div>
       </div>
     </div>
@@ -1490,7 +1678,7 @@
       <div class="wn-header" data-aos>
         <div class="wn-eyebrow">
           <span class="wn-dot"></span>
-          🚀 Comprehensive Business &amp; Tech Solutions
+          Comprehensive Business &amp; Tech Solutions
         </div>
         <h2 class="wn-title">
           Everything Your Business Needs<br />
@@ -1552,22 +1740,22 @@
             <!-- FRONT -->
             <div class="wn-card-front">
               <div class="wn-card-head">
-                <div class="wn-card-badge">🏆 Most Popular</div>
-                <span class="wn-card-hint">Hover to flip 🔄</span>
+                <div class="wn-card-badge">Most Popular</div>
+                <span class="wn-card-hint">Hover to flip </span>
               </div>
               <div class="wn-card-photo-wrap">
                 <img src="assets/pos_billing_preview.jpg" alt="Smart POS Billing Counter" class="wn-card-photo"
                   loading="lazy" />
-                <span class="wn-card-photo-tag">🖥️ Smart POS</span>
+                <span class="wn-card-photo-tag">Smart POS</span>
               </div>
               <div class="wn-card-body">
                 <h3 class="wn-card-title">Smart POS Billing</h3>
                 <p class="wn-card-desc">Fast retail billing with voice AI, barcode scan, GST invoices &amp; Pine Labs
                   payments. 100% offline!</p>
                 <div class="wn-card-tags">
-                  <span class="wn-tag">✨ Voice AI</span>
-                  <span class="wn-tag">🧾 GST Ready</span>
-                  <span class="wn-tag">📶 100% Offline</span>
+                  <span class="wn-tag">Voice AI</span>
+                  <span class="wn-tag">GST Ready</span>
+                  <span class="wn-tag">100% Offline</span>
                 </div>
               </div>
             </div>
@@ -1580,23 +1768,43 @@
               </svg>
               <div class="wn-back-content">
                 <div class="wn-back-header">
-                  <span class="wn-back-emoji">🖥️</span>
+
                   <h4 class="wn-back-title">Smart POS Billing</h4>
                 </div>
                 <ul class="wn-back-points">
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Voice AI Billing:</strong> Speak &amp; bill items in seconds</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Barcode &amp; Touch:</strong> Zero checkout delays</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Auto GST Ready:</strong> 1-click B2B/B2C invoices</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Pine Labs Sync:</strong> Instant UPI &amp; card tally</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>100% Offline:</strong> Keeps working with no internet</div>
                   </li>
                 </ul>
@@ -1613,23 +1821,23 @@
             <div class="wn-card-front">
               <div class="wn-card-head">
                 <div class="wn-card-badge"
-                  style="background:rgba(16,185,129,0.12);color:#059669;border-color:rgba(16,185,129,0.3)">⚡ All-in-One
+                  style="background:rgba(16,185,129,0.12);color:#059669;border-color:rgba(16,185,129,0.3)">All-in-One
                   ERP</div>
-                <span class="wn-card-hint">Hover to flip 🔄</span>
+                <span class="wn-card-hint">Hover to flip </span>
               </div>
               <div class="wn-card-photo-wrap">
                 <img src="assets/inventory_ocr_preview.jpg" alt="Wholesale Invoice OCR Stock Scanner"
                   class="wn-card-photo" loading="lazy" />
-                <span class="wn-card-photo-tag">📊 Inventory ERP</span>
+                <span class="wn-card-photo-tag">Inventory ERP</span>
               </div>
               <div class="wn-card-body">
                 <h3 class="wn-card-title">Management System</h3>
                 <p class="wn-card-desc">Inventory ERP, Staff HRMS, Accounts &amp; Multi-Branch operations in one single
                   unified dashboard.</p>
                 <div class="wn-card-tags">
-                  <span class="wn-tag">📦 Vision AI Stock</span>
-                  <span class="wn-tag">👥 Staff HRMS</span>
-                  <span class="wn-tag">🏢 Multi-Branch</span>
+                  <span class="wn-tag">Vision AI Stock</span>
+                  <span class="wn-tag">Staff HRMS</span>
+                  <span class="wn-tag">Multi-Branch</span>
                 </div>
               </div>
             </div>
@@ -1642,23 +1850,43 @@
               </svg>
               <div class="wn-back-content">
                 <div class="wn-back-header">
-                  <span class="wn-back-emoji">📊</span>
+
                   <h4 class="wn-back-title">Management Suite</h4>
                 </div>
                 <ul class="wn-back-points">
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Vision AI Stock:</strong> Auto updates via invoice photo</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Selfie HRMS:</strong> Geo-fenced staff attendance</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Vendor Ledger:</strong> Real-time purchase &amp; payout tracking</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>1-Click GST:</strong> GSTR-1 &amp; 3B ready JSON filing</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Multi-Branch:</strong> Live warehouse &amp; outlet sync</div>
                   </li>
                 </ul>
@@ -1675,23 +1903,23 @@
             <div class="wn-card-front">
               <div class="wn-card-head">
                 <div class="wn-card-badge"
-                  style="background:rgba(183,110,121,0.12);color:#b76e79;border-color:rgba(183,110,121,0.3)">🌐 Online
+                  style="background:rgba(183,110,121,0.12);color:#b76e79;border-color:rgba(183,110,121,0.3)">Online
                   Presence</div>
-                <span class="wn-card-hint">Hover to flip 🔄</span>
+                <span class="wn-card-hint">Hover to flip </span>
               </div>
               <div class="wn-card-photo-wrap">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
                   alt="Custom Website Design" class="wn-card-photo" loading="lazy" />
-                <span class="wn-card-photo-tag">🎨 Web Studio</span>
+                <span class="wn-card-photo-tag">Web Studio</span>
               </div>
               <div class="wn-card-body">
                 <h3 class="wn-card-title">Custom Website Design</h3>
                 <p class="wn-card-desc">Modern, responsive websites designed to attract customers and drive sales.
                   E-commerce &amp; catalogue ready.</p>
                 <div class="wn-card-tags">
-                  <span class="wn-tag">📱 Responsive UI</span>
-                  <span class="wn-tag">🔍 Google SEO</span>
-                  <span class="wn-tag">⚡ 5-Day Delivery</span>
+                  <span class="wn-tag">Responsive UI</span>
+                  <span class="wn-tag">Google SEO</span>
+                  <span class="wn-tag">5-Day Delivery</span>
                 </div>
               </div>
             </div>
@@ -1704,23 +1932,43 @@
               </svg>
               <div class="wn-back-content">
                 <div class="wn-back-header">
-                  <span class="wn-back-emoji">🎨</span>
+
                   <h4 class="wn-back-title">Website Design</h4>
                 </div>
                 <ul class="wn-back-points">
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Custom Architecture:</strong> 100% mobile-friendly</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>E-Commerce Ready:</strong> Product catalogues &amp; checkout</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Google SEO Setup:</strong> Rank high in local searches</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Blazing Fast:</strong> Ultra-secure cloud hosting</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>5-Day Delivery:</strong> Rapid turnaround guaranteed</div>
                   </li>
                 </ul>
@@ -1737,23 +1985,24 @@
             <div class="wn-card-front">
               <div class="wn-card-head">
                 <div class="wn-card-badge"
-                  style="background:rgba(236,72,153,0.12);color:#db2777;border-color:rgba(236,72,153,0.3)">📈 Accelerate
+                  style="background:rgba(236,72,153,0.12);color:#db2777;border-color:rgba(236,72,153,0.3)">Accelerate
                   Growth</div>
-                <span class="wn-card-hint">Hover to flip 🔄</span>
+                <span class="wn-card-hint">Hover to flip </span>
               </div>
               <div class="wn-card-photo-wrap">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80"
-                  alt="Digital Marketing Campaign" class="wn-card-photo" loading="lazy" />
-                <span class="wn-card-photo-tag">📣 Growth Engine</span>
+                <img src="./digital-marketing.png?v=new" alt="Meta and Google Ads" class="wn-card-photo"
+                  style="width: 100%; height: 100%; object-fit: cover;"
+                  onerror="this.onerror=null;this.src='./digital-marketing.jpg?v=new';" loading="lazy" />
+                <span class="wn-card-photo-tag">Growth Engine</span>
               </div>
               <div class="wn-card-body">
                 <h3 class="wn-card-title">Digital Marketing</h3>
                 <p class="wn-card-desc">Targeted Instagram, Facebook, Google Ads, and automated WhatsApp campaigns to
                   grow local sales.</p>
                 <div class="wn-card-tags">
-                  <span class="wn-tag">📱 Meta &amp; Insta Ads</span>
-                  <span class="wn-tag">🎯 Google Ads</span>
-                  <span class="wn-tag">💬 WhatsApp CRM</span>
+                  <span class="wn-tag">Meta &amp; Insta Ads</span>
+                  <span class="wn-tag">Google Ads</span>
+                  <span class="wn-tag"> WhatsApp CRM</span>
                 </div>
               </div>
             </div>
@@ -1766,23 +2015,43 @@
               </svg>
               <div class="wn-back-content">
                 <div class="wn-back-header">
-                  <span class="wn-back-emoji">📣</span>
+
                   <h4 class="wn-back-title">Digital Marketing</h4>
                 </div>
                 <ul class="wn-back-points">
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Meta Ads Management:</strong> Instagram &amp; Facebook</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>High-ROI Google Ads:</strong> Target local buyers</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>WhatsApp Marketing:</strong> Automated broadcast sales</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Creative Assets:</strong> Reels, post designs &amp; copy</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Transparent Reports:</strong> Weekly ROAS metrics</div>
                   </li>
                 </ul>
@@ -1799,23 +2068,25 @@
             <div class="wn-card-front">
               <div class="wn-card-head">
                 <div class="wn-card-badge"
-                  style="background:rgba(245,158,11,0.12);color:#d97706;border-color:rgba(245,158,11,0.3)">✨ Brand
+                  style="background:rgba(245,158,11,0.12);color:#d97706;border-color:rgba(245,158,11,0.3)">Brand
                   Identity</div>
-                <span class="wn-card-hint">Hover to flip 🔄</span>
+                <span class="wn-card-hint">Hover to flip </span>
               </div>
               <div class="wn-card-photo-wrap">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80"
-                  alt="Brand Logo Design" class="wn-card-photo" loading="lazy" />
-                <span class="wn-card-photo-tag">🎯 Brand &amp; Logo</span>
+                <img src="./logo-brand-design.jpg?v=1" alt="Logo & Brand Design Showcase"
+                  class="wn-card-photo w-full h-full object-cover rounded-xl"
+                  style="width: 100%; height: 100%; object-fit: cover;"
+                  onerror="this.onerror=null;this.src='assets/logo-brand-design.jpg?v=1';" loading="lazy" />
+                <span class="wn-card-photo-tag">Brand &amp; Logo</span>
               </div>
               <div class="wn-card-body">
                 <h3 class="wn-card-title">Logo &amp; Brand Design</h3>
                 <p class="wn-card-desc">Distinctive logos and complete corporate branding kits (cards, stationery,
                   signboards) for trust.</p>
                 <div class="wn-card-tags">
-                  <span class="wn-tag">✒️ Custom Logo</span>
-                  <span class="wn-tag">🎨 Brand Kit</span>
-                  <span class="wn-tag">🔄 Unlimited Edits</span>
+                  <span class="wn-tag">Custom Logo</span>
+                  <span class="wn-tag">Brand Kit</span>
+                  <span class="wn-tag"> Unlimited Edits</span>
                 </div>
               </div>
             </div>
@@ -1828,23 +2099,43 @@
               </svg>
               <div class="wn-back-content">
                 <div class="wn-back-header">
-                  <span class="wn-back-emoji">🎯</span>
+
                   <h4 class="wn-back-title">Brand Identity</h4>
                 </div>
                 <ul class="wn-back-points">
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>3+ Original Concepts:</strong> Custom crafted for you</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Full Brand Kit:</strong> Color palettes &amp; font guide</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Print Stationery:</strong> Business cards &amp; letterheads</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Vector Files:</strong> High-res SVG, PNG &amp; PDF</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Unlimited Edits:</strong> 100% satisfaction promised</div>
                   </li>
                 </ul>
@@ -1861,23 +2152,23 @@
             <div class="wn-card-front">
               <div class="wn-card-head">
                 <div class="wn-card-badge"
-                  style="background:rgba(14,165,233,0.12);color:#0284c7;border-color:rgba(14,165,233,0.3)">🔥 Best Value
+                  style="background:rgba(14,165,233,0.12);color:#0284c7;border-color:rgba(14,165,233,0.3)">Best Value
                   5-in-1</div>
-                <span class="wn-card-hint">Hover to flip 🔄</span>
+                <span class="wn-card-hint">Hover to flip </span>
               </div>
               <div class="wn-card-photo-wrap">
                 <img src="assets/hero_platform_showcase.jpg" alt="All-in-One Retail Operating Suite"
                   class="wn-card-photo" loading="lazy" />
-                <span class="wn-card-photo-tag">🚀 All-in-One Suite</span>
+                <span class="wn-card-photo-tag">All-in-One Suite</span>
               </div>
               <div class="wn-card-body">
                 <h3 class="wn-card-title">All-in-One Bundle</h3>
                 <p class="wn-card-desc">POS + ERP + Website + Digital Marketing + Logo — complete setup with maximum
                   savings.</p>
                 <div class="wn-card-tags">
-                  <span class="wn-tag">💎 5-in-1 Suite</span>
-                  <span class="wn-tag">💰 Best Price</span>
-                  <span class="wn-tag">🤝 Single Contact</span>
+                  <span class="wn-tag"> 5-in-1 Suite</span>
+                  <span class="wn-tag">Best Price</span>
+                  <span class="wn-tag">Single Contact</span>
                 </div>
               </div>
             </div>
@@ -1890,23 +2181,43 @@
               </svg>
               <div class="wn-back-content">
                 <div class="wn-back-header">
-                  <span class="wn-back-emoji">🚀</span>
+
                   <h4 class="wn-back-title">Complete Bundle</h4>
                 </div>
                 <ul class="wn-back-points">
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Smart POS Billing:</strong> Offline lifetime license</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Cloud ERP + HRMS:</strong> Vision AI stock scanner</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Custom Website:</strong> E-commerce &amp; SEO ready</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Digital Marketing:</strong> 1st month launch campaign</div>
                   </li>
-                  <li><span>✅</span>
+                  <li><span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg></span>
                     <div><strong>Complete Brand Kit:</strong> Logo, stationery &amp; cards</div>
                   </li>
                 </ul>
@@ -1921,7 +2232,7 @@
       <!-- India Trust Strip -->
       <div class="wn-india-strip" data-aos>
         <div class="wn-india-left">
-          <span class="wn-india-flag">🇮🇳</span>
+          <span class="wn-india-badge">IN</span>
           <div>
             <h3>Made for Bharat. Built to Last.</h3>
             <p>The all-in-one retail stack engineered to run physical counters, launch digital storefronts, and drive
@@ -1930,11 +2241,15 @@
           </div>
         </div>
         <div class="wn-india-right">
-          <div class="wn-trust-pill">🔒 256-bit Encrypted</div>
-          <div class="wn-trust-pill">☁️ Cloud + Offline</div>
-          <div class="wn-trust-pill">🇮🇳 UDYAM-OD-19-0177979</div>
-          <div class="wn-trust-pill">✅ GST Compliant</div>
-          <div class="wn-trust-pill">📱 Works on Android &amp; Windows</div>
+          <div class="wn-trust-pill">256-bit Encrypted</div>
+          <div class="wn-trust-pill">Cloud + Offline</div>
+          <div class="wn-trust-pill">UDYAM-OD-19-0177979</div>
+          <div class="wn-trust-pill"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              style="display:inline-block;vertical-align:middle;margin-right:6px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>GST Compliant</div>
+          <div class="wn-trust-pill">Works on Android &amp; Windows</div>
         </div>
       </div>
 
@@ -1943,7 +2258,7 @@
         <p>All these comprehensive solutions are available under a <strong>single flexible, affordable
             partnership</strong>.</p>
         <a href="#cta" class="btn-primary wn-cta-btn">
-          🚀 Start Free Trial — Setup in 10 Min
+          Start Free Trial — Setup in 10 Min
         </a>
       </div>
 
@@ -1953,22 +2268,36 @@
   <!-- ══════════════════════════════════════════════════════════
        7. THE FINAL CALL-TO-ACTION (Bottom Section)
   ══════════════════════════════════════════════════════════ -->
-  <section class="cta-section" id="cta">
+  <section class="cta-section" id="free-trial">
+    <div id="cta"></div>
     <div class="cta-orb cta-orb1"></div>
     <div class="cta-orb cta-orb2"></div>
     <div class="container">
       <div class="cta-inner">
         <div class="cta-text" data-aos>
           <div class="section-badge">Take Your Business to Autopilot</div>
-          <h2>Transform Your Business in 10 Minutes.</h2>
+          <h2>Scale Your Store with 𝓔𝓯𝓯𝓸𝓻𝓽𝓵𝓮𝓼𝓼 𝓢𝓹𝓮𝓮𝓭 in 10 Minutes.</h2>
           <p>
-            Join <strong>500+ smart retailers</strong> simplifying store operations with Priyulabs. Setup takes under
+            Join <strong>100+ smart retailers</strong> simplifying store operations with Priyulabs. Elevate your
+            business in
             <strong>10 minutes.</strong>
           </p>
           <div class="cta-trust-row">
-            <span>✅ 14-Day Free Trial</span>
-            <span>✅ Free Onboarding</span>
-            <span>✅ 24/7 Support (<a href="tel:+917849074050" style="color:#d88a95;font-weight:700;">+91 78490
+            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> 14-Day Free Trial</span>
+            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Free Onboarding</span>
+            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> 24/7 Support (<a href="tel:+917849074050" style="color:#d88a95;font-weight:700;">+91 78490
                 74050</a>)</span>
           </div>
         </div>
@@ -1982,6 +2311,41 @@
               <label for="userName">Your Name *</label>
               <input type="text" id="userName" name="Name" placeholder="Enter your full name (e.g. Ramesh Kumar)"
                 required />
+            </div>
+
+            <div class="form-group">
+              <label for="businessType">Select Your Business Type *</label>
+              <select id="businessType" name="BusinessType" required>
+                <option value="" disabled selected>Select Your Business Type</option>
+                <optgroup label="Food &amp; Beverage / Dining">
+                  <option value="Restaurants &amp; Fine Dining">Restaurants &amp; Fine Dining</option>
+                  <option value="Cafes &amp; Chai Bars">Cafes &amp; Chai Bars</option>
+                  <option value="QSR &amp; Fast Food">QSR &amp; Fast Food</option>
+                  <option value="Bakeries &amp; Patisseries">Bakeries &amp; Patisseries</option>
+                  <option value="Cloud Kitchens &amp; Catering">Cloud Kitchens &amp; Catering</option>
+                  <option value="Bars, Pubs &amp; Breweries">Bars, Pubs &amp; Breweries</option>
+                </optgroup>
+                <optgroup label="Retail &amp; Supermarkets">
+                  <option value="Grocery, Supermarkets &amp; Kirana">Grocery, Supermarkets &amp; Kirana</option>
+                  <option value="Electronics &amp; Mobile Shops">Electronics &amp; Mobile Shops</option>
+                  <option value="Footwear &amp; Leather Stores">Footwear &amp; Leather Stores</option>
+                  <option value="Jewellery Showrooms">Jewellery Showrooms</option>
+                  <option value="Watch Stores &amp; Horology">Watch Stores &amp; Horology</option>
+                  <option value="Bookstores &amp; Stationery">Bookstores &amp; Stationery</option>
+                </optgroup>
+                <optgroup label="Beauty &amp; Fashion">
+                  <option value="Clothing Brands &amp; Apparel Boutiques">Clothing Brands &amp; Apparel Boutiques
+                  </option>
+                  <option value="Salons, Spas &amp; Beauty Parlours">Salons, Spas &amp; Beauty Parlours</option>
+                  <option value="Cosmetics &amp; Skincare Stores">Cosmetics &amp; Skincare Stores</option>
+                </optgroup>
+                <optgroup label="Services &amp; Fitness">
+                  <option value="Gyms, Fitness Studios &amp; Yoga Centers">Gyms, Fitness Studios &amp; Yoga Centers
+                  </option>
+                  <option value="Dry Cleaners &amp; Laundry Shops">Dry Cleaners &amp; Laundry Shops</option>
+                </optgroup>
+                <option value="Other Retail / Commercial Business">Other Retail / Commercial Business</option>
+              </select>
             </div>
 
             <div class="form-group">
@@ -2016,14 +2380,14 @@
             </div>
 
             <button type="submit" class="btn-primary full-width" id="submitLeadBtn">
-              Submit &amp; Get Free Consultant 🚀
+              Submit &amp; Get Free Consultation
             </button>
 
             <div id="formStatusMsg" class="form-status-msg"
               style="display: none; margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;">
             </div>
 
-            <p class="form-privacy">🔒 Your inquiry is securely received. Our team will contact you within 15 minutes.
+            <p class="form-privacy">Your inquiry is securely received. Our team will contact you within 15 minutes.
             </p>
           </form>
         </div>
@@ -2038,7 +2402,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="index.html" class="logo footer-logo">
+          <a href="/" class="logo footer-logo">
             <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
             <div class="logo-text-group">
               <span class="logo-title">PRIYULABS</span>
@@ -2048,17 +2412,20 @@
           <p>Priyulabs Digital — India’s Smartest AI Retail OS. Built for Bharat. Manage POS Billing, ERP Inventory,
             Staff HRMS, 1-Click GST &amp; EDC Payments on Autopilot.</p>
           <div class="footer-badges">
-            <span class="f-badge">🇮🇳 MSME Reg: UDYAM-OD-19-0177979</span>
-            <span class="f-badge">🔒 100% Offline &amp; Encrypted</span>
-            <span class="f-badge">✅ GST Compliant</span>
+            <span class="f-badge"><span class="msme-dot"></span> MSME Reg: UDYAM-OD-19-0177979</span>
+            <span class="f-badge">100% Offline &amp; Encrypted</span>
+            <span class="f-badge"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>GST Compliant</span>
           </div>
           <div class="footer-social">
             <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
-              class="social-btn" aria-label="WhatsApp" target="_blank">💬</a>
+              class="social-btn" aria-label="WhatsApp" target="_blank"></a>
             <a href="#" class="social-btn" aria-label="LinkedIn"
               onclick="openPolicyModal('about'); return false;">in</a>
-            <a href="#" class="social-btn" aria-label="Instagram"
-              onclick="openPolicyModal('about'); return false;">📸</a>
+            <a href="#" class="social-btn" aria-label="Instagram" onclick="openPolicyModal('about'); return false;"></a>
             <a href="#" class="social-btn" aria-label="YouTube" onclick="openDemoModal(); return false;">▶️</a>
           </div>
         </div>
@@ -2066,7 +2433,7 @@
         <div class="footer-col">
           <h5>Core Features</h5>
           <ul>
-            <li><a href="#attractions">📦 Vision AI Stock Detection &amp; Expiry Shield</a></li>
+            <li><a href="#attractions">Vision AI Stock Detection &amp; Expiry Shield</a></li>
             <li><a href="#attractions">Vision AI Purchase</a></li>
             <li><a href="#attractions">Card &amp; Dynamic QR</a></li>
             <li><a href="#attractions">Cash Register Reconciliation</a></li>
@@ -2100,17 +2467,17 @@
         <div class="footer-col">
           <h5>Address &amp; Contact</h5>
           <ul>
-            <li>✉️ <a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
-            <li>📞 <a href="tel:+917849074050">+91 78490 74050</a></li>
-            <li>📍 279, Kapileshwar - Sundarpada Rd, Basisthanagar, Old Town, Bhubaneswar, Odisha 751002</li>
+            <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
+            <li><a href="tel:+917849074050">+91 78490 74050</a></li>
+            <li>279, Kapileshwar - Sundarpada Rd, Basisthanagar, Old Town, Bhubaneswar, Odisha 751002</li>
             <li>⏰ Support: Mon–Sat 9:00 AM – 8:00 PM</li>
-            <li>💬 WhatsApp: <a href="https://wa.me/917849074050" target="_blank">+91 78490 74050 (24/7)</a></li>
+            <li> WhatsApp: <a href="https://wa.me/917849074050" target="_blank">+91 78490 74050 (24/7)</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 Priyulabs (PriyuLabs SOFTWARE). All rights reserved. Made with ❤️ in India 🇮🇳</p>
+        <p>© 2026 Priyulabs (PriyuLabs SOFTWARE). All rights reserved. Made with Pride in India</p>
         <div class="footer-links">
           <a href="#" onclick="openPolicyModal('about'); return false;">About Us</a>
           <a href="#" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a>
@@ -2138,14 +2505,14 @@
 
       <!-- 6 Service Navigation Tabs -->
       <div class="demo-tabs">
-        <button class="demo-tab active" data-tab="pos" onclick="switchDemoTab('pos')">🖥️ Smart POS Billing</button>
-        <button class="demo-tab" data-tab="erp" onclick="switchDemoTab('erp')">📊 ERP &amp; Staff HRMS</button>
-        <button class="demo-tab" data-tab="website" onclick="switchDemoTab('website')">🎨 Custom Website Studio</button>
-        <button class="demo-tab" data-tab="marketing" onclick="switchDemoTab('marketing')">📣 Digital Marketing &amp;
+        <button class="demo-tab active" data-tab="pos" onclick="switchDemoTab('pos')">Smart POS Billing</button>
+        <button class="demo-tab" data-tab="erp" onclick="switchDemoTab('erp')">ERP &amp; Staff HRMS</button>
+        <button class="demo-tab" data-tab="website" onclick="switchDemoTab('website')">Custom Website Studio</button>
+        <button class="demo-tab" data-tab="marketing" onclick="switchDemoTab('marketing')">Digital Marketing &amp;
           Ads</button>
-        <button class="demo-tab" data-tab="branding" onclick="switchDemoTab('branding')">🎯 Logo &amp; Brand
+        <button class="demo-tab" data-tab="branding" onclick="switchDemoTab('branding')">Logo &amp; Brand
           Studio</button>
-        <button class="demo-tab" data-tab="bundle" onclick="switchDemoTab('bundle')">🚀 All-in-One Bundle</button>
+        <button class="demo-tab" data-tab="bundle" onclick="switchDemoTab('bundle')">All-in-One Bundle</button>
       </div>
 
       <div class="demo-body">
@@ -2160,18 +2527,18 @@
                   <p>Click items to add to cart, scan barcodes, or speak to bill in real-time:</p>
                 </div>
                 <div class="pos-voice-quick">
-                  <button class="pos-pill-btn" onclick="runPosVoicePreset('2 burgers and 1 coffee')">🗣️ "2 Burgers
+                  <button class="pos-pill-btn" onclick="runPosVoicePreset('2 burgers and 1 coffee')">"2 Burgers
                     &amp; 1 Coffee"</button>
-                  <button class="pos-pill-btn" onclick="simulateBarcodeScan()">📷 Scan Barcode</button>
+                  <button class="pos-pill-btn" onclick="simulateBarcodeScan()">Scan Barcode</button>
                 </div>
               </div>
 
               <!-- Product Category Chips -->
               <div class="pos-cat-bar">
                 <button class="pos-cat-btn active" onclick="filterPosProducts('all', this)">All Items</button>
-                <button class="pos-cat-btn" onclick="filterPosProducts('cafe', this)">☕ Cafe &amp; Food</button>
-                <button class="pos-cat-btn" onclick="filterPosProducts('grocery', this)">🛒 Grocery / FMCG</button>
-                <button class="pos-cat-btn" onclick="filterPosProducts('fashion', this)">👗 Retail &amp;
+                <button class="pos-cat-btn" onclick="filterPosProducts('cafe', this)">Cafe &amp; Food</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('grocery', this)">Grocery / FMCG</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('fashion', this)">Retail &amp;
                   Apparel</button>
               </div>
 
@@ -2181,7 +2548,7 @@
               </div>
 
               <div class="pos-status-bar" id="posStatusBar">
-                <span class="status-indicator"></span> ⚡ Offline-First POS Engine Active • 0.2s Instant Add
+                <span class="status-indicator"></span> Offline-First POS Engine Active • 0.2s Instant Add
               </div>
             </div>
 
@@ -2206,18 +2573,22 @@
 
                 <div class="pos-actions-wrap">
                   <button class="btn-pos-pay" id="btnPosPay" onclick="executePosPayment()">
-                    💳 Pay via UPI QR / Pine Labs ⚡
+                    Pay via UPI QR / Pine Labs
                   </button>
                   <button class="btn-pos-clear" onclick="clearPosCart()">Clear</button>
                 </div>
 
                 <!-- Live Payment Success Overlay inside receipt -->
                 <div class="pos-pay-success" id="posPaySuccess" style="display:none;">
-                  <div class="pps-icon">✅</div>
+                  <div class="pps-icon"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                      stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg></div>
                   <strong>Payment Received ₹<span id="posPaidAmt">0</span></strong>
                   <small>UPI Trans ID: #UPI-984210 • Bill Auto-Saved</small>
                   <div class="pps-btns">
-                    <button class="btn-primary-sm" onclick="printPosInvoice()">🖨️ Print Receipt</button>
+                    <button class="btn-primary-sm" onclick="printPosInvoice()">Print Receipt</button>
                     <button class="btn-ghost-sm" onclick="resetPosCart()">+ Next Order</button>
                   </div>
                 </div>
@@ -2230,12 +2601,12 @@
         <div class="demo-panel" id="tab-erp">
           <div class="demo-sim-box">
             <div class="sim-left">
-              <h4>📦 Vision AI Stock Manager &amp; Expiry Shield</h4>
+              <h4>Vision AI Stock Manager &amp; Expiry Shield</h4>
               <p>Simulate supplier invoice OCR auto-entry and real-time stock deductions:</p>
 
               <div class="erp-quick-actions">
-                <button class="btn-erp-act" onclick="simulateErpScanInvoice()">📷 Snap Wholesaler Invoice OCR</button>
-                <button class="btn-erp-act" onclick="simulateErpSale()">📉 Simulate Fast Sales (Trigger Low
+                <button class="btn-erp-act" onclick="simulateErpScanInvoice()">Snap Wholesaler Invoice OCR</button>
+                <button class="btn-erp-act" onclick="simulateErpSale()">Simulate Fast Sales (Trigger Low
                   Stock)</button>
               </div>
 
@@ -2243,7 +2614,7 @@
               <div class="erp-stock-card">
                 <div class="esc-header">
                   <span>Live Store Inventory</span>
-                  <span class="badge-live-sync">🔄 Cloud Synced</span>
+                  <span class="badge-live-sync">Cloud Synced</span>
                 </div>
                 <div class="esc-table-wrap">
                   <table class="erp-table" id="erpStockTable">
@@ -2261,7 +2632,7 @@
                   </table>
                 </div>
               </div>
-              <div class="erp-toast-msg" id="erpToastMsg">💡 Tip: Click "Snap Wholesaler Invoice" to see Vision AI
+              <div class="erp-toast-msg" id="erpToastMsg">Tip: Click "Snap Wholesaler Invoice" to see Vision AI
                 auto-extract inventory in 1 second!</div>
             </div>
 
@@ -2269,14 +2640,14 @@
               <!-- Staff Attendance HRMS Simulation -->
               <div class="hrms-sim-card">
                 <div class="hrms-card-head">
-                  <h5>🤳 Geofenced Selfie Attendance &amp; Payroll</h5>
+                  <h5>Geofenced Selfie Attendance &amp; Payroll</h5>
                   <small>AI Facial Biometrics • Zero Proxy</small>
                 </div>
 
                 <div class="hrms-camera-preview" id="hrmsCamBox">
                   <div class="hrms-face-scanner" id="hrmsFaceScanner">
                     <div class="h-target-box"></div>
-                    <span class="h-face-emoji">👨‍💼</span>
+                    <span class="h-face-emoji"></span>
                   </div>
                   <div class="hrms-cam-overlay" id="hrmsCamStatus">
                     Click below to simulate employee facial check-in
@@ -2284,7 +2655,7 @@
                 </div>
 
                 <button class="btn-hrms-checkin" onclick="simulateHrmsCheckIn()">
-                  📸 Clock-in Facial Selfie (Simulate)
+                  Clock-in Facial Selfie (Simulate)
                 </button>
 
                 <div class="hrms-payroll-breakdown" id="hrmsPayrollBox">
@@ -2304,7 +2675,7 @@
         <div class="demo-panel" id="tab-website">
           <div class="demo-sim-box">
             <div class="sim-left">
-              <h4>🎨 Interactive Website Builder &amp; Storefront</h4>
+              <h4> Interactive Website Builder &amp; Storefront</h4>
               <p>Customize your business type, brand colors, and preview how your online store looks &amp; receives
                 orders:</p>
 
@@ -2312,11 +2683,11 @@
               <div class="ws-control-group">
                 <label>Select Business Industry:</label>
                 <div class="ws-industry-pills">
-                  <button class="ws-ind-btn active" onclick="setWsIndustry('restaurant', this)">🍕 Cafe &amp;
+                  <button class="ws-ind-btn active" onclick="setWsIndustry('restaurant', this)">Cafe &amp;
                     Restaurant</button>
-                  <button class="ws-ind-btn" onclick="setWsIndustry('fashion', this)">👗 Fashion &amp; Boutique</button>
-                  <button class="ws-ind-btn" onclick="setWsIndustry('grocery', this)">🛒 Grocery &amp; Mart</button>
-                  <button class="ws-ind-btn" onclick="setWsIndustry('clinic', this)">🏥 Clinic &amp; Care</button>
+                  <button class="ws-ind-btn" onclick="setWsIndustry('fashion', this)">Fashion &amp; Boutique</button>
+                  <button class="ws-ind-btn" onclick="setWsIndustry('grocery', this)">Grocery &amp; Mart</button>
+                  <button class="ws-ind-btn" onclick="setWsIndustry('clinic', this)">Clinic &amp; Care</button>
                 </div>
               </div>
 
@@ -2346,9 +2717,9 @@
               <div class="ws-control-group">
                 <label>Device Viewport:</label>
                 <div class="ws-view-toggle">
-                  <button class="ws-view-btn active" id="wsBtnMobile" onclick="setWsDevice('mobile')">📱 Mobile
+                  <button class="ws-view-btn active" id="wsBtnMobile" onclick="setWsDevice('mobile')">Mobile
                     View</button>
-                  <button class="ws-view-btn" id="wsBtnDesktop" onclick="setWsDevice('desktop')">💻 Desktop
+                  <button class="ws-view-btn" id="wsBtnDesktop" onclick="setWsDevice('desktop')">Desktop
                     View</button>
                 </div>
               </div>
@@ -2365,8 +2736,8 @@
                 <div class="ws-site-viewport" id="wsViewport">
                   <!-- Header -->
                   <div class="ws-site-header" id="wsSiteHeader">
-                    <div class="wsh-logo" id="wsSiteLogo">🍕 Spice &amp; Craft Bistro</div>
-                    <div class="wsh-cart">🛒 <span id="wsCartCount">1</span></div>
+                    <div class="wsh-logo" id="wsSiteLogo">Spice &amp; Craft Bistro</div>
+                    <div class="wsh-cart"><span id="wsCartCount">1</span></div>
                   </div>
 
                   <!-- Hero Banner -->
@@ -2383,7 +2754,7 @@
                   <!-- WhatsApp Floating CTA in preview -->
                   <div class="ws-site-order-cta">
                     <button class="btn-ws-wa-order" onclick="simulateWsOrder()">
-                      💬 Order on WhatsApp (Live Demo)
+                      Order on WhatsApp (Live Demo)
                     </button>
                   </div>
                 </div>
@@ -2396,7 +2767,7 @@
         <div class="demo-panel" id="tab-marketing">
           <div class="demo-sim-box">
             <div class="sim-left">
-              <h4>📣 Meta &amp; Google Ads ROI Simulator</h4>
+              <h4> Meta &amp; Google Ads ROI Simulator</h4>
               <p>Adjust your monthly ad budget and target audience to calculate real-world customer acquisition &amp;
                 sales:</p>
 
@@ -2404,10 +2775,10 @@
               <div class="mkt-control-group">
                 <label>Campaign Objective:</label>
                 <div class="mkt-goal-pills">
-                  <button class="mkt-goal-btn active" onclick="setMktGoal('footfall', this)">🎯 Local Store
+                  <button class="mkt-goal-btn active" onclick="setMktGoal('footfall', this)">Local Store
                     Footfall</button>
-                  <button class="mkt-goal-btn" onclick="setMktGoal('online', this)">🛒 E-Commerce Orders</button>
-                  <button class="mkt-goal-btn" onclick="setMktGoal('leads', this)">💬 WhatsApp Inquiries</button>
+                  <button class="mkt-goal-btn" onclick="setMktGoal('online', this)">E-Commerce Orders</button>
+                  <button class="mkt-goal-btn" onclick="setMktGoal('leads', this)">WhatsApp Inquiries</button>
                 </div>
               </div>
 
@@ -2446,32 +2817,36 @@
               <div class="wa-phone-mock">
                 <div class="wa-phone-header">
                   <div class="wa-contact">
-                    <span class="wa-dp">🛍️</span>
+                    <span class="wa-dp"></span>
                     <div>
                       <strong>Your Store Official</strong>
-                      <small class="wa-verified">✓ Verified Business</small>
+                      <small class="wa-verified"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24"
+                          fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                          style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>Verified Business</small>
                     </div>
                   </div>
                 </div>
 
                 <div class="wa-chat-body">
                   <div class="wa-bubble-promo" id="waPromoBubble">
-                    <div class="wa-promo-tag">⚡ FESTIVE MEGA OFFER</div>
+                    <div class="wa-promo-tag">FESTIVE MEGA OFFER</div>
                     <p id="waPromoText">Namaste Sharma Ji! Special 40% OFF on all new arrivals this weekend at Sharma
                       Mart. Show this message at billing counter or order online!</p>
                     <div class="wa-promo-coupon">CODE: <strong>PRIYU40</strong></div>
-                    <button class="wa-promo-btn"
-                      onclick="showToast('🎁 Coupon PRIYU40 Copied! Ready for Checkout.')">Claim 40% Offer Now
-                      🛍️</button>
+                    <button class="wa-promo-btn" onclick="showToast('Coupon PRIYU40 Copied! Ready for Checkout.')">Claim
+                      40% Offer Now
+                    </button>
                   </div>
                 </div>
 
                 <div class="wa-template-picker">
                   <span>Send Campaign Preview:</span>
                   <div class="wa-preset-btns">
-                    <button onclick="setWaTemplate('festive')">🎉 Festive Sale</button>
-                    <button onclick="setWaTemplate('vip')">👑 VIP Exclusive</button>
-                    <button onclick="setWaTemplate('bogo')">🔥 Buy 1 Get 1</button>
+                    <button onclick="setWaTemplate('festive')">Festive Sale</button>
+                    <button onclick="setWaTemplate('vip')">VIP Exclusive</button>
+                    <button onclick="setWaTemplate('bogo')">Buy 1 Get 1</button>
                   </div>
                 </div>
               </div>
@@ -2483,7 +2858,7 @@
         <div class="demo-panel" id="tab-branding">
           <div class="demo-sim-box">
             <div class="sim-left">
-              <h4>🎯 Live Brand &amp; Logo Mockup Engine</h4>
+              <h4>Live Brand &amp; Logo Mockup Engine</h4>
               <p>Type your business name &amp; pick a symbol to see how your brand looks across business cards,
                 signboards, and invoices:</p>
 
@@ -2505,11 +2880,11 @@
               <div class="brand-input-group">
                 <label>Select Logo Symbol:</label>
                 <div class="brand-icon-pills">
-                  <button class="brand-ic-btn active" onclick="setBrandIcon('👑', this)">👑 Crown</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('💎', this)">💎 Diamond</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('⚡', this)">⚡ Star Bolt</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('🌿', this)">🌿 Organic</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('🛍️', this)">🛍️ Retail Bag</button>
+                  <button class="brand-ic-btn active" onclick="setBrandIcon('', this)">Crown</button>
+                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)">Diamond</button>
+                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)">Star Bolt</button>
+                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)">Organic</button>
+                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)"> Retail Bag</button>
                 </div>
               </div>
 
@@ -2517,11 +2892,11 @@
               <div class="brand-input-group">
                 <label>Brand Color Palette:</label>
                 <div class="brand-style-pills">
-                  <button class="brand-st-btn active" onclick="setBrandTheme('rosegold', this)">🌹 Rose Gold &amp; Matte
+                  <button class="brand-st-btn active" onclick="setBrandTheme('rosegold', this)">Rose Gold &amp; Matte
                     Black</button>
-                  <button class="brand-st-btn" onclick="setBrandTheme('goldnavy', this)">🌌 Champagne &amp;
+                  <button class="brand-st-btn" onclick="setBrandTheme('goldnavy', this)">Champagne &amp;
                     Navy</button>
-                  <button class="brand-st-btn" onclick="setBrandTheme('emerald', this)">🌿 Emerald &amp; Gold</button>
+                  <button class="brand-st-btn" onclick="setBrandTheme('emerald', this)">Emerald &amp; Gold</button>
                 </div>
               </div>
             </div>
@@ -2533,7 +2908,7 @@
                 <div class="brand-mockup-card bmc-card">
                   <div class="bmc-label">🪪 Embossed Business Card</div>
                   <div class="bmc-inner bmc-vis-card">
-                    <div class="b-card-logo"><span class="b-dyn-icon">👑</span> <span class="b-dyn-name">Crown
+                    <div class="b-card-logo"><span class="b-dyn-icon"></span> <span class="b-dyn-name">Crown
                         Royale</span></div>
                     <div class="b-card-sub"><span class="b-dyn-tag">Luxury &amp; Trust Since 2024</span></div>
                     <div class="b-card-footer">
@@ -2545,10 +2920,10 @@
 
                 <!-- 2. Store Signboard -->
                 <div class="brand-mockup-card bmc-sign">
-                  <div class="bmc-label">🏬 Storefront Glow Signboard</div>
+                  <div class="bmc-label">Storefront Glow Signboard</div>
                   <div class="bmc-inner bmc-vis-sign">
                     <div class="b-sign-glow">
-                      <span class="b-dyn-icon">👑</span>
+                      <span class="b-dyn-icon"></span>
                       <h4 class="b-dyn-name">Crown Royale</h4>
                     </div>
                   </div>
@@ -2556,7 +2931,7 @@
 
                 <!-- 3. GST Letterhead Header -->
                 <div class="brand-mockup-card bmc-invoice">
-                  <div class="bmc-label">📄 Official GST Tax Invoice</div>
+                  <div class="bmc-label">Official GST Tax Invoice</div>
                   <div class="bmc-inner bmc-vis-invoice">
                     <div class="b-inv-header">
                       <div>
@@ -2576,7 +2951,7 @@
         <div class="demo-panel" id="tab-bundle">
           <div class="demo-sim-box">
             <div class="sim-left">
-              <h4>🚀 All-in-One Growth Stack Configurator</h4>
+              <h4> All-in-One Growth Stack Configurator</h4>
               <p>Select the services you need and calculate your instant bundle discount &amp; launch timeline:</p>
 
               <div class="bundle-check-list">
@@ -2584,7 +2959,7 @@
                   <input type="checkbox" checked onchange="updateBundleCalc()" data-price="9999"
                     data-name="Smart POS Billing" />
                   <div class="bci-info">
-                    <strong>🖥️ Smart POS Billing Software</strong>
+                    <strong>Smart POS Billing Software</strong>
                     <small>Lifetime license • Voice AI • GST Invoicing • Thermal Printer sync</small>
                   </div>
                   <span class="bci-price">₹9,999</span>
@@ -2594,7 +2969,7 @@
                   <input type="checkbox" checked onchange="updateBundleCalc()" data-price="14999"
                     data-name="Custom Website & E-commerce" />
                   <div class="bci-info">
-                    <strong>🎨 Custom Website &amp; Storefront</strong>
+                    <strong>Custom Website &amp; Storefront</strong>
                     <small>Mobile-responsive • SEO • WhatsApp ordering • Fast cloud hosting</small>
                   </div>
                   <span class="bci-price">₹14,999</span>
@@ -2604,7 +2979,7 @@
                   <input type="checkbox" checked onchange="updateBundleCalc()" data-price="12999"
                     data-name="ERP & Staff HRMS" />
                   <div class="bci-info">
-                    <strong>📊 Cloud ERP &amp; Staff HRMS</strong>
+                    <strong> Cloud ERP &amp; Staff HRMS</strong>
                     <small>Inventory tracking • Supplier OCR • Selfie attendance • Automated payroll</small>
                   </div>
                   <span class="bci-price">₹12,999</span>
@@ -2614,7 +2989,7 @@
                   <input type="checkbox" checked onchange="updateBundleCalc()" data-price="8999"
                     data-name="Digital Marketing Setup" />
                   <div class="bci-info">
-                    <strong>📣 Digital Marketing &amp; Meta Ads Setup</strong>
+                    <strong>Digital Marketing &amp; Meta Ads Setup</strong>
                     <small>High-ROI Google &amp; Instagram campaigns • Automated WhatsApp CRM</small>
                   </div>
                   <span class="bci-price">₹8,999</span>
@@ -2624,7 +2999,7 @@
                   <input type="checkbox" checked onchange="updateBundleCalc()" data-price="5999"
                     data-name="Logo & Brand Identity Kit" />
                   <div class="bci-info">
-                    <strong>🎯 Logo &amp; Corporate Brand Identity Kit</strong>
+                    <strong>Logo &amp; Corporate Brand Identity Kit</strong>
                     <small>3 Concepts • Vector files • Business cards • Storefront sign branding</small>
                   </div>
                   <span class="bci-price">₹5,999</span>
@@ -2636,7 +3011,7 @@
             <div class="sim-right">
               <div class="bundle-pricing-summary">
                 <div class="bps-header">
-                  <span class="bps-badge">🔥 All-in-One Super Bundle</span>
+                  <span class="bps-badge">All-in-One Super Bundle</span>
                   <h5>Priyulabs Complete Business Stack</h5>
                 </div>
 
@@ -2656,13 +3031,25 @@
                 </div>
 
                 <div class="bps-perks">
-                  <div>✅ 1-on-1 Dedicated Tech Support Manager</div>
-                  <div>✅ Fast 5-Day Delivery &amp; Store Setup</div>
-                  <div>✅ Free Lifetime Software Updates</div>
+                  <div><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>1-on-1 Dedicated Tech Support Manager</div>
+                  <div><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>Fast 5-Day Delivery &amp; Store Setup</div>
+                  <div><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>Free Lifetime Software Updates</div>
                 </div>
 
                 <button class="btn-bundle-launch" onclick="launchCustomBundleWhatsApp()">
-                  📲 Get WhatsApp Proposal for My Selected Stack →
+                  Get WhatsApp Proposal for My Selected Stack →
                 </button>
               </div>
             </div>
@@ -2709,7 +3096,7 @@
         <div class="coming-soon-body">
           <div class="coming-soon-icon-wrap">
             <span class="cs-icon-glow"></span>
-            <span class="cs-emoji">🛎️</span>
+            <span class="cs-emoji"></span>
           </div>
 
           <div class="cs-eyebrow">
@@ -2794,7 +3181,7 @@
           <!-- VIP Early Access Waitlist Box -->
           <div class="cs-waitlist-box">
             <div class="cs-wl-title">
-              <span>✨ Be the First to Experience It</span>
+              <span>Be the First to Experience It</span>
               <small>Join 200+ F&amp;B owners on the VIP early access list (Get 50% launch discount)</small>
             </div>
             <form class="cs-wl-form" onsubmit="handleWaitlistSubmit(event)">
@@ -2802,19 +3189,24 @@
                 <input type="text" class="cs-input" id="csContactInput"
                   placeholder="Enter your WhatsApp number or Email" required />
                 <button type="submit" class="cs-submit-btn">
-                  <span>Notify Me 🚀</span>
+                  <span>Notify Me</span>
                 </button>
               </div>
             </form>
             <div class="cs-wl-success" id="csWlSuccess" style="display: none;">
-              ✅ <strong>You're on the VIP Waitlist!</strong> We will WhatsApp you with exclusive beta access as soon as
+              <svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> <strong>You're on the VIP Waitlist!</strong> We will WhatsApp you with exclusive beta access as
+              soon as
               it launches.
             </div>
           </div>
 
           <!-- Bottom Actions -->
           <div class="cs-footer-actions">
-            <a href="index.html#hardware" onclick="closeComingSoonModal()" class="cs-btn-secondary">
+            <a href="/#hardware" onclick="closeComingSoonModal()" class="cs-btn-secondary">
               Explore Available Retail &amp; POS Systems →
             </a>
           </div>
@@ -2827,7 +3219,7 @@
   ══════════════════════════════════════════════════════════ -->
     <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
       class="whatsapp-float" target="_blank" aria-label="Chat with Priyulabs on WhatsApp">
-      <span class="wa-icon">💬</span>
+      <span class="wa-icon"></span>
       <span class="wa-text">Chat with Priyulabs</span>
     </a>
 
@@ -2838,6 +3230,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="script.js?v=20260910_05"></script>
+    <!-- Shop Deals Hover Video Handler (Resolves Play/Pause Promise Race Condition) -->
+    <script>
+      document.querySelectorAll('.deal-card').forEach(card => {
+        const video = card.querySelector('video');
+        if (!video) return;
+
+        let playPromise = null;
+
+        card.addEventListener('mouseenter', () => {
+          video.currentTime = 0;
+          playPromise = video.play();
+        });
+
+        card.addEventListener('mouseleave', () => {
+          if (playPromise !== null) {
+            playPromise
+              .then(() => {
+                video.pause();
+                video.currentTime = 0;
+              })
+              .catch(() => {
+                video.pause();
+                video.currentTime = 0;
+              });
+          } else {
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      });
+    </script>
 </body>
 
 </html>

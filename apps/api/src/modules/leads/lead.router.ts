@@ -7,6 +7,7 @@ const leadSchema = z.object({
   storeName: z.string().min(2, 'Business name must be at least 2 characters').max(160),
   mobile: z.string().regex(/^[0-9+\- ()]{7,20}$/, 'Invalid phone number format'),
   sector: z.string().optional(),
+  businessType: z.string().optional(),
   source: z.string().optional(),
 });
 
@@ -44,6 +45,7 @@ leadRouter.post('/', (req, res) => {
     storeName: result.data.storeName,
     mobile: result.data.mobile,
     sector: result.data.sector ?? 'general',
+    businessType: result.data.businessType,
     source: result.data.source ?? 'web',
     createdAt: new Date().toISOString(),
   };

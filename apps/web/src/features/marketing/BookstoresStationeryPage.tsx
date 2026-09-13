@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import {
   BookOpen,
@@ -23,6 +23,7 @@ import {
   Monitor,
   CheckCircle2,
   Sparkles,
+  ZoomIn,
   History,
   RotateCcw,
   FileText,
@@ -199,6 +200,7 @@ const specializedFeatures = [
 export function BookstoresStationeryPage() {
   const [activePillar, setActivePillar] = useState(0);
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string; tag: string; desc?: string } | null>(null);
   const [storeName, setStoreName] = useState('');
   const [phone, setPhone] = useState('');
   const [storeType, setStoreType] = useState('Independent Bookshop & Stationery');
@@ -252,8 +254,7 @@ export function BookstoresStationeryPage() {
             transition={{ delay: 0.3 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-4"
           >
-            <a
-              href="/#cta"
+            <a href="/#free-trial"
               className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-7 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-slate-800 hover:-translate-y-0.5"
             >
               Get Started Today
@@ -278,7 +279,15 @@ export function BookstoresStationeryPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
             {/* Panel 1 */}
-            <div className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md">
+            <div
+              onClick={() => setSelectedPhoto({
+                src: '/assets/bookstore_showroom_display.jpg',
+                title: 'Organized Genre Shelves & Aisle Master',
+                tag: 'Literary Vitrine',
+                desc: 'Atomic Habits (ISBN: 978-1847941831), Classmate Spiral Notebooks, and Parker Vector pen sets.'
+              })}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md cursor-pointer"
+            >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                 <img
                   src="/assets/bookstore_showroom_display.jpg"
@@ -293,20 +302,34 @@ export function BookstoresStationeryPage() {
                     Literary Vitrine
                   </span>
                 </div>
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white/90 text-slate-900 px-2.5 py-1 text-[10px] font-bold shadow-sm">
+                    <ZoomIn size={12} /> View Photo
+                  </span>
+                </div>
                 <div className="absolute bottom-3 left-3 right-3 text-white">
                   <p className="text-xs font-semibold text-emerald-300 uppercase tracking-wider">Aisle &amp; Shelf Master</p>
                   <p className="text-sm font-bold mt-0.5 leading-snug">Organized Genre Shelves</p>
                 </div>
               </div>
-              <div className="p-4 bg-slate-50/70 border-t border-slate-100">
+              <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
                 <p className="text-xs text-slate-600 line-clamp-2">
                   Atomic Habits (ISBN: 978-1847941831), Classmate Spiral Notebooks, and Parker Vector pen sets.
                 </p>
+                <span className="text-[11px] font-bold text-emerald-700 ml-2 whitespace-nowrap group-hover:underline">View ↗</span>
               </div>
             </div>
 
             {/* Panel 2 */}
-            <div className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md">
+            <div
+              onClick={() => setSelectedPhoto({
+                src: '/assets/bookstore_customer_experience.jpg',
+                title: 'CBSE Class 10 Pre-Pack Academic Kit',
+                tag: 'School Kit Portal',
+                desc: '14 Textbooks + 12 Notebooks + Geometry Box bundled and auto-deducted from Rack B-2 in 1 click.'
+              })}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md cursor-pointer"
+            >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                 <img
                   src="/assets/bookstore_customer_experience.jpg"
@@ -321,20 +344,34 @@ export function BookstoresStationeryPage() {
                     School Kit Portal
                   </span>
                 </div>
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white/90 text-slate-900 px-2.5 py-1 text-[10px] font-bold shadow-sm">
+                    <ZoomIn size={12} /> View Photo
+                  </span>
+                </div>
                 <div className="absolute bottom-3 left-3 right-3 text-white">
                   <p className="text-xs font-semibold text-teal-300 uppercase tracking-wider">Academic Kits</p>
                   <p className="text-sm font-bold mt-0.5 leading-snug">CBSE Class 10 Pre-Pack</p>
                 </div>
               </div>
-              <div className="p-4 bg-slate-50/70 border-t border-slate-100">
+              <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
                 <p className="text-xs text-slate-600 line-clamp-2">
                   14 Textbooks + 12 Notebooks + Geometry Box bundled and auto-deducted from Rack B-2 in 1 click.
                 </p>
+                <span className="text-[11px] font-bold text-teal-700 ml-2 whitespace-nowrap group-hover:underline">View ↗</span>
               </div>
             </div>
 
             {/* Panel 3 */}
-            <div className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md">
+            <div
+              onClick={() => setSelectedPhoto({
+                src: '/assets/bookstore_checkout_counter.jpg',
+                title: 'Split GST Engine (0% Books + 18% Stationery)',
+                tag: 'Dual-Tax Invoicing',
+                desc: 'Total ₹3,240 (Exempt Books ₹1,850 + Taxable Stationery ₹1,390) with instant dynamic UPI QR scan.'
+              })}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md cursor-pointer"
+            >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                 <img
                   src="/assets/bookstore_checkout_counter.jpg"
@@ -349,15 +386,21 @@ export function BookstoresStationeryPage() {
                     Dual-Tax Invoicing
                   </span>
                 </div>
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white/90 text-slate-900 px-2.5 py-1 text-[10px] font-bold shadow-sm">
+                    <ZoomIn size={12} /> View Photo
+                  </span>
+                </div>
                 <div className="absolute bottom-3 left-3 right-3 text-white">
                   <p className="text-xs font-semibold text-emerald-300 uppercase tracking-wider">Split GST Engine</p>
                   <p className="text-sm font-bold mt-0.5 leading-snug">0% Books + 18% Stationery</p>
                 </div>
               </div>
-              <div className="p-4 bg-slate-50/70 border-t border-slate-100">
+              <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
                 <p className="text-xs text-slate-600 line-clamp-2">
                   Total ₹3,240 (Exempt Books ₹1,850 + Taxable Stationery ₹1,390) with instant dynamic UPI QR scan.
                 </p>
+                <span className="text-[11px] font-bold text-emerald-700 ml-2 whitespace-nowrap group-hover:underline">View ↗</span>
               </div>
             </div>
           </div>
@@ -410,13 +453,26 @@ export function BookstoresStationeryPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Image Showcase */}
             <div className="lg:col-span-6">
-              <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+              <div
+                onClick={() => setSelectedPhoto({
+                  src: pillarsData[activePillar].image,
+                  title: pillarsData[activePillar].title,
+                  tag: `Pillar ${pillarsData[activePillar].num} • ${pillarsData[activePillar].badge}`,
+                  desc: pillarsData[activePillar].metric
+                })}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl cursor-pointer"
+              >
                 <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100">
                   <img
                     src={pillarsData[activePillar].image}
                     alt={pillarsData[activePillar].alt}
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                </div>
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-black/75 backdrop-blur-md text-white px-3 py-1.5 text-xs font-semibold shadow-md">
+                    <ZoomIn size={14} /> Full View
+                  </span>
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-slate-900/90 backdrop-blur-md p-4 text-white">
                   <p className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400">
@@ -686,6 +742,71 @@ export function BookstoresStationeryPage() {
           </div>
         </div>
       )}
+
+      {/* Photo Lightbox Modal */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPhoto(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 backdrop-blur-sm p-4 sm:p-6"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10 text-white"
+            >
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white/80 hover:text-white transition cursor-pointer"
+                title="Close Lightbox (Esc)"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-black/40 overflow-hidden flex items-center justify-center">
+                <img
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.title}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+
+              <div className="p-6 bg-slate-900/95 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <span className="inline-block px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[11px] font-bold tracking-wider uppercase mb-1">
+                    {selectedPhoto.tag}
+                  </span>
+                  <h3 className="text-lg font-bold text-white leading-snug">
+                    {selectedPhoto.title}
+                  </h3>
+                  {selectedPhoto.desc && (
+                    <p className="text-xs text-slate-400 mt-1 max-w-xl">
+                      {selectedPhoto.desc}
+                    </p>
+                  )}
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => {
+                      setSelectedPhoto(null);
+                      setDemoModalOpen(true);
+                    }}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md cursor-pointer"
+                  >
+                    Schedule Demo
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

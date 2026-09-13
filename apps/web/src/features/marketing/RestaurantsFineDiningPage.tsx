@@ -31,6 +31,7 @@ import {
   UtensilsCrossed,
   Wine,
   Zap,
+  X,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -39,7 +40,7 @@ const fadeAnim = {
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.4 },
 };
 
 export function RestaurantsFineDiningPage() {
@@ -124,6 +125,22 @@ export function RestaurantsFineDiningPage() {
                 Explore Restaurant Features ↓
               </a>
             </motion.div>
+
+          {/* 4 Core Solutions Sub-Strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-10 mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-2xl border border-neutral-200/70 bg-white/80 backdrop-blur-sm px-6 py-3 text-xs md:text-[13px] font-medium text-neutral-600 shadow-xs dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300"
+          >
+            <span>Table-Side Handheld KOT Billing</span>
+            <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+            <span>Recipe Costing & Central Kitchen ERP</span>
+            <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+            <span>Direct Zero-Commission Ordering Site</span>
+            <span className="text-neutral-300 dark:text-slate-600 select-none">✦</span>
+            <span>Geo-Fenced Weekend Dine-In Ads</span>
+          </motion.div>
           </div>
 
           {/* Hero Visual Frame */}
@@ -520,38 +537,131 @@ export function RestaurantsFineDiningPage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          5. BOTTOM CONVERSION SECTION
+          WHITE EDITORIAL TRUST BOTTOM CTA (RESTAURANTS & FINE DINING)
       ────────────────────────────────────────────────────────── */}
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-5xl px-6 sm:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-slate-950 px-8 py-16 text-center text-white sm:px-14">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
-              Ready to Upgrade Your Restaurant Operations?
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', padding: '40px 16px', backgroundColor: '#f8fafc' }}>
+        <div style={{ position: 'relative', maxWidth: '1140px', width: '100%', minHeight: '440px', borderRadius: '24px', overflow: 'hidden', display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', alignItems: 'center', gap: '36px', padding: '48px 44px', backgroundColor: '#ffffff', border: '1px solid #e2e8f0', boxShadow: '0 16px 40px -12px rgba(15, 23, 42, 0.08)', boxSizing: 'border-box', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          
+          {/* Background Photography (Right Side Interior) */}
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center right', opacity: 1, zIndex: 1 }} />
+          
+          {/* White Fade Overlay (Left is solid white, Right lets photo show) */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #ffffff 0%, #ffffff 46%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0.12) 82%, rgba(255, 255, 255, 0) 100%)', zIndex: 2, pointerEvents: 'none' }} />
+
+          {/* Left Content Column */}
+          <div style={{ position: 'relative', zIndex: 3, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
+            
+            {/* Pill Badge */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', background: '#f8fafc', border: '1px solid #e2e8f0', padding: '5px 12px', borderRadius: '999px', color: '#475569', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
+              ENTERPRISE RESTAURANT ARCHITECTURE
+            </div>
+
+            {/* Heading */}
+            <h2 style={{ color: '#0f172a', fontSize: '34px', fontWeight: 800, lineHeight: 1.2, letterSpacing: '-0.025em', margin: '0 0 14px 0' }}>
+              Turn Every Dining Table into a <span style={{ color: '#ea580c' }}>High-Margin Service Floor</span>
             </h2>
-            <p className="mt-4 max-w-xl mx-auto text-base text-slate-400">
-              Elevate guest dining experiences, streamline dynamic floor plans, empower staff with instant handheld KOTs, and eliminate table wait times with Priyulabs Digital.
+
+            {/* Subtext */}
+            <p style={{ color: '#475569', fontSize: '14px', lineHeight: 1.6, maxWidth: '480px', margin: '0 0 24px 0' }}>
+              Sync captain KOTs instantly to the kitchen, track raw inventory per recipe gram, stop food shrinkage, and run direct QR reorders with Priyulabs.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+
+            {/* Action Buttons with Working Routing */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center', marginBottom: '28px' }}>
+              {/* Start Free Trial (Redirects to Home page trial section) */}
               <a
-                href="/#cta"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-slate-950 shadow-md transition hover:bg-slate-100 hover:-translate-y-0.5"
+                href="/#free-trial"
+                style={{ background: '#ea580c', color: '#ffffff', fontWeight: 600, fontSize: '14px', padding: '13px 26px', borderRadius: '14px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 12px rgba(234, 88, 12, 0.25)', transition: 'all 0.2s ease' }}
               >
-                Get Started Today
-                <ArrowRight size={16} />
+                Start Free Trial
+                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
+
+              {/* Chat on WhatsApp (Official Number: 7849074050) */}
               <a
-                href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20restaurant%20and%20want%20to%20see%20a%20live%20POS%20demo."
+                href="https://wa.me/917849074050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition hover:bg-slate-850 hover:border-slate-600"
+                style={{ background: '#ffffff', color: '#0f172a', fontWeight: 600, fontSize: '14px', padding: '12px 22px', borderRadius: '14px', textDecoration: 'none', border: '1px solid #cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)', transition: 'all 0.2s ease' }}
               >
-                <MessageCircle size={18} />
-                Chat with a Restaurant Specialist
+                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+                Chat on WhatsApp
               </a>
             </div>
+
+            {/* Permanent Bottom Checkmarks */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', color: '#334155', fontSize: '12px', fontWeight: 600 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="14" height="14" fill="none" stroke="#ea580c" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" /></svg>
+                Complete Setup
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="14" height="14" fill="none" stroke="#ea580c" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" /></svg>
+                Easy to access
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="14" height="14" fill="none" stroke="#ea580c" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" /></svg>
+                24/7 Service
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column (STRICTLY ON RIGHT SIDE - Max 380px) */}
+          <div style={{ position: 'relative', zIndex: 3, display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '380px', justifySelf: 'end', textAlign: 'left' }}>
+            
+            {/* Card 1: Made in India */}
+            <div style={{ background: 'rgba(255, 255, 255, 0.95)', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.06)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#1e293b', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Made in India</div>
+                  <div style={{ fontSize: '11px', color: '#64748b', marginTop: '1px' }}>Engineered for Indian Businesses</div>
+                </div>
+              </div>
+              <span style={{ background: '#eff6ff', border: '1px solid #bfdbfe', color: '#1d4ed8', fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', textTransform: 'uppercase' }}>National</span>
+            </div>
+
+            {/* Card 2: SECURE SSL */}
+            <div style={{ background: 'rgba(255, 255, 255, 0.95)', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.06)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#059669', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#059669' }}>SECURE</div>
+                  <div style={{ fontSize: '11px', color: '#64748b', marginTop: '1px' }}>SSL 256-Bit Bank Encryption</div>
+                </div>
+              </div>
+              <span style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#16a34a', fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', textTransform: 'uppercase' }}>Verified</span>
+            </div>
+
+            {/* Card 3: Trusted by MSME's */}
+            <div style={{ background: 'rgba(255, 255, 255, 0.95)', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.06)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#2563eb', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>Trusted by MSME's</div>
+                  <div style={{ fontSize: '11px', color: '#64748b', fontFamily: 'monospace', marginTop: '1px' }}>Udyam: UDYAM-OD-19-0177979</div>
+                </div>
+              </div>
+              <span style={{ background: '#fefce8', border: '1px solid #fef08a', color: '#a16207', fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '999px', textTransform: 'uppercase' }}>Certified</span>
+            </div>
+
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ──────────────────────────────────────────────────────────
           INTERACTIVE DEMO MODAL
@@ -577,9 +687,7 @@ export function RestaurantsFineDiningPage() {
               <button
                 onClick={() => setDemoModalOpen(false)}
                 className="rounded-lg p-1.5 text-slate-400 hover:bg-neutral-100 hover:text-slate-700 cursor-pointer"
-              >
-                ✕
-              </button>
+              ><X size={18} /></button>
             </div>
 
             <form onSubmit={handleDemoSubmit} className="space-y-4">
@@ -644,7 +752,7 @@ export function RestaurantsFineDiningPage() {
 
             {submitted && (
               <div className="mt-4 rounded-xl bg-emerald-50 border border-emerald-200 p-3 text-xs text-emerald-800 text-center font-medium">
-                ✅ Opening WhatsApp with your walkthrough details...
+                Opening WhatsApp with your walkthrough details...
               </div>
             )}
           </motion.div>

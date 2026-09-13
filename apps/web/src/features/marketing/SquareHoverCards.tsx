@@ -19,7 +19,7 @@ const squareCards: SquareCardItem[] = [
     title: 'Smart POS',
     subtitle: 'Fast checkouts, contactless billing & live receipting.',
     image: '/assets/pos_billing_preview.jpg',
-    video: '/assets/pos-checkout.mp4',
+    video: '/assets/card1-pos.mp4?v=1',
     link: '/pos',
   },
   {
@@ -28,7 +28,7 @@ const squareCards: SquareCardItem[] = [
     title: 'Complete Management System',
     subtitle: 'Real-time AI inventory tracking & automated accounting.',
     image: '/assets/inventory_ocr_preview.jpg',
-    video: '/assets/warehouse-inventory.mp4',
+    video: '/assets/card2-management.mp4?v=1',
     link: '/solutions',
   },
   {
@@ -37,7 +37,7 @@ const squareCards: SquareCardItem[] = [
     title: 'Website & Store Building',
     subtitle: 'Launch custom branded e-commerce storefronts in minutes.',
     image: '/assets/website-builder-bg-poster.jpg',
-    video: '/assets/website-builder-mockup.mp4',
+    video: '/assets/card3-website.mp4?v=1',
     link: '/solutions',
   },
   {
@@ -46,7 +46,7 @@ const squareCards: SquareCardItem[] = [
     title: 'Digital Marketing & Ads',
     subtitle: 'Automated campaign funnels across Google and social channels.',
     image: '/assets/gst_payment_preview.jpg',
-    video: '/assets/marketing-charts.mp4',
+    video: '/assets/card4-marketing.mp4?v=1',
     link: '/solutions',
   },
 ];

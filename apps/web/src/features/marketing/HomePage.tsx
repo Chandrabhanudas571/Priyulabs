@@ -8,6 +8,8 @@ import {
   ScanLine,
   Sparkles,
   Users,
+  Zap,
+  Check,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -126,8 +128,9 @@ export function HomePage() {
                       Live Voice POS Engine
                     </span>
                   </div>
-                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-bold text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
-                    ⚡ 0.2s Response
+                  <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-bold text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
+                    <Zap size={11} strokeWidth={2} />
+                    0.2s Response
                   </span>
                 </div>
 
@@ -184,8 +187,8 @@ export function HomePage() {
                             </p>
                             <p className="text-xs text-slate-400">Includes 5% GST • Zero theft EDC sync</p>
                           </div>
-                          <span className="rounded-xl bg-emerald-500/20 px-3 py-1.5 text-xs font-bold text-emerald-300 border border-emerald-500/30">
-                            Sent to Pine Labs ✓
+                          <span className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500/20 px-3 py-1.5 text-xs font-bold text-emerald-300 border border-emerald-500/30">
+                            Sent to Pine Labs <Check size={12} strokeWidth={2.5} />
                           </span>
                         </div>
                       </motion.div>
@@ -316,7 +319,9 @@ export function HomePage() {
       </section>
 
       {/* Lead Section */}
-      <section id="contact">
+      <section id="free-trial">
+        <div id="contact" />
+        <div id="cta" />
         <LeadSection title="Transform your business in 10 minutes." />
       </section>
     </div>

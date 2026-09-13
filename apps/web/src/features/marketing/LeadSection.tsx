@@ -1,4 +1,5 @@
-﻿import { LeadForm } from '../leads/LeadForm';
+import { Check } from 'lucide-react';
+import { LeadForm } from '../leads/LeadForm';
 
 export function LeadSection({ title = 'Transform your business in 10 minutes.' }: { title?: string }) {
   return (
@@ -13,10 +14,25 @@ export function LeadSection({ title = 'Transform your business in 10 minutes.' }
             Tell us about your store or restaurant. Our regional engineering team will arrange a free 14-day trial and
             on-site hardware synchronization.
           </p>
-          <div className="pt-2 text-xs text-indigo-200 space-y-1">
-            <p>✓ 100% Free 14-day trial with full feature access</p>
-            <p>✓ Zero hardware lock-in • Setup in under 10 minutes</p>
-            <p>✓ Dedicated regional support (+91 78490 74050)</p>
+          <div className="pt-2 text-xs text-indigo-200 space-y-2">
+            <p className="flex items-center gap-2">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                <Check size={12} strokeWidth={2.5} />
+              </span>
+              <span>100% Free 14-day trial with full feature access</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                <Check size={12} strokeWidth={2.5} />
+              </span>
+              <span>Zero hardware lock-in • Setup in under 10 minutes</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                <Check size={12} strokeWidth={2.5} />
+              </span>
+              <span>Dedicated regional support (+91 78490 74050)</span>
+            </p>
           </div>
         </div>
 

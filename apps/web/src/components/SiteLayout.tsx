@@ -41,22 +41,17 @@ const mobileCategoryGroups = [
     category: 'Fashion & Beauty',
     icon: '👗',
     items: [
-      { label: 'Clothing Brands & Apparel Boutiques', sector: 'apparel' },
-      { label: 'Salons, Spas & Beauty Parlors', sector: 'specialty' },
-      { label: 'Cosmetics & Skincare Stores', sector: 'specialty' },
-      { label: 'Eyewear & Optical Stores', sector: 'specialty' },
-      { label: 'Tailoring & Custom Designer Studios', sector: 'apparel' },
+      { label: 'Clothing Brands & Apparel Boutiques', sector: 'apparel', to: '/fashion-beauty/apparel-boutiques' },
+      { label: 'Salons, Spas & Beauty Parlors', sector: 'specialty', to: '/fashion-beauty/salons-spas' },
+      { label: 'Cosmetics & Skincare Stores', sector: 'specialty', to: '/fashion-beauty/cosmetics-skincare' },
     ],
   },
   {
     category: 'Services & Professional Businesses',
     icon: '💼',
     items: [
-      { label: 'Gyms, Fitness Studios & Yoga Centers', sector: 'specialty' },
-      { label: 'Auto Garages, Car Wash & Bike Service Centers', sector: 'pos' },
-      { label: 'Dry Cleaners & Laundry Shops', sector: 'apparel' },
-      { label: 'Repair Centers (Mobile, Laptop, Appliances)', sector: 'electronics' },
-      { label: 'Co-working Spaces & Shared Offices', sector: 'pos' },
+      { label: 'Gyms, Fitness Studios & Yoga Centers', sector: 'specialty', to: '/services/gyms' },
+      { label: 'Dry Cleaners & Laundry Shops', sector: 'apparel', to: '/services/dry-cleaners' },
     ],
   },
 ];
@@ -114,23 +109,68 @@ export function SiteLayout({ children }: PropsWithChildren) {
   }, [dark, location]);
 
   const isBookstore =
-    location.pathname === '/retail/bookstores-stationery' ||
-    location.pathname === '/bookstores-stationery';
+    location.pathname.startsWith('/retail/bookstores') ||
+    location.pathname.startsWith('/bookstores') ||
+    location.pathname === '/retail/bookstore' ||
+    location.pathname === '/bookstore';
   const isWatch =
-    location.pathname === '/retail/watch-stores' ||
-    location.pathname === '/watch-stores';
+    location.pathname.startsWith('/retail/watch') ||
+    location.pathname.startsWith('/watch');
   const isJewellery =
-    location.pathname === '/retail/jewellery-shops' ||
-    location.pathname === '/jewellery-shops';
+    location.pathname.startsWith('/retail/jewel') ||
+    location.pathname.startsWith('/jewel');
   const isFootwear =
-    location.pathname === '/retail/footwear-leather-stores' ||
-    location.pathname === '/footwear-leather-stores';
+    location.pathname.startsWith('/retail/footwear') ||
+    location.pathname.startsWith('/footwear') ||
+    location.pathname.startsWith('/retail/leather') ||
+    location.pathname.startsWith('/leather');
   const isElectronics =
-    location.pathname === '/retail/electronics-mobile-shops' ||
-    location.pathname === '/electronics-mobile-shops';
+    location.pathname.startsWith('/retail/electronics') ||
+    location.pathname.startsWith('/electronics');
   const isGrocery =
-    location.pathname === '/retail/grocery-supermarkets-kirana' ||
-    location.pathname === '/grocery-supermarkets-kirana';
+    location.pathname.startsWith('/retail/grocery') ||
+    location.pathname.startsWith('/grocery');
+
+  const isGyms =
+    location.pathname.startsWith('/services/gyms') ||
+    location.pathname.startsWith('/gyms') ||
+    location.pathname.startsWith('/wellness/gyms') ||
+    location.pathname.startsWith('/fitness-gyms') ||
+    (location.pathname === '/solutions' && location.search.includes('sector=gyms'));
+
+  const isLaundry =
+    location.pathname.startsWith('/services/dry-cleaners') ||
+    location.pathname.startsWith('/services/laundry') ||
+    location.pathname.startsWith('/dry-cleaners') ||
+    location.pathname.startsWith('/laundry') ||
+    (location.pathname === '/solutions' && location.search.includes('sector=laundry'));
+
+  const isServices =
+    location.pathname.startsWith('/services') ||
+    isGyms ||
+    isLaundry;
+
+  const isApparel =
+    location.pathname.includes('apparel') ||
+    location.pathname.includes('clothing') ||
+    (location.pathname === '/solutions' && location.search.includes('sector=clothing'));
+
+  const isSalons =
+    location.pathname.includes('salons') ||
+    location.pathname.includes('spas') ||
+    (location.pathname === '/solutions' && location.search.includes('sector=salons'));
+
+  const isCosmetics =
+    location.pathname.includes('cosmetics') ||
+    location.pathname.includes('skincare') ||
+    (location.pathname === '/solutions' && location.search.includes('sector=cosmetics'));
+
+  const isBeauty =
+    location.pathname.startsWith('/fashion-beauty') ||
+    location.pathname.startsWith('/beauty-fashion') ||
+    isApparel ||
+    isSalons ||
+    isCosmetics;
 
   const isRetail =
     location.pathname.startsWith('/retail') ||
@@ -139,10 +179,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
     isJewellery ||
     isFootwear ||
     isElectronics ||
-    isGrocery ||
-    (location.pathname === '/solutions' &&
-      (location.search.includes('sector=hardware') ||
-        location.search.includes('sector=pharmacy')));
+    isGrocery;
 
   const isFnb =
     location.pathname.startsWith('/food-beverage') ||
@@ -197,6 +234,30 @@ export function SiteLayout({ children }: PropsWithChildren) {
               <span className="text-xs font-semibold text-[#16a34a] tracking-wider uppercase">
                 RETAIL &amp; GROCERY OS
               </span>
+            ) : isApparel ? (
+              <span className="text-xs font-semibold text-[#ec4899] tracking-wider uppercase">
+                APPAREL &amp; BOUTIQUE OS
+              </span>
+            ) : isSalons ? (
+              <span className="text-xs font-semibold text-[#d946ef] tracking-wider uppercase">
+                SALON &amp; SPA OS
+              </span>
+            ) : isCosmetics ? (
+              <span className="text-xs font-semibold text-[#f43f5e] tracking-wider uppercase">
+                COSMETICS &amp; BEAUTY OS
+              </span>
+            ) : isBeauty ? (
+              <span className="text-xs font-semibold text-[#ec4899] tracking-wider uppercase">
+                FASHION &amp; BEAUTY OS
+              </span>
+            ) : isGyms ? (
+              <span className="text-xs font-semibold text-[#ea580c] tracking-wider uppercase">
+                FITNESS &amp; ATHLETIC CLUBS OS
+              </span>
+            ) : isLaundry ? (
+              <span className="text-xs font-semibold text-[#ea580c] tracking-wider uppercase">
+                GARMENT CARE &amp; DRY CLEANING OS
+              </span>
             ) : (
               <span className="text-[10px] font-bold tracking-wider text-[#64748b] uppercase leading-none mt-0.5">
                 DIGITAL
@@ -206,7 +267,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
         </Link>
 
         {/* Desktop Navigation Links */}
-        {isRetail || isFnb ? (
+        {isRetail || isFnb || isBeauty || isServices ? (
           <>
             {/* Center / Navigation Links */}
             <div className="hidden md:flex items-center gap-8 lg:gap-10">
@@ -278,18 +339,86 @@ export function SiteLayout({ children }: PropsWithChildren) {
                               location.pathname === '/watch-stores',
                           },
                           {
-                            label: '🔧 Hardware, Sanitary & Paint',
-                            to: '/solutions?sector=hardware',
-                            isActive:
-                              location.pathname === '/solutions' &&
-                              location.search.includes('sector=hardware'),
-                          },
-                          {
                             label: '📚 Bookstores & Stationery',
                             to: '/retail/bookstores-stationery',
-                            isActive:
-                              location.pathname === '/retail/bookstores-stationery' ||
-                              location.pathname === '/bookstores-stationery',
+                            isActive: isBookstore,
+                          },
+                        ].map((item) => (
+                          <Link
+                            key={item.to}
+                            to={item.to}
+                            onClick={() => setTypesDropdownOpen(false)}
+                            className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
+                              item.isActive
+                                ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
+                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
+                            }`}
+                          >
+                            <span>{item.label}</span>
+                            {item.isActive && (
+                              <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">
+                                Current
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </>
+                    ) : isBeauty ? (
+                      <>
+                        <div className="px-3 py-1.5 text-[10.5px] font-extrabold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 mb-1">
+                          FASHION &amp; BEAUTY TYPES
+                        </div>
+                        {[
+                          {
+                            label: '👗 Clothing Brands & Apparel Boutiques',
+                            to: '/fashion-beauty/apparel-boutiques',
+                            isActive: isApparel,
+                          },
+                          {
+                            label: '💇 Salons, Spas & Beauty Parlors',
+                            to: '/fashion-beauty/salons-spas',
+                            isActive: isSalons,
+                          },
+                          {
+                            label: '💄 Cosmetics & Skincare Stores',
+                            to: '/fashion-beauty/cosmetics-skincare',
+                            isActive: isCosmetics,
+                          },
+                        ].map((item) => (
+                          <Link
+                            key={item.to}
+                            to={item.to}
+                            onClick={() => setTypesDropdownOpen(false)}
+                            className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold ${
+                              item.isActive
+                                ? 'bg-slate-100 text-slate-900 font-bold dark:bg-slate-800 dark:text-white'
+                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
+                            }`}
+                          >
+                            <span>{item.label}</span>
+                            {item.isActive && (
+                              <span className="rounded-full bg-[#0f172a] px-2 py-0.5 text-[10px] text-white dark:bg-slate-100 dark:text-slate-900">
+                                Current
+                              </span>
+                            )}
+                          </Link>
+                        ))}
+                      </>
+                    ) : isServices ? (
+                      <>
+                        <div className="px-3 py-1.5 text-[10.5px] font-extrabold uppercase tracking-widest text-slate-400 border-b border-slate-100 dark:border-slate-800 mb-1">
+                          SERVICES BUSINESS TYPES
+                        </div>
+                        {[
+                          {
+                            label: '🏋️ Gyms, Fitness Studios & Yoga Centers',
+                            to: '/services/gyms',
+                            isActive: isGyms,
+                          },
+                          {
+                            label: '👔 Dry Cleaners & Laundry Shops',
+                            to: '/services/dry-cleaners',
+                            isActive: isLaundry,
                           },
                         ].map((item) => (
                           <Link
@@ -398,8 +527,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
             {/* Right CTA Action */}
             <div className="hidden md:flex items-center gap-4">
               <ThemeToggle dark={dark} toggle={() => setDark(!dark)} />
-              <a
-                href="/#contact"
+              <a href="/#free-trial"
                 className="rounded-xl bg-[#0f172a] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-neutral-800 dark:bg-white dark:text-[#0f172a] dark:hover:bg-slate-100"
               >
                 Get Started

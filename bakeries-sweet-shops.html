@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <base href="/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title> Bakeries &amp; Sweet Shops &amp; Management OS | Priyulabs Digital</title>
@@ -119,12 +120,33 @@
       text-align: left;
     }
 
+        .types-menu-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      height: 20px;
+    }
+
     .types-menu-wrap:hover .types-menu-dropdown,
-    .types-menu-wrap:focus-within .types-menu-dropdown {
+    .types-menu-wrap.open .types-menu-dropdown,
+    .types-menu-wrap.pinned .types-menu-dropdown {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
       transform: translateX(-50%) translateY(4px);
+    }
+
+    .types-menu-wrap:hover .drop-arrow,
+    .types-menu-wrap.open .drop-arrow,
+    .types-menu-wrap.pinned .drop-arrow,
+    .types-menu-wrap:hover .clean-nav-link span:last-child,
+    .types-menu-wrap.open .clean-nav-link span:last-child,
+    .types-menu-wrap.pinned .clean-nav-link span:last-child {
+      transform: rotate(180deg);
+      display: inline-block;
+      transition: transform 0.2s ease;
     }
 
     .types-menu-header {
@@ -767,17 +789,72 @@
         font-size: 30px;
       }
     }
+  
+    /* ─── Hero Sub-Strip: 4 Core Solutions ─────────────────── */
+    .hero-pillars-strip {
+      max-width: 860px;
+      margin: 32px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(229, 231, 235, 0.7);
+      border-radius: 16px;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #52525b;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      line-height: 1.5;
+      text-align: center;
+    }
+    [data-theme="dark"] .hero-pillars-strip {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(51, 65, 85, 0.7);
+      color: #cbd5e1;
+    }
+    .hero-pillars-strip .divider {
+      color: #cbd5e1;
+      font-size: 10px;
+      user-select: none;
+    }
+    [data-theme="dark"] .hero-pillars-strip .divider {
+      color: #475569;
+    }
+
+  
+    /* Bakery White Editorial Trust CTA & Smooth Hover Elevation */
+    .bakery-trust-cta {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .bakery-trust-cta:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 24px 50px -12px rgba(15, 23, 42, 0.12) !important;
+    }
+    @media (max-width: 992px) {
+      .bakery-trust-cta {
+        grid-template-columns: 1fr !important;
+        padding: 44px 24px !important;
+        gap: 36px !important;
+      }
+      .bakery-trust-cta > div:last-child {
+        max-width: 100% !important;
+        justify-self: stretch !important;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- ══════════════════════════════════════════════════════════
-       GLOBAL SECONDARY SUB-NAVIGATION BAR
-  ══════════════════════════════════════════════════════════ -->
   <header class="clean-subnav">
     <div class="clean-subnav-inner">
-      <a href="index.html" class="clean-brand" aria-label="Priyulabs Home">
+      <a href="/" class="clean-brand" aria-label="Priyulabs Home">
         <div
           style="background:#0f1422; border-radius:12px; padding:8px; display:flex; align-items:center; justify-content:center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <img src="assets/logo.svg" style="height:22px; width:22px; display:block;" alt="Priyulabs Logo" />
@@ -800,25 +877,25 @@
             <span style="font-size:10px; color:#94a3b8;">▾</span>
           </a>
           <div class="types-menu-dropdown">
-            <div class="types-menu-header">FOOD &amp; BEVERAGE TYPES</div>
-            <a href="bakeries-sweet-shops.html" class="types-menu-item">
-              <span>🍽️ Restaurants & Fine Dining</span>
+            <div class="types-menu-header">Food &amp; Beverage Types</div>
+            <a href="/restaurants-fine-dining" class="types-menu-item">
+              <span>🍽️ Restaurants &amp; Fine Dining</span>
             </a>
-            <a href="bakeries-sweet-shops.html" class="types-menu-item">
-              <span>⚡ QSR, Fast Food & Takeaway</span>
+            <a href="/qsr-fast-food" class="types-menu-item">
+              <span>⚡ QSR, Fast Food &amp; Takeaway</span>
             </a>
-            <a href="bakeries-sweet-shops.html" class="types-menu-item">
-              <span>☕ Cafes & Chai Bars</span>
+            <a href="/cafes-chai-bars" class="types-menu-item">
+              <span>☕ Cafes &amp; Chai Bars</span>
             </a>
-            <a href="bakeries-sweet-shops.html" class="types-menu-item">
-              <span>📦 Cloud Kitchens & Catering</span>
+            <a href="/cloud-kitchens-catering" class="types-menu-item">
+              <span>📦 Cloud Kitchens &amp; Catering</span>
             </a>
-            <a href="bakeries-sweet-shops.html" class="types-menu-item current">
-              <span>🥐 Bakeries & Sweet Shops</span>
+            <a href="/bakeries-shops" class="types-menu-item current">
+              <span>🥐 Bakeries &amp; Patisseries</span>
               <span class="types-badge-curr">Current</span>
             </a>
-            <a href="bakeries-sweet-shops.html" class="types-menu-item">
-              <span>🍷 Bars, Pubs & Breweries</span>
+            <a href="/bars-pubs-breweries" class="types-menu-item">
+              <span>🍷 Bars, Pubs &amp; Breweries</span>
             </a>
           </div>
         </li>
@@ -828,7 +905,7 @@
       </ul>
 
       <div class="nav-actions">
-        <a href="index.html#cta" class="btn-solid-dark">Get Started</a>
+        <a href="/#free-trial" class="btn-solid-dark">Get Started</a>
       </div>
     </div>
   </header>
@@ -853,12 +930,27 @@
     </p>
 
     <div class="clean-hero-actions">
-      <a href="index.html#cta" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
+      <a href="/#free-trial" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
         Get Started Today
       </a>
-      <a href="#pillars" class="btn-outline-clean" style="text-decoration: none;">
-        View Bakery Features ↓
-      </a>
+      <button onclick="openVideoModal()" class="btn-outline-clean">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        View Bakery OS Demo
+      </button>
+    </div>
+
+    
+    <!-- 4 Core Solutions Sub-Strip -->
+    <div style="margin: 40px auto 0; max-width: 896px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; border-radius: 16px; border: 1px solid rgba(229, 231, 235, 0.7); background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(4px); padding: 12px 24px; font-size: 13px; font-weight: 500; color: #525252; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+      <span>Weight &amp; Piece Dual-Mode POS</span>
+      <span style="color: #cbd5e1; user-select: none;">✦</span>
+      <span>Daily Shelf-Life &amp; Recipe Batching</span>
+      <span style="color: #cbd5e1; user-select: none;">✦</span>
+      <span>Custom Cake Pre-Order Portal</span>
+      <span style="color: #cbd5e1; user-select: none;">✦</span>
+      <span>Birthday &amp; Celebration Local Meta Ads</span>
     </div>
 
     <div class="clean-hero-media-wrap">
@@ -1177,34 +1269,172 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       5. BOTTOM CONVERSION BANNER
+       WHITE EDITORIAL TRUST BOTTOM CTA
   ══════════════════════════════════════════════════════════ -->
-  <section class="bottom-cta-sec">
-    <div class="bottom-cta-box">
-      <h2 class="bottom-cta-title">Ready to Upgrade Your Bakery Operations?</h2>
-      <p class="bottom-cta-sub">
-        Join hundreds of artisan bakeries, sourdough workshops, and boutique patisseries using Priyulabs Digital to
-        increase checkout throughput, eliminate cake order errors, and maximize daily gross margins.
+  
+  <!-- ══════════════════════════════════════════════════════════
+       5. STANDARDIZED WHITE EDITORIAL TRUST CTA
+  ══════════════════════════════════════════════════════════ -->
+  <div style="width: 100%; display: flex; justify-content: center; padding: 60px 20px; background-color: #f8fafc;">
+  <div class="bakery-trust-cta" style="position: relative; max-width: 1220px; width: 100%; min-height: 540px; border-radius: 32px; overflow: hidden; display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 48px; padding: 64px 60px; background-color: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08); box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+    
+    <!-- Background Photography (Artisan Bakery Display & Fresh Pastry Counter) -->
+    <div style="position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center right; opacity: 1; z-index: 1;"></div>
+    
+    <!-- Directional White Fade Overlay -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #ffffff 0%, #ffffff 45%, rgba(255, 255, 255, 0.78) 60%, rgba(255, 255, 255, 0.15) 82%, rgba(255, 255, 255, 0) 100%); z-index: 2; pointer-events: none;"></div>
+
+    <!-- Left Column: Sector Content -->
+    <div style="position: relative; z-index: 3; display: flex; flex-direction: column; align-items: flex-start;">
+      
+      <!-- Sector Pill -->
+      <div style="display: inline-flex; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; padding: 6px 14px; border-radius: 999px; color: #475569; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px;">
+        ARTISAN BAKERY & PATISSERIE OS
+      </div>
+
+      <!-- Headline -->
+      <h2 style="color: #0f172a; font-size: 40px; font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin: 0 0 16px 0;">
+        Master Shelf-Life and Custom Orders with <span style="color: #ea580c;">Zero Batch Waste</span>
+      </h2>
+
+      <!-- Subtext -->
+      <p style="color: #475569; font-size: 15px; line-height: 1.65; max-width: 520px; margin: 0 0 32px 0; font-weight: 400;">
+        Manage kg and piece dual-mode barcode billing, track advance custom designer cake orders with photo tokens, enforce morning vs. evening batch expiry, and automate raw ingredient depletion with Priyulabs.
       </p>
-      <div class="bottom-cta-btns">
-        <a href="index.html#cta" class="btn-light-solid">
-          Get Started Today
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
+
+      <!-- Action Buttons with Working Routing -->
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 28px;">
+        <a href="/#free-trial" style="background: #ea580c; color: #ffffff; font-weight: 600; font-size: 14px; padding: 13px 26px; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25); transition: all 0.2s ease;">
+          Start Free Trial
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20run%20a%20bakery%20and%20want%20to%20see%20a%20live%20POS%20demo."
-          target="_blank" rel="noopener noreferrer" class="btn-outline-white">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path
-              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-          </svg>
-          Chat with a Bakery Specialist
+        <a href="https://wa.me/917849074050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial" target="_blank" rel="noopener noreferrer" style="background: #ffffff; color: #0f172a; font-weight: 600; font-size: 14px; padding: 12px 22px; border-radius: 14px; text-decoration: none; border: 1px solid #cbd5e1; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03); transition: all 0.2s ease;">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Chat on WhatsApp
         </a>
       </div>
+
+      <!-- Permanent Bottom Micro-Trust Strip -->
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; color: #334155; font-size: 13px; font-weight: 600;">
+        <span style="display: inline-flex; align-items: center; gap: 7px;">
+          <svg width="15" height="15" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          Complete Setup
+        </span>
+        <span style="display: inline-flex; align-items: center; gap: 7px;">
+          <svg width="15" height="15" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          Easy to access
+        </span>
+        <span style="display: inline-flex; align-items: center; gap: 7px;">
+          <svg width="15" height="15" fill="none" stroke="#ea580c" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          24/7 Service
+        </span>
+      </div>
     </div>
-  </section>
+
+    <!-- Right Column: Permanent 3-Trust Stack -->
+    <div style="position: relative; z-index: 3; display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 420px; justify-self: end;">
+      
+      <!-- Card 1: Made in India -->
+      <div style="background: rgba(255, 255, 255, 0.94); border: 1px solid #e2e8f0; backdrop-filter: blur(12px); border-radius: 18px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); transition: all 0.25s ease;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 44px; height: 44px; border-radius: 13px; background: #1e293b; color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="6"/>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #0f172a;">Made in India</div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 2px; font-weight: 500;">Engineered for Indian Businesses</div>
+          </div>
+        </div>
+        <span style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em;">National</span>
+      </div>
+
+      <!-- Card 2: SECURE SSL -->
+      <div style="background: rgba(255, 255, 255, 0.94); border: 1px solid #e2e8f0; backdrop-filter: blur(12px); border-radius: 18px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); transition: all 0.25s ease;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 44px; height: 44px; border-radius: 13px; background: #059669; color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #059669;">SECURE</div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 2px; font-weight: 500;">SSL 256-Bit Bank Encryption</div>
+          </div>
+        </div>
+        <span style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #16a34a; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em;">Verified</span>
+      </div>
+
+      <!-- Card 3: Trusted by MSME's -->
+      <div style="background: rgba(255, 255, 255, 0.94); border: 1px solid #e2e8f0; backdrop-filter: blur(12px); border-radius: 18px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); transition: all 0.25s ease;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 44px; height: 44px; border-radius: 13px; background: #2563eb; color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700; color: #0f172a;">Trusted by MSME's</div>
+            <div style="font-size: 12px; color: #64748b; font-family: monospace; letter-spacing: 0.02em; margin-top: 2px;">Udyam: UDYAM-OD-19-0177979</div>
+          </div>
+        </div>
+        <span style="background: #fefce8; border: 1px solid #fef08a; color: #a16207; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em;">Certified</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #ffffff; border-top: 1px solid #e2e8f0; padding: 50px 20px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <p style="margin: 0; color: #64748b; font-size: 13.5px;">&copy; 2026 Priyulabs Digital. All Rights Reserved.</p>
+      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 600; font-size: 13.5px;">&larr; Back to Main Platform</a>
+    </div>
+  </footer>
+
+
+  <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+    <div class="video-modal-content" onclick="event.stopPropagation()">
+      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+      <div style="position:relative; padding-top:56.25%; width:100%; background:#000;">
+        <video id="bakeryDemoVideo" controls
+          style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;"
+          poster="assets/bakery_hero.jpg">
+          <source src="assets/bakery-demo.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('bakeryDemoVideo');
+      modal.classList.add('open');
+      if (video) video.play();
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('bakeryDemoVideo');
+      modal.classList.remove('open');
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+  </script>
 </body>
 
 </html>
