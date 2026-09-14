@@ -1475,30 +1475,35 @@ function closeSectorModal() {
 }
 
 // ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ───────────────────
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPl-7pp-g-VOMUDpP900zdOB8DhA8gS6sOrKwUeTTNclUtggc3UKg7_G2rJl3VjyRlMA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
+
+function getLeadEndpoint() {
+  if (typeof window !== 'undefined' && window.PRIYULABS_LEAD_ENDPOINT) {
+    return window.PRIYULABS_LEAD_ENDPOINT;
+  }
+  return GOOGLE_SCRIPT_URL;
+}
 
 // Service Category & Custom 100-word Requirement Controller
 function initServiceCategoryFields() {
   document.querySelectorAll('form#leadForm').forEach(form => {
-    const serviceCategorySelect = form.querySelector('#serviceCategory');
+    const serviceCategorySelect = form.querySelector('#serviceCategory, [name="Service"]');
     const customReqGroup = form.querySelector('#customRequirementGroup');
-    const customReqTextarea = form.querySelector('#customRequirement');
+    const customReqTextarea = form.querySelector('#customRequirement, [name="CustomRequirement"]');
     const customWordCountSpan = form.querySelector('#customWordCount');
     const customWordErrorEl = form.querySelector('#customWordError');
 
-    if (serviceCategorySelect) {
+    if (serviceCategorySelect && customReqGroup) {
       serviceCategorySelect.addEventListener('change', () => {
         if (serviceCategorySelect.value === 'Custom') {
-          if (customReqGroup) {
-            customReqGroup.style.display = 'block';
-            customReqGroup.style.animation = 'fadeIn 0.25s ease';
-          }
+          customReqGroup.style.display = 'block';
+          customReqGroup.style.animation = 'fadeIn 0.25s ease';
           if (customReqTextarea) {
             customReqTextarea.setAttribute('required', 'required');
             customReqTextarea.focus();
           }
         } else {
-          if (customReqGroup) customReqGroup.style.display = 'none';
+          customReqGroup.style.display = 'none';
           if (customReqTextarea) {
             customReqTextarea.removeAttribute('required');
             customReqTextarea.value = '';
@@ -1544,109 +1549,168 @@ function initServiceCategoryFields() {
   });
 }
 
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initServiceCategoryFields);
-} else {
-  initServiceCategoryFields();
-}
+function initLeadFormSubmissions() {
+  document.querySelectorAll('form#leadForm').forEach(form => {
+    if (form.dataset.leadInitialized === 'true') return;
+    form.dataset.leadInitialized = 'true';
 
-const leadForm = document.getElementById('leadForm');
-if (leadForm) {
-  leadForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const button = document.getElementById('submitLeadBtn');
-    const statusMsg = document.getElementById('formStatusMsg');
-    const serviceCategorySelect = leadForm.querySelector('#serviceCategory');
-    const customReqTextarea = leadForm.querySelector('#customRequirement');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const selectedService = serviceCategorySelect ? serviceCategorySelect.value : '';
-    const businessTypeSelect = leadForm.querySelector('#businessType');
-    const selectedBusinessType = businessTypeSelect ? businessTypeSelect.value : '';
-    const customReq = customReqTextarea ? customReqTextarea.value.trim() : '';
+      const button = form.querySelector('button[type="submit"]') || form.querySelector('#submitLeadBtn');
+      let statusMsg = form.querySelector('.form-status-msg') || form.querySelector('#formStatusMsg');
+      if (!statusMsg) {
+        statusMsg = document.createElement('div');
+        statusMsg.className = 'form-status-msg';
+        statusMsg.style.display = 'none';
+        statusMsg.style.marginTop = '12px';
+        statusMsg.style.padding = '10px 14px';
+        statusMsg.style.borderRadius = '8px';
+        statusMsg.style.fontSize = '14px';
+        statusMsg.style.fontWeight = '600';
+        statusMsg.style.textAlign = 'center';
+        form.appendChild(statusMsg);
+      }
 
-    // Validate 100-word restriction if Custom is selected
-    if (selectedService === 'Custom') {
-      const words = customReq ? customReq.split(/\s+/) : [];
-      if (words.length === 0) {
-        if (typeof showToast === 'function') showToast('Please describe what you need in the custom field.');
-        if (customReqTextarea) customReqTextarea.focus();
+      const nameInput = form.querySelector('#userName, #dirName, [name="Name"]');
+      const businessTypeSelect = form.querySelector('#businessType, [name="BusinessType"], #dirStore, [name="StoreName"]');
+      const serviceCategorySelect = form.querySelector('#serviceCategory, [name="Service"]');
+      const customReqTextarea = form.querySelector('#customRequirement, [name="CustomRequirement"]');
+      const phoneInput = form.querySelector('#userPhone, #dirPhone, [name="Mobile"], [name="phone"]');
+      const hpHidden = form.querySelector('input[name="website"], input[name="hp_field"], input[name="website_hp"]');
+
+      // Honeypot spam check - quiet rejection of bot submissions
+      if (hpHidden && hpHidden.value.trim() !== '') {
+        console.warn('Spam submission detected and rejected.');
         return;
       }
-      if (words.length > 100) {
-        if (typeof showToast === 'function') showToast('Custom requirement must be within 100 words.');
-        if (customReqTextarea) customReqTextarea.focus();
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const businessType = businessTypeSelect ? businessTypeSelect.value.trim() : '';
+      const service = serviceCategorySelect ? serviceCategorySelect.value.trim() : 'Free Trial';
+      const customReq = customReqTextarea ? customReqTextarea.value.trim() : '';
+      const mobile = phoneInput ? phoneInput.value.trim() : '';
+
+      // Frontend Validations
+      if (!name || name.length < 2) {
+        if (typeof showToast === 'function') showToast('Please enter your full name.');
+        if (nameInput) nameInput.focus();
         return;
       }
-    }
 
-    if (button) {
-      button.textContent = "Submitting...";
-      button.disabled = true;
-      button.style.opacity = '0.85';
-    }
+      if (service === 'Custom') {
+        const words = customReq ? customReq.split(/\s+/) : [];
+        if (words.length === 0) {
+          if (typeof showToast === 'function') showToast('Please describe what you need in the custom field.');
+          if (customReqTextarea) customReqTextarea.focus();
+          return;
+        }
+        if (words.length > 100) {
+          if (typeof showToast === 'function') showToast('Custom requirement must be within 100 words.');
+          if (customReqTextarea) customReqTextarea.focus();
+          return;
+        }
+      }
 
-    if (statusMsg) {
-      statusMsg.style.display = 'none';
-      statusMsg.textContent = '';
-    }
+      if (!mobile || !/^[0-9+\-\s()]{7,20}$/.test(mobile)) {
+        if (typeof showToast === 'function') showToast('Please enter a valid phone or WhatsApp number.');
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
 
-    const formData = new FormData(leadForm);
-    if (selectedBusinessType) {
-      formData.set('BusinessType', selectedBusinessType);
-    }
-    // Backward-compatible mapping for StoreName column in Google Sheets
-    if (selectedService === 'Custom') {
-      formData.set('StoreName', `Custom: ${customReq.slice(0, 80)}`);
-      formData.set('Category', 'Custom');
-    } else if (selectedService) {
-      formData.set('StoreName', selectedBusinessType || selectedService);
-      formData.set('Category', selectedService);
-    }
+      // Save original button state and lock button
+      const originalBtnHtml = button ? button.innerHTML : '';
+      if (button) {
+        button.innerHTML = '<span>Submitting...</span>';
+        button.disabled = true;
+        button.style.opacity = '0.75';
+      }
 
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      body: formData,
-      mode: "no-cors"
-    })
-      .then(() => {
+      if (statusMsg) {
+        statusMsg.style.display = 'none';
+        statusMsg.textContent = '';
+      }
+
+      const requestId = `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+
+      const payload = {
+        name: name,
+        businessType: businessType || 'General Retail',
+        service: service,
+        customRequirement: customReq,
+        mobile: mobile,
+        source: 'free-trial-form',
+        pageUrl: window.location.href,
+        requestId: requestId,
+        website: hpHidden ? hpHidden.value : ''
+      };
+
+      const endpoint = getLeadEndpoint();
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload),
+          redirect: 'follow'
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result && result.success) {
+          // Success: Show confirmation and clear form
+          if (button) {
+            button.disabled = false;
+            button.innerHTML = originalBtnHtml;
+            button.style.opacity = '1';
+          }
+
+          const successText = "Thank you! Your request has been submitted. Our team will contact you within 15 minutes.";
+          if (statusMsg) {
+            statusMsg.style.display = 'block';
+            statusMsg.style.background = '#d1fae5';
+            statusMsg.style.color = '#065f46';
+            statusMsg.style.border = '1px solid #10b981';
+            statusMsg.textContent = successText;
+          }
+          if (typeof showToast === 'function') {
+            showToast(successText);
+          }
+
+          form.reset();
+
+          // Reset custom requirement box
+          const customReqGroup = form.querySelector('#customRequirementGroup');
+          const customWordCountSpan = form.querySelector('#customWordCount');
+          const customWordErrorEl = form.querySelector('#customWordError');
+          if (customReqGroup) customReqGroup.style.display = 'none';
+          if (customWordCountSpan) {
+            customWordCountSpan.textContent = '0 / 100 words';
+            customWordCountSpan.style.color = 'var(--text-muted)';
+          }
+          if (customWordErrorEl) customWordErrorEl.style.display = 'none';
+
+        } else {
+          // Failure: Server-side validation or processing error
+          throw new Error((result && result.message) || 'Submission could not be completed.');
+        }
+
+      } catch (err) {
+        console.error('Lead Submission Error:', err);
+
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access";
+          button.innerHTML = originalBtnHtml;
           button.style.opacity = '1';
         }
-        const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
-        if (statusMsg) {
-          statusMsg.style.display = 'block';
-          statusMsg.style.background = '#d1fae5';
-          statusMsg.style.color = '#065f46';
-          statusMsg.style.border = '1px solid #10b981';
-          statusMsg.textContent = successText;
-        }
-        if (typeof showToast === 'function') {
-          showToast(successText);
-        }
-        leadForm.reset();
 
-        // Reset custom requirement box
-        const customReqGroup = leadForm.querySelector('#customRequirementGroup');
-        const customWordCountSpan = leadForm.querySelector('#customWordCount');
-        const customWordErrorEl = leadForm.querySelector('#customWordError');
-        if (customReqGroup) customReqGroup.style.display = 'none';
-        if (customWordCountSpan) {
-          customWordCountSpan.textContent = '0 / 100 words';
-          customWordCountSpan.style.color = 'var(--text-muted)';
-        }
-        if (customWordErrorEl) customWordErrorEl.style.display = 'none';
-      })
-      .catch(err => {
-        console.error('Google Sheet Submission Error:', err);
-        if (button) {
-          button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access";
-          button.style.opacity = '1';
-        }
-        const errorText = "Something went wrong. Please try again.";
+        const errorText = "Unable to submit your request right now. Please try again or reach out on WhatsApp.";
         if (statusMsg) {
           statusMsg.style.display = 'block';
           statusMsg.style.background = '#fee2e2';
@@ -1657,8 +1721,21 @@ if (leadForm) {
         if (typeof showToast === 'function') {
           showToast(errorText);
         }
-      });
+        // Form values are preserved so the user can easily retry
+      }
+    });
   });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initServiceCategoryFields();
+    initLeadFormSubmissions();
+  });
+} else {
+  initServiceCategoryFields();
+  initLeadFormSubmissions();
 }
 
 // â”€â”€â”€ GLOBAL TOAST HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
