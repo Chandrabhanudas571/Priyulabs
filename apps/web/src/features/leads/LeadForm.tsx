@@ -30,6 +30,7 @@ type Values = z.infer<typeof schema>;
 
 export function LeadForm() {
   const [sent, setSent] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [wordCount, setWordCount] = useState(0);
 
   const {
@@ -65,17 +66,50 @@ export function LeadForm() {
   };
 
   const submit = async (values: Values) => {
-    await fetch(`${import.meta.env.VITE_API_URL ?? 'http://localhost:4000'}/api/leads`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...values,
-        storeName: values.businessType || (values.service === 'Custom' ? `Custom: ${values.customRequirement?.slice(0, 60)}` : values.service),
-      }),
-    }).catch(() => undefined);
-    setSent(true);
+    setSubmitError(null);
+    const endpoint =
+      import.meta.env.VITE_LEAD_ENDPOINT ||
+      (import.meta.env.VITE_API_URL
+        ? `${import.meta.env.VITE_API_URL}/api/leads`
+        : 'https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec');
+
+    try {
+      const isAppsScript = endpoint.includes('script.google.com');
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: isAppsScript
+          ? { 'Content-Type': 'text/plain;charset=utf-8' }
+          : { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...values,
+          source: 'free-trial-form',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : 'https://priyulabs.in/',
+          storeName:
+            values.businessType ||
+            (values.service === 'Custom'
+              ? `Custom: ${values.customRequirement?.slice(0, 60)}`
+              : values.service),
+        }),
+        redirect: 'follow',
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server returned HTTP ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result && result.success !== false) {
+        setSent(true);
+      } else {
+        throw new Error(result?.message || 'Unable to submit lead');
+      }
+    } catch (err) {
+      console.error('Lead submission failed:', err);
+      setSubmitError('Unable to submit your request right now. Please try again or reach out to us on WhatsApp.');
+    }
   };
 
+  if (sent) {
     return (
       <div className="rounded-2xl bg-white p-7 font-bold text-slate-900 shadow-xl dark:bg-slate-900 dark:text-white flex items-center gap-3">
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
@@ -84,6 +118,7 @@ export function LeadForm() {
         <span>Thank you! Your request has been submitted. Our team will contact you within 15 minutes.</span>
       </div>
     );
+  }
 
   return (
     <form
@@ -91,6 +126,11 @@ export function LeadForm() {
       onSubmit={handleSubmit(submit)}
       noValidate
     >
+      {submitError && (
+        <div className="rounded-xl bg-rose-50 p-3 text-xs font-semibold text-rose-700 dark:bg-rose-950/40 dark:text-rose-300 border border-rose-200 dark:border-rose-900">
+          {submitError}
+        </div>
+      )}
       <label className="grid gap-1 text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
         Your Name *
         <input
