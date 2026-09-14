@@ -49,7 +49,6 @@
                   onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
                 <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
                   onmouseenter="switchMegaTab('services')">Services</button>
-                <a href="/business-types" class="sq-all-types-link">All business types</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
@@ -2266,23 +2265,58 @@
             business in
             <strong>10 minutes.</strong>
           </p>
-          <div class="cta-trust-row">
-            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg> 14-Day Free Trial</span>
-            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg> Free Onboarding</span>
-            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
-                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg> 24/7 Support (<a href="tel:+917849074050" style="color:#d88a95;font-weight:700;">+91 78490
-                74050</a>)</span>
+          <div class="trust-badges-stack" style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px; max-width: 420px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            
+            <!-- BADGE 1: Made in India -->
+            <div style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 16px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 40px; height: 40px; border-radius: 12px; background: #1e293b; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0;">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-size: 14px; font-weight: 800; color: #0f172a; line-height: 1.2;">Made in India</div>
+                  <div style="font-size: 12px; color: #64748b; font-weight: 500; margin-top: 2px;">Engineered for Indian Businesses</div>
+                </div>
+              </div>
+              <span style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; letter-spacing: 0.04em;">NATIONAL</span>
+            </div>
+
+            <!-- BADGE 2: SECURE -->
+            <div style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 16px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 40px; height: 40px; border-radius: 12px; background: #059669; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0;">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-size: 14px; font-weight: 800; color: #059669; line-height: 1.2;">SECURE</div>
+                  <div style="font-size: 12px; color: #64748b; font-weight: 500; margin-top: 2px;">SSL 256-Bit Bank Encryption</div>
+                </div>
+              </div>
+              <span style="background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; letter-spacing: 0.04em;">VERIFIED</span>
+            </div>
+
+            <!-- BADGE 3: Trusted by MSME's -->
+            <div style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 16px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 40px; height: 40px; border-radius: 12px; background: #2563eb; display: flex; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0;">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <div>
+                  <div style="font-size: 14px; font-weight: 800; color: #0f172a; line-height: 1.2;">Trusted by MSME's</div>
+                  <div style="font-size: 12px; color: #475569; font-weight: 600; margin-top: 2px; font-family: monospace;">Udyam: UDYAM-OD-19-0177979</div>
+                </div>
+              </div>
+              <span style="background: #fefce8; color: #ca8a04; border: 1px solid #fef08a; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; letter-spacing: 0.04em;">CERTIFIED</span>
+            </div>
+
           </div>
         </div>
 
@@ -2361,7 +2395,11 @@
 
             <div class="form-group">
               <label for="userPhone">Phone / WhatsApp Number *</label>
-              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 7788899994)" required />
+              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 7788899994)" required
+                maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel"
+                title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
+              <small id="phoneErrorMsg"
+                style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Phone number must be exactly 10 digits.</small>
             </div>
 
             <button type="submit" class="btn-primary full-width" id="submitLeadBtn">
@@ -2488,20 +2526,7 @@
         <button class="modal-close" onclick="closeDemoModal()" aria-label="Close modal">&times;</button>
       </div>
 
-      <!-- 6 Service Navigation Tabs -->
-      <div class="demo-tabs">
-        <button class="demo-tab active" data-tab="pos" onclick="switchDemoTab('pos')">Smart POS Billing</button>
-        <button class="demo-tab" data-tab="erp" onclick="switchDemoTab('erp')">ERP &amp; Staff HRMS</button>
-        <button class="demo-tab" data-tab="website" onclick="switchDemoTab('website')">Custom Website Studio</button>
-        <button class="demo-tab" data-tab="marketing" onclick="switchDemoTab('marketing')">Digital Marketing &amp;
-          Ads</button>
-        <button class="demo-tab" data-tab="branding" onclick="switchDemoTab('branding')">Logo &amp; Brand
-          Studio</button>
-        <button class="demo-tab" data-tab="bundle" onclick="switchDemoTab('bundle')">All-in-One Bundle</button>
-      </div>
-
       <div class="demo-body">
-
         <!-- ══════════════ TAB 1: SMART POS BILLING ══════════════ -->
         <div class="demo-panel active" id="tab-pos">
           <div class="demo-sim-box">
@@ -2520,15 +2545,13 @@
 
               <!-- Product Category Chips -->
               <div class="pos-cat-bar">
-                <button class="pos-cat-btn active" onclick="filterPosProducts('all', this)">All Items</button>
-                <button class="pos-cat-btn" onclick="filterPosProducts('cafe', this)">Cafe &amp; Food</button>
+                <button class="pos-cat-btn active" onclick="filterPosProducts('cafe', this)">Cafe &amp; Food</button>
                 <button class="pos-cat-btn" onclick="filterPosProducts('grocery', this)">Grocery / FMCG</button>
-                <button class="pos-cat-btn" onclick="filterPosProducts('fashion', this)">Retail &amp;
-                  Apparel</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('retail', this)">Retail &amp; Apparel</button>
               </div>
 
               <!-- Clickable Product Catalog Grid -->
-              <div class="pos-product-grid" id="posProductGrid">
+              <div class="pos-product-grid" id="posProductGrid" style="max-height: 400px; overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; padding-right: 4px;">
                 <!-- Injected / Rendered via JS -->
               </div>
 
@@ -2551,9 +2574,9 @@
                 </div>
 
                 <div class="pos-bill-calc">
-                  <div class="pbc-row"><span>Subtotal</span><span id="posSubtotal">₹0.00</span></div>
-                  <div class="pbc-row"><span>GST (5% / 18%)</span><span id="posTax">₹0.00</span></div>
-                  <div class="pbc-row pbc-total"><span>Grand Total</span><strong id="posGrandTotal">₹0.00</strong></div>
+                  <div class="pbc-row"><span>Subtotal</span><span id="posSubtotal">&#8377;0.00</span></div>
+                  <div class="pbc-row"><span>GST (5% / 18%)</span><span id="posTax">&#8377;0.00</span></div>
+                  <div class="pbc-row pbc-total"><span>Grand Total</span><strong id="posGrandTotal">&#8377;0.00</strong></div>
                 </div>
 
                 <div class="pos-actions-wrap">
@@ -2570,7 +2593,7 @@
                       style="display:inline-block;vertical-align:middle;margin-right:6px;">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg></div>
-                  <strong>Payment Received ₹<span id="posPaidAmt">0</span></strong>
+                  <strong>Payment Received &#8377;<span id="posPaidAmt">0</span></strong>
                   <small>UPI Trans ID: #UPI-984210 • Bill Auto-Saved</small>
                   <div class="pps-btns">
                     <button class="btn-primary-sm" onclick="printPosInvoice()">Print Receipt</button>
@@ -2581,466 +2604,6 @@
             </div>
           </div>
         </div>
-
-        <!-- ══════════════ TAB 2: ERP & STAFF HRMS ══════════════ -->
-        <div class="demo-panel" id="tab-erp">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4>Vision AI Stock Manager &amp; Expiry Shield</h4>
-              <p>Simulate supplier invoice OCR auto-entry and real-time stock deductions:</p>
-
-              <div class="erp-quick-actions">
-                <button class="btn-erp-act" onclick="simulateErpScanInvoice()">Snap Wholesaler Invoice OCR</button>
-                <button class="btn-erp-act" onclick="simulateErpSale()">Simulate Fast Sales (Trigger Low
-                  Stock)</button>
-              </div>
-
-              <!-- Interactive Stock Table -->
-              <div class="erp-stock-card">
-                <div class="esc-header">
-                  <span>Live Store Inventory</span>
-                  <span class="badge-live-sync">Cloud Synced</span>
-                </div>
-                <div class="esc-table-wrap">
-                  <table class="erp-table" id="erpStockTable">
-                    <thead>
-                      <tr>
-                        <th>Item</th>
-                        <th>In Stock</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="erpStockRows">
-                      <!-- Dynamic rows -->
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="erp-toast-msg" id="erpToastMsg">Tip: Click "Snap Wholesaler Invoice" to see Vision AI
-                auto-extract inventory in 1 second!</div>
-            </div>
-
-            <div class="sim-right">
-              <!-- Staff Attendance HRMS Simulation -->
-              <div class="hrms-sim-card">
-                <div class="hrms-card-head">
-                  <h5>Geofenced Selfie Attendance &amp; Payroll</h5>
-                  <small>AI Facial Biometrics • Zero Proxy</small>
-                </div>
-
-                <div class="hrms-camera-preview" id="hrmsCamBox">
-                  <div class="hrms-face-scanner" id="hrmsFaceScanner">
-                    <div class="h-target-box"></div>
-                    <span class="h-face-emoji"></span>
-                  </div>
-                  <div class="hrms-cam-overlay" id="hrmsCamStatus">
-                    Click below to simulate employee facial check-in
-                  </div>
-                </div>
-
-                <button class="btn-hrms-checkin" onclick="simulateHrmsCheckIn()">
-                  Clock-in Facial Selfie (Simulate)
-                </button>
-
-                <div class="hrms-payroll-breakdown" id="hrmsPayrollBox">
-                  <div class="hp-row"><span>Employee:</span><strong>Rahul Sharma (Cashier)</strong></div>
-                  <div class="hp-row"><span>Monthly Attendance:</span><strong style="color:#10b981">26 Days Present
-                      (98%)</strong></div>
-                  <div class="hp-row"><span>Base Salary:</span><strong>₹24,000</strong></div>
-                  <div class="hp-row hp-net"><span>Net Salary Auto-Calculated:</span><strong
-                      style="color:#059669">₹23,076</strong></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ══════════════ TAB 3: CUSTOM WEBSITE & STOREFRONT ══════════════ -->
-        <div class="demo-panel" id="tab-website">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4> Interactive Website Builder &amp; Storefront</h4>
-              <p>Customize your business type, brand colors, and preview how your online store looks &amp; receives
-                orders:</p>
-
-              <!-- Industry Selector -->
-              <div class="ws-control-group">
-                <label>Select Business Industry:</label>
-                <div class="ws-industry-pills">
-                  <button class="ws-ind-btn active" onclick="setWsIndustry('restaurant', this)">Cafe &amp;
-                    Restaurant</button>
-                  <button class="ws-ind-btn" onclick="setWsIndustry('fashion', this)">Fashion &amp; Boutique</button>
-                  <button class="ws-ind-btn" onclick="setWsIndustry('grocery', this)">Grocery &amp; Mart</button>
-                  <button class="ws-ind-btn" onclick="setWsIndustry('clinic', this)">Clinic &amp; Care</button>
-                </div>
-              </div>
-
-              <!-- Store Name Input -->
-              <div class="ws-control-group">
-                <label>Enter Your Business / Brand Name:</label>
-                <input type="text" class="ws-text-input" id="wsInputBrand" value="Spice &amp; Craft Bistro"
-                  oninput="updateWsPreview()" />
-              </div>
-
-              <!-- Color Palette Selector -->
-              <div class="ws-control-group">
-                <label>Choose Brand Color Theme:</label>
-                <div class="ws-color-swatches">
-                  <button class="ws-swatch active" style="background:#b76e79"
-                    onclick="setWsColor('#b76e79', '#fde8ea', this)" title="Rose Gold"></button>
-                  <button class="ws-swatch" style="background:#1e1b4b" onclick="setWsColor('#1e1b4b', '#e0e7ff', this)"
-                    title="Royal Indigo"></button>
-                  <button class="ws-swatch" style="background:#065f46" onclick="setWsColor('#065f46', '#d1fae5', this)"
-                    title="Emerald Green"></button>
-                  <button class="ws-swatch" style="background:#ea580c" onclick="setWsColor('#ea580c', '#ffedd5', this)"
-                    title="Sunset Orange"></button>
-                </div>
-              </div>
-
-              <!-- View Switcher -->
-              <div class="ws-control-group">
-                <label>Device Viewport:</label>
-                <div class="ws-view-toggle">
-                  <button class="ws-view-btn active" id="wsBtnMobile" onclick="setWsDevice('mobile')">Mobile
-                    View</button>
-                  <button class="ws-view-btn" id="wsBtnDesktop" onclick="setWsDevice('desktop')">Desktop
-                    View</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Live Interactive Website Window -->
-            <div class="sim-right">
-              <div class="ws-preview-frame" id="wsPreviewFrame">
-                <div class="ws-browser-bar">
-                  <div class="wbb-dots"><span></span><span></span><span></span></div>
-                  <div class="wbb-url" id="wsBrowserUrl">https://spicecraft.priyulabs.store</div>
-                </div>
-
-                <div class="ws-site-viewport" id="wsViewport">
-                  <!-- Header -->
-                  <div class="ws-site-header" id="wsSiteHeader">
-                    <div class="wsh-logo" id="wsSiteLogo">Spice &amp; Craft Bistro</div>
-                    <div class="wsh-cart"><span id="wsCartCount">1</span></div>
-                  </div>
-
-                  <!-- Hero Banner -->
-                  <div class="ws-site-hero" id="wsSiteHero">
-                    <h5 id="wsHeroHeadline">Fresh Artisanal Meals Delivered To Your Door</h5>
-                    <p id="wsHeroSub">Order directly &amp; get 20% flat discount today!</p>
-                  </div>
-
-                  <!-- Product Showcase -->
-                  <div class="ws-site-catalog" id="wsSiteCatalog">
-                    <!-- Dynamic Product Cards -->
-                  </div>
-
-                  <!-- WhatsApp Floating CTA in preview -->
-                  <div class="ws-site-order-cta">
-                    <button class="btn-ws-wa-order" onclick="simulateWsOrder()">
-                      Order on WhatsApp (Live Demo)
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ══════════════ TAB 4: DIGITAL MARKETING & ADS ROI ══════════════ -->
-        <div class="demo-panel" id="tab-marketing">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4> Meta &amp; Google Ads ROI Simulator</h4>
-              <p>Adjust your monthly ad budget and target audience to calculate real-world customer acquisition &amp;
-                sales:</p>
-
-              <!-- Campaign Goal -->
-              <div class="mkt-control-group">
-                <label>Campaign Objective:</label>
-                <div class="mkt-goal-pills">
-                  <button class="mkt-goal-btn active" onclick="setMktGoal('footfall', this)">Local Store
-                    Footfall</button>
-                  <button class="mkt-goal-btn" onclick="setMktGoal('online', this)">E-Commerce Orders</button>
-                  <button class="mkt-goal-btn" onclick="setMktGoal('leads', this)">WhatsApp Inquiries</button>
-                </div>
-              </div>
-
-              <!-- Budget Slider -->
-              <div class="mkt-control-group">
-                <div class="mkt-slider-head">
-                  <label>Monthly Marketing Budget:</label>
-                  <strong id="mktBudgetDisplay">₹10,000 / month</strong>
-                </div>
-                <input type="range" min="3000" max="50000" step="1000" value="10000" class="mkt-range-slider"
-                  id="mktBudgetSlider" oninput="updateMktCalculation()" />
-              </div>
-
-              <!-- Projected ROI Metrics -->
-              <div class="mkt-metrics-grid">
-                <div class="mkt-metric-card">
-                  <small>Estimated Local Reach</small>
-                  <strong id="mktReach">48,000+</strong>
-                  <span>Within 5km radius</span>
-                </div>
-                <div class="mkt-metric-card">
-                  <small>Direct Customer Leads</small>
-                  <strong id="mktLeads" style="color:#b76e79">420+</strong>
-                  <span>High-intent buyers</span>
-                </div>
-                <div class="mkt-metric-card mkt-highlight">
-                  <small>Projected Revenue Impact</small>
-                  <strong id="mktRevenue" style="color:#059669">₹1,85,000</strong>
-                  <span class="mkt-roas">3.8x Estimated ROAS</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Live WhatsApp Broadcast Demo Screen -->
-            <div class="sim-right">
-              <div class="wa-phone-mock">
-                <div class="wa-phone-header">
-                  <div class="wa-contact">
-                    <span class="wa-dp"></span>
-                    <div>
-                      <strong>Your Store Official</strong>
-                      <small class="wa-verified"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24"
-                          fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                          style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>Verified Business</small>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="wa-chat-body">
-                  <div class="wa-bubble-promo" id="waPromoBubble">
-                    <div class="wa-promo-tag">FESTIVE MEGA OFFER</div>
-                    <p id="waPromoText">Namaste Sharma Ji! Special 40% OFF on all new arrivals this weekend at Sharma
-                      Mart. Show this message at billing counter or order online!</p>
-                    <div class="wa-promo-coupon">CODE: <strong>PRIYU40</strong></div>
-                    <button class="wa-promo-btn" onclick="showToast('Coupon PRIYU40 Copied! Ready for Checkout.')">Claim
-                      40% Offer Now
-                    </button>
-                  </div>
-                </div>
-
-                <div class="wa-template-picker">
-                  <span>Send Campaign Preview:</span>
-                  <div class="wa-preset-btns">
-                    <button onclick="setWaTemplate('festive')">Festive Sale</button>
-                    <button onclick="setWaTemplate('vip')">VIP Exclusive</button>
-                    <button onclick="setWaTemplate('bogo')">Buy 1 Get 1</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ══════════════ TAB 5: LOGO & BRAND STUDIO ══════════════ -->
-        <div class="demo-panel" id="tab-branding">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4>Live Brand &amp; Logo Mockup Engine</h4>
-              <p>Type your business name &amp; pick a symbol to see how your brand looks across business cards,
-                signboards, and invoices:</p>
-
-              <!-- Business Name Input -->
-              <div class="brand-input-group">
-                <label>Business / Brand Name:</label>
-                <input type="text" class="brand-text-input" id="brandNameInput" value="Crown Royale"
-                  oninput="updateBrandEngine()" />
-              </div>
-
-              <!-- Tagline -->
-              <div class="brand-input-group">
-                <label>Brand Tagline / Slogan:</label>
-                <input type="text" class="brand-text-input" id="brandTaglineInput" value="Luxury &amp; Trust Since 2024"
-                  oninput="updateBrandEngine()" />
-              </div>
-
-              <!-- Icon Selector -->
-              <div class="brand-input-group">
-                <label>Select Logo Symbol:</label>
-                <div class="brand-icon-pills">
-                  <button class="brand-ic-btn active" onclick="setBrandIcon('', this)">Crown</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)">Diamond</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)">Star Bolt</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)">Organic</button>
-                  <button class="brand-ic-btn" onclick="setBrandIcon('', this)"> Retail Bag</button>
-                </div>
-              </div>
-
-              <!-- Theme Style -->
-              <div class="brand-input-group">
-                <label>Brand Color Palette:</label>
-                <div class="brand-style-pills">
-                  <button class="brand-st-btn active" onclick="setBrandTheme('rosegold', this)">Rose Gold &amp; Matte
-                    Black</button>
-                  <button class="brand-st-btn" onclick="setBrandTheme('goldnavy', this)">Champagne &amp;
-                    Navy</button>
-                  <button class="brand-st-btn" onclick="setBrandTheme('emerald', this)">Emerald &amp; Gold</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: 4-in-1 Live Brand Applications Mockup -->
-            <div class="sim-right">
-              <div class="brand-mockups-grid" id="brandMockupsGrid">
-                <!-- 1. Business Card -->
-                <div class="brand-mockup-card bmc-card">
-                  <div class="bmc-label">🪪 Embossed Business Card</div>
-                  <div class="bmc-inner bmc-vis-card">
-                    <div class="b-card-logo"><span class="b-dyn-icon"></span> <span class="b-dyn-name">Crown
-                        Royale</span></div>
-                    <div class="b-card-sub"><span class="b-dyn-tag">Luxury &amp; Trust Since 2024</span></div>
-                    <div class="b-card-footer">
-                      <small>Director / Owner</small>
-                      <small>+91 98765 43210</small>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 2. Store Signboard -->
-                <div class="brand-mockup-card bmc-sign">
-                  <div class="bmc-label">Storefront Glow Signboard</div>
-                  <div class="bmc-inner bmc-vis-sign">
-                    <div class="b-sign-glow">
-                      <span class="b-dyn-icon"></span>
-                      <h4 class="b-dyn-name">Crown Royale</h4>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 3. GST Letterhead Header -->
-                <div class="brand-mockup-card bmc-invoice">
-                  <div class="bmc-label">Official GST Tax Invoice</div>
-                  <div class="bmc-inner bmc-vis-invoice">
-                    <div class="b-inv-header">
-                      <div>
-                        <strong class="b-dyn-name">Crown Royale</strong>
-                        <small class="b-dyn-tag">Luxury &amp; Trust Since 2024</small>
-                      </div>
-                      <div class="b-inv-badge">TAX INVOICE</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ══════════════ TAB 6: ALL-IN-ONE BUNDLE ══════════════ -->
-        <div class="demo-panel" id="tab-bundle">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4> All-in-One Growth Stack Configurator</h4>
-              <p>Select the services you need and calculate your instant bundle discount &amp; launch timeline:</p>
-
-              <div class="bundle-check-list">
-                <label class="bundle-check-item">
-                  <input type="checkbox" checked onchange="updateBundleCalc()" data-price="9999"
-                    data-name="Smart POS Billing" />
-                  <div class="bci-info">
-                    <strong>Smart POS Billing Software</strong>
-                    <small>Lifetime license • Voice AI • GST Invoicing • Thermal Printer sync</small>
-                  </div>
-                  <span class="bci-price">₹9,999</span>
-                </label>
-
-                <label class="bundle-check-item">
-                  <input type="checkbox" checked onchange="updateBundleCalc()" data-price="14999"
-                    data-name="Custom Website & E-commerce" />
-                  <div class="bci-info">
-                    <strong>Custom Website &amp; Storefront</strong>
-                    <small>Mobile-responsive • SEO • WhatsApp ordering • Fast cloud hosting</small>
-                  </div>
-                  <span class="bci-price">₹14,999</span>
-                </label>
-
-                <label class="bundle-check-item">
-                  <input type="checkbox" checked onchange="updateBundleCalc()" data-price="12999"
-                    data-name="ERP & Staff HRMS" />
-                  <div class="bci-info">
-                    <strong> Cloud ERP &amp; Staff HRMS</strong>
-                    <small>Inventory tracking • Supplier OCR • Selfie attendance • Automated payroll</small>
-                  </div>
-                  <span class="bci-price">₹12,999</span>
-                </label>
-
-                <label class="bundle-check-item">
-                  <input type="checkbox" checked onchange="updateBundleCalc()" data-price="8999"
-                    data-name="Digital Marketing Setup" />
-                  <div class="bci-info">
-                    <strong>Digital Marketing &amp; Meta Ads Setup</strong>
-                    <small>High-ROI Google &amp; Instagram campaigns • Automated WhatsApp CRM</small>
-                  </div>
-                  <span class="bci-price">₹8,999</span>
-                </label>
-
-                <label class="bundle-check-item">
-                  <input type="checkbox" checked onchange="updateBundleCalc()" data-price="5999"
-                    data-name="Logo & Brand Identity Kit" />
-                  <div class="bci-info">
-                    <strong>Logo &amp; Corporate Brand Identity Kit</strong>
-                    <small>3 Concepts • Vector files • Business cards • Storefront sign branding</small>
-                  </div>
-                  <span class="bci-price">₹5,999</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Right: Real-time Bundle Discount Card -->
-            <div class="sim-right">
-              <div class="bundle-pricing-summary">
-                <div class="bps-header">
-                  <span class="bps-badge">All-in-One Super Bundle</span>
-                  <h5>Priyulabs Complete Business Stack</h5>
-                </div>
-
-                <div class="bps-breakdown">
-                  <div class="bps-row">
-                    <span>Individual Total:</span>
-                    <del id="bundleOriginalPrice">₹52,995</del>
-                  </div>
-                  <div class="bps-row bps-savings">
-                    <span>Bundle Discount:</span>
-                    <strong id="bundleDiscount">-₹28,000 (53% OFF)</strong>
-                  </div>
-                  <div class="bps-row bps-final">
-                    <span>All-in-One Investment:</span>
-                    <strong id="bundleFinalPrice">₹24,999</strong>
-                  </div>
-                </div>
-
-                <div class="bps-perks">
-                  <div><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
-                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>1-on-1 Dedicated Tech Support Manager</div>
-                  <div><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
-                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>Fast 5-Day Delivery &amp; Store Setup</div>
-                  <div><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
-                      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>Free Lifetime Software Updates</div>
-                </div>
-
-                <button class="btn-bundle-launch" onclick="launchCustomBundleWhatsApp()">
-                  Get WhatsApp Proposal for My Selected Stack →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <div class="modal-footer">

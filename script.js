@@ -1,4 +1,4 @@
-// â”€â”€â”€ THEME TOGGLE (LIGHT / DARK) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── THEME TOGGLE (LIGHT / DARK) ────────────────────────────────
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 let savedTheme = 'light';
 try {
@@ -48,7 +48,7 @@ if (themeToggleBtn) {
   });
 }
 
-// â”€â”€â”€ NAVBAR SCROLL & ACTIVE STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── NAVBAR SCROLL & ACTIVE STATE ──────────────────────────────
 const navbar = document.getElementById('navbar');
 let isTicking = false;
 
@@ -68,7 +68,7 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-// â”€â”€â”€ SQUARE-STYLE FULL-SCREEN DRILLDOWN MOBILE DRAWER â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── SQUARE-STYLE FULL-SCREEN DRILLDOWN MOBILE DRAWER ─────────
 const mobileDrawer = document.getElementById('mobileDrawer');
 const hamburger = document.getElementById('hamburger');
 const drawerCloseBtn = document.getElementById('drawerCloseBtn');
@@ -244,7 +244,7 @@ window.addEventListener('load', function () {
   }
 });
 
-// â”€â”€â”€ COUNTER ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── COUNTER ANIMATION ──────────────────────────────────────────
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
   const suffix = el.dataset.suffix !== undefined ? el.dataset.suffix : (target === 100 ? '+' : (target === 10 ? ' min' : (target === 0 ? '%' : '')));
@@ -261,7 +261,7 @@ function animateCounter(el) {
   }, 20);
 }
 
-// â”€â”€â”€ SQUARE-STYLE STAGGERED SCROLL REVEAL & COUNTERS OBSERVER â”€â”€
+// ─── SQUARE-STYLE STAGGERED SCROLL REVEAL & COUNTERS OBSERVER ──
 function initSquareScrollReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('.stat-number').forEach(el => {
@@ -348,7 +348,7 @@ function initSquareScrollReveal() {
   document.querySelectorAll('.stat-number').forEach(el => scrollObserver.observe(el));
 }
 
-// â”€â”€â”€ HERO SPOTLIGHT TICKER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── HERO SPOTLIGHT TICKER ─────────────────────────────────────────
 let spotlightIdx = 0;
 let spotlightTimer = null;
 
@@ -387,53 +387,53 @@ if (document.readyState === 'loading') {
   initHeroSpotlight();
 }
 
-// â”€â”€â”€ HERO LIVE VOICE POS SIMULATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── HERO LIVE VOICE POS SIMULATION ─────────────────────────────
 let voiceSimIndex = 0;
 const voicePhrases = [
   {
     text: '"2 kg sugar and 1 litre fortune oil"',
     items: [
-      { name: 'Fortune Sunlite Refined Oil 1L', meta: 'HSN: 1512 â€¢ GST 5%', price: 'â‚¹145.00' },
-      { name: 'Madhur Pure Sugar 2Kg', meta: 'HSN: 1701 â€¢ GST 0%', price: 'â‚¹84.00' }
+      { name: 'Fortune Sunlite Refined Oil 1L', meta: 'HSN: 1512 • GST 5%', price: '₹145.00' },
+      { name: 'Madhur Pure Sugar 2Kg', meta: 'HSN: 1701 • GST 0%', price: '₹84.00' }
     ],
-    total: 'â‚¹229.00',
-    billBadge: 'âš¡ Auto-Billed: â‚¹229.00'
+    total: '₹229.00',
+    billBadge: '⚡ Auto-Billed: ₹229.00'
   },
   {
     text: '"5 packets noodles and 2 amul curd"',
     items: [
-      { name: 'Nestle Maggi Masala Noodles 70g (x5)', meta: 'HSN: 1902 â€¢ GST 12%', price: 'â‚¹70.00' },
-      { name: 'Amul Masti Dahi 400g Pouch (x2)', meta: 'HSN: 0403 â€¢ GST 5%', price: 'â‚¹74.00' }
+      { name: 'Nestle Maggi Masala Noodles 70g (x5)', meta: 'HSN: 1902 • GST 12%', price: '₹70.00' },
+      { name: 'Amul Masti Dahi 400g Pouch (x2)', meta: 'HSN: 0403 • GST 5%', price: '₹74.00' }
     ],
-    total: 'â‚¹144.00',
-    billBadge: 'âš¡ Auto-Billed: â‚¹144.00'
+    total: '₹144.00',
+    billBadge: '⚡ Auto-Billed: ₹144.00'
   },
   {
     text: '"1 packet aashirvaad flour 5kg and 1kg salt"',
     items: [
-      { name: 'Aashirvaad Shudh Chakki Atta 5kg', meta: 'HSN: 1101 â€¢ GST 0%', price: 'â‚¹225.00' },
-      { name: 'Tata Salt Vacuum Evaporated 1kg', meta: 'HSN: 2501 â€¢ GST 0%', price: 'â‚¹28.00' }
+      { name: 'Aashirvaad Shudh Chakki Atta 5kg', meta: 'HSN: 1101 • GST 0%', price: '₹225.00' },
+      { name: 'Tata Salt Vacuum Evaporated 1kg', meta: 'HSN: 2501 • GST 0%', price: '₹28.00' }
     ],
-    total: 'â‚¹253.00',
-    billBadge: 'âš¡ Auto-Billed: â‚¹253.00'
+    total: '₹253.00',
+    billBadge: '⚡ Auto-Billed: ₹253.00'
   },
   {
     text: '"2 packets surf excel 500g and 2 lux soap"',
     items: [
-      { name: 'Surf Excel Quick Wash Powder 500g (x2)', meta: 'HSN: 3402 â€¢ GST 18%', price: 'â‚¹156.00' },
-      { name: 'Lux Rose Soap Bar 100g (x2)', meta: 'HSN: 3401 â€¢ GST 18%', price: 'â‚¹68.00' }
+      { name: 'Surf Excel Quick Wash Powder 500g (x2)', meta: 'HSN: 3402 • GST 18%', price: '₹156.00' },
+      { name: 'Lux Rose Soap Bar 100g (x2)', meta: 'HSN: 3401 • GST 18%', price: '₹68.00' }
     ],
-    total: 'â‚¹224.00',
-    billBadge: 'âš¡ Auto-Billed: â‚¹224.00'
+    total: '₹224.00',
+    billBadge: '⚡ Auto-Billed: ₹224.00'
   },
   {
     text: '"3 bottles thums up 750ml and 2 packets chips"',
     items: [
-      { name: 'Thums Up Soft Drink 750ml (x3)', meta: 'HSN: 2202 â€¢ GST 28%', price: 'â‚¹135.00' },
-      { name: 'Lays Magic Masala Chips 50g (x2)', meta: 'HSN: 2005 â€¢ GST 12%', price: 'â‚¹40.00' }
+      { name: 'Thums Up Soft Drink 750ml (x3)', meta: 'HSN: 2202 • GST 28%', price: '₹135.00' },
+      { name: 'Lays Magic Masala Chips 50g (x2)', meta: 'HSN: 2005 • GST 12%', price: '₹40.00' }
     ],
-    total: 'â‚¹175.00',
-    billBadge: 'âš¡ Auto-Billed: â‚¹175.00'
+    total: '₹175.00',
+    billBadge: '⚡ Auto-Billed: ₹175.00'
   }
 ];
 
@@ -447,7 +447,7 @@ function simulateVoicePOS() {
   if (wave) wave.classList.add('active');
   if (quote) quote.innerHTML = `Listening... <em>"Recognizing voice items..."</em>`;
   if (badge) {
-    badge.textContent = 'ðŸŽ™ï¸ Priyulabs AI Listening...';
+    badge.textContent = '🎙️ Priyulabs AI Listening...';
     badge.style.background = 'rgba(79, 70, 229, 0.2)';
     badge.style.color = '#818cf8';
   }
@@ -482,11 +482,11 @@ function simulateVoicePOS() {
       liveTotal.textContent = curr.total;
     }
 
-    showToast(`ðŸŽ™ï¸ Voice Recognized: ${curr.text} â†’ Bill ${curr.total}`);
+    showToast(`🎙️ Voice Recognized: ${curr.text} → Bill ${curr.total}`);
   }, 900);
 }
 
-// â”€â”€â”€ PRIYULABS INTERACTIVE 6-SERVICE DEMO PLAYGROUND ENGINE â”€â”€â”€â”€
+// ─── PRIYULABS INTERACTIVE 6-SERVICE DEMO PLAYGROUND ENGINE ────
 const demoModal = document.getElementById('demoModal');
 
 function openDemoModal(tab = 'pos') {
@@ -526,22 +526,46 @@ function switchDemoTab(tabKey) {
   });
 }
 
-// â”€â”€â”€ TAB 1: SMART POS BILLING ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── TAB 1: SMART POS BILLING ENGINE ─────────────────────────
 const posProducts = [
-  { id: 'p1', name: 'Caramel Cold Frappe', price: 140, cat: 'cafe', emoji: 'â˜•', tax: 0.05 },
-  { id: 'p2', name: 'Veg Supreme Burger', price: 160, cat: 'cafe', emoji: 'ðŸ”', tax: 0.05 },
-  { id: 'p3', name: 'Farmhouse Pizza 8"', price: 280, cat: 'cafe', emoji: 'ðŸ•', tax: 0.05 },
-  { id: 'p4', name: 'Fortune Mustard Oil 1L', price: 145, cat: 'grocery', emoji: 'ðŸ§´', tax: 0.05 },
-  { id: 'p5', name: 'Basmati Rice Royal 5kg', price: 420, cat: 'grocery', emoji: 'ðŸŒ¾', tax: 0.05 },
-  { id: 'p6', name: 'Maggi Noodles 4-Pack', price: 60, cat: 'grocery', emoji: 'ðŸœ', tax: 0.05 },
-  { id: 'p7', name: 'Cotton Casual Shirt (M)', price: 799, cat: 'fashion', emoji: 'ðŸ‘”', tax: 0.12 },
-  { id: 'p8', name: 'Designer Silk Saree', price: 1499, cat: 'fashion', emoji: 'ðŸ‘—', tax: 0.12 }
+  // CAFE & FOOD (10 Items)
+  { id: 1, category: 'cafe', name: 'Caramel Cold Frappe', price: 140, img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=200&q=80' },
+  { id: 2, category: 'cafe', name: 'Veg Supreme Burger', price: 160, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=80' },
+  { id: 3, category: 'cafe', name: 'Farmhouse Pizza 8"', price: 280, img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=200&q=80' },
+  { id: 4, category: 'cafe', name: 'Peri Peri French Fries', price: 110, img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=200&q=80' },
+  { id: 5, category: 'cafe', name: 'Paneer Tikka Sandwich', price: 150, img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=200&q=80' },
+  { id: 6, category: 'cafe', name: 'Classic Cappuccino', price: 120, img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=200&q=80' },
+  { id: 7, category: 'cafe', name: 'Blueberry Cheesecake', price: 190, img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=200&q=80' },
+  { id: 8, category: 'cafe', name: 'Crispy Veg Momos (6 Pcs)', price: 130, img: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=200&q=80' },
+  { id: 9, category: 'cafe', name: 'Mint Mojito Mocktail', price: 140, img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=200&q=80' },
+  { id: 10, category: 'cafe', name: 'Chocolate Brownie Sundae', price: 170, img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=200&q=80' },
+
+  // GROCERY & FMCG (10 Items)
+  { id: 11, category: 'grocery', name: 'Fortune Mustard Oil 1L', price: 145, img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=200&q=80' },
+  { id: 12, category: 'grocery', name: 'Daawat Basmati Rice 5kg', price: 420, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=200&q=80' },
+  { id: 13, category: 'grocery', name: 'Maggi 2-Minute Noodles 4-Pack', price: 60, img: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=200&q=80' },
+  { id: 14, category: 'grocery', name: 'Tata Salt 1kg', price: 28, img: 'https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?auto=format&fit=crop&w=200&q=80' },
+  { id: 15, category: 'grocery', name: 'Amul Butter 500g', price: 275, img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=200&q=80' },
+  { id: 16, category: 'grocery', name: 'Aashirvaad Atta 5kg', price: 245, img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=200&q=80' },
+  { id: 17, category: 'grocery', name: 'Tata Tea Gold 500g', price: 310, img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=200&q=80' },
+  { id: 18, category: 'grocery', name: 'Cadbury Dairy Milk Silk', price: 90, img: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=200&q=80' },
+  { id: 19, category: 'grocery', name: 'Surf Excel Quick Wash 1kg', price: 145, img: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=200&q=80' },
+  { id: 20, category: 'grocery', name: 'Dettol Handwash Refill 750ml', price: 99, img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=200&q=80' },
+
+  // RETAIL & APPAREL (10 Items)
+  { id: 21, category: 'retail', name: 'Cotton Casual Shirt (M)', price: 799, img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=200&q=80' },
+  { id: 22, category: 'retail', name: 'Designer Silk Saree', price: 1499, img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=200&q=80' },
+  { id: 23, category: 'retail', name: 'Slim Fit Denim Jeans 32', price: 1199, img: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=200&q=80' },
+  { id: 24, category: 'retail', name: 'Round Neck Cotton T-Shirt', price: 399, img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=200&q=80' },
+  { id: 25, category: 'retail', name: 'Anarkali Kurti Set', price: 1250, img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=200&q=80' },
+  { id: 26, category: 'retail', name: 'Leather Men Belt', price: 499, img: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=200&q=80' },
+  { id: 27, category: 'retail', name: 'Running Sneakers (Size 9)', price: 1699, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=200&q=80' },
+  { id: 28, category: 'retail', name: 'Polarized Sunglasses', price: 899, img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=200&q=80' },
+  { id: 29, category: 'retail', name: 'Women Leather Handbag', price: 1399, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=200&q=80' },
+  { id: 30, category: 'retail', name: 'Casual Canvas Shoes', price: 699, img: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=200&q=80' }
 ];
 
-let posCart = [
-  { id: 'p2', name: 'Veg Supreme Burger', price: 160, emoji: 'ðŸ”', qty: 2, tax: 0.05 },
-  { id: 'p1', name: 'Caramel Cold Frappe', price: 140, emoji: 'â˜•', qty: 1, tax: 0.05 }
-];
+let posCart = [];
 
 function filterPosProducts(cat, btnEl) {
   if (btnEl) {
@@ -551,54 +575,82 @@ function filterPosProducts(cat, btnEl) {
   renderPosProducts(cat);
 }
 
-function renderPosProducts(filterCat = 'all') {
+function renderPosProducts(filterCat = 'cafe') {
   const grid = document.getElementById('posProductGrid');
   if (!grid) return;
-  const filtered = filterCat === 'all' ? posProducts : posProducts.filter(p => p.cat === filterCat);
-  grid.innerHTML = filtered.map(p => `
-    <div class="pos-item-card" onclick="addPosToCart('${p.id}')">
-      <div class="pic-emoji">${p.emoji}</div>
-      <div class="pic-info">
-        <strong>${p.name}</strong>
-        <small>â‚¹${p.price}</small>
+  const filtered = filterCat === 'all' 
+    ? posProducts 
+    : posProducts.filter(p => p.category === filterCat || p.cat === filterCat || (filterCat === 'fashion' && p.category === 'retail') || (filterCat === 'retail' && (p.category === 'retail' || p.category === 'fashion')));
+
+  grid.innerHTML = filtered.map(item => `
+    <div class="pos-item-card" onclick="addToPosCart(${item.id})" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:14px; padding:12px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between; transition: transform 0.15s ease, box-shadow 0.15s ease; cursor:pointer;">
+      <!-- Vibrant Product Visual -->
+      <div style="width: 100%; height: 80px; border-radius: 10px; overflow: hidden; margin-bottom: 8px; background: #f8fafc;">
+        <img src="${item.img}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=200&q=80';" />
       </div>
-      <button class="pic-add-btn">+ Add</button>
+      <div style="font-weight:700; font-size:12.5px; color:#0f172a; line-height: 1.3; height: 32px; display: flex; align-items: center; justify-content: center; margin-bottom:4px;">
+        ${item.name}
+      </div>
+      <div style="color:#88424d; font-weight:800; font-size:13px; margin-bottom:8px;">
+        &#8377;${item.price}
+      </div>
+      <button type="button" onclick="event.stopPropagation(); addToPosCart(${item.id})" style="background:#88424d; color:#ffffff; border:none; border-radius:8px; padding:6px 12px; font-size:12px; font-weight:700; cursor:pointer; width:100%; transition: opacity 0.2s;">
+        + Add
+      </button>
     </div>
   `).join('');
 }
 
-function addPosToCart(productId) {
-  const prod = posProducts.find(p => p.id === productId);
+function addToPosCart(productId) {
+  const prod = posProducts.find(p => p.id == productId);
   if (!prod) return;
-  const existing = posCart.find(item => item.id === productId);
+  const existing = posCart.find(item => item.id == productId);
   if (existing) {
     existing.qty += 1;
   } else {
-    posCart.push({ ...prod, qty: 1 });
+    posCart.push({
+      id: prod.id,
+      name: prod.name,
+      price: prod.price,
+      img: prod.img,
+      category: prod.category || prod.cat,
+      qty: 1,
+      tax: (prod.category === 'retail' || prod.category === 'fashion') ? 0.12 : 0.05
+    });
   }
   renderPosCart();
-  showToast(`âš¡ Added ${prod.name} to POS bill!`);
+  if (typeof showToast === 'function') showToast(`Added ${prod.name} to POS bill!`);
 }
+const addPosToCart = addToPosCart;
 
 function updatePosQty(productId, delta) {
-  const item = posCart.find(i => i.id === productId);
+  const item = posCart.find(i => i.id == productId);
   if (!item) return;
   item.qty += delta;
   if (item.qty <= 0) {
-    posCart = posCart.filter(i => i.id !== productId);
+    posCart = posCart.filter(i => i.id != productId);
   }
   renderPosCart();
 }
 
 function removePosItem(productId) {
-  posCart = posCart.filter(i => i.id !== productId);
+  posCart = posCart.filter(i => i.id != productId);
   renderPosCart();
 }
 
 function clearPosCart() {
   posCart = [];
   renderPosCart();
-  showToast('ðŸ—‘ï¸ Cart cleared.');
+  if (typeof showToast === 'function') showToast('Cart cleared.');
+}
+
+function resetPosCart() {
+  posCart = [];
+  renderPosCart();
+  const successBox = document.getElementById('posPaySuccess');
+  if (successBox) successBox.style.display = 'none';
+  const payBtn = document.getElementById('btnPosPay');
+  if (payBtn) payBtn.textContent = 'Pay via UPI QR / Pine Labs';
 }
 
 function renderPosCart() {
@@ -609,14 +661,13 @@ function renderPosCart() {
   const successBox = document.getElementById('posPaySuccess');
 
   if (successBox) successBox.style.display = 'none';
-
   if (!list) return;
 
   if (posCart.length === 0) {
-    list.innerHTML = `<div class="pos-empty-cart">ðŸ›’ Cart is empty. Click any product on left to start billing.</div>`;
-    if (subtotalEl) subtotalEl.textContent = 'â‚¹0.00';
-    if (taxEl) taxEl.textContent = 'â‚¹0.00';
-    if (totalEl) totalEl.textContent = 'â‚¹0.00';
+    list.innerHTML = '<div class="pos-empty-cart">Cart is empty. Click any product on left to start billing.</div>';
+    if (subtotalEl) subtotalEl.innerHTML = '&#8377;0.00';
+    if (taxEl) taxEl.innerHTML = '&#8377;0.00';
+    if (totalEl) totalEl.innerHTML = '&#8377;0.00';
     return;
   }
 
@@ -632,60 +683,62 @@ function renderPosCart() {
     return `
       <div class="pos-cart-row">
         <div class="pcr-left">
-          <span class="pcr-emoji">${item.emoji}</span>
+          <div class="pcr-icon" style="width:32px; height:32px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0;">
+            <img src="${item.img}" alt="${item.name}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.style.display='none'" />
+          </div>
           <div>
             <strong>${item.name}</strong>
-            <small>â‚¹${item.price} each</small>
+            <small>&#8377;${item.price} each</small>
           </div>
         </div>
         <div class="pcr-right">
           <div class="pcr-qty-ctrl">
-            <button onclick="updatePosQty('${item.id}', -1)">âˆ’</button>
+            <button type="button" onclick="updatePosQty(${item.id}, -1)" aria-label="Decrease">&minus;</button>
             <span>${item.qty}</span>
-            <button onclick="updatePosQty('${item.id}', 1)">+</button>
+            <button type="button" onclick="updatePosQty(${item.id}, 1)" aria-label="Increase">+</button>
           </div>
-          <strong class="pcr-price">â‚¹${itemSub.toFixed(2)}</strong>
-          <button class="pcr-del" onclick="removePosItem('${item.id}')" title="Remove">Ã—</button>
+          <strong class="pcr-price">&#8377;${itemSub.toFixed(2)}</strong>
+          <button type="button" class="pcr-del" onclick="removePosItem(${item.id})" title="Remove">&times;</button>
         </div>
       </div>
     `;
   }).join('');
 
   const grandTotal = subtotal + tax;
-  if (subtotalEl) subtotalEl.textContent = `â‚¹${subtotal.toFixed(2)}`;
-  if (taxEl) taxEl.textContent = `â‚¹${tax.toFixed(2)}`;
-  if (totalEl) totalEl.textContent = `â‚¹${grandTotal.toFixed(2)}`;
+  if (subtotalEl) subtotalEl.innerHTML = `&#8377;${subtotal.toFixed(2)}`;
+  if (taxEl) taxEl.innerHTML = `&#8377;${tax.toFixed(2)}`;
+  if (totalEl) totalEl.innerHTML = `&#8377;${grandTotal.toFixed(2)}`;
 }
 
 function runPosVoicePreset(phrase) {
-  showToast(`ðŸŽ™ï¸ Voice parsing: "${phrase}"`);
+  if (typeof showToast === 'function') showToast(`Voice parsing: "${phrase}"`);
   const status = document.getElementById('posStatusBar');
   if (status) {
-    status.innerHTML = `<span class="status-indicator" style="background:#f59e0b"></span> ðŸ—£ï¸ AI Parsing: "${phrase}"...`;
+    status.innerHTML = `<span class="status-indicator" style="background:#f59e0b"></span> AI Parsing: "${phrase}"...`;
   }
   setTimeout(() => {
     if (phrase.includes('burger')) {
-      addPosToCart('p2');
-      addPosToCart('p1');
+      addToPosCart(2);
+      addToPosCart(1);
     } else {
-      addPosToCart('p5');
-      addPosToCart('p4');
+      addToPosCart(12);
+      addToPosCart(11);
     }
     if (status) {
-      status.innerHTML = `<span class="status-indicator" style="background:#10b981"></span> âœ… AI Voice Bill Generated in 0.3s!`;
+      status.innerHTML = '<span class="status-indicator" style="background:#10b981"></span> AI Voice Bill Generated in 0.3s!';
     }
   }, 400);
 }
 
 function simulateBarcodeScan() {
   const randomProduct = posProducts[Math.floor(Math.random() * posProducts.length)];
-  addPosToCart(randomProduct.id);
-  showToast(`ðŸ“· Barcode Scanned (EAN-890123): Added ${randomProduct.name}!`);
+  addToPosCart(randomProduct.id);
+  if (typeof showToast === 'function') showToast(`Barcode Scanned (EAN-890123): Added ${randomProduct.name}!`);
 }
 
 function executePosPayment() {
   if (posCart.length === 0) {
-    showToast('âš ï¸ Please add at least one item to cart first.');
+    if (typeof showToast === 'function') showToast('Please add at least one item to cart first.');
     return;
   }
   const totalEl = document.getElementById('posGrandTotal');
@@ -693,27 +746,29 @@ function executePosPayment() {
   const successBox = document.getElementById('posPaySuccess');
   const payBtn = document.getElementById('btnPosPay');
 
-  if (payBtn) payBtn.textContent = 'â³ Transmitting to Payment Terminal...';
+  if (payBtn) payBtn.textContent = 'Transmitting to Payment Terminal...';
 
   setTimeout(() => {
-    if (paidAmt && totalEl) paidAmt.textContent = totalEl.textContent.replace('â‚¹', '');
+    if (paidAmt && totalEl) paidAmt.textContent = totalEl.textContent.replace(/[^\d.]/g, '');
     if (successBox) successBox.style.display = 'block';
-    if (payBtn) payBtn.textContent = 'ðŸ’³ Pay via UPI QR / Pine Labs âš¡';
-    showToast(`âœ… Payment Approved! Invoice #PR-${Math.floor(1000 + Math.random() * 9000)} generated.`);
+    if (payBtn) payBtn.textContent = 'Pay via UPI QR / Pine Labs';
+    if (typeof showToast === 'function') showToast(`Payment Approved! Invoice #PR-${Math.floor(1000 + Math.random() * 9000)} generated.`);
   }, 600);
 }
 
 function printPosInvoice() {
-  showToast('ðŸ–¨ï¸ Thermal Print signal sent (2-inch ESC/POS). Receipt Printed!');
+  if (typeof showToast === 'function') showToast('Thermal Print signal sent (2-inch ESC/POS). Receipt Printed!');
 }
 
 function resetPosCart() {
   posCart = [];
   renderPosCart();
-  showToast('âœ¨ POS ready for new customer checkout.');
+  const successBox = document.getElementById('posPaySuccess');
+  if (successBox) successBox.style.display = 'none';
 }
 
-// â”€â”€â”€ TAB 2: ERP & STAFF HRMS ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+// ─── TAB 2: ERP & STAFF HRMS ENGINE ────────────────────────────
 let erpStockData = [
   { id: 's1', name: 'Fortune Sunlite Refined Oil 1L', stock: 48, min: 10, status: 'In Stock' },
   { id: 's2', name: 'Aashirvaad Chakki Atta 10kg', stock: 18, min: 8, status: 'In Stock' },
@@ -733,12 +788,12 @@ function renderErpStock() {
         <td><span class="stock-qty-badge ${isLow ? 'low' : ''}">${item.stock} Units</span></td>
         <td>
           <span class="status-pill ${isLow ? 'pill-warning' : 'pill-success'}">
-            ${isLow ? 'âš ï¸ Low Stock Alert' : 'âœ… Healthy'}
+            ${isLow ? '⚠️ Low Stock Alert' : '✓ Healthy'}
           </span>
         </td>
         <td>
           <button class="btn-restock" onclick="reorderErpItem('${item.id}')">
-            ${isLow ? 'âš¡ Quick Reorder' : '+ Add Stock'}
+            ${isLow ? '⚡ Quick Reorder' : '+ Add Stock'}
           </button>
         </td>
       </tr>
@@ -749,7 +804,7 @@ function renderErpStock() {
 function simulateErpScanInvoice() {
   const toast = document.getElementById('erpToastMsg');
   if (toast) {
-    toast.innerHTML = `<span>â³ Priyulabs Vision AI scanning wholesale tax invoice...</span>`;
+    toast.innerHTML = `<span>⏳ Priyulabs Vision AI scanning wholesale tax invoice...</span>`;
   }
   setTimeout(() => {
     erpStockData.forEach(item => {
@@ -758,9 +813,9 @@ function simulateErpScanInvoice() {
     });
     renderErpStock();
     if (toast) {
-      toast.innerHTML = `<span style="color:#059669">âœ… Wholesale Invoice parsed! 5 SKUs updated with +125 units added to cloud ERP.</span>`;
+      toast.innerHTML = `<span style="color:#059669">✓ Wholesale Invoice parsed! 5 SKUs updated with +125 units added to cloud ERP.</span>`;
     }
-    showToast('ðŸ“· Vision AI OCR auto-logged 5 invoice items into ERP!');
+    showToast('📷 Vision AI OCR auto-logged 5 invoice items into ERP!');
   }, 700);
 }
 
@@ -769,7 +824,7 @@ function simulateErpSale() {
     item.stock = Math.max(1, item.stock - Math.floor(Math.random() * 8 + 4));
   });
   renderErpStock();
-  showToast('ðŸ“‰ High-volume sale simulated! Low stock alerts triggered.');
+  showToast('📉 High-volume sale simulated! Low stock alerts triggered.');
 }
 
 function reorderErpItem(id) {
@@ -777,14 +832,14 @@ function reorderErpItem(id) {
   if (!item) return;
   item.stock += 30;
   renderErpStock();
-  showToast(`ðŸ“¦ Restocked +30 units of ${item.name}! Purchase order auto-sent.`);
+  showToast(`📦 Restocked +30 units of ${item.name}! Purchase order auto-sent.`);
 }
 
 function simulateHrmsCheckIn() {
   const camStatus = document.getElementById('hrmsCamStatus');
   const camBox = document.getElementById('hrmsCamBox');
   if (camBox) camBox.classList.add('scanning');
-  if (camStatus) camStatus.innerHTML = `<span>ðŸ” Scanning Face & GPS Location (Store #104)...</span>`;
+  if (camStatus) camStatus.innerHTML = `<span>🔍 Scanning Face & GPS Location (Store #104)...</span>`;
 
   setTimeout(() => {
     if (camBox) {
@@ -792,48 +847,48 @@ function simulateHrmsCheckIn() {
       camBox.classList.add('verified');
     }
     if (camStatus) {
-      camStatus.innerHTML = `<span style="color:#10b981;font-weight:700;">âœ… Rahul Sharma Clocked In at 09:02 AM â€¢ Geofence Match (0.01m)</span>`;
+      camStatus.innerHTML = `<span style="color:#10b981;font-weight:700;">✓ Rahul Sharma Clocked In at 09:02 AM • Geofence Match (0.01m)</span>`;
     }
-    showToast('ðŸ¤³ Facial Biometric Attendance verified! Auto-logged into Payroll.');
+    showToast('🤳 Facial Biometric Attendance verified! Auto-logged into Payroll.');
   }, 800);
 }
 
-// â”€â”€â”€ TAB 3: CUSTOM WEBSITE & STOREFRONT ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── TAB 3: CUSTOM WEBSITE & STOREFRONT ENGINE ──────────────────
 const wsIndustryTemplates = {
   restaurant: {
     headline: 'Fresh Artisanal Meals Delivered To Your Door',
     sub: 'Order directly & get 20% flat discount on all combos today!',
     catalog: [
-      { name: 'Gourmet Truffle Burger', price: 'â‚¹249', img: 'ðŸ”' },
-      { name: 'Wood-Fired Margherita', price: 'â‚¹349', img: 'ðŸ•' },
-      { name: 'Iced Hazelnut Latte', price: 'â‚¹179', img: 'â˜•' }
+      { name: 'Gourmet Truffle Burger', price: '₹249', img: '🍔' },
+      { name: 'Wood-Fired Margherita', price: '₹349', img: '🍕' },
+      { name: 'Iced Hazelnut Latte', price: '₹179', img: '☕' }
     ]
   },
   fashion: {
     headline: 'Contemporary Indian & Western Couture Collection',
     sub: 'Shop trendy fashion with same-day local delivery & easy exchange.',
     catalog: [
-      { name: 'Pure Linen Floral Kurti', price: 'â‚¹1,299', img: 'ðŸ‘—' },
-      { name: 'Slim Fit Cotton Blazer', price: 'â‚¹2,499', img: 'ðŸ§¥' },
-      { name: 'Handcrafted Leather Tote', price: 'â‚¹1,899', img: 'ðŸ‘œ' }
+      { name: 'Pure Linen Floral Kurti', price: '₹1,299', img: '👗' },
+      { name: 'Slim Fit Cotton Blazer', price: '₹2,499', img: '🧥' },
+      { name: 'Handcrafted Leather Tote', price: '₹1,899', img: '👜' }
     ]
   },
   grocery: {
     headline: 'Fresh Farm Groceries & Supermarket Essentials',
     sub: 'Order in 30 seconds on WhatsApp with free home delivery.',
     catalog: [
-      { name: 'Organic Cold-Pressed Oil', price: 'â‚¹280', img: 'ðŸ§´' },
-      { name: 'Himalayan Organic Ghee', price: 'â‚¹650', img: 'ðŸ§ˆ' },
-      { name: 'Dry Fruits Festive Pack', price: 'â‚¹890', img: 'ðŸ¥œ' }
+      { name: 'Organic Cold-Pressed Oil', price: '₹280', img: '🥫' },
+      { name: 'Himalayan Organic Ghee', price: '₹650', img: '🧈' },
+      { name: 'Dry Fruits Festive Pack', price: '₹890', img: '🥜' }
     ]
   },
   clinic: {
     headline: 'Specialized Healthcare & Instant Doctor Appointments',
     sub: 'Book clinic visits & order prescription medicines online.',
     catalog: [
-      { name: 'General Physician Consult', price: 'â‚¹500', img: 'ðŸ©º' },
-      { name: 'Full Body Health Checkup', price: 'â‚¹1,499', img: 'ðŸ§ª' },
-      { name: 'Immunity Care Booster Kit', price: 'â‚¹750', img: 'ðŸ’Š' }
+      { name: 'General Physician Consult', price: '₹500', img: '🩺' },
+      { name: 'Full Body Health Checkup', price: '₹1,499', img: '🧪' },
+      { name: 'Immunity Care Booster Kit', price: '₹750', img: '💊' }
     ]
   }
 };
@@ -848,7 +903,7 @@ function setWsIndustry(ind, btnEl) {
     btnEl.classList.add('active');
   }
   updateWsPreview();
-  showToast(`ðŸŒ Switched website template to ${ind.toUpperCase()}!`);
+  showToast(`🌐 Switched website template to ${ind.toUpperCase()}!`);
 }
 
 function setWsColor(color, bg, btnEl) {
@@ -861,7 +916,7 @@ function setWsColor(color, bg, btnEl) {
   const siteHero = document.getElementById('wsSiteHero');
   if (siteHeader) siteHeader.style.background = color;
   if (siteHero) siteHero.style.background = `linear-gradient(135deg, ${color} 0%, #2b1118 100%)`;
-  showToast('ðŸŽ¨ Updated website brand theme color!');
+  showToast('🎨 Updated website brand theme color!');
 }
 
 function setWsDevice(device) {
@@ -888,7 +943,7 @@ function updateWsPreview() {
   const subEl = document.getElementById('wsHeroSub');
   const catalogEl = document.getElementById('wsSiteCatalog');
 
-  if (logoEl) logoEl.textContent = `âœ¨ ${brandName}`;
+  if (logoEl) logoEl.textContent = `✨ ${brandName}`;
   if (urlEl) {
     const slug = brandName.toLowerCase().replace(/[^a-z0-9]/g, '');
     urlEl.textContent = `https://${slug || 'mystore'}.priyulabs.store`;
@@ -906,7 +961,7 @@ function updateWsPreview() {
           <strong>${item.name}</strong>
           <span>${item.price}</span>
         </div>
-        <button class="wpc-btn" onclick="showToast('ðŸ›ï¸ Added ${item.name} to cart!')">+ Add</button>
+        <button class="wpc-btn" onclick="showToast('🛒 Added ${item.name} to cart!')">+ Add</button>
       </div>
     `).join('');
   }
@@ -915,10 +970,10 @@ function updateWsPreview() {
 function simulateWsOrder() {
   const brandInput = document.getElementById('wsInputBrand');
   const brand = brandInput ? brandInput.value : 'Your Store';
-  showToast(`ðŸ“² Generated WhatsApp Order: "Hi ${brand}, I would like to order items from your online menu!"`);
+  showToast(`📲 Generated WhatsApp Order: "Hi ${brand}, I would like to order items from your online menu!"`);
 }
 
-// â”€â”€â”€ TAB 4: DIGITAL MARKETING & ADS ROI ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── TAB 4: DIGITAL MARKETING & ADS ROI ENGINE ─────────────────
 let mktGoal = 'footfall';
 
 function setMktGoal(goal, btnEl) {
@@ -939,7 +994,7 @@ function updateMktCalculation() {
   const leadsEl = document.getElementById('mktLeads');
   const revEl = document.getElementById('mktRevenue');
 
-  if (display) display.textContent = `â‚¹${budget.toLocaleString('en-IN')} / month`;
+  if (display) display.textContent = `₹${budget.toLocaleString('en-IN')} / month`;
 
   const multiplier = mktGoal === 'footfall' ? 4.8 : mktGoal === 'online' ? 3.6 : 4.2;
   const reach = Math.round(budget * multiplier);
@@ -948,7 +1003,7 @@ function updateMktCalculation() {
 
   if (reachEl) reachEl.textContent = `${reach.toLocaleString('en-IN')}+`;
   if (leadsEl) leadsEl.textContent = `${leads}+`;
-  if (revEl) revEl.textContent = `â‚¹${rev.toLocaleString('en-IN')}`;
+  if (revEl) revEl.textContent = `₹${rev.toLocaleString('en-IN')}`;
 }
 
 function setWaTemplate(type) {
@@ -958,15 +1013,15 @@ function setWaTemplate(type) {
   if (type === 'festive') {
     promoText.textContent = 'Namaste! Special 40% FESTIVE DISCOUNT across all categories this weekend. Show this message at counter or order online!';
   } else if (type === 'vip') {
-    promoText.textContent = 'Hello VIP Member! You have an exclusive â‚¹500 Cashback voucher waiting on your next bill above â‚¹1,999. Valid till Sunday.';
+    promoText.textContent = 'Hello VIP Member! You have an exclusive ₹500 Cashback voucher waiting on your next bill above ₹1,999. Valid till Sunday.';
   } else {
     promoText.textContent = 'BUY 1 GET 1 FREE FLASH SALE! Buy any item today and get another item completely free. Hurry, offer valid till midnight!';
   }
-  showToast(`ðŸ“£ WhatsApp broadcast template updated: ${type.toUpperCase()}!`);
+  showToast(`📢 WhatsApp broadcast template updated: ${type.toUpperCase()}!`);
 }
 
-// â”€â”€â”€ TAB 5: LOGO & BRAND STUDIO ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-let currentBrandIcon = 'ðŸ‘‘';
+// ─── TAB 5: LOGO & BRAND STUDIO ENGINE ─────────────────────────
+let currentBrandIcon = '👑';
 let currentBrandTheme = 'rosegold';
 
 function setBrandIcon(icon, btnEl) {
@@ -976,7 +1031,7 @@ function setBrandIcon(icon, btnEl) {
     btnEl.classList.add('active');
   }
   updateBrandEngine();
-  showToast(`ðŸŽ¯ Logo icon changed to ${icon}!`);
+  showToast(`🎯 Logo icon changed to ${icon}!`);
 }
 
 function setBrandTheme(theme, btnEl) {
@@ -989,7 +1044,7 @@ function setBrandTheme(theme, btnEl) {
   if (grid) {
     grid.className = `brand-mockups-grid theme-${theme}`;
   }
-  showToast(`âœ¨ Brand theme switched to ${theme.toUpperCase()}!`);
+  showToast(`✨ Brand theme switched to ${theme.toUpperCase()}!`);
 }
 
 function updateBrandEngine() {
@@ -1003,7 +1058,7 @@ function updateBrandEngine() {
   document.querySelectorAll('.b-dyn-icon').forEach(el => el.textContent = currentBrandIcon);
 }
 
-// â”€â”€â”€ TAB 6: ALL-IN-ONE BUNDLE ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── TAB 6: ALL-IN-ONE BUNDLE ENGINE ───────────────────────────
 function updateBundleCalc() {
   const checkboxes = document.querySelectorAll('.bundle-check-item input[type="checkbox"]');
   let total = 0;
@@ -1034,9 +1089,9 @@ function updateBundleCalc() {
     finalPrice = total - discount;
   }
 
-  if (origPriceEl) origPriceEl.textContent = `â‚¹${total.toLocaleString('en-IN')}`;
-  if (discountEl) discountEl.textContent = `-â‚¹${discount.toLocaleString('en-IN')} (${count >= 5 ? '53%' : count >= 3 ? '35%' : '20%'} OFF)`;
-  if (finalPriceEl) finalPriceEl.textContent = `â‚¹${finalPrice.toLocaleString('en-IN')}`;
+  if (origPriceEl) origPriceEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+  if (discountEl) discountEl.textContent = `-₹${discount.toLocaleString('en-IN')} (${count >= 5 ? '53%' : count >= 3 ? '35%' : '20%'} OFF)`;
+  if (finalPriceEl) finalPriceEl.textContent = `₹${finalPrice.toLocaleString('en-IN')}`;
 }
 
 function launchCustomBundleWhatsApp() {
@@ -1044,13 +1099,13 @@ function launchCustomBundleWhatsApp() {
   document.querySelectorAll('.bundle-check-item input[type="checkbox"]:checked').forEach(cb => {
     selected.push(cb.dataset.name);
   });
-  const finalPrice = document.getElementById('bundleFinalPrice')?.textContent || 'â‚¹24,999';
+  const finalPrice = document.getElementById('bundleFinalPrice')?.textContent || '₹24,999';
   const msg = encodeURIComponent(`Hello Priyulabs! I am interested in the All-in-One Business Stack with: ${selected.join(', ')} (Estimated Package: ${finalPrice}). Please share the proposal!`);
   window.open(`https://wa.me/917849074050?text=${msg}`, '_blank');
 }
 
 function initDemoPlaygrounds() {
-  renderPosProducts('all');
+  renderPosProducts('cafe');
   renderPosCart();
   renderErpStock();
   updateWsPreview();
@@ -1059,14 +1114,14 @@ function initDemoPlaygrounds() {
   updateBundleCalc();
 }
 
-// â”€â”€â”€ POLICY MODAL (MSME UDYAM-OD-19-0177979) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── POLICY MODAL (MSME UDYAM-OD-19-0177979) ────────────
 const policyModal = document.getElementById('policyModal');
 const policyModalTitle = document.getElementById('policyModalTitle');
 const policyModalContent = document.getElementById('policyModalContent');
 
 const policies = {
   about: {
-    title: 'About Us â€“ Priyulabs',
+    title: 'About Us – Priyulabs',
     content: `
       <h4>Our Mission</h4>
       <p><strong>Priyulabs</strong> (PriyuLabs Technologies Pvt. Ltd.) is an Indian SaaS startup registered under <strong>MSME (UDYAM-OD-19-0177979)</strong>. Our goal is to empower 1.2+ Crore local retail merchants, supermarkets, cafes, and apparel stores with AI-powered retail operating systems.</p>
@@ -1080,7 +1135,7 @@ const policies = {
     `
   },
   privacy: {
-    title: 'Privacy Policy â€“ Priyulabs',
+    title: 'Privacy Policy – Priyulabs',
     content: `
       <h4>1. Data Protection & Sovereignty</h4>
       <p>Your store's financial data, customer numbers, billing history, and stock records are 100% encrypted using 256-bit AES encryption. Priyulabs stores all database records strictly on Tier-4 data centers located within the Republic of India.</p>
@@ -1091,7 +1146,7 @@ const policies = {
     `
   },
   terms: {
-    title: 'Terms & Conditions â€“ Priyulabs',
+    title: 'Terms & Conditions – Priyulabs',
     content: `
       <h4>1. Free Trial & Subscriptions</h4>
       <p>New users are entitled to a 14-day full feature trial without credit card requirements. Setup and on-site hardware sync are provided free of cost during the trial phase.</p>
@@ -1102,7 +1157,7 @@ const policies = {
     `
   },
   refund: {
-    title: 'Refund & Cancellation Policy â€“ Priyulabs',
+    title: 'Refund & Cancellation Policy – Priyulabs',
     content: `
       <h4>1. 30-Day Money-Back Guarantee</h4>
       <p>If you choose a paid annual subscription after your free trial and find that Priyulabs does not fit your store requirements, you can request a 100% full refund within 30 days of purchase.</p>
@@ -1145,12 +1200,12 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// â”€â”€â”€ SECTOR BREAKDOWN MODAL (TRADITIONAL BEFORE VS PRIYULABS AFTER) â”€â”€â”€
+// ─── SECTOR BREAKDOWN MODAL (TRADITIONAL BEFORE VS PRIYULABS AFTER) ───
 const sectorModal = document.getElementById('sectorModal');
 
 const sectorDetailsData = {
   pos: {
-    emoji: 'ðŸ–¥ï¸',
+    emoji: '🖥️',
     badge: 'Next-Gen Point of Sale (POS)',
     title: 'Point of Sale (POS)',
     eyebrow: 'PRIYULABS NEXT-GEN RETAIL POS',
@@ -1159,24 +1214,24 @@ const sectorDetailsData = {
     image: 'assets/pos_billing_preview.jpg',
     before: [
       'Clunky legacy desktop software freezing during peak billing rush hours',
-      'No internet outage protection â€” store stops billing when Wi-Fi drops',
+      'No internet outage protection — store stops billing when Wi-Fi drops',
       'Disconnected card swipe machines requiring manual price re-typing on EDC'
     ],
     after: [
-      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap a wholesaler invoice â€” AI auto-extracts items (name, qty, batch, MRP) and logs stock in under 2 seconds with zero manual entry',
+      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap a wholesaler invoice — AI auto-extracts items (name, qty, batch, MRP) and logs stock in under 2 seconds with zero manual entry',
       '<strong>100% Offline-First Engine:</strong> Keep billing without internet; automatically syncs to cloud when reconnected',
       '<strong>Bi-Directional EDC & UPI Push:</strong> Send exact invoice amounts directly to Pine Labs, Paytm & UPI QR screens with zero cashier theft'
     ],
-    techUpgrades: ['âš¡ Sub-Second POS Billing', 'ðŸ“¦ Vision AI Stock Detection', 'ðŸ›¡ï¸ Expiry Shield Alerts', 'ðŸ’³ Bi-Directional EDC Sync', 'ðŸ“± Dual Customer Screen'],
-    roi: 'ðŸš€ <strong>Proven Impact:</strong> 3x Faster Customer Checkout â€¢ 0% Dead-Stock Write-Offs â€¢ 100% Cash Reconciliation'
+    techUpgrades: ['⚡ Sub-Second POS Billing', '📦 Vision AI Stock Detection', '🛡️ Expiry Shield Alerts', '💳 Bi-Directional EDC Sync', '📱 Dual Customer Screen'],
+    roi: '🚀 <strong>Proven Impact:</strong> 3x Faster Customer Checkout • 0% Dead-Stock Write-Offs • 100% Cash Reconciliation'
   },
   supermarket: {
-    emoji: 'ðŸ›’',
+    emoji: '🛒',
     badge: 'High-Volume Retail & Grocery POS',
     title: 'Supermarkets, Grocery & Kirana',
     eyebrow: 'PRIYULABS FOR SUPERMARKETS & KIRANA',
     headline: 'Vision AI Stock Detection & Expiry Shield for high-volume grocery & Kirana',
-    heroDesc: 'Cut expired-stock losses to zero with Vision AI Stock Detection â€” snap a wholesale invoice, auto-log every item, and shield shelves across Kirana, Pharmacy & Supermarket from pre-expiry losses.',
+    heroDesc: 'Cut expired-stock losses to zero with Vision AI Stock Detection — snap a wholesale invoice, auto-log every item, and shield shelves across Kirana, Pharmacy & Supermarket from pre-expiry losses.',
     image: 'assets/sector_supermarket.jpg',
     before: [
       'Manual barcode searching & keyboard price typing creating long 10-minute billing queues',
@@ -1184,15 +1239,15 @@ const sectorDetailsData = {
       'Stock expiry losses: Expired packets sitting unnoticed on back shelves causing customer loss'
     ],
     after: [
-      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap wholesaler invoices to auto-log stock & get pre-expiry alerts 7â€“30 days before expiry across Kirana, Pharmacy & Supermarket',
+      '<strong>Vision AI Stock Detection & Expiry Shield:</strong> Snap wholesaler invoices to auto-log stock & get pre-expiry alerts 7–30 days before expiry across Kirana, Pharmacy & Supermarket',
       '<strong>Direct Weighing Scale Sync:</strong> Weight transfers automatically from digital scale straight into POS bill',
       '<strong>Invoice OCR Auto-Stock Logging:</strong> AI extracts every line item (name, qty, batch, MRP) from wholesale bill photos in under 2 seconds'
     ],
-    techUpgrades: ['ðŸ“¦ Vision AI Stock Detection', 'ðŸ›¡ï¸ Expiry Shield Alerts', 'ðŸ“· Invoice OCR Auto-Log', 'âš–ï¸ Weighing Scale Sync', 'ðŸ“… FEFO Batch Tracking'],
-    roi: 'âš¡ <strong>Proven Impact:</strong> 80% Faster Billing Queue â€¢ 0% Expired Stock Losses â€¢ 100% Cash Accuracy'
+    techUpgrades: ['📦 Vision AI Stock Detection', '🛡️ Expiry Shield Alerts', '📷 Invoice OCR Auto-Log', '⚖️ Weighing Scale Sync', '📅 FEFO Batch Tracking'],
+    roi: '⚡ <strong>Proven Impact:</strong> 80% Faster Billing Queue • 0% Expired Stock Losses • 100% Cash Accuracy'
   },
   cafe: {
-    emoji: 'â˜•',
+    emoji: '☕',
     badge: 'Food & Beverage Operations OS',
     title: 'Cafes, Bakeries & QSR Restaurants',
     eyebrow: 'PRIYULABS FOR COFFEE SHOPS & CAFES',
@@ -1209,11 +1264,11 @@ const sectorDetailsData = {
       '<strong>Instant KDS & Thermal KOT:</strong> Orders directly print in kitchen or appear on Chef Display Screen',
       '<strong>Recipe Ingredient ERP:</strong> Every dish sold automatically deducts exact raw milk, cheese & coffee stock'
     ],
-    techUpgrades: ['ðŸ“± Touchscreen Kiosk', 'ðŸ“² Table QR Ordering', 'ðŸ–¥ï¸ Kitchen KDS & KOT', 'ðŸ“Š Recipe ERP'],
-    roi: 'ðŸ½ï¸ <strong>Proven Impact:</strong> 35% Higher Table Turnover â€¢ 100% KOT Delivery Accuracy â€¢ 0% Raw Waste'
+    techUpgrades: ['📱 Touchscreen Kiosk', '📲 Table QR Ordering', '🖥️ Kitchen KDS & KOT', '📊 Recipe ERP'],
+    roi: '🍽️ <strong>Proven Impact:</strong> 35% Higher Table Turnover • 100% KOT Delivery Accuracy • 0% Raw Waste'
   },
   bakery: {
-    emoji: 'ðŸŽ‚',
+    emoji: '🎂',
     badge: 'Bakery & Confectionery Operations OS',
     title: 'Bakeries, Cake Shops & Confectionery',
     eyebrow: 'PRIYULABS FOR BAKERIES & CONFECTIONERY',
@@ -1231,11 +1286,11 @@ const sectorDetailsData = {
       '<strong>Recipe Raw Material ERP:</strong> Auto-deduct exact flour, butter, chocolate & cream stock per batch produced',
       '<strong>Thermal Expiry Label Printing:</strong> Auto-print price, weight & shelf-life expiry stickers for packaged baked items'
     ],
-    techUpgrades: ['ðŸŽ‚ Custom Cake Order POS', 'âš–ï¸ Weigh-Scale Auto Sync', 'ðŸ“Š Recipe Batch ERP', 'ðŸ·ï¸ Thermal Expiry Labeling', 'ðŸŽ¥ Live Demo Video'],
-    roi: 'ðŸŽ‚ <strong>Proven Impact:</strong> 45% Faster Billing â€¢ 100% Advance Order Delivery Accuracy â€¢ 0% Recipe Waste'
+    techUpgrades: ['🎂 Custom Cake Order POS', '⚖️ Weigh-Scale Auto Sync', '📊 Recipe Batch ERP', '🏷️ Thermal Expiry Labeling', '📹 Live Demo Video'],
+    roi: '🎂 <strong>Proven Impact:</strong> 45% Faster Billing • 100% Advance Order Delivery Accuracy • 0% Recipe Waste'
   },
   apparel: {
-    emoji: 'ðŸ›ï¸',
+    emoji: '🛒',
     badge: 'Multi-Variant Fashion ERP',
     title: 'Apparel, Footwear & Fashion Boutiques',
     eyebrow: 'PRIYULABS FOR APPAREL & FASHION',
@@ -1252,11 +1307,11 @@ const sectorDetailsData = {
       '<strong>Multi-Variant Stock Matrix:</strong> Complete stock visibility across sizes, colors & categories in 1 screen',
       '<strong>WhatsApp Digital Catalog:</strong> Send interactive digital product catalog directly to VIP customers'
     ],
-    techUpgrades: ['ðŸ·ï¸ Barcode Tag Printer', 'ðŸ‘— Multi-Variant Matrix', 'ðŸ’¬ WhatsApp Store Catalog', 'ðŸ”„ Exchange POS'],
-    roi: 'ðŸ‘— <strong>Proven Impact:</strong> 40% Repeat Customer Growth â€¢ 100% Size-Color Stock Control'
+    techUpgrades: ['🏷️ Barcode Tag Printer', '👗 Multi-Variant Matrix', '💬 WhatsApp Store Catalog', '🔄 Exchange POS'],
+    roi: '👗 <strong>Proven Impact:</strong> 40% Repeat Customer Growth • 100% Size-Color Stock Control'
   },
   pharmacy: {
-    emoji: 'ðŸ’Š',
+    emoji: '💊',
     badge: 'Pharma Compliance & Batch ERP',
     title: 'Pharmacies, Chemist & Medical Stores',
     eyebrow: 'PRIYULABS FOR PHARMACIES & CHEMISTS',
@@ -1273,11 +1328,11 @@ const sectorDetailsData = {
       '<strong>FEFO Batch & Expiry Management:</strong> First-Expiry-First-Out auto dispatch warnings on cashier screen',
       '<strong>1-Click GSTR-1 & 3B Reports:</strong> Download audit-ready CA tax JSON files directly in 1 click'
     ],
-    techUpgrades: ['ðŸ” 150k Salt Search Engine', 'âš ï¸ FEFO Expiry Alerts', 'ðŸ“„ Doctor Rx Billing', 'ðŸ§¾ 1-Click GST JSON'],
-    roi: 'ðŸ’Š <strong>Proven Impact:</strong> Zero Expired Medicine Losses â€¢ 100% Drug Inspector Compliance'
+    techUpgrades: ['🔍 150k Salt Search Engine', '⚠️ FEFO Expiry Alerts', '📄 Doctor Rx Billing', '🧾 1-Click GST JSON'],
+    roi: '💊 <strong>Proven Impact:</strong> Zero Expired Medicine Losses • 100% Drug Inspector Compliance'
   },
   electronics: {
-    emoji: 'âš¡',
+    emoji: '⚡',
     badge: 'Serial & Warranty Management',
     title: 'Electronics, Mobiles & Hardware Supplies',
     eyebrow: 'PRIYULABS FOR ELECTRONICS & HARDWARE',
@@ -1294,11 +1349,11 @@ const sectorDetailsData = {
       '<strong>SMS & WhatsApp Digital Warranty:</strong> Automated digital warranty card sent directly to customer mobile',
       '<strong>100% EDC Payment Terminal Sync:</strong> POS bill total auto-transfers to swipe machine with 0 errors'
     ],
-    techUpgrades: ['ðŸ“± IMEI & Serial Scanner', 'ðŸ’¬ WhatsApp Digital Warranty', 'ðŸ’³ EDC Payment Sync', 'ðŸ›¡ï¸ Auto Warranty POS'],
-    roi: 'ðŸ“± <strong>Proven Impact:</strong> 0 Serial Audit Discrepancies â€¢ 100% Cash & Card Reconciliation'
+    techUpgrades: ['📱 IMEI & Serial Scanner', '💬 WhatsApp Digital Warranty', '💳 EDC Payment Sync', '🛡️ Auto Warranty POS'],
+    roi: '📱 <strong>Proven Impact:</strong> 0 Serial Audit Discrepancies • 100% Cash & Card Reconciliation'
   },
   specialty: {
-    emoji: 'ðŸ’„',
+    emoji: '💄',
     badge: 'High-Value Tagging & Customer Loyalty',
     title: 'Cosmetics, Jewelry & Specialty Outlets',
     eyebrow: 'PRIYULABS FOR COSMETICS & JEWELRY',
@@ -1315,11 +1370,11 @@ const sectorDetailsData = {
       '<strong>Automated Customer Loyalty Points:</strong> Auto-credit cashback points to customer mobile phone',
       '<strong>Festival Coupon & Gift Bundle POS:</strong> 1-Click festive discounts & gift hamper POS billing'
     ],
-    techUpgrades: ['ðŸ’Ž Jewelry Weight Scale Sync', 'ðŸŽ Auto Loyalty Points', 'ðŸ“¦ Festival Gift Bundling', 'ðŸŽŸï¸ Digital Coupons'],
-    roi: 'ðŸ’Ž <strong>Proven Impact:</strong> 50% Higher Customer Retention â€¢ 100% Billing Accuracy'
+    techUpgrades: ['💎 Jewelry Weight Scale Sync', '🎁 Auto Loyalty Points', '📦 Festival Gift Bundling', '🎟️ Digital Coupons'],
+    roi: '💎 <strong>Proven Impact:</strong> 50% Higher Customer Retention • 100% Billing Accuracy'
   },
   meat: {
-    emoji: 'ðŸ¥©',
+    emoji: '🥩',
     badge: 'Perishable Weight & Quick Billing',
     title: 'Meat, Fish & Poultry Outlets',
     eyebrow: 'PRIYULABS FOR MEAT & POULTRY OUTLETS',
@@ -1333,11 +1388,11 @@ const sectorDetailsData = {
       '<strong>Rugged Waterproof POS & Weight Sync:</strong> Instant weight auto-capture from digital scale',
       '<strong>Fresh Stock Spoilage Counter:</strong> Real-time tracking of morning vs evening fresh inventory'
     ],
-    techUpgrades: ['ðŸ›¡ï¸ Waterproof Touch POS', 'âš–ï¸ Direct Scale Auto-Sync', 'ðŸ¥© Daily Fresh Counter'],
-    roi: 'âš¡ <strong>Proven Impact:</strong> 3-Second Quick Checkout â€¢ 100% Hardware Protection'
+    techUpgrades: ['🛡️ Waterproof Touch POS', '⚖️ Direct Scale Auto-Sync', '🥩 Daily Fresh Counter'],
+    roi: '⚡ <strong>Proven Impact:</strong> 3-Second Quick Checkout • 100% Hardware Protection'
   },
   mandi: {
-    emoji: 'ðŸŒ¾',
+    emoji: '🌾',
     badge: 'Bulk Mandi & Bahi-Khata Ledger',
     title: 'Grain & Mandi Wholesale Traders',
     eyebrow: 'PRIYULABS FOR GRAIN & MANDI WHOLESALE',
@@ -1351,11 +1406,11 @@ const sectorDetailsData = {
       '<strong>WhatsApp Udhar Ledger:</strong> Automated WhatsApp payment reminders & interest calculations',
       '<strong>Gross vs Net Bag Weight Sync:</strong> Auto-deduct tare weight per sack automatically'
     ],
-    techUpgrades: ['ðŸ’¬ WhatsApp Udhar Reminders', 'ðŸŒ¾ Gross-Net Bag Scale Sync', 'ðŸ“’ Digital Bahi-Khata'],
-    roi: 'ðŸŒ¾ <strong>Proven Impact:</strong> 2x Faster Udhar Collection â€¢ 100% Bahi-Khata Accuracy'
+    techUpgrades: ['💬 WhatsApp Udhar Reminders', '🌾 Gross-Net Bag Scale Sync', '📓 Digital Bahi-Khata'],
+    roi: '🌾 <strong>Proven Impact:</strong> 2x Faster Udhar Collection • 100% Bahi-Khata Accuracy'
   },
   autoparts: {
-    emoji: 'ðŸš—',
+    emoji: '🚗',
     badge: 'Vehicle Model & Part Search',
     title: 'Auto Spare Parts & Accessories',
     eyebrow: 'PRIYULABS FOR AUTO SPARE PARTS',
@@ -1369,11 +1424,11 @@ const sectorDetailsData = {
       '<strong>Smart Vehicle Model Lookup:</strong> Search spares by Car/Bike Model, OEM Code or Part Name',
       '<strong>Rack & Bin Location Display:</strong> Shows exact warehouse aisle & rack location of part'
     ],
-    techUpgrades: ['ðŸš— Vehicle OEM Model Search', 'ðŸ“ Warehouse Bin Location', 'ðŸ“¦ Multi-Brand Inventory'],
-    roi: 'ðŸš— <strong>Proven Impact:</strong> 0 Wrong Part Dispatches â€¢ 10-Second Spare Search'
+    techUpgrades: ['🚗 Vehicle OEM Model Search', '📍 Warehouse Bin Location', '📦 Multi-Brand Inventory'],
+    roi: '🚗 <strong>Proven Impact:</strong> 0 Wrong Part Dispatches • 10-Second Spare Search'
   },
   books: {
-    emoji: 'ðŸ“š',
+    emoji: '📚',
     badge: 'ISBN & Publisher Stock ERP',
     title: 'Bookstores & Stationery Outlets',
     eyebrow: 'PRIYULABS FOR BOOKSTORES & STATIONERY',
@@ -1387,11 +1442,11 @@ const sectorDetailsData = {
       '<strong>ISBN Barcode Auto-Catalog:</strong> Scan ISBN barcode to auto-fill title, author & price',
       '<strong>1-Click School Bundle POS:</strong> Bill complete class stationery & book set in 1 tap'
     ],
-    techUpgrades: ['ðŸ“š ISBN Barcode Auto-Fetch', 'ðŸŽ’ 1-Click School Kit POS', 'ðŸ·ï¸ Publisher Ledger'],
-    roi: 'ðŸ“š <strong>Proven Impact:</strong> 10x Faster Admission Season Billing'
+    techUpgrades: ['📚 ISBN Barcode Auto-Fetch', '🎒 1-Click School Kit POS', '🏷️ Publisher Ledger'],
+    roi: '📚 <strong>Proven Impact:</strong> 10x Faster Admission Season Billing'
   },
   florists: {
-    emoji: 'ðŸŒ¸',
+    emoji: '🌸',
     badge: 'Fresh Floral & Event Order POS',
     title: 'Florists & Plant Nurseries',
     eyebrow: 'PRIYULABS FOR FLORISTS & NURSERIES',
@@ -1405,11 +1460,11 @@ const sectorDetailsData = {
       '<strong>Event Advance Booking Ledger:</strong> Track token advance, delivery dates & final balance',
       '<strong>Fresh Stock Spoilage Monitor:</strong> Real-time alerts on floral batch shelf life'
     ],
-    techUpgrades: ['ðŸ’ Event Advance Ledger', 'ðŸŒ¸ Fresh Shelf Life Alerts', 'ðŸ“… Calendar Booking POS'],
-    roi: 'ðŸŒ¸ <strong>Proven Impact:</strong> 0 Event Booking Mistakes â€¢ 100% Advance Tracking'
+    techUpgrades: ['💐 Event Advance Ledger', '🌸 Fresh Shelf Life Alerts', '📅 Calendar Booking POS'],
+    roi: '🌸 <strong>Proven Impact:</strong> 0 Event Booking Mistakes • 100% Advance Tracking'
   },
   liquor: {
-    emoji: 'ðŸ·',
+    emoji: '🍷',
     badge: 'Excise Compliance & Bottle Scan',
     title: 'Liquor & Beverage Stores',
     eyebrow: 'PRIYULABS FOR LIQUOR OUTLETS',
@@ -1423,11 +1478,11 @@ const sectorDetailsData = {
       '<strong>Automated Daily Excise Log:</strong> Auto-generates Brand & Size-wise excise logs for inspection',
       '<strong>0.5s High-Speed Scanner:</strong> Scan bottle holograms & 2D barcodes instantly'
     ],
-    techUpgrades: ['ðŸ“œ Auto Excise Log Generator', 'âš¡ 0.5s Hologram Scanner', 'ðŸ· Bottle Stock Matrix'],
-    roi: 'ðŸ· <strong>Proven Impact:</strong> 100% Excise Audit Pass â€¢ Zero Rush Hour Queue Delay'
+    techUpgrades: ['📜 Auto Excise Log Generator', '⚡ 0.5s Hologram Scanner', '🍷 Bottle Stock Matrix'],
+    roi: '🍷 <strong>Proven Impact:</strong> 100% Excise Audit Pass • Zero Rush Hour Queue Delay'
   },
   furniture: {
-    emoji: 'ðŸ›‹ï¸',
+    emoji: '🛋️',
     badge: 'Custom Order & Delivery Tracking',
     title: 'Furniture & Home Decor Showrooms',
     eyebrow: 'PRIYULABS FOR FURNITURE & HOME DECOR',
@@ -1438,14 +1493,14 @@ const sectorDetailsData = {
       'Custom upholstery & size measurements untracked during factory manufacturing'
     ],
     after: [
-      '<strong>Order-to-Delivery Pipeline:</strong> Track Order â†’ Manufacturing â†’ Dispatch â†’ Balance',
+      '<strong>Order-to-Delivery Pipeline:</strong> Track Order → Manufacturing → Dispatch → Balance',
       '<strong>WhatsApp Delivery Updates:</strong> Automated SMS & WhatsApp status updates sent to buyer'
     ],
-    techUpgrades: ['ðŸ›‹ï¸ Custom Order Pipeline', 'ðŸ’¬ WhatsApp Status Alerts', 'ðŸ’³ Balance Payment Sync'],
-    roi: 'ðŸ›‹ï¸ <strong>Proven Impact:</strong> 100% On-Time Delivery â€¢ Zero Payment Leakage'
+    techUpgrades: ['🛋️ Custom Order Pipeline', '💬 WhatsApp Status Alerts', '💳 Balance Payment Sync'],
+    roi: '🛋️ <strong>Proven Impact:</strong> 100% On-Time Delivery • Zero Payment Leakage'
   },
   petcare: {
-    emoji: 'ðŸ¶',
+    emoji: '🐶',
     badge: 'Pet Health & Food Subscription',
     title: 'Pet Supplies & Vet Clinics',
     before: [
@@ -1456,8 +1511,8 @@ const sectorDetailsData = {
       '<strong>Automated WhatsApp Vaccine Reminders:</strong> Auto-send vaccination alerts to pet parents',
       '<strong>Monthly Pet Food Subscription:</strong> 1-click repeat monthly order billing'
     ],
-    techUpgrades: ['ðŸ’‰ WhatsApp Vaccine Reminders', 'ðŸ¶ Pet Patient Records', 'ðŸ“¦ Food Subscription POS'],
-    roi: 'ðŸ¶ <strong>Proven Impact:</strong> 60% Higher Pet Parent Retention'
+    techUpgrades: ['💉 WhatsApp Vaccine Reminders', '🐶 Pet Patient Records', '📦 Food Subscription POS'],
+    roi: '🐶 <strong>Proven Impact:</strong> 60% Higher Pet Parent Retention'
   }
 };
 
@@ -1475,35 +1530,30 @@ function closeSectorModal() {
 }
 
 // ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ───────────────────
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
-
-function getLeadEndpoint() {
-  if (typeof window !== 'undefined' && window.PRIYULABS_LEAD_ENDPOINT) {
-    return window.PRIYULABS_LEAD_ENDPOINT;
-  }
-  return GOOGLE_SCRIPT_URL;
-}
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPl-7pp-g-VOMUDpP900zdOB8DhA8gS6sOrKwUeTTNclUtggc3UKg7_G2rJl3VjyRlMA/exec";
 
 // Service Category & Custom 100-word Requirement Controller
 function initServiceCategoryFields() {
   document.querySelectorAll('form#leadForm').forEach(form => {
-    const serviceCategorySelect = form.querySelector('#serviceCategory, [name="Service"]');
+    const serviceCategorySelect = form.querySelector('#serviceCategory');
     const customReqGroup = form.querySelector('#customRequirementGroup');
-    const customReqTextarea = form.querySelector('#customRequirement, [name="CustomRequirement"]');
+    const customReqTextarea = form.querySelector('#customRequirement');
     const customWordCountSpan = form.querySelector('#customWordCount');
     const customWordErrorEl = form.querySelector('#customWordError');
 
-    if (serviceCategorySelect && customReqGroup) {
+    if (serviceCategorySelect) {
       serviceCategorySelect.addEventListener('change', () => {
         if (serviceCategorySelect.value === 'Custom') {
-          customReqGroup.style.display = 'block';
-          customReqGroup.style.animation = 'fadeIn 0.25s ease';
+          if (customReqGroup) {
+            customReqGroup.style.display = 'block';
+            customReqGroup.style.animation = 'fadeIn 0.25s ease';
+          }
           if (customReqTextarea) {
             customReqTextarea.setAttribute('required', 'required');
             customReqTextarea.focus();
           }
         } else {
-          customReqGroup.style.display = 'none';
+          if (customReqGroup) customReqGroup.style.display = 'none';
           if (customReqTextarea) {
             customReqTextarea.removeAttribute('required');
             customReqTextarea.value = '';
@@ -1549,168 +1599,217 @@ function initServiceCategoryFields() {
   });
 }
 
-function initLeadFormSubmissions() {
-  document.querySelectorAll('form#leadForm').forEach(form => {
-    if (form.dataset.leadInitialized === 'true') return;
-    form.dataset.leadInitialized = 'true';
+// ─── STRICT 10-DIGIT PHONE NUMBER ENFORCEMENT ──────────────────────────────
+function initPhoneNumberValidation() {
+  document.querySelectorAll('#userPhone, input[name="Mobile"]').forEach(input => {
+    input.setAttribute('maxlength', '10');
+    input.setAttribute('minlength', '10');
+    input.setAttribute('pattern', '[0-9]{10}');
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('autocomplete', 'tel');
+    input.setAttribute('title', 'Please enter exactly 10 digits');
+    input.setAttribute('placeholder', 'Enter 10-digit WhatsApp number');
 
-    form.addEventListener('submit', async (e) => {
+    const form = input.closest('form');
+    let errorEl = form ? form.querySelector('#phoneErrorMsg') : null;
+
+    function validatePhone() {
+      const digits = input.value.replace(/\D/g, '').slice(0, 10);
+      if (input.value !== digits) {
+        input.value = digits;
+      }
+      if (digits.length === 10) {
+        input.setCustomValidity('');
+        if (errorEl) errorEl.style.display = 'none';
+        input.style.borderColor = '';
+        return true;
+      } else {
+        input.setCustomValidity('Phone number must be exactly 10 digits.');
+        return false;
+      }
+    }
+
+    input.addEventListener('input', validatePhone);
+
+    input.addEventListener('keydown', (e) => {
+      // Allow navigation and control keys
+      if (
+        ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(e.key) ||
+        (e.ctrlKey || e.metaKey)
+      ) {
+        return;
+      }
+      // Only allow digits 0-9
+      if (!/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+        return;
+      }
+      // If already 10 digits and not replacing a selection, block typing
+      const selStart = input.selectionStart || 0;
+      const selEnd = input.selectionEnd || 0;
+      if (input.value.length >= 10 && selStart === selEnd) {
+        e.preventDefault();
+      }
+    });
+
+    input.addEventListener('paste', (e) => {
       e.preventDefault();
+      const pasteText = (e.clipboardData || window.clipboardData).getData('text') || '';
+      const cleanDigits = pasteText.replace(/\D/g, '').slice(0, 10);
+      input.value = cleanDigits;
+      validatePhone();
+    });
 
-      const button = form.querySelector('button[type="submit"]') || form.querySelector('#submitLeadBtn');
-      let statusMsg = form.querySelector('.form-status-msg') || form.querySelector('#formStatusMsg');
-      if (!statusMsg) {
-        statusMsg = document.createElement('div');
-        statusMsg.className = 'form-status-msg';
-        statusMsg.style.display = 'none';
-        statusMsg.style.marginTop = '12px';
-        statusMsg.style.padding = '10px 14px';
-        statusMsg.style.borderRadius = '8px';
-        statusMsg.style.fontSize = '14px';
-        statusMsg.style.fontWeight = '600';
-        statusMsg.style.textAlign = 'center';
-        form.appendChild(statusMsg);
+    input.addEventListener('blur', () => {
+      if (input.value.length > 0 && input.value.length !== 10) {
+        if (errorEl) {
+          errorEl.textContent = 'Phone number must be exactly 10 digits (no more, no less).';
+          errorEl.style.display = 'block';
+        }
+        input.style.borderColor = '#ef4444';
+      } else if (input.value.length === 10) {
+        if (errorEl) errorEl.style.display = 'none';
+        input.style.borderColor = '';
       }
+    });
+  });
+}
 
-      const nameInput = form.querySelector('#userName, #dirName, [name="Name"]');
-      const businessTypeSelect = form.querySelector('#businessType, [name="BusinessType"], #dirStore, [name="StoreName"]');
-      const serviceCategorySelect = form.querySelector('#serviceCategory, [name="Service"]');
-      const customReqTextarea = form.querySelector('#customRequirement, [name="CustomRequirement"]');
-      const phoneInput = form.querySelector('#userPhone, #dirPhone, [name="Mobile"], [name="phone"]');
-      const hpHidden = form.querySelector('input[name="website"], input[name="hp_field"], input[name="website_hp"]');
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initServiceCategoryFields();
+    initPhoneNumberValidation();
+  });
+} else {
+  initServiceCategoryFields();
+  initPhoneNumberValidation();
+}
 
-      // Honeypot spam check - quiet rejection of bot submissions
-      if (hpHidden && hpHidden.value.trim() !== '') {
-        console.warn('Spam submission detected and rejected.');
+const leadForm = document.getElementById('leadForm');
+if (leadForm) {
+  leadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const button = document.getElementById('submitLeadBtn');
+    const statusMsg = document.getElementById('formStatusMsg');
+    const serviceCategorySelect = leadForm.querySelector('#serviceCategory');
+    const customReqTextarea = leadForm.querySelector('#customRequirement');
+
+    const selectedService = serviceCategorySelect ? serviceCategorySelect.value : '';
+    const businessTypeSelect = leadForm.querySelector('#businessType');
+    const selectedBusinessType = businessTypeSelect ? businessTypeSelect.value : '';
+    const customReq = customReqTextarea ? customReqTextarea.value.trim() : '';
+
+    // Validate 10-digit Phone / WhatsApp Number (Compulsory exactly 10 digits)
+    const phoneInput = leadForm.querySelector('#userPhone') || leadForm.querySelector('input[name="Mobile"]');
+    const phoneVal = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+    const phoneErrorEl = leadForm.querySelector('#phoneErrorMsg');
+
+    if (!phoneVal || phoneVal.length !== 10) {
+      if (phoneErrorEl) {
+        phoneErrorEl.textContent = 'Phone / WhatsApp number must be exactly 10 digits (no more, no less).';
+        phoneErrorEl.style.display = 'block';
+      }
+      if (typeof showToast === 'function') {
+        showToast('Phone number must be exactly 10 digits.');
+      }
+      if (phoneInput) {
+        phoneInput.focus();
+        phoneInput.style.borderColor = '#ef4444';
+        phoneInput.setCustomValidity('Phone number must be exactly 10 digits.');
+        phoneInput.reportValidity();
+      }
+      return;
+    } else {
+      if (phoneErrorEl) phoneErrorEl.style.display = 'none';
+      if (phoneInput) {
+        phoneInput.style.borderColor = '';
+        phoneInput.setCustomValidity('');
+      }
+    }
+
+    // Validate 100-word restriction if Custom is selected
+    if (selectedService === 'Custom') {
+      const words = customReq ? customReq.split(/\s+/) : [];
+      if (words.length === 0) {
+        if (typeof showToast === 'function') showToast('Please describe what you need in the custom field.');
+        if (customReqTextarea) customReqTextarea.focus();
         return;
       }
-
-      const name = nameInput ? nameInput.value.trim() : '';
-      const businessType = businessTypeSelect ? businessTypeSelect.value.trim() : '';
-      const service = serviceCategorySelect ? serviceCategorySelect.value.trim() : 'Free Trial';
-      const customReq = customReqTextarea ? customReqTextarea.value.trim() : '';
-      const mobile = phoneInput ? phoneInput.value.trim() : '';
-
-      // Frontend Validations
-      if (!name || name.length < 2) {
-        if (typeof showToast === 'function') showToast('Please enter your full name.');
-        if (nameInput) nameInput.focus();
+      if (words.length > 100) {
+        if (typeof showToast === 'function') showToast('Custom requirement must be within 100 words.');
+        if (customReqTextarea) customReqTextarea.focus();
         return;
       }
+    }
 
-      if (service === 'Custom') {
-        const words = customReq ? customReq.split(/\s+/) : [];
-        if (words.length === 0) {
-          if (typeof showToast === 'function') showToast('Please describe what you need in the custom field.');
-          if (customReqTextarea) customReqTextarea.focus();
-          return;
-        }
-        if (words.length > 100) {
-          if (typeof showToast === 'function') showToast('Custom requirement must be within 100 words.');
-          if (customReqTextarea) customReqTextarea.focus();
-          return;
-        }
-      }
+    if (button) {
+      button.textContent = "Submitting...";
+      button.disabled = true;
+      button.style.opacity = '0.85';
+    }
 
-      if (!mobile || !/^[0-9+\-\s()]{7,20}$/.test(mobile)) {
-        if (typeof showToast === 'function') showToast('Please enter a valid phone or WhatsApp number.');
-        if (phoneInput) phoneInput.focus();
-        return;
-      }
+    if (statusMsg) {
+      statusMsg.style.display = 'none';
+      statusMsg.textContent = '';
+    }
 
-      // Save original button state and lock button
-      const originalBtnHtml = button ? button.innerHTML : '';
-      if (button) {
-        button.innerHTML = '<span>Submitting...</span>';
-        button.disabled = true;
-        button.style.opacity = '0.75';
-      }
+    const formData = new FormData(leadForm);
+    if (selectedBusinessType) {
+      formData.set('BusinessType', selectedBusinessType);
+    }
+    // Backward-compatible mapping for StoreName column in Google Sheets
+    if (selectedService === 'Custom') {
+      formData.set('StoreName', `Custom: ${customReq.slice(0, 80)}`);
+      formData.set('Category', 'Custom');
+    } else if (selectedService) {
+      formData.set('StoreName', selectedBusinessType || selectedService);
+      formData.set('Category', selectedService);
+    }
 
-      if (statusMsg) {
-        statusMsg.style.display = 'none';
-        statusMsg.textContent = '';
-      }
-
-      const requestId = `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
-
-      const payload = {
-        name: name,
-        businessType: businessType || 'General Retail',
-        service: service,
-        customRequirement: customReq,
-        mobile: mobile,
-        source: 'free-trial-form',
-        pageUrl: window.location.href,
-        requestId: requestId,
-        website: hpHidden ? hpHidden.value : ''
-      };
-
-      const endpoint = getLeadEndpoint();
-
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
-          body: JSON.stringify(payload),
-          redirect: 'follow'
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-
-        if (result && result.success) {
-          // Success: Show confirmation and clear form
-          if (button) {
-            button.disabled = false;
-            button.innerHTML = originalBtnHtml;
-            button.style.opacity = '1';
-          }
-
-          const successText = "Thank you! Your request has been submitted. Our team will contact you within 15 minutes.";
-          if (statusMsg) {
-            statusMsg.style.display = 'block';
-            statusMsg.style.background = '#d1fae5';
-            statusMsg.style.color = '#065f46';
-            statusMsg.style.border = '1px solid #10b981';
-            statusMsg.textContent = successText;
-          }
-          if (typeof showToast === 'function') {
-            showToast(successText);
-          }
-
-          form.reset();
-
-          // Reset custom requirement box
-          const customReqGroup = form.querySelector('#customRequirementGroup');
-          const customWordCountSpan = form.querySelector('#customWordCount');
-          const customWordErrorEl = form.querySelector('#customWordError');
-          if (customReqGroup) customReqGroup.style.display = 'none';
-          if (customWordCountSpan) {
-            customWordCountSpan.textContent = '0 / 100 words';
-            customWordCountSpan.style.color = 'var(--text-muted)';
-          }
-          if (customWordErrorEl) customWordErrorEl.style.display = 'none';
-
-        } else {
-          // Failure: Server-side validation or processing error
-          throw new Error((result && result.message) || 'Submission could not be completed.');
-        }
-
-      } catch (err) {
-        console.error('Lead Submission Error:', err);
-
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors"
+    })
+      .then(() => {
         if (button) {
           button.disabled = false;
-          button.innerHTML = originalBtnHtml;
+          button.innerHTML = "Submit & Get Early Access";
           button.style.opacity = '1';
         }
+        const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
+        if (statusMsg) {
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = '#d1fae5';
+          statusMsg.style.color = '#065f46';
+          statusMsg.style.border = '1px solid #10b981';
+          statusMsg.textContent = successText;
+        }
+        if (typeof showToast === 'function') {
+          showToast(successText);
+        }
+        leadForm.reset();
 
-        const errorText = "Unable to submit your request right now. Please try again or reach out on WhatsApp.";
+        // Reset custom requirement box
+        const customReqGroup = leadForm.querySelector('#customRequirementGroup');
+        const customWordCountSpan = leadForm.querySelector('#customWordCount');
+        const customWordErrorEl = leadForm.querySelector('#customWordError');
+        if (customReqGroup) customReqGroup.style.display = 'none';
+        if (customWordCountSpan) {
+          customWordCountSpan.textContent = '0 / 100 words';
+          customWordCountSpan.style.color = 'var(--text-muted)';
+        }
+        if (customWordErrorEl) customWordErrorEl.style.display = 'none';
+      })
+      .catch(err => {
+        console.error('Google Sheet Submission Error:', err);
+        if (button) {
+          button.disabled = false;
+          button.innerHTML = "Submit & Get Early Access";
+          button.style.opacity = '1';
+        }
+        const errorText = "Something went wrong. Please try again.";
         if (statusMsg) {
           statusMsg.style.display = 'block';
           statusMsg.style.background = '#fee2e2';
@@ -1721,24 +1820,11 @@ function initLeadFormSubmissions() {
         if (typeof showToast === 'function') {
           showToast(errorText);
         }
-        // Form values are preserved so the user can easily retry
-      }
-    });
+      });
   });
 }
 
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    initServiceCategoryFields();
-    initLeadFormSubmissions();
-  });
-} else {
-  initServiceCategoryFields();
-  initLeadFormSubmissions();
-}
-
-// â”€â”€â”€ GLOBAL TOAST HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── GLOBAL TOAST HELPER ─────────────────────────────────────────
 function showToast(message) {
   const toast = document.getElementById('mainToast');
   if (!toast) return;
@@ -1749,7 +1835,7 @@ function showToast(message) {
   }, 4000);
 }
 
-// â”€â”€â”€ SIDEBAR DEMO ITEM INTERACTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── SIDEBAR DEMO ITEM INTERACTION ──────────────────────────────
 document.querySelectorAll('.sidebar-item').forEach(item => {
   item.addEventListener('click', () => {
     document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
@@ -1800,7 +1886,7 @@ function initMegaMenuCloseHandlers() {
     trigger.addEventListener('click', (e) => {
       const parent = trigger.closest('.nav-item-dropdown');
       if (!parent) return;
-      const hasDropdown = parent.querySelector('.mega-dropdown');
+      const hasDropdown = parent.querySelector('.mega-dropdown, .mega-menu-dropdown');
       if (hasDropdown) {
         e.preventDefault();
         e.stopPropagation();
@@ -1829,7 +1915,7 @@ function initMegaMenuCloseHandlers() {
   });
 
   // Dismiss dropdown when clicking any sector/page link inside
-  document.querySelectorAll('.mega-dropdown a, .types-menu-dropdown a').forEach(link => {
+  document.querySelectorAll('.mega-dropdown a, .mega-menu-dropdown a, .types-menu-dropdown a').forEach(link => {
     link.addEventListener('click', () => {
       closeAllMenus();
     });
@@ -1849,7 +1935,7 @@ if (document.readyState === 'loading') {
   initMegaMenuCloseHandlers();
 }
 
-// â”€â”€â”€ FULLSCREEN VIDEO MAXIMIZE HELPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── FULLSCREEN VIDEO MAXIMIZE HELPER ─────────────────────────────
 function toggleBakeryFullscreen(elem) {
   if (!elem) return;
   if (elem.requestFullscreen) {
@@ -1861,7 +1947,7 @@ function toggleBakeryFullscreen(elem) {
   }
 }
 
-// â”€â”€â”€ HERO ECOSYSTEM CONSOLE SWITCHER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── HERO ECOSYSTEM CONSOLE SWITCHER ────────────────────────────
 function switchHeroEcosystem(key) {
   const tabs = document.querySelectorAll('.c-tab-btn');
   tabs.forEach(btn => {
@@ -1884,7 +1970,7 @@ function switchHeroEcosystem(key) {
   });
 }
 
-// â”€â”€â”€ CAROUSEL & SLIDER CONTROLS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── CAROUSEL & SLIDER CONTROLS ─────────────────────────────────
 function scrollCarousel(target, direction) {
   let container = typeof target === 'string' ? (document.getElementById(target) || document.querySelector(`.${target}`)) : target;
   if (!container) return;
@@ -1977,7 +2063,7 @@ function initCarouselDragScroll() {
       }
     }, { passive: true });
 
-    // â”€â”€ TOUCH SWIPE HANDLERS (Mobile & Tablet Native Swipe) â”€â”€
+    // ── TOUCH SWIPE HANDLERS (Mobile & Tablet Native Swipe) ──
     let touchStartX = 0;
     let touchStartScrollLeft = 0;
     let isSwiping = false;
@@ -2023,7 +2109,7 @@ if (document.readyState === 'loading') {
 }
 window.initCarouselDragScroll = initCarouselDragScroll;
 
-// â”€â”€â”€ VIDEO INTERACTION & TOUCH HANDLER (SAFE PLAY/PAUSE) â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── VIDEO INTERACTION & TOUCH HANDLER (SAFE PLAY/PAUSE) ────────
 function initVideoTouchProtection() {
   const videoElements = document.querySelectorAll('video, .card-video-wrap, .sol-video-wrapper');
   videoElements.forEach(wrapper => {
@@ -2047,7 +2133,7 @@ document.addEventListener('DOMContentLoaded', initVideoTouchProtection);
 initVideoTouchProtection();
 window.initVideoTouchProtection = initVideoTouchProtection;
 
-// â”€â”€â”€ SECTOR PICKER & CONTENT PANEL TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── SECTOR PICKER & CONTENT PANEL TOGGLE ──────────────────────
 function initSectorPicker() {
   const sectorBtns = document.querySelectorAll('.sector-pick-btn');
   if (!sectorBtns.length) return;
@@ -2092,12 +2178,13 @@ if (document.readyState === 'loading') {
   initSectorPicker();
 }
 
-// â”€â”€â”€ GLOBAL WINDOW EXPORTS FOR MOBILE & DESKTOP EVENT HANDLERS â”€â”€â”€
+// ─── GLOBAL WINDOW EXPORTS FOR MOBILE & DESKTOP EVENT HANDLERS ───
 window.openDemoModal = openDemoModal;
 window.closeDemoModal = closeDemoModal;
 window.switchDemoTab = switchDemoTab;
 window.filterPosProducts = filterPosProducts;
 window.addPosToCart = addPosToCart;
+window.addToPosCart = addToPosCart;
 window.updatePosQty = updatePosQty;
 window.removePosItem = removePosItem;
 window.clearPosCart = clearPosCart;
@@ -2127,7 +2214,7 @@ window.initDemoPlaygrounds = initDemoPlaygrounds;
 window.runSimVoice = runPosVoicePreset;
 window.simulatePinePush = executePosPayment;
 window.simulateVisionScan = simulateErpScanInvoice;
-window.simulateGstDownload = function() { showToast('ðŸ“¥ GST JSON generated!'); };
+window.simulateGstDownload = function() { showToast('📥 GST JSON generated!'); };
 window.simulateVoicePOS = simulateVoicePOS;
 window.openPolicyModal = openPolicyModal;
 window.closePolicyModal = closePolicyModal;

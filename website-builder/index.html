@@ -2153,7 +2153,6 @@ permalink: /website-builder
                 <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
                 <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
                 <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
-                <a href="/solutions" class="sq-all-types-link">All business types</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
@@ -3382,7 +3381,8 @@ permalink: /website-builder
 
             <div class="form-group">
               <label for="userPhone">Phone / WhatsApp Number *</label>
-              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78490 74050)" required />
+              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78490 74050)" required maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
+              <small id="phoneErrorMsg" style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Phone number must be exactly 10 digits.</small>
             </div>
 
             <button type="submit" class="btn-primary full-width" id="submitLeadBtn">
@@ -3494,158 +3494,90 @@ permalink: /website-builder
        INTERACTIVE DEMO VIDEO & EXPERIENCE MODAL
   ══════════════════════════════════════════════════════════ -->
   <div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true">
-    <div class="modal-card">
+    <div class="modal-card modal-hub-wide">
       <div class="modal-header">
         <div class="modal-title-wrap">
           <img src="assets/logo.svg" alt="Priyulabs" class="modal-brand-logo" />
           <div>
-            <h3>Priyulabs Interactive AI OS Demo</h3>
-            <p>Live simulation of Vision AI Stock Detection, Payment Sync &amp; 1-Click GST</p>
+            <h3>Priyulabs Interactive Product Suite</h3>
+            <p>Live hands-on playground — test and experience all Priyulabs services directly in your browser</p>
           </div>
         </div>
         <button class="modal-close" onclick="closeDemoModal()" aria-label="Close modal">&times;</button>
       </div>
 
-      <!-- Demo Tabs -->
-      <div class="demo-tabs">
-        <button class="demo-tab active" data-tab="voice" onclick="switchDemoTab('voice')">️ Voice POS</button>
-        <button class="demo-tab" data-tab="payments" onclick="switchDemoTab('payments')"> Payment Sync</button>
-        <button class="demo-tab" data-tab="vision" onclick="switchDemoTab('vision')"> Vision AI Bill</button>
-        <button class="demo-tab" data-tab="gst" onclick="switchDemoTab('gst')"> 1-Click GST</button>
-      </div>
-
       <div class="demo-body">
-        <!-- Voice Tab -->
-        <div class="demo-panel active" id="tab-voice">
+        <!-- ══════════════ TAB 1: SMART POS BILLING ══════════════ -->
+        <div class="demo-panel active" id="tab-pos">
           <div class="demo-sim-box">
             <div class="sim-left">
-              <h4>Multilingual AI Voice POS in Action</h4>
-              <p>Click any voice command to see real-time AI recognition and auto billing generation:</p>
-              <div class="voice-presets">
-                <button class="preset-btn" onclick="runSimVoice('2 kg sugar and 1 litre fortune oil')">
-                  ️ "2 kg sugar and 1 litre fortune oil"
-                </button>
-                <button class="preset-btn" onclick="runSimVoice('5 packets noodles, 2 yogurts and 1 brown bread')">
-                  ️ "5 packets noodles, 2 yogurts and 1 brown bread"
-                </button>
-                <button class="preset-btn" onclick="runSimVoice('1 kg wheat flour and 500g detergent')">
-                  ️ "1 kg wheat flour and 500g detergent"
-                </button>
-              </div>
-              <div class="voice-status" id="voiceStatus">️ Click any command above to simulate AI Voice POS...</div>
-            </div>
-            <div class="sim-right">
-              <div class="cart-preview">
-                <div class="cart-header"> Live Voice Cart (Auto-Generated)</div>
-                <div class="cart-items" id="voiceCartItems">
-                  <div class="cart-empty">Cart will populate in &lt;0.5s after voice command</div>
+              <div class="sim-header-row">
+                <div>
+                  <h4>Live POS Terminal &amp; Quick-Bill</h4>
+                  <p>Click items to add to cart, scan barcodes, or speak to bill in real-time:</p>
                 </div>
-                <div class="cart-total" id="voiceCartTotal">Total: ₹0.00</div>
+                <div class="pos-voice-quick">
+                  <button class="pos-pill-btn" onclick="runPosVoicePreset('2 burgers and 1 coffee')">"2 Burgers
+                    &amp; 1 Coffee"</button>
+                  <button class="pos-pill-btn" onclick="simulateBarcodeScan()">Scan Barcode</button>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Payments Tab -->
-        <div class="demo-panel" id="tab-payments">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4>100% Zero-Cashier-Theft EDC Sync</h4>
-              <p>Amount pushes automatically to Pine Labs / Paytm POS terminals and displays dynamic UPI QR:</p>
-              <div class="payment-modes">
-                <button class="pay-btn" onclick="simulatePayment('UPI Dynamic QR')"> Push to UPI QR</button>
-                <button class="pay-btn" onclick="simulatePayment('Pine Labs Card EDC')"> Push to Pine Labs
-                  EDC</button>
-                <button class="pay-btn" onclick="simulatePayment('Paytm Soundbox')"> Announce on Soundbox</button>
+              <!-- Product Category Chips -->
+              <div class="pos-cat-bar">
+                <button class="pos-cat-btn active" onclick="filterPosProducts('cafe', this)">Cafe &amp; Food</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('grocery', this)">Grocery / FMCG</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('retail', this)">Retail &amp; Apparel</button>
               </div>
-              <div class="pay-result" id="payResult">Click a payment mode to test bi-directional terminal push...</div>
-            </div>
-            <div class="sim-right">
-              <div class="terminal-card">
-                <div class="terminal-screen" id="termScreen">
-                  <div class="term-ready">READY FOR PAYMENT</div>
-                  <div class="term-amount">₹ 1,480.00</div>
-                  <div class="term-sub">Waiting for Customer Tap / Scan</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Vision Tab -->
-        <div class="demo-panel" id="tab-vision">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4>Vision AI Invoice OCR — Zero Typing</h4>
-              <p>Click below to simulate capturing a paper wholesale bill into structured ERP stock:</p>
-              <button class="btn-primary full-width" onclick="simulateVisionScan()" style="margin-top:10px;">
-                 Capture &amp; OCR Wholesale Invoice (1.2s)
-              </button>
-              <div class="vision-status" id="visionStatus">Ready to scan supplier invoice...</div>
-            </div>
-            <div class="sim-right">
-              <div class="inventory-preview">
-                <div class="inv-header"> Auto-Extracted ERP Inventory</div>
-                <div class="inv-list" id="visionInvList">
-                  <div class="inv-row">
-                    <div>
-                      <strong>Fortune Sunlite Refined Oil (15L Tin)</strong>
-                      <small>HSN: 1512 • Batch: F2025B • Wholesaler: Gupta Bros</small>
-                    </div>
-                    <span>Qty: +12 Tins (₹23,400)</span>
-                  </div>
-                  <div class="inv-row">
-                    <div>
-                      <strong>Aashirvaad Shudh Chakki Atta 10kg</strong>
-                      <small>HSN: 1101 • Batch: A2025 • Wholesaler: Gupta Bros</small>
-                    </div>
-                    <span>Qty: +40 Bags (₹15,200)</span>
-                  </div>
-                </div>
-                <div class="inv-success"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Added to Stock in 1.2 seconds</div>
+              <!-- Clickable Product Catalog Grid -->
+              <div class="pos-product-grid" id="posProductGrid" style="max-height: 400px; overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; padding-right: 4px;">
+                <!-- Injected / Rendered via JS -->
               </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- GST Tab -->
-        <div class="demo-panel" id="tab-gst">
-          <div class="demo-sim-box">
-            <div class="sim-left">
-              <h4>100% Tax Compliant, 0% Headache</h4>
-              <p>Every sale is automatically categorized by HSN code and GST slab for instant CA filings:</p>
-              <div class="gst-download-btns">
-                <button class="gst-btn" onclick="simulateGstDownload('GSTR-1')">
-                   Download GSTR-1 (JSON &amp; Excel)
-                </button>
-                <button class="gst-btn" onclick="simulateGstDownload('GSTR-3B')">
-                   Download GSTR-3B Summary
-                </button>
+              <div class="pos-status-bar" id="posStatusBar">
+                <span class="status-indicator"></span> Offline-First POS Engine Active • 0.2s Instant Add
               </div>
-              <div class="gst-toast" id="gstToast"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>GSTR-1 JSON generated with 0 errors! Ready to send to CA.</div>
             </div>
+
+            <!-- Right: Live Thermal Bill / Receipt -->
             <div class="sim-right">
-              <div class="gst-summary-card">
-                <div class="gst-sum-header">
-                  <span>Current Month GST Summary</span>
-                  <span class="badge-gst">Compliant</span>
+              <div class="pos-receipt-box">
+                <div class="pos-receipt-head">
+                  <div class="pr-brand">PRIYULABS RETAIL OS</div>
+                  <div class="pr-sub">Smart Cloud POS • Terminal #01</div>
+                  <div class="pr-meta"><span id="posCurrentTime">Live Session</span> • GSTIN: 29AABCU9603R1ZM</div>
                 </div>
-                <div class="gst-grid-data">
-                  <div class="g-box">
-                    <small>Taxable Turnover</small>
-                    <strong>₹14,50,000</strong>
-                  </div>
-                  <div class="g-box">
-                    <small>Output CGST+SGST</small>
-                    <strong>₹1,16,000</strong>
-                  </div>
-                  <div class="g-box">
-                    <small>Eligible Input ITC</small>
-                    <strong>₹84,200</strong>
-                  </div>
-                  <div class="g-box">
-                    <small>Net Tax Payable</small>
-                    <strong style="color:#10b981">₹31,800</strong>
+
+                <div class="pos-cart-list" id="posCartList">
+                  <!-- Dynamic Cart Rows -->
+                </div>
+
+                <div class="pos-bill-calc">
+                  <div class="pbc-row"><span>Subtotal</span><span id="posSubtotal">&#8377;0.00</span></div>
+                  <div class="pbc-row"><span>GST (5% / 18%)</span><span id="posTax">&#8377;0.00</span></div>
+                  <div class="pbc-row pbc-total"><span>Grand Total</span><strong id="posGrandTotal">&#8377;0.00</strong></div>
+                </div>
+
+                <div class="pos-actions-wrap">
+                  <button class="btn-pos-pay" id="btnPosPay" onclick="executePosPayment()">
+                    Pay via UPI QR / Pine Labs
+                  </button>
+                  <button class="btn-pos-clear" onclick="clearPosCart()">Clear</button>
+                </div>
+
+                <!-- Live Payment Success Overlay inside receipt -->
+                <div class="pos-pay-success" id="posPaySuccess" style="display:none;">
+                  <div class="pps-icon"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                      stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg></div>
+                  <strong>Payment Received &#8377;<span id="posPaidAmt">0</span></strong>
+                  <small>UPI Trans ID: #UPI-984210 • Bill Auto-Saved</small>
+                  <div class="pps-btns">
+                    <button class="btn-primary-sm" onclick="printPosInvoice()">Print Receipt</button>
+                    <button class="btn-ghost-sm" onclick="resetPosCart()">+ Next Order</button>
                   </div>
                 </div>
               </div>
@@ -3656,11 +3588,11 @@ permalink: /website-builder
 
       <div class="modal-footer">
         <div class="mf-left">
-          <span>Ready to automate your store with Priyulabs?</span>
+          <span>Need a customized consultation for your business?</span>
         </div>
         <div class="mf-right">
           <button class="btn-ghost-sm" onclick="closeDemoModal()">Close</button>
-          <a href="#leadForm" class="btn-primary-sm" onclick="closeDemoModal()">Start Your Project →</a>
+          <a href="#cta" class="btn-primary-sm" onclick="closeDemoModal()">Book 1-on-1 Free Demo →</a>
         </div>
       </div>
     </div>

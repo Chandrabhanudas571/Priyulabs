@@ -1742,6 +1742,77 @@ permalink: /complete-management-system
       }
     }
   </style>
+<style>
+
+  /* ══════════════════════════════════════════════════════════
+     BUSINESS TYPES MEGA-MENU STYLING & HOVER LOGIC
+  ══════════════════════════════════════════════════════════ */
+  .mega-menu-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(-40%) translateY(8px);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+  }
+
+  /* Hover bridge so mouse never flickers between trigger and menu */
+  .mega-menu-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: 0;
+    right: 0;
+    height: 28px;
+  }
+
+  .nav-item-dropdown:hover .mega-menu-dropdown,
+  .nav-item-dropdown.open .mega-menu-dropdown,
+  .nav-item-dropdown.pinned .mega-menu-dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-40%) translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  .mega-menu-dropdown a {
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .mega-menu-dropdown a:hover {
+    color: #2563eb !important;
+  }
+
+  .mega-menu-dropdown .menu-tab-btn {
+    transition: color 0.15s ease, font-weight 0.15s ease;
+  }
+
+  .mega-menu-dropdown .menu-tab-btn:hover {
+    color: #0f172a !important;
+  }
+
+  [data-theme="dark"] .mega-menu-dropdown {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  [data-theme="dark"] .mega-menu-dropdown .menu-tab-btn.active {
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .mega-menu-dropdown .menu-tab-btn {
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .mega-menu-dropdown a {
+    color: #cbd5e1 !important;
+  }
+
+  [data-theme="dark"] .mega-menu-dropdown a:hover {
+    color: #38bdf8 !important;
+  }
+
+</style>
 </head>
 
 <body>
@@ -1764,92 +1835,112 @@ permalink: /complete-management-system
           <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span
               class="drop-arrow">▾</span>
           </a>
-          <div class="mega-dropdown square-mega-3col">
-            <div class="mega-dropdown-inner mega-3col-wrapper">
+          <div class="mega-menu-dropdown" style="display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 32px; background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12); position: absolute; top: 100%; left: 50%; transform: translateX(-40%); z-index: 9999; width: 860px; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif;">
+  
+  <!-- LEFT COLUMN: CATEGORIES LIST -->
+  <div style="border-right: 1px solid #f1f5f9; padding-right: 20px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; flex-direction: column; gap: 14px;" id="mgmt-menu-tabs">
+      <button type="button" data-target="fb-panel" class="menu-tab-btn active" style="text-align: left; background: none; border: none; font-size: 18px; font-weight: 800; color: #0f172a; cursor: pointer; padding: 4px 0;">Food & Beverage</button>
+      <button type="button" data-target="retail-panel" class="menu-tab-btn" style="text-align: left; background: none; border: none; font-size: 18px; font-weight: 700; color: #64748b; cursor: pointer; padding: 4px 0;">Retail</button>
+      <button type="button" data-target="beauty-panel" class="menu-tab-btn" style="text-align: left; background: none; border: none; font-size: 18px; font-weight: 700; color: #64748b; cursor: pointer; padding: 4px 0;">Beauty & Fashion</button>
+      <button type="button" data-target="services-panel" class="menu-tab-btn" style="text-align: left; background: none; border: none; font-size: 18px; font-weight: 700; color: #64748b; cursor: pointer; padding: 4px 0;">Services</button>
+    </div>
+  </div>
 
-              <!-- Column 1: Left Categories Tabs -->
-              <div class="mega-col-left">
-                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')"
-                  onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
-                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')"
-                  onmouseenter="switchMegaTab('retail')">Retail</button>
-                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')"
-                  onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
-                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
-                  onmouseenter="switchMegaTab('services')">Services</button>
-                <a href="/business-types" class="sq-all-types-link">All business types</a>
-              </div>
+  <!-- RIGHT CONTAINER: DYNAMIC CONTENT PANELS -->
+  <div id="mgmt-panels-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+    
+    <!-- PANEL 1: FOOD & BEVERAGE (Active by default) -->
+    <div id="fb-panel" class="menu-content-panel" style="display: contents;">
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">DISCOVER</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/food-beverage.html" style="font-size: 14px; font-weight: 800; color: #0f172a; text-decoration: none;">Overview</a>
+          <a href="/food-beverage/fine-dine" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Fine Dine & Cafes</a>
+          <a href="/food-beverage/qsr" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">QSR & Fast Food</a>
+          <a href="/food-beverage/cloud-kitchens" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Cloud Kitchens & Catering</a>
+          <a href="/food-beverage/bakeries" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Bakeries & Patisseries</a>
+          <a href="/food-beverage/bars-pubs" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Bars, Pubs & Breweries</a>
+        </div>
+      </div>
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">CAPABILITIES</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/solutions/payments" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Take payments & Zero-Fraud EDC Sync</a>
+          <a href="/solutions/orders" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Manage orders from one place</a>
+          <a href="/solutions/loyalty" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Keep customers coming back (Loyalty)</a>
+          <a href="/solutions/multi-store" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Scale your business & Multi-Store ERP</a>
+          <a href="/solutions/hrms" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Schedule and pay team (Selfie HRMS)</a>
+          <a href="/solutions/vision-ai" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Vision AI Stock Detection</a>
+        </div>
+      </div>
+    </div>
 
-              <!-- Column 2: Discover (Specific Business Types) -->
-              <div class="mega-col-middle">
-                <div class="mega-sub-header">Discover</div>
-                <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="/restaurants-fine-dining" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/restaurants-fine-dining" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="/qsr-fast-food" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
-                    Food &amp; Takeaway</a>
-                  <a href="/cafes-chai-bars" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
-                    &amp; Chai Bars</a>
-                  <a href="/cloud-kitchens-catering" data-sector="cloudkitchen" data-cat="fnb"
-                    class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="/bakeries-shops" class="sq-disc-item">Bakeries &amp; Patisseries</a>
-                  <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs
-                    &amp; Breweries</a>
-                </div>
+    <!-- PANEL 2: RETAIL -->
+    <div id="retail-panel" class="menu-content-panel" style="display: none;">
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">DISCOVER RETAIL</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/retail.html" style="font-size: 14px; font-weight: 800; color: #0f172a; text-decoration: none;">Overview</a>
+          <a href="/retail/grocery" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Grocery & Supermarkets</a>
+          <a href="/retail/electronics" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Electronics & Mobile</a>
+          <a href="/retail/footwear" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Footwear & Leather</a>
+          <a href="/retail/jewellery" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Jewellery & Bullion</a>
+          <a href="/retail/bookstores" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Bookstores & Stationery</a>
+        </div>
+      </div>
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">RETAIL TECH</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/solutions/inventory" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Real-time Multi-variant Inventory</a>
+          <a href="/solutions/barcode" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Custom Barcode & Tag Printing</a>
+          <a href="/solutions/gst" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">HSN GST Automated Filing</a>
+          <a href="/solutions/whatsapp" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">WhatsApp Digital Catalogs</a>
+        </div>
+      </div>
+    </div>
 
-                <div class="sq-tab-content" id="tab-retail">
-                  <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/grocery-supermarkets-kirana" data-sector="grocery" data-cat="retail"
-                    class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
-                  <a href="/electronics-mobile-shops" data-sector="electronics" data-cat="retail"
-                    class="sq-disc-item">Electronics &amp; Mobile Shops</a>
-                  <a href="/footwear-leather-stores" data-sector="footwear" data-cat="retail"
-                    class="sq-disc-item">Footwear &amp; Leather Stores</a>
-                  <a href="/jewellery-shops" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery
-                    Showrooms &amp; Bullion</a>
-                  <a href="/watch-stores" data-sector="watch" data-cat="retail" class="sq-disc-item">Watch Stores &amp;
-                    Horology Boutiques</a>
-                  <a href="/bookstores-stationery" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores
-                    &amp; Stationery Outlets</a>
-                </div>
+    <!-- PANEL 3: BEAUTY & FASHION -->
+    <div id="beauty-panel" class="menu-content-panel" style="display: none;">
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">DISCOVER BEAUTY & STYLE</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/beauty-fashion/salons" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Salons, Spas & Wellness</a>
+          <a href="/beauty-fashion/clothing" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Apparel & Fashion Boutiques</a>
+          <a href="/beauty-fashion/cosmetics" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Cosmetics & Skincare</a>
+        </div>
+      </div>
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">SPECIALIZED WORKFLOWS</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/solutions/appointments" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Automated Stylist Appointments</a>
+          <a href="/solutions/commission" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Staff Commission & Tip Splitter</a>
+          <a href="/solutions/membership" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Prepaid Client Wallet & Packages</a>
+        </div>
+      </div>
+    </div>
 
-                <div class="sq-tab-content" id="tab-beauty">
-                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
-                    class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
-                  <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty" class="sq-disc-item">Salons,
-                    Spas &amp; Beauty Parlors</a>
-                  <a href="/beauty-fashion/cosmetics" data-sector="cosmetics" data-cat="beauty"
-                    class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
-                </div>
+    <!-- PANEL 4: SERVICES -->
+    <div id="services-panel" class="menu-content-panel" style="display: none;">
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">DISCOVER SERVICES</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/services/repair" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Electronics & Device Repair</a>
+          <a href="/services/laundry" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Dry Cleaners & Laundry</a>
+          <a href="/services/consultancy" style="font-size: 14px; font-weight: 500; color: #334155; text-decoration: none;">Agencies & Consultancies</a>
+        </div>
+      </div>
+      <div>
+        <span style="font-size: 11px; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 12px;">SERVICE ESSENTIALS</span>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="/solutions/job-cards" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Digital Job Card & Estimate System</a>
+          <a href="/solutions/service-crm" style="font-size: 13.5px; font-weight: 500; color: #334155; text-decoration: none;">Customer Lifecycle & Follow-ups</a>
+        </div>
+      </div>
+    </div>
 
-                <div class="sq-tab-content" id="tab-services">
-                  <a href="/services/gyms" data-sector="gyms" data-cat="services"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/services/gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
-                    Fitness Studios &amp; Yoga Centers</a>
-
-                  <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services" class="sq-disc-item">Dry
-                    Cleaners &amp; Laundry Shops</a>
-                </div>
-              </div>
-
-              <!-- Column 3: Capabilities -->
-              <div class="mega-col-right">
-                <div class="mega-sub-header">Capabilities</div>
-                <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
-                <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
-                <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
-                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
-                <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
-                <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
-              </div>
-
-            </div>
-          </div>
+  </div>
+</div>
         </li>
 
         <!-- 2. Solutions Dropdown -->
@@ -2269,7 +2360,6 @@ permalink: /complete-management-system
 
       <div class="cms-hero-actions">
         <a href="#cms-lead-form" class="cms-btn cms-btn-primary">Start Free Trial</a>
-        <button type="button" class="cms-btn cms-btn-secondary" onclick="openDemoModal()">Book a Demo </button>
       </div>
 
       <div class="cms-hero-badges">
@@ -3803,34 +3893,106 @@ permalink: /complete-management-system
        DEMO MODAL
   ══════════════════════════════════════════════════════════ -->
   <div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true">
-    <div class="modal-card">
+    <div class="modal-card modal-hub-wide">
       <div class="modal-header">
-        <h3><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Priyulabs Interactive System Demo</h3>
+        <div class="modal-title-wrap">
+          <img src="assets/logo.svg" alt="Priyulabs" class="modal-brand-logo" />
+          <div>
+            <h3>Priyulabs Interactive Product Suite</h3>
+            <p>Live hands-on playground — test and experience all Priyulabs services directly in your browser</p>
+          </div>
+        </div>
         <button class="modal-close" onclick="closeDemoModal()" aria-label="Close modal">&times;</button>
       </div>
-      <div class="modal-body">
-        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
-          Experience our connected business modules live. Choose an interactive simulator:
-        </p>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px;">
-          <button type="button" class="cms-btn cms-btn-primary" style="font-size: 13.5px; padding: 10px;"
-            onclick="alert('POS Demo simulation initialized. Full interactive simulation active on page!'); closeDemoModal();">
-            POS Billing Engine
-          </button>
-          <button type="button" class="cms-btn cms-btn-secondary"
-            style="font-size: 13.5px; padding: 10px; color: var(--text-main); border-color: var(--border-color);"
-            onclick="alert('Inventory sync audit initialized.'); closeDemoModal();">
-             Live Inventory ERP
-          </button>
-        </div>
-        <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-sm); font-size: 13px;">
-           <strong>Want a personalized 1-on-1 demo?</strong> Our solutions team will walk you through your exact
-          retail or restaurant setup.
+
+      <div class="demo-body">
+        <!-- ══════════════ TAB 1: SMART POS BILLING ══════════════ -->
+        <div class="demo-panel active" id="tab-pos">
+          <div class="demo-sim-box">
+            <div class="sim-left">
+              <div class="sim-header-row">
+                <div>
+                  <h4>Live POS Terminal &amp; Quick-Bill</h4>
+                  <p>Click items to add to cart, scan barcodes, or speak to bill in real-time:</p>
+                </div>
+                <div class="pos-voice-quick">
+                  <button class="pos-pill-btn" onclick="runPosVoicePreset('2 burgers and 1 coffee')">"2 Burgers
+                    &amp; 1 Coffee"</button>
+                  <button class="pos-pill-btn" onclick="simulateBarcodeScan()">Scan Barcode</button>
+                </div>
+              </div>
+
+              <!-- Product Category Chips -->
+              <div class="pos-cat-bar">
+                <button class="pos-cat-btn active" onclick="filterPosProducts('cafe', this)">Cafe &amp; Food</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('grocery', this)">Grocery / FMCG</button>
+                <button class="pos-cat-btn" onclick="filterPosProducts('retail', this)">Retail &amp; Apparel</button>
+              </div>
+
+              <!-- Clickable Product Catalog Grid -->
+              <div class="pos-product-grid" id="posProductGrid" style="max-height: 400px; overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; padding-right: 4px;">
+                <!-- Injected / Rendered via JS -->
+              </div>
+
+              <div class="pos-status-bar" id="posStatusBar">
+                <span class="status-indicator"></span> Offline-First POS Engine Active • 0.2s Instant Add
+              </div>
+            </div>
+
+            <!-- Right: Live Thermal Bill / Receipt -->
+            <div class="sim-right">
+              <div class="pos-receipt-box">
+                <div class="pos-receipt-head">
+                  <div class="pr-brand">PRIYULABS RETAIL OS</div>
+                  <div class="pr-sub">Smart Cloud POS • Terminal #01</div>
+                  <div class="pr-meta"><span id="posCurrentTime">Live Session</span> • GSTIN: 29AABCU9603R1ZM</div>
+                </div>
+
+                <div class="pos-cart-list" id="posCartList">
+                  <!-- Dynamic Cart Rows -->
+                </div>
+
+                <div class="pos-bill-calc">
+                  <div class="pbc-row"><span>Subtotal</span><span id="posSubtotal">&#8377;0.00</span></div>
+                  <div class="pbc-row"><span>GST (5% / 18%)</span><span id="posTax">&#8377;0.00</span></div>
+                  <div class="pbc-row pbc-total"><span>Grand Total</span><strong id="posGrandTotal">&#8377;0.00</strong></div>
+                </div>
+
+                <div class="pos-actions-wrap">
+                  <button class="btn-pos-pay" id="btnPosPay" onclick="executePosPayment()">
+                    Pay via UPI QR / Pine Labs
+                  </button>
+                  <button class="btn-pos-clear" onclick="clearPosCart()">Clear</button>
+                </div>
+
+                <!-- Live Payment Success Overlay inside receipt -->
+                <div class="pos-pay-success" id="posPaySuccess" style="display:none;">
+                  <div class="pps-icon"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                      stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      style="display:inline-block;vertical-align:middle;margin-right:6px;">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg></div>
+                  <strong>Payment Received &#8377;<span id="posPaidAmt">0</span></strong>
+                  <small>UPI Trans ID: #UPI-984210 • Bill Auto-Saved</small>
+                  <div class="pps-btns">
+                    <button class="btn-primary-sm" onclick="printPosInvoice()">Print Receipt</button>
+                    <button class="btn-ghost-sm" onclick="resetPosCart()">+ Next Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="modal-footer">
-        <a href="#cms-lead-form" class="cms-btn cms-btn-primary" onclick="closeDemoModal()">Book 1-on-1 Walkthrough</a>
+        <div class="mf-left">
+          <span>Need a customized consultation for your business?</span>
+        </div>
+        <div class="mf-right">
+          <button class="btn-ghost-sm" onclick="closeDemoModal()">Close</button>
+          <a href="#cta" class="btn-primary-sm" onclick="closeDemoModal()">Book 1-on-1 Free Demo →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -4118,6 +4280,46 @@ permalink: /complete-management-system
       }, 900);
     }
   </script>
+
+  <!-- Business Types Mega-Menu Tab-Switching Logic -->
+  <script>
+    (function () {
+      function initMgmtMenuTabs() {
+        document.querySelectorAll('#mgmt-menu-tabs .menu-tab-btn').forEach(btn => {
+  const switchTab = () => {
+    const targetId = btn.getAttribute('data-target');
+    
+    // Update Tab Highlight
+    document.querySelectorAll('#mgmt-menu-tabs .menu-tab-btn').forEach(b => {
+      b.style.color = '#64748b';
+      b.style.fontWeight = '700';
+    });
+    btn.style.color = '#0f172a';
+    btn.style.fontWeight = '800';
+
+    // Switch Visible Panel
+    document.querySelectorAll('#mgmt-panels-container .menu-content-panel').forEach(panel => {
+      panel.style.display = 'none';
+    });
+    const activePanel = document.getElementById(targetId);
+    if (activePanel) {
+      activePanel.style.display = 'contents';
+    }
+  };
+
+  // Allow both mouse hover and click switching
+  btn.addEventListener('mouseenter', switchTab);
+  btn.addEventListener('click', (e) => { e.preventDefault(); switchTab(); });
+});
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMgmtMenuTabs);
+      } else {
+        initMgmtMenuTabs();
+      }
+    })();
+  </script>
+
 </body>
 
 </html>

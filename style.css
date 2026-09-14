@@ -4919,12 +4919,40 @@ iframe {
 
 .pos-product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
   margin-bottom: 12px;
-  max-height: 220px;
+  max-height: 400px;
   overflow-y: auto;
   padding-right: 4px;
+  scroll-behavior: smooth;
+}
+
+.pos-product-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.pos-product-grid::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+.pos-product-grid::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.pos-product-grid::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .pos-product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .pos-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 350px;
+  }
 }
 
 .pos-item-card {
@@ -8866,3 +8894,19 @@ textarea,
 .w-full { width: 100%; }
 .h-full { height: 100%; }
 .object-cover { object-fit: cover; }
+
+/* Dark Theme Support for Trust Badges Stack */
+[data-theme="dark"] .trust-badges-stack > div {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .trust-badges-stack > div > div > div > div:first-child {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .trust-badges-stack > div > div > div > div:last-child {
+  color: #94a3b8 !important;
+}
+

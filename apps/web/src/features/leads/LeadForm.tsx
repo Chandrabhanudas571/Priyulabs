@@ -10,7 +10,7 @@ const schema = z
     businessType: z.string().min(1, 'Please select your business type'),
     service: z.string().min(1, 'Please select a service'),
     customRequirement: z.string().optional(),
-    mobile: z.string().regex(/^[0-9+\- ()]{7,20}$/, 'Enter a valid mobile number'),
+    mobile: z.string().regex(/^\d{10}$/, 'Phone / WhatsApp number must be exactly 10 digits'),
   })
   .refine(
     (data) => {
@@ -227,9 +227,15 @@ export function LeadForm() {
         Phone / WhatsApp Number *
         <input
           type="tel"
-          placeholder="WhatsApp Number (+91 7788899994)"
+          maxLength={10}
+          inputMode="numeric"
+          placeholder="Enter 10-digit WhatsApp number"
           className="rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-600 focus:bg-white dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-          {...register('mobile')}
+          {...register('mobile', {
+            onChange: (e) => {
+              e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+            },
+          })}
         />
         {errors.mobile && <small className="text-xs text-rose-600">{errors.mobile?.message}</small>}
       </label>
