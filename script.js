@@ -496,7 +496,7 @@ function openDemoModal(tab = 'pos') {
     switchDemoTab(tab);
     initDemoPlaygrounds();
   } else {
-    window.location.href = 'index.html#demoModal';
+    window.location.href = '/#demoModal';
   }
 }
 
@@ -2083,7 +2083,7 @@ function openComingSoonModal(serviceName = 'Hospitality Tech', event) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   } else {
-    window.location.href = 'hospitality.html';
+    window.location.href = '/hospitality';
   }
 }
 
