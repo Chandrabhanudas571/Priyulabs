@@ -29,7 +29,7 @@ const policyData: Record<PolicyType, { title: string; subtitle: string; content:
         <div className="rounded-xl bg-slate-100 p-4 dark:bg-slate-800">
           <p><strong>Brand:</strong> Priyulabs (PriyuLabs Technologies Pvt. Ltd.)</p>
           <p><strong>Registered Office:</strong> 279, Kapileshwar - Sundarpada Rd, Basisthanagar, Old Town, Bhubaneswar, Odisha 751002.</p>
-          <p><strong>Phone:</strong> <a className="text-indigo-600 dark:text-indigo-400" href="tel:+917849074050">+91 78490 74050</a></p>
+          <p><strong>Phone:</strong> <a className="text-indigo-600 dark:text-indigo-400" href="tel:+917873844050">+91 78738 44050</a></p>
           <p><strong>Email:</strong> <a className="text-indigo-600 dark:text-indigo-400" href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></p>
         </div>
       </div>
@@ -76,7 +76,7 @@ const policyData: Record<PolicyType, { title: string; subtitle: string; content:
         </p>
         <h4 className="font-bold text-slate-900 dark:text-white">3. Support SLA</h4>
         <p>
-          All business tier users receive dedicated 24/7 WhatsApp and phone support (Call: +91 78490 74050, Email:
+          All business tier users receive dedicated 24/7 WhatsApp and phone support (Call: +91 78738 44050, Email:
           priylabspos@gmail.com) with a guaranteed response window under 15 minutes.
         </p>
       </div>

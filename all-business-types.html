@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Business Types – Priyulabs Retail OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #FAF6EE;
+      --ink: #1F2D24;
+      --ink-soft: #556358;
+      --accent: #2D5A3E;
+      --gold: #B8863B;
+      --line: rgba(215, 226, 218, 0.85);
+      --glass-card: rgba(255, 255, 255, 0.82);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      background: rgba(250, 246, 238, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 36px;
+      width: 36px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand-logo-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--ink);
+    }
+
+    .nav-back-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-back-link:hover {
+      opacity: 0.75;
+    }
+
+    .hub-hero {
+      padding: 80px 0 50px;
+      text-align: center;
+    }
+
+    .hub-hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hub-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(184, 134, 59, 0.12);
+      border: 1px solid rgba(184, 134, 59, 0.25);
+      padding: 6px 16px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .hub-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(38px, 4.5vw, 54px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hub-title span {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .hub-subtitle {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .sectors-stream-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 32px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 90px;
+    }
+
+    .sector-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: var(--glass-card);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 50px;
+      box-shadow: 0 25px 50px -15px rgba(31, 45, 36, 0.08);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sector-row.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sector-row.dir-right .sector-text-col {
+      order: 1;
+    }
+
+    .sector-row.dir-right .sector-img-col {
+      order: 2;
+      transform: translateX(50px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sector-row.dir-right.animate-in .sector-img-col {
+      transform: translateX(0);
+    }
+
+    .sector-row.dir-left .sector-text-col {
+      order: 2;
+    }
+
+    .sector-row.dir-left .sector-img-col {
+      order: 1;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sector-row.dir-left.animate-in .sector-img-col {
+      transform: translateX(0);
+    }
+
+    @media(max-width: 960px) {
+      .sector-row {
+        grid-template-columns: 1fr;
+        padding: 32px;
+        gap: 30px;
+      }
+
+      .sector-row.dir-right .sector-text-col,
+      .sector-row.dir-right .sector-img-col,
+      .sector-row.dir-left .sector-text-col,
+      .sector-row.dir-left .sector-img-col {
+        order: unset;
+        transform: none !important;
+      }
+    }
+
+    .sector-img-col {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/11;
+      box-shadow: 0 15px 35px -10px rgba(31, 45, 36, 0.18);
+      border: 1px solid var(--line);
+    }
+
+    .sector-img-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .sector-row:hover .sector-img-col img {
+      transform: scale(1.03);
+    }
+
+    .sector-tag {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .sector-title {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .sector-points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .sector-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .sector-point-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .sector-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      padding: 12px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px -6px rgba(45, 90, 62, 0.4);
+      transition: all 0.25s ease;
+    }
+
+    .sector-more-btn:hover {
+      background: #1e3f2b;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -6px rgba(45, 90, 62, 0.5);
+    }
+
+    .hub-footer {
+      background: #152419;
+      color: #FAF6EE;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13.5px;
+      border-top: 2px solid var(--accent);
+    }
+  
+/* Global Fluid Live Video Background */
+body {
+  background-color: transparent !important;
+}
+.global-fluid-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  overflow: hidden;
+  background: #FAF6EE;
+  pointer-events: none;
+}
+.global-fluid-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease-in-out;
+  pointer-events: none;
+  will-change: opacity;
+}
+.global-fluid-bg video.is-active {
+  opacity: 0.85;
+}
+.global-fluid-mask {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+</style>
+
+  
+  <style id="seamless-wallpaper-style">
+    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    html, body {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    /* Section background transparency so live wallpaper shows through */
+    .clean-hero-sec,
+    .clean-pillars-sec,
+    .clean-features-sec,
+    .clean-grid-sec,
+    .clean-metrics-sec,
+    .clean-cta-sec,
+    .bottom-cta-sec,
+    .pillars-sec,
+    .features-sec,
+    .metrics-sec,
+    .clean-container,
+    .hero-sec,
+    .hub-hero,
+    .matrix-sec,
+    .sectors-stream-container,
+    .sector-row,
+    main {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    /* Keep Nav and Header translucent with blur */
+    .clean-nav-header,
+    .navbar,
+    header.clean-subnav,
+    header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    /* Keep Cards legible and clean with glassmorphism */
+    .clean-hero-visual-frame {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .clean-feat-card,
+    .pillar-img-frame,
+    .clean-hero-media-wrap,
+    .deal-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    .global-fluid-bg {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -2 !important;
+      overflow: hidden !important;
+      background: #FAF6EE !important;
+      pointer-events: none !important;
+    }
+
+    .global-fluid-bg video {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translate(-50%, -50%) !important;
+      object-fit: cover !important;
+      opacity: 0 !important;
+      transition: opacity 0.35s ease-in-out !important;
+      filter: saturate(1.1) brightness(1.02) !important;
+      pointer-events: none !important;
+      will-change: opacity !important;
+    }
+
+    .global-fluid-bg video.is-active {
+      opacity: 0.85 !important;
+    }
+
+    .global-fluid-mask {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+<div class="global-fluid-bg">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="global-fluid-mask"></div>
+
+
+
+
+
+  <header>
+    <div class="nav">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/logo.svg" alt="Priyulabs" class="brand-logo-img"
+          onerror="this.src='/assets/logo.svg'; this.onerror=null;">
+        <span class="brand-logo-text">Priyulabs</span>
+      </a>
+      <a href="index.html" class="nav-back-link">&larr; Back to Home</a>
+    </div>
+  </header>
+
+  <section class="hub-hero">
+    <div class="hub-hero-container">
+      <span class="hub-badge">17 Specialized Business Types</span>
+      <h1 class="hub-title">
+        One Ecosystem <span
+          style="font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; color: var(--gold);">&amp;</span>
+        Infinite Retail Verticals. <br>
+        <span>The Future of Commerce is <i>Unified</i>.</span>
+      </h1>
+      <p class="hub-subtitle">Explore tailored workflows built for your specific retail sector. Zero generic bloat, 100%
+        operational precision designed for modern Indian enterprises.</p>
+    </div>
+  </section>
+
+  <div class="sectors-stream-container">
+    <!-- Sector 1: Restaurants & Fine Dining -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Food & Beverage</span>
+        <h2 class="sector-title">Restaurants & Fine Dining</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Interactive graphical table map
+              with live occupied, vacant, and reserved visual indicators.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Multi-station Kitchen Display
+              System (KDS) & Captain app for instant wireless order dispatch.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Split billing by seat, item, or
+              percentage with zero-delay EDC payment machine sync.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Recipe-level inventory tracking
+              with automatic raw ingredient depletion per dish ordered.</span></li>
+        </ul>
+        <a href="restaurants-fine-dining.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop"
+          alt="Restaurants & Fine Dining">
+      </div>
+    </div>
+    <!-- Sector 2: QSR, Fast Food & Takeaway -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Food & Beverage</span>
+        <h2 class="sector-title">QSR, Fast Food & Takeaway</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>3-second counter checkout with
+              lightning-fast tap-to-add POS combos and add-ons.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Dynamic token management screen
+              with integrated audio order number callout.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Unified aggregator order punch
+              consolidating Swiggy and Zomato directly into KDS.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Offline-first billing
+              architecture ensuring uninterrupted sales during internet dropouts.</span></li>
+        </ul>
+        <a href="qsr-fast-food.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=900&auto=format&fit=crop"
+          alt="QSR, Fast Food & Takeaway">
+      </div>
+    </div>
+    <!-- Sector 3: Cafes & Chai Bars -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Food & Beverage</span>
+        <h2 class="sector-title">Cafes & Chai Bars</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Barista order management with
+              milk variant, syrup shot, and temperature customization.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>WhatsApp digital receipts with
+              1-click reward points accumulation on customer mobile.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Bakery display case tracking with
+              time-stamped freshness alerts and wastage logs.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>High-speed thermal token printing
+              synced with customer-facing display order confirmation.</span></li>
+        </ul>
+        <a href="cafes-chai-bars.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=900&auto=format&fit=crop"
+          alt="Cafes & Chai Bars">
+      </div>
+    </div>
+    <!-- Sector 4: Cloud Kitchens & Catering -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Food & Beverage</span>
+        <h2 class="sector-title">Cloud Kitchens & Catering</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Multi-brand kitchen controller
+              managing 10+ virtual brands from a single terminal.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Centralized menu and pricing
+              publishing across Swiggy, Zomato, and direct web storefront.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Bulk banquet and catering
+              quotation builder with raw ingredient requisition sheets.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Rider dispatch queue tracking
+              delivery pickup times and rider verification codes.</span></li>
+        </ul>
+        <a href="cloud-kitchens-catering.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=900&auto=format&fit=crop"
+          alt="Cloud Kitchens & Catering">
+      </div>
+    </div>
+    <!-- Sector 5: Bakeries & Patisseries -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Food & Beverage</span>
+        <h2 class="sector-title">Bakeries & Patisseries</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Advance custom cake booking with
+              photo uploads, sponge flavors, and pickup calendar.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Batch baking schedules with raw
+              material consumption tracking (flour, butter, sugar).</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Expiry and shelf-life monitoring
+              with end-of-day markdown suggestions to cut wastage.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Integrated scale weight-based
+              barcode labeling for cookies, dry cakes, and tea snacks.</span></li>
+        </ul>
+        <a href="bakeries-shops.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=900&auto=format&fit=crop"
+          alt="Bakeries & Patisseries">
+      </div>
+    </div>
+    <!-- Sector 6: Bars, Pubs & Breweries -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Food & Beverage</span>
+        <h2 class="sector-title">Bars, Pubs & Breweries</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>High-speed open tab management
+              with instant card pre-authorization and table transfers.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Keg volume and peg-level liquor
+              inventory monitoring with spill and wastage logging.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Happy Hour and dynamic pricing
+              automation scheduled by day, hour, and seating zone.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>State excise-compliant stock
+              registers and automated daily liquor consumption reports.</span></li>
+        </ul>
+        <a href="bars-pubs-breweries.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=900&auto=format&fit=crop"
+          alt="Bars, Pubs & Breweries">
+      </div>
+    </div>
+    <!-- Sector 7: Grocery, Supermarkets & Kirana -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Retail</span>
+        <h2 class="sector-title">Grocery, Supermarkets & Kirana</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Sub-second barcode scanning
+              engineered for 100,000+ FMCG master catalogue items.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Integrated digital weighing scale
+              checkout for loose grains, vegetables, and pulses.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Expiry date & batch tracking
+              (FEFO) with automatic supplier return debit note creation.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Instant Kirana credit ledger
+              (Khata) with automated WhatsApp payment reminder links.</span></li>
+        </ul>
+        <a href="grocery-supermarkets-kirana.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=900&auto=format&fit=crop"
+          alt="Grocery, Supermarkets & Kirana">
+      </div>
+    </div>
+    <!-- Sector 8: Electronics & Mobile Shops -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Retail</span>
+        <h2 class="sector-title">Electronics & Mobile Shops</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Unique IMEI & serial number
+              tracking across purchase, stock transfer, and customer bill.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Integrated multi-bank
+              debit/credit card EMI calculation and instant finance lookup.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Brand warranty registration and
+              repair job-sheet tracking with SMS status updates.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Distributor price-drop protection
+              ledger and manufacturer backend margin reconciliation.</span></li>
+        </ul>
+        <a href="electronics-mobile-shops.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=900&auto=format&fit=crop"
+          alt="Electronics & Mobile Shops">
+      </div>
+    </div>
+    <!-- Sector 9: Footwear & Leather Stores -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Retail</span>
+        <h2 class="sector-title">Footwear & Leather Stores</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Multi-dimensional size & color
+              matrix grid tracking UK/US/EU shoe sizes per style.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Single-shoe display box locator
+              preventing mismatched left/right pairs during rush hours.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Fast barcode tagging with support
+              for imported leather goods and custom accessories.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Seasonal clearance bundle builder
+              (Buy 1 Get 1, Tiered footwear discounts).</span></li>
+        </ul>
+        <a href="footwear-leather-stores.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop"
+          alt="Footwear & Leather Stores">
+      </div>
+    </div>
+    <!-- Sector 10: Jewellery Showrooms & Bullion -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Retail</span>
+        <h2 class="sector-title">Jewellery Showrooms & Bullion</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Real-time gold and silver bullion
+              rate sync with automated making charge calculations.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Mandatory 6-digit HUID (Hallmark
+              Unique Identification) and stone weight breakdown on bills.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Old gold purchase, scrap purity
+              testing, and exchange valuation ledger with melting loss.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Customer monthly gold savings
+              scheme (Kitty) ledger with automated installment tracking.</span></li>
+        </ul>
+        <a href="jewellery-shops.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=900&auto=format&fit=crop"
+          alt="Jewellery Showrooms & Bullion">
+      </div>
+    </div>
+    <!-- Sector 11: Watch Stores & Horology Boutiques -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Retail</span>
+        <h2 class="sector-title">Watch Stores & Horology Boutiques</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Individual serial number and
+              movement caliber tracking for luxury and fashion timepieces.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>In-house watchmaker service job
+              sheets with battery, strap, and overhaul status history.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Certificate of authenticity and
+              international manufacturer warranty card association.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>High-value customer collector
+              profile history with personalized VIP preview alerts.</span></li>
+        </ul>
+        <a href="watch-stores.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=900&auto=format&fit=crop"
+          alt="Watch Stores & Horology Boutiques">
+      </div>
+    </div>
+    <!-- Sector 12: Bookstores & Stationery -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Retail</span>
+        <h2 class="sector-title">Bookstores & Stationery</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Global ISBN database barcode
+              lookup with automatic author, publisher, and edition fetch.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Academic school kit and semester
+              bundle billing with 1-click package assembly.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Dual-tax GST handling separating
+              tax-exempt books from taxable stationery items.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Customer book reservation and
+              publisher return credit management for unsold stock.</span></li>
+        </ul>
+        <a href="bookstores-stationery.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=900&auto=format&fit=crop"
+          alt="Bookstores & Stationery">
+      </div>
+    </div>
+    <!-- Sector 13: Clothing Brands & Apparel Boutiques -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Beauty & Fashion</span>
+        <h2 class="sector-title">Clothing Brands & Apparel Boutiques</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Complete SKU matrix mapping by
+              brand, collection, size, fit, and color variation.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>In-house tailor alteration slip
+              management with estimated delivery time alerts.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Barcode & RFID label printing
+              supporting wash-care symbols and seasonal tags.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Omnichannel sync connecting
+              counter sales with Instagram shop and online boutique catalog.</span></li>
+        </ul>
+        <a href="apparel-boutiques.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=900&auto=format&fit=crop"
+          alt="Clothing Brands & Apparel Boutiques">
+      </div>
+    </div>
+    <!-- Sector 14: Salons, Spas & Beauty Parlors -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Beauty & Fashion</span>
+        <h2 class="sector-title">Salons, Spas & Beauty Parlors</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Interactive multi-chair
+              appointment calendar with SMS/WhatsApp booking confirmations.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Stylist commission and incentive
+              tracking calculated automatically per completed service.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>In-salon product consumption
+              tracking (grams of color, developer, facial kits per client).</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Pre-paid client membership
+              packages, prepaid wallets, and recurring service loyalty.</span></li>
+        </ul>
+        <a href="salons-spas.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=900&auto=format&fit=crop"
+          alt="Salons, Spas & Beauty Parlors">
+      </div>
+    </div>
+    <!-- Sector 15: Cosmetics & Skincare Stores -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Beauty & Fashion</span>
+        <h2 class="sector-title">Cosmetics & Skincare Stores</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Shade-matrix selector grouping
+              foundations, lip colors, and palettes under master items.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Strict FEFO
+              (First-Expired-First-Out) batch control for organic and dermatological goods.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Beauty consultant sales
+              attribution for brand incentive payouts and brand commissions.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Automated tester & promotional
+              sample inventory audit preventing shrinkage.</span></li>
+        </ul>
+        <a href="cosmetics-skincare.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=900&auto=format&fit=crop"
+          alt="Cosmetics & Skincare Stores">
+      </div>
+    </div>
+    <!-- Sector 16: Gyms, Fitness Studios & Yoga -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Services</span>
+        <h2 class="sector-title">Gyms, Fitness Studios & Yoga</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Automated membership
+              subscriptions with RFID/biometric turnstile access control.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Personal trainer (PT) session
+              allocation, client attendance, and trainer payouts.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Automated membership expiry
+              warnings with WhatsApp payment renewal links.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Pro-shop inventory billing for
+              protein supplements, gym wear, and locker rentals.</span></li>
+        </ul>
+        <a href="gyms.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop"
+          alt="Gyms, Fitness Studios & Yoga">
+      </div>
+    </div>
+    <!-- Sector 17: Dry Cleaners & Laundry Shops -->
+    <div class="sector-row dir-right">
+      <div class="sector-text-col">
+        <span class="sector-tag">Services</span>
+        <h2 class="sector-title">Dry Cleaners & Laundry Shops</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Garment tagging with waterproof
+              thermal barcode tags tracking fabric type and stains.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Stage-by-stage processing tracker
+              (Received, Washed, Dry Cleaned, Pressed, Ready).</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Automated WhatsApp notification
+              with pickup token when order is pressed and packed.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Express delivery surcharge and
+              hanger/packaging deposit tracking ledger.</span></li>
+        </ul>
+        <a href="dry-cleaners.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=900&auto=format&fit=crop"
+          alt="Dry Cleaners & Laundry Shops">
+      </div>
+    </div>
+  </div>
+
+  <footer class="hub-footer">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 32px;">
+      <span>&copy; 2026 Priyulabs Software. All rights reserved. | MSME Udyam: UDYAM-OD-19-0177979</span>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const rows = document.querySelectorAll('.sector-row');
+      const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, observerOptions);
+      rows.forEach(row => observer.observe(row));
+
+      const checkVisible = () => {
+        rows.forEach(row => {
+          const rect = row.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 50) {
+            row.classList.add('animate-in');
+          }
+        });
+      };
+      checkVisible();
+      setTimeout(checkVisible, 100);
+    });
+  </script>
+
+  
+
+  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <script id="seamless-video-looper-script">
+    (function initSeamlessVideoLooper() {
+      const container = document.querySelector('.global-fluid-bg');
+      if (!container) return;
+      const vids = container.querySelectorAll('video');
+      if (!vids || vids.length === 0) return;
+
+      vids.forEach((v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+      });
+
+      if (vids.length === 1) {
+        vids[0].classList.add('is-active');
+        vids[0].play().catch(() => { });
+        return;
+      }
+
+      let activeIdx = 0;
+      let swapping = false;
+
+      const activeVid = () => vids[activeIdx];
+      const nextVid = () => vids[1 - activeIdx];
+
+      const triggerSwap = () => {
+        if (swapping) return;
+        swapping = true;
+
+        const current = activeVid();
+        const incoming = nextVid();
+
+        try {
+          incoming.currentTime = 0;
+        } catch (e) { }
+
+        const playPromise = incoming.play();
+
+        const executeTransition = () => {
+          incoming.classList.add('is-active');
+          current.classList.remove('is-active');
+
+          setTimeout(() => {
+            try {
+              current.pause();
+              current.currentTime = 0;
+            } catch (err) { }
+            activeIdx = 1 - activeIdx;
+            swapping = false;
+          }, 350);
+        };
+
+        if (playPromise !== undefined) {
+          playPromise.then(executeTransition).catch(() => {
+            executeTransition();
+          });
+        } else {
+          executeTransition();
+        }
+      };
+
+      const checkTime = () => {
+        const current = activeVid();
+        if (current && current.duration && !swapping) {
+          const remaining = current.duration - current.currentTime;
+          if (remaining <= 0.35 && current.currentTime > 0.5) {
+            triggerSwap();
+          }
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v === activeVid() && v.duration && !swapping) {
+            const remaining = v.duration - v.currentTime;
+            if (remaining <= 0.35 && v.currentTime > 0.5) {
+              triggerSwap();
+            }
+          }
+        });
+
+        v.addEventListener('ended', () => {
+          if (v === activeVid()) {
+            triggerSwap();
+          }
+        });
+      });
+
+      const startLooper = () => {
+        vids[0].classList.add('is-active');
+        const p = vids[0].play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlock = () => {
+              vids[0].play().catch(() => { });
+              window.removeEventListener('click', unlock);
+              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlock);
+            };
+            window.addEventListener('click', unlock, { passive: true, once: true });
+            window.addEventListener('scroll', unlock, { passive: true, once: true });
+            window.addEventListener('touchstart', unlock, { passive: true, once: true });
+          });
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLooper);
+      } else {
+        startLooper();
+      }
+    })();
+  </script>
+
+
+  <!-- Smooth Redirection to Landing Page Free Trial Onboarding Form -->
+  <script id="landing-trial-router">
+    function goToLandingTrial(e, sector) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const query = sector ? ('?bType=' + encodeURIComponent(sector)) : '';
+      let target = 'index.html' + query + '#contact';
+
+      if (window.location.protocol === 'file:') {
+        const p = window.location.pathname.replace(/\\/g, '/');
+        const idx = p.indexOf('/Antigravity/');
+        if (idx !== -1) {
+          const rel = p.substring(idx + '/Antigravity/'.length);
+          const depth = rel.split('/').length - 1;
+          target = (depth > 0 ? '../'.repeat(depth) : '') + 'index.html' + query + '#contact';
+        } else {
+          // Fallback relative
+          const parts = p.split('/');
+          const fileName = parts.pop();
+          if (parts.length > 0) {
+            target = 'index.html' + query + '#contact';
+          }
+        }
+      } else {
+        // Web server (http://, https://)
+        target = '/index.html' + query + '#contact';
+      }
+
+      window.location.href = target;
+    }
+  </script>
+
+</body>
+
+</html>

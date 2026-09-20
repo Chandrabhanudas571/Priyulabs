@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Live Product Demo | PriyuLabs Retail OS</title>
+  <meta name="description" content="Experience PriyuLabs AI Retail OS hands-on — test live POS billing, AI voice checkout, barcode scanning, thermal receipt printing, and inventory sync in real-time." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAF6EE;
+      --bg-alt: #F1EAD9;
+      --panel: #FFFFFF;
+      --ink: #2A2419;
+      --ink-soft: #6B6152;
+      --accent: #3F5D42;
+      --accent-soft: #E7EEE4;
+      --gold: #B8863B;
+      --line: #E3D9C1;
+      --radius: 16px;
+      --brand-blue: #2563eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── LIVING AURORA BACKDROP (EXACT MATCH TO HOME PAGE) ── */
+    .eduiqo-aurora-engine {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      overflow: hidden;
+      background: #FAF6EE;
+      pointer-events: none;
+    }
+
+    .aurora-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(65px);
+      opacity: 0.75;
+      will-change: transform;
+    }
+
+    .blob-1 {
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, #528358 0%, rgba(82, 131, 88, 0) 70%);
+      top: -120px;
+      left: -100px;
+      animation: flowOrbit1 20s infinite ease-in-out alternate;
+    }
+
+    .blob-2 {
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle, #d9a456 0%, rgba(217, 164, 86, 0) 70%);
+      top: 20%;
+      right: -140px;
+      animation: flowOrbit2 24s infinite ease-in-out alternate;
+    }
+
+    .blob-3 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #7ca884 0%, rgba(124, 168, 132, 0) 70%);
+      bottom: -100px;
+      left: 25%;
+      animation: flowOrbit3 22s infinite ease-in-out alternate;
+    }
+
+    @keyframes flowOrbit1 {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      50% { transform: translate(260px, 140px) rotate(180deg) scale(1.18); }
+      100% { transform: translate(80px, 320px) rotate(360deg) scale(0.92); }
+    }
+
+    @keyframes flowOrbit2 {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      50% { transform: translate(-280px, 180px) rotate(-180deg) scale(1.15); }
+      100% { transform: translate(-100px, 360px) rotate(-360deg) scale(0.88); }
+    }
+
+    @keyframes flowOrbit3 {
+      0% { transform: translate(0, 0) scale(0.95); }
+      50% { transform: translate(-180px, -200px) scale(1.22); }
+      100% { transform: translate(160px, -100px) scale(1); }
+    }
+
+    .ambient-dot-grid {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: radial-gradient(rgba(42, 36, 25, 0.12) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ── HEADER NAVIGATION ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 246, 238, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-ghost-nav {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    .btn-ghost-nav:hover {
+      background: #ffffff;
+      color: var(--ink);
+      border-color: var(--ink-soft);
+    }
+
+    .btn-cta-nav {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--accent);
+      padding: 8px 18px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(63, 93, 66, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta-nav:hover {
+      background: #2f4832;
+      transform: translateY(-1px);
+    }
+
+    /* ── MAIN CONTENT CONTAINER ── */
+    .main-wrap {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      flex: 1;
+    }
+
+    /* ── HERO BANNER ── */
+    .demo-hero {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 36px;
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(184, 134, 59, 0.12);
+      border: 1px solid rgba(184, 134, 59, 0.28);
+      padding: 6px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .demo-hero h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    .demo-hero h1 span {
+      color: var(--accent);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .demo-hero p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* ── INTERACTIVE TAB SELECTOR ── */
+    .tab-bar-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .tab-bar {
+      display: inline-flex;
+      background: rgba(241, 234, 217, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      box-shadow: 0 6px 20px -6px rgba(42, 36, 25, 0.08);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .tab-btn.active {
+      background: var(--panel);
+      color: var(--accent);
+      box-shadow: 0 4px 14px rgba(42, 36, 25, 0.1);
+    }
+
+    /* ── DEMO CARD WRAPPER (WARM CREAM GLASS) ── */
+    .demo-panel {
+      display: none;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(227, 217, 193, 0.95);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 24px 60px -18px rgba(42, 36, 25, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .demo-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── TAB 1: SMART POS TWO-COLUMN LAYOUT ── */
+    .pos-layout {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .pos-layout {
+        grid-template-columns: 1fr;
+      }
+      .demo-panel {
+        padding: 24px 18px;
+      }
+    }
+
+    /* POS Left Column */
+    .pos-ctrl-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pos-quick-voice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .pos-cat-filter {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-bottom: 18px;
+      padding-bottom: 6px;
+    }
+
+    .pos-cat-btn {
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink-soft);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .pos-cat-btn:hover {
+      color: var(--ink);
+      border-color: var(--ink-soft);
+    }
+
+    .pos-cat-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(63, 93, 66, 0.25);
+    }
+
+    /* Product Grid */
+    .pos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .pos-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .pos-grid::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 10px;
+    }
+
+    .pos-item-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .pos-item-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -8px rgba(42, 36, 25, 0.15);
+      border-color: var(--accent);
+    }
+
+    .pos-item-img {
+      width: 100%;
+      height: 84px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      background: #f8fafc;
+    }
+
+    .pos-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pos-item-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+
+    .pos-item-price {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .pos-add-btn {
+      width: 100%;
+      padding: 7px 0;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 12px;
+      border: 1px solid rgba(63, 93, 66, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pos-item-card:hover .pos-add-btn {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .pos-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    }
+
+    /* POS Right Column: Thermal Paper Bill */
+    .receipt-container {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 16px 36px -10px rgba(42, 36, 25, 0.1);
+      position: sticky;
+      top: 100px;
+    }
+
+    .receipt-head {
+      text-align: center;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--line);
+      margin-bottom: 16px;
+    }
+
+    .receipt-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .receipt-sub {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .receipt-meta {
+      font-size: 11px;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    .cart-list {
+      max-height: 240px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+
+    .cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(227, 217, 193, 0.4);
+      font-size: 13px;
+    }
+
+    .cart-row-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 170px;
+    }
+
+    .cart-row-left strong {
+      display: block;
+      font-size: 12.5px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .cart-row-left small {
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    .cart-row-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-qty-ctrl {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #FAF6EE;
+    }
+
+    .cart-qty-ctrl button {
+      width: 22px;
+      height: 22px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .cart-qty-ctrl span {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 0 6px;
+    }
+
+    .cart-del {
+      border: none;
+      background: none;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 32px 10px;
+      color: var(--ink-soft);
+      font-size: 13px;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .calc-box {
+      border-top: 1px dashed var(--line);
+      padding-top: 12px;
+      margin-bottom: 18px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .calc-total {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ink);
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+      margin-top: 6px;
+    }
+
+    .pos-btn-pay {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(63, 93, 66, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .pos-btn-pay:hover {
+      background: #2f4832;
+      transform: translateY(-2px);
+    }
+
+    .pos-btn-clear {
+      width: 100%;
+      padding: 8px;
+      background: transparent;
+      color: var(--ink-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .pos-btn-clear:hover {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fca5a5;
+    }
+
+    .pay-success-overlay {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 12px;
+      text-align: center;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .pay-success-overlay strong {
+      color: #065f46;
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .pay-success-overlay small {
+      color: #047857;
+      display: block;
+      font-size: 11.5px;
+      margin-bottom: 10px;
+    }
+
+    .pay-success-btns {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .btn-sm-print {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid #10b981;
+      background: #10b981;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn-sm-next {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid #059669;
+      background: #fff;
+      color: #059669;
+      cursor: pointer;
+    }
+
+    /* ── TAB 2: VOICE & SCANNER ── */
+    .voice-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .voice-box { grid-template-columns: 1fr; }
+    }
+
+    .voice-interactive-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .voice-mic-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 0 8px rgba(63, 93, 66, 0.12);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(63, 93, 66, 0.25); }
+      70% { box-shadow: 0 0 0 16px rgba(63, 93, 66, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(63, 93, 66, 0); }
+    }
+
+    /* ── TAB 3: INVENTORY ERP ── */
+    .erp-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      font-size: 13.5px;
+      margin-top: 16px;
+    }
+
+    .erp-table th, .erp-table td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .erp-table th {
+      background: #FAF6EE;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .stock-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    .badge-good { background: #dcfce7; color: #15803d; }
+    .badge-low { background: #fee2e2; color: #b91c1c; }
+
+    /* ── TAB 4: GST REPORTS ── */
+    .gst-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .gst-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .gst-card small {
+      font-size: 12px;
+      color: var(--ink-soft);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .gst-card strong {
+      font-size: 22px;
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+    }
+
+    /* ── BOTTOM ONBOARDING CTA BANNER ── */
+    .demo-cta-banner {
+      margin-top: 60px;
+      background: rgba(241, 234, 217, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(227, 217, 193, 0.95);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: 0 20px 45px -15px rgba(42, 36, 25, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .demo-cta-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+    }
+
+    .demo-cta-banner h3 {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .demo-cta-banner p {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+    }
+
+    .btn-banner-cta {
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 12px;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(63, 93, 66, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-banner-cta:hover {
+      background: #2f4832;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--line);
+      background: rgba(250, 246, 238, 0.72);
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* Toast */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      z-index: 1000;
+      display: none;
+      animation: toastIn 0.25s ease;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+/* Global Fluid Live Video Background */
+body {
+  background-color: transparent !important;
+}
+.global-fluid-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  overflow: hidden;
+  background: #FAF6EE;
+  pointer-events: none;
+}
+.global-fluid-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.5; /* Adjust for subtle look */
+}
+.global-fluid-mask {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+</style>
+
+  <style id="seamless-wallpaper-style">
+    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    html, body {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    /* Section background transparency so live wallpaper shows through */
+    .clean-hero-sec,
+    .clean-pillars-sec,
+    .clean-features-sec,
+    .clean-grid-sec,
+    .clean-metrics-sec,
+    .clean-cta-sec,
+    .bottom-cta-sec,
+    .pillars-sec,
+    .features-sec,
+    .metrics-sec,
+    .clean-container,
+    .hero-sec,
+    .hub-hero,
+    .matrix-sec,
+    .sectors-stream-container,
+    .sector-row,
+    main {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    /* Keep Nav and Header translucent with blur */
+    .clean-nav-header,
+    .navbar,
+    header.clean-subnav,
+    header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    /* Keep Cards legible and clean with glassmorphism */
+    .clean-hero-visual-frame {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .clean-feat-card,
+    .pillar-img-frame,
+    .clean-hero-media-wrap,
+    .deal-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    .global-fluid-bg {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -2 !important;
+      overflow: hidden !important;
+      background: #FAF6EE !important;
+      pointer-events: none !important;
+    }
+
+    .global-fluid-bg video {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translate(-50%, -50%) !important;
+      object-fit: cover !important;
+      opacity: 0 !important;
+      transition: opacity 0.35s ease-in-out !important;
+      filter: saturate(1.1) brightness(1.02) !important;
+      pointer-events: none !important;
+      will-change: opacity !important;
+    }
+
+    .global-fluid-bg video.is-active {
+      opacity: 0.85 !important;
+    }
+
+    .global-fluid-mask {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="global-fluid-bg">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="global-fluid-mask"></div>
+
+
+
+
+
+  <!-- Living Aurora Backdrop (Identical to Landing Page) -->
+  <div class="eduiqo-aurora-engine">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+  </div>
+
+  <!-- Technical Dot Grid -->
+  <div class="ambient-dot-grid"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">
+        <img src="/assets/favicon.svg" alt="PriyuLabs" />
+        <span>PriyuLabs</span>
+      </a>
+
+      <div class="nav-actions">
+        <a href="/" onclick="if(location.protocol==='file:'){location.href='index.html';return false;}" class="btn-ghost-nav">&larr; Back to Home</a>
+        <a href="/#contact" class="btn-cta-nav">Start Free Trial</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-wrap">
+    
+    <!-- Hero Header -->
+    <section class="demo-hero">
+      <span class="demo-badge">&#10022; Live Hands-on Simulation</span>
+      <h1>Experience the Priyulabs <span>Retail OS Live</span></h1>
+      <p>
+        Interact directly with our cloud-native retail counter: add items, simulate barcode scans, and watch the thermal tax invoice calculate automatically.
+      </p>
+    </section>
+
+    <!-- Active Module -->
+    <div class="tab-bar-container">
+      <div class="tab-bar">
+        <button type="button" class="tab-btn active" style="cursor: default; pointer-events: none;">
+          &#128722; Smart POS Billing
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SMART POS BILLING PLAYGROUND
+    ══════════════════════════════════════════════════════════ -->
+    <section class="demo-panel active" id="demo-tab-pos">
+      <div class="pos-layout">
+        
+        <!-- Left: Controls & Product Catalog -->
+        <div>
+          <div class="pos-ctrl-bar">
+            <div>
+              <h3 style="font-size: 20px; margin-bottom: 2px;">Live POS Terminal</h3>
+              <p style="font-size: 13px; color: var(--ink-soft);">Click products to bill or scan barcode:</p>
+            </div>
+            <div class="pos-quick-voice">
+              <button type="button" class="pill-btn" onclick="triggerBarcodeScan()">
+                &#9889; Scan Barcode
+              </button>
+            </div>
+          </div>
+
+          <!-- Category Filter Bar -->
+          <div class="pos-cat-filter">
+            <button type="button" class="pos-cat-btn active" onclick="switchCategory('cafe', this)">Cafe &amp; Food (10)</button>
+            <button type="button" class="pos-cat-btn" onclick="switchCategory('grocery', this)">Grocery / FMCG (10)</button>
+            <button type="button" class="pos-cat-btn" onclick="switchCategory('retail', this)">Retail &amp; Apparel (10)</button>
+            <button type="button" class="pos-cat-btn" onclick="switchCategory('all', this)">All Items (30)</button>
+          </div>
+
+          <!-- Clickable Product Catalog Grid -->
+          <div class="pos-grid" id="posGridContainer">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <div class="pos-status-bar" id="posStatusBar">
+            <span class="status-dot"></span>
+            <span>Offline-First Engine Active &bull; 0.2s Instant Add &bull; Zero Server Lag</span>
+          </div>
+        </div>
+
+        <!-- Right: Live Thermal Bill Receipt -->
+        <div>
+          <div class="receipt-container">
+            <div class="receipt-head">
+              <div class="receipt-brand">PRIYULABS RETAIL OS</div>
+              <div class="receipt-sub">Smart Cloud POS &bull; Terminal #01</div>
+              <div class="receipt-meta"><span id="liveTimeText">Live Session</span> &bull; GSTIN: 29AABCU9603R1ZM</div>
+            </div>
+
+            <!-- Cart Items List -->
+            <div class="cart-list" id="cartItemsList">
+              <div class="cart-empty">Cart is empty.<br>Click any product on the left to start billing.</div>
+            </div>
+
+            <!-- Calculation Breakdown -->
+            <div class="calc-box">
+              <div class="calc-row">
+                <span>Subtotal</span>
+                <span id="txtSubtotal">&#8377;0.00</span>
+              </div>
+              <div class="calc-row">
+                <span>GST (Tax 5% / 12%)</span>
+                <span id="txtTax">&#8377;0.00</span>
+              </div>
+              <div class="calc-row calc-total">
+                <span>Grand Total</span>
+                <strong id="txtGrandTotal" style="color: var(--accent);">&#8377;0.00</strong>
+              </div>
+            </div>
+
+            <!-- Payment Button -->
+            <button type="button" class="pos-btn-pay" id="btnPayNow" onclick="processPayment()">
+              <span>&#9889; Pay via UPI QR / Pine Labs</span>
+            </button>
+            <button type="button" class="pos-btn-clear" onclick="clearCart()">
+              Clear Cart
+            </button>
+
+            <!-- Success Overlay -->
+            <div class="pay-success-overlay" id="paySuccessBox">
+              <strong>&#10003; Payment Approved &bull; &#8377;<span id="paidAmountText">0</span></strong>
+              <small>UPI Ref: #UPI-849201 &bull; Bill auto-saved to Cloud</small>
+              <div class="pay-success-btns">
+                <button type="button" class="btn-sm-print" onclick="printReceipt()">Print Receipt</button>
+                <button type="button" class="btn-sm-next" onclick="resetCart()">+ Next Order</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom Onboarding CTA Banner -->
+    <section class="demo-cta-banner">
+      <div>
+        <h3>Ready to scale your retail store with Priyulabs?</h3>
+        <p>Get up and running on your billing counters in 10 minutes. 100% offline-ready with dedicated local support.</p>
+      </div>
+      <a href="/#contact" class="btn-banner-cta">Start 14-Day Free Trial &rarr;</a>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div class="toast-popup" id="demoToast"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <span>&copy; 2026 Priyulabs Software. All rights reserved.</span>
+      <span>UDYAM-OD-19-0177979 &bull; Basisthanagar, Bhubaneswar, Odisha</span>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PRODUCT CATALOG DATA & DEMO ENGINE JAVASCRIPT
+  ══════════════════════════════════════════════════════════ -->
+  <script>
+    // 30 Items Dataset across 3 core sectors
+    const posProducts = [
+      // CAFE & FOOD (10)
+      { id: 1, category: 'cafe', name: 'Caramel Cold Frappe', price: 140, img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 2, category: 'cafe', name: 'Veg Supreme Burger', price: 160, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 3, category: 'cafe', name: 'Farmhouse Pizza 8"', price: 280, img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 4, category: 'cafe', name: 'Peri Peri French Fries', price: 110, img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 5, category: 'cafe', name: 'Paneer Tikka Sandwich', price: 150, img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 6, category: 'cafe', name: 'Classic Cappuccino', price: 120, img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 7, category: 'cafe', name: 'Blueberry Cheesecake', price: 190, img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 8, category: 'cafe', name: 'Crispy Veg Momos (6 Pcs)', price: 130, img: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 9, category: 'cafe', name: 'Mint Mojito Mocktail', price: 140, img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 10, category: 'cafe', name: 'Brownie Sundae', price: 170, img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+
+      // GROCERY & FMCG (10)
+      { id: 11, category: 'grocery', name: 'Fortune Mustard Oil 1L', price: 145, img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 12, category: 'grocery', name: 'Daawat Basmati Rice 5kg', price: 420, img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 13, category: 'grocery', name: 'Maggi Noodles 4-Pack', price: 60, img: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 14, category: 'grocery', name: 'Tata Salt 1kg', price: 28, img: 'https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 15, category: 'grocery', name: 'Amul Butter 500g', price: 275, img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 16, category: 'grocery', name: 'Aashirvaad Atta 5kg', price: 245, img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 17, category: 'grocery', name: 'Tata Tea Gold 500g', price: 310, img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 18, category: 'grocery', name: 'Dairy Milk Silk 60g', price: 90, img: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=200&q=80', tax: 0.05 },
+      { id: 19, category: 'grocery', name: 'Surf Excel Quick 1kg', price: 145, img: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=200&q=80', tax: 0.18 },
+      { id: 20, category: 'grocery', name: 'Dettol Handwash 750ml', price: 99, img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=200&q=80', tax: 0.18 },
+
+      // RETAIL & APPAREL (10)
+      { id: 21, category: 'retail', name: 'Cotton Casual Shirt (M)', price: 799, img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 22, category: 'retail', name: 'Designer Silk Saree', price: 1499, img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 23, category: 'retail', name: 'Slim Fit Denim Jeans 32', price: 1199, img: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 24, category: 'retail', name: 'Round Neck Cotton T-Shirt', price: 399, img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 25, category: 'retail', name: 'Anarkali Kurti Set', price: 1250, img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 26, category: 'retail', name: 'Leather Men Belt', price: 499, img: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 27, category: 'retail', name: 'Running Sneakers (Size 9)', price: 1699, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=200&q=80', tax: 0.12 },
+      { id: 28, category: 'retail', name: 'Polarized Sunglasses', price: 899, img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=200&q=80', tax: 0.18 },
+      { id: 29, category: 'retail', name: 'Women Leather Handbag', price: 1399, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=200&q=80', tax: 0.18 },
+      { id: 30, category: 'retail', name: 'Casual Canvas Shoes', price: 699, img: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=200&q=80', tax: 0.12 }
+    ];
+
+    let cart = [];
+    let currentCategory = 'cafe';
+
+    // Toast message helper
+    function showToast(msg) {
+      const toast = document.getElementById('demoToast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    // Tab Switcher
+    function showDemoTab(tabKey, btnEl) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      document.querySelectorAll('.demo-panel').forEach(panel => panel.classList.remove('active'));
+      const target = document.getElementById('demo-tab-' + tabKey);
+      if (target) target.classList.add('active');
+    }
+
+    // Filter Products
+    function switchCategory(cat, btnEl) {
+      currentCategory = cat;
+      document.querySelectorAll('.pos-cat-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderProducts();
+    }
+
+    // Render Product Grid
+    function renderProducts() {
+      const container = document.getElementById('posGridContainer');
+      if (!container) return;
+      const list = currentCategory === 'all' 
+        ? posProducts 
+        : posProducts.filter(p => p.category === currentCategory);
+
+      container.innerHTML = list.map(item => `
+        <div class="pos-item-card" onclick="addToCart(${item.id})">
+          <div class="pos-item-img">
+            <img src="${item.img}" alt="${item.name}" loading="lazy" />
+          </div>
+          <div class="pos-item-name">${item.name}</div>
+          <div class="pos-item-price">&#8377;${item.price}</div>
+          <button type="button" class="pos-add-btn" onclick="event.stopPropagation(); addToCart(${item.id})">
+            + Add
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Cart Operations
+    function addToCart(productId) {
+      const product = posProducts.find(p => p.id === productId);
+      if (!product) return;
+      const existing = cart.find(c => c.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      renderCart();
+      showToast('Added ' + product.name + ' to bill');
+    }
+
+    function updateQty(productId, delta) {
+      const item = cart.find(c => c.id === productId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(c => c.id !== productId);
+      }
+      renderCart();
+    }
+
+    function removeItem(productId) {
+      cart = cart.filter(c => c.id !== productId);
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      renderCart();
+      showToast('Cart cleared');
+    }
+
+    function resetCart() {
+      cart = [];
+      renderCart();
+      document.getElementById('paySuccessBox').style.display = 'none';
+      document.getElementById('btnPayNow').style.display = 'flex';
+    }
+
+    function renderCart() {
+      const listEl = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('txtSubtotal');
+      const taxEl = document.getElementById('txtTax');
+      const totalEl = document.getElementById('txtGrandTotal');
+      const payBox = document.getElementById('paySuccessBox');
+      if (payBox) payBox.style.display = 'none';
+
+      if (cart.length === 0) {
+        listEl.innerHTML = '<div class="cart-empty">Cart is empty.<br>Click any product on the left to start billing.</div>';
+        subtotalEl.innerHTML = '&#8377;0.00';
+        taxEl.innerHTML = '&#8377;0.00';
+        totalEl.innerHTML = '&#8377;0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      let tax = 0;
+
+      listEl.innerHTML = cart.map(item => {
+        const itemSub = item.price * item.qty;
+        const itemTax = itemSub * (item.tax || 0.05);
+        subtotal += itemSub;
+        tax += itemTax;
+
+        return `
+          <div class="cart-row">
+            <div class="cart-row-left">
+              <div>
+                <strong>${item.name}</strong>
+                <small>&#8377;${item.price} each</small>
+              </div>
+            </div>
+            <div class="cart-row-right">
+              <div class="cart-qty-ctrl">
+                <button type="button" onclick="updateQty(${item.id}, -1)">&minus;</button>
+                <span>${item.qty}</span>
+                <button type="button" onclick="updateQty(${item.id}, 1)">+</button>
+              </div>
+              <strong style="color:var(--ink);">&#8377;${itemSub.toFixed(2)}</strong>
+              <button type="button" class="cart-del" onclick="removeItem(${item.id})">&times;</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const grandTotal = subtotal + tax;
+      subtotalEl.innerHTML = `&#8377;${subtotal.toFixed(2)}`;
+      taxEl.innerHTML = `&#8377;${tax.toFixed(2)}`;
+      totalEl.innerHTML = `&#8377;${grandTotal.toFixed(2)}`;
+    }
+
+    // Payment Processing
+    function processPayment() {
+      if (cart.length === 0) {
+        showToast('Please add items to cart before payment');
+        return;
+      }
+      const payBtn = document.getElementById('btnPayNow');
+      payBtn.textContent = 'Transmitting to EDC Terminal...';
+      payBtn.disabled = true;
+
+      setTimeout(() => {
+        payBtn.style.display = 'none';
+        payBtn.textContent = '⚡ Pay via UPI QR / Pine Labs';
+        payBtn.disabled = false;
+
+        const totalEl = document.getElementById('txtGrandTotal');
+        const paidText = document.getElementById('paidAmountText');
+        if (paidText && totalEl) paidText.textContent = totalEl.textContent.replace('₹', '');
+        
+        document.getElementById('paySuccessBox').style.display = 'block';
+        showToast('Payment Approved via UPI QR! Receipt ready.');
+      }, 700);
+    }
+
+    function printReceipt() {
+      showToast('🖨️ ESC/POS Thermal 2" Receipt Print Signal Sent!');
+    }
+
+    // Voice & Barcode Simulation
+    function triggerVoicePreset(phrase) {
+      showToast('🎙️ AI Parsing Voice: "' + phrase + '"');
+      const feedback = document.getElementById('voiceFeedbackText');
+      if (feedback) feedback.textContent = 'Parsing: "' + phrase + '"...';
+
+      setTimeout(() => {
+        if (phrase.includes('burger') || phrase.includes('frappes')) {
+          addToCart(1); // Caramel Frappe
+          addToCart(2); // Burger
+          addToCart(7); // Cheesecake
+        } else {
+          addToCart(16); // Atta
+          addToCart(11); // Mustard Oil
+          addToCart(12); // Basmati Rice
+        }
+        if (feedback) feedback.textContent = '✓ Voice order parsed and added to bill in 0.28s!';
+      }, 350);
+    }
+
+    function triggerBarcodeScan() {
+      const rand = posProducts[Math.floor(Math.random() * posProducts.length)];
+      addToCart(rand.id);
+      showToast('⚡ Barcode Scanned (EAN-890' + rand.id + '): Added ' + rand.name);
+    }
+
+    // ERP Inventory Simulation
+    function simulateInvoiceScan() {
+      const statusEl = document.getElementById('erpScanStatus');
+      statusEl.style.display = 'block';
+      statusEl.innerHTML = '⏳ Priyulabs Vision AI scanning wholesale tax invoice...';
+      setTimeout(() => {
+        statusEl.innerHTML = '✅ Wholesale Tax Invoice parsed! 5 SKUs logged with +120 units added to cloud ERP.';
+        showToast('📷 Vision AI OCR auto-logged 5 invoice items into ERP!');
+      }, 800);
+    }
+
+    function addStock(idx, qty) {
+      showToast('Stock replenished: +' + qty + ' units saved to cloud ledger');
+    }
+
+    // GST Simulation
+    function triggerGstDownload(type) {
+      showToast('📥 ' + type + ' JSON & Excel exported successfully with 0 CA errors!');
+    }
+
+    // Initialize on Load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      renderCart();
+      const timeEl = document.getElementById('liveTimeText');
+      if (timeEl) {
+        const now = new Date();
+        timeEl.textContent = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      }
+    });
+  </script>
+
+  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <script id="seamless-video-looper-script">
+    (function initSeamlessVideoLooper() {
+      const container = document.querySelector('.global-fluid-bg');
+      if (!container) return;
+      const vids = container.querySelectorAll('video');
+      if (!vids || vids.length === 0) return;
+
+      vids.forEach((v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+      });
+
+      if (vids.length === 1) {
+        vids[0].classList.add('is-active');
+        vids[0].play().catch(() => { });
+        return;
+      }
+
+      let activeIdx = 0;
+      let swapping = false;
+
+      const activeVid = () => vids[activeIdx];
+      const nextVid = () => vids[1 - activeIdx];
+
+      const triggerSwap = () => {
+        if (swapping) return;
+        swapping = true;
+
+        const current = activeVid();
+        const incoming = nextVid();
+
+        try {
+          incoming.currentTime = 0;
+        } catch (e) { }
+
+        const playPromise = incoming.play();
+
+        const executeTransition = () => {
+          incoming.classList.add('is-active');
+          current.classList.remove('is-active');
+
+          setTimeout(() => {
+            try {
+              current.pause();
+              current.currentTime = 0;
+            } catch (err) { }
+            activeIdx = 1 - activeIdx;
+            swapping = false;
+          }, 350);
+        };
+
+        if (playPromise !== undefined) {
+          playPromise.then(executeTransition).catch(() => {
+            executeTransition();
+          });
+        } else {
+          executeTransition();
+        }
+      };
+
+      const checkTime = () => {
+        const current = activeVid();
+        if (current && current.duration && !swapping) {
+          const remaining = current.duration - current.currentTime;
+          if (remaining <= 0.35 && current.currentTime > 0.5) {
+            triggerSwap();
+          }
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v === activeVid() && v.duration && !swapping) {
+            const remaining = v.duration - v.currentTime;
+            if (remaining <= 0.35 && v.currentTime > 0.5) {
+              triggerSwap();
+            }
+          }
+        });
+
+        v.addEventListener('ended', () => {
+          if (v === activeVid()) {
+            triggerSwap();
+          }
+        });
+      });
+
+      const startLooper = () => {
+        vids[0].classList.add('is-active');
+        const p = vids[0].play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlock = () => {
+              vids[0].play().catch(() => { });
+              window.removeEventListener('click', unlock);
+              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlock);
+            };
+            window.addEventListener('click', unlock, { passive: true, once: true });
+            window.addEventListener('scroll', unlock, { passive: true, once: true });
+            window.addEventListener('touchstart', unlock, { passive: true, once: true });
+          });
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLooper);
+      } else {
+        startLooper();
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

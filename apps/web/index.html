@@ -1,10 +1,96 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Priyulabs Digital — AI operating systems for retail and hospitality." />
     <title>Priyulabs Digital</title>
-  </head>
-  <body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+  <style>
+/* Global Fluid Live Video Background */
+body {
+  background-color: transparent !important;
+}
+.global-fluid-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  overflow: hidden;
+  background: #FAF6EE;
+  pointer-events: none;
+}
+.global-fluid-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.5; /* Adjust for subtle look */
+}
+.global-fluid-mask {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+</style>
+</head>
+  <body>
+<div class="global-fluid-bg">
+  <video autoplay loop muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="global-fluid-mask"></div>
+<div id="root"></div><script type="module" src="/src/main.tsx"></script>
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <script>
+    (function() {
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+          if (anchor.dataset.smoothBound) return;
+          anchor.dataset.smoothBound = 'true';
+          anchor.addEventListener('click', function(e) {
+            var hash = this.getAttribute('href');
+            if (hash && hash.length > 1 && !hash.startsWith('#/')) {
+              var target = document.querySelector(hash) || 
+                           document.getElementById(hash.substring(1)) || 
+                           document.getElementById('pillars') || 
+                           document.getElementById('matrix-features') || 
+                           document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid, .clean-container');
+              if (target) {
+                e.preventDefault();
+                e.stopPropagation();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, null, hash);
+                }
+              }
+            }
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSmoothScroll);
+      } else {
+        initSmoothScroll();
+      }
+    })();
+  </script>
+
+</body>
 </html>

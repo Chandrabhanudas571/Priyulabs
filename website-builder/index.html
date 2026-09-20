@@ -5,13 +5,16 @@ permalink: /website-builder
 <html lang="en">
 
 <head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <base href="/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Website Builder &amp; Digital Marketing | Priyulabs Digital</title>
   <meta name="description"
     content="Priyulabs Web Engineering — We design and build fast, modern, conversion-focused websites that help businesses attract customers, manage operations, and grow online." />
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
@@ -2122,17 +2125,187 @@ permalink: /website-builder
         visibility: visible;
       }
     }
+  
+    /* Smooth Scroll Margin for Pillar/Feature Cards */
+    html {
+      scroll-behavior: smooth !important;
+    }
+    #pillars, #matrix-features, #chair-features, #gym-features, #laundry-features, #features, #what-we-build,
+    .clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid {
+      scroll-margin-top: 85px !important;
+    }
+
+  
+/* Global Fluid Live Video Background */
+body {
+  background-color: transparent !important;
+}
+.global-fluid-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  overflow: hidden;
+  background: #FAF6EE;
+  pointer-events: none;
+}
+.global-fluid-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.5; /* Adjust for subtle look */
+}
+.global-fluid-mask {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+</style>
+
+  
+  <style id="seamless-wallpaper-style">
+    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    html, body {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    /* Section background transparency so live wallpaper shows through */
+    .clean-hero-sec,
+    .clean-pillars-sec,
+    .clean-features-sec,
+    .clean-grid-sec,
+    .clean-metrics-sec,
+    .clean-cta-sec,
+    .bottom-cta-sec,
+    .pillars-sec,
+    .features-sec,
+    .metrics-sec,
+    .clean-container,
+    .hero-sec,
+    .hub-hero,
+    .matrix-sec,
+    .sectors-stream-container,
+    .sector-row,
+    main {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    /* Keep Nav and Header translucent with blur */
+    .clean-nav-header,
+    .navbar,
+    header.clean-subnav,
+    header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    /* Keep Cards legible and clean with glassmorphism */
+    .clean-hero-visual-frame {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .clean-feat-card,
+    .pillar-img-frame,
+    .clean-hero-media-wrap,
+    .deal-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    .global-fluid-bg {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -2 !important;
+      overflow: hidden !important;
+      background: #FAF6EE !important;
+      pointer-events: none !important;
+    }
+
+    .global-fluid-bg video {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translate(-50%, -50%) !important;
+      object-fit: cover !important;
+      opacity: 0 !important;
+      transition: opacity 0.35s ease-in-out !important;
+      filter: saturate(1.1) brightness(1.02) !important;
+      pointer-events: none !important;
+      will-change: opacity !important;
+    }
+
+    .global-fluid-bg video.is-active {
+      opacity: 0.85 !important;
+    }
+
+    .global-fluid-mask {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
   </style>
+
+
 </head>
 
 <body>
+
+<div class="global-fluid-bg">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="global-fluid-mask"></div>
+
+
+
+
 
   <!-- ══════════════════════════════════════════════════════════
        NAVBAR
   ══════════════════════════════════════════════════════════ -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="/" class="logo" aria-label="Priyulabs Digital Home">
+      <a href="/index.html#core-capabilities" class="logo" aria-label="Priyulabs Digital Home">
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
@@ -2142,41 +2315,43 @@ permalink: /website-builder
       <ul class="nav-links" id="navLinks">
         <!-- 1. Business types Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span class="drop-arrow">▾</span>
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span
+              class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-mega-3col">
             <div class="mega-dropdown-inner mega-3col-wrapper">
 
               <!-- Column 1: Left Categories Tabs -->
               <div class="mega-col-left">
-                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')" onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
-                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
-                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
-                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')"
+                  onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')"
+                  onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')"
+                  onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
+                  onmouseenter="switchMegaTab('services')">Services</button>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
-                  <a href="/restaurants-fine-dining"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/restaurants-fine-dining"
-                    class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="/restaurants-fine-dining" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/restaurants-fine-dining" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
                   <a href="/qsr-fast-food" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
                     Food &amp; Takeaway</a>
                   <a href="/cafes-chai-bars" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
                     &amp; Chai Bars</a>
                   <a href="/cloud-kitchens-catering" data-sector="cloudkitchen" data-cat="fnb"
                     class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
-                  <a href="/bakeries-shops"
-                    class="sq-disc-item">Bakeries &amp; Patisseries</a>
+                  <a href="/bakeries-shops" class="sq-disc-item">Bakeries &amp; Patisseries</a>
                   <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs
                     &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="/solutions?sector=grocery" data-sector="grocery" data-cat="retail"
+                  <a href="/grocery-supermarkets-kirana" data-sector="grocery" data-cat="retail"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
                   <a href="/grocery-supermarkets-kirana" data-sector="grocery" data-cat="retail"
                     class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
@@ -2184,12 +2359,12 @@ permalink: /website-builder
                     class="sq-disc-item">Electronics &amp; Mobile Shops</a>
                   <a href="/footwear-leather-stores" data-sector="footwear" data-cat="retail"
                     class="sq-disc-item">Footwear &amp; Leather Stores</a>
-                  <a href="/jewellery-shops" data-sector="jewellery" data-cat="retail"
-                    class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
-                  <a href="/watch-stores" data-sector="watch" data-cat="retail"
-                    class="sq-disc-item">Watch Stores &amp; Horology Boutiques</a>
-                  <a href="/bookstores-stationery" data-sector="books" data-cat="retail"
-                    class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                  <a href="/jewellery-shops" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery
+                    Showrooms &amp; Bullion</a>
+                  <a href="/watch-stores" data-sector="watch" data-cat="retail" class="sq-disc-item">Watch Stores &amp;
+                    Horology Boutiques</a>
+                  <a href="/bookstores-stationery" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores
+                    &amp; Stationery Outlets</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-beauty">
@@ -2197,8 +2372,8 @@ permalink: /website-builder
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
                   <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
                     class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
-                  <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty"
-                    class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty" class="sq-disc-item">Salons,
+                    Spas &amp; Beauty Parlors</a>
                   <a href="/beauty-fashion/cosmetics" data-sector="cosmetics" data-cat="beauty"
                     class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
                 </div>
@@ -2208,9 +2383,9 @@ permalink: /website-builder
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
                   <a href="/services/gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
                     Fitness Studios &amp; Yoga Centers</a>
-                  
-                  <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services"
-                    class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+
+                  <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services" class="sq-disc-item">Dry
+                    Cleaners &amp; Laundry Shops</a>
                 </div>
               </div>
 
@@ -2223,8 +2398,7 @@ permalink: /website-builder
                 <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
                 <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
                 <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry
-                  Shield</a>
+                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
               </div>
 
             </div>
@@ -2233,7 +2407,8 @@ permalink: /website-builder
 
         <!-- 2. Solutions Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Solutions <span class="drop-arrow">▾</span>
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Solutions <span
+              class="drop-arrow">▾</span>
           </a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
@@ -2246,9 +2421,9 @@ permalink: /website-builder
                   <strong>Complete Management System</strong>
                   <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
                 </a>
-                <a href="/website-builder" class="square-sub-item" style="background: var(--bg-subtle);">
+                <a href="/website-builder" class="square-sub-item">
                   <strong>Custom Website Building</strong>
-                  <span>Custom websites, e-commerce stores &amp; mobile apps</span>
+                  <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
                 </a>
                 <a href="/digital-marketing" class="square-sub-item">
                   <strong>Digital Marketing &amp; Ads</strong>
@@ -2290,7 +2465,7 @@ permalink: /website-builder
           </svg>
         </button>
         <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">Interactive Demo</button>
-        <a href="#leadForm" class="btn-nav">Start Your Project</a>
+        <a href="/index.html#core-capabilities" class="btn-nav">Start Your Project</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -2302,6 +2477,7 @@ permalink: /website-builder
        FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
   ══════════════════════════════════════════════════════════ -->
   <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <!-- Top Header Bar inside Drawer -->
     <div class="drawer-header">
       <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -2321,8 +2497,10 @@ permalink: /website-builder
       </button>
     </div>
 
+    <!-- Sliding Viewport Container -->
     <div class="drawer-viewport" id="drawerViewport">
-      <!-- LEVEL 1: MAIN MENU -->
+
+      <!-- ════ LEVEL 1: MAIN MENU ════ -->
       <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
         <div class="drawer-panel-scroll">
           <nav class="drawer-nav-list">
@@ -2334,11 +2512,10 @@ permalink: /website-builder
               <span>Solutions</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelHospitality">
-              <span>Hospitality Tech</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <a href="/#problem" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
+            </a>
+            <a href="/#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>Pricing</span>
             </a>
             <a href="/#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
@@ -2349,20 +2526,19 @@ permalink: /website-builder
           <div class="drawer-divider"></div>
 
           <div class="drawer-utility-links">
-            <a href="/solutions" class="drawer-sublink">All Business Types Directory</a>
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">Interactive
+            <a href="/business-types" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive
               Demo &amp; Portfolio</button>
             <a href="/#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
           </div>
 
           <div class="drawer-bottom-cta">
-            <a href="#leadForm" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Your Project
-              →</a>
+            <a href="/#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
           </div>
         </div>
       </div>
 
-      <!-- LEVEL 2: BUSINESS TYPES -->
+      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
       <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
         data-title="Business types">
         <div class="drawer-panel-scroll">
@@ -2384,101 +2560,120 @@ permalink: /website-builder
               <span>Services</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <a href="/solutions" class="drawer-nav-item drawer-link highlight">
-              <span>View All Business Types</span>
+            <a href="/business-types" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
+              <span>View All Business Types →</span>
             </a>
           </nav>
         </div>
       </div>
 
-      <!-- LEVEL 2: SOLUTIONS -->
+      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
       <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
         data-title="Solutions">
         <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Core Products &amp; Services</div>
-          <nav class="drawer-solution-cards">
-            <a href="/pos" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect width="20" height="14" x="2" y="3" rx="2" />
-                  <path d="M8 21h8" />
-                  <path d="M12 17v4" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Smart POS</strong>
-                <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
-              </div>
+          <div class="drawer-panel-eyebrow">Products &amp; Architecture</div>
+          <nav class="drawer-nav-list">
+            <a href="/pos" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Smart POS Billing</span>
             </a>
-            <a href="/complete-management-system" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <line x1="18" x2="18" y1="20" y2="10" />
-                  <line x1="12" x2="12" y1="20" y2="4" />
-                  <line x1="6" x2="6" y1="20" y2="14" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Complete Management System</strong>
-                <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
-              </div>
+            <a href="/complete-management-system" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Complete Management System</span>
             </a>
-            <a href="/website-builder" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Custom Website Building</strong>
-                <span>Custom websites, e-commerce stores &amp; mobile apps</span>
-              </div>
+            <a href="/website-builder" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Custom Website Building</span>
             </a>
-            <a href="/digital-marketing" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
-                </svg></div>
-              <div class="drawer-sol-info">
-                <strong>Digital Marketing &amp; Ads</strong>
-                <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
-              </div>
+            <a href="/digital-marketing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Digital Marketing &amp; Ads</span>
+            </a>
+            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
             </a>
           </nav>
         </div>
       </div>
 
-      <!-- LEVEL 2: HOSPITALITY TECH -->
-      <div class="drawer-panel" id="drawerPanelHospitality" data-level="2" data-parent="drawerPanelMain"
-        data-title="Hospitality Tech">
+      <!-- ════ LEVEL 3: FOOD & BEVERAGE SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Food &amp; Beverage">
         <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">F&amp;B Operating Suite</div>
-          <nav class="drawer-solution-cards">
-            <a href="/hospitality#product" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-              <div class="drawer-sol-info">
-                <strong>Hospitality Product OS</strong>
-                <span>Table layout, QR menus &amp; instant POS billing</span>
-              </div>
-            </a>
-            <a href="/hospitality#pricing" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg></div>
-              <div class="drawer-sol-info">
-                <strong>Hospitality Pricing</strong>
-                <span>Plans tailored for cafes, bakeries, bars &amp; hotels</span>
-              </div>
-            </a>
-            <a href="/hospitality#success-stories" class="drawer-sol-card" onclick="closeMobileDrawer();">
-              <div class="drawer-sol-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-              <div class="drawer-sol-info">
-                <strong>Success Stories</strong>
-                <span>Case studies from 500+ Indian F&amp;B outlets</span>
-              </div>
-            </a>
+          <div class="drawer-panel-eyebrow">Food &amp; Beverage Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Restaurants &amp; Fine Dining</span></a>
+            <a href="/qsr-fast-food" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>QSR, Fast
+                Food &amp; Takeaway</span></a>
+            <a href="/cafes-chai-bars" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>Cafes
+                &amp; Chai Bars</span></a>
+            <a href="/cloud-kitchens-catering" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Cloud Kitchens &amp; Catering</span></a>
+            <a href="/bakeries-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bakeries &amp; Patisseries</span></a>
+            <a href="/bars-pubs-breweries" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bars, Pubs &amp; Breweries</span></a>
           </nav>
         </div>
       </div>
+
+      <!-- ════ LEVEL 3: RETAIL SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Retail">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Retail Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Grocery, Supermarkets &amp; Kirana Stores</span></a>
+            <a href="/electronics-mobile-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Electronics &amp; Mobile Shops</span></a>
+            <a href="/footwear-leather-stores" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Footwear &amp; Leather Stores</span></a>
+            <a href="/jewellery-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Jewellery Showrooms &amp; Bullion</span></a>
+            <a href="/watch-stores" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Watch Stores &amp; Horology Boutiques</span></a>
+            <a href="/bookstores-stationery" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bookstores &amp; Stationery Outlets</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: BEAUTY & FASHION SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Beauty &amp; Fashion">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Clothing Brands &amp; Apparel Boutiques</span></a>
+            <a href="/beauty-fashion/salons" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Salons, Spas &amp; Beauty Parlors</span></a>
+            <a href="/beauty-fashion/cosmetics" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Cosmetics &amp; Skincare Stores</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: SERVICES SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Services">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Services Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/services/gyms" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Gyms, Fitness Studios &amp; Yoga Centers</span></a>
+            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Dry Cleaners &amp; Laundry Shops</span></a>
+          </nav>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -2511,7 +2706,7 @@ permalink: /website-builder
           <a href="#leadForm" class="btn-primary">
             Start Your Project →
           </a>
-          <a href="#what-we-build" class="btn-outline">
+          <a href="#what-we-build" class="btn-outline" onclick="event.preventDefault(); (document.querySelector('#what-we-build') || document.getElementById('what-we-build') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
             View Our Services
           </a>
         </div>
@@ -3341,8 +3536,7 @@ permalink: /website-builder
           <div class="cta-trust-row">
             <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Design &amp; Development</span>
             <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Support</span>
-            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Direct WhatsApp Contact (<a href="tel:+917849074050" style="color:#a5b4fc;font-weight:700;">+91
-                78490 74050</a>)</span>
+            <span><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Direct WhatsApp Contact (<a href="tel:+917873844050" style="color:#a5b4fc;font-weight:700;">+91 78738 44050</a>)</span>
           </div>
         </div>
 
@@ -3381,7 +3575,7 @@ permalink: /website-builder
 
             <div class="form-group">
               <label for="userPhone">Phone / WhatsApp Number *</label>
-              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78490 74050)" required maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
+              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78738 44050)" required maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
               <small id="phoneErrorMsg" style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Phone number must be exactly 10 digits.</small>
             </div>
 
@@ -3423,7 +3617,7 @@ permalink: /website-builder
             <span class="f-badge"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>GST Compliant</span>
           </div>
           <div class="footer-social">
-            <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
+            <a href="https://wa.me/917873844050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
               class="social-btn" aria-label="WhatsApp" target="_blank"></a>
             <a href="#" class="social-btn" aria-label="LinkedIn"
               onclick="openPolicyModal('about'); return false;">in</a>
@@ -3471,10 +3665,10 @@ permalink: /website-builder
           <h5>Address &amp; Contact</h5>
           <ul>
             <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
-            <li><a href="tel:+917849074050">+91 78490 74050</a></li>
+            <li><a href="tel:+917873844050">+91 78738 44050</a> / <a href="tel:+917205045905">+91 72050 45905</a></li>
             <li>279, Kapileshwar - Sundarpada Rd, Basisthanagar, Old Town, Bhubaneswar, Odisha 751002</li>
             <li>⏰ Support: Mon–Sat 9:00 AM – 8:00 PM</li>
-            <li> WhatsApp: <a href="https://wa.me/917849074050" target="_blank">+91 78490 74050 (24/7)</a></li>
+            <li> WhatsApp: <a href="https://wa.me/917873844050" target="_blank">+91 78738 44050 (24/7)</a></li>
           </ul>
         </div>
       </div>
@@ -3592,7 +3786,7 @@ permalink: /website-builder
         </div>
         <div class="mf-right">
           <button class="btn-ghost-sm" onclick="closeDemoModal()">Close</button>
-          <a href="#cta" class="btn-primary-sm" onclick="closeDemoModal()">Book 1-on-1 Free Demo →</a>
+          <a href="#cta" class="btn-primary-sm" onclick="closeDemoModal()" onclick="event.preventDefault(); (document.querySelector('#cta') || document.getElementById('cta') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">Book 1-on-1 Free Demo →</a>
         </div>
       </div>
     </div>
@@ -3619,7 +3813,7 @@ permalink: /website-builder
   <!-- ══════════════════════════════════════════════════════════
        WHATSAPP FLOATING BUTTON
   ══════════════════════════════════════════════════════════ -->
-  <a href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20Website%20Building%20services."
+  <a href="https://wa.me/917873844050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20Website%20Building%20services."
     class="whatsapp-float" target="_blank" aria-label="Chat with Priyulabs on WhatsApp">
     <span class="wa-icon"></span>
     <span class="wa-text">Chat with Priyulabs</span>
@@ -3741,6 +3935,162 @@ permalink: /website-builder
       }
     })();
   </script>
+
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <script>
+    (function() {
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+          if (anchor.dataset.smoothBound) return;
+          anchor.dataset.smoothBound = 'true';
+          anchor.addEventListener('click', function(e) {
+            var hash = this.getAttribute('href');
+            if (hash && hash.length > 1 && !hash.startsWith('#/')) {
+              var target = document.querySelector(hash) || 
+                           document.getElementById(hash.substring(1)) || 
+                           document.getElementById('pillars') || 
+                           document.getElementById('matrix-features') || 
+                           document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid, .clean-container');
+              if (target) {
+                e.preventDefault();
+                e.stopPropagation();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, null, hash);
+                }
+              }
+            }
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSmoothScroll);
+      } else {
+        initSmoothScroll();
+      }
+    })();
+  </script>
+
+
+  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <script id="seamless-video-looper-script">
+    (function initSeamlessVideoLooper() {
+      const container = document.querySelector('.global-fluid-bg');
+      if (!container) return;
+      const vids = container.querySelectorAll('video');
+      if (!vids || vids.length === 0) return;
+
+      vids.forEach((v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+      });
+
+      if (vids.length === 1) {
+        vids[0].classList.add('is-active');
+        vids[0].play().catch(() => { });
+        return;
+      }
+
+      let activeIdx = 0;
+      let swapping = false;
+
+      const activeVid = () => vids[activeIdx];
+      const nextVid = () => vids[1 - activeIdx];
+
+      const triggerSwap = () => {
+        if (swapping) return;
+        swapping = true;
+
+        const current = activeVid();
+        const incoming = nextVid();
+
+        try {
+          incoming.currentTime = 0;
+        } catch (e) { }
+
+        const playPromise = incoming.play();
+
+        const executeTransition = () => {
+          incoming.classList.add('is-active');
+          current.classList.remove('is-active');
+
+          setTimeout(() => {
+            try {
+              current.pause();
+              current.currentTime = 0;
+            } catch (err) { }
+            activeIdx = 1 - activeIdx;
+            swapping = false;
+          }, 350);
+        };
+
+        if (playPromise !== undefined) {
+          playPromise.then(executeTransition).catch(() => {
+            executeTransition();
+          });
+        } else {
+          executeTransition();
+        }
+      };
+
+      const checkTime = () => {
+        const current = activeVid();
+        if (current && current.duration && !swapping) {
+          const remaining = current.duration - current.currentTime;
+          if (remaining <= 0.35 && current.currentTime > 0.5) {
+            triggerSwap();
+          }
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v === activeVid() && v.duration && !swapping) {
+            const remaining = v.duration - v.currentTime;
+            if (remaining <= 0.35 && v.currentTime > 0.5) {
+              triggerSwap();
+            }
+          }
+        });
+
+        v.addEventListener('ended', () => {
+          if (v === activeVid()) {
+            triggerSwap();
+          }
+        });
+      });
+
+      const startLooper = () => {
+        vids[0].classList.add('is-active');
+        const p = vids[0].play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlock = () => {
+              vids[0].play().catch(() => { });
+              window.removeEventListener('click', unlock);
+              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlock);
+            };
+            window.addEventListener('click', unlock, { passive: true, once: true });
+            window.addEventListener('scroll', unlock, { passive: true, once: true });
+            window.addEventListener('touchstart', unlock, { passive: true, once: true });
+          });
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLooper);
+      } else {
+        startLooper();
+      }
+    })();
+  </script>
+
 </body>
 
 </html>

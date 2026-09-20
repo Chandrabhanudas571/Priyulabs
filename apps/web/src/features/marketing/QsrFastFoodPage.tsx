@@ -42,7 +42,7 @@ export function QsrFastFoodPage() {
     setSubmitted(true);
     const msg = `Hello Priyulabs! I would like to schedule a 15-minute QSR walkthrough for ${name} (${dailyOrders} orders/day, ${city}). My phone is ${phone}.`;
     setTimeout(() => {
-      window.open(`https://wa.me/917849074050?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://wa.me/917873844050?text=${encodeURIComponent(msg)}`, '_blank');
       setDemoModalOpen(false);
       setSubmitted(false);
     }, 1200);
@@ -100,10 +100,9 @@ export function QsrFastFoodPage() {
               >
                 Get Started Today
               </a>
-              <a
-                href="#pillars"
+              <a href="#pillars"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 shadow-xs transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50 hover:scale-[1.02] cursor-pointer no-underline"
-              >
+               onClick={(e) => { e.preventDefault(); (document.querySelector('#pillars') || document.getElementById('pillars') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
                 See QSR Features ↓
               </a>
             </motion.div>
@@ -578,9 +577,9 @@ export function QsrFastFoodPage() {
                 <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
 
-              {/* Chat on WhatsApp (Official Number: 7849074050) */}
+              {/* Chat on WhatsApp (Official Number: 7873844050) */}
               <a
-                href="https://wa.me/917849074050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial"
+                href="https://wa.me/917873844050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ background: '#ffffff', color: '#0f172a', fontWeight: 600, fontSize: '14px', padding: '12px 22px', borderRadius: '14px', textDecoration: 'none', border: '1px solid #cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)', transition: 'all 0.2s ease' }}

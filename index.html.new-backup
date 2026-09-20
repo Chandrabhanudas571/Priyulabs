@@ -1,0 +1,2446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priyulabs – India's Smartest AI Retail OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF6EE;
+      --bg-alt: #F1EAD9;
+      --panel: #FFFFFF;
+      --ink: #2A2419;
+      --ink-soft: #6B6152;
+      --accent: #3F5D42;
+      --accent-soft: #E7EEE4;
+      --gold: #B8863B;
+      --line: #E3D9C1;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    @media(max-width:640px) {
+      .wrap {
+        padding: 0 20px;
+      }
+    }
+
+    /* ---------- Header & Working Dropdowns ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      background: rgba(250, 246, 238, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    @media(max-width:960px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      padding: 8px 0;
+      cursor: pointer;
+      transition: color .2s ease;
+    }
+
+    .nav-link-btn:hover {
+      color: var(--accent);
+    }
+
+    .nav-arrow {
+      font-size: 9px;
+      opacity: 0.65;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item:hover .nav-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown Menus */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: -16px;
+      min-width: 260px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 18px 36px -10px rgba(42, 36, 25, 0.18);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 600;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .drop-item {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: background 0.15s ease;
+    }
+
+    .drop-item:hover {
+      background: var(--accent-soft);
+    }
+
+    .drop-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .drop-desc {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-cta-ghost {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all .2s ease;
+    }
+
+    .nav-cta-ghost:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .nav-cta {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: background .25s ease, transform .25s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero {
+      padding: 72px 0 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media(max-width:920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(36px, 4.4vw, 52px);
+    }
+
+    .hero-copy .line {
+      display: block;
+    }
+
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 17.5px;
+      color: var(--ink-soft);
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      display: inline-block;
+      box-shadow: 0 8px 20px -8px rgba(63, 93, 66, 0.55);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px -8px rgba(63, 93, 66, 0.6);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 13px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: border-color .25s, background .25s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .hero-trust {
+      margin-top: 40px;
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .trust-num {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .trust-label {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    /* Hero Visual Showcase */
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 60px -20px rgba(42, 36, 25, 0.22);
+    }
+
+    .hero-visual-inner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/11;
+      overflow: hidden;
+    }
+
+    .hero-visual-inner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    /* ---------- Marquee strip ---------- */
+    .marquee-wrap {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-alt);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      white-space: nowrap;
+      width: max-content;
+      animation: scroll-left 32s linear infinite;
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      color: var(--ink-soft);
+    }
+
+    .marquee-track span {
+      opacity: 0.75;
+    }
+
+    .marquee-track span.hl {
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    @keyframes scroll-left {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ---------- Feature Rows ---------- */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      max-width: 620px;
+      margin-bottom: 52px;
+    }
+
+    .kicker {
+      font-size: 13.5px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 3.2vw, 38px);
+    }
+
+    .section-head p {
+      margin-top: 14px;
+      color: var(--ink-soft);
+      font-size: 16.5px;
+    }
+
+    /* PowerPoint-Style Slide-in Animations for Feature Rows */
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 60px 0;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .feature-row.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature-row .feature-media {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+
+    .feature-row .feature-media:hover {
+      transform: translateY(-5px) scale(1.012);
+      box-shadow: 0 28px 55px rgba(31, 45, 36, 0.16) !important;
+    }
+
+    .feature-row a:hover {
+      text-decoration: underline !important;
+      opacity: 0.85;
+    }
+
+    @media(max-width:860px) {
+      .feature-row {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        padding: 40px 0 !important;
+      }
+
+      .feature-row .feature-media {
+        order: 0 !important;
+      }
+    }
+
+    .feature-index {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .feature-text h3 {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .feature-text p {
+      color: var(--ink-soft);
+      font-size: 16px;
+      max-width: 440px;
+    }
+
+    .feature-media {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 5/4;
+      box-shadow: 0 24px 50px -22px rgba(42, 36, 25, 0.25);
+    }
+
+    .feature-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .feature-media:hover img {
+      transform: scale(1.04);
+    }
+
+    /* ---------- Who We Serve ---------- */
+    .serve-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 10px 4px 24px;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE / Edge */
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .serve-scroll:active {
+      cursor: grabbing;
+    }
+
+    .serve-scroll.is-dragging {
+      scroll-snap-type: none;
+      scroll-behavior: auto;
+      cursor: grabbing;
+    }
+
+    .serve-scroll::-webkit-scrollbar {
+      display: none;
+      /* Hide bottom swipe scrollbar guide */
+      width: 0;
+      height: 0;
+    }
+
+    .serve-card {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      transition: transform .3s ease, box-shadow .3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    /* Round CTA for Explore All Business Types */
+    .serve-round-cta {
+      flex: 0 0 160px;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 10px 20px 10px 10px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .round-cta-circle {
+      width: 144px;
+      height: 144px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #2D5A3E 0%, #173322 100%);
+      border: 2px solid var(--gold);
+      box-shadow: 0 14px 28px -6px rgba(45, 90, 62, 0.4), 0 0 0 4px rgba(184, 134, 59, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .round-cta-arrow {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FAF6EE;
+      margin-bottom: 6px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .round-cta-label {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #FAF6EE;
+      line-height: 1.15;
+      display: block;
+    }
+
+    .round-cta-sub {
+      font-size: 11px;
+      color: rgba(250, 246, 238, 0.85);
+      font-weight: 500;
+      display: block;
+      margin-top: 1px;
+    }
+
+    .round-cta-count {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .serve-round-cta:hover .round-cta-circle {
+      transform: scale(1.08);
+      border-color: #FAF6EE;
+      box-shadow: 0 20px 40px -8px rgba(45, 90, 62, 0.55), 0 0 0 6px rgba(184, 134, 59, 0.3);
+    }
+
+    .serve-round-cta:hover .round-cta-arrow {
+      transform: translateX(4px);
+      background: rgba(184, 134, 59, 0.35);
+      border-color: var(--gold);
+    }
+
+    .serve-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -18px rgba(42, 36, 25, 0.22);
+    }
+
+    .serve-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .serve-img img {
+      pointer-events: none;
+      -webkit-user-drag: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .serve-body {
+      padding: 18px 20px 22px;
+    }
+
+    .serve-body h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .serve-body p {
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    /* ---------- Stats Band ---------- */
+    .stats-band {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 22px;
+      padding: 52px 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 0 32px;
+    }
+
+    @media(max-width:860px) {
+      .stats-band {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 20px;
+      }
+    }
+
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 38px;
+      font-weight: 600;
+    }
+
+    .stat-label {
+      font-size: 13.5px;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    /* ---------- Testimonials ---------- */
+    .testi-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media(max-width:860px) {
+      .testi-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testi-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+
+    .testi-quote {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .testi-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex: 0 0 44px;
+    }
+
+    .testi-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testi-name {
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+
+    .testi-role {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    /* =========================================================
+   NON-WHITE WARM ORGANIC ONBOARDING BLOCK
+   ========================================================= */
+    .onboard-section {
+      padding: 100px 0;
+      position: relative;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(241, 234, 217, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      margin: 60px 0;
+      scroll-margin-top: 70px;
+    }
+
+    .onboard-card-container {
+      background: rgba(241, 234, 217, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(227, 217, 193, 0.95);
+      border-radius: 32px;
+      padding: 60px 52px;
+      box-shadow: 0 25px 60px -15px rgba(42, 36, 25, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .onboard-card-container {
+        grid-template-columns: 1fr;
+        padding: 36px 24px;
+        gap: 36px;
+      }
+    }
+
+    .onboard-badge-kicker {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #B8863B;
+      background: rgba(184, 134, 59, 0.12);
+      border: 1px solid rgba(184, 134, 59, 0.25);
+      padding: 5px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .onboard-heading {
+      font-size: clamp(32px, 3.8vw, 46px);
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: 1.15;
+      color: #2A2419;
+      margin-bottom: 14px;
+    }
+
+    .onboard-heading .serif-italic {
+      font-style: italic;
+      font-weight: 400;
+      color: #3F5D42;
+    }
+
+    .onboard-sub {
+      font-size: 15.5px;
+      color: #5b5245;
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .trust-badges-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+
+    .trust-pill:hover {
+      transform: translateX(6px);
+    }
+
+    .pill-india {
+      background: #eaf1ff;
+      border-color: #cedeff;
+    }
+
+    .pill-india .trust-icon-box {
+      background: #1d4ed8;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(29, 78, 216, 0.3);
+    }
+
+    .pill-india .trust-status-tag {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .pill-secure {
+      background: #eefaf0;
+      border-color: #bbf7d0;
+    }
+
+    .pill-secure .trust-icon-box {
+      background: #15803d;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3);
+    }
+
+    .pill-secure .trust-status-tag {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .pill-msme {
+      background: #fdf6e2;
+      border-color: #fce293;
+    }
+
+    .pill-msme .trust-icon-box {
+      background: #b45309;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(180, 83, 9, 0.3);
+    }
+
+    .pill-msme .trust-status-tag {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .trust-pill-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .trust-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .trust-info-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2A2419;
+      line-height: 1.2;
+    }
+
+    .trust-info-desc {
+      font-size: 11.5px;
+      color: #6b6152;
+      margin-top: 2px;
+    }
+
+    .trust-status-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .form-glass-panel {
+      background: rgba(250, 246, 238, 0.92);
+      border: 1px solid rgba(227, 217, 193, 0.9);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: 0 14px 34px -10px rgba(42, 36, 25, 0.08);
+    }
+
+    .form-glass-panel h3 {
+      font-size: 24px;
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: #2A2419;
+      margin-bottom: 4px;
+    }
+
+    .form-subtitle {
+      font-size: 13px;
+      color: #6b6152;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #5b5245;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(227, 217, 193, 0.95);
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #2A2419;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      background: #ffffff;
+      border-color: #3F5D42;
+      box-shadow: 0 0 0 3px rgba(63, 93, 66, 0.15);
+    }
+
+    .btn-submit-form {
+      width: 100%;
+      padding: 15px;
+      background: #3F5D42;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      box-shadow: 0 10px 24px -6px rgba(63, 93, 66, 0.5);
+      transition: all 0.25s ease;
+    }
+
+    .btn-submit-form:hover {
+      background: #2f4832;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px -6px rgba(63, 93, 66, 0.6);
+    }
+
+    .form-footer-note {
+      font-size: 11.5px;
+      color: #6b6152;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    /* ---------- Bold & Distinct Standout Footer ---------- */
+    footer {
+      padding: 72px 0 36px;
+      border-top: 2px solid #D4C3A3;
+      margin-top: 80px;
+      background: #F1E8D5 !important;
+      box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08);
+      position: relative;
+      z-index: 10;
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1.1fr 1fr;
+      gap: 36px;
+    }
+
+    @media(max-width:860px) {
+      .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media(max-width:540px) {
+      .foot-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .foot-grid .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1A150D;
+    }
+
+    .foot-brand-desc {
+      margin-top: 14px;
+      color: #383023;
+      font-size: 14.5px;
+      font-weight: 500;
+      line-height: 1.6;
+      max-width: 290px;
+    }
+
+    .foot-grid h5 {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      margin-bottom: 18px;
+      color: #1A150D;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .foot-grid h5::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 2.5px;
+      background: #B8863B;
+      border-radius: 2px;
+    }
+
+    .foot-grid ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .foot-grid a {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #383023;
+      transition: all .2s ease;
+      display: inline-block;
+    }
+
+    .foot-grid a:hover {
+      color: #263B28;
+      transform: translateX(4px);
+    }
+
+    .foot-address {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #383023;
+      line-height: 1.4;
+    }
+
+    .foot-bottom {
+      margin-top: 52px;
+      padding-top: 24px;
+      border-top: 1.5px solid #D4C3A3;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #4A4030;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── 3-COLUMN MEGA MENU & SOLUTIONS DROPDOWN ── */
+    .nav-item-dropdown {
+      position: relative;
+    }
+
+    .mega-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+      z-index: 1000;
+      pointer-events: none;
+      padding-top: 12px;
+    }
+
+    .nav-item-dropdown:hover .mega-dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+
+    .square-mega-3col {
+      width: 960px;
+      max-width: calc(100vw - 32px);
+      left: -140px;
+    }
+
+    .square-dropdown-sm {
+      width: 340px;
+      left: -20px;
+    }
+
+    .mega-dropdown-inner {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 20px 45px -10px rgba(42, 36, 25, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    }
+
+    .mega-3col-wrapper {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 24px;
+      padding: 28px 32px;
+      box-sizing: border-box;
+    }
+
+    .mega-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-right: 1px solid var(--line);
+      padding-right: 24px;
+    }
+
+    .sq-cat-btn {
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 22px;
+      font-weight: 700;
+      font-family: 'Fraunces', serif;
+      color: #94a3b8;
+      padding: 4px 0;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .sq-cat-btn:hover,
+    .sq-cat-btn.active {
+      color: var(--ink);
+      transform: translateX(4px);
+    }
+
+    .sq-all-types-link {
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .sq-all-types-link:hover {
+      color: var(--accent);
+    }
+
+    .mega-col-middle {
+      min-width: 0;
+    }
+
+    .mega-sub-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+
+    .sq-tab-content {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sq-tab-content.active {
+      display: flex;
+    }
+
+    .sq-disc-item {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      line-height: 1.35;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    .sq-disc-item:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .sq-disc-primary strong {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .mega-col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-left: 1px solid var(--line);
+      padding-left: 20px;
+      padding-right: 8px;
+    }
+
+    .sq-cap-item {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      line-height: 1.35;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    .sq-cap-item:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .mega-column {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px;
+    }
+
+    .square-sub-item {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .square-sub-item:hover {
+      background: var(--accent-soft);
+      transform: translateX(4px);
+    }
+
+    .square-sub-item strong {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .square-sub-item span {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+    }
+
+
+    /* Crisp Technical Dot Grid */
+    .ambient-dot-grid {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: radial-gradient(rgba(42, 36, 25, 0.12) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Ensure sections and cards remain translucent so the movement is visible */
+    section {
+      background: transparent !important;
+    }
+
+    .hero-visual,
+    .serve-card,
+    .testi-card {
+      background: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    }
+
+    header {
+      background: rgba(250, 246, 238, 0.72) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+    }
+
+    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    body {
+      background-color: transparent !important;
+    }
+
+    .global-fluid-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      overflow: hidden;
+      background: #FAF6EE;
+      pointer-events: none;
+    }
+
+    .global-fluid-bg video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.35s ease-in-out;
+      filter: saturate(1.1) brightness(1.02);
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    .global-fluid-bg video.is-active {
+      opacity: 0.85;
+    }
+
+    .global-fluid-mask {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="global-fluid-bg">
+    <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+      <source src="backgroundvideo1.mp4" type="video/mp4">
+      <source src="./backgroundvideo1.mp4" type="video/mp4">
+      <source src="/backgroundvideo1.mp4" type="video/mp4">
+    </video>
+    <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+      <source src="backgroundvideo1.mp4" type="video/mp4">
+      <source src="./backgroundvideo1.mp4" type="video/mp4">
+      <source src="/backgroundvideo1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="global-fluid-mask"></div>
+
+
+
+
+  <!-- Crisp Technical Dot Grid -->
+  <div class="ambient-dot-grid"></div>
+
+  <!-- NAVBAR WITHOUT HOSPITALITY TECH -->
+  <header>
+    <div class="nav">
+      <a href="/" class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
+          style="height:32px; width:32px; object-fit:contain; border-radius:8px; display:inline-block;" /><span>PriyuLabs</span></a>
+
+      <ul class="nav-links">
+        <!-- 1. Business types Dropdown -->
+        <li class="nav-item nav-item-dropdown">
+          <span class="nav-link-btn">Business types <span class="nav-arrow">&#9662;</span></span>
+          <div class="mega-dropdown square-mega-3col">
+            <div class="mega-dropdown-inner mega-3col-wrapper">
+
+              <!-- Column 1: Left Categories Tabs -->
+              <div class="mega-col-left">
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')"
+                  onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')"
+                  onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')"
+                  onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
+                  onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="all-business-types.html" class="sq-all-types-link">All business types &rarr;</a>
+              </div>
+
+              <!-- Column 2: Discover (Specific Business Types) -->
+              <div class="mega-col-middle">
+                <div class="mega-sub-header">Discover</div>
+                <div class="sq-tab-content active" id="tab-fnb">
+                  <a href="/restaurants-fine-dining" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/restaurants-fine-dining" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="/qsr-fast-food" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
+                  <a href="/cafes-chai-bars" class="sq-disc-item">Cafes &amp; Chai Bars</a>
+                  <a href="/cloud-kitchens-catering" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="/bakeries-shops" class="sq-disc-item">Bakeries &amp; Patisseries</a>
+                  <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-retail">
+                  <a href="/grocery-supermarkets-kirana"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana
+                    Stores</a>
+                  <a href="/electronics-mobile-shops" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="/footwear-leather-stores" class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="/jewellery-shops" class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
+                  <a href="/watch-stores" class="sq-disc-item">Watch Stores &amp; Horology Boutiques</a>
+                  <a href="/bookstores-stationery" class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-beauty">
+                  <a href="/beauty-fashion/apparel" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/beauty-fashion/apparel" class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                  <a href="/beauty-fashion/salons" class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="/beauty-fashion/cosmetics" class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-services">
+                  <a href="/services/gyms" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/services/gyms" class="sq-disc-item">Gyms, Fitness Studios &amp; Yoga Centers</a>
+                  <a href="/services/dry-cleaners" class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+                </div>
+              </div>
+
+              <!-- Column 3: Capabilities -->
+              <div class="mega-col-right">
+                <div class="mega-sub-header">Capabilities</div>
+                <a href="/pos" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
+                <a href="/pos" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="/complete-management-system" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/complete-management-system" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="/pos" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="/complete-management-system" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry
+                  Shield</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 2. Solutions Dropdown -->
+        <li class="nav-item nav-item-dropdown">
+          <span class="nav-link-btn">Solutions <span class="nav-arrow">&#9662;</span></span>
+          <div class="mega-dropdown square-dropdown-sm">
+            <div class="mega-dropdown-inner">
+              <div class="mega-column">
+                <a href="/pos" class="square-sub-item">
+                  <strong>Smart POS</strong>
+                  <span>Fast billing, AI voice checkout &amp; offline mode</span>
+                </a>
+                <a href="/complete-management-system" class="square-sub-item">
+                  <strong>Complete Management System</strong>
+                  <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
+                </a>
+                <a href="/website-builder" class="square-sub-item">
+                  <strong>Custom Website Building</strong>
+                  <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+                </a>
+                <a href="/digital-marketing" class="square-sub-item">
+                  <strong>Digital Marketing &amp; Ads</strong>
+                  <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- 3. Pricing -->
+        <li class="nav-item">
+          <a href="#contact" class="nav-link-btn">Pricing</a>
+        </li>
+
+        <!-- 4. What's new -->
+        <li class="nav-item">
+          <a href="#contact" class="nav-link-btn">What's new</a>
+        </li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-right-actions">
+        <a href="/interactive-demo"
+          onclick="if(location.protocol==='file:'){location.href='interactive-demo.html';return false;}"
+          class="nav-cta-ghost">&#10022; Interactive Demo</a>
+        <a href="#contact" class="nav-cta">Start Free Trial</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>
+          <span class="line">Run every counter,</span>
+          <span class="line">click and shelf</span>
+          <span class="line">on one simple system.</span>
+        </h1>
+        <p class="hero-sub">Billing, inventory, staff and GST — the everyday work of an Indian retail business, brought
+          into one dashboard your team can actually use.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/917873844050?text=Hi%20Priyulabs,%20I%20want%20to%20book%20a%2010-min%20demo."
+            target="_blank" class="btn-primary">Book a 10-minute demo</a>
+          <a href="#solutions" class="btn-ghost">See how it works</a>
+        </div>
+        <div class="hero-trust">
+          <div>
+            <div class="trust-num" data-count="100">100</div>
+            <div class="trust-label">Active retailers</div>
+          </div>
+          <div>
+            <div class="trust-num" data-count="99.9" data-decimal="1">99.9%</div>
+            <div class="trust-label">Uptime</div>
+          </div>
+          <div>
+            <div class="trust-num" data-count="10" data-suffix="min">10 min</div>
+            <div class="trust-label">Setup time</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Balanced Showcase Frame -->
+      <div class="hero-visual">
+        <div class="hero-visual-inner">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="./hero-video.mp4" type="video/mp4">
+            <source src="hero-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="hl">Cafes &amp; Restaurants</span><span>Grocery &amp; Kirana</span><span>Salons &amp;
+        Spas</span><span class="hl">Clothing Boutiques</span><span>Gyms &amp; Fitness</span><span>Electronics
+        Stores</span>
+      <span class="hl">Cafes &amp; Restaurants</span><span>Grocery &amp; Kirana</span><span>Salons &amp;
+        Spas</span><span class="hl">Clothing Boutiques</span><span>Gyms &amp; Fitness</span><span>Electronics
+        Stores</span>
+    </div>
+  </div>
+
+  <section id="solutions" style="padding: 100px 0; background: transparent;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Core Capabilities</div>
+        <h2 style="font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 48px); margin-bottom: 20px;">
+          The Operating System <span style="font-style: italic; font-weight: 400; color: var(--gold);">&amp;</span> <br>
+          Engine for Modern Business.
+        </h2>
+        <p style="font-size: 18px; color: var(--ink-soft); max-width: 700px;">We’ve built a unified ecosystem that
+          handles everything from your physical counter to your global digital presence.</p>
+      </div>
+
+      <div class="feature-row reveal">
+        <div class="feature-text">
+          <div style="font-family: 'Fraunces', serif; font-size: 15px; color: var(--gold); margin-bottom: 12px;">01 /
+            High-Speed Operations</div>
+          <h3 style="font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 16px;">Smart POS</h3>
+          <p style="color: var(--ink-soft); font-size: 17px; margin-bottom: 24px;">Experience sub-second billing with
+            AI-powered voice commands and 100% offline reliability. Your queue never stops, even without internet.</p>
+          <a href="pos.html" style="font-weight: 700; color: var(--accent); text-decoration: none;">Learn more →</a>
+        </div>
+        <div class="feature-media"
+          style="border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
+          <img src="assets/smart_pos_touch_billing.jpg"
+            alt="Smart POS Fast Touch Billing Screen"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+
+      <div class="feature-row reveal">
+        <div class="feature-media"
+          style="order: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
+          <img src="assets/card2-management-poster.jpg"
+            alt="Complete Management System with AI Invoice OCR Inventory Scanner"
+            style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="feature-text">
+          <div style="font-family: 'Fraunces', serif; font-size: 15px; color: var(--gold); margin-bottom: 12px;">02 /
+            Backend Intelligence</div>
+          <h3 style="font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 16px;">Complete Management System
+          </h3>
+          <p style="color: var(--ink-soft); font-size: 17px; margin-bottom: 24px;">Automate your inventory ERP, staff
+            attendance (HRMS), and credit ledgers. Sync your accounts with GST compliance in just one click.</p>
+          <a href="complete-management-system.html"
+            style="font-weight: 700; color: var(--accent); text-decoration: none;">Learn more →</a>
+        </div>
+      </div>
+
+      <div class="feature-row reveal">
+        <div class="feature-text">
+          <div style="font-family: 'Fraunces', serif; font-size: 15px; color: var(--gold); margin-bottom: 12px;">03 /
+            Digital Presence</div>
+          <h3 style="font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 16px;">Custom Website Building</h3>
+          <p style="color: var(--ink-soft); font-size: 17px; margin-bottom: 24px;">Professional E-Commerce stores and
+            custom web apps designed for your brand. High-performance, mobile-ready, and delivered within 5 days.</p>
+          <a href="website-builder.html" style="font-weight: 700; color: var(--accent); text-decoration: none;">Learn
+            more →</a>
+        </div>
+        <div class="feature-media"
+          style="border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
+          <img src="assets/custom_website_builder.jpg" alt="Custom E-Commerce Storefront on MacBook and iPhone"
+            style="width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+
+      <div class="feature-row reveal">
+        <div class="feature-media"
+          style="order: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
+          <img src="assets/digital_marketing_ads.jpg"
+            alt="Digital Marketing Growth Dashboard with Meta Ads, Google Ads and WhatsApp Commerce"
+            style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div class="feature-text">
+          <div style="font-family: 'Fraunces', serif; font-size: 15px; color: var(--gold); margin-bottom: 12px;">04 /
+            Revenue Growth</div>
+          <h3 style="font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 16px;">Digital Marketing &amp; Ads
+          </h3>
+          <p style="color: var(--ink-soft); font-size: 17px; margin-bottom: 24px;">Dominate your local market. We handle
+            Meta Ads, Google Local SEO, and WhatsApp Commerce to drive consistent footfalls and sales.</p>
+          <a href="digital-marketing.html" style="font-weight: 700; color: var(--accent); text-decoration: none;">Learn
+            more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="who">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">Built for your kind of business</div>
+        <h2>Who we serve</h2>
+      </div>
+      <div class="serve-scroll reveal">
+        <a href="restaurants-fine-dining.html" class="serve-card">
+          <div class="serve-img"><img
+              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80"
+              alt="Cafe"></div>
+          <div class="serve-body">
+            <h4>Cafes &amp; Fine Dine</h4>
+            <p>Table management, KOT and split billing.</p>
+          </div>
+        </a>
+        <a href="salons-spas.html" class="serve-card">
+          <div class="serve-img"><img
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
+              alt="Salon"></div>
+          <div class="serve-body">
+            <h4>Salons &amp; Spas</h4>
+            <p>Slot booking and stylist commissions.</p>
+          </div>
+        </a>
+        <a href="grocery-supermarkets-kirana.html" class="serve-card">
+          <div class="serve-img"><img
+              src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=600&q=80"
+              alt="Grocery"></div>
+          <div class="serve-body">
+            <h4>Grocery &amp; Kirana</h4>
+            <p>Weighing scale sync and khata ledger.</p>
+          </div>
+        </a>
+        <a href="apparel-boutiques.html" class="serve-card">
+          <div class="serve-img"><img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80"
+              alt="Boutique"></div>
+          <div class="serve-body">
+            <h4>Clothing &amp; Boutiques</h4>
+            <p>Size and colour matrix billing.</p>
+          </div>
+        </a>
+        <a href="gyms.html" class="serve-card">
+          <div class="serve-img"><img
+              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
+              alt="Gym"></div>
+          <div class="serve-body">
+            <h4>Gyms &amp; Fitness</h4>
+            <p>Biometric access and UPI renewals.</p>
+          </div>
+        </a>
+        <!-- Final Round CTA: Explore All Business Types -->
+        <a href="all-business-types.html" class="serve-round-cta" title="Explore all 17+ business types">
+          <div class="round-cta-circle">
+            <div class="round-cta-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+            <span class="round-cta-label">Explore All</span>
+            <span class="round-cta-sub">Business Types</span>
+            <span class="round-cta-count">17+ Sectors &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="stats-band reveal">
+      <div>
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Active retailers</div>
+      </div>
+      <div>
+        <div class="stat-num">99.9%</div>
+        <div class="stat-label">Uptime guarantee</div>
+      </div>
+      <div>
+        <div class="stat-num">10 min</div>
+        <div class="stat-label">Setup time</div>
+      </div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">WhatsApp support</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="kicker">In their words</div>
+        <h2>Retailers who switched to Priyulabs</h2>
+      </div>
+      <div class="testi-wrap reveal">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">During evening rush hours we used to lose expired stock silently. The stock alerts
+            now catch it 30 days early — wastage is close to zero.</div>
+          <div class="testi-person">
+            <div class="testi-avatar"><img
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=200&q=80"
+                alt=""></div>
+            <div>
+              <div class="testi-name">Priyanshu Kumar Panda</div>
+              <div class="testi-role">Panda Grocery, Bhubaneswar</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">We used to spend an hour every night balancing card terminals against the cash
+            register. Now it matches in one click — zero stress.</div>
+          <div class="testi-person">
+            <div class="testi-avatar"><img
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80" alt="">
+            </div>
+            <div>
+              <div class="testi-name">Prakash Mohapatra</div>
+              <div class="testi-role">Suman Textiles, Bhubaneswar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDALONE SEPARATED ONBOARDING (WARM CREAM GLASS) -->
+  <section id="contact" class="onboard-section reveal">
+    <div id="free-trial" style="position:relative; top:-80px; visibility:hidden;"></div>
+    <div class="wrap">
+      <div class="onboard-card-container">
+
+        <!-- Left Column: Heading & Color Filled Badges -->
+        <div>
+          <span class="onboard-badge-kicker">Take Your Business to Autopilot</span>
+          <h2 class="onboard-heading">
+            Scale Your Store with <span class="serif-italic">Effortless Speed</span> in 10 Minutes.
+          </h2>
+          <p class="onboard-sub">
+            Join 100+ smart retailers simplifying physical counter and digital operations with Priyulabs. Elevate your
+            business in 10 minutes.
+          </p>
+
+          <!-- Color Filled Badges -->
+          <div class="trust-badges-list">
+
+            <!-- 1. Made in India (Rich Blue Filled) -->
+            <div class="trust-pill pill-india">
+              <div class="trust-pill-left">
+                <div class="trust-icon-box">
+                  🇮🇳
+                </div>
+                <div>
+                  <div class="trust-info-title">Made in India</div>
+                  <div class="trust-info-desc">Engineered for Indian Businesses</div>
+                </div>
+              </div>
+              <span class="trust-status-tag">National</span>
+            </div>
+
+            <!-- 2. SECURE (Vibrant Green Filled) -->
+            <div class="trust-pill pill-secure">
+              <div class="trust-pill-left">
+                <div class="trust-icon-box">
+                  🛡️
+                </div>
+                <div>
+                  <div class="trust-info-title">SECURE</div>
+                  <div class="trust-info-desc">SSL 256-Bit Bank Encryption</div>
+                </div>
+              </div>
+              <span class="trust-status-tag">Verified</span>
+            </div>
+
+            <!-- 3. MSME Udyam (Warm Gold Filled) -->
+            <div class="trust-pill pill-msme">
+              <div class="trust-pill-left">
+                <div class="trust-icon-box">
+                  📜
+                </div>
+                <div>
+                  <div class="trust-info-title">Trusted by MSME's</div>
+                  <div class="trust-info-desc">Udyam: UDYAM-OD-19-0177979</div>
+                </div>
+              </div>
+              <span class="trust-status-tag">Certified</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Form Panel -->
+        <div class="form-glass-panel">
+          <h3>Start Your Free Trial</h3>
+          <p class="form-subtitle">Submit your details to request an instant onboarding call:</p>
+
+          <form onsubmit="handleLeadSubmit(event)">
+            <div class="form-group">
+              <label for="userName">Your Name *</label>
+              <input type="text" id="userName" class="form-input" placeholder="Enter your full name (e.g. Ramesh Kumar)"
+                pattern="[A-Za-z]+(\s[A-Za-z]+)*" title="Only alphabets are allowed (e.g. Ramesh Kumar)" autocomplete="name"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="businessType">Select Your Business Type *</label>
+              <select id="businessType" class="form-select" required>
+                <option value="" disabled selected>Select Your Business Type</option>
+                <optgroup label="Food &amp; Beverage">
+                  <option value="Restaurants &amp; Fine Dining">Restaurants &amp; Fine Dining</option>
+                  <option value="QSR, Fast Food &amp; Takeaway">QSR, Fast Food &amp; Takeaway</option>
+                  <option value="Cafes &amp; Chai Bars">Cafes &amp; Chai Bars</option>
+                  <option value="Cloud Kitchens &amp; Catering">Cloud Kitchens &amp; Catering</option>
+                  <option value="Bakeries &amp; Patisseries">Bakeries &amp; Patisseries</option>
+                  <option value="Bars, Pubs &amp; Breweries">Bars, Pubs &amp; Breweries</option>
+                </optgroup>
+                <optgroup label="Retail &amp; Supermarkets">
+                  <option value="Grocery, Supermarkets &amp; Kirana">Grocery, Supermarkets &amp; Kirana</option>
+                  <option value="Electronics &amp; Mobile Shops">Electronics &amp; Mobile Shops</option>
+                  <option value="Footwear &amp; Leather Stores">Footwear &amp; Leather Stores</option>
+                  <option value="Jewellery Showrooms &amp; Bullion">Jewellery Showrooms &amp; Bullion</option>
+                  <option value="Watch Stores &amp; Horology Boutiques">Watch Stores &amp; Horology Boutiques</option>
+                  <option value="Bookstores &amp; Stationery">Bookstores &amp; Stationery Outlets</option>
+                </optgroup>
+                <optgroup label="Beauty &amp; Fashion">
+                  <option value="Clothing Brands &amp; Apparel Boutiques">Clothing Brands &amp; Apparel Boutiques</option>
+                  <option value="Salons, Spas &amp; Beauty Parlors">Salons, Spas &amp; Beauty Parlors</option>
+                  <option value="Cosmetics &amp; Skincare Stores">Cosmetics &amp; Skincare Stores</option>
+                </optgroup>
+                <optgroup label="Services &amp; Wellness">
+                  <option value="Gyms, Fitness Studios &amp; Yoga">Gyms, Fitness Studios &amp; Yoga</option>
+                  <option value="Dry Cleaners &amp; Laundry Shops">Dry Cleaners &amp; Laundry Shops</option>
+                </optgroup>
+                <optgroup label="Custom">
+                  <option value="Custom">Custom (Specify your business type...)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Custom Business Type Input (Appears when Custom is selected) -->
+            <div class="form-group" id="customBusinessTypeWrap" style="display: none; animation: fadeIn 0.3s ease;">
+              <label for="customBusinessType">Enter Your Business Type *</label>
+              <input type="text" id="customBusinessType" class="form-input" placeholder="e.g. Pharmacy, Pet Care, Hardware, Automotive..." />
+            </div>
+
+            <div class="form-group">
+              <label for="serviceCategory">Choose Service *</label>
+              <select id="serviceCategory" class="form-select" required>
+                <option value="" disabled selected>Select a Service</option>
+                <option value="Smart POS">Smart POS (Fast billing, AI voice checkout &amp; offline mode)</option>
+                <option value="Complete Management System">Complete Management System (Inventory ERP, Staff HRMS &amp; GST sync)</option>
+                <option value="Custom Website Building">Custom Website Building (E-Commerce stores, web apps &amp; 5-day delivery)</option>
+                <option value="Digital Marketing &amp; Ads">Digital Marketing &amp; Ads (Meta Ads, Google Local SEO &amp; WhatsApp Commerce)</option>
+                <option value="All-in-One Complete Retail Bundle">⭐ All-in-One Complete Retail Bundle (Everything Included)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="userPhone">Phone Number *</label>
+              <input type="tel" id="userPhone" class="form-input" placeholder="Enter 10-digit phone number"
+                maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required />
+            </div>
+
+            <button type="submit" class="btn-submit-form">
+              Submit &amp; Get Free Consultation
+            </button>
+
+            <p class="form-footer-note">
+              🔒 Your inquiry is securely received. Our team will contact you Soon.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
+              style="height:28px; width:28px; object-fit:contain; border-radius:7px; display:inline-block;" /><span>PriyuLabs</span>
+          </div>
+          <p class="foot-brand-desc">India's AI retail OS —
+            POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
+        </div>
+        <div>
+          <h5>Solutions</h5>
+          <ul>
+            <li><a href="/pos">Smart POS</a></li>
+            <li><a href="/complete-management-system">Management System</a></li>
+            <li><a href="/website-builder">Website Building</a></li>
+            <li><a href="/digital-marketing">Digital Marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Business Types</h5>
+          <ul>
+            <li><a href="/restaurants-fine-dining">Restaurants &amp; Cafes</a></li>
+            <li><a href="/grocery-supermarkets-kirana">Grocery &amp; Supermarkets</a></li>
+            <li><a href="/beauty-fashion/apparel">Clothing &amp; Boutiques</a></li>
+            <li><a href="/electronics-mobile-shops">Electronics &amp; Mobiles</a></li>
+            <li><a href="/beauty-fashion/salons">Salons &amp; Spas</a></li>
+            <li><a href="/footwear-leather-stores">Footwear &amp; Leather</a></li>
+            <li><a href="all-business-types.html" style="font-weight:600; color:var(--accent);">All Business Types
+                &rarr;</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
+            <li><a href="tel:+917873844050">+91 78738 44050</a> / <a href="tel:+917205045905">+91 72050 45905</a></li>
+            <li class="foot-address">Basisthanagar, Bhubaneswar, Odisha</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Priyulabs Software. All rights reserved.</span>
+        <span>UDYAM-OD-19-0177979</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    const counters = document.querySelectorAll('[data-count]');
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseFloat(el.dataset.count);
+        const decimals = el.dataset.decimal ? parseInt(el.dataset.decimal) : 0;
+        const suffix = el.dataset.suffix || '';
+        const dur = 1200; const start = performance.now();
+        function tick(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const val = target * p;
+          el.textContent = (decimals ? val.toFixed(decimals) : Math.round(val)) + (decimals ? '%' : suffix);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => cio.observe(el));
+  </script>
+
+
+  <script>
+    function switchMegaTab(tabKey) {
+      document.querySelectorAll('.sq-cat-btn').forEach(function (btn) {
+        var isTarget = btn.getAttribute('data-tab') === tabKey;
+        btn.classList.toggle('active', isTarget);
+      });
+      document.querySelectorAll('.sq-tab-content').forEach(function (content) {
+        var isTarget = content.id === 'tab-' + tabKey;
+        content.classList.toggle('active', isTarget);
+      });
+    }
+  </script>
+
+
+  <script>
+    // Custom Business Type toggle & Name Title Case formatter
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Name input: Alphabet only + Title Case (1st letter Capital, rest small)
+      const nameInput = document.getElementById('userName');
+      if (nameInput) {
+        nameInput.addEventListener('keydown', function(e) {
+          if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'].includes(e.key) || e.ctrlKey || e.metaKey) {
+            return;
+          }
+          if (!/^[a-zA-Z\s]$/.test(e.key)) {
+            e.preventDefault();
+          }
+        });
+
+        nameInput.addEventListener('input', function() {
+          const start = this.selectionStart;
+          const oldVal = this.value;
+
+          let clean = oldVal.replace(/[^a-zA-Z\s]/g, '').replace(/^\s+/, '').replace(/\s{2,}/g, ' ');
+
+          const formatted = clean.toLowerCase().replace(/(^|\s)([a-z])/g, function(match, space, letter) {
+            return space + letter.toUpperCase();
+          });
+
+          if (oldVal !== formatted) {
+            this.value = formatted;
+            try {
+              const diff = formatted.length - oldVal.length;
+              const newPos = Math.max(0, start + diff);
+              this.setSelectionRange(newPos, newPos);
+            } catch (err) {}
+          }
+        });
+
+        nameInput.addEventListener('blur', function() {
+          this.value = this.value.trim();
+        });
+      }
+
+      // 2. Custom Business Type toggle
+      const bTypeSelect = document.getElementById('businessType');
+      const customWrap = document.getElementById('customBusinessTypeWrap');
+      const customInput = document.getElementById('customBusinessType');
+      if (bTypeSelect && customWrap) {
+        bTypeSelect.addEventListener('change', function() {
+          if (this.value === 'Custom') {
+            customWrap.style.display = 'block';
+            if (customInput) {
+              customInput.required = true;
+              customInput.focus();
+            }
+          } else {
+            customWrap.style.display = 'none';
+            if (customInput) {
+              customInput.required = false;
+              customInput.value = '';
+            }
+          }
+        });
+      }
+    });
+
+    function handleLeadSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('userName').value.trim();
+      let bType = document.getElementById('businessType').value;
+      if (bType === 'Custom') {
+        const customVal = document.getElementById('customBusinessType') ? document.getElementById('customBusinessType').value.trim() : '';
+        if (!customVal) {
+          alert('Please enter your custom business type.');
+          document.getElementById('customBusinessType').focus();
+          return;
+        }
+        bType = `Custom (${customVal})`;
+      }
+      const service = document.getElementById('serviceCategory').value;
+      const phone = document.getElementById('userPhone').value.trim();
+
+      // Strict 10-digit validation
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit phone number (exactly 10 digits required).');
+        document.getElementById('userPhone').focus();
+        return;
+      }
+
+      const msg = `Hi Priyulabs, I want to book a free trial.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(bType)}%0A*Service:* ${encodeURIComponent(service)}%0A*Phone:* ${phone}`;
+      window.open(`https://wa.me/917873844050?text=${msg}`, '_blank');
+    }
+  </script>
+
+  <script>
+    (function initServeScrollDrag() {
+      const slider = document.querySelector('.serve-scroll');
+      if (!slider) return;
+
+      let isDown = false;
+      let startX = 0;
+      let scrollLeftStart = 0;
+      let hasMoved = false;
+
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        hasMoved = false;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeftStart = slider.scrollLeft;
+        slider.classList.add('is-dragging');
+      });
+
+      const stopDragging = () => {
+        if (!isDown) return;
+        isDown = false;
+        slider.classList.remove('is-dragging');
+      };
+
+      window.addEventListener('mouseup', stopDragging);
+      slider.addEventListener('mouseleave', stopDragging);
+
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX);
+        if (Math.abs(walk) > 5) {
+          hasMoved = true;
+        }
+        slider.scrollLeft = scrollLeftStart - walk;
+      });
+
+      // Prevent link navigation if user was actively dragging/swiping
+      slider.addEventListener('click', (e) => {
+        if (hasMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+          hasMoved = false;
+        }
+      }, true);
+
+      // Horizontal swipe via mouse wheel over the slider
+      slider.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          slider.scrollLeft += e.deltaY;
+        }
+      }, { passive: true });
+
+      // Dual-direction Auto-Slide on hover (Right & Left)
+      const cards = slider.querySelectorAll('.serve-card');
+      const roundCta = slider.querySelector('.serve-round-cta');
+
+      cards.forEach((card, idx) => {
+        card.addEventListener('mouseenter', () => {
+          if (isDown) return;
+          const sliderRect = slider.getBoundingClientRect();
+          const cardRect = card.getBoundingClientRect();
+          const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+          // Slide Right: When cursor hovers on the last card OR rightmost visible card
+          if ((idx === cards.length - 1 || cardRect.right >= sliderRect.right - 100) && slider.scrollLeft < maxScroll - 20) {
+            slider.scrollTo({
+              left: slider.scrollWidth,
+              behavior: 'smooth'
+            });
+          }
+          // Slide Left: When cursor hovers on the first card OR leftmost visible card
+          else if ((idx === 0 || cardRect.left <= sliderRect.left + 100) && slider.scrollLeft > 20) {
+            slider.scrollTo({
+              left: 0,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      if (roundCta) {
+        roundCta.addEventListener('mouseenter', () => {
+          if (!isDown) {
+            slider.scrollTo({
+              left: slider.scrollWidth,
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+
+      // Edge proximity hover for seamless left/right sliding
+      slider.addEventListener('mousemove', (e) => {
+        if (isDown) return;
+        const rect = slider.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+        if (mouseX < 70 && slider.scrollLeft > 20) {
+          slider.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+        } else if (mouseX > rect.width - 70 && slider.scrollLeft < maxScroll - 20) {
+          slider.scrollTo({
+            left: slider.scrollWidth,
+            behavior: 'smooth'
+          });
+        }
+      });
+    })();
+  </script>
+
+  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <script>
+    (function initSeamlessVideoLooper() {
+      const container = document.querySelector('.global-fluid-bg');
+      if (!container) return;
+      const vids = container.querySelectorAll('video');
+      if (!vids || vids.length === 0) return;
+
+      vids.forEach((v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+      });
+
+      if (vids.length === 1) {
+        vids[0].classList.add('is-active');
+        vids[0].play().catch(() => { });
+        return;
+      }
+
+      let activeIdx = 0;
+      let swapping = false;
+
+      const activeVid = () => vids[activeIdx];
+      const nextVid = () => vids[1 - activeIdx];
+
+      const triggerSwap = () => {
+        if (swapping) return;
+        swapping = true;
+
+        const current = activeVid();
+        const incoming = nextVid();
+
+        try {
+          incoming.currentTime = 0;
+        } catch (e) { }
+
+        const playPromise = incoming.play();
+
+        const executeTransition = () => {
+          incoming.classList.add('is-active');
+          current.classList.remove('is-active');
+
+          setTimeout(() => {
+            try {
+              current.pause();
+              current.currentTime = 0;
+            } catch (err) { }
+            activeIdx = 1 - activeIdx;
+            swapping = false;
+          }, 350);
+        };
+
+        if (playPromise !== undefined) {
+          playPromise.then(executeTransition).catch(() => {
+            executeTransition();
+          });
+        } else {
+          executeTransition();
+        }
+      };
+
+      const checkTime = () => {
+        const current = activeVid();
+        if (current && current.duration && !swapping) {
+          const remaining = current.duration - current.currentTime;
+          if (remaining <= 0.35 && current.currentTime > 0.5) {
+            triggerSwap();
+          }
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v === activeVid() && v.duration && !swapping) {
+            const remaining = v.duration - v.currentTime;
+            if (remaining <= 0.35 && v.currentTime > 0.5) {
+              triggerSwap();
+            }
+          }
+        });
+
+        v.addEventListener('ended', () => {
+          if (v === activeVid()) {
+            triggerSwap();
+          }
+        });
+      });
+
+      const startLooper = () => {
+        vids[0].classList.add('is-active');
+        const p = vids[0].play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlock = () => {
+              vids[0].play().catch(() => { });
+              window.removeEventListener('click', unlock);
+              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlock);
+            };
+            window.addEventListener('click', unlock, { passive: true, once: true });
+            window.addEventListener('scroll', unlock, { passive: true, once: true });
+            window.addEventListener('touchstart', unlock, { passive: true, once: true });
+          });
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLooper);
+      } else {
+        startLooper();
+      }
+    })();
+  </script>
+</body>
+
+</html>

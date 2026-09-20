@@ -107,7 +107,7 @@ export function GrocerySupermarketsKiranaPage() {
     const handleDemoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = `Hello Priyulabs! I would like to schedule a 15-minute Supermarket & Kirana demo for ${storeName} (${storeType}). My phone is ${storePhone}.`;
-    window.open(`https://wa.me/917849074050?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/917873844050?text=${encodeURIComponent(msg)}`, '_blank');
     setDemoModalOpen(false);
   };
 
@@ -163,10 +163,9 @@ export function GrocerySupermarketsKiranaPage() {
               Get Started Today
               <ArrowRight size={16} />
             </a>
-            <a
-              href="#pillars"
+            <a href="#pillars"
               className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50 no-underline cursor-pointer"
-            >
+             onClick={(e) => { e.preventDefault(); (document.querySelector('#pillars') || document.getElementById('pillars') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
               <Zap size={16} className="text-emerald-600" />
               See Supermarket Billing Speed
             </a>
@@ -672,9 +671,9 @@ export function GrocerySupermarketsKiranaPage() {
                   <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </a>
 
-                {/* Chat on WhatsApp (Official Number: 7849074050) */}
+                {/* Chat on WhatsApp (Official Number: 7873844050) */}
                 <a
-                  href="https://wa.me/917849074050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial"
+                  href="https://wa.me/917873844050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ background: '#ffffff', color: '#0f172a', fontWeight: 600, fontSize: '14px', padding: '12px 22px', borderRadius: '14px', textDecoration: 'none', border: '1px solid #cbd5e1', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)', transition: 'all 0.2s ease' }}

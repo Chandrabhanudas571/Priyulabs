@@ -1101,7 +1101,7 @@ function launchCustomBundleWhatsApp() {
   });
   const finalPrice = document.getElementById('bundleFinalPrice')?.textContent || '₹24,999';
   const msg = encodeURIComponent(`Hello Priyulabs! I am interested in the All-in-One Business Stack with: ${selected.join(', ')} (Estimated Package: ${finalPrice}). Please share the proposal!`);
-  window.open(`https://wa.me/917849074050?text=${msg}`, '_blank');
+  window.open(`https://wa.me/917873844050?text=${msg}`, '_blank');
 }
 
 function initDemoPlaygrounds() {
@@ -1130,7 +1130,7 @@ const policies = {
       <h4>Company &amp; Contact Info</h4>
       <p><strong>Brand:</strong> Priyulabs (PriyuLabs Technologies Pvt. Ltd.)<br/>
       <strong>Registered Office:</strong> 279, Kapileshwar - Sundarpada Rd, Basisthanagar, Old Town, Bhubaneswar, Odisha 751002.<br/>
-      <strong>Phone:</strong> <a href="tel:+917849074050">+91 78490 74050</a><br/>
+      <strong>Phone:</strong> <a href="tel:+917873844050">+91 78738 44050</a><br/>
       <strong>Email:</strong> <a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></p>
     `
   },
@@ -1153,7 +1153,7 @@ const policies = {
       <h4>2. Offline Billing & Data Sync</h4>
       <p>Priyulabs functions locally on your device in offline mode. When internet is restored, changes automatically sync with cloud backups.</p>
       <h4>3. Support SLA</h4>
-      <p>All business tier users receive dedicated 24/7 WhatsApp and phone support (Call: +91 78490 74050, Email: priylabspos@gmail.com) with a guaranteed response window under 15 minutes.</p>
+      <p>All business tier users receive dedicated 24/7 WhatsApp and phone support (Call: +91 78738 44050, Email: priylabspos@gmail.com) with a guaranteed response window under 15 minutes.</p>
     `
   },
   refund: {

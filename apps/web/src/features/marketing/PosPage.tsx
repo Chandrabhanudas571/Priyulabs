@@ -28,10 +28,9 @@ export function PosPage() {
                 bi-directional Pine Labs EDC integration for zero cashier variance.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#lead-form"
+                <a href="#lead-form"
                   className="rounded-xl bg-indigo-600 px-6 py-3.5 font-bold text-white shadow-xl shadow-indigo-600/25 transition hover:bg-indigo-700"
-                >
+                 onClick={(e) => { e.preventDefault(); (document.querySelector('#lead-form') || document.getElementById('lead-form') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
                   Request POS Hardware Kit
                 </a>
                 <Link

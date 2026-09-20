@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <base href="/" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -762,9 +766,179 @@
       color: #ffffff;
       margin-top: 2px;
     }
+  
+    /* Smooth Scroll Margin for Pillar/Feature Cards */
+    html {
+      scroll-behavior: smooth !important;
+    }
+    #pillars, #matrix-features, #chair-features, #gym-features, #laundry-features, #features, #what-we-build,
+    .clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid {
+      scroll-margin-top: 85px !important;
+    }
+
+  
+/* Global Fluid Live Video Background */
+body {
+  background-color: transparent !important;
+}
+.global-fluid-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  overflow: hidden;
+  background: #FAF6EE;
+  pointer-events: none;
+}
+.global-fluid-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.5; /* Adjust for subtle look */
+}
+.global-fluid-mask {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+</style>
+
+  
+  <style id="seamless-wallpaper-style">
+    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    html, body {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    /* Section background transparency so live wallpaper shows through */
+    .clean-hero-sec,
+    .clean-pillars-sec,
+    .clean-features-sec,
+    .clean-grid-sec,
+    .clean-metrics-sec,
+    .clean-cta-sec,
+    .bottom-cta-sec,
+    .pillars-sec,
+    .features-sec,
+    .metrics-sec,
+    .clean-container,
+    .hero-sec,
+    .hub-hero,
+    .matrix-sec,
+    .sectors-stream-container,
+    .sector-row,
+    main {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    /* Keep Nav and Header translucent with blur */
+    .clean-nav-header,
+    .navbar,
+    header.clean-subnav,
+    header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    /* Keep Cards legible and clean with glassmorphism */
+    .clean-hero-visual-frame {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .clean-feat-card,
+    .pillar-img-frame,
+    .clean-hero-media-wrap,
+    .deal-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    .global-fluid-bg {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -2 !important;
+      overflow: hidden !important;
+      background: #FAF6EE !important;
+      pointer-events: none !important;
+    }
+
+    .global-fluid-bg video {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translate(-50%, -50%) !important;
+      object-fit: cover !important;
+      opacity: 0 !important;
+      transition: opacity 0.35s ease-in-out !important;
+      filter: saturate(1.1) brightness(1.02) !important;
+      pointer-events: none !important;
+      will-change: opacity !important;
+    }
+
+    .global-fluid-bg video.is-active {
+      opacity: 0.85 !important;
+    }
+
+    .global-fluid-mask {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
   </style>
+
+
 </head>
 <body>
+
+<div class="global-fluid-bg">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="global-fluid-mask"></div>
+
+
+
+
 
   <!-- ══════════════════════════════════════════════════════════
        GLOBAL SECONDARY SUB-NAVIGATION BAR (Beauty & Fashion)
@@ -772,8 +946,8 @@
   <header class="clean-subnav">
     <div class="clean-subnav-inner">
       <a href="/" class="clean-brand" aria-label="Priyulabs Home">
-        <div style="background:#0f1422; border-radius:12px; padding:8px; display:flex; align-items:center; justify-content:center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <img src="assets/logo.svg" style="height:22px; width:22px; display:block;" alt="Priyulabs Logo" onerror="this.src='/assets/logo.svg'" />
+        <div style="background: transparent; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" onerror="this.src='/assets/logo.svg'" />
         </div>
         <div style="display:flex; flex-direction:column; text-align:left;">
           <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
@@ -804,7 +978,7 @@
           </div>
         </li>
         <li>
-          <a href="#matrix-features" class="clean-nav-link">Switch Priyulabs</a>
+          <a href="#matrix-features" class="clean-nav-link" onclick="event.preventDefault(); (document.querySelector('#matrix-features') || document.getElementById('matrix-features') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">Switch Priyulabs</a>
         </li>
       </ul>
 
@@ -836,7 +1010,7 @@
       <a href="/#free-trial" class="btn-solid-dark" style="padding: 14px 32px; font-size: 15px;">
         Start Free Trial →
       </a>
-      <a href="#matrix-features" class="btn-outline-clean" style="padding: 14px 28px; font-size: 15px;">
+      <a href="#matrix-features" class="btn-outline-clean" style="padding: 14px 28px; font-size: 15px;" onclick="event.preventDefault(); (document.querySelector('#matrix-features') || document.getElementById('matrix-features') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
         </svg>
@@ -1118,7 +1292,7 @@
             Start Free Trial
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="https://wa.me/917849074050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial" target="_blank" rel="noopener noreferrer" style="background: #ffffff; color: #0f172a; font-weight: 600; font-size: 14px; padding: 12px 22px; border-radius: 14px; text-decoration: none; border: 1px solid #cbd5e1; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03); transition: all 0.2s ease;">
+          <a href="https://wa.me/917873844050?text=Hi%20Priyulabs%2C%20I%20want%20to%20get%20started%20with%20a%20free%20trial" target="_blank" rel="noopener noreferrer" style="background: #ffffff; color: #0f172a; font-weight: 600; font-size: 14px; padding: 12px 22px; border-radius: 14px; text-decoration: none; border: 1px solid #cbd5e1; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03); transition: all 0.2s ease;">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
             Chat on WhatsApp
           </a>
@@ -1253,5 +1427,161 @@
       }
     });
   </script>
+
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <script>
+    (function() {
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+          if (anchor.dataset.smoothBound) return;
+          anchor.dataset.smoothBound = 'true';
+          anchor.addEventListener('click', function(e) {
+            var hash = this.getAttribute('href');
+            if (hash && hash.length > 1 && !hash.startsWith('#/')) {
+              var target = document.querySelector(hash) || 
+                           document.getElementById(hash.substring(1)) || 
+                           document.getElementById('pillars') || 
+                           document.getElementById('matrix-features') || 
+                           document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid, .clean-container');
+              if (target) {
+                e.preventDefault();
+                e.stopPropagation();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, null, hash);
+                }
+              }
+            }
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSmoothScroll);
+      } else {
+        initSmoothScroll();
+      }
+    })();
+  </script>
+
+
+  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <script id="seamless-video-looper-script">
+    (function initSeamlessVideoLooper() {
+      const container = document.querySelector('.global-fluid-bg');
+      if (!container) return;
+      const vids = container.querySelectorAll('video');
+      if (!vids || vids.length === 0) return;
+
+      vids.forEach((v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+      });
+
+      if (vids.length === 1) {
+        vids[0].classList.add('is-active');
+        vids[0].play().catch(() => { });
+        return;
+      }
+
+      let activeIdx = 0;
+      let swapping = false;
+
+      const activeVid = () => vids[activeIdx];
+      const nextVid = () => vids[1 - activeIdx];
+
+      const triggerSwap = () => {
+        if (swapping) return;
+        swapping = true;
+
+        const current = activeVid();
+        const incoming = nextVid();
+
+        try {
+          incoming.currentTime = 0;
+        } catch (e) { }
+
+        const playPromise = incoming.play();
+
+        const executeTransition = () => {
+          incoming.classList.add('is-active');
+          current.classList.remove('is-active');
+
+          setTimeout(() => {
+            try {
+              current.pause();
+              current.currentTime = 0;
+            } catch (err) { }
+            activeIdx = 1 - activeIdx;
+            swapping = false;
+          }, 350);
+        };
+
+        if (playPromise !== undefined) {
+          playPromise.then(executeTransition).catch(() => {
+            executeTransition();
+          });
+        } else {
+          executeTransition();
+        }
+      };
+
+      const checkTime = () => {
+        const current = activeVid();
+        if (current && current.duration && !swapping) {
+          const remaining = current.duration - current.currentTime;
+          if (remaining <= 0.35 && current.currentTime > 0.5) {
+            triggerSwap();
+          }
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v === activeVid() && v.duration && !swapping) {
+            const remaining = v.duration - v.currentTime;
+            if (remaining <= 0.35 && v.currentTime > 0.5) {
+              triggerSwap();
+            }
+          }
+        });
+
+        v.addEventListener('ended', () => {
+          if (v === activeVid()) {
+            triggerSwap();
+          }
+        });
+      });
+
+      const startLooper = () => {
+        vids[0].classList.add('is-active');
+        const p = vids[0].play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlock = () => {
+              vids[0].play().catch(() => { });
+              window.removeEventListener('click', unlock);
+              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlock);
+            };
+            window.addEventListener('click', unlock, { passive: true, once: true });
+            window.addEventListener('scroll', unlock, { passive: true, once: true });
+            window.addEventListener('touchstart', unlock, { passive: true, once: true });
+          });
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLooper);
+      } else {
+        startLooper();
+      }
+    })();
+  </script>
+
 </body>
 </html>

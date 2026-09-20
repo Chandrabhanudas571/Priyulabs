@@ -85,7 +85,7 @@ export function HospitalityPage() {
               Explore Live Retail OS →
             </Link>
             <a
-              href="https://wa.me/917849074050?text=Hi%20Priyulabs!%20Tell%20me%20more%20about%20Hospitality%20Tech%20launch."
+              href="https://wa.me/917873844050?text=Hi%20Priyulabs!%20Tell%20me%20more%20about%20Hospitality%20Tech%20launch."
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-emerald-300 bg-emerald-50 px-6 py-3 text-sm font-bold text-emerald-800 shadow-sm transition hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200"

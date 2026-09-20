@@ -31,7 +31,7 @@ export function LeadSection({ title = 'Transform your business in 10 minutes.' }
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
                 <Check size={12} strokeWidth={2.5} />
               </span>
-              <span>Dedicated regional support (+91 78490 74050)</span>
+              <span>Dedicated regional support (+91 78738 44050)</span>
             </p>
           </div>
         </div>

@@ -369,10 +369,9 @@ export function SolutionsPage() {
                   Get Started Today
                   <ArrowRight size={16} />
                 </a>
-                <a
-                  href="#systemUpgrades"
+                <a href="#systemUpgrades"
                   className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50 no-underline cursor-pointer shadow-xs"
-                >
+                 onClick={(e) => { e.preventDefault(); (document.querySelector('#systemUpgrades') || document.getElementById('systemUpgrades') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <Zap size={16} className="text-emerald-600" />
                   {currentSector.id === 'hardware'
                     ? 'See Hardware Billing Speed'
@@ -565,10 +564,9 @@ export function SolutionsPage() {
                 >
                   View POS Hardware Integration
                 </Link>
-                <a
-                  href="#contact"
+                <a href="#contact"
                   className="rounded-xl border border-slate-300 px-6 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200"
-                >
+                 onClick={(e) => { e.preventDefault(); (document.querySelector('#contact') || document.getElementById('contact') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
                   Book 10-Min Demo
                 </a>
               </div>

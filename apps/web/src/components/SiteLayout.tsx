@@ -201,7 +201,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
         {/* Left Branding */}
         <Link to="/" className="flex items-center gap-3 no-underline group" aria-label="Priyulabs Home">
           {/* Squircle Logo Container */}
-          <div className="h-10 w-10 rounded-2xl bg-[#0f1422] p-2 flex items-center justify-center shadow-sm">
+          <div className="h-10 w-10 rounded-2xl bg-transparent shadow-none p-2 flex items-center justify-center shadow-sm">
             <img src="/assets/logo.svg" alt="Priyulabs" className="h-full w-full object-contain" />
           </div>
 
@@ -850,7 +850,7 @@ export function SiteLayout({ children }: PropsWithChildren) {
 
       {/* Floating WhatsApp Action Button */}
       <a
-        href="https://wa.me/917849074050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
+        href="https://wa.me/917873844050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-3 font-bold text-white shadow-xl shadow-emerald-600/30 transition hover:bg-emerald-700 hover:scale-105"

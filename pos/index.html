@@ -2,13 +2,16 @@
 <html lang="en">
 
 <head>
+  <!-- Universal PriyuLabs Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <base href="/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>POS Billing Software | AI Stock Prediction &amp; 2-Sec Touch Billing | Priyulabs Digital</title>
   <meta name="description"
     content="India's fastest POS system — lightning 2-sec billing, Vision AI stock prediction &amp; expiry shield, 100% offline mode, zero-fraud EDC payment sync &amp; thermal printer integration. Built for every retail format." />
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,150 +25,132 @@
 
   <style>
     /* ══════════════════════════════════════════════════════════
-       POS PAGE — DEDICATED STANDALONE STYLES
-       All selectors prefixed with .pos- to prevent global bleed
+       SMART POS PAGE — TOTAL WHITE ARCHITECTURE & REAL COLORFUL DESIGN
+       - 100% Pure White Backgrounds (Zero Dark, Zero Dark Blue)
+       - High-Contrast Crisp Slate Typography
+       - Real Retail Photography & Vibrant Sector Gallery
+       - Zero 3D Text / Pseudo-3D Gradient Extrusions
     ══════════════════════════════════════════════════════════ */
 
-    /* ── SCROLL REVEAL ── */
-    .pos-reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    html {
+      scroll-behavior: smooth;
     }
 
+    body {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      font-family: 'Plus Jakarta Sans', var(--font-body), sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SCROLL REVEAL ANIMATIONS ── */
+    .pos-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
     .pos-reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .pos-reveal-left {
       opacity: 0;
-      transform: translateX(-32px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateX(-28px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     .pos-reveal-left.visible {
       opacity: 1;
       transform: translateX(0);
     }
-
     .pos-reveal-right {
       opacity: 0;
-      transform: translateX(32px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateX(28px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
     .pos-reveal-right.visible {
       opacity: 1;
       transform: translateX(0);
     }
+    .pos-delay-1 { transition-delay: 0.08s; }
+    .pos-delay-2 { transition-delay: 0.16s; }
+    .pos-delay-3 { transition-delay: 0.24s; }
+    .pos-delay-4 { transition-delay: 0.32s; }
 
-    /* delay helpers */
-    .pos-delay-1 { transition-delay: 0.1s; }
-    .pos-delay-2 { transition-delay: 0.2s; }
-    .pos-delay-3 { transition-delay: 0.3s; }
-    .pos-delay-4 { transition-delay: 0.4s; }
-
-    /* ── HERO SECTION ── */
+    /* ── 1. HERO SECTION (PURE WHITE, NO DARK, NO DARK BLUE) ── */
     .pos-hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(165deg, #08091a 0%, #0d1130 45%, #060e22 100%);
-      padding: clamp(110px, 16vh, 160px) 16px clamp(50px, 8vh, 90px);
+      background: #ffffff !important;
+      padding: clamp(60px, 9vh, 90px) 16px clamp(40px, 6vh, 60px);
       text-align: center;
+      border-bottom: 1px solid #f1f5f9;
     }
 
-    /* Animated gradient orbs */
-    .pos-hero::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      left: -10%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(183, 110, 121, 0.22) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: pos-orb-pulse 8s ease-in-out infinite alternate;
-    }
-
+    .pos-hero::before,
     .pos-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -20%;
-      right: -5%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: pos-orb-pulse 10s ease-in-out infinite alternate-reverse;
-    }
-
-    @keyframes pos-orb-pulse {
-      from { transform: scale(1) translate(0, 0); }
-      to   { transform: scale(1.15) translate(20px, -20px); }
+      display: none !important;
     }
 
     .pos-hero-inner {
       position: relative;
       z-index: 2;
+      max-width: 1240px;
+      margin: 0 auto;
     }
 
     .pos-hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(183, 110, 121, 0.15);
-      border: 1px solid rgba(183, 110, 121, 0.3);
-      color: #d88a95;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #0f172a;
       font-size: 11.5px;
       font-weight: 800;
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 50px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 22px;
-      backdrop-filter: blur(8px);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
     }
 
     .pos-hero-eyebrow .eyebrow-dot {
-      width: 6px;
-      height: 6px;
-      background: #b76e79;
+      width: 7px;
+      height: 7px;
+      background: #10b981;
       border-radius: 50%;
-      animation: pos-blink 1.4s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes pos-blink {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
     }
 
     .pos-hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(30px, 6.5vw, 68px);
+      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
+      font-size: clamp(34px, 5.8vw, 62px);
       font-weight: 900;
-      color: #f8fafc;
-      margin-bottom: 10px;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
+      color: #0f172a !important;
+      margin-bottom: 16px;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
     }
 
+    /* Flat crisp text highlight, strictly NO 3D clip/extrusion */
     .pos-hero-title .pos-highlight {
-      background: linear-gradient(135deg, #b76e79, #e29b88, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      color: #2563eb !important;
+      font-weight: 900;
+      display: inline;
     }
 
     .pos-hero-sub {
-      font-size: clamp(15px, 3.2vw, 20px);
-      color: #94a3b8;
+      font-size: clamp(15.5px, 2.2vw, 19px);
+      color: #475569 !important;
       max-width: 760px;
-      margin: 18px auto 36px;
+      margin: 18px auto 32px;
       line-height: 1.65;
+      font-weight: 500;
     }
 
     /* Speed badge */
@@ -173,77 +158,73 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
+      background: #ecfdf5 !important;
+      border: 1px solid #a7f3d0 !important;
+      color: #065f46 !important;
       font-size: 13px;
       font-weight: 700;
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: 50px;
-      letter-spacing: 0.04em;
-      margin-bottom: 36px;
+      letter-spacing: 0.02em;
+      margin-bottom: 34px;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
     }
 
     .pos-speed-badge .lightning-icon {
-      animation: pos-lightning 1.8s ease-in-out infinite;
       font-style: normal;
+      color: #059669;
     }
 
-    @keyframes pos-lightning {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    /* Hero CTA Row */
+    /* Hero CTA Buttons */
     .pos-hero-ctas {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
       justify-content: center;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
 
     .pos-btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, #b76e79 0%, #b76e79 100%);
-      color: #fff;
-      font-size: 15.5px;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      font-size: 15px;
       font-weight: 700;
-      padding: 14px 30px;
+      padding: 14px 32px;
       border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 8px 24px rgba(183, 110, 121, 0.4), 0 2px 6px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+      transition: all 0.2s ease;
       white-space: nowrap;
     }
 
     .pos-btn-primary:hover {
+      background: #1e293b !important;
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(183, 110, 121, 0.55), 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.28);
     }
 
     .pos-btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #e2e8f0;
+      background: #ffffff !important;
+      border: 1.5px solid #cbd5e1 !important;
+      color: #0f172a !important;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       padding: 14px 28px;
       border-radius: 12px;
       text-decoration: none;
-      backdrop-filter: blur(8px);
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      transition: all 0.2s ease;
       white-space: nowrap;
     }
 
     .pos-btn-secondary:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(183, 110, 121, 0.5);
+      background: #f8fafc !important;
+      border-color: #0f172a !important;
       transform: translateY(-2px);
     }
 
@@ -257,27 +238,22 @@
     .pos-hero-img-wrap {
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(183, 110, 121, 0.3);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.04),
-                  0 24px 80px rgba(0,0,0,0.6),
-                  0 0 120px rgba(183, 110, 121, 0.18);
+      border: 1px solid #e2e8f0 !important;
+      background: #ffffff !important;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
       position: relative;
     }
 
     .pos-hero-img-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(8, 9, 26, 0.7) 100%);
-      z-index: 1;
-      pointer-events: none;
-      border-radius: 20px;
+      display: none !important;
     }
 
     .pos-hero-img {
       width: 100%;
+      max-height: 520px;
+      object-fit: cover;
       display: block;
-      transition: transform 0.6s ease;
+      transition: transform 0.5s ease;
     }
 
     .pos-hero-img-wrap:hover .pos-hero-img {
@@ -296,33 +272,36 @@
     .pos-stat-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 10px 20px;
-      border-radius: 50px;
-      transition: transform 0.2s ease, background 0.2s ease;
+      gap: 12px;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04) !important;
+      backdrop-filter: none !important;
+      padding: 12px 22px;
+      border-radius: 16px;
+      transition: all 0.2s ease;
     }
 
     .pos-stat-pill:hover {
       transform: translateY(-2px);
-      background: rgba(183, 110, 121,0.12);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08) !important;
+      border-color: #cbd5e1 !important;
     }
 
     .pos-stat-num {
-      font-family: var(--font-heading);
-      font-size: 18px;
+      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
+      font-size: 20px;
       font-weight: 900;
-      color: #f8fafc;
+      color: #0f172a !important;
       line-height: 1;
     }
 
     .pos-stat-label {
       font-size: 12px;
       font-weight: 600;
-      color: #64748b;
+      color: #64748b !important;
       line-height: 1.3;
+      margin-top: 3px;
     }
 
     .pos-stat-icon {
@@ -331,10 +310,10 @@
 
     /* ── TRUST STRIP ── */
     .pos-trust-strip {
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 20px 24px;
+      background: #ffffff !important;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 18px 24px;
     }
 
     .pos-trust-inner {
@@ -348,9 +327,9 @@
     }
 
     .pos-trust-label {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 800;
+      color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       white-space: nowrap;
@@ -359,7 +338,7 @@
     .pos-trust-divider {
       width: 1px;
       height: 20px;
-      background: var(--border-color);
+      background: #e2e8f0;
       flex-shrink: 0;
     }
 
@@ -375,27 +354,51 @@
       align-items: center;
       gap: 6px;
       font-size: 13px;
-      font-weight: 600;
-      color: var(--text-body);
+      font-weight: 700;
+      color: #334155;
     }
 
     .pos-trust-item .check {
-      color: #059669;
+      color: #10b981;
       font-size: 14px;
+      font-weight: 800;
     }
 
-    /* ── SECTION SHARED ── */
+    /* ── ALL SECTIONS (PURE WHITE ARCHITECTURE) ── */
     .pos-section {
-      padding: clamp(60px, 9vw, 100px) 0;
+      background: #ffffff !important;
+      padding: clamp(60px, 8vw, 96px) 0;
     }
 
     .pos-section-alt {
-      background: #f8fafc;
+      background: #ffffff !important;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
     }
 
-    .pos-section-dark {
-      background: linear-gradient(165deg, #08091a 0%, #0d1130 100%);
-      color: #f8fafc;
+    /* ── PURE WHITE FOOTER ── */
+    .footer {
+      background: #ffffff !important;
+      color: #475569 !important;
+      border-top: 1px solid #e2e8f0 !important;
+      padding-top: 64px !important;
+    }
+    .footer h4, .footer-links-group h4 {
+      color: #0f172a !important;
+      font-weight: 700 !important;
+    }
+    .footer a {
+      color: #475569 !important;
+    }
+    .footer a:hover {
+      color: #2563eb !important;
+    }
+    .footer-desc {
+      color: #64748b !important;
+    }
+    .footer-bottom {
+      border-top: 1px solid #f1f5f9 !important;
+      color: #64748b !important;
     }
 
     .pos-eyebrow-chip {
@@ -412,148 +415,156 @@
     }
 
     .pos-eyebrow-indigo {
-      background: rgba(183, 110, 121, 0.1);
-      color: #b76e79;
-      border: 1px solid rgba(183, 110, 121, 0.2);
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
     }
 
     .pos-eyebrow-emerald {
-      background: rgba(5, 150, 105, 0.1);
+      background: #ecfdf5;
       color: #059669;
-      border: 1px solid rgba(5, 150, 105, 0.2);
+      border: 1px solid #a7f3d0;
     }
 
     .pos-eyebrow-violet {
-      background: rgba(139, 92, 246, 0.1);
+      background: #f5f3ff;
       color: #7c3aed;
-      border: 1px solid rgba(139, 92, 246, 0.2);
+      border: 1px solid #ddd6fe;
     }
 
     .pos-eyebrow-amber {
-      background: rgba(217, 119, 6, 0.1);
+      background: #fffbeb;
       color: #d97706;
-      border: 1px solid rgba(217, 119, 6, 0.2);
+      border: 1px solid #fde68a;
     }
 
     .pos-section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(24px, 4.5vw, 46px);
+      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
+      font-size: clamp(26px, 4.2vw, 44px);
       font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.12;
+      color: #0f172a !important;
+      line-height: 1.15;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
 
-    .pos-section-title-light { color: #f8fafc; }
-
-    .pos-section-desc {
-      font-size: clamp(14px, 2.8vw, 17px);
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 580px;
-      margin-bottom: 36px;
+    .pos-section-title-light {
+      color: #0f172a !important;
     }
 
-    .pos-section-desc-light { color: #94a3b8; }
+    .pos-section-desc {
+      font-size: 16px;
+      color: #475569 !important;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
 
-    /* ── FEATURE SPLIT ── */
+    .pos-section-desc-light {
+      color: #475569 !important;
+    }
+
+    /* ── SPLIT LAYOUT ── */
     .pos-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 5vw, 80px);
+      gap: clamp(36px, 6vw, 72px);
       align-items: center;
     }
 
     .pos-split.reversed {
-      direction: rtl;
-    }
-
-    .pos-split.reversed > * {
-      direction: ltr;
+      grid-template-columns: 1fr 1fr;
     }
 
     @media (max-width: 860px) {
-      .pos-split {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+      .pos-split,
       .pos-split.reversed {
-        direction: ltr;
+        grid-template-columns: 1fr;
+      }
+      .pos-split.reversed .pos-img-panel {
+        order: -1;
       }
     }
 
-    /* Image panel */
-    .pos-img-panel { position: relative; }
-
+    /* ── REAL IMAGE FRAMES ── */
     .pos-img-wrap {
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-xl);
+      border: 1px solid #e2e8f0 !important;
+      background: #ffffff !important;
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08) !important;
       position: relative;
     }
 
     .pos-img-wrap-dark {
-      border-color: rgba(183, 110, 121, 0.25);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 60px rgba(183, 110, 121, 0.15);
+      border: 1px solid #e2e8f0 !important;
+      background: #ffffff !important;
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08) !important;
     }
 
     .pos-img-wrap img {
       width: 100%;
+      height: 380px;
+      object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
 
-    .pos-img-wrap:hover img { transform: scale(1.03); }
+    .pos-img-wrap:hover img {
+      transform: scale(1.03);
+    }
 
     /* Floating badge on image */
     .pos-img-badge {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(8, 9, 26, 0.82);
+      bottom: 18px;
+      left: 18px;
+      background: rgba(255, 255, 255, 0.96) !important;
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(183, 110, 121, 0.35);
-      border-radius: 12px;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 14px;
       padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 10px;
       z-index: 2;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1) !important;
     }
 
     .pos-img-badge-light {
-      background: rgba(255,255,255,0.9);
-      border-color: rgba(183, 110, 121, 0.2);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      background: rgba(255, 255, 255, 0.96) !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1) !important;
     }
 
-    .pos-badge-icon { font-size: 22px; }
+    .pos-badge-icon {
+      font-size: 22px;
+    }
 
     .pos-badge-text-top {
-      font-size: 16px;
-      font-weight: 900;
-      color: #f8fafc;
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a !important;
       line-height: 1;
-      font-family: var(--font-heading);
+      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
     }
 
-    .pos-badge-text-top.dark-text { color: #0f172a; }
+    .pos-badge-text-top.dark-text {
+      color: #0f172a !important;
+    }
 
     .pos-badge-text-sub {
       font-size: 11px;
       font-weight: 600;
-      color: #64748b;
-      margin-top: 2px;
+      color: #64748b !important;
+      margin-top: 3px;
     }
 
     /* ── FEATURE CHIPS LIST ── */
     .pos-feature-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-bottom: 30px;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     .pos-feature-item {
@@ -563,9 +574,9 @@
     }
 
     .pos-feature-icon-wrap {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -573,91 +584,78 @@
       flex-shrink: 0;
     }
 
-    .pos-feature-icon-indigo { background: rgba(183, 110, 121, 0.1); }
-    .pos-feature-icon-emerald { background: rgba(5, 150, 105, 0.1); }
-    .pos-feature-icon-violet { background: rgba(139, 92, 246, 0.1); }
-    .pos-feature-icon-amber { background: rgba(217, 119, 6, 0.1); }
+    .pos-feature-icon-indigo { background: #eff6ff; color: #2563eb; }
+    .pos-feature-icon-emerald { background: #ecfdf5; color: #059669; }
+    .pos-feature-icon-violet { background: #f5f3ff; color: #7c3aed; }
+    .pos-feature-icon-amber { background: #fffbeb; color: #d97706; }
 
     .pos-feature-text-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-main);
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0f172a !important;
       margin-bottom: 2px;
     }
 
-    .pos-feature-text-title.light { color: #f1f5f9; }
+    .pos-feature-text-title.light {
+      color: #0f172a !important;
+    }
 
     .pos-feature-text-desc {
       font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.5;
+      color: #64748b !important;
+      line-height: 1.55;
     }
 
-    .pos-feature-text-desc.light { color: #64748b; }
+    .pos-feature-text-desc.light {
+      color: #64748b !important;
+    }
 
-    /* ── GLASSMORPHISM CARDS GRID ── */
+    /* ── CLEAN CARDS GRID ── */
     .pos-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
     .pos-glass-card {
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.8);
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.9);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      background: #ffffff !important;
+      backdrop-filter: none !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03) !important;
+      transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
     }
 
     .pos-glass-card::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -20%;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      display: none !important;
     }
 
-    .pos-glass-card:hover::before { opacity: 1; }
-
-    .pos-glass-card.indigo-glow::before { background: radial-gradient(circle, rgba(183, 110, 121,0.12) 0%, transparent 70%); }
-    .pos-glass-card.emerald-glow::before { background: radial-gradient(circle, rgba(5,150,105,0.12) 0%, transparent 70%); }
-    .pos-glass-card.violet-glow::before { background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%); }
-    .pos-glass-card.amber-glow::before { background: radial-gradient(circle, rgba(217,119,6,0.12) 0%, transparent 70%); }
-    .pos-glass-card.cyan-glow::before { background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%); }
-    .pos-glass-card.rose-glow::before { background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 70%); }
-
     .pos-glass-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
-      border-color: rgba(183, 110, 121, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08) !important;
+      border-color: #cbd5e1 !important;
     }
 
     .pos-glass-card-icon {
       font-size: 28px;
       margin-bottom: 14px;
-      display: block;
+      display: inline-block;
     }
 
     .pos-glass-card-title {
-      font-family: var(--font-heading);
-      font-size: 15.5px;
+      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
+      font-size: 16px;
       font-weight: 800;
-      color: var(--text-main);
+      color: #0f172a !important;
       margin-bottom: 8px;
     }
 
     .pos-glass-card-desc {
       font-size: 13.5px;
-      color: var(--text-muted);
+      color: #64748b !important;
       line-height: 1.55;
     }
 
@@ -672,186 +670,41 @@
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 18px 0;
+      border-bottom: 1px solid #e2e8f0;
     }
 
-    .pos-offline-step:last-child { border-bottom: none; }
+    .pos-offline-step:last-child {
+      border-bottom: none;
+    }
 
     .pos-step-num {
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #b76e79, #b76e79);
-      color: #fff;
+      background: #0f172a !important;
+      color: #ffffff !important;
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(183, 110, 121, 0.35);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15) !important;
     }
 
     .pos-step-title {
       font-size: 15px;
-      font-weight: 700;
-      color: var(--text-main);
+      font-weight: 800;
+      color: #0f172a !important;
       margin-bottom: 4px;
     }
 
     .pos-step-desc {
       font-size: 13.5px;
-      color: var(--text-muted);
+      color: #64748b !important;
       line-height: 1.5;
     }
-
-    /* ── NUMBERS GRID ── */
-    .pos-numbers-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    @media (max-width: 768px) {
-      .pos-numbers-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .pos-number-card {
-      text-align: center;
-      padding: 32px 20px;
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      background: var(--bg-surface);
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pos-number-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .pos-number-val {
-      font-family: var(--font-heading);
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 900;
-      line-height: 1;
-      background: linear-gradient(135deg, #b76e79, #e29b88);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
-    }
-
-    .pos-number-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-
-    /* ── CTA BANNER ── */
-    .pos-cta-section {
-      background: linear-gradient(135deg, #b76e79 0%, #b76e79 50%, #7c3aed 100%);
-      padding: clamp(60px, 9vw, 100px) 16px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pos-cta-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .pos-cta-eyebrow {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      font-size: 11.5px;
-      font-weight: 800;
-      padding: 5px 14px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 18px;
-    }
-
-    .pos-cta-title {
-      font-family: var(--font-heading);
-      font-size: clamp(24px, 4.5vw, 44px);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-      margin-bottom: 16px;
-    }
-
-    .pos-cta-desc {
-      font-size: clamp(14px, 2.6vw, 17px);
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 36px;
-      line-height: 1.6;
-    }
-
-    .pos-cta-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-    }
-
-    .pos-cta-btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #fff;
-      color: #b76e79;
-      font-size: 15.5px;
-      font-weight: 800;
-      padding: 15px 32px;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .pos-cta-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-    }
-
-    .pos-cta-btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.4);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      backdrop-filter: blur(8px);
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .pos-cta-btn-ghost:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-    }
-
-    /* ── SECTION HEADER CENTERED ── */
-    .pos-section-header {
-      text-align: center;
-      margin-bottom: 52px;
-    }
-
-    .pos-section-header .pos-section-title { margin-bottom: 14px; }
-    .pos-section-header .pos-section-desc { max-width: 640px; margin: 0 auto; }
 
     /* ── HARDWARE CHIPS ── */
     .pos-hardware-strip {
@@ -865,61 +718,411 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
       border-radius: 10px;
-      padding: 8px 14px;
+      padding: 9px 16px;
       font-size: 13px;
       font-weight: 700;
-      color: var(--text-body);
-      box-shadow: var(--shadow-xs);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      color: #1e293b !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+      transition: all 0.2s ease;
     }
 
     .pos-hw-chip:hover {
-      border-color: rgba(183, 110, 121, 0.3);
-      box-shadow: 0 4px 12px rgba(183, 110, 121, 0.1);
+      border-color: #0f172a !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+      transform: translateY(-1px);
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .pos-hero-ctas { flex-direction: column; align-items: center; }
-      .pos-btn-primary, .pos-btn-secondary { width: 100%; max-width: 320px; justify-content: center; }
-      .pos-hero-stats-row { gap: 8px; }
-      .pos-cta-btns { flex-direction: column; align-items: center; }
-      .pos-cta-btn-primary, .pos-cta-btn-ghost { width: 100%; max-width: 320px; justify-content: center; }
-      .pos-trust-inner { flex-direction: column; align-items: flex-start; }
+    /* ── REAL COLORFUL SECTOR GALLERY ── */
+    .pos-sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .pos-sector-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pos-sector-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .pos-sector-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pos-sector-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pos-sector-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .pos-sector-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .pos-sector-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    /* ── LEAD FORM SECTION (TOTAL WHITE) ── */
+    .cta-orb, .cta-orb1, .cta-orb2 {
+      display: none !important;
+    }
+
+    #pos-lead-form {
+      background: #ffffff !important;
+      border-top: 1px solid #e2e8f0 !important;
+      padding: clamp(60px, 8vw, 96px) 0;
+    }
+
+    .cta-form {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    #submitLeadBtn {
+      background: #0f172a !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25) !important;
+      transition: all 0.2s ease;
+    }
+
+    #submitLeadBtn:hover {
+      background: #1e293b !important;
+      transform: translateY(-2px);
+    }
+
+  
+    /* Smooth Scroll Margin for Pillar/Feature Cards */
+    html {
+      scroll-behavior: smooth !important;
+    }
+    #pillars, #matrix-features, #chair-features, #gym-features, #laundry-features, #features, #what-we-build,
+    .clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid {
+      scroll-margin-top: 85px !important;
+    }
+
+  
+/* Global Fluid Live Video Background */
+body {
+  background-color: transparent !important;
+}
+.global-fluid-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  overflow: hidden;
+  background: #FAF6EE;
+  pointer-events: none;
+}
+.global-fluid-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.5; /* Adjust for subtle look */
+}
+.global-fluid-mask {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+</style>
+
+  <style id="seamless-wallpaper-style">
+    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    html, body {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    /* Section background transparency so live wallpaper shows through */
+    .clean-hero-sec,
+    .clean-pillars-sec,
+    .clean-features-sec,
+    .clean-grid-sec,
+    .clean-metrics-sec,
+    .clean-cta-sec,
+    .bottom-cta-sec,
+    .pillars-sec,
+    .features-sec,
+    .metrics-sec,
+    .clean-container,
+    .hero-sec,
+    .hub-hero,
+    .matrix-sec,
+    .sectors-stream-container,
+    .sector-row,
+    main {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+
+    /* Keep Nav and Header translucent with blur */
+    .clean-nav-header,
+    .navbar,
+    header.clean-subnav,
+    header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+
+    /* Keep Cards legible and clean with glassmorphism */
+    .clean-hero-visual-frame {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+
+    .clean-feat-card,
+    .pillar-img-frame,
+    .clean-hero-media-wrap,
+    .deal-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    .global-fluid-bg {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -2 !important;
+      overflow: hidden !important;
+      background: #FAF6EE !important;
+      pointer-events: none !important;
+    }
+
+    .global-fluid-bg video {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translate(-50%, -50%) !important;
+      object-fit: cover !important;
+      opacity: 0 !important;
+      transition: opacity 0.35s ease-in-out !important;
+      filter: saturate(1.1) brightness(1.02) !important;
+      pointer-events: none !important;
+      will-change: opacity !important;
+    }
+
+    .global-fluid-bg video.is-active {
+      opacity: 0.85 !important;
+    }
+
+    .global-fluid-mask {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
     }
   </style>
+
 </head>
 
-<body>
+<body style="background-color: #ffffff; color: #0f172a;">
+
+<div class="global-fluid-bg">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+    <source src="backgroundvideo1.mp4" type="video/mp4">
+    <source src="./backgroundvideo1.mp4" type="video/mp4">
+    <source src="../backgroundvideo1.mp4" type="video/mp4">
+    <source src="../../backgroundvideo1.mp4" type="video/mp4">
+    <source src="/backgroundvideo1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="global-fluid-mask"></div>
+
+
+
+
 
   <!-- ══════════════════════════════════════════════════════════
        DEDICATED POS NAVBAR
   ══════════════════════════════════════════════════════════ -->
-  <header class="navbar" id="navbar">
+    <!-- ══════════════════════════════════════════════════════════
+       SYNCHRONIZED WHITE NAVBAR WITH FULL MEGA MENU
+  ══════════════════════════════════════════════════════════ -->
+  <header class="navbar" id="navbar" style="background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000;">
     <div class="nav-container">
-      <a href="/" class="logo" aria-label="Priyulabs Digital Home">
+      <a href="/index.html#core-capabilities" class="logo" aria-label="Priyulabs Digital Home">
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle" style="color: #b76e79; letter-spacing: 0.18em;">POS</span>
+          <span class="logo-subtitle" style="color: #2563eb; font-weight: 800; letter-spacing: 0.14em;">SMART POS</span>
         </div>
       </a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#pos-billing" class="nav-link-title">Billing</a></li>
-        <li><a href="#pos-stock-ai" class="nav-link-title">AI Stock Prediction</a></li>
-        <li><a href="#pos-offline" class="nav-link-title">Offline Mode</a></li>
-        <li><a href="#pos-hardware" class="nav-link-title">Hardware</a></li>
-        <li><a href="#pos-lead-form" class="nav-link-title">Get Quote</a></li>
-        <li><a href="/solutions" class="nav-link-title">All Solutions</a></li>
+        <!-- 1. Business types Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span class="drop-arrow">▾</span></a>
+          <div class="mega-dropdown square-mega-3col">
+            <div class="mega-dropdown-inner mega-3col-wrapper">
+
+              <!-- Column 1: Left Categories Tabs -->
+              <div class="mega-col-left">
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')" onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
+              </div>
+
+              <!-- Column 2: Discover (Specific Business Types) -->
+              <div class="mega-col-middle">
+                <div class="mega-sub-header">Discover</div>
+                <div class="sq-tab-content active" id="tab-fnb">
+                  <a href="/restaurants-fine-dining" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/restaurants-fine-dining" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
+                  <a href="/qsr-fast-food" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
+                  <a href="/cafes-chai-bars" class="sq-disc-item">Cafes &amp; Chai Bars</a>
+                  <a href="/cloud-kitchens-catering" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="/bakeries-shops" class="sq-disc-item">Bakeries &amp; Patisseries</a>
+                  <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-retail">
+                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                  <a href="/electronics-mobile-shops" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="/footwear-leather-stores" class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="/jewellery-shops" class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
+                  <a href="/watch-stores" class="sq-disc-item">Watch Stores &amp; Horology Boutiques</a>
+                  <a href="/bookstores-stationery" class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-beauty">
+                  <a href="/beauty-fashion/apparel" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/beauty-fashion/apparel" class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                  <a href="/beauty-fashion/salons" class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="/beauty-fashion/cosmetics" class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                </div>
+
+                <div class="sq-tab-content" id="tab-services">
+                  <a href="/services/gyms" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/services/gyms" class="sq-disc-item">Gyms, Fitness Studios &amp; Yoga Centers</a>
+                  <a href="/services/dry-cleaners" class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
+                </div>
+              </div>
+
+              <!-- Column 3: Capabilities -->
+              <div class="mega-col-right">
+                <div class="mega-sub-header">Capabilities</div>
+                <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
+                <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 2. Solutions Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger active" style="color: #2563eb; font-weight: 700;">Solutions <span class="drop-arrow">▾</span></a>
+          <div class="mega-dropdown square-dropdown-sm">
+            <div class="mega-dropdown-inner">
+              <div class="mega-column">
+                <a href="/pos" class="square-sub-item active" style="background: rgba(37, 99, 235, 0.08);">
+                  <strong style="color: #2563eb;">Smart POS</strong>
+                  <span>Fast billing, AI voice checkout &amp; offline mode</span>
+                </a>
+                <a href="/complete-management-system" class="square-sub-item">
+                  <strong>Complete Management System</strong>
+                  <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
+                </a>
+                <a href="/website-builder" class="square-sub-item">
+                  <strong>Custom Website Building</strong>
+                  <span>E-Commerce stores, web apps &amp; 5-day delivery</span>
+                </a>
+                <a href="/digital-marketing" class="square-sub-item">
+                  <strong>Digital Marketing &amp; Ads</strong>
+                  <span>Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- 2B. Hospitality Tech -->
+        <li>
+          <a href="/hospitality" class="nav-link-title">
+            Hospitality Tech <span class="nav-soon-pill">Soon</span>
+          </a>
+        </li>
+
+        <!-- 3. Pricing -->
+        <li><a href="#pos-lead-form">Pricing</a></li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">&#10024; Live Demo</button>
-        <a href="/#free-trial" class="btn-nav">Start Free Trial</a>
+        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Live Demo</button>
+        <a href="#pos-lead-form" class="btn-nav">Get Quote</a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -932,8 +1135,9 @@
        MOBILE DRAWER
   ══════════════════════════════════════════════════════════ -->
   <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <!-- Top Header Bar inside Drawer -->
     <div class="drawer-header">
-      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back">
+      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -941,8 +1145,8 @@
         </svg>
         <span class="drawer-back-text">Back</span>
       </button>
-      <div class="drawer-header-title" id="drawerHeaderTitle">POS Menu</div>
-      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+      <div class="drawer-header-title" id="drawerHeaderTitle">Menu</div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -951,43 +1155,185 @@
       </button>
     </div>
 
+    <!-- Sliding Viewport Container -->
     <div class="drawer-viewport" id="drawerViewport">
-      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="POS Menu">
+
+      <!-- ════ LEVEL 1: MAIN MENU ════ -->
+      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
         <div class="drawer-panel-scroll">
           <nav class="drawer-nav-list">
-            <a href="#pos-billing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>⚡ Lightning Billing</span>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
+              <span>Business types</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelSolutions">
+              <span>Solutions</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
             </a>
-            <a href="#pos-stock-ai" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>📦 AI Stock Prediction &amp; Expiry</span>
+            <a href="/#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Pricing</span>
             </a>
-            <a href="#pos-offline" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>&#128244; Offline Mode</span>
-            </a>
-            <a href="#pos-hardware" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>&#128424;&#65039; Hardware Integration</span>
-            </a>
-            <a href="#pos-lead-form" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>📝 Get POS Quote &amp; Demo</span>
-            </a>
-            <a href="/solutions" class="drawer-nav-item drawer-link">
-              <span>&#128197; All Solutions</span>
-            </a>
-            <a href="/" class="drawer-nav-item drawer-link highlight">
-              <span>&#127968; Main Platform Home</span>
+            <a href="/#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>What's new</span>
             </a>
           </nav>
+
           <div class="drawer-divider"></div>
+
           <div class="drawer-utility-links">
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();">&#10024; Interactive Demo</button>
-            <a href="https://wa.me/917849074050" target="_blank" class="drawer-sublink" onclick="closeMobileDrawer()">WhatsApp Support</a>
+            <a href="/business-types" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
+            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive
+              Demo &amp; Portfolio</button>
+            <a href="/#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
           </div>
+
           <div class="drawer-bottom-cta">
-            <a href="#pos-lead-form" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Book POS Demo &#8594;</a>
+            <a href="/#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
           </div>
         </div>
       </div>
+
+      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
+      <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
+        data-title="Business types">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Select Industry Category</div>
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
+              <span>Food &amp; Beverage</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
+              <span>Retail</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
+              <span>Beauty &amp; Fashion</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
+              <span>Services</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="/business-types" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
+              <span>View All Business Types →</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
+      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
+        data-title="Solutions">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Products &amp; Architecture</div>
+          <nav class="drawer-nav-list">
+            <a href="/pos" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Smart POS Billing</span>
+            </a>
+            <a href="/complete-management-system" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Complete Management System</span>
+            </a>
+            <a href="/website-builder" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Custom Website Building</span>
+            </a>
+            <a href="/digital-marketing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Digital Marketing &amp; Ads</span>
+            </a>
+            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: FOOD & BEVERAGE SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Food &amp; Beverage">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Food &amp; Beverage Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Restaurants &amp; Fine Dining</span></a>
+            <a href="/qsr-fast-food" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>QSR, Fast
+                Food &amp; Takeaway</span></a>
+            <a href="/cafes-chai-bars" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>Cafes
+                &amp; Chai Bars</span></a>
+            <a href="/cloud-kitchens-catering" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Cloud Kitchens &amp; Catering</span></a>
+            <a href="/bakeries-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bakeries &amp; Patisseries</span></a>
+            <a href="/bars-pubs-breweries" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bars, Pubs &amp; Breweries</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: RETAIL SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Retail">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Retail Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Grocery, Supermarkets &amp; Kirana Stores</span></a>
+            <a href="/electronics-mobile-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Electronics &amp; Mobile Shops</span></a>
+            <a href="/footwear-leather-stores" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Footwear &amp; Leather Stores</span></a>
+            <a href="/jewellery-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Jewellery Showrooms &amp; Bullion</span></a>
+            <a href="/watch-stores" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Watch Stores &amp; Horology Boutiques</span></a>
+            <a href="/bookstores-stationery" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bookstores &amp; Stationery Outlets</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: BEAUTY & FASHION SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Beauty &amp; Fashion">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Clothing Brands &amp; Apparel Boutiques</span></a>
+            <a href="/beauty-fashion/salons" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Salons, Spas &amp; Beauty Parlors</span></a>
+            <a href="/beauty-fashion/cosmetics" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Cosmetics &amp; Skincare Stores</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: SERVICES SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Services">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Services Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/services/gyms" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Gyms, Fitness Studios &amp; Yoga Centers</span></a>
+            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Dry Cleaners &amp; Laundry Shops</span></a>
+          </nav>
+        </div>
+      </div>
+
     </div>
+  </div>
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
@@ -1020,7 +1366,7 @@
         <a href="#pos-lead-form" class="pos-btn-primary">
           &#128640; Book Free Demo
         </a>
-        <a href="#pos-billing" class="pos-btn-secondary">
+        <a href="#pos-billing" class="pos-btn-secondary" onclick="event.preventDefault(); (document.querySelector('#pos-billing') || document.getElementById('pos-billing') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
           Explore Features &#8595;
         </a>
       </div>
@@ -1029,8 +1375,8 @@
       <div class="pos-hero-frame pos-reveal pos-delay-4">
         <div class="pos-hero-img-wrap">
           <img
-            src="assets/pos_ui_hero.jpg"
-            alt="Priyulabs POS billing interface with AI voice button, itemized cart, and payment options"
+            src="assets/pos_billing_preview.jpg"
+            alt="Priyulabs touch POS billing terminal in active retail store counter"
             class="pos-hero-img"
             loading="eager"
           />
@@ -1150,7 +1496,7 @@
         <div class="pos-img-panel pos-reveal-right">
           <div class="pos-img-wrap">
             <img
-              src="assets/pos_billing_preview.jpg"
+              src="assets/qsr_pos_billing.jpg"
               alt="Priyulabs POS touch billing terminal in a retail store"
               loading="lazy"
             />
@@ -1219,12 +1565,12 @@
   <!-- ══════════════════════════════════════════════════════════
        SECTION 3: AI STOCK PREDICTION & FESTIVE SURGE SHIELD
   ══════════════════════════════════════════════════════════ -->
-  <section class="pos-section pos-section-dark" id="pos-stock-ai">
+  <section class="pos-section" id="pos-stock-ai">
     <div class="container">
       <div class="pos-split reversed">
 
         <div class="pos-img-panel pos-reveal-right">
-          <div class="pos-img-wrap pos-img-wrap-dark">
+          <div class="pos-img-wrap">
             <img
               src="assets/pos_stock_prediction.jpg"
               alt="AI Stock Prediction Dashboard displaying Puja Season surge alerts, low-stock warnings, and Expiry Shield status"
@@ -1448,6 +1794,85 @@
   <!-- ══════════════════════════════════════════════════════════
        LEAD DETAILS SUBMISSION & DEMO BOOKING FORM
   ══════════════════════════════════════════════════════════ -->
+  
+  <!-- ══════════════════════════════════════════════════════════
+       REAL RETAIL FORMATS SHOWCASE (REAL COLORFUL VISUALS)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="pos-section pos-section-alt" id="pos-formats">
+    <div class="container">
+      <div class="pos-section-header">
+        <span class="pos-eyebrow-chip pos-eyebrow-emerald pos-reveal">&#127978; Real Store Deployments</span>
+        <h2 class="pos-section-title pos-reveal pos-delay-1">Powering Indian Retail Across Every Store Format.</h2>
+        <p class="pos-section-desc pos-reveal pos-delay-2">
+          Real counters, real hardware, and zero complexity. See Priyulabs POS running live across India's fastest checkout environments.
+        </p>
+      </div>
+
+      <div class="pos-sectors-grid">
+        <!-- Card 1: Cafes & Chai Bars -->
+        <div class="pos-sector-card pos-reveal">
+          <img src="assets/cafe_pos_modifiers.jpg" alt="Real Cafe POS counter with barista and touch ordering" class="pos-sector-img" loading="lazy" />
+          <div class="pos-sector-body">
+            <span class="pos-sector-tag" style="color: #d97706;">Food &amp; Beverage</span>
+            <div class="pos-sector-title">Cafes, Chai Bars &amp; Bakeries</div>
+            <div class="pos-sector-desc">KOT ticket printing, drink modifiers (sugar/milk/size), and table ordering with 1-tap UPI QR.</div>
+          </div>
+        </div>
+
+        <!-- Card 2: Grocery & Supermarkets -->
+        <div class="pos-sector-card pos-reveal pos-delay-1">
+          <img src="assets/grocery_upi_checkout.jpg" alt="Real Supermarket cashier counter with barcode scanner and UPI QR" class="pos-sector-img" loading="lazy" />
+          <div class="pos-sector-body">
+            <span class="pos-sector-tag" style="color: #059669;">Retail &amp; FMCG</span>
+            <div class="pos-sector-title">Grocery, Supermarkets &amp; Kirana</div>
+            <div class="pos-sector-desc">High-velocity barcode scanning, electronic weighing scale sync, and 2-second rush hour billing.</div>
+          </div>
+        </div>
+
+        <!-- Card 3: QSR & Fast Food -->
+        <div class="pos-sector-card pos-reveal pos-delay-2">
+          <img src="assets/qsr_pos_billing.jpg" alt="Real QSR touch POS billing terminal" class="pos-sector-img" loading="lazy" />
+          <div class="pos-sector-body">
+            <span class="pos-sector-tag" style="color: #2563eb;">Fast Food &amp; Dining</span>
+            <div class="pos-sector-title">QSR &amp; Fast Food Takeaways</div>
+            <div class="pos-sector-desc">Lightning token generation, live kitchen display (KDS), and thermal print speed under 1.5 seconds.</div>
+          </div>
+        </div>
+
+        <!-- Card 4: Electronics & Mobile -->
+        <div class="pos-sector-card pos-reveal pos-delay-1">
+          <img src="assets/electronics_imei_scan.jpg" alt="Real Mobile store counter scanning IMEI barcode" class="pos-sector-img" loading="lazy" />
+          <div class="pos-sector-body">
+            <span class="pos-sector-tag" style="color: #7c3aed;">Specialized Retail</span>
+            <div class="pos-sector-title">Electronics &amp; Mobile Shops</div>
+            <div class="pos-sector-desc">IMEI and serial number tracking on bill, warranty slip printing, and zero-error device returns.</div>
+          </div>
+        </div>
+
+        <!-- Card 5: Footwear & Apparel -->
+        <div class="pos-sector-card pos-reveal pos-delay-2">
+          <img src="assets/footwear_pos_scan.jpg" alt="Real footwear and clothing boutique POS checkout" class="pos-sector-img" loading="lazy" />
+          <div class="pos-sector-body">
+            <span class="pos-sector-tag" style="color: #e11d48;">Fashion &amp; Boutiques</span>
+            <div class="pos-sector-title">Footwear &amp; Apparel Boutiques</div>
+            <div class="pos-sector-desc">Multi-size/color matrix lookup, custom barcode tag generation, and VIP customer loyalty points.</div>
+          </div>
+        </div>
+
+        <!-- Card 6: Jewellery & Gold -->
+        <div class="pos-sector-card pos-reveal pos-delay-3">
+          <img src="assets/jewellery_pos_scale.jpg" alt="Real jewellery showroom counter with precision bullion scale" class="pos-sector-img" loading="lazy" />
+          <div class="pos-sector-body">
+            <span class="pos-sector-tag" style="color: #d97706;">Luxury &amp; High-Value</span>
+            <div class="pos-sector-title">Jewellery &amp; Bullion Showrooms</div>
+            <div class="pos-sector-desc">Milligram weighing scale sync, making charge breakups, gold rate live updates, and secure GST billing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="cta-section pos-section-alt" id="pos-lead-form" style="position: relative; overflow: hidden; padding: clamp(60px, 8vw, 100px) 0; border-top: 1px solid var(--border-color);">
     <div class="cta-orb cta-orb1"></div>
     <div class="cta-orb cta-orb2"></div>
@@ -1466,12 +1891,12 @@
           <div class="cta-trust-row" style="display: flex; flex-wrap: wrap; gap: 14px; color: var(--text-body); font-weight: 700; font-size: 13.5px; margin-bottom: 28px;">
             <span><span style="color:#059669;">✓</span> 14-Day Free Trial</span>
             <span><span style="color:#059669;">✓</span> Zero Setup Fee</span>
-            <span><span style="color:#059669;">✓</span> 24/7 WhatsApp Support (<a href="tel:+917849074050" style="color: #b76e79; font-weight: 800;">+91 78490 74050</a>)</span>
+            <span><span style="color:#059669;">✓</span> 24/7 WhatsApp Support (<a href="tel:+917873844050" style="color: #b76e79; font-weight: 800;">+91 78738 44050</a>)</span>
           </div>
 
           <div style="display: inline-flex; gap: 12px; align-items: center; padding: 14px 20px; background: var(--bg-surface); border-radius: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
             <span style="font-size: 24px;">💬</span>
-            <span style="font-size: 14px; color: var(--text-body); font-weight: 600;">Need immediate help? <a href="https://wa.me/917849074050?text=Hello!%20I%20want%20a%20POS%20demo%20and%20pricing%20quote%20for%20my%20store." target="_blank" style="color: #059669; font-weight: 800; text-decoration: underline;">Chat on WhatsApp →</a></span>
+            <span style="font-size: 14px; color: var(--text-body); font-weight: 600;">Need immediate help? <a href="https://wa.me/917873844050?text=Hello!%20I%20want%20a%20POS%20demo%20and%20pricing%20quote%20for%20my%20store." target="_blank" style="color: #059669; font-weight: 800; text-decoration: underline;">Chat on WhatsApp →</a></span>
           </div>
         </div>
 
@@ -1547,11 +1972,11 @@
 
             <div class="form-group" style="margin-bottom: 20px;">
               <label for="userPhone" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Phone / WhatsApp Number *</label>
-              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78490 74050)" required maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
+              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78738 44050)" required maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
               <small id="phoneErrorMsg" style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Phone number must be exactly 10 digits.</small>
             </div>
 
-            <button type="submit" class="btn-primary full-width" id="submitLeadBtn" style="width: 100%; padding: 14px 20px; font-size: 15.5px; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #b76e79, #b76e79); color: #fff; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);">
+            <button type="submit" class="btn-primary full-width" id="submitLeadBtn" style="width: 100%; padding: 14px 20px; font-size: 15.5px; font-weight: 800; border-radius: 12px; background: #2563eb; color: #ffffff; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);">
               Submit &amp; Get Free POS Demo 🚀
             </button>
 
@@ -1577,7 +2002,7 @@
             <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
             <div class="logo-text-group">
               <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle" style="color: #b76e79;">POS SYSTEM</span>
+              <span class="logo-subtitle" style="color: #2563eb; font-weight: 800; letter-spacing: 0.14em;">SMART POS</span>
             </div>
           </a>
           <p class="footer-desc">
@@ -1588,10 +2013,10 @@
         <div class="footer-links-group">
           <h4>POS Features</h4>
           <ul>
-            <li><a href="#pos-billing">&#9889; Touch Billing</a></li>
-            <li><a href="#pos-stock-ai">📦 AI Stock Prediction</a></li>
-            <li><a href="#pos-offline">&#128244; Offline Mode</a></li>
-            <li><a href="#pos-hardware">&#128737;&#65039; EDC &amp; Hardware</a></li>
+            <li><a href="#pos-billing" onclick="event.preventDefault(); (document.querySelector('#pos-billing') || document.getElementById('pos-billing') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">&#9889; Touch Billing</a></li>
+            <li><a href="#pos-stock-ai" onclick="event.preventDefault(); (document.querySelector('#pos-stock-ai') || document.getElementById('pos-stock-ai') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">📦 AI Stock Prediction</a></li>
+            <li><a href="#pos-offline" onclick="event.preventDefault(); (document.querySelector('#pos-offline') || document.getElementById('pos-offline') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">&#128244; Offline Mode</a></li>
+            <li><a href="#pos-hardware" onclick="event.preventDefault(); (document.querySelector('#pos-hardware') || document.getElementById('pos-hardware') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">&#128737;&#65039; EDC &amp; Hardware</a></li>
             <li><a href="#pos-lead-form">&#128221; Get Quote &amp; Demo</a></li>
           </ul>
         </div>
@@ -1601,7 +2026,7 @@
             <li><a href="/">&#127968; Home</a></li>
             <li><a href="/solutions">&#128197; All Solutions</a></li>
             <li><a href="/hospitality">&#9749; Hospitality Tech</a></li>
-            <li><a href="https://wa.me/917849074050" target="_blank">&#128172; WhatsApp Support</a></li>
+            <li><a href="https://wa.me/917873844050" target="_blank">&#128172; WhatsApp Support</a></li>
           </ul>
         </div>
       </div>
@@ -1611,7 +2036,19 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js">
+    function switchMegaTab(tabKey) {
+      document.querySelectorAll('.sq-cat-btn').forEach(function(btn) {
+        var isTarget = btn.getAttribute('data-tab') === tabKey;
+        btn.classList.toggle('active', isTarget);
+      });
+      document.querySelectorAll('.sq-tab-content').forEach(function(content) {
+        var isTarget = content.id === 'tab-' + tabKey;
+        content.classList.toggle('active', isTarget);
+      });
+    }
+  
+  </script>
   <script>
     /* ── SCROLL REVEAL OBSERVER ── */
     (function () {
@@ -1630,6 +2067,162 @@
         { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
       );
       revealEls.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+
+
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <script>
+    (function() {
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+          if (anchor.dataset.smoothBound) return;
+          anchor.dataset.smoothBound = 'true';
+          anchor.addEventListener('click', function(e) {
+            var hash = this.getAttribute('href');
+            if (hash && hash.length > 1 && !hash.startsWith('#/')) {
+              var target = document.querySelector(hash) || 
+                           document.getElementById(hash.substring(1)) || 
+                           document.getElementById('pillars') || 
+                           document.getElementById('matrix-features') || 
+                           document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid, .clean-container');
+              if (target) {
+                e.preventDefault();
+                e.stopPropagation();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, null, hash);
+                }
+              }
+            }
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSmoothScroll);
+      } else {
+        initSmoothScroll();
+      }
+    })();
+  </script>
+
+
+  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <script id="seamless-video-looper-script">
+    (function initSeamlessVideoLooper() {
+      const container = document.querySelector('.global-fluid-bg');
+      if (!container) return;
+      const vids = container.querySelectorAll('video');
+      if (!vids || vids.length === 0) return;
+
+      vids.forEach((v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+      });
+
+      if (vids.length === 1) {
+        vids[0].classList.add('is-active');
+        vids[0].play().catch(() => { });
+        return;
+      }
+
+      let activeIdx = 0;
+      let swapping = false;
+
+      const activeVid = () => vids[activeIdx];
+      const nextVid = () => vids[1 - activeIdx];
+
+      const triggerSwap = () => {
+        if (swapping) return;
+        swapping = true;
+
+        const current = activeVid();
+        const incoming = nextVid();
+
+        try {
+          incoming.currentTime = 0;
+        } catch (e) { }
+
+        const playPromise = incoming.play();
+
+        const executeTransition = () => {
+          incoming.classList.add('is-active');
+          current.classList.remove('is-active');
+
+          setTimeout(() => {
+            try {
+              current.pause();
+              current.currentTime = 0;
+            } catch (err) { }
+            activeIdx = 1 - activeIdx;
+            swapping = false;
+          }, 350);
+        };
+
+        if (playPromise !== undefined) {
+          playPromise.then(executeTransition).catch(() => {
+            executeTransition();
+          });
+        } else {
+          executeTransition();
+        }
+      };
+
+      const checkTime = () => {
+        const current = activeVid();
+        if (current && current.duration && !swapping) {
+          const remaining = current.duration - current.currentTime;
+          if (remaining <= 0.35 && current.currentTime > 0.5) {
+            triggerSwap();
+          }
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v === activeVid() && v.duration && !swapping) {
+            const remaining = v.duration - v.currentTime;
+            if (remaining <= 0.35 && v.currentTime > 0.5) {
+              triggerSwap();
+            }
+          }
+        });
+
+        v.addEventListener('ended', () => {
+          if (v === activeVid()) {
+            triggerSwap();
+          }
+        });
+      });
+
+      const startLooper = () => {
+        vids[0].classList.add('is-active');
+        const p = vids[0].play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlock = () => {
+              vids[0].play().catch(() => { });
+              window.removeEventListener('click', unlock);
+              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlock);
+            };
+            window.addEventListener('click', unlock, { passive: true, once: true });
+            window.addEventListener('scroll', unlock, { passive: true, once: true });
+            window.addEventListener('touchstart', unlock, { passive: true, once: true });
+          });
+        }
+        requestAnimationFrame(checkTime);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLooper);
+      } else {
+        startLooper();
+      }
     })();
   </script>
 

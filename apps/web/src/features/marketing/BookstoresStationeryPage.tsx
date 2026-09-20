@@ -260,10 +260,9 @@ export function BookstoresStationeryPage() {
               Get Started Today
               <ArrowRight size={16} />
             </a>
-            <a
-              href="#pillars"
+            <a href="#pillars"
               className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50 no-underline cursor-pointer shadow-xs"
-            >
+             onClick={(e) => { e.preventDefault(); (document.querySelector('#pillars') || document.getElementById('pillars') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
               <Zap size={16} className="text-emerald-600" />
               See Bookstore Billing Speed
             </a>

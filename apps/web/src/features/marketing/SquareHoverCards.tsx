@@ -256,10 +256,9 @@ export function SquareHoverCards() {
 
       {/* Top action bar with link and carousel arrows */}
       <div className="mt-10 mb-6 flex items-center justify-between">
-        <a
-          href="#contact"
+        <a href="#contact"
           className="text-sm font-bold text-slate-900 underline decoration-1.5 underline-offset-4 transition-opacity hover:opacity-70 dark:text-white"
-        >
+         onClick={(e) => { e.preventDefault(); (document.querySelector('#contact') || document.getElementById('contact') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
           Shop deals
         </a>
         <div className="flex items-center gap-2">
