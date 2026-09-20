@@ -1,6 +1,3 @@
----
-permalink: /website-builder
----
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +14,8 @@ permalink: /website-builder
     content="Priyulabs Web Engineering — We design and build fast, modern, conversion-focused websites that help businesses attract customers, manage operations, and grow online." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 
@@ -172,7 +170,7 @@ permalink: /website-builder
       width: 100%;
       max-width: 100%;
       padding: clamp(90px, 13vh, 140px) 16px clamp(40px, 7vh, 80px);
-      background: #0b0f19;
+      background: transparent;
       color: #cbd5e1;
       /* Scoped Dark Tokens for Hero */
       --bg-main: #0b0f19;
@@ -1236,7 +1234,7 @@ permalink: /website-builder
     }
 
     [data-theme="dark"] .wb-trust-strip-section {
-      background: #0f1626;
+      background: transparent;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -2125,7 +2123,7 @@ permalink: /website-builder
         visibility: visible;
       }
     }
-  
+
     /* Smooth Scroll Margin for Pillar/Feature Cards */
     html {
       scroll-behavior: smooth !important;
@@ -2135,7 +2133,776 @@ permalink: /website-builder
       scroll-margin-top: 85px !important;
     }
 
-  
+
+    /* ---------- Bold & Distinct Standout Footer ---------- */
+    footer {
+      padding: 72px 0 36px !important;
+      border-top: 2px solid #D4C3A3 !important;
+      margin-top: 80px !important;
+      background: #F1E8D5 !important;
+      box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08) !important;
+      position: relative !important;
+      z-index: 10 !important;
+      color: #1A150D !important;
+    }
+
+    .foot-grid {
+      display: grid !important;
+      grid-template-columns: 1.3fr 1fr 1.1fr 1fr !important;
+      gap: 36px !important;
+    }
+
+    @media(max-width:860px) {
+      .foot-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 28px !important;
+      }
+    }
+
+    @media(max-width:540px) {
+      .foot-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    .foot-grid .logo {
+      font-size: 24px !important;
+      font-weight: 700 !important;
+      color: #1A150D !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-family: 'Fraunces', serif !important;
+      text-decoration: none !important;
+    }
+
+    .foot-brand-desc {
+      margin-top: 14px !important;
+      color: #383023 !important;
+      font-size: 14.5px !important;
+      font-weight: 500 !important;
+      line-height: 1.6 !important;
+      max-width: 290px !important;
+    }
+
+    .foot-grid h5 {
+      font-family: 'Fraunces', serif !important;
+      font-size: 17px !important;
+      margin-bottom: 18px !important;
+      color: #1A150D !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .foot-grid h5::after {
+      content: '' !important;
+      display: inline-block !important;
+      width: 16px !important;
+      height: 2.5px !important;
+      background: #B8863B !important;
+      border-radius: 2px !important;
+    }
+
+    .foot-grid ul {
+      list-style: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .foot-grid a {
+      font-size: 14.5px !important;
+      font-weight: 600 !important;
+      color: #383023 !important;
+      transition: all .2s ease !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+    }
+
+    .foot-grid a:hover {
+      color: #263B28 !important;
+      transform: translateX(4px) !important;
+    }
+
+    .foot-address {
+      font-size: 14.5px !important;
+      font-weight: 600 !important;
+      color: #383023 !important;
+      line-height: 1.4 !important;
+    }
+
+    .foot-bottom {
+      margin-top: 52px !important;
+      padding-top: 24px !important;
+      border-top: 1.5px solid #D4C3A3 !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: #4A4030 !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 12px !important;
+    }
+
+  </style>
+
+<style>
+
+  /* ══════════════════════════════════════════════════════════
+     HEADER & NAVBAR HARMONIZATION (LANDING PAGE SOURCE OF TRUTH)
+  ══════════════════════════════════════════════════════════ */
+  :root {
+    --bg: #FAF6EE;
+    --bg-alt: #F1EAD9;
+    --panel: #FFFFFF;
+    --ink: #2A2419;
+    --ink-soft: #6B6152;
+    --accent: #3F5D42;
+    --accent-soft: #E7EEE4;
+    --gold: #B8863B;
+    --line: #E3D9C1;
+    --radius: 14px;
+  }
+
+  header,
+  header#navbar,
+  nav.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 500 !important;
+    background: rgba(250, 246, 238, 0.72) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--line, #E3D9C1) !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+  }
+
+  [data-theme="dark"] header,
+  [data-theme="dark"] header#navbar,
+  [data-theme="dark"] nav.navbar {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .nav,
+  .nav-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px 32px !important;
+    max-width: 1180px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 20px !important;
+  }
+
+  @media (max-width: 960px) {
+    .nav,
+    .nav-container {
+      padding: 14px 20px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav,
+    .nav-container {
+      padding: 12px 16px !important;
+    }
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    color: var(--ink, #2A2419) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo img,
+  .brand-logo-img {
+    height: 32px !important;
+    width: 32px !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+    display: inline-block !important;
+  }
+
+  .logo-text-group {
+    display: flex !important;
+    flex-direction: column !important;
+    line-height: 1.1 !important;
+  }
+
+  .logo-title {
+    font-family: 'Fraunces', serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--ink, #2A2419) !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .logo-subtitle {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    color: var(--gold, #B8863B) !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+  }
+
+  [data-theme="dark"] .logo-title {
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .logo-subtitle {
+    color: #fbbf24 !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 32px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @media (max-width: 960px) {
+    .nav-links {
+      display: none !important;
+    }
+  }
+
+  .nav-item {
+    position: relative !important;
+    list-style: none !important;
+  }
+
+  .nav-link-btn,
+  .nav-link-title {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: var(--ink-soft, #6B6152) !important;
+    padding: 8px 0 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+    background: none !important;
+    border: none !important;
+    line-height: 1.5 !important;
+  }
+
+  .nav-link-btn:hover,
+  .nav-link-title:hover {
+    color: var(--accent, #3F5D42) !important;
+  }
+
+  [data-theme="dark"] .nav-link-btn,
+  [data-theme="dark"] .nav-link-title {
+    color: #94a3b8 !important;
+  }
+
+  [data-theme="dark"] .nav-link-btn:hover,
+  [data-theme="dark"] .nav-link-title:hover {
+    color: #818cf8 !important;
+  }
+
+  .nav-arrow,
+  .drop-arrow {
+    font-size: 9px !important;
+    opacity: 0.65 !important;
+    transition: transform 0.2s ease !important;
+    display: inline-block !important;
+    margin-left: 2px !important;
+  }
+
+  .nav-item:hover .nav-arrow,
+  .nav-item-dropdown:hover .nav-arrow,
+  .nav-item-dropdown:hover .drop-arrow {
+    transform: rotate(180deg) !important;
+  }
+
+  .nav-right-actions,
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-cta-ghost,
+  .btn-demo-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    border: 1px solid var(--line, #E3D9C1) !important;
+    color: var(--ink, #2A2419) !important;
+    padding: 9px 18px !important;
+    border-radius: 100px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .nav-cta-ghost:hover,
+  .btn-demo-nav:hover {
+    border-color: var(--accent, #3F5D42) !important;
+    background: var(--accent-soft, #E7EEE4) !important;
+    color: var(--accent, #3F5D42) !important;
+  }
+
+  [data-theme="dark"] .nav-cta-ghost,
+  [data-theme="dark"] .btn-demo-nav {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .nav-cta-ghost:hover,
+  [data-theme="dark"] .btn-demo-nav:hover {
+    border-color: #818cf8 !important;
+    background: rgba(99, 102, 241, 0.15) !important;
+    color: #818cf8 !important;
+  }
+
+  .nav-cta,
+  .btn-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--ink, #2A2419) !important;
+    color: #FAF6EE !important;
+    padding: 10px 20px !important;
+    border-radius: 100px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    text-decoration: none !important;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+    white-space: nowrap !important;
+    border: none !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+  }
+
+  .nav-cta:hover,
+  .btn-nav:hover {
+    background: var(--accent, #3F5D42) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px -4px rgba(63, 93, 66, 0.4) !important;
+  }
+
+  [data-theme="dark"] .nav-cta,
+  [data-theme="dark"] .btn-nav {
+    background: #4f46e5 !important;
+    color: #ffffff !important;
+  }
+
+  [data-theme="dark"] .nav-cta:hover,
+  [data-theme="dark"] .btn-nav:hover {
+    background: #6366f1 !important;
+  }
+
+  .theme-toggle-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    border: 1px solid var(--line, #E3D9C1) !important;
+    background: transparent !important;
+    color: var(--ink, #2A2419) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+
+  .theme-toggle-btn:hover {
+    border-color: var(--accent, #3F5D42) !important;
+    background: var(--accent-soft, #E7EEE4) !important;
+  }
+
+  [data-theme="dark"] .theme-toggle-btn {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .theme-toggle-btn:hover {
+    border-color: #818cf8 !important;
+    background: rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .theme-icon-sun {
+    display: block !important;
+  }
+  .theme-icon-moon {
+    display: none !important;
+  }
+  [data-theme="dark"] .theme-icon-sun {
+    display: none !important;
+  }
+  [data-theme="dark"] .theme-icon-moon {
+    display: block !important;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 36px !important;
+    height: 36px !important;
+    background: transparent !important;
+    border: 1px solid var(--line, #E3D9C1) !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    z-index: 600 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hamburger span {
+    width: 100% !important;
+    height: 2px !important;
+    background: var(--ink, #2A2419) !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  [data-theme="dark"] .hamburger {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  [data-theme="dark"] .hamburger span {
+    background: #f8fafc !important;
+  }
+
+  @media (max-width: 960px) {
+    .hamburger {
+      display: flex !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav-cta-ghost,
+    .btn-demo-nav {
+      display: none !important;
+    }
+    .nav-cta,
+    .btn-nav {
+      padding: 8px 14px !important;
+      font-size: 12.5px !important;
+    }
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     BUSINESS TYPES 3-COLUMN MEGA-MENU STYLING & HOVER LOGIC
+  ══════════════════════════════════════════════════════════ */
+  .nav-item-dropdown {
+    position: relative;
+  }
+
+  .mega-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+    z-index: 1000;
+    pointer-events: none;
+    padding-top: 12px;
+  }
+
+  /* Hover bridge so mouse never flickers between trigger and menu */
+  .mega-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 24px;
+  }
+
+  .nav-item-dropdown:hover .mega-dropdown,
+  .nav-item-dropdown.open .mega-dropdown,
+  .nav-item-dropdown.pinned .mega-dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  .square-mega-3col {
+    width: 960px;
+    max-width: calc(100vw - 32px);
+    left: -140px;
+  }
+
+  .square-dropdown-sm {
+    width: 340px;
+    left: -20px;
+  }
+
+  .mega-dropdown-inner {
+    background: #ffffff;
+    border: 1px solid #E3D9C1;
+    border-radius: 20px;
+    box-shadow: 0 20px 45px -10px rgba(42, 36, 25, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  [data-theme="dark"] .mega-dropdown-inner {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .mega-3col-wrapper {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 24px;
+    padding: 28px 32px;
+    box-sizing: border-box;
+  }
+
+  .mega-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #E3D9C1;
+    padding-right: 24px;
+  }
+
+  [data-theme="dark"] .mega-col-left {
+    border-right-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sq-cat-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Fraunces', 'Space Grotesk', serif;
+    color: #94a3b8;
+    padding: 4px 0;
+    cursor: pointer;
+    line-height: 1.2;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .sq-cat-btn:hover,
+  .sq-cat-btn.active {
+    color: #2A2419;
+    transform: translateX(4px);
+  }
+
+  [data-theme="dark"] .sq-cat-btn:hover,
+  [data-theme="dark"] .sq-cat-btn.active {
+    color: #f8fafc;
+  }
+
+  .sq-all-types-link {
+    font-size: 13px;
+    color: #6B6152;
+    text-decoration: none;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #E3D9C1;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  [data-theme="dark"] .sq-all-types-link {
+    color: #94a3b8;
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sq-all-types-link:hover {
+    color: #3F5D42;
+  }
+
+  [data-theme="dark"] .sq-all-types-link:hover {
+    color: #818cf8;
+  }
+
+  .mega-col-middle {
+    min-width: 0;
+  }
+
+  .mega-sub-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6B6152;
+    margin-bottom: 14px;
+  }
+
+  [data-theme="dark"] .mega-sub-header {
+    color: #94a3b8;
+  }
+
+  .sq-tab-content {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sq-tab-content.active {
+    display: flex;
+  }
+
+  .sq-disc-item {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #2A2419;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    line-height: 1.35;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .sq-disc-item {
+    color: #e2e8f0;
+  }
+
+  .sq-disc-item:hover {
+    background: #E7EEE4;
+    color: #3F5D42;
+    transform: translateX(3px);
+  }
+
+  [data-theme="dark"] .sq-disc-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+  }
+
+  .sq-disc-primary strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2A2419;
+  }
+
+  [data-theme="dark"] .sq-disc-primary strong {
+    color: #f8fafc;
+  }
+
+  .mega-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 1px solid #E3D9C1;
+    padding-left: 20px;
+    padding-right: 8px;
+  }
+
+  [data-theme="dark"] .mega-col-right {
+    border-left-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sq-cap-item {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #6B6152;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    line-height: 1.35;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .sq-cap-item {
+    color: #94a3b8;
+  }
+
+  .sq-cap-item:hover {
+    background: #E7EEE4;
+    color: #3F5D42;
+    transform: translateX(3px);
+  }
+
+  [data-theme="dark"] .sq-cap-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+  }
+
+  .mega-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+  }
+
+  .square-sub-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .square-sub-item:hover {
+    background: #E7EEE4;
+    transform: translateX(4px);
+  }
+
+  [data-theme="dark"] .square-sub-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+  }
+
+  .square-sub-item strong {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #2A2419;
+    margin-bottom: 2px;
+  }
+
+  [data-theme="dark"] .square-sub-item strong {
+    color: #f8fafc;
+  }
+
+  .square-sub-item span {
+    font-size: 11.5px;
+    color: #6B6152;
+  }
+
+  [data-theme="dark"] .square-sub-item span {
+    color: #94a3b8;
+  }
+
 /* Global Fluid Live Video Background */
 body {
   background-color: transparent !important;
@@ -2174,7 +2941,7 @@ body {
 
 </style>
 
-  
+
   <style id="seamless-wallpaper-style">
     /* Global Fluid Live Video Background (Live Wallpaper Engine) */
     html, body {
@@ -2274,9 +3041,562 @@ body {
   </style>
 
 
+
+  <style id="landing-page-harmonization">
+    :root {
+      --bg: #FAF6EE;
+      --bg-alt: #F1EAD9;
+      --panel: #FFFFFF;
+      --ink: #2A2419;
+      --ink-soft: #6B6152;
+      --accent: #3F5D42;
+      --accent-soft: #E7EEE4;
+      --gold: #B8863B;
+      --line: #E3D9C1;
+      --radius: 14px;
+      --primary: #3F5D42;
+      --primary-light: #527956;
+      --primary-bg: #E7EEE4;
+      --bg-main: #FAF6EE;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1EAD9;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --border-color: #E3D9C1;
+      --border-light: rgba(227, 217, 193, 0.6);
+      --border-highlight: rgba(63, 93, 66, 0.35);
+      --text-main: #2A2419;
+      --text-body: #6B6152;
+      --text-muted: #8A7E6B;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fraunces', serif;
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    @media(max-width:640px) {
+      .wrap { padding: 0 20px; }
+    }
+
+    .ambient-dot-grid {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: radial-gradient(rgba(42, 36, 25, 0.12) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      background: rgba(250, 246, 238, 0.92) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-item-dropdown {
+      position: relative;
+    }
+
+    .mega-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+      z-index: 1000;
+      pointer-events: none;
+      padding-top: 12px;
+    }
+
+    .nav-item-dropdown:hover .mega-dropdown,
+    .nav-item-dropdown.open .mega-dropdown,
+    .nav-item-dropdown.pinned .mega-dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+      display: block !important;
+    }
+
+    .nav-item:hover .nav-arrow,
+    .nav-item-dropdown.open .nav-arrow,
+    .nav-item-dropdown.pinned .nav-arrow {
+      transform: rotate(180deg);
+    }
+
+    .hero {
+      padding: 72px 0 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media(max-width:920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(36px, 4.4vw, 52px);
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--ink);
+    }
+
+    .hero-copy .line { display: block; }
+
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 17.5px;
+      color: var(--ink-soft);
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 14px 26px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 8px 20px -8px rgba(63, 93, 66, 0.55);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px -8px rgba(63, 93, 66, 0.6);
+      color: #fff !important;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.7);
+      padding: 13px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: border-color .25s, background .25s;
+      text-decoration: none;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hero-trust {
+      margin-top: 40px;
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .trust-num {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .trust-label {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 60px -20px rgba(42, 36, 25, 0.22);
+    }
+
+    .hero-visual-inner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/11;
+      overflow: hidden;
+    }
+
+    .hero-visual-inner video,
+    .hero-visual-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .marquee-wrap {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-alt);
+      padding: 18px 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      white-space: nowrap;
+      width: max-content;
+      animation: scroll-left 32s linear infinite;
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      color: var(--ink-soft);
+    }
+
+    .marquee-track span { opacity: 0.75; }
+    .marquee-track span.hl {
+      color: var(--accent);
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    .kicker {
+      font-size: 12.5px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(184, 134, 59, 0.12);
+      border: 1px solid rgba(184, 134, 59, 0.25);
+      border-radius: 100px;
+      padding: 5px 14px;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    /* Light Theme Section & Card Harmonization */
+    .wb-section, .wb-trust-strip-section {
+      background: transparent !important;
+    }
+
+    .wb-card, .wb-service-card, .wb-step-card, .wb-blueprint-card, .wb-tech-stack-card, .wb-trust-card {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid var(--line) !important;
+      box-shadow: 0 16px 36px -10px rgba(42, 36, 25, 0.1) !important;
+      color: var(--ink) !important;
+    }
+
+    .wb-card-title, .wb-service-title, .wb-step-title, .wb-blueprint-title, .wb-section-title, .wb-trust-card-title {
+      color: var(--ink) !important;
+      font-family: 'Fraunces', serif !important;
+    }
+
+    .wb-card-desc, .wb-service-desc, .wb-step-desc, .wb-blueprint-desc, .wb-section-sub, .wb-trust-card-desc {
+      color: var(--ink-soft) !important;
+    }
+
+    .wb-pill, .wb-service-tag, .wb-trust-pill {
+      background: var(--accent-soft) !important;
+      color: var(--accent) !important;
+      border: 1px solid rgba(63, 93, 66, 0.2) !important;
+    }
+
+    .section-badge, .wb-section-eyebrow {
+      color: var(--gold) !important;
+      background: rgba(184, 134, 59, 0.12) !important;
+      border: 1px solid rgba(184, 134, 59, 0.25) !important;
+    }
+  </style>
+
+
+  <style id="wb-card-light-harmonization">
+    /* ══════════════════════════════════════════════════════════
+       PRIYULABS LIGHT PRODUCT CARD & DEMO HARMONIZATION (WB)
+       Transforms dark navy cards and sections into warm white/cream SaaS cards
+    ══════════════════════════════════════════════════════════ */
+    .wb-preview-card {
+      background: rgba(255, 255, 255, 0.96) !important;
+      border: 1px solid rgba(42, 36, 25, 0.12) !important;
+      border-radius: 24px !important;
+      box-shadow: 0 20px 45px -10px rgba(42, 36, 25, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02) !important;
+      color: #2A2419 !important;
+    }
+
+    .wb-preview-topbar {
+      border-bottom: 1px solid rgba(42, 36, 25, 0.08) !important;
+    }
+
+    .wb-preview-url {
+      color: #6B6152 !important;
+    }
+
+    .wb-live-badge {
+      background: #E7EEE4 !important;
+      color: #3F5D42 !important;
+      border: 1px solid rgba(63, 93, 66, 0.2) !important;
+    }
+
+    .wb-preview-feature-box, .wb-stat-box {
+      background: #FAF6EE !important;
+      border: 1px solid rgba(42, 36, 25, 0.08) !important;
+      border-radius: 14px !important;
+    }
+
+    .wb-preview-feature-title {
+      color: #2A2419 !important;
+    }
+
+    .wb-preview-feature-desc, .wb-stat-label {
+      color: #6B6152 !important;
+    }
+
+    .wb-stat-val {
+      color: #3F5D42 !important;
+      font-family: 'Fraunces', serif !important;
+    }
+
+    /* AI Section Transformation */
+    .wb-ai-section {
+      background: rgba(255, 255, 255, 0.94) !important;
+      border: 1px solid rgba(42, 36, 25, 0.12) !important;
+      border-radius: 24px !important;
+      box-shadow: 0 20px 45px -10px rgba(42, 36, 25, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02) !important;
+      color: #2A2419 !important;
+      position: relative !important;
+    }
+
+    .wb-ai-section::before {
+      display: none !important;
+    }
+
+    .wb-ai-badge {
+      color: #B8863B !important;
+      background: rgba(184, 134, 59, 0.12) !important;
+      border: 1px solid rgba(184, 134, 59, 0.25) !important;
+      font-weight: 700 !important;
+      border-radius: 50px !important;
+      padding: 4px 12px !important;
+      font-size: 11px !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    .wb-ai-title,
+    .wb-ai-section h2,
+    .wb-ai-section h3,
+    .wb-ai-section .wb-section-title {
+      color: #2A2419 !important;
+      font-family: 'Fraunces', serif !important;
+      font-weight: 700 !important;
+    }
+
+    .wb-ai-sub,
+    .wb-ai-section p.wb-ai-sub {
+      color: #4F463A !important;
+      font-size: clamp(14.5px, 2vw, 16.5px) !important;
+      font-weight: 500 !important;
+      line-height: 1.65 !important;
+    }
+
+    .wb-ai-visual-card {
+      position: relative !important;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      border: 1px solid rgba(42, 36, 25, 0.12) !important;
+      box-shadow: 0 16px 36px -8px rgba(42, 36, 25, 0.10) !important;
+      background: #FAF6EE !important;
+      aspect-ratio: 16 / 10 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .wb-ai-visual-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+
+    .wb-ai-visual-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      background: linear-gradient(180deg, transparent 65%, rgba(0, 0, 0, 0.35) 100%) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-end !important;
+      padding: 16px !important;
+      pointer-events: none !important;
+    }
+
+    .wb-ai-visual-status {
+      background: rgba(255, 255, 255, 0.95) !important;
+      border: 1px solid rgba(63, 93, 66, 0.25) !important;
+      color: #3F5D42 !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+      padding: 6px 14px !important;
+      border-radius: 50px !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      width: fit-content !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      pointer-events: auto !important;
+    }
+
+    .wb-ai-visual-status span.dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: #3F5D42 !important;
+      box-shadow: 0 0 8px #3F5D42 !important;
+    }
+
+    .wb-ai-card {
+      background: rgba(255, 255, 255, 0.94) !important;
+      border: 1px solid rgba(42, 36, 25, 0.10) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 4px 16px rgba(42, 36, 25, 0.04) !important;
+      padding: clamp(14px, 2vw, 18px) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .wb-ai-card-title {
+      color: #2A2419 !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      margin-bottom: 6px !important;
+    }
+
+    .wb-ai-card-desc {
+      color: #4F463A !important;
+      font-size: 13px !important;
+      line-height: 1.55 !important;
+      font-weight: 450 !important;
+    }
+
+    .wb-ai-note {
+      color: #51483C !important;
+      font-size: 12px !important;
+      line-height: 1.55 !important;
+      margin-top: 18px !important;
+    }
+
+    /* Trust & Certification Strip */
+    .wb-trust-strip-section {
+      background: transparent !important;
+      border-bottom: 1px solid var(--line, #E3D9C1) !important;
+    }
+
+    .wb-trust-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      border: 1px solid rgba(42, 36, 25, 0.10) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 12px 30px rgba(42, 36, 25, 0.05) !important;
+      color: #2A2419 !important;
+    }
+
+    .wb-trust-card-title {
+      color: #2A2419 !important;
+      font-family: 'Fraunces', serif !important;
+    }
+
+    .wb-trust-card-desc {
+      color: #4F463A !important;
+    }
+
+    .wb-udyam-info-box {
+      background: #FAF6EE !important;
+      border: 1px solid rgba(42, 36, 25, 0.08) !important;
+      border-radius: 12px !important;
+      padding: 10px 14px !important;
+    }
+
+    .wb-udyam-label {
+      color: #6B6152 !important;
+    }
+
+    .wb-udyam-val {
+      color: #2A2419 !important;
+    }
+
+    /* General Cards Harmonization */
+    .wb-card, .wb-service-card, .wb-step-card, .wb-blueprint-card, .wb-tech-stack-card, .wb-faq-card {
+      background: rgba(255, 255, 255, 0.92) !important;
+      border: 1px solid rgba(42, 36, 25, 0.10) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 12px 30px rgba(42, 36, 25, 0.05) !important;
+      color: #2A2419 !important;
+    }
+
+    .wb-card-title, .wb-service-title, .wb-step-title, .wb-blueprint-title, .wb-section-title {
+      color: #2A2419 !important;
+      font-family: 'Fraunces', serif !important;
+    }
+
+    .wb-card-desc, .wb-service-desc, .wb-step-desc, .wb-blueprint-desc, .wb-section-sub {
+      color: #4F463A !important;
+    }
+
+    .wb-process-wrapper {
+      background: rgba(241, 234, 217, 0.45) !important;
+      border: 1px solid rgba(42, 36, 25, 0.10) !important;
+      border-radius: 28px !important;
+    }
+  </style>
+
 </head>
 
 <body>
+  <div class="ambient-dot-grid"></div>
 
 <div class="global-fluid-bg">
   <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
@@ -2301,10 +3621,10 @@ body {
 
 
   <!-- ══════════════════════════════════════════════════════════
-       NAVBAR
+       NAVBAR — PRIYULABS DIGITAL
   ══════════════════════════════════════════════════════════ -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
+  <header id="navbar">
+    <div class="nav">
       <a href="/index.html#core-capabilities" class="logo" aria-label="Priyulabs Digital Home">
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
@@ -2314,10 +3634,8 @@ body {
       </a>
       <ul class="nav-links" id="navLinks">
         <!-- 1. Business types Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span
-              class="drop-arrow">▾</span>
-          </a>
+        <li class="nav-item nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-btn dropdown-trigger">Business types <span class="nav-arrow">&#9662;</span></a>
           <div class="mega-dropdown square-mega-3col">
             <div class="mega-dropdown-inner mega-3col-wrapper">
 
@@ -2331,6 +3649,7 @@ body {
                   onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
                 <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
                   onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="all-business-types.html" class="sq-all-types-link">All business types &rarr;</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
@@ -2339,66 +3658,50 @@ body {
                 <div class="sq-tab-content active" id="tab-fnb">
                   <a href="/restaurants-fine-dining" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
                   <a href="/restaurants-fine-dining" class="sq-disc-item">Restaurants &amp; Fine Dining</a>
-                  <a href="/qsr-fast-food" data-sector="qsr" data-cat="fnb" class="sq-disc-item">QSR, Fast
-                    Food &amp; Takeaway</a>
-                  <a href="/cafes-chai-bars" data-sector="cafes" data-cat="fnb" class="sq-disc-item">Cafes
-                    &amp; Chai Bars</a>
-                  <a href="/cloud-kitchens-catering" data-sector="cloudkitchen" data-cat="fnb"
-                    class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
+                  <a href="/qsr-fast-food" class="sq-disc-item">QSR, Fast Food &amp; Takeaway</a>
+                  <a href="/cafes-chai-bars" class="sq-disc-item">Cafes &amp; Chai Bars</a>
+                  <a href="/cloud-kitchens-catering" class="sq-disc-item">Cloud Kitchens &amp; Catering</a>
                   <a href="/bakeries-shops" class="sq-disc-item">Bakeries &amp; Patisseries</a>
-                  <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs
-                    &amp; Breweries</a>
+                  <a href="/bars-pubs-breweries" class="sq-disc-item">Bars, Pubs &amp; Breweries</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="/grocery-supermarkets-kirana" data-sector="grocery" data-cat="retail"
+                  <a href="/grocery-supermarkets-kirana"
                     class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/grocery-supermarkets-kirana" data-sector="grocery" data-cat="retail"
-                    class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
-                  <a href="/electronics-mobile-shops" data-sector="electronics" data-cat="retail"
-                    class="sq-disc-item">Electronics &amp; Mobile Shops</a>
-                  <a href="/footwear-leather-stores" data-sector="footwear" data-cat="retail"
-                    class="sq-disc-item">Footwear &amp; Leather Stores</a>
-                  <a href="/jewellery-shops" data-sector="jewellery" data-cat="retail" class="sq-disc-item">Jewellery
-                    Showrooms &amp; Bullion</a>
-                  <a href="/watch-stores" data-sector="watch" data-cat="retail" class="sq-disc-item">Watch Stores &amp;
-                    Horology Boutiques</a>
-                  <a href="/bookstores-stationery" data-sector="books" data-cat="retail" class="sq-disc-item">Bookstores
-                    &amp; Stationery Outlets</a>
+                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana
+                    Stores</a>
+                  <a href="/electronics-mobile-shops" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
+                  <a href="/footwear-leather-stores" class="sq-disc-item">Footwear &amp; Leather Stores</a>
+                  <a href="/jewellery-shops" class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
+                  <a href="/watch-stores" class="sq-disc-item">Watch Stores &amp; Horology Boutiques</a>
+                  <a href="/bookstores-stationery" class="sq-disc-item">Bookstores &amp; Stationery Outlets</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-beauty">
-                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/beauty-fashion/apparel" data-sector="clothing" data-cat="beauty"
-                    class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
-                  <a href="/beauty-fashion/salons" data-sector="salons" data-cat="beauty" class="sq-disc-item">Salons,
-                    Spas &amp; Beauty Parlors</a>
-                  <a href="/beauty-fashion/cosmetics" data-sector="cosmetics" data-cat="beauty"
-                    class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
+                  <a href="/beauty-fashion/apparel" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/beauty-fashion/apparel" class="sq-disc-item">Clothing Brands &amp; Apparel Boutiques</a>
+                  <a href="/beauty-fashion/salons" class="sq-disc-item">Salons, Spas &amp; Beauty Parlors</a>
+                  <a href="/beauty-fashion/cosmetics" class="sq-disc-item">Cosmetics &amp; Skincare Stores</a>
                 </div>
 
                 <div class="sq-tab-content" id="tab-services">
-                  <a href="/services/gyms" data-sector="gyms" data-cat="services"
-                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/services/gyms" data-sector="gyms" data-cat="services" class="sq-disc-item">Gyms,
-                    Fitness Studios &amp; Yoga Centers</a>
-
-                  <a href="/services/dry-cleaners" data-sector="laundry" data-cat="services" class="sq-disc-item">Dry
-                    Cleaners &amp; Laundry Shops</a>
+                  <a href="/services/gyms" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/services/gyms" class="sq-disc-item">Gyms, Fitness Studios &amp; Yoga Centers</a>
+                  <a href="/services/dry-cleaners" class="sq-disc-item">Dry Cleaners &amp; Laundry Shops</a>
                 </div>
               </div>
 
               <!-- Column 3: Capabilities -->
               <div class="mega-col-right">
                 <div class="mega-sub-header">Capabilities</div>
-                <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="/pos" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
                 <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
-                <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
-                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
-                <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
-                <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
+                <a href="/pos" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="/complete-management-system" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/complete-management-system" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="/pos" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="/complete-management-system" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry
+                  Shield</a>
               </div>
 
             </div>
@@ -2406,10 +3709,8 @@ body {
         </li>
 
         <!-- 2. Solutions Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Solutions <span
-              class="drop-arrow">▾</span>
-          </a>
+        <li class="nav-item nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-btn dropdown-trigger">Solutions <span class="nav-arrow">&#9662;</span></a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
@@ -2434,20 +3735,13 @@ body {
           </div>
         </li>
 
-        <!-- 2B. Hospitality Tech -->
-        <li>
-          <a href="/hospitality" class="nav-link-title">
-            Hospitality Tech <span class="nav-soon-pill">Soon</span>
-          </a>
-        </li>
+        <!-- 3. Pricing -->
+        <li class="nav-item"><a href="/index.html#contact" class="nav-link-btn">Pricing</a></li>
 
-        <!-- 4. Pricing -->
-        <li><a href="/#problem">Pricing</a></li>
-
-        <!-- 5. What's new -->
-        <li><a href="/#trust">What's new</a></li>
+        <!-- 4. What's new -->
+        <li class="nav-item"><a href="/index.html#core-capabilities" class="nav-link-btn">What's new</a></li>
       </ul>
-      <div class="nav-actions">
+      <div class="nav-right-actions">
         <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
           <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="5"></circle>
@@ -2464,14 +3758,14 @@ body {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()">Interactive Demo</button>
-        <a href="/index.html#core-capabilities" class="btn-nav">Start Your Project</a>
+        <button type="button" class="nav-cta-ghost" id="navDemoBtn" onclick="openDemoModal()">&#10022; Interactive Demo</button>
+        <a href="/index.html#contact" class="nav-cta">Start Your Project</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="openMobileDrawer()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </nav>
+  </header>
 
   <!-- ══════════════════════════════════════════════════════════
        FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
@@ -2512,13 +3806,10 @@ body {
               <span>Solutions</span>
               <span class="drawer-chevron">›</span>
             </button>
-            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
-              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
-            </a>
-            <a href="/#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+            <a href="/index.html#contact" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>Pricing</span>
             </a>
-            <a href="/#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+            <a href="/index.html#core-capabilities" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>What's new</span>
             </a>
           </nav>
@@ -2526,14 +3817,14 @@ body {
           <div class="drawer-divider"></div>
 
           <div class="drawer-utility-links">
-            <a href="/business-types" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
+            <a href="all-business-types.html" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
             <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive
               Demo &amp; Portfolio</button>
-            <a href="/#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
+            <a href="/index.html#contact" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
           </div>
 
           <div class="drawer-bottom-cta">
-            <a href="/#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
+            <a href="/index.html#contact" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
           </div>
         </div>
       </div>
@@ -2678,91 +3969,61 @@ body {
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
-       1. HERO SECTION
+       1. HERO SECTION (LANDING PAGE HARMONIZED)
   ══════════════════════════════════════════════════════════ -->
-  <header class="wb-hero">
-    <!-- Cinematic Hero Video Background -->
-    <div class="wb-hero-video-wrap" aria-hidden="true">
-      <video class="wb-hero-video" autoplay muted loop playsinline preload="metadata"
-        poster="assets/website-builder-bg-poster.jpg">
-        <source src="assets/website-builder-bg.mp4" type="video/mp4">
-      </video>
-      <div class="wb-hero-video-overlay"></div>
-    </div>
-
-    <div class="wb-hero-container">
-      <div class="wb-reveal wb-stagger-1">
-        <div class="wb-eyebrow">
-          PRIYULABS WEB ENGINEERING &amp; DIGITAL SOLUTIONS
-        </div>
-        <h1 class="wb-hero-title">
-          Websites Built for <span>Your Business.</span>
+  <section class="hero" id="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">WEBSITE BUILDER</div>
+        <h1>
+          <span class="line">Your Business.</span>
+          <span class="line">Your Website.</span>
         </h1>
-        <p class="wb-hero-sub">
-          We design and build fast, modern, conversion-focused websites that help businesses attract customers, manage
-          operations, and grow online.
-        </p>
-        <div class="wb-hero-actions">
-          <a href="#leadForm" class="btn-primary">
-            Start Your Project →
-          </a>
-          <a href="#what-we-build" class="btn-outline" onclick="event.preventDefault(); (document.querySelector('#what-we-build') || document.getElementById('what-we-build') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
-            View Our Services
-          </a>
+        <p class="hero-sub">Modern, fast and conversion-focused websites that help your business grow online.</p>
+        <div class="hero-actions">
+          <a href="/index.html#contact" class="btn-primary">Start Your Project →</a>
+          <button type="button" class="btn-ghost" onclick="openDemoModal()">Watch Demo</button>
         </div>
-        <div class="wb-trust-metrics">
-          <span class="highlight">Sub-Second Speed</span>
-          <span>100% Mobile-First</span>
-          <span>Production SSL &amp; Hosting</span>
-          <span>Custom API &amp; WhatsApp Ready</span>
+        <div class="hero-trust">
+          <div>
+            <div class="trust-num">0.8s</div>
+            <div class="trust-label">Sub-Second Speed</div>
+          </div>
+          <div>
+            <div class="trust-num">100%</div>
+            <div class="trust-label">Mobile-First</div>
+          </div>
+          <div>
+            <div class="trust-num">5 Days</div>
+            <div class="trust-label">Fast Delivery</div>
+          </div>
         </div>
       </div>
 
-      <!-- Hero Visual Tech Card -->
-      <div class="wb-preview-card wb-reveal wb-stagger-2">
-        <div class="wb-preview-topbar">
-          <div class="wb-preview-dots">
-            <span class="wb-dot red"></span>
-            <span class="wb-dot yellow"></span>
-            <span class="wb-dot green"></span>
-            <span class="wb-preview-url">priyulabs.in/build</span>
-          </div>
-          <span class="wb-live-badge"><span class="wb-live-pulse-dot"></span>LIVE ARCHITECTURE</span>
-        </div>
-
-        <div class="wb-preview-feature-box">
-          <div class="wb-preview-feature-header">
-            <span class="wb-preview-feature-title">High-Conversion Architecture</span>
-            <span class="wb-score-badge">100% Performance</span>
-          </div>
-          <p class="wb-preview-feature-desc">
-            Engineered with zero bloat, instant mobile rendering, dynamic structured schema, and local search SEO.
-          </p>
-        </div>
-
-        <div class="wb-stat-grid">
-          <div class="wb-stat-box">
-            <div class="wb-stat-label">Average Load Time</div>
-            <div class="wb-stat-val">&lt; 0.8s</div>
-          </div>
-          <div class="wb-stat-box">
-            <div class="wb-stat-label">Mobile Experience</div>
-            <div class="wb-stat-val" style="color: var(--emerald);">Adaptive UI</div>
-          </div>
-        </div>
-
-        <div class="wb-preview-feature-box" style="margin-bottom: 0;">
-          <div class="wb-preview-feature-header">
-            <span class="wb-preview-feature-title">Integrated Business Tools</span>
-            <span class="wb-pill" style="color: var(--primary);">Full-Stack</span>
-          </div>
-          <p class="wb-preview-feature-desc">
-            Directly synced with custom admin dashboards, WhatsApp notification bots &amp; online payment checkout.
-          </p>
+      <!-- Balanced Showcase Frame -->
+      <div class="hero-visual">
+        <div class="hero-visual-inner">
+          <video autoplay muted loop playsinline preload="auto" poster="assets/website-builder-bg-poster.jpg">
+            <source src="assets/website-builder-bg.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
-  </header>
+  </section>
+
+  <!-- Capability Strip Below Hero -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="hl">Business Websites</span><span>Professional &amp; modern</span>
+      <span class="hl">Online Bookings</span><span>Take reservations</span>
+      <span class="hl">Payments</span><span>Secure &amp; reliable</span>
+      <span class="hl">SEO Ready</span><span>Get found on Google</span>
+      <span class="hl">Business Websites</span><span>Professional &amp; modern</span>
+      <span class="hl">Online Bookings</span><span>Take reservations</span>
+      <span class="hl">Payments</span><span>Secure &amp; reliable</span>
+      <span class="hl">SEO Ready</span><span>Get found on Google</span>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════════════════════
        1B. TRUST & CERTIFICATION STRIP (MADE IN INDIA, UDYAM, SSL)
@@ -3598,88 +4859,50 @@ body {
   <!-- ══════════════════════════════════════════════════════════
        FOOTER
   ══════════════════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-col footer-brand">
-          <a href="/" class="logo">
-            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-            <div class="logo-text-group">
-              <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle">DIGITAL</span>
-            </div>
-          </a>
-          <p>Priyulabs Digital — India’s Smartest AI Retail OS &amp; Web Engineering Partner. Built for Bharat. Manage
-            POS Billing, ERP Inventory, Web Systems &amp; Payments on Autopilot.</p>
-          <div class="footer-badges">
-            <span class="f-badge"><span class="msme-dot"></span> MSME Reg: UDYAM-OD-19-0177979</span>
-            <span class="f-badge">100% Offline &amp; Encrypted</span>
-            <span class="f-badge"><svg class="inline-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>GST Compliant</span>
+    <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
+              style="height:28px; width:28px; object-fit:contain; border-radius:7px; display:inline-block;" /><span>PriyuLabs</span>
           </div>
-          <div class="footer-social">
-            <a href="https://wa.me/917873844050?text=Hello%20Priyulabs!%20I%20want%20to%20know%20more%20about%20Priyulabs%20AI%20Retail%20OS."
-              class="social-btn" aria-label="WhatsApp" target="_blank"></a>
-            <a href="#" class="social-btn" aria-label="LinkedIn"
-              onclick="openPolicyModal('about'); return false;">in</a>
-            <a href="#" class="social-btn" aria-label="Instagram"
-              onclick="openPolicyModal('about'); return false;"></a>
-            <a href="#" class="social-btn" aria-label="YouTube" onclick="openDemoModal(); return false;">▶️</a>
-          </div>
+          <p class="foot-brand-desc">India's AI retail OS —
+            POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
         </div>
-
-        <div class="footer-col">
-          <h5>Core Products</h5>
+        <div>
+          <h5>Solutions</h5>
           <ul>
-            <li><a href="/pos">POS Billing Engine</a></li>
-            <li><a href="/solutions">Sector Solutions</a></li>
-            <li><a href="/hospitality">Hospitality Tech OS</a></li>
-            <li><a href="/website-builder"> Website Builder</a></li>
-            <li><a href="/#attractions">Vision AI Stock Detection</a></li>
-            <li><a href="/#attractions">Selfie HRMS Attendance</a></li>
+            <li><a href="/pos">Smart POS</a></li>
+            <li><a href="/complete-management-system">Management System</a></li>
+            <li><a href="/website-builder">Website Building</a></li>
+            <li><a href="/digital-marketing">Digital Marketing</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h5>Who We Serve</h5>
+        <div>
+          <h5>Business Types</h5>
           <ul>
-            <li><a href="/grocery-supermarkets-kirana">Supermarkets &amp; Kirana</a></li>
-            <li><a href="/solutions?sector=cafe">Cafes &amp; Restaurants</a></li>
-            <li><a href="/bakeries-shops">Bakeries &amp; Confectionery</a></li>
-            <li><a href="/solutions?sector=apparel">Apparel &amp; Boutiques</a></li>
-            <li><a href="/solutions?sector=pharmacy">Pharmacies &amp; Chemist</a></li>
+            <li><a href="/restaurants-fine-dining">Restaurants &amp; Cafes</a></li>
+            <li><a href="/grocery-supermarkets-kirana">Grocery &amp; Supermarkets</a></li>
+            <li><a href="/beauty-fashion/apparel">Clothing &amp; Boutiques</a></li>
+            <li><a href="/electronics-mobile-shops">Electronics &amp; Mobiles</a></li>
+            <li><a href="/beauty-fashion/salons">Salons &amp; Spas</a></li>
+            <li><a href="/footwear-leather-stores">Footwear &amp; Leather</a></li>
+            <li><a href="all-business-types.html" style="font-weight:600; color:var(--accent);">All Business Types
+                &rarr;</a></li>
           </ul>
         </div>
-
-        <div class="footer-col">
-          <h5>Quick Links (MSME Certified)</h5>
-          <ul>
-            <li><a href="#" onclick="openPolicyModal('about'); return false;">About Us</a></li>
-            <li><a href="#" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a></li>
-            <li><a href="#" onclick="openPolicyModal('terms'); return false;">Terms &amp; Conditions</a></li>
-            <li><a href="#" onclick="openPolicyModal('refund'); return false;">Refund &amp; Cancellation</a></li>
-            <li><a href="#leadForm">Start Your Project</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Address &amp; Contact</h5>
+        <div>
+          <h5>Contact</h5>
           <ul>
             <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
             <li><a href="tel:+917873844050">+91 78738 44050</a> / <a href="tel:+917205045905">+91 72050 45905</a></li>
-            <li>279, Kapileshwar - Sundarpada Rd, Basisthanagar, Old Town, Bhubaneswar, Odisha 751002</li>
-            <li>⏰ Support: Mon–Sat 9:00 AM – 8:00 PM</li>
-            <li> WhatsApp: <a href="https://wa.me/917873844050" target="_blank">+91 78738 44050 (24/7)</a></li>
+            <li class="foot-address">Basisthanagar, Bhubaneswar, Odisha</li>
           </ul>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 Priyulabs (PriyuLabs Software ). All rights reserved. Made with Pride in India</p>
-        <div class="footer-links">
-          <a href="#" onclick="openPolicyModal('about'); return false;">About Us</a>
-          <a href="#" onclick="openPolicyModal('privacy'); return false;">Privacy Policy</a>
-          <a href="#" onclick="openPolicyModal('terms'); return false;">Terms &amp; Conditions</a>
-        </div>
+      <div class="foot-bottom">
+        <span>© 2026 Priyulabs Software. All rights reserved.</span>
+        <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
   </footer>
@@ -3946,10 +5169,10 @@ body {
           anchor.addEventListener('click', function(e) {
             var hash = this.getAttribute('href');
             if (hash && hash.length > 1 && !hash.startsWith('#/')) {
-              var target = document.querySelector(hash) || 
-                           document.getElementById(hash.substring(1)) || 
-                           document.getElementById('pillars') || 
-                           document.getElementById('matrix-features') || 
+              var target = document.querySelector(hash) ||
+                           document.getElementById(hash.substring(1)) ||
+                           document.getElementById('pillars') ||
+                           document.getElementById('matrix-features') ||
                            document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid, .clean-container');
               if (target) {
                 e.preventDefault();
@@ -4089,6 +5312,52 @@ body {
         startLooper();
       }
     })();
+  </script>
+
+  <!-- Business Types Mega-Menu Tab-Switching Logic -->
+  <script>
+    function switchMegaTab(tabKey) {
+      document.querySelectorAll('.sq-cat-btn').forEach(function (btn) {
+        var isTarget = btn.getAttribute('data-tab') === tabKey;
+        btn.classList.toggle('active', isTarget);
+      });
+      document.querySelectorAll('.sq-tab-content').forEach(function (content) {
+        var isTarget = content.id === 'tab-' + tabKey;
+        content.classList.toggle('active', isTarget);
+      });
+    }
+  </script>
+
+  <!-- Smooth Redirection to Landing Page Free Trial Onboarding Form -->
+  <script id="landing-trial-router">
+    function goToLandingTrial(e, sector) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const query = sector ? ('?bType=' + encodeURIComponent(sector)) : '';
+      let target = 'index.html' + query + '#contact';
+
+      if (window.location.protocol === 'file:') {
+        const p = window.location.pathname.replace(/\\/g, '/');
+        const idx = p.indexOf('/Antigravity/');
+        if (idx !== -1) {
+          const rel = p.substring(idx + '/Antigravity/'.length);
+          const depth = rel.split('/').length - 1;
+          target = (depth > 0 ? '../'.repeat(depth) : '') + 'index.html' + query + '#contact';
+        } else {
+          // Fallback relative
+          const parts = p.split('/');
+          const fileName = parts.pop();
+          if (parts.length > 0) {
+            target = 'index.html' + query + '#contact';
+          }
+        }
+      } else {
+        // Web server (http://, https://)
+        target = '/index.html' + query + '#contact';
+      }
+
+      window.location.href = target;
+    }
   </script>
 
 </body>
