@@ -2023,17 +2023,20 @@
           <h3>Start Your Free Trial</h3>
           <p class="form-subtitle">Submit your details to request an instant onboarding call:</p>
 
-          <form onsubmit="handleLeadSubmit(event)">
+          <form id="mainLeadForm" onsubmit="handleLeadSubmit(event)">
+            <!-- Anti-spam Honeypot -->
+            <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+
             <div class="form-group">
               <label for="userName">Your Name *</label>
-              <input type="text" id="userName" class="form-input" placeholder="Enter your full name (e.g. Ramesh Kumar)"
+              <input type="text" id="userName" name="Name" class="form-input" placeholder="Enter your full name (e.g. Ramesh Kumar)"
                 pattern="[A-Za-z]+(\s[A-Za-z]+)*" title="Only alphabets are allowed (e.g. Ramesh Kumar)" autocomplete="name"
                 required />
             </div>
 
             <div class="form-group">
               <label for="businessType">Select Your Business Type *</label>
-              <select id="businessType" class="form-select" required>
+              <select id="businessType" name="BusinessType" class="form-select" required>
                 <option value="" disabled selected>Select Your Business Type</option>
                 <optgroup label="Food &amp; Beverage">
                   <option value="Restaurants &amp; Fine Dining">Restaurants &amp; Fine Dining</option>
@@ -2069,12 +2072,12 @@
             <!-- Custom Business Type Input (Appears when Custom is selected) -->
             <div class="form-group" id="customBusinessTypeWrap" style="display: none; animation: fadeIn 0.3s ease;">
               <label for="customBusinessType">Enter Your Business Type *</label>
-              <input type="text" id="customBusinessType" class="form-input" placeholder="e.g. Pharmacy, Pet Care, Hardware, Automotive..." />
+              <input type="text" id="customBusinessType" name="CustomBusinessType" class="form-input" placeholder="e.g. Pharmacy, Pet Care, Hardware, Automotive..." />
             </div>
 
             <div class="form-group">
               <label for="serviceCategory">Choose Service *</label>
-              <select id="serviceCategory" class="form-select" required>
+              <select id="serviceCategory" name="Service" class="form-select" required>
                 <option value="" disabled selected>Select a Service</option>
                 <option value="Smart POS">Smart POS (Fast billing, AI voice checkout &amp; offline mode)</option>
                 <option value="Complete Management System">Complete Management System (Inventory ERP, Staff HRMS &amp; GST sync)</option>
@@ -2086,14 +2089,17 @@
 
             <div class="form-group">
               <label for="userPhone">Phone Number *</label>
-              <input type="tel" id="userPhone" class="form-input" placeholder="Enter 10-digit phone number"
+              <input type="tel" id="userPhone" name="Mobile" class="form-input" placeholder="Enter 10-digit phone number"
                 maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric"
                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required />
             </div>
 
-            <button type="submit" class="btn-submit-form">
+            <button type="submit" id="mainSubmitBtn" class="btn-submit-form">
               Submit &amp; Get Free Consultation
             </button>
+
+            <!-- Status message container -->
+            <div id="mainFormStatus" style="display: none; margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-size: 13.5px; font-weight: 600; text-align: center; line-height: 1.5;"></div>
 
             <p class="form-footer-note">
               🔒 Your inquiry is securely received. Our team will contact you Soon.
@@ -2262,31 +2268,153 @@
       }
     });
 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
+
     function handleLeadSubmit(e) {
       e.preventDefault();
-      const name = document.getElementById('userName').value.trim();
-      let bType = document.getElementById('businessType').value;
+      const form = e.target;
+      const submitBtn = document.getElementById('mainSubmitBtn') || form.querySelector('button[type="submit"]');
+      const statusEl = document.getElementById('mainFormStatus');
+
+      const nameInput = document.getElementById('userName');
+      const bTypeSelect = document.getElementById('businessType');
+      const customTypeInput = document.getElementById('customBusinessType');
+      const serviceSelect = document.getElementById('serviceCategory');
+      const phoneInput = document.getElementById('userPhone');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      let bType = bTypeSelect ? bTypeSelect.value : '';
       if (bType === 'Custom') {
-        const customVal = document.getElementById('customBusinessType') ? document.getElementById('customBusinessType').value.trim() : '';
+        const customVal = customTypeInput ? customTypeInput.value.trim() : '';
         if (!customVal) {
-          alert('Please enter your custom business type.');
-          document.getElementById('customBusinessType').focus();
+          if (statusEl) {
+            statusEl.style.display = 'block';
+            statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+            statusEl.style.color = '#dc2626';
+            statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+            statusEl.textContent = 'Please specify your custom business type.';
+          }
+          if (customTypeInput) customTypeInput.focus();
           return;
         }
         bType = `Custom (${customVal})`;
       }
-      const service = document.getElementById('serviceCategory').value;
-      const phone = document.getElementById('userPhone').value.trim();
+      const service = serviceSelect ? serviceSelect.value : '';
+      const phone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
 
-      // Strict 10-digit validation
-      if (!/^[0-9]{10}$/.test(phone)) {
-        alert('Please enter a valid 10-digit phone number (exactly 10 digits required).');
-        document.getElementById('userPhone').focus();
+      if (!name || name.length < 2) {
+        if (nameInput) nameInput.focus();
+        return;
+      }
+      if (!bType) {
+        if (bTypeSelect) bTypeSelect.focus();
+        return;
+      }
+      if (!service) {
+        if (serviceSelect) serviceSelect.focus();
+        return;
+      }
+      if (!phone || phone.length !== 10) {
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+          statusEl.style.color = '#dc2626';
+          statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          statusEl.textContent = 'Please enter a valid 10-digit phone number.';
+        }
+        if (phoneInput) phoneInput.focus();
         return;
       }
 
-      const msg = `Hi Priyulabs, I want to book a free trial.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(bType)}%0A*Service:* ${encodeURIComponent(service)}%0A*Phone:* ${phone}`;
-      window.open(`https://wa.me/917873844050?text=${msg}`, '_blank');
+      // 1. Loading UI State
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
+        submitBtn.innerHTML = 'Submitting Request... ⏳';
+        submitBtn.style.opacity = '0.8';
+        submitBtn.style.cursor = 'not-allowed';
+      }
+      if (statusEl) {
+        statusEl.style.display = 'none';
+        statusEl.textContent = '';
+      }
+
+      // 2. Build payload matching backend schema exactly
+      const payloadObj = {
+        Name: name,
+        BusinessType: bType,
+        Service: service,
+        Mobile: phone,
+        Source: 'landing-page-free-trial',
+        PageUrl: window.location.href,
+        requestId: 'req_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9)
+      };
+
+      // 3. Send to Google Apps Script endpoint
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payloadObj),
+        mode: 'no-cors'
+      })
+      .then(() => {
+        // Submission resolved
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Submit &amp; Get Free Consultation';
+          submitBtn.style.opacity = '1';
+          submitBtn.style.cursor = 'pointer';
+        }
+
+        const waMsg = `Hi Priyulabs, I just submitted a free trial request on your website.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(bType)}%0A*Service:* ${encodeURIComponent(service)}%0A*Phone:* ${phone}`;
+        const waUrl = `https://wa.me/917873844050?text=${waMsg}`;
+
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(63, 93, 66, 0.12)';
+          statusEl.style.color = '#27442a';
+          statusEl.style.border = '1px solid #3F5D42';
+          statusEl.innerHTML = `
+            <div style="font-weight: 700; margin-bottom: 6px;">🎉 Thank you, ${name}!</div>
+            <div style="margin-bottom: 10px; font-weight: 500; font-size: 13px;">Your free trial request has been securely received. Our onboarding team will contact you shortly on ${phone}.</div>
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #25D366; color: #ffffff; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; text-decoration: none; margin-top: 4px; box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);">
+              <span>💬</span> Connect Instantly on WhatsApp
+            </a>
+          `;
+        }
+
+        // Reset form inputs & custom wrap
+        form.reset();
+        const customWrap = document.getElementById('customBusinessTypeWrap');
+        if (customWrap) customWrap.style.display = 'none';
+      })
+      .catch((err) => {
+        console.error('Lead submission network error:', err);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Submit &amp; Get Free Consultation';
+          submitBtn.style.opacity = '1';
+          submitBtn.style.cursor = 'pointer';
+        }
+        if (statusEl) {
+          const waMsg = `Hi Priyulabs, I tried submitting the free trial form.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(bType)}%0A*Service:* ${encodeURIComponent(service)}%0A*Phone:* ${phone}`;
+          const waUrl = `https://wa.me/917873844050?text=${waMsg}`;
+
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+          statusEl.style.color = '#b91c1c';
+          statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          statusEl.innerHTML = `
+            <div style="font-weight: 700; margin-bottom: 4px;">Network connection issue.</div>
+            <div style="font-size: 12.5px; margin-bottom: 8px;">Please check your connection and retry, or reach us directly on WhatsApp:</div>
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #25D366; color: #ffffff; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 12px; text-decoration: none;">
+              Chat on WhatsApp
+            </a>
+          `;
+        }
+      });
     }
   </script>
 
@@ -2534,7 +2662,7 @@
 
         if (hash === '#free-trial' || hash === '#contact' || hash === '#trial' || bTypeParam) {
           const formSection = document.getElementById('contact') || document.getElementById('free-trial') || document.querySelector('.onboard-section');
-          
+
           if (bTypeParam) {
             const bSelect = document.getElementById('businessType');
             if (bSelect) {

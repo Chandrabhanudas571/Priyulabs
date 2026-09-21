@@ -70,11 +70,11 @@ function doPost(e) {
     }
 
     // 3. Extract & sanitize fields
-    const name = sanitizeString(data.name || data.Name, CONFIG.MAX_NAME_LEN);
-    const businessType = sanitizeString(data.businessType || data.BusinessType || data.StoreName, CONFIG.MAX_BIZ_LEN);
-    const service = sanitizeString(data.service || data.Service || data.Category, CONFIG.MAX_SERVICE_LEN);
-    const customRequirement = sanitizeString(data.customRequirement || data.CustomRequirement, 1500);
-    const mobile = sanitizeString(data.mobile || data.Mobile || data.phone || data.Phone, CONFIG.MAX_PHONE_LEN);
+    const name = sanitizeString(data.name || data.Name || data.userName || data.fullName, CONFIG.MAX_NAME_LEN);
+    const businessType = sanitizeString(data.businessType || data.BusinessType || data.StoreName || data.service || data.Service || "Website / Retail", CONFIG.MAX_BIZ_LEN);
+    const service = sanitizeString(data.service || data.Service || data.Category || data.businessType || data.BusinessType || "Website Building", CONFIG.MAX_SERVICE_LEN);
+    const customRequirement = sanitizeString(data.customRequirement || data.CustomRequirement || data.customBusinessType || data.CustomBusinessType, 1500);
+    const mobile = sanitizeString(data.mobile || data.Mobile || data.phone || data.Phone || data.userPhone, CONFIG.MAX_PHONE_LEN);
     const source = sanitizeString(data.source || data.Source || "free-trial-form", CONFIG.MAX_SOURCE_LEN);
     const pageUrl = sanitizeString(data.pageUrl || data.PageUrl || data.url || "", CONFIG.MAX_URL_LEN);
     const requestId = sanitizeString(data.requestId || data.request_id || "", 100);
@@ -258,7 +258,7 @@ function sendLeadEmail(lead) {
   const subject = "New Priyulabs Free Trial Lead — " + lead.name;
 
   // Clean plain text fallback
-  const textBody = 
+  const textBody =
 `New Priyulabs Free Trial Lead
 
 Name: ${lead.name}
@@ -283,7 +283,7 @@ Submitted At: ${lead.timestamp}
       <h1 style="color: #ffffff; font-size: 22px; margin: 0 0 4px 0; font-weight: 800; letter-spacing: -0.02em;">PRIYULABS DIGITAL</h1>
       <p style="color: #e0e7ff; font-size: 13.5px; margin: 0; font-weight: 500;">New Free Trial / Demo Lead Received</p>
     </div>
-    
+
     <div style="padding: 24px 28px; background-color: #ffffff;">
       <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #334155;">
         <tr>

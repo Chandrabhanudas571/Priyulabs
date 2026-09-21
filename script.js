@@ -578,8 +578,8 @@ function filterPosProducts(cat, btnEl) {
 function renderPosProducts(filterCat = 'cafe') {
   const grid = document.getElementById('posProductGrid');
   if (!grid) return;
-  const filtered = filterCat === 'all' 
-    ? posProducts 
+  const filtered = filterCat === 'all'
+    ? posProducts
     : posProducts.filter(p => p.category === filterCat || p.cat === filterCat || (filterCat === 'fashion' && p.category === 'retail') || (filterCat === 'retail' && (p.category === 'retail' || p.category === 'fashion')));
 
   grid.innerHTML = filtered.map(item => `
@@ -1530,7 +1530,46 @@ function closeSectorModal() {
 }
 
 // ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ───────────────────
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPl-7pp-g-VOMUDpP900zdOB8DhA8gS6sOrKwUeTTNclUtggc3UKg7_G2rJl3VjyRlMA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
+
+/**
+ * Global Lead Submission Helper for Google Apps Script Web App
+ * @param {FormData|Object} payload
+ * @returns {Promise<Response>}
+ */
+function submitLeadToGoogleScript(payload) {
+  let jsonObject = {};
+  if (payload instanceof FormData) {
+    for (const [key, value] of payload.entries()) {
+      jsonObject[key] = value;
+    }
+  } else if (payload && typeof payload === 'object') {
+    jsonObject = Object.assign({}, payload);
+  } else {
+    return Promise.reject(new Error('Invalid payload provided to submitLeadToGoogleScript'));
+  }
+
+  // Ensure requestId exists for idempotency/deduplication
+  if (!jsonObject.requestId && !jsonObject.request_id) {
+    jsonObject.requestId = 'req_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+  }
+  // Ensure pageUrl exists
+  if (!jsonObject.PageUrl && !jsonObject.pageUrl) {
+    jsonObject.PageUrl = typeof window !== 'undefined' ? window.location.href : '';
+  }
+
+  const endpointUrl = (typeof window !== 'undefined' && window.PRIYULABS_LEAD_ENDPOINT) || GOOGLE_SCRIPT_URL;
+
+  return fetch(endpointUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8'
+    },
+    body: JSON.stringify(jsonObject),
+    mode: 'no-cors'
+  });
+}
+window.submitLeadToGoogleScript = submitLeadToGoogleScript;
 
 // Service Category & Custom 100-word Requirement Controller
 function initServiceCategoryFields() {
@@ -1744,6 +1783,7 @@ if (leadForm) {
     }
 
     if (button) {
+      button.setAttribute('data-original-text', button.innerHTML);
       button.textContent = "Submitting...";
       button.disabled = true;
       button.style.opacity = '0.85';
@@ -1757,6 +1797,8 @@ if (leadForm) {
     const formData = new FormData(leadForm);
     if (selectedBusinessType) {
       formData.set('BusinessType', selectedBusinessType);
+    } else {
+      formData.set('BusinessType', selectedService || 'Website Building');
     }
     // Backward-compatible mapping for StoreName column in Google Sheets
     if (selectedService === 'Custom') {
@@ -1767,15 +1809,17 @@ if (leadForm) {
       formData.set('Category', selectedService);
     }
 
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      body: formData,
-      mode: "no-cors"
-    })
+    if (!formData.get('Source')) {
+      formData.set('Source', 'website-builder');
+    }
+    formData.set('PageUrl', window.location.href);
+    formData.set('requestId', 'req_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9));
+
+    submitLeadToGoogleScript(formData)
       .then(() => {
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access";
+          button.innerHTML = button.getAttribute('data-original-text') || "Submit &amp; Get Early Access";
           button.style.opacity = '1';
         }
         const successText = "Thank you! Your details have been submitted successfully. Our team will contact you within 15 minutes.";
@@ -1806,7 +1850,7 @@ if (leadForm) {
         console.error('Google Sheet Submission Error:', err);
         if (button) {
           button.disabled = false;
-          button.innerHTML = "Submit & Get Early Access";
+          button.innerHTML = button.getAttribute('data-original-text') || "Submit &amp; Get Early Access";
           button.style.opacity = '1';
         }
         const errorText = "Something went wrong. Please try again.";
