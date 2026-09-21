@@ -1,0 +1,26 @@
+{
+  "name": "Priyulabs Retail OS",
+  "short_name": "PriyuLabs",
+  "description": "India's Smartest AI Retail OS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EE",
+  "theme_color": "#3F5D42",
+  "icons": [
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

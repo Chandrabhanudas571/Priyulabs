@@ -3,9 +3,12 @@
 
 <head>
   <!-- Universal PriyuLabs Favicon Suite -->
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="manifest" href="site.webmanifest" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Priyulabs – India's Smartest AI Retail OS</title>
@@ -45,6 +48,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      width: 100%;
     }
 
     h1,
@@ -1410,57 +1414,138 @@
     }
 
     .global-fluid-bg {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2;
-      overflow: hidden;
-      background: #FAF6EE;
-      pointer-events: none;
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: -3 !important;
+      overflow: hidden !important;
+      background: #FAF6EE !important;
+      pointer-events: none !important;
     }
 
     .global-fluid-bg video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.35s ease-in-out;
-      filter: saturate(1.1) brightness(1.02);
-      pointer-events: none;
-      will-change: opacity;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      transform: translate(-50%, -50%) !important;
+      object-fit: cover !important;
+      opacity: 0.5 !important;
+      transition: opacity 0.35s ease-in-out !important;
+      pointer-events: none !important;
+      will-change: opacity !important;
     }
 
     .global-fluid-bg video.is-active {
-      opacity: 0.85;
+      opacity: 0.75 !important;
     }
 
     .global-fluid-mask {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%);
-      z-index: -1;
-      pointer-events: none;
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
+      z-index: -2 !important;
+      pointer-events: none !important;
+    }
+
+    /* Complete Mobile Responsiveness Overrides (<= 768px) */
+    @media (max-width: 768px) {
+      body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      .wrap {
+        padding: 0 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+        padding-top: 24px !important;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(28px, 7.5vw, 40px) !important;
+        line-height: 1.15 !important;
+      }
+
+      .hero-trust {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+      }
+
+      .feature-row {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        padding: 36px 0 !important;
+      }
+
+      .feature-row .feature-media {
+        order: -1 !important;
+        width: 100% !important;
+      }
+
+      .serve-scroll {
+        display: flex !important;
+        gap: 16px !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x proximity !important;
+        padding: 8px 4px 20px !important;
+        width: 100% !important;
+      }
+
+      .serve-card {
+        flex: 0 0 260px !important;
+        min-width: 260px !important;
+      }
+
+      .stats-band {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+        padding: 36px 16px !important;
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="global-fluid-bg">
-    <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <video class="bg-vid bg-vid-1 is-active" autoplay loop muted playsinline preload="auto">
+      <source src="priyulabs background.mp4" type="video/mp4">
+      <source src="./priyulabs background.mp4" type="video/mp4">
       <source src="backgroundvideo1.mp4" type="video/mp4">
       <source src="./backgroundvideo1.mp4" type="video/mp4">
       <source src="/backgroundvideo1.mp4" type="video/mp4">
     </video>
-    <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+    <video class="bg-vid bg-vid-2" loop muted playsinline preload="auto">
+      <source src="priyulabs background.mp4" type="video/mp4">
+      <source src="./priyulabs background.mp4" type="video/mp4">
       <source src="backgroundvideo1.mp4" type="video/mp4">
       <source src="./backgroundvideo1.mp4" type="video/mp4">
       <source src="/backgroundvideo1.mp4" type="video/mp4">
@@ -1745,57 +1830,53 @@
   <section id="who">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker">Built for your kind of business</div>
-        <h2>Who we serve</h2>
+        <div class="kicker">Core Solutions</div>
+        <h2>Who we serve: 4 Core Solutions</h2>
+        <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Tailored operational engines powering physical counters, multi-store enterprises, and modern digital commerce.</p>
       </div>
       <div class="serve-scroll reveal">
-        <a href="restaurants-fine-dining.html" class="serve-card">
+        <!-- Solution 1: Smart POS -->
+        <a href="pos.html" class="serve-card">
           <div class="serve-img"><img
-              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80"
-              alt="Cafe"></div>
+              src="assets/smart_pos_touch_billing.jpg"
+              alt="Smart POS" onerror="this.src='assets/card1-pos-poster.jpg';"></div>
           <div class="serve-body">
-            <h4>Cafes &amp; Fine Dine</h4>
-            <p>Table management, KOT and split billing.</p>
+            <h4>Smart POS</h4>
+            <p>Fast billing, AI voice checkout &amp; offline mode.</p>
           </div>
         </a>
-        <a href="salons-spas.html" class="serve-card">
+        <!-- Solution 2: Complete Management System -->
+        <a href="complete-management-system.html" class="serve-card">
           <div class="serve-img"><img
-              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
-              alt="Salon"></div>
+              src="assets/card2-management-poster.jpg"
+              alt="Complete Management System" onerror="this.src='assets/pos_ui_hero.jpg';"></div>
           <div class="serve-body">
-            <h4>Salons &amp; Spas</h4>
-            <p>Slot booking and stylist commissions.</p>
+            <h4>Complete Management System</h4>
+            <p>Inventory ERP, Staff HRMS &amp; 1-Click GST sync.</p>
           </div>
         </a>
-        <a href="grocery-supermarkets-kirana.html" class="serve-card">
+        <!-- Solution 3: Custom Website Building -->
+        <a href="website-builder.html" class="serve-card">
           <div class="serve-img"><img
-              src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=600&q=80"
-              alt="Grocery"></div>
+              src="assets/custom_website_builder.jpg"
+              alt="Custom Website Building" onerror="this.src='assets/card3-website-poster.jpg';"></div>
           <div class="serve-body">
-            <h4>Grocery &amp; Kirana</h4>
-            <p>Weighing scale sync and khata ledger.</p>
+            <h4>Custom Website Building</h4>
+            <p>E-Commerce stores, web apps &amp; 5-day delivery.</p>
           </div>
         </a>
-        <a href="apparel-boutiques.html" class="serve-card">
+        <!-- Solution 4: Digital Marketing & Ads -->
+        <a href="digital-marketing.html" class="serve-card">
           <div class="serve-img"><img
-              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80"
-              alt="Boutique"></div>
+              src="assets/digital_marketing_ads.jpg"
+              alt="Digital Marketing & Ads" onerror="this.src='assets/card4-marketing-poster.jpg';"></div>
           <div class="serve-body">
-            <h4>Clothing &amp; Boutiques</h4>
-            <p>Size and colour matrix billing.</p>
+            <h4>Digital Marketing &amp; Ads</h4>
+            <p>Meta Ads, Google Local SEO &amp; WhatsApp Commerce.</p>
           </div>
         </a>
-        <a href="gyms.html" class="serve-card">
-          <div class="serve-img"><img
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
-              alt="Gym"></div>
-          <div class="serve-body">
-            <h4>Gyms &amp; Fitness</h4>
-            <p>Biometric access and UPI renewals.</p>
-          </div>
-        </a>
-        <!-- Final Round CTA: Explore All Business Types -->
-        <a href="all-business-types.html" class="serve-round-cta" title="Explore all 17+ business types">
+        <!-- Final Round CTA: See All Business Types -->
+        <a href="all-business-types.html" class="serve-round-cta" title="See All Business Types">
           <div class="round-cta-circle">
             <div class="round-cta-arrow">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -1803,9 +1884,9 @@
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </div>
-            <span class="round-cta-label">Explore All</span>
+            <span class="round-cta-label">See All</span>
             <span class="round-cta-sub">Business Types</span>
-            <span class="round-cta-count">17+ Sectors &rarr;</span>
+            <span class="round-cta-count">18 Sectors &rarr;</span>
           </div>
         </a>
       </div>

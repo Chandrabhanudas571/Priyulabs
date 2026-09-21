@@ -3,9 +3,12 @@
 
 <head>
   <!-- Universal PriyuLabs Favicon Suite -->
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="alternate icon" type="image/png" href="/assets/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="manifest" href="site.webmanifest" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Business Types – Priyulabs Retail OS</title>
@@ -42,6 +45,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      width: 100%;
     }
 
     header {
@@ -420,7 +424,7 @@ body {
       inset: 0 !important;
       width: 100vw !important;
       height: 100vh !important;
-      z-index: -2 !important;
+      z-index: -3 !important;
       overflow: hidden !important;
       background: #FAF6EE !important;
       pointer-events: none !important;
@@ -436,15 +440,14 @@ body {
       height: auto !important;
       transform: translate(-50%, -50%) !important;
       object-fit: cover !important;
-      opacity: 0 !important;
+      opacity: 0.5 !important;
       transition: opacity 0.35s ease-in-out !important;
-      filter: saturate(1.1) brightness(1.02) !important;
       pointer-events: none !important;
       will-change: opacity !important;
     }
 
     .global-fluid-bg video.is-active {
-      opacity: 0.85 !important;
+      opacity: 0.75 !important;
     }
 
     .global-fluid-mask {
@@ -453,8 +456,54 @@ body {
       width: 100vw !important;
       height: 100vh !important;
       background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
-      z-index: -1 !important;
+      z-index: -2 !important;
       pointer-events: none !important;
+    }
+
+    /* Mobile Responsiveness (<= 768px) */
+    @media (max-width: 768px) {
+      body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      .sectors-stream-container {
+        padding: 30px 16px !important;
+        gap: 40px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .sector-row {
+        grid-template-columns: 1fr !important;
+        padding: 24px 18px !important;
+        gap: 24px !important;
+        border-radius: 20px !important;
+      }
+
+      .sector-row.dir-right .sector-text-col,
+      .sector-row.dir-right .sector-img-col,
+      .sector-row.dir-left .sector-text-col,
+      .sector-row.dir-left .sector-img-col {
+        order: unset !important;
+        transform: none !important;
+      }
+
+      .sector-title {
+        font-size: 24px !important;
+      }
+
+      .hub-hero {
+        padding: 60px 16px 30px !important;
+      }
+
+      .hub-title {
+        font-size: clamp(26px, 7vw, 36px) !important;
+      }
+
+      .nav {
+        padding: 14px 20px !important;
+      }
     }
   </style>
 
@@ -464,14 +513,22 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay loop muted playsinline preload="auto">
+    <source src="priyulabs background.mp4" type="video/mp4">
+    <source src="./priyulabs background.mp4" type="video/mp4">
+    <source src="../priyulabs background.mp4" type="video/mp4">
+    <source src="/priyulabs background.mp4" type="video/mp4">
     <source src="backgroundvideo1.mp4" type="video/mp4">
     <source src="./backgroundvideo1.mp4" type="video/mp4">
     <source src="../backgroundvideo1.mp4" type="video/mp4">
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" loop muted playsinline preload="auto">
+    <source src="priyulabs background.mp4" type="video/mp4">
+    <source src="./priyulabs background.mp4" type="video/mp4">
+    <source src="../priyulabs background.mp4" type="video/mp4">
+    <source src="/priyulabs background.mp4" type="video/mp4">
     <source src="backgroundvideo1.mp4" type="video/mp4">
     <source src="./backgroundvideo1.mp4" type="video/mp4">
     <source src="../backgroundvideo1.mp4" type="video/mp4">
@@ -498,7 +555,7 @@ body {
 
   <section class="hub-hero">
     <div class="hub-hero-container">
-      <span class="hub-badge">17 Specialized Business Types</span>
+      <span class="hub-badge">18 Specialized Business Types</span>
       <h1 class="hub-title">
         One Ecosystem <span
           style="font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; color: var(--gold);">&amp;</span>
@@ -883,6 +940,24 @@ body {
       <div class="sector-img-col">
         <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=900&auto=format&fit=crop"
           alt="Dry Cleaners & Laundry Shops">
+      </div>
+    </div>
+    <!-- Sector 18: Hospitality, Boutique Hotels & Resorts -->
+    <div class="sector-row dir-left">
+      <div class="sector-text-col">
+        <span class="sector-tag">Services</span>
+        <h2 class="sector-title">Hospitality, Boutique Hotels & Resorts</h2>
+        <ul class="sector-points-list">
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Front desk check-in, room folio billing, and seamless dining charge transfers.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Centralized reservation ledger synced with OTA booking channels and direct walk-ins.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Housekeeping and room service management with live room turnover status.</span></li>
+          <li class="sector-point-item"><span class="sector-point-bullet"></span><span>Integrated restaurant &amp; banquet billing with automated GST-compliant invoicing.</span></li>
+        </ul>
+        <a href="hospitality.html" class="sector-more-btn">More Details &rarr;</a>
+      </div>
+      <div class="sector-img-col">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=900&auto=format&fit=crop"
+          alt="Hospitality, Boutique Hotels & Resorts">
       </div>
     </div>
   </div>
