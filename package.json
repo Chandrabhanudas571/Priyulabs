@@ -1,7 +1,7 @@
 {
   "name": "priyulabs",
   "private": true,
-  "version": "2.4.69",
+  "version": "2.4.70",
   "workspaces": [
     "apps/*",
     "packages/*"
