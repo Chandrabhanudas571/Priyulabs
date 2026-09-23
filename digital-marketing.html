@@ -14,9 +14,23 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:italic@1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:italic@1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
+    <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('priyulabs_theme');
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) { }
+    })();
+  </script>
+<style>
+    html, body { overflow-x: clip; }
+    body { padding-top: 72px; }
     html {
       scroll-behavior: smooth;
     }
@@ -38,128 +52,1124 @@
       padding: 0 24px;
     }
 
-    /* 1. NORMAL FLAT CLEAN NAVBAR */
-    .site-nav-header {
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      height: 72px;
-      position: relative;
-      z-index: 1000;
+      header,
+  header#navbar,
+  nav.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background: rgba(250, 246, 238, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--line, #E3D9C1) !important;
+    padding: 0 !important;
+    box-shadow: 0 2px 12px rgba(42, 36, 25, 0.06) !important;
+  }
+
+  [data-theme="dark"] header,
+  [data-theme="dark"] header#navbar,
+  [data-theme="dark"] nav.navbar {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .nav,
+  .nav-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px 32px !important;
+    max-width: 1180px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 20px !important;
+  }
+
+  @media (max-width: 960px) {
+    .nav,
+    .nav-container {
+      padding: 14px 20px !important;
     }
-    .site-nav-container {
-      max-width: 1220px;
-      height: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  }
+
+  @media (max-width: 480px) {
+    .nav,
+    .nav-container {
+      padding: 12px 16px !important;
     }
-    .brand-logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #0f172a;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    color: var(--ink, #2A2419) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .logo img,
+  .brand-logo-img {
+    height: 32px !important;
+    width: 32px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .logo-text-group {
+    display: flex !important;
+    flex-direction: column !important;
+    line-height: 1.1 !important;
+  }
+
+  .logo-title {
+    font-family: 'Fraunces', serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--ink, #2A2419) !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .logo-subtitle {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    color: var(--gold, #B8863B) !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+  }
+
+  [data-theme="dark"] .logo-title {
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .logo-subtitle {
+    color: #fbbf24 !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 32px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @media (max-width: 960px) {
+    .nav-links {
+      display: none !important;
     }
-    .brand-logo-badge {
-      width: 38px;
-      height: 38px;
-      background: #0f172a;
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 17px;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
-      flex-shrink: 0;
+  }
+
+  .nav-item {
+    position: relative !important;
+    list-style: none !important;
+  }
+
+  .nav-link-btn,
+  .nav-link-title {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
+    color: var(--ink, #1e293b) !important;
+    padding: 8px 0 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+    background: none !important;
+    border: none !important;
+    line-height: 1.5 !important;
+  }
+
+  .nav-link-btn:hover,
+  .nav-link-title:hover {
+    color: var(--accent, #3F5D42) !important;
+  }
+
+  [data-theme="dark"] .nav-link-btn,
+  [data-theme="dark"] .nav-link-title {
+    color: #f1f5f9 !important;
+  }
+
+  [data-theme="dark"] .nav-link-btn:hover,
+  [data-theme="dark"] .nav-link-title:hover {
+    color: #818cf8 !important;
+  }
+
+  .nav-arrow,
+  .drop-arrow {
+    font-size: 9px !important;
+    opacity: 0.65 !important;
+    transition: transform 0.2s ease !important;
+    display: inline-block !important;
+    margin-left: 2px !important;
+  }
+
+  .nav-item:hover .nav-arrow,
+  .nav-item-dropdown:hover .nav-arrow,
+  .nav-item-dropdown:hover .drop-arrow {
+    transform: rotate(180deg) !important;
+  }
+
+  .nav-right-actions,
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-cta-ghost,
+  .btn-demo-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    border: 1px solid var(--line, #E3D9C1) !important;
+    color: var(--ink, #2A2419) !important;
+    padding: 9px 18px !important;
+    border-radius: 100px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .nav-cta-ghost:hover,
+  .btn-demo-nav:hover {
+    border-color: var(--accent, #3F5D42) !important;
+    background: var(--accent-soft, #E7EEE4) !important;
+    color: var(--accent, #3F5D42) !important;
+  }
+
+  [data-theme="dark"] .nav-cta-ghost,
+  [data-theme="dark"] .btn-demo-nav {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .nav-cta-ghost:hover,
+  [data-theme="dark"] .btn-demo-nav:hover {
+    border-color: #818cf8 !important;
+    background: rgba(99, 102, 241, 0.15) !important;
+    color: #818cf8 !important;
+  }
+
+  .nav-cta,
+  .btn-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--ink, #2A2419) !important;
+    color: #FAF6EE !important;
+    padding: 10px 20px !important;
+    border-radius: 100px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    text-decoration: none !important;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+    white-space: nowrap !important;
+    border: none !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+  }
+
+  .nav-cta:hover,
+  .btn-nav:hover {
+    background: var(--accent, #3F5D42) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px -4px rgba(63, 93, 66, 0.4) !important;
+  }
+
+  [data-theme="dark"] .nav-cta,
+  [data-theme="dark"] .btn-nav {
+    background: #4f46e5 !important;
+    color: #ffffff !important;
+  }
+
+  [data-theme="dark"] .nav-cta:hover,
+  [data-theme="dark"] .btn-nav:hover {
+    background: #6366f1 !important;
+  }
+
+  .theme-toggle-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    border: 1px solid var(--line, #E3D9C1) !important;
+    background: transparent !important;
+    color: var(--ink, #2A2419) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+
+  .theme-toggle-btn:hover {
+    border-color: var(--accent, #3F5D42) !important;
+    background: var(--accent-soft, #E7EEE4) !important;
+  }
+
+  [data-theme="dark"] .theme-toggle-btn {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f8fafc !important;
+  }
+
+  [data-theme="dark"] .theme-toggle-btn:hover {
+    border-color: #818cf8 !important;
+    background: rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .theme-icon-sun {
+    display: block !important;
+  }
+  .theme-icon-moon {
+    display: none !important;
+  }
+  [data-theme="dark"] .theme-icon-sun {
+    display: none !important;
+  }
+  [data-theme="dark"] .theme-icon-moon {
+    display: block !important;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 36px !important;
+    height: 36px !important;
+    background: transparent !important;
+    border: 1px solid var(--line, #E3D9C1) !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    z-index: 600 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hamburger span {
+    width: 100% !important;
+    height: 2px !important;
+    background: var(--ink, #2A2419) !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  [data-theme="dark"] .hamburger {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  [data-theme="dark"] .hamburger span {
+    background: #f8fafc !important;
+  }
+
+  @media (max-width: 960px) {
+    .hamburger {
+      display: flex !important;
     }
-    .brand-text-block {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      line-height: 1.15;
+  }
+
+  @media (max-width: 640px) {
+    .nav-cta-ghost,
+    .btn-demo-nav {
+      display: none !important;
     }
-    .brand-title {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #0f172a;
+    .nav-cta,
+    .btn-nav {
+      padding: 8px 14px !important;
+      font-size: 12.5px !important;
     }
-    .brand-sub {
-      font-size: 10px;
-      font-weight: 700;
-      color: #2563eb;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-    .nav-links-list {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-    @media (max-width: 880px) {
-      .nav-links-list { display: none; }
-    }
-    .nav-links-list a {
-      color: #475569;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      transition: color 0.15s ease;
-    }
-    .nav-links-list a:hover {
-      color: #0f172a;
-    }
-    .nav-links-list a.active {
-      color: #0f172a;
-      font-weight: 700;
-    }
-    .nav-arrow {
-      font-size: 10px;
-      color: #94a3b8;
-    }
-    .nav-right-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .flat-contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      color: #0f172a;
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.15s ease;
-    }
-    .flat-contact-btn:hover {
-      background: #0f172a;
-      color: #ffffff;
-      border-color: #0f172a;
-    }
-    .flat-contact-btn svg {
-      width: 15px;
-      height: 15px;
-      fill: #25d366;
-    }
-    .flat-contact-btn:hover svg {
-      fill: #ffffff;
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     BUSINESS TYPES 3-COLUMN MEGA-MENU STYLING & HOVER LOGIC
+  ══════════════════════════════════════════════════════════ */
+  .nav-item-dropdown {
+    position: relative;
+  }
+
+  .mega-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
+    z-index: 1000;
+    pointer-events: none;
+    padding-top: 12px;
+  }
+
+  /* Hover bridge so mouse never flickers between trigger and menu */
+  .mega-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 24px;
+  }
+
+  
+    /* Generic small dropdowns (e.g. Solutions) */
+    .nav-item-dropdown:hover .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.open .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.pinned .mega-dropdown:not(.square-mega-3col):not(.megamenu-content) {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
     }
 
-    /* 2. HERO SECTION RIGHT BELOW NAVBAR */
+    /* ══════════════════════════════════════════════════════════
+       PERFECTLY CENTERED MEGAMENU (.square-mega-3col, .megamenu-content)
+       ══════════════════════════════════════════════════════════ */
+    .square-mega-3col,
+    .mega-dropdown.square-mega-3col,
+    .megamenu-content {
+      position: fixed !important;
+      top: 70px !important;
+      left: 50% !important;
+      right: auto !important;
+      width: 960px !important;
+      max-width: calc(100vw - 32px) !important;
+      max-height: calc(100vh - 88px) !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overscroll-behavior: contain !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      z-index: 1200 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateX(-50%) translateY(8px) !important;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out !important;
+    }
+
+    /* Seamless mouse hover bridge */
+    .square-mega-3col::before,
+    .mega-dropdown.square-mega-3col::before,
+    .megamenu-content::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -24px !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 32px !important;
+      pointer-events: auto !important;
+    }
+
+    /* Active / Open / Hover state: always centered with smooth 0.4s fade and 8px slide */
+    .nav-item-dropdown:hover .square-mega-3col,
+    .nav-item-dropdown.open .square-mega-3col,
+    .nav-item-dropdown.pinned .square-mega-3col,
+    .nav-item-dropdown:hover .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.open .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.pinned .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown:hover .megamenu-content,
+    .nav-item-dropdown.open .megamenu-content,
+    .nav-item-dropdown.pinned .megamenu-content,
+    .square-mega-3col.open,
+    .square-mega-3col.active,
+    .megamenu-content.open,
+    .megamenu-content.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    /* Custom modern scrollbar for megamenu overflow */
+    .square-mega-3col::-webkit-scrollbar,
+    .megamenu-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .square-mega-3col::-webkit-scrollbar-track,
+    .megamenu-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .square-mega-3col::-webkit-scrollbar-thumb,
+    .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 999px;
+    }
+    [data-theme="dark"] .square-mega-3col::-webkit-scrollbar-thumb,
+    [data-theme="dark"] .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+
+  .square-dropdown-sm {
+    width: 340px;
+    left: -20px;
+  }
+
+  .mega-dropdown-inner {
+    background: #ffffff;
+    border: 1px solid #E3D9C1;
+    border-radius: 20px;
+    box-shadow: 0 20px 45px -10px rgba(42, 36, 25, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  [data-theme="dark"] .mega-dropdown-inner {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .mega-3col-wrapper {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 24px;
+    padding: 28px 32px;
+    box-sizing: border-box;
+  }
+
+  .mega-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #E3D9C1;
+    padding-right: 24px;
+  }
+
+  [data-theme="dark"] .mega-col-left {
+    border-right-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sq-cat-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Fraunces', 'Space Grotesk', serif;
+    color: #94a3b8;
+    padding: 4px 0;
+    cursor: pointer;
+    line-height: 1.2;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .sq-cat-btn:hover,
+  .sq-cat-btn.active {
+    color: #2A2419;
+    transform: translateX(4px);
+  }
+
+  [data-theme="dark"] .sq-cat-btn:hover,
+  [data-theme="dark"] .sq-cat-btn.active {
+    color: #f8fafc;
+  }
+
+  .sq-all-types-link {
+    font-size: 13px;
+    color: #6B6152;
+    text-decoration: none;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #E3D9C1;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  [data-theme="dark"] .sq-all-types-link {
+    color: #94a3b8;
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sq-all-types-link:hover {
+    color: #3F5D42;
+  }
+
+  [data-theme="dark"] .sq-all-types-link:hover {
+    color: #818cf8;
+  }
+
+  .mega-col-middle {
+    min-width: 0;
+  }
+
+  .mega-sub-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6B6152;
+    margin-bottom: 14px;
+  }
+
+  [data-theme="dark"] .mega-sub-header {
+    color: #94a3b8;
+  }
+
+  .sq-tab-content {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sq-tab-content.active {
+    display: flex;
+  }
+
+  .sq-disc-item {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #2A2419;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    line-height: 1.35;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .sq-disc-item {
+    color: #e2e8f0;
+  }
+
+  .sq-disc-item:hover {
+    background: #E7EEE4;
+    color: #3F5D42;
+    transform: translateX(3px);
+  }
+
+  [data-theme="dark"] .sq-disc-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+  }
+
+  .sq-disc-primary strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2A2419;
+  }
+
+  [data-theme="dark"] .sq-disc-primary strong {
+    color: #f8fafc;
+  }
+
+  .mega-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 1px solid #E3D9C1;
+    padding-left: 20px;
+    padding-right: 8px;
+  }
+
+  [data-theme="dark"] .mega-col-right {
+    border-left-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sq-cap-item {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #6B6152;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    line-height: 1.35;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .sq-cap-item {
+    color: #94a3b8;
+  }
+
+  .sq-cap-item:hover {
+    background: #E7EEE4;
+    color: #3F5D42;
+    transform: translateX(3px);
+  }
+
+  [data-theme="dark"] .sq-cap-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+  }
+
+  .mega-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+  }
+
+  .square-sub-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .square-sub-item:hover {
+    background: #E7EEE4;
+    transform: translateX(4px);
+  }
+
+  [data-theme="dark"] .square-sub-item:hover {
+    background: rgba(99, 102, 241, 0.15);
+  }
+
+  .square-sub-item strong {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #2A2419;
+    margin-bottom: 2px;
+  }
+
+  [data-theme="dark"] .square-sub-item strong {
+    color: #f8fafc;
+  }
+
+  .square-sub-item span {
+    font-size: 11.5px;
+    color: #6B6152;
+  }
+
+  [data-theme="dark"] .square-sub-item span {
+    color: #94a3b8;
+  }
+
+
+    
+/* ══════════════════════════════════════════════════════════
+   MOBILE DRAWER & HAMBURGER SYSTEM
+══════════════════════════════════════════════════════════ */
+.mobile-drawer {
+  display: none !important;
+}
+
+.hamburger {
+  display: none !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 5px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: transparent !important;
+  border: 1px solid var(--border-color, #e2e8f0) !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.hamburger span {
+  display: block !important;
+  width: 20px !important;
+  height: 2px !important;
+  background: var(--text-main, #0f172a) !important;
+  border-radius: 2px !important;
+  transition: all 0.25s ease !important;
+}
+
+[data-theme="dark"] .hamburger span {
+  background: #f8fafc !important;
+}
+
+@media (max-width: 960px) {
+  .hamburger {
+    display: flex !important;
+  }
+
+  .mobile-drawer {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: #ffffff !important;
+    z-index: 999999 !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.28s;
+  }
+
+  .mobile-drawer.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  [data-theme="dark"] .mobile-drawer {
+    background: #0b1120 !important;
+    color: #f8fafc !important;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+    background: inherit;
+    z-index: 10;
+  }
+
+  [data-theme="dark"] .drawer-header {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .drawer-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #0f172a;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .drawer-back-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  [data-theme="dark"] .drawer-back-btn {
+    color: #f8fafc;
+  }
+
+  .drawer-header-title {
+    font-family: var(--font-heading, 'Inter', sans-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-main, #0f172a);
+    text-align: center;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 8px;
+  }
+
+  .drawer-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.04);
+    border: none;
+    border-radius: 50%;
+    color: #0f172a;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .drawer-close-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+  }
+
+  .drawer-close-btn:active {
+    transform: scale(0.92);
+  }
+
+  .drawer-viewport {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .drawer-panel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.35s;
+  }
+
+  .drawer-panel.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  .drawer-panel.parent-out {
+    transform: translateX(-30%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .drawer-panel-scroll {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 24px 20px 48px;
+  }
+
+  .drawer-panel-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    margin-bottom: 16px;
+    padding-left: 4px;
+  }
+
+  [data-theme="dark"] .drawer-panel-eyebrow {
+    color: #94a3b8;
+  }
+
+  .drawer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .drawer-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 14px;
+    font-family: var(--font-heading, 'Inter', sans-serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.12s ease;
+    box-sizing: border-box;
+  }
+
+  [data-theme="dark"] .drawer-nav-item {
+    color: #f8fafc;
+  }
+
+  .drawer-nav-item:active {
+    background: rgba(0, 0, 0, 0.04);
+    transform: scale(0.985);
+  }
+
+  [data-theme="dark"] .drawer-nav-item:active {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .drawer-chevron {
+    font-size: 22px;
+    font-weight: 400;
+    color: #94a3b8;
+    line-height: 1;
+  }
+
+  .drawer-nav-list.compact .drawer-nav-item {
+    font-size: 16.5px;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+  }
+
+  [data-theme="dark"] .drawer-nav-list.compact .drawer-nav-item {
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+  }
+
+  .drawer-nav-item.strong {
+    font-weight: 700;
+    color: var(--primary, #3F5D42);
+  }
+
+  .drawer-nav-item.highlight {
+    color: var(--primary, #3F5D42);
+    font-weight: 700;
+  }
+
+  .drawer-divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.06);
+    margin: 24px 0 20px;
+  }
+
+  [data-theme="dark"] .drawer-divider {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .drawer-utility-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 8px;
+    margin-bottom: 28px;
+  }
+
+  .drawer-sublink {
+    font-size: 15px;
+    font-weight: 600;
+    color: #64748b;
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    padding: 6px 0;
+    transition: color 0.15s ease;
+  }
+
+  [data-theme="dark"] .drawer-sublink {
+    color: #94a3b8;
+  }
+
+  .drawer-sublink:hover,
+  .drawer-sublink:active {
+    color: var(--primary, #3F5D42);
+  }
+
+  .drawer-bottom-cta {
+    padding: 0 4px;
+  }
+
+  .drawer-btn-cta {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    border-radius: 14px !important;
+    background: var(--ink, #2A2419);
+    color: #FAF6EE;
+    text-decoration: none;
+  }
+
+  .drawer-solution-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .drawer-sol-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.02);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  [data-theme="dark"] .drawer-sol-card {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .drawer-sol-card.active {
+    border-color: rgba(37, 99, 235, 0.3);
+    background: rgba(37, 99, 235, 0.06);
+  }
+
+  .drawer-sol-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+  }
+
+  [data-theme="dark"] .drawer-sol-icon {
+    background: #1e293b;
+    color: #f8fafc;
+  }
+
+  .drawer-sol-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .drawer-sol-info strong {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  [data-theme="dark"] .drawer-sol-info strong {
+    color: #f8fafc;
+  }
+
+  .drawer-sol-info span {
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  [data-theme="dark"] .drawer-sol-info span {
+    color: #94a3b8;
+  }
+}
+
+
     .hero-scroll-track {
       position: relative;
       height: 180vh;
@@ -712,7 +1722,7 @@
       opacity: 0;
       visibility: hidden;
       transform: translateY(8px);
-      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
       z-index: 2000;
       pointer-events: none;
     }
@@ -730,11 +1740,37 @@
       transform: translateY(0) !important;
       pointer-events: auto !important;
     }
-    .square-mega-3col {
-      width: 980px;
-      max-width: calc(100vw - 32px);
-      left: -140px;
-    }
+    /* Centered Mega-Dropdown (Business types) */
+  .square-mega-3col {
+    position: fixed !important;
+    top: 68px !important;
+    left: 50% !important;
+    right: auto !important;
+    width: 960px !important;
+    max-width: calc(100vw - 32px) !important;
+    transform: translateX(-50%) translateY(10px) !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+  }
+
+  .square-mega-3col::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -24px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 36px !important;
+  }
+
+  .nav-item-dropdown:hover .square-mega-3col,
+  .nav-item-dropdown.open .square-mega-3col,
+  .nav-item-dropdown.pinned .square-mega-3col {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+    pointer-events: auto !important;
+    display: block !important;
+  }
     .square-dropdown-sm {
       width: 340px;
       left: -20px;
@@ -1155,29 +2191,36 @@ body {
 
 
 
-    <header class="site-nav-header">
-    <div class="site-nav-container">
-      <a href="/" class="brand-logo-area">
-        <div class="brand-logo-badge" style="background:transparent; border:none; padding:0; box-shadow:none; width:34px; height:34px;"><img src="assets/logo.svg" alt="PriyuLabs" style="width:100%; height:100%; object-fit:contain; border-radius:6px;" /></div>
-        <div class="brand-text-block">
-          <div class="brand-title">PRIYULABS</div>
-          <div class="brand-sub">DIGITAL MARKETING</div>
+      <!-- ══════════════════════════════════════════════════════════
+       NAVBAR — PRIYULABS DIGITAL MARKETING
+  ══════════════════════════════════════════════════════════ -->
+  <header id="navbar">
+    <div class="nav">
+      <a href="/index.html#core-capabilities" class="logo" aria-label="Priyulabs Digital Marketing Home">
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">PRIYULABS</span>
+          <span class="logo-subtitle">DIGITAL MARKETING</span>
         </div>
       </a>
-
-      <ul class="nav-links-list">
+      <ul class="nav-links" id="navLinks">
         <!-- 1. Business types Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span class="drop-arrow">&#9662;</span></a>
+        <li class="nav-item nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-btn dropdown-trigger">Business types <span class="nav-arrow">&#9662;</span></a>
           <div class="mega-dropdown square-mega-3col">
             <div class="mega-dropdown-inner mega-3col-wrapper">
 
               <!-- Column 1: Left Categories Tabs -->
               <div class="mega-col-left">
-                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')" onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
-                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
-                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
-                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')"
+                  onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')"
+                  onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')"
+                  onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
+                  onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="all-business-types.html" class="sq-all-types-link">All business types &rarr;</a>
               </div>
 
               <!-- Column 2: Discover (Specific Business Types) -->
@@ -1194,8 +2237,10 @@ body {
                 </div>
 
                 <div class="sq-tab-content" id="tab-retail">
-                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
-                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana Stores</a>
+                  <a href="/grocery-supermarkets-kirana"
+                    class="sq-disc-item sq-disc-primary"><strong>Overview</strong></a>
+                  <a href="/grocery-supermarkets-kirana" class="sq-disc-item">Grocery, Supermarkets &amp; Kirana
+                    Stores</a>
                   <a href="/electronics-mobile-shops" class="sq-disc-item">Electronics &amp; Mobile Shops</a>
                   <a href="/footwear-leather-stores" class="sq-disc-item">Footwear &amp; Leather Stores</a>
                   <a href="/jewellery-shops" class="sq-disc-item">Jewellery Showrooms &amp; Bullion</a>
@@ -1220,13 +2265,14 @@ body {
               <!-- Column 3: Capabilities -->
               <div class="mega-col-right">
                 <div class="mega-sub-header">Capabilities</div>
-                <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="/pos" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
                 <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
-                <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
-                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
-                <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
-                <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
+                <a href="/pos" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="/complete-management-system" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/complete-management-system" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="/pos" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="/complete-management-system" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry
+                  Shield</a>
               </div>
 
             </div>
@@ -1234,8 +2280,8 @@ body {
         </li>
 
         <!-- 2. Solutions Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger active">Solutions <span class="drop-arrow">&#9662;</span></a>
+        <li class="nav-item nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-btn dropdown-trigger">Solutions <span class="nav-arrow">&#9662;</span></a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
@@ -1260,27 +2306,229 @@ body {
           </div>
         </li>
 
-        <!-- 2B. Hospitality Tech -->
-        <li>
-          <a href="/hospitality" class="nav-link-title" onclick="openComingSoonModal('Hospitality Tech', event)">
-            Hospitality Tech <span class="nav-soon-pill">Soon</span>
-          </a>
-        </li>
-
         <!-- 3. Pricing -->
-        <li><a href="#growth-consultation" onclick="event.preventDefault(); (document.querySelector('#growth-consultation') || document.getElementById('growth-consultation') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">Pricing</a></li>
+        <li class="nav-item"><a href="/index.html#contact" class="nav-link-btn">Pricing</a></li>
       </ul>
-
       <div class="nav-right-actions">
-        <a href="/#cta" class="flat-contact-btn">
-          <svg viewBox="0 0 24 24">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.112-.516-1.748-.724-2.885-2.52-2.973-2.637-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.058.376-.058c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.42-.099.825zm-3.423-10.416c-5.523 0-10 4.477-10 10 0 1.761.458 3.414 1.258 4.857l-1.336 4.887 5.006-1.314c1.401.764 3.003 1.2 4.695 1.2 5.522 0 10-4.477 10-10s-4.478-10-9.623-10z"/>
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          Talk to Sales
-        </a>
+          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="/index.html#contact" class="nav-cta">Talk to Sales</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="openMobileDrawer()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <!-- Top Header Bar inside Drawer -->
+    <div class="drawer-header">
+      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span class="drawer-back-text">Back</span>
+      </button>
+      <div class="drawer-header-title" id="drawerHeaderTitle">Menu</div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sliding Viewport Container -->
+    <div class="drawer-viewport" id="drawerViewport">
+
+      <!-- ════ LEVEL 1: MAIN MENU ════ -->
+      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
+        <div class="drawer-panel-scroll">
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
+              <span>Business types</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelSolutions">
+              <span>Solutions</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="/index.html#contact" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Pricing</span>
+            </a>
+          </nav>
+
+          <div class="drawer-divider"></div>
+
+          <div class="drawer-utility-links">
+            <a href="all-business-types.html" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
+            <a href="/index.html#contact" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
+          </div>
+
+          <div class="drawer-bottom-cta">
+            <a href="/index.html#contact" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
+      <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
+        data-title="Business types">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Select Industry Category</div>
+          <nav class="drawer-nav-list">
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
+              <span>Food &amp; Beverage</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
+              <span>Retail</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
+              <span>Beauty &amp; Fashion</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
+              <span>Services</span>
+              <span class="drawer-chevron">›</span>
+            </button>
+            <a href="/business-types" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
+              <span>View All Business Types →</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
+      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
+        data-title="Solutions">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Products &amp; Architecture</div>
+          <nav class="drawer-nav-list">
+            <a href="/pos" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Smart POS Billing</span>
+            </a>
+            <a href="/complete-management-system" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Complete Management System</span>
+            </a>
+            <a href="/website-builder" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Custom Website Building</span>
+            </a>
+            <a href="/digital-marketing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
+              <span>Digital Marketing &amp; Ads</span>
+            </a>
+            
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: FOOD & BEVERAGE SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Food &amp; Beverage">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Food &amp; Beverage Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Restaurants &amp; Fine Dining</span></a>
+            <a href="/qsr-fast-food" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>QSR, Fast
+                Food &amp; Takeaway</span></a>
+            <a href="/cafes-chai-bars" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>Cafes
+                &amp; Chai Bars</span></a>
+            <a href="/cloud-kitchens-catering" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Cloud Kitchens &amp; Catering</span></a>
+            <a href="/bakeries-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bakeries &amp; Patisseries</span></a>
+            <a href="/bars-pubs-breweries" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bars, Pubs &amp; Breweries</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: RETAIL SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Retail">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Retail Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Grocery, Supermarkets &amp; Kirana Stores</span></a>
+            <a href="/electronics-mobile-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Electronics &amp; Mobile Shops</span></a>
+            <a href="/footwear-leather-stores" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Footwear &amp; Leather Stores</span></a>
+            <a href="/jewellery-shops" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Jewellery Showrooms &amp; Bullion</span></a>
+            <a href="/watch-stores" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Watch Stores &amp; Horology Boutiques</span></a>
+            <a href="/bookstores-stationery" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Bookstores &amp; Stationery Outlets</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: BEAUTY & FASHION SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Beauty &amp; Fashion">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Clothing Brands &amp; Apparel Boutiques</span></a>
+            <a href="/beauty-fashion/salons" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Salons, Spas &amp; Beauty Parlors</span></a>
+            <a href="/beauty-fashion/cosmetics" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Cosmetics &amp; Skincare Stores</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3: SERVICES SECTORS ════ -->
+      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness"
+        data-title="Services">
+        <div class="drawer-panel-scroll">
+          <div class="drawer-panel-eyebrow">Services Sectors</div>
+          <nav class="drawer-nav-list">
+            <a href="/services/gyms" class="drawer-nav-item drawer-link highlight"
+              onclick="closeMobileDrawer()"><span>Overview</span></a>
+            <a href="/services/gyms" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Gyms, Fitness Studios &amp; Yoga Centers</span></a>
+            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link"
+              onclick="closeMobileDrawer()"><span>Dry Cleaners &amp; Laundry Shops</span></a>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 
   <div class="hero-scroll-track" id="heroTrack">
     <div class="hero-sticky-frame">
@@ -2038,5 +3286,146 @@ body {
     }
   </script>
 
+  <script src="script.js"></script>
+  <script src="version.js"></script>
+  <!-- ══════════════════════════════════════════════════════════
+       UNIVERSAL EDITORIAL FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="priyulabs-universal-footer" style="padding: 72px 0 36px; border-top: 2px solid #D4C3A3; margin-top: 80px; background: #F1E8D5 !important; box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08); position: relative; z-index: 10; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; text-align: left; color: #383023;">
+    <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+      <div class="foot-grid" style="display: grid; grid-template-columns: 1.3fr 1fr 1.1fr 1fr; gap: 36px; text-align: left;">
+        <div>
+          <div class="logo" style="display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A150D;">
+            <img src="/assets/logo.svg" alt="PriyuLabs" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/logo.svg';}" style="height: 28px; width: 28px; object-fit: contain; border-radius: 7px; display: inline-block;" />
+            <span>PriyuLabs</span>
+          </div>
+          <p class="foot-brand-desc" style="margin-top: 14px; color: #383023; font-size: 14.5px; font-weight: 500; line-height: 1.6; max-width: 290px; text-align: left;">India's AI retail OS — POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
+        </div>
+        <div>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Solutions <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="/pos" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Smart POS</a></li>
+            <li><a href="/complete-management-system" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Management System</a></li>
+            <li><a href="/website-builder" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Website Building</a></li>
+            <li><a href="/digital-marketing" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Digital Marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Business Types <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="/restaurants-fine-dining" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Restaurants &amp; Cafes</a></li>
+            <li><a href="/grocery-supermarkets-kirana" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Grocery &amp; Supermarkets</a></li>
+            <li><a href="/beauty-fashion/apparel" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Clothing &amp; Boutiques</a></li>
+            <li><a href="/electronics-mobile-shops" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Electronics &amp; Mobiles</a></li>
+            <li><a href="/beauty-fashion/salons" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Salons &amp; Spas</a></li>
+            <li><a href="/footwear-leather-stores" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Footwear &amp; Leather</a></li>
+            <li><a href="/all-business-types.html" style="font-size: 14.5px; font-weight: 600; color: #B8863B; text-decoration: none; transition: all .2s ease;">All Business Types &rarr;</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Contact <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="mailto:priylabspos@gmail.com" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">priylabspos@gmail.com</a></li>
+            <li><a href="tel:+917873844050" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none;">+91 78738 44050</a> / <a href="tel:+917205045905" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none;">+91 72050 45905</a></li>
+            <li class="foot-address" style="font-size: 14.5px; font-weight: 600; color: #383023; line-height: 1.4;">Basisthanagar, Bhubaneswar, Odisha</li>
+          </ul>
+        </div>
+      </div>
+      <!-- National Pride: Make in India & Ashoka Stambha MSME Emblems -->
+      <div class="footer-national-emblems-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
+          <!-- Make in India Lion Logo -->
+          <img src="/Made in india logo.png" alt="Make in India" class="foot-make-in-india-logo" style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='Made in india logo.png';}" />
+          <!-- Ashoka Stambha MSME Emblem -->
+          <img src="/image_4.png" alt="Ashoka Stambha MSME Government of India" class="foot-msme-emblem" style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}" />
+          <!-- Secure SSL Encryption Emblem -->
+          <img src="/sequre ssl.jpg" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem" style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='sequre ssl.jpg';}" />
+        </div>
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: #B8863B; text-transform: uppercase;">GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
+        <div style="font-size: 12px; font-family: monospace; color: #6B6152; margin-top: 3px;">MSME REGISTERED: UDYAM-OD-19-0177979</div>
+      </div>
+      <div class="foot-bottom" style="margin-top: 52px; padding-top: 24px; border-top: 1.5px solid #D4C3A3; font-size: 13.5px; font-weight: 600; color: #4A4030; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <span>© 2026 Priyulabs Software. All rights reserved.</span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08); padding: 3px 10px; border-radius: 9999px; font-size: 11.5px; font-family: ui-monospace, monospace; color: #4a4030;">
+          <span class="version-pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
+          <span class="foot-version" id="siteVersion">v2.4.68</span>
+        </span>
+        <span>UDYAM-OD-19-0177979</span>
+      </div>
+    </div>
+  </footer>
+<script>
+  // Toggle "Business types" / "Solutions" dropdown on click (Click-to-Pin)
+  (function initDropdownClickHandlers() {
+
+  // Megamenu dynamic viewport centering helper
+  function alignMegaMenuToCenter() {
+    var megas = document.querySelectorAll('.square-mega-3col, .megamenu-content');
+    if (!megas.length) return;
+    var header = document.querySelector('header') || document.querySelector('.header') || document.querySelector('.nav') || document.querySelector('.nav-container');
+    var headerBottom = 70;
+    if (header) {
+      var rect = header.getBoundingClientRect();
+      if (rect.bottom > 0) headerBottom = rect.bottom;
+    }
+    var topVal = Math.round(headerBottom + 4) + 'px';
+    megas.forEach(function (menu) {
+      menu.style.position = 'fixed';
+      menu.style.top = topVal;
+      menu.style.left = '50%';
+      menu.style.right = 'auto';
+    });
+  }
+  alignMegaMenuToCenter();
+  document.querySelectorAll('.nav-item-dropdown').forEach(function(item) {
+    item.addEventListener('mouseenter', alignMegaMenuToCenter, { passive: true });
+  });
+  window.addEventListener('resize', alignMegaMenuToCenter, { passive: true });
+  window.addEventListener('scroll', alignMegaMenuToCenter, { passive: true });
+
+    document.querySelectorAll('.nav-item-dropdown .dropdown-trigger, .nav-item-dropdown > a, .nav-item-dropdown > span, .nav-item-dropdown > button').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        var parent = trigger.closest('.nav-item-dropdown');
+        if (!parent) return;
+        var hasDropdown = parent.querySelector('.mega-dropdown, .square-dropdown-sm');
+        if (hasDropdown) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isPinned = parent.classList.contains('pinned');
+          document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+            item.classList.remove('open', 'pinned');
+          });
+          if (!isPinned) {
+            alignMegaMenuToCenter(); parent.classList.add('open', 'pinned');
+          }
+        }
+      });
+    });
+
+    // Close when clicking any link inside dropdown
+    document.querySelectorAll('.mega-dropdown a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+          item.classList.remove('open', 'pinned');
+        });
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+          item.classList.remove('open', 'pinned');
+        });
+      }
+    });
+  })();
+</script>
 </body>
 </html>

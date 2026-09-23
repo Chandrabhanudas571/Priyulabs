@@ -35,6 +35,24 @@ export function DryCleanersLaundryPage() {
             Waterproof barcode tags, defect/stain documentation at drop-off counter, live washing-to-pressing stages, automated pickup ready WhatsApp alerts, and route-wise home delivery.
           </p>
 
+          {/* Hero Actions */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/#free-trial"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-slate-800"
+            >
+              Start Free Trial
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#laundry-features"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-bold text-slate-800 shadow-xs transition hover:bg-slate-50"
+            >
+              <Zap className="h-4 w-4 text-blue-600 fill-blue-600" />
+              See Laundry Billing Speed
+            </a>
+          </div>
+
           {/* Standardized 4-Pillar Solution Strip (Names only, no descriptions) */}
           <div className="mx-auto mt-8 mb-12 flex max-w-4xl flex-wrap items-center justify-center gap-3.5 rounded-2xl border border-slate-200/80 bg-white/80 px-6 py-3.5 text-xs font-semibold text-slate-700 shadow-xs backdrop-blur-sm sm:text-[13.5px]">
             <span>Drop-off Counter POS</span>

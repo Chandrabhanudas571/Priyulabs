@@ -50,13 +50,13 @@
       scroll-behavior: smooth;
       width: 100%;
       max-width: 100%;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     body {
       width: 100%;
       max-width: 100%;
-      overflow-x: hidden;
+      overflow-x: clip; padding-top: 68px;
     }
 
     #what-we-build,
@@ -2272,18 +2272,18 @@
   header,
   header#navbar,
   nav.navbar {
-    position: sticky !important;
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    z-index: 500 !important;
-    background: rgba(250, 246, 238, 0.72) !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background: rgba(250, 246, 238, 0.92) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border-bottom: 1px solid var(--line, #E3D9C1) !important;
     padding: 0 !important;
-    box-shadow: none !important;
-    width: 100% !important;
+    box-shadow: 0 2px 12px rgba(42, 36, 25, 0.06) !important;
   }
 
   [data-theme="dark"] header,
@@ -2337,8 +2337,10 @@
     height: 32px !important;
     width: 32px !important;
     object-fit: contain !important;
-    border-radius: 8px !important;
     display: inline-block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .logo-text-group {
@@ -2396,11 +2398,11 @@
   .nav-link-title {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 5px !important;
-    font-size: 14.5px !important;
-    font-weight: 500 !important;
-    font-family: 'Inter', sans-serif !important;
-    color: var(--ink-soft, #6B6152) !important;
+    gap: 6px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
+    color: var(--ink, #1e293b) !important;
     padding: 8px 0 !important;
     cursor: pointer !important;
     text-decoration: none !important;
@@ -2417,7 +2419,7 @@
 
   [data-theme="dark"] .nav-link-btn,
   [data-theme="dark"] .nav-link-title {
-    color: #94a3b8 !important;
+    color: #f1f5f9 !important;
   }
 
   [data-theme="dark"] .nav-link-btn:hover,
@@ -2636,7 +2638,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
     z-index: 1000;
     pointer-events: none;
     padding-top: 12px;
@@ -2652,20 +2654,98 @@
     height: 24px;
   }
 
-  .nav-item-dropdown:hover .mega-dropdown,
-  .nav-item-dropdown.open .mega-dropdown,
-  .nav-item-dropdown.pinned .mega-dropdown {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-    pointer-events: auto !important;
-  }
+  
+    /* Generic small dropdowns (e.g. Solutions) */
+    .nav-item-dropdown:hover .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.open .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.pinned .mega-dropdown:not(.square-mega-3col):not(.megamenu-content) {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
 
-  .square-mega-3col {
-    width: 960px;
-    max-width: calc(100vw - 32px);
-    left: -140px;
-  }
+    /* ══════════════════════════════════════════════════════════
+       PERFECTLY CENTERED MEGAMENU (.square-mega-3col, .megamenu-content)
+       ══════════════════════════════════════════════════════════ */
+    .square-mega-3col,
+    .mega-dropdown.square-mega-3col,
+    .megamenu-content {
+      position: fixed !important;
+      top: 70px !important;
+      left: 50% !important;
+      right: auto !important;
+      width: 960px !important;
+      max-width: calc(100vw - 32px) !important;
+      max-height: calc(100vh - 88px) !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overscroll-behavior: contain !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      z-index: 1200 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateX(-50%) translateY(8px) !important;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out !important;
+    }
+
+    /* Seamless mouse hover bridge */
+    .square-mega-3col::before,
+    .mega-dropdown.square-mega-3col::before,
+    .megamenu-content::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -24px !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 32px !important;
+      pointer-events: auto !important;
+    }
+
+    /* Active / Open / Hover state: always centered with smooth 0.4s fade and 8px slide */
+    .nav-item-dropdown:hover .square-mega-3col,
+    .nav-item-dropdown.open .square-mega-3col,
+    .nav-item-dropdown.pinned .square-mega-3col,
+    .nav-item-dropdown:hover .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.open .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.pinned .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown:hover .megamenu-content,
+    .nav-item-dropdown.open .megamenu-content,
+    .nav-item-dropdown.pinned .megamenu-content,
+    .square-mega-3col.open,
+    .square-mega-3col.active,
+    .megamenu-content.open,
+    .megamenu-content.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    /* Custom modern scrollbar for megamenu overflow */
+    .square-mega-3col::-webkit-scrollbar,
+    .megamenu-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .square-mega-3col::-webkit-scrollbar-track,
+    .megamenu-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .square-mega-3col::-webkit-scrollbar-thumb,
+    .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 999px;
+    }
+    [data-theme="dark"] .square-mega-3col::-webkit-scrollbar-thumb,
+    [data-theme="dark"] .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
 
   .square-dropdown-sm {
     width: 340px;
@@ -3102,9 +3182,12 @@ body {
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 500;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 1000 !important;
       background: rgba(250, 246, 238, 0.92) !important;
       backdrop-filter: blur(16px) !important;
       -webkit-backdrop-filter: blur(16px) !important;
@@ -3122,7 +3205,7 @@ body {
       opacity: 0;
       visibility: hidden;
       transform: translateY(10px);
-      transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
       z-index: 1000;
       pointer-events: none;
       padding-top: 12px;
@@ -3629,7 +3712,7 @@ body {
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle">DIGITAL</span>
+          <span class="logo-subtitle">CUSTOM WEBSITE BUILDER</span>
         </div>
       </a>
       <ul class="nav-links" id="navLinks">
@@ -3737,9 +3820,6 @@ body {
 
         <!-- 3. Pricing -->
         <li class="nav-item"><a href="/index.html#contact" class="nav-link-btn">Pricing</a></li>
-
-        <!-- 4. What's new -->
-        <li class="nav-item"><a href="/index.html#core-capabilities" class="nav-link-btn">What's new</a></li>
       </ul>
       <div class="nav-right-actions">
         <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
@@ -3758,7 +3838,6 @@ body {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button type="button" class="nav-cta-ghost" id="navDemoBtn" onclick="openDemoModal()">&#10022; Interactive Demo</button>
         <a href="/index.html#contact" class="nav-cta">Start Your Project</a>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="openMobileDrawer()">
           <span></span><span></span><span></span>
@@ -3809,17 +3888,12 @@ body {
             <a href="/index.html#contact" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
               <span>Pricing</span>
             </a>
-            <a href="/index.html#core-capabilities" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>What's new</span>
-            </a>
           </nav>
 
           <div class="drawer-divider"></div>
 
           <div class="drawer-utility-links">
             <a href="all-business-types.html" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive
-              Demo &amp; Portfolio</button>
             <a href="/index.html#contact" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
           </div>
 
@@ -4369,7 +4443,7 @@ body {
         <div class="wb-service-card-inner wb-service-flip-inner">
           <div class="wb-service-card-front wb-service-flip-front">
             <div>
-              <div class="wb-card-icon"></div>
+              <div class="wb-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9"></path><path d="M9 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path></svg></div>
               <h3 class="wb-service-title">WhatsApp Integration</h3>
               <p class="wb-service-desc">
                 Connect your website directly with customer conversations.
@@ -4859,49 +4933,74 @@ body {
   <!-- ══════════════════════════════════════════════════════════
        FOOTER
   ══════════════════════════════════════════════════════════ -->
-    <footer>
-    <div class="wrap">
-      <div class="foot-grid">
+      <!-- ══════════════════════════════════════════════════════════
+       UNIVERSAL EDITORIAL FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="priyulabs-universal-footer" style="padding: 72px 0 36px; border-top: 2px solid #D4C3A3; margin-top: 80px; background: #F1E8D5 !important; box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08); position: relative; z-index: 10; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; text-align: left; color: #383023;">
+    <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+      <div class="foot-grid" style="display: grid; grid-template-columns: 1.3fr 1fr 1.1fr 1fr; gap: 36px; text-align: left;">
         <div>
-          <div class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
-              style="height:28px; width:28px; object-fit:contain; border-radius:7px; display:inline-block;" /><span>PriyuLabs</span>
+          <div class="logo" style="display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A150D;">
+            <img src="/assets/logo.svg" alt="PriyuLabs" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/logo.svg';}" style="height: 28px; width: 28px; object-fit: contain; border-radius: 7px; display: inline-block;" />
+            <span>PriyuLabs</span>
           </div>
-          <p class="foot-brand-desc">India's AI retail OS —
-            POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
+          <p class="foot-brand-desc" style="margin-top: 14px; color: #383023; font-size: 14.5px; font-weight: 500; line-height: 1.6; max-width: 290px; text-align: left;">India's AI retail OS — POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
         </div>
         <div>
-          <h5>Solutions</h5>
-          <ul>
-            <li><a href="/pos">Smart POS</a></li>
-            <li><a href="/complete-management-system">Management System</a></li>
-            <li><a href="/website-builder">Website Building</a></li>
-            <li><a href="/digital-marketing">Digital Marketing</a></li>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Solutions <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="/pos" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Smart POS</a></li>
+            <li><a href="/complete-management-system" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Management System</a></li>
+            <li><a href="/website-builder" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Website Building</a></li>
+            <li><a href="/digital-marketing" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Digital Marketing</a></li>
           </ul>
         </div>
         <div>
-          <h5>Business Types</h5>
-          <ul>
-            <li><a href="/restaurants-fine-dining">Restaurants &amp; Cafes</a></li>
-            <li><a href="/grocery-supermarkets-kirana">Grocery &amp; Supermarkets</a></li>
-            <li><a href="/beauty-fashion/apparel">Clothing &amp; Boutiques</a></li>
-            <li><a href="/electronics-mobile-shops">Electronics &amp; Mobiles</a></li>
-            <li><a href="/beauty-fashion/salons">Salons &amp; Spas</a></li>
-            <li><a href="/footwear-leather-stores">Footwear &amp; Leather</a></li>
-            <li><a href="all-business-types.html" style="font-weight:600; color:var(--accent);">All Business Types
-                &rarr;</a></li>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Business Types <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="/restaurants-fine-dining" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Restaurants &amp; Cafes</a></li>
+            <li><a href="/grocery-supermarkets-kirana" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Grocery &amp; Supermarkets</a></li>
+            <li><a href="/beauty-fashion/apparel" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Clothing &amp; Boutiques</a></li>
+            <li><a href="/electronics-mobile-shops" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Electronics &amp; Mobiles</a></li>
+            <li><a href="/beauty-fashion/salons" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Salons &amp; Spas</a></li>
+            <li><a href="/footwear-leather-stores" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Footwear &amp; Leather</a></li>
+            <li><a href="/all-business-types.html" style="font-size: 14.5px; font-weight: 600; color: #B8863B; text-decoration: none; transition: all .2s ease;">All Business Types &rarr;</a></li>
           </ul>
         </div>
         <div>
-          <h5>Contact</h5>
-          <ul>
-            <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
-            <li><a href="tel:+917873844050">+91 78738 44050</a> / <a href="tel:+917205045905">+91 72050 45905</a></li>
-            <li class="foot-address">Basisthanagar, Bhubaneswar, Odisha</li>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Contact <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="mailto:priylabspos@gmail.com" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">priylabspos@gmail.com</a></li>
+            <li><a href="tel:+917873844050" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none;">+91 78738 44050</a> / <a href="tel:+917205045905" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none;">+91 72050 45905</a></li>
+            <li class="foot-address" style="font-size: 14.5px; font-weight: 600; color: #383023; line-height: 1.4;">Basisthanagar, Bhubaneswar, Odisha</li>
           </ul>
         </div>
       </div>
-      <div class="foot-bottom">
+      <!-- National Pride: Make in India & Ashoka Stambha MSME Emblems -->
+      <div class="footer-national-emblems-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
+          <!-- Make in India Lion Logo -->
+          <img src="/Made in india logo.png" alt="Make in India" class="foot-make-in-india-logo" style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='Made in india logo.png';}" />
+          <!-- Ashoka Stambha MSME Emblem -->
+          <img src="/image_4.png" alt="Ashoka Stambha MSME Government of India" class="foot-msme-emblem" style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}" />
+          <!-- Secure SSL Encryption Emblem -->
+          <img src="/sequre ssl.jpg" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem" style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='sequre ssl.jpg';}" />
+        </div>
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: #B8863B; text-transform: uppercase;">GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
+        <div style="font-size: 12px; font-family: monospace; color: #6B6152; margin-top: 3px;">MSME REGISTERED: UDYAM-OD-19-0177979</div>
+      </div>
+      <div class="foot-bottom" style="margin-top: 52px; padding-top: 24px; border-top: 1.5px solid #D4C3A3; font-size: 13.5px; font-weight: 600; color: #4A4030; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08); padding: 3px 10px; border-radius: 9999px; font-size: 11.5px; font-family: ui-monospace, monospace; color: #4a4030;">
+          <span class="version-pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
+          <span class="foot-version" id="siteVersion">v2.4.68</span>
+        </span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
@@ -5360,6 +5459,74 @@ body {
     }
   </script>
 
+  <script src="version.js"></script>
+<script>
+  // Toggle "Business types" / "Solutions" dropdown on click (Click-to-Pin)
+  (function initDropdownClickHandlers() {
+
+  // Megamenu dynamic viewport centering helper
+  function alignMegaMenuToCenter() {
+    var megas = document.querySelectorAll('.square-mega-3col, .megamenu-content');
+    if (!megas.length) return;
+    var header = document.querySelector('header') || document.querySelector('.header') || document.querySelector('.nav') || document.querySelector('.nav-container');
+    var headerBottom = 70;
+    if (header) {
+      var rect = header.getBoundingClientRect();
+      if (rect.bottom > 0) headerBottom = rect.bottom;
+    }
+    var topVal = Math.round(headerBottom + 4) + 'px';
+    megas.forEach(function (menu) {
+      menu.style.position = 'fixed';
+      menu.style.top = topVal;
+      menu.style.left = '50%';
+      menu.style.right = 'auto';
+    });
+  }
+  alignMegaMenuToCenter();
+  document.querySelectorAll('.nav-item-dropdown').forEach(function(item) {
+    item.addEventListener('mouseenter', alignMegaMenuToCenter, { passive: true });
+  });
+  window.addEventListener('resize', alignMegaMenuToCenter, { passive: true });
+  window.addEventListener('scroll', alignMegaMenuToCenter, { passive: true });
+
+    document.querySelectorAll('.nav-item-dropdown .dropdown-trigger, .nav-item-dropdown > a, .nav-item-dropdown > span, .nav-item-dropdown > button').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        var parent = trigger.closest('.nav-item-dropdown');
+        if (!parent) return;
+        var hasDropdown = parent.querySelector('.mega-dropdown, .square-dropdown-sm');
+        if (hasDropdown) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isPinned = parent.classList.contains('pinned');
+          document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+            item.classList.remove('open', 'pinned');
+          });
+          if (!isPinned) {
+            alignMegaMenuToCenter(); parent.classList.add('open', 'pinned');
+          }
+        }
+      });
+    });
+
+    // Close when clicking any link inside dropdown
+    document.querySelectorAll('.mega-dropdown a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+          item.classList.remove('open', 'pinned');
+        });
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+          item.classList.remove('open', 'pinned');
+        });
+      }
+    });
+  })();
+</script>
 </body>
 
 </html>

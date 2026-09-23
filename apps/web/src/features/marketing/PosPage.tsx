@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { BarChart3, CloudOff, CreditCard, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { LeadSection } from './LeadSection';
 
 const fadeAnim = {
   initial: { opacity: 0, y: 16 },
@@ -28,9 +27,10 @@ export function PosPage() {
                 bi-directional Pine Labs EDC integration for zero cashier variance.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="#lead-form"
+                <a
+                  href="/#contact"
                   className="rounded-xl bg-indigo-600 px-6 py-3.5 font-bold text-white shadow-xl shadow-indigo-600/25 transition hover:bg-indigo-700"
-                 onClick={(e) => { e.preventDefault(); (document.querySelector('#lead-form') || document.getElementById('lead-form') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({ behavior: 'smooth' }); }}>
+                >
                   Request POS Hardware Kit
                 </a>
                 <Link
@@ -137,9 +137,7 @@ export function PosPage() {
         </div>
       </section>
 
-      <section id="lead-form">
-        <LeadSection title="Ready to upgrade your billing counter?" />
-      </section>
+      
     </div>
   );
 }

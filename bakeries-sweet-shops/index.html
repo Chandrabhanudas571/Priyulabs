@@ -1050,11 +1050,14 @@ body {
           <span
             style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
           <span
-            style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:#64748b; text-transform:uppercase; margin-top:2px;">DIGITAL</span>
+            style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:#B8863B; text-transform:uppercase; margin-top:2px;">BAKERIES & PATISSERIES</span>
         </div>
       </a>
 
       <ul class="clean-nav-links">
+        <li>
+          <a href="/" class="clean-nav-link" onclick="if(window.location.protocol==='file:'){event.preventDefault();const p=window.location.pathname.replace(/\\/g,'/');const idx=p.indexOf('/Antigravity/');if(idx!==-1){const rel=p.substring(idx+13);const d=rel.split('/').length-1;window.location.href=(d>0?'../'.repeat(d):'')+'index.html';}else{window.location.href='index.html';}}">Home</a>
+        </li>
         <li>
           <a href="javascript:void(0)" class="clean-nav-link active">Overview</a>
         </li>
@@ -1120,12 +1123,9 @@ body {
       <a href="/#free-trial" class="btn-solid-dark" style="padding: 14px 28px; font-size: 15px;">
         Get Started Today
       </a>
-      <button onclick="openVideoModal()" class="btn-outline-clean">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0f172a" stroke="currentColor" stroke-width="1">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-        View Bakery OS Demo
-      </button>
+      <a href="#pillars" class="btn-outline-clean" style="text-decoration: none;" onclick="event.preventDefault(); (document.querySelector('#pillars') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
+        View Bakery Features ↓
+      </a>
     </div>
 
     
@@ -1778,6 +1778,7 @@ body {
     })();
   </script>
 
+  <script src="../version.js"></script>
 </body>
 
 </html>

@@ -1914,6 +1914,27 @@ if (document.readyState === 'loading') {
   initMegaMenuHoverTabs();
 }
 
+// ─── MEGAMENU DYNAMIC VIEWPORT CENTERING & GLITCH PREVENTION ───────
+function alignMegaMenuToCenter() {
+  const megas = document.querySelectorAll('.square-mega-3col, .megamenu-content');
+  if (!megas.length) return;
+  const header = document.querySelector('header') || document.querySelector('.header') || document.querySelector('.nav') || document.querySelector('.nav-container');
+  let headerBottom = 70;
+  if (header) {
+    const rect = header.getBoundingClientRect();
+    if (rect.bottom > 0) {
+      headerBottom = rect.bottom;
+    }
+  }
+  const topVal = Math.round(headerBottom + 4) + 'px';
+  megas.forEach(menu => {
+    menu.style.position = 'fixed';
+    menu.style.top = topVal;
+    menu.style.left = '50%';
+    menu.style.right = 'auto';
+  });
+}
+
 // ─── DUAL-TRIGGER (HOVER-TO-PREVIEW & CLICK-TO-PIN) DROPDOWN HANDLERS ───────
 function initMegaMenuCloseHandlers() {
   function closeAllMenus() {
@@ -1925,18 +1946,27 @@ function initMegaMenuCloseHandlers() {
     });
   }
 
+  // Pre-align megamenus to center
+  alignMegaMenuToCenter();
+
+  // Align when mouse enters dropdown item
+  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+    item.addEventListener('mouseenter', alignMegaMenuToCenter, { passive: true });
+  });
+
   // Toggle "Business types ▾" / "Solutions ▾" dropdown on click (Click-to-Pin)
-  document.querySelectorAll('.nav-item-dropdown .dropdown-trigger, .nav-item-dropdown > a, .nav-item-dropdown > button').forEach(trigger => {
+  document.querySelectorAll('.nav-item-dropdown .dropdown-trigger, .nav-item-dropdown > a, .nav-item-dropdown > button, .nav-item-dropdown > span').forEach(trigger => {
     trigger.addEventListener('click', (e) => {
       const parent = trigger.closest('.nav-item-dropdown');
       if (!parent) return;
-      const hasDropdown = parent.querySelector('.mega-dropdown, .mega-menu-dropdown');
+      const hasDropdown = parent.querySelector('.mega-dropdown, .mega-menu-dropdown, .square-mega-3col, .megamenu-content');
       if (hasDropdown) {
         e.preventDefault();
         e.stopPropagation();
         const isPinned = parent.classList.contains('pinned');
         closeAllMenus();
         if (!isPinned) {
+          alignMegaMenuToCenter();
           parent.classList.add('open', 'pinned');
         }
       }
@@ -1959,7 +1989,7 @@ function initMegaMenuCloseHandlers() {
   });
 
   // Dismiss dropdown when clicking any sector/page link inside
-  document.querySelectorAll('.mega-dropdown a, .mega-menu-dropdown a, .types-menu-dropdown a').forEach(link => {
+  document.querySelectorAll('.mega-dropdown a, .mega-menu-dropdown a, .types-menu-dropdown a, .square-mega-3col a, .megamenu-content a').forEach(link => {
     link.addEventListener('click', () => {
       closeAllMenus();
     });
@@ -1971,6 +2001,10 @@ function initMegaMenuCloseHandlers() {
       closeAllMenus();
     }
   });
+
+  // Keep centered on window resize and scroll
+  window.addEventListener('resize', alignMegaMenuToCenter, { passive: true });
+  window.addEventListener('scroll', alignMegaMenuToCenter, { passive: true });
 }
 
 if (document.readyState === 'loading') {

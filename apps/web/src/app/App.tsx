@@ -24,11 +24,14 @@ import {
   WatchStoresPage,
 } from '../features/marketing/pages';
 import { NotFoundPage } from '../features/marketing/NotFoundPage';
+import { PriyuLabsPreloader } from '../components/PriyuLabsPreloader';
 
 export function App() {
   return (
-    <SiteLayout>
-      <Routes>
+    <>
+      <PriyuLabsPreloader />
+      <SiteLayout>
+        <Routes>
         {/* Core Application Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
@@ -277,5 +280,6 @@ export function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </SiteLayout>
+    </>
   );
 }

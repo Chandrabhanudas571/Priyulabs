@@ -6,7 +6,7 @@ import { InteractiveDemo } from '../features/marketing/InteractiveDemo';
 import { PolicyModal, type PolicyType } from './PolicyModal';
 
 const navLinks = [
-  { label: 'Platform', to: '/' },
+  { label: 'Home', to: '/' },
   { label: 'Business types', to: '/solutions' },
   { label: 'POS', to: '/pos' },
   { label: 'Hospitality Tech', to: '/hospitality' },
@@ -271,6 +271,12 @@ export function SiteLayout({ children }: PropsWithChildren) {
           <>
             {/* Center / Navigation Links */}
             <div className="hidden md:flex items-center gap-8 lg:gap-10">
+              <Link
+                to="/"
+                className="text-sm font-medium text-[#475569] hover:text-[#0f172a] dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer"
+              >
+                Home
+              </Link>
               <a
                 href="#"
                 className="text-sm font-semibold text-[#0f172a] dark:text-white cursor-pointer"
@@ -562,8 +568,8 @@ export function SiteLayout({ children }: PropsWithChildren) {
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.15 }}
-                          className="absolute left-1/2 top-full z-50 mt-3 w-[720px] -translate-x-1/2 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900"
+                          transition={{ duration: 0.4, ease: "easeOut" }}
+                          className="fixed left-1/2 top-[70px] z-50 w-[720px] max-w-[calc(100vw-32px)] max-h-[calc(100vh-88px)] overflow-y-auto -translate-x-1/2 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900"
                         >
                           <div className="grid grid-cols-12 gap-5">
                             {/* Category Selector Tabs */}
@@ -800,50 +806,121 @@ export function SiteLayout({ children }: PropsWithChildren) {
       {/* Main Page Body */}
       <main className="flex-1">{children}</main>
 
-      {/* Global Footer */}
-      <footer className="border-t border-slate-200 bg-white text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
-        <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8">
-          <div className="grid gap-10 md:grid-cols-4">
-            <div className="md:col-span-2 space-y-4">
-              <Link to="/" className="flex items-center gap-3">
-                <img src="/assets/logo.svg" className="h-8 w-8" alt="Priyulabs" />
-                <span className="text-lg font-black text-slate-900 dark:text-white">PRIYULABS DIGITAL</span>
+      {/* Universal Global Footer */}
+      <footer className="border-t-2 border-[#D4C3A3] bg-[#F1E8D5] text-[#383023] shadow-[-16px_40px_rgba(42,36,25,0.08)] relative z-10 pt-16 pb-9">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.1fr_1fr] gap-9 text-left">
+            <div>
+              <Link to="/" className="flex items-center gap-2.5 font-serif text-2xl font-bold text-[#1A150D] no-underline">
+                <img src="/assets/logo.svg" className="h-7 w-7 object-contain rounded-md" alt="PriyuLabs" />
+                <span>PriyuLabs</span>
               </Link>
-              <p className="max-w-md text-sm leading-relaxed">
-                India’s smartest AI-driven operating system for local supermarkets, cafes, restaurants, bakeries, and
-                apparel boutiques. Unifying Voice POS billing, inventory OCR, staff biometric attendance, and 1-Click
-                GST.
+              <p className="mt-3.5 text-[14.5px] font-medium leading-relaxed text-[#383023] max-w-[290px]">
+                India's AI retail OS — POS billing, inventory, staff HRMS and GST, built for Bharat.
               </p>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
-                🇮🇳 MSME Certified (UDYAM-OD-19-0177979) Enterprise
-              </div>
             </div>
 
             <div>
-              <h4 className="text-sm font-bold tracking-wider text-slate-900 uppercase dark:text-white">Platform</h4>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li><Link to="/" className="hover:text-indigo-600 dark:hover:text-indigo-400">Platform Overview</Link></li>
-                <li><Link to="/pos" className="hover:text-indigo-600 dark:hover:text-indigo-400">Next-Gen POS Engine</Link></li>
-                <li><Link to="/solutions" className="hover:text-indigo-600 dark:hover:text-indigo-400">Business Sector Solutions</Link></li>
-                <li><Link to="/hospitality" className="hover:text-indigo-600 dark:hover:text-indigo-400">Hospitality Tech</Link></li>
-                <li><button onClick={() => setDemoOpen(true)} className="hover:text-indigo-600 dark:hover:text-indigo-400">Live Interactive Demo</button></li>
+              <h5 className="font-serif text-[17px] font-bold text-[#1A150D] tracking-tight mb-4 flex items-center gap-2">
+                Solutions <span className="inline-block w-4 h-[2.5px] bg-[#B8863B] rounded-sm"></span>
+              </h5>
+              <ul className="space-y-3 text-[14.5px] font-semibold text-[#383023] p-0 m-0 list-none">
+                <li><Link to="/pos" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Smart POS</Link></li>
+                <li><Link to="/complete-management-system" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Management System</Link></li>
+                <li><Link to="/website-builder" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Website Building</Link></li>
+                <li><Link to="/digital-marketing" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Digital Marketing</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-sm font-bold tracking-wider text-slate-900 uppercase dark:text-white">Legal & Compliance</h4>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li><button onClick={() => setActivePolicy('about')} className="hover:text-indigo-600 dark:hover:text-indigo-400">About Us</button></li>
-                <li><button onClick={() => setActivePolicy('privacy')} className="hover:text-indigo-600 dark:hover:text-indigo-400">Privacy Policy</button></li>
-                <li><button onClick={() => setActivePolicy('terms')} className="hover:text-indigo-600 dark:hover:text-indigo-400">Terms & Conditions</button></li>
-                <li><button onClick={() => setActivePolicy('refund')} className="hover:text-indigo-600 dark:hover:text-indigo-400">Refund & 30-Day Policy</button></li>
+              <h5 className="font-serif text-[17px] font-bold text-[#1A150D] tracking-tight mb-4 flex items-center gap-2">
+                Business Types <span className="inline-block w-4 h-[2.5px] bg-[#B8863B] rounded-sm"></span>
+              </h5>
+              <ul className="space-y-3 text-[14.5px] font-semibold text-[#383023] p-0 m-0 list-none">
+                <li><Link to="/restaurants-fine-dining" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Restaurants &amp; Cafes</Link></li>
+                <li><Link to="/retail/grocery-supermarkets-kirana" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Grocery &amp; Supermarkets</Link></li>
+                <li><Link to="/fashion-beauty/apparel-boutiques" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Clothing &amp; Boutiques</Link></li>
+                <li><Link to="/retail/electronics-mobile-shops" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Electronics &amp; Mobiles</Link></li>
+                <li><Link to="/fashion-beauty/salons-spas" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Salons &amp; Spas</Link></li>
+                <li><Link to="/retail/footwear-leather-stores" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">Footwear &amp; Leather</Link></li>
+                <li><Link to="/all-business-types.html" className="text-[#B8863B] font-semibold hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">All Business Types →</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h5 className="font-serif text-[17px] font-bold text-[#1A150D] tracking-tight mb-4 flex items-center gap-2">
+                Contact <span className="inline-block w-4 h-[2.5px] bg-[#B8863B] rounded-sm"></span>
+              </h5>
+              <ul className="space-y-3 text-[14.5px] font-semibold text-[#383023] p-0 m-0 list-none">
+                <li><a href="mailto:priylabspos@gmail.com" className="hover:text-[#263B28] hover:translate-x-1 inline-block transition-transform no-underline">priylabspos@gmail.com</a></li>
+                <li>
+                  <a href="tel:+917873844050" className="hover:text-[#263B28] no-underline">+91 78738 44050</a> /{' '}
+                  <a href="tel:+917205045905" className="hover:text-[#263B28] no-underline">+91 72050 45905</a>
+                </li>
+                <li className="text-[14.5px] font-semibold text-[#383023] leading-snug">Basisthanagar, Bhubaneswar, Odisha</li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between border-t border-slate-200 pt-8 text-xs sm:flex-row dark:border-slate-800">
-            <p>© {new Date().getFullYear()} Priyulabs Digital (PriyuLabs Technologies Pvt. Ltd.). All Rights Reserved.</p>
-            <p className="mt-2 sm:mt-0">Registered Office: Bhubaneswar, Odisha 751002, India.</p>
+          {/* National Pride: Make in India & Ashoka Stambha MSME Emblems */}
+          <div className="flex flex-col items-center justify-center text-center my-8">
+            <div className="flex items-center justify-center gap-6 flex-wrap mb-3">
+              <img
+                src="/Made in india logo.png"
+                alt="Make in India"
+                className="h-16 w-auto max-w-[140px] object-contain rounded-md shadow-md"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.retry) {
+                    target.dataset.retry = '1';
+                    target.src = '/assets/Made in india logo.png';
+                  }
+                }}
+              />
+              <img
+                src="/image_4.png"
+                alt="Ashoka Stambha MSME Government of India"
+                className="h-16 w-auto max-w-[85px] object-contain rounded-md shadow-md"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.retry) {
+                    target.dataset.retry = '1';
+                    target.src = '/assets/image_4.png';
+                  }
+                }}
+              />
+              <img
+                src="/sequre ssl.jpg"
+                alt="SECURE SSL 256-Bit Bank Encryption"
+                className="h-16 w-auto max-w-[165px] object-contain rounded-md shadow-md"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.retry) {
+                    target.dataset.retry = '1';
+                    target.src = '/assets/sequre ssl.jpg';
+                  }
+                }}
+              />
+            </div>
+            <div className="text-[11.5px] font-bold tracking-[0.12em] text-[#B8863B] uppercase">
+              GOVERNMENT OF INDIA • MAKE IN INDIA
+            </div>
+            <div className="text-xs font-mono text-[#6B6152] mt-1">
+              MSME REGISTERED: UDYAM-OD-19-0177979
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-12 pt-6 border-t-[1.5px] border-[#D4C3A3] text-[13.5px] font-semibold text-[#4A4030] flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span>© 2026 Priyulabs Software. All rights reserved.</span>
+            <span
+              className="inline-flex items-center gap-1.5 bg-black/5 border border-black/10 px-2.5 py-0.5 rounded-full text-[11.5px] font-mono text-[#4A4030]"
+              title="PriyuLabs Platform v2.4.68 (Live)"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_0_2px_rgba(16,185,129,0.2)]"></span>
+              <span>v2.4.68</span>
+            </span>
+            <span>UDYAM-OD-19-0177979</span>
           </div>
         </div>
       </footer>

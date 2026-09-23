@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
   <!-- Universal PriyuLabs Favicon Suite -->
@@ -31,12 +31,14 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 106%;
+  min-height: 106%;
   width: auto;
   height: auto;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.04);
   object-fit: cover;
+  filter: blur(8px) saturate(1.05);
+  -webkit-filter: blur(8px) saturate(1.05);
   opacity: 0.5; /* Adjust for subtle look */
 }
 .global-fluid-mask {
@@ -52,19 +54,34 @@ body {
 </head>
   <body>
 <div class="global-fluid-bg">
-  <video autoplay loop muted playsinline preload="auto">
-        <source src="priyulabs background.mp4" type="video/mp4">
+  <video autoplay muted playsinline preload="auto">
+    <source src="landingpage1video.mp4" type="video/mp4">
+    <source src="./landingpage1video.mp4" type="video/mp4">
+    <source src="/landingpage1video.mp4" type="video/mp4">
+    <source src="../landingpage1video.mp4" type="video/mp4">
+    <source src="../../landingpage1video.mp4" type="video/mp4">
+    <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
-    <source src="../priyulabs background.mp4" type="video/mp4">
-    <source src="../../priyulabs background.mp4" type="video/mp4">
-    <source src="/priyulabs background.mp4" type="video/mp4">
-    <source src="backgroundvideo1.mp4" type="video/mp4">
-    <source src="../../backgroundvideo1.mp4" type="video/mp4">
-    <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
 </div>
+<script>
+  (function() {
+    const vid = document.querySelector('.global-fluid-bg video');
+    if (!vid) return;
+    const setSpeed = () => { try { vid.playbackRate = 0.5; vid.defaultPlaybackRate = 0.5; } catch(e){} };
+    setSpeed();
+    vid.addEventListener('play', setSpeed);
+    vid.addEventListener('loadedmetadata', setSpeed);
+    vid.addEventListener('ended', () => {
+      setTimeout(() => {
+        try { vid.currentTime = 0; setSpeed(); vid.play().catch(()=>{}); } catch(e){}
+      }, 1000);
+    });
+  })();
+</script>
 <div class="global-fluid-mask"></div>
-<div id="root"></div><script type="module" src="/src/main.tsx"></script>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
   <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
   <script>
     (function() {
@@ -100,5 +117,6 @@ body {
     })();
   </script>
 
+  <script src="/version.js"></script>
 </body>
 </html>

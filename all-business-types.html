@@ -78,7 +78,9 @@
       height: 36px;
       width: 36px;
       object-fit: contain;
-      border-radius: 8px;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     .brand-logo-text {
@@ -547,7 +549,7 @@ body {
       <a href="index.html" class="brand-logo-wrap">
         <img src="assets/logo.svg" alt="Priyulabs" class="brand-logo-img"
           onerror="this.src='/assets/logo.svg'; this.onerror=null;">
-        <span class="brand-logo-text">Priyulabs</span>
+        <div class="logo-text-group" style="display:flex; flex-direction:column; text-align:left; line-height:1.1;"><span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:var(--ink, #0f172a);">PRIYULABS</span><span style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:var(--gold, #B8863B); text-transform:uppercase; margin-top:2px;">ALL BUSINESS TYPES</span></div>
       </a>
       <a href="index.html" class="nav-back-link">&larr; Back to Home</a>
     </div>
@@ -1148,6 +1150,7 @@ body {
     }
   </script>
 
+  <script src="version.js"></script>
 </body>
 
 </html>

@@ -272,6 +272,9 @@ body {
         Priyulabs
       </a>
       <ul class="clean-nav-links">
+        <li>
+          <a href="/" class="clean-nav-link" onclick="if(window.location.protocol==='file:'){event.preventDefault();const p=window.location.pathname.replace(/\\/g,'/');const idx=p.indexOf('/Antigravity/');if(idx!==-1){const rel=p.substring(idx+13);const d=rel.split('/').length-1;window.location.href=(d>0?'../'.repeat(d):'')+'index.html';}else{window.location.href='index.html';}}">Home</a>
+        </li>
         <li><a href="/solutions" class="clean-nav-link">Overview</a></li>
         <li><a href="/business-types" class="clean-nav-link active">All Sectors</a></li>
         <li><a href="/pos" class="clean-nav-link">Point of Sale</a></li>
@@ -661,5 +664,6 @@ body {
     })();
   </script>
 
+  <script src="../../version.js"></script>
 </body>
 </html>

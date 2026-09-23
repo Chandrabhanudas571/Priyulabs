@@ -312,22 +312,22 @@ iframe {
 }
 
 .brand-logo-img {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
   flex-shrink: 0;
-  background: #ffffff;
-  padding: 4px;
-  border: 1.5px solid #e2e8f0;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  background: transparent !important;
+  padding: 0;
+  border: none !important;
+  box-shadow: none !important;
   object-fit: contain;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .logo:hover .brand-logo-img {
   transform: scale(1.06);
-  border-color: #2563eb;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.2);
+  border-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .logo-text-group {
@@ -427,7 +427,7 @@ iframe {
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
   z-index: 1000;
   pointer-events: none;
 }
@@ -451,9 +451,10 @@ iframe {
   height: 20px;
 }
 
-.nav-item-dropdown:hover .mega-dropdown,
-.nav-item-dropdown.open .mega-dropdown,
-.nav-item-dropdown.pinned .mega-dropdown {
+/* Generic small dropdowns (e.g. Solutions) */
+.nav-item-dropdown:hover .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+.nav-item-dropdown.open .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+.nav-item-dropdown.pinned .mega-dropdown:not(.square-mega-3col):not(.megamenu-content) {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
@@ -474,11 +475,85 @@ iframe {
   width: 360px;
 }
 
-/* 3-Column Square Mega Dropdown Layout */
-.square-mega-3col {
-  width: 980px;
-  max-width: calc(100vw - 32px);
-  left: -170px;
+/* ══════════════════════════════════════════════════════════
+   PERFECTLY CENTERED MEGAMENU (.square-mega-3col, .megamenu-content)
+   ══════════════════════════════════════════════════════════ */
+.square-mega-3col,
+.mega-dropdown.square-mega-3col,
+.megamenu-content {
+  position: fixed !important;
+  top: 70px !important;
+  left: 50% !important;
+  right: auto !important;
+  width: 960px !important;
+  max-width: calc(100vw - 32px) !important;
+  max-height: calc(100vh - 88px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  z-index: 1200 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(-50%) translateY(8px) !important;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out !important;
+}
+
+/* Seamless mouse hover bridge */
+.square-mega-3col::before,
+.mega-dropdown.square-mega-3col::before,
+.megamenu-content::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -24px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 32px !important;
+  pointer-events: auto !important;
+}
+
+/* Active / Open / Hover state: always centered with smooth 0.4s fade and 8px slide */
+.nav-item-dropdown:hover .square-mega-3col,
+.nav-item-dropdown.open .square-mega-3col,
+.nav-item-dropdown.pinned .square-mega-3col,
+.nav-item-dropdown:hover .mega-dropdown.square-mega-3col,
+.nav-item-dropdown.open .mega-dropdown.square-mega-3col,
+.nav-item-dropdown.pinned .mega-dropdown.square-mega-3col,
+.nav-item-dropdown:hover .megamenu-content,
+.nav-item-dropdown.open .megamenu-content,
+.nav-item-dropdown.pinned .megamenu-content,
+.square-mega-3col.open,
+.square-mega-3col.active,
+.megamenu-content.open,
+.megamenu-content.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Custom modern scrollbar for megamenu overflow */
+.square-mega-3col::-webkit-scrollbar,
+.megamenu-content::-webkit-scrollbar {
+  width: 6px;
+}
+.square-mega-3col::-webkit-scrollbar-track,
+.megamenu-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.square-mega-3col::-webkit-scrollbar-thumb,
+.megamenu-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+[data-theme="dark"] .square-mega-3col::-webkit-scrollbar-thumb,
+[data-theme="dark"] .megamenu-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .mega-3col-wrapper {
@@ -8091,9 +8166,12 @@ textarea,
   }
 
   .brand-logo-img {
-    width: 36px !important;
-    height: 36px !important;
-    padding: 4px !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .logo-title {
@@ -8909,4 +8987,148 @@ textarea,
 [data-theme="dark"] .trust-badges-stack > div > div > div > div:last-child {
   color: #94a3b8 !important;
 }
+
+/* ══════════════════════════════════════════════════════════
+   PRIYULABS UNIVERSAL EDITORIAL FOOTER (.priyulabs-universal-footer)
+══════════════════════════════════════════════════════════ */
+footer.priyulabs-universal-footer,
+footer.footer-universal {
+  padding: 72px 0 36px;
+  border-top: 2px solid #D4C3A3;
+  margin-top: 80px;
+  background: #F1E8D5 !important;
+  box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08);
+  position: relative;
+  z-index: 10;
+  color: #383023;
+  text-align: left;
+}
+
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.1fr 1fr;
+  gap: 36px;
+  text-align: left;
+}
+
+@media(max-width:860px) {
+  .foot-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+@media(max-width:540px) {
+  .foot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.foot-grid .logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1A150D;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.foot-brand-desc {
+  margin-top: 14px;
+  color: #383023;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 290px;
+  text-align: left;
+}
+
+.foot-grid h5 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 17px;
+  margin-bottom: 18px;
+  color: #1A150D;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.foot-grid h5::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 2.5px;
+  background: #B8863B;
+  border-radius: 2px;
+}
+
+.foot-grid ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.foot-grid a {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #383023;
+  transition: all .2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.foot-grid a:hover {
+  color: #263B28;
+  transform: translateX(4px);
+}
+
+.foot-address {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #383023;
+  line-height: 1.4;
+}
+
+.foot-bottom {
+  margin-top: 52px;
+  padding-top: 24px;
+  border-top: 1.5px solid #D4C3A3;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #4A4030;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.foot-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-family: ui-monospace, monospace;
+  color: #4a4030;
+}
+
+.version-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
 

@@ -583,10 +583,13 @@ body {
         <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle">DIGITAL</span>
+          <span class="logo-subtitle">ALL BUSINESS TYPES</span>
         </div>
       </a>
       <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="/" class="nav-link-title" onclick="if(window.location.protocol==='file:'){event.preventDefault();const p=window.location.pathname.replace(/\\/g,'/');const idx=p.indexOf('/Antigravity/');if(idx!==-1){const rel=p.substring(idx+13);const d=rel.split('/').length-1;window.location.href=(d>0?'../'.repeat(d):'')+'index.html';}else{window.location.href='index.html';}}">Home</a>
+        </li>
         <!-- 1. Business types Dropdown -->
         <li class="nav-item-dropdown">
           <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span
@@ -779,6 +782,9 @@ body {
       <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
         <div class="drawer-panel-scroll">
           <nav class="drawer-nav-list">
+            <a href="/" class="drawer-nav-item drawer-link" onclick="if(window.location.protocol==='file:'){event.preventDefault();window.location.href='index.html';}else{closeMobileDrawer();}">
+              <span>Home</span>
+            </a>
             <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
               <span>Business types</span>
               <span class="drawer-chevron">›</span>
@@ -1511,7 +1517,7 @@ body {
             <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
             <div class="logo-text-group">
               <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle">DIGITAL</span>
+              <span class="logo-subtitle">ALL BUSINESS TYPES</span>
             </div>
           </a>
           <p class="footer-desc">
@@ -1924,6 +1930,7 @@ body {
     }
   </script>
 
+  <script src="version.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Zap } from 'lucide-react';
 
 export function FitnessGymsPage() {
   return (
@@ -34,6 +34,24 @@ export function FitnessGymsPage() {
           <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-600 leading-relaxed">
             Eliminate membership leakage, lock biometric entry to paid dues, manage batch capacities for Yoga/CrossFit, and run front-desk supplement sales on one unified terminal.
           </p>
+
+          {/* Hero Actions */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/#free-trial"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-slate-800"
+            >
+              Get Started Today
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#gym-features"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-bold text-slate-800 shadow-xs transition hover:bg-slate-50"
+            >
+              <Zap className="h-4 w-4 text-orange-600 fill-orange-600" />
+              See Gym Billing Speed
+            </a>
+          </div>
 
           {/* Standardized 4-Pillar Hero Sub-Strip (Names only, no descriptions) */}
           <div className="mx-auto mt-8 flex max-w-4xl flex-wrap items-center justify-center gap-3.5 rounded-2xl border border-slate-200/80 bg-white/80 px-6 py-3 text-xs font-semibold text-slate-700 shadow-xs backdrop-blur-sm sm:text-[13px]">
@@ -107,7 +125,7 @@ export function FitnessGymsPage() {
       </section>
 
       {/* Feature Grid (3 Core Operational Pillars) */}
-      <section className="py-20">
+      <section className="py-20" id="gym-features">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-orange-600">3 Core Operational Pillars</span>

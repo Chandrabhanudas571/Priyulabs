@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,927 +10,85 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="manifest" href="site.webmanifest" />
   <base href="/">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POS Billing Software | AI Stock Prediction &amp; 2-Sec Touch Billing | Priyulabs Digital</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priyulabs Smart POS — India's Fastest Retail Billing OS</title>
   <meta name="description"
-    content="India's fastest POS system — lightning 2-sec billing, Vision AI stock prediction &amp; expiry shield, 100% offline mode, zero-fraud EDC payment sync &amp; thermal printer integration. Built for every retail format." />
+    content="Experience lightning-fast retail billing in under 2 seconds with Priyulabs Smart POS. Featuring Vision AI stock prediction, 100% offline billing mode, zero-fraud EDC sync, and UPI QR payments built for Indian retail.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Priyulabs Smart POS — India's Fastest Retail Billing OS">
+  <meta property="og:description"
+    content="Bill every customer in under 2 seconds. Offline-first, AI inventory forecasting, and direct EDC payment sync.">
+  <meta property="og:image" content="assets/solution_page_front.png">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Fraunces & Inter (Matching Priyulabs Master Design System) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
     rel="stylesheet">
-
-  <!-- Core Design System CSS -->
-  <link rel="stylesheet" href="style.css" />
 
   <style>
     /* ══════════════════════════════════════════════════════════
-       SMART POS PAGE — TOTAL WHITE ARCHITECTURE & REAL COLORFUL DESIGN
-       - 100% Pure White Backgrounds (Zero Dark, Zero Dark Blue)
-       - High-Contrast Crisp Slate Typography
-       - Real Retail Photography & Vibrant Sector Gallery
-       - Zero 3D Text / Pseudo-3D Gradient Extrusions
+       PRIYULABS DESIGN SYSTEM — MASTER WARM PALETTE
+       Matches index.html & complete-management-system.html
     ══════════════════════════════════════════════════════════ */
+    :root {
+      --bg: #FAF6EE;
+      --bg-alt: #F1EAD9;
+      --panel: #FFFFFF;
+      --ink: #2A2419;
+      --ink-soft: #6B6152;
+      --accent: #3F5D42;
+      --accent-hover: #2E4631;
+      --accent-soft: #E7EEE4;
+      --gold: #B8863B;
+      --gold-soft: rgba(184, 134, 59, 0.12);
+      --line: #E3D9C1;
+      --line-strong: #D4C3A3;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-pill: 100px;
+      --shadow-sm: 0 4px 14px rgba(42, 36, 25, 0.06);
+      --shadow-md: 0 16px 36px -10px rgba(42, 36, 25, 0.12);
+      --shadow-lg: 0 30px 60px -20px rgba(42, 36, 25, 0.18);
+      --font-heading: 'Fraunces', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     html {
       scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: clip;
     }
 
+    /* Transparent body so live video wallpaper shows continuously */
     body {
-      background-color: #ffffff !important;
-      color: #0f172a !important;
-      font-family: 'Plus Jakarta Sans', var(--font-body), sans-serif;
+      background-color: transparent !important;
+      color: var(--ink);
+      font-family: var(--font-body);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── SCROLL REVEAL ANIMATIONS ── */
-    .pos-reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .pos-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .pos-reveal-left {
-      opacity: 0;
-      transform: translateX(-28px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .pos-reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .pos-reveal-right {
-      opacity: 0;
-      transform: translateX(28px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .pos-reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .pos-delay-1 { transition-delay: 0.08s; }
-    .pos-delay-2 { transition-delay: 0.16s; }
-    .pos-delay-3 { transition-delay: 0.24s; }
-    .pos-delay-4 { transition-delay: 0.32s; }
-
-    /* ── 1. HERO SECTION (PURE WHITE, NO DARK, NO DARK BLUE) ── */
-    .pos-hero {
-      position: relative;
-      overflow: hidden;
-      background: #ffffff !important;
-      padding: clamp(60px, 9vh, 90px) 16px clamp(40px, 6vh, 60px);
-      text-align: center;
-      border-bottom: 1px solid #f1f5f9;
-    }
-
-    .pos-hero::before,
-    .pos-hero::after {
-      display: none !important;
-    }
-
-    .pos-hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    .pos-hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #0f172a;
-      font-size: 11.5px;
-      font-weight: 800;
-      padding: 6px 18px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
-    }
-
-    .pos-hero-eyebrow .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-    }
-
-    .pos-hero-title {
-      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
-      font-size: clamp(34px, 5.8vw, 62px);
-      font-weight: 900;
-      color: #0f172a !important;
-      margin-bottom: 16px;
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-    }
-
-    /* Flat crisp text highlight, strictly NO 3D clip/extrusion */
-    .pos-hero-title .pos-highlight {
-      background: none !important;
-      -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: unset !important;
-      color: #2563eb !important;
-      font-weight: 900;
-      display: inline;
-    }
-
-    .pos-hero-sub {
-      font-size: clamp(15.5px, 2.2vw, 19px);
-      color: #475569 !important;
-      max-width: 760px;
-      margin: 18px auto 32px;
-      line-height: 1.65;
-      font-weight: 500;
-    }
-
-    /* Speed badge */
-    .pos-speed-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ecfdf5 !important;
-      border: 1px solid #a7f3d0 !important;
-      color: #065f46 !important;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 8px 20px;
-      border-radius: 50px;
-      letter-spacing: 0.02em;
-      margin-bottom: 34px;
-      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
-    }
-
-    .pos-speed-badge .lightning-icon {
-      font-style: normal;
-      color: #059669;
-    }
-
-    /* Hero CTA Buttons */
-    .pos-hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-
-    .pos-btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #0f172a !important;
-      color: #ffffff !important;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .pos-btn-primary:hover {
-      background: #1e293b !important;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.28);
-    }
-
-    .pos-btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff !important;
-      border: 1.5px solid #cbd5e1 !important;
-      color: #0f172a !important;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .pos-btn-secondary:hover {
-      background: #f8fafc !important;
-      border-color: #0f172a !important;
-      transform: translateY(-2px);
-    }
-
-    /* Hero image frame */
-    .pos-hero-frame {
-      position: relative;
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    .pos-hero-img-wrap {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0 !important;
-      background: #ffffff !important;
-      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
-      position: relative;
-    }
-
-    .pos-hero-img-wrap::before {
-      display: none !important;
-    }
-
-    .pos-hero-img {
+      overflow-x: clip; padding-top: 68px;
       width: 100%;
-      max-height: 520px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .pos-hero-img-wrap:hover .pos-hero-img {
-      transform: scale(1.02);
-    }
-
-    /* Floating stat pills on hero */
-    .pos-hero-stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 28px;
-    }
-
-    .pos-stat-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04) !important;
-      backdrop-filter: none !important;
-      padding: 12px 22px;
-      border-radius: 16px;
-      transition: all 0.2s ease;
-    }
-
-    .pos-stat-pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08) !important;
-      border-color: #cbd5e1 !important;
-    }
-
-    .pos-stat-num {
-      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
-      font-size: 20px;
-      font-weight: 900;
-      color: #0f172a !important;
-      line-height: 1;
-    }
-
-    .pos-stat-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: #64748b !important;
-      line-height: 1.3;
-      margin-top: 3px;
-    }
-
-    .pos-stat-icon {
-      font-size: 20px;
-    }
-
-    /* ── TRUST STRIP ── */
-    .pos-trust-strip {
-      background: #ffffff !important;
-      border-top: 1px solid #f1f5f9;
-      border-bottom: 1px solid #f1f5f9;
-      padding: 18px 24px;
-    }
-
-    .pos-trust-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .pos-trust-label {
-      font-size: 12px;
-      font-weight: 800;
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-    }
-
-    .pos-trust-divider {
-      width: 1px;
-      height: 20px;
-      background: #e2e8f0;
-      flex-shrink: 0;
-    }
-
-    .pos-trust-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .pos-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #334155;
-    }
-
-    .pos-trust-item .check {
-      color: #10b981;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    /* ── ALL SECTIONS (PURE WHITE ARCHITECTURE) ── */
-    .pos-section {
-      background: #ffffff !important;
-      padding: clamp(60px, 8vw, 96px) 0;
-    }
-
-    .pos-section-alt {
-      background: #ffffff !important;
-      border-top: 1px solid #f1f5f9;
-      border-bottom: 1px solid #f1f5f9;
-    }
-
-    /* ── PURE WHITE FOOTER ── */
-    .footer {
-      background: #ffffff !important;
-      color: #475569 !important;
-      border-top: 1px solid #e2e8f0 !important;
-      padding-top: 64px !important;
-    }
-    .footer h4, .footer-links-group h4 {
-      color: #0f172a !important;
-      font-weight: 700 !important;
-    }
-    .footer a {
-      color: #475569 !important;
-    }
-    .footer a:hover {
-      color: #2563eb !important;
-    }
-    .footer-desc {
-      color: #64748b !important;
-    }
-    .footer-bottom {
-      border-top: 1px solid #f1f5f9 !important;
-      color: #64748b !important;
-    }
-
-    .pos-eyebrow-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 5px 14px;
-      border-radius: 50px;
-      margin-bottom: 16px;
-    }
-
-    .pos-eyebrow-indigo {
-      background: #eff6ff;
-      color: #2563eb;
-      border: 1px solid #bfdbfe;
-    }
-
-    .pos-eyebrow-emerald {
-      background: #ecfdf5;
-      color: #059669;
-      border: 1px solid #a7f3d0;
-    }
-
-    .pos-eyebrow-violet {
-      background: #f5f3ff;
-      color: #7c3aed;
-      border: 1px solid #ddd6fe;
-    }
-
-    .pos-eyebrow-amber {
-      background: #fffbeb;
-      color: #d97706;
-      border: 1px solid #fde68a;
-    }
-
-    .pos-section-title {
-      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
-      font-size: clamp(26px, 4.2vw, 44px);
-      font-weight: 900;
-      color: #0f172a !important;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-
-    .pos-section-title-light {
-      color: #0f172a !important;
-    }
-
-    .pos-section-desc {
-      font-size: 16px;
-      color: #475569 !important;
-      line-height: 1.65;
-      margin-bottom: 28px;
-    }
-
-    .pos-section-desc-light {
-      color: #475569 !important;
-    }
-
-    /* ── SPLIT LAYOUT ── */
-    .pos-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(36px, 6vw, 72px);
-      align-items: center;
-    }
-
-    .pos-split.reversed {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @media (max-width: 860px) {
-      .pos-split,
-      .pos-split.reversed {
-        grid-template-columns: 1fr;
-      }
-      .pos-split.reversed .pos-img-panel {
-        order: -1;
-      }
-    }
-
-    /* ── REAL IMAGE FRAMES ── */
-    .pos-img-wrap {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid #e2e8f0 !important;
-      background: #ffffff !important;
-      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08) !important;
       position: relative;
     }
 
-    .pos-img-wrap-dark {
-      border: 1px solid #e2e8f0 !important;
-      background: #ffffff !important;
-      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08) !important;
-    }
-
-    .pos-img-wrap img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .pos-img-wrap:hover img {
-      transform: scale(1.03);
-    }
-
-    /* Floating badge on image */
-    .pos-img-badge {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      background: rgba(255, 255, 255, 0.96) !important;
-      backdrop-filter: blur(12px);
-      border: 1px solid #e2e8f0 !important;
-      border-radius: 14px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 2;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1) !important;
-    }
-
-    .pos-img-badge-light {
-      background: rgba(255, 255, 255, 0.96) !important;
-      border-color: #e2e8f0 !important;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1) !important;
-    }
-
-    .pos-badge-icon {
-      font-size: 22px;
-    }
-
-    .pos-badge-text-top {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0f172a !important;
-      line-height: 1;
-      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
-    }
-
-    .pos-badge-text-top.dark-text {
-      color: #0f172a !important;
-    }
-
-    .pos-badge-text-sub {
-      font-size: 11px;
-      font-weight: 600;
-      color: #64748b !important;
-      margin-top: 3px;
-    }
-
-    /* ── FEATURE CHIPS LIST ── */
-    .pos-feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .pos-feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .pos-feature-icon-wrap {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .pos-feature-icon-indigo { background: #eff6ff; color: #2563eb; }
-    .pos-feature-icon-emerald { background: #ecfdf5; color: #059669; }
-    .pos-feature-icon-violet { background: #f5f3ff; color: #7c3aed; }
-    .pos-feature-icon-amber { background: #fffbeb; color: #d97706; }
-
-    .pos-feature-text-title {
-      font-size: 15.5px;
-      font-weight: 800;
-      color: #0f172a !important;
-      margin-bottom: 2px;
-    }
-
-    .pos-feature-text-title.light {
-      color: #0f172a !important;
-    }
-
-    .pos-feature-text-desc {
-      font-size: 13.5px;
-      color: #64748b !important;
-      line-height: 1.55;
-    }
-
-    .pos-feature-text-desc.light {
-      color: #64748b !important;
-    }
-
-    /* ── CLEAN CARDS GRID ── */
-    .pos-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .pos-glass-card {
-      background: #ffffff !important;
-      backdrop-filter: none !important;
-      border: 1px solid #e2e8f0 !important;
-      border-radius: 18px;
-      padding: 26px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03) !important;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pos-glass-card::before {
-      display: none !important;
-    }
-
-    .pos-glass-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08) !important;
-      border-color: #cbd5e1 !important;
-    }
-
-    .pos-glass-card-icon {
-      font-size: 28px;
-      margin-bottom: 14px;
-      display: inline-block;
-    }
-
-    .pos-glass-card-title {
-      font-family: 'Plus Jakarta Sans', var(--font-heading), sans-serif;
-      font-size: 16px;
-      font-weight: 800;
-      color: #0f172a !important;
-      margin-bottom: 8px;
-    }
-
-    .pos-glass-card-desc {
-      font-size: 13.5px;
-      color: #64748b !important;
-      line-height: 1.55;
-    }
-
-    /* ── OFFLINE MODE STEP LIST ── */
-    .pos-offline-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .pos-offline-step {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 18px 0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .pos-offline-step:last-child {
-      border-bottom: none;
-    }
-
-    .pos-step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #0f172a !important;
-      color: #ffffff !important;
-      font-size: 14px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15) !important;
-    }
-
-    .pos-step-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0f172a !important;
-      margin-bottom: 4px;
-    }
-
-    .pos-step-desc {
-      font-size: 13.5px;
-      color: #64748b !important;
-      line-height: 1.5;
-    }
-
-    /* ── HARDWARE CHIPS ── */
-    .pos-hardware-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
-
-    .pos-hw-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      border-radius: 10px;
-      padding: 9px 16px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #1e293b !important;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
-      transition: all 0.2s ease;
-    }
-
-    .pos-hw-chip:hover {
-      border-color: #0f172a !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
-      transform: translateY(-1px);
-    }
-
-    /* ── REAL COLORFUL SECTOR GALLERY ── */
-    .pos-sectors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .pos-sector-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pos-sector-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
-      border-color: #cbd5e1;
-    }
-
-    .pos-sector-img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .pos-sector-body {
-      padding: 22px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pos-sector-tag {
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    .pos-sector-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 6px;
-    }
-
-    .pos-sector-desc {
-      font-size: 13.5px;
-      color: #64748b;
-      line-height: 1.5;
-    }
-
-    /* ── LEAD FORM SECTION (TOTAL WHITE) ── */
-    .cta-orb, .cta-orb1, .cta-orb2 {
-      display: none !important;
-    }
-
-    #pos-lead-form {
-      background: #ffffff !important;
-      border-top: 1px solid #e2e8f0 !important;
-      padding: clamp(60px, 8vw, 96px) 0;
-    }
-
-    .cta-form {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06) !important;
-    }
-
-    #submitLeadBtn {
-      background: #0f172a !important;
-      color: #ffffff !important;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25) !important;
-      transition: all 0.2s ease;
-    }
-
-    #submitLeadBtn:hover {
-      background: #1e293b !important;
-      transform: translateY(-2px);
-    }
-
-  
-    /* Smooth Scroll Margin for Pillar/Feature Cards */
-    html {
-      scroll-behavior: smooth !important;
-    }
-    #pillars, #matrix-features, #chair-features, #gym-features, #laundry-features, #features, #what-we-build,
-    .clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid {
-      scroll-margin-top: 85px !important;
-    }
-
-  
-/* Global Fluid Live Video Background */
-body {
-  background-color: transparent !important;
-}
-.global-fluid-bg {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -3;
-  overflow: hidden;
-  background: #FAF6EE;
-  pointer-events: none;
-}
-.global-fluid-bg video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  opacity: 0.5; /* Adjust for subtle look */
-}
-.global-fluid-mask {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle at 40% 30%, rgba(250, 246, 238, 0.5) 0%, rgba(235, 244, 238, 0.7) 100%);
-  z-index: -2;
-  pointer-events: none;
-}
-
-</style>
-
-  
-  <style id="seamless-wallpaper-style">
-    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
-    html, body {
-      background-color: transparent !important;
-      background: transparent !important;
-    }
-
-    /* Section background transparency so live wallpaper shows through */
-    .clean-hero-sec,
-    .clean-pillars-sec,
-    .clean-features-sec,
-    .clean-grid-sec,
-    .clean-metrics-sec,
-    .clean-cta-sec,
-    .bottom-cta-sec,
-    .pillars-sec,
-    .features-sec,
-    .metrics-sec,
-    .clean-container,
-    .hero-sec,
-    .hub-hero,
-    .matrix-sec,
-    .sectors-stream-container,
-    .sector-row,
-    main {
-      background: transparent !important;
-      background-color: transparent !important;
-    }
-
-    /* Keep Nav and Header translucent with blur */
-    .clean-nav-header,
-    .navbar,
-    header.clean-subnav,
-    header {
-      background: rgba(255, 255, 255, 0.85) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-    }
-
-    /* Keep Cards legible and clean with glassmorphism */
-    .clean-hero-visual-frame {
-      background: rgba(255, 255, 255, 0.88) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-    }
-
-    .clean-feat-card,
-    .pillar-img-frame,
-    .clean-hero-media-wrap,
-    .deal-card {
-      background: rgba(255, 255, 255, 0.92) !important;
-      backdrop-filter: blur(8px) !important;
-      -webkit-backdrop-filter: blur(8px) !important;
+    /* Ambient Dot Grid & Video Background (Live Wallpaper Engine) */
+    .ambient-dot-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: radial-gradient(#2A2419 0.75px, transparent 0.75px);
+      background-size: 28px 28px;
+      opacity: 0.04;
     }
 
     .global-fluid-bg {
@@ -938,7 +96,7 @@ body {
       inset: 0 !important;
       width: 100vw !important;
       height: 100vh !important;
-      z-index: -2 !important;
+      z-index: -3 !important;
       overflow: hidden !important;
       background: #FAF6EE !important;
       pointer-events: none !important;
@@ -954,15 +112,14 @@ body {
       height: auto !important;
       transform: translate(-50%, -50%) !important;
       object-fit: cover !important;
-      opacity: 0 !important;
+      opacity: 0.5 !important;
       transition: opacity 0.35s ease-in-out !important;
-      filter: saturate(1.1) brightness(1.02) !important;
       pointer-events: none !important;
       will-change: opacity !important;
     }
 
     .global-fluid-bg video.is-active {
-      opacity: 0.85 !important;
+      opacity: 0.75 !important;
     }
 
     .global-fluid-mask {
@@ -971,80 +128,1624 @@ body {
       width: 100vw !important;
       height: 100vh !important;
       background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
-      z-index: -1 !important;
+      z-index: -2 !important;
       pointer-events: none !important;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+    }
+
+    .serif-accent {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container, .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media(max-width: 640px) {
+      .container, .wrap {
+        padding: 0 20px;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       UNIFIED NAVIGATION BAR WITH DYNAMIC SUB-BRAND
+    ══════════════════════════════════════════════════════════ */
+    header,
+    header#navbar,
+    nav.navbar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 1000 !important;
+      background: rgba(250, 246, 238, 0.92) !important;
+      backdrop-filter: blur(18px) !important;
+      -webkit-backdrop-filter: blur(18px) !important;
+      border-bottom: 1px solid var(--line) !important;
+      box-shadow: 0 2px 12px rgba(42, 36, 25, 0.06) !important;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="dark"] header,
+    [data-theme="dark"] header#navbar,
+    [data-theme="dark"] nav.navbar {
+      background: rgba(15, 23, 42, 0.92) !important;
+      border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* Brand Logo with Dynamic Page Title / Subtitle */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .logo img {
+      height: 34px;
+      width: 34px;
+      object-fit: contain;
+      display: inline-block;
+      flex-shrink: 0;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .logo-text-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      text-align: left;
+    }
+
+    .logo-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .logo-subtitle {
+      font-family: var(--font-body);
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    @media(max-width: 960px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      padding: 8px 0;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link-btn:hover {
+      color: var(--accent);
+    }
+
+    .nav-arrow {
+      font-size: 9px;
+      opacity: 0.65;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item:hover .nav-arrow,
+    .nav-item.open .nav-arrow,
+    .nav-item.pinned .nav-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       BUSINESS TYPES 3-COLUMN MEGA-MENU STYLING & HOVER LOGIC
+    ══════════════════════════════════════════════════════════ */
+    .nav-item-dropdown {
+      position: relative;
+    }
+
+    .mega-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
+      z-index: 1000;
+      pointer-events: none;
+      padding-top: 12px;
+    }
+
+    /* Hover bridge so mouse never flickers between trigger and menu */
+    .mega-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 0;
+      right: 0;
+      height: 24px;
+    }
+
+    .nav-item-dropdown:hover .mega-dropdown,
+    .nav-item-dropdown.open .mega-dropdown,
+    .nav-item-dropdown.pinned .mega-dropdown {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+
+    
+    /* Generic small dropdowns (e.g. Solutions) */
+    .nav-item-dropdown:hover .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.open .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.pinned .mega-dropdown:not(.square-mega-3col):not(.megamenu-content) {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       PERFECTLY CENTERED MEGAMENU (.square-mega-3col, .megamenu-content)
+       ══════════════════════════════════════════════════════════ */
+    .square-mega-3col,
+    .mega-dropdown.square-mega-3col,
+    .megamenu-content {
+      position: fixed !important;
+      top: 70px !important;
+      left: 50% !important;
+      right: auto !important;
+      width: 960px !important;
+      max-width: calc(100vw - 32px) !important;
+      max-height: calc(100vh - 88px) !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overscroll-behavior: contain !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      z-index: 1200 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateX(-50%) translateY(8px) !important;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out !important;
+    }
+
+    /* Seamless mouse hover bridge */
+    .square-mega-3col::before,
+    .mega-dropdown.square-mega-3col::before,
+    .megamenu-content::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -24px !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 32px !important;
+      pointer-events: auto !important;
+    }
+
+    /* Active / Open / Hover state: always centered with smooth 0.4s fade and 8px slide */
+    .nav-item-dropdown:hover .square-mega-3col,
+    .nav-item-dropdown.open .square-mega-3col,
+    .nav-item-dropdown.pinned .square-mega-3col,
+    .nav-item-dropdown:hover .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.open .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.pinned .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown:hover .megamenu-content,
+    .nav-item-dropdown.open .megamenu-content,
+    .nav-item-dropdown.pinned .megamenu-content,
+    .square-mega-3col.open,
+    .square-mega-3col.active,
+    .megamenu-content.open,
+    .megamenu-content.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    /* Custom modern scrollbar for megamenu overflow */
+    .square-mega-3col::-webkit-scrollbar,
+    .megamenu-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .square-mega-3col::-webkit-scrollbar-track,
+    .megamenu-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .square-mega-3col::-webkit-scrollbar-thumb,
+    .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 999px;
+    }
+    [data-theme="dark"] .square-mega-3col::-webkit-scrollbar-thumb,
+    [data-theme="dark"] .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+
+    .square-dropdown-sm {
+      width: 340px;
+      left: -20px;
+    }
+
+    .mega-dropdown-inner {
+      background: #ffffff;
+      border: 1px solid var(--line, #E3D9C1);
+      border-radius: 20px;
+      box-shadow: 0 20px 45px -10px rgba(42, 36, 25, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="dark"] .mega-dropdown-inner {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .mega-3col-wrapper {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 24px;
+      padding: 28px 32px;
+      box-sizing: border-box;
+    }
+
+    .mega-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-right: 1px solid var(--line, #E3D9C1);
+      padding-right: 24px;
+    }
+
+    [data-theme="dark"] .mega-col-left {
+      border-right-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sq-cat-btn {
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 22px;
+      font-weight: 700;
+      font-family: 'Fraunces', 'Space Grotesk', serif;
+      color: #94a3b8;
+      padding: 4px 0;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .sq-cat-btn:hover,
+    .sq-cat-btn.active {
+      color: var(--ink, #2A2419);
+      transform: translateX(4px);
+    }
+
+    [data-theme="dark"] .sq-cat-btn:hover,
+    [data-theme="dark"] .sq-cat-btn.active {
+      color: #f8fafc;
+    }
+
+    .sq-all-types-link {
+      font-size: 13px;
+      color: var(--ink-soft, #6B6152);
+      text-decoration: none;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line, #E3D9C1);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    [data-theme="dark"] .sq-all-types-link {
+      color: #94a3b8;
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sq-all-types-link:hover {
+      color: var(--accent, #3F5D42);
+    }
+
+    [data-theme="dark"] .sq-all-types-link:hover {
+      color: #818cf8;
+    }
+
+    .mega-col-middle {
+      min-width: 0;
+    }
+
+    .mega-sub-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft, #6B6152);
+      margin-bottom: 14px;
+    }
+
+    [data-theme="dark"] .mega-sub-header {
+      color: #94a3b8;
+    }
+
+    .sq-tab-content {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sq-tab-content.active {
+      display: flex;
+    }
+
+    .sq-disc-item {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink, #2A2419);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      line-height: 1.35;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    [data-theme="dark"] .sq-disc-item {
+      color: #e2e8f0;
+    }
+
+    .sq-disc-item:hover {
+      background: var(--accent-soft, #E7EEE4);
+      color: var(--accent, #3F5D42);
+      transform: translateX(3px);
+    }
+
+    [data-theme="dark"] .sq-disc-item:hover {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+    }
+
+    .sq-disc-primary strong {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink, #2A2419);
+    }
+
+    [data-theme="dark"] .sq-disc-primary strong {
+      color: #f8fafc;
+    }
+
+    .mega-col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-left: 1px solid var(--line, #E3D9C1);
+      padding-left: 20px;
+      padding-right: 8px;
+    }
+
+    [data-theme="dark"] .mega-col-right {
+      border-left-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sq-cap-item {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft, #6B6152);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      line-height: 1.35;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+
+    [data-theme="dark"] .sq-cap-item {
+      color: #94a3b8;
+    }
+
+    .sq-cap-item:hover {
+      background: var(--accent-soft, #E7EEE4);
+      color: var(--accent, #3F5D42);
+      transform: translateX(3px);
+    }
+
+    [data-theme="dark"] .sq-cap-item:hover {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+    }
+
+    .mega-column {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px;
+    }
+
+    .square-sub-item {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .square-sub-item:hover {
+      background: var(--accent-soft, #E7EEE4);
+      transform: translateX(4px);
+    }
+
+    [data-theme="dark"] .square-sub-item:hover {
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .square-sub-item strong {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink, #2A2419);
+    }
+
+    [data-theme="dark"] .square-sub-item strong {
+      color: #f8fafc;
+    }
+
+    .square-sub-item span {
+      font-size: 11.5px;
+      color: var(--ink-soft, #6B6152);
+      margin-top: 2px;
+    }
+
+    [data-theme="dark"] .square-sub-item span {
+      color: #94a3b8;
+    }
+
+    /* Right CTAs */
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-cta-ghost {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .nav-cta-ghost:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #FFFFFF;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(63, 93, 66, 0.3);
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(63, 93, 66, 0.4);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO SECTION — TRANSLUCENT OVER LIVE VIDEO
+    ══════════════════════════════════════════════════════════ */
+    .pos-hero {
+      padding: 60px 0 80px;
+      text-align: center;
+      position: relative;
+      background: transparent;
+    }
+
+    .kicker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .pos-hero-title {
+      font-size: clamp(38px, 5.5vw, 64px);
+      max-width: 920px;
+      margin: 0 auto 20px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    .pos-hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--ink-soft);
+      max-width: 740px;
+      margin: 0 auto 32px;
+      line-height: 1.55;
+    }
+
+    .pos-speed-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(184, 134, 59, 0.35);
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      color: var(--ink);
+      margin-bottom: 34px;
+    }
+
+    .pos-speed-pill strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .pos-hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      padding: 15px 36px;
+      border-radius: var(--radius-pill);
+      font-size: 15.5px;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(63, 93, 66, 0.35);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(63, 93, 66, 0.45);
+    }
+
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--ink);
+      padding: 15px 32px;
+      border-radius: var(--radius-pill);
+      font-size: 15.5px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* Hero Showcase Frame */
+    .pos-hero-showcase {
+      max-width: 1080px;
+      margin: 0 auto;
+      border-radius: 24px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .pos-hero-showcase-inner {
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #000000;
+    }
+
+    .pos-hero-showcase-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Stat Pills Strip */
+    .pos-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      max-width: 1080px;
+      margin: 32px auto 0;
+    }
+
+    @media(max-width: 900px) {
+      .pos-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width: 600px) {
+      .pos-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .pos-stat-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .pos-stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+
+    .pos-stat-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .pos-stat-val {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .pos-stat-txt {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      line-height: 1.25;
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       SECTION COMMON STYLES — TRANSLUCENT SECTIONS OVER LIVE VIDEO
+    ══════════════════════════════════════════════════════════ */
+    .pos-section {
+      padding: 96px 0;
+      position: relative;
+      background: transparent;
+    }
+
+    .pos-section-alt {
+      background: rgba(241, 234, 217, 0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 3.8vw, 44px);
+      line-height: 1.12;
+      margin-bottom: 18px;
+    }
+
+    .section-desc {
+      font-size: 16.5px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+
+    /* 2-Column Split Feature Row */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .split-row.media-first {
+      direction: rtl;
+    }
+
+    .split-row.media-first > * {
+      direction: ltr;
+    }
+
+    @media(max-width: 880px) {
+      .split-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .split-row.media-first {
+        direction: ltr;
+      }
+    }
+
+    .feature-media-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      aspect-ratio: 4 / 3;
+    }
+
+    .feature-media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-media-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .floating-card-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .badge-bold {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--ink);
+    }
+
+    .badge-sub {
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    /* Feature Cards / Check Items */
+    .feature-points {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .point-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 18px;
+      transition: all 0.2s ease;
+    }
+
+    .point-item:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .point-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .point-content h4 {
+      font-family: var(--font-body);
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .point-content p {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    /* Hardware Chips Strip */
+    .hw-chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hw-chip {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--line);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       STORE FORMATS GRID (6 Cards)
+    ══════════════════════════════════════════════════════════ */
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media(max-width: 920px) {
+      .formats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 600px) {
+      .formats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .format-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .format-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+      background: #FFFFFF;
+    }
+
+    .format-img-wrap {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .format-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .format-card:hover .format-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .format-body {
+      padding: 22px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .format-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .format-body h3 {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .format-body p {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       LEAD CAPTURE FORM SECTION (Warm Container & Verified Backend)
+    ══════════════════════════════════════════════════════════ */
+    .lead-section {
+      padding: 100px 0;
+      position: relative;
+      background: transparent;
+    }
+
+    .lead-card-outer {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 234, 217, 0.8) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--line-strong);
+      border-radius: 28px;
+      box-shadow: var(--shadow-lg);
+      padding: clamp(32px, 5vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media(max-width: 960px) {
+      .lead-card-outer {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 32px 24px;
+      }
+    }
+
+    .lead-left h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .lead-left p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    .lead-guarantees {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .guarantee-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Right Form Container */
+    .lead-form-box {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: clamp(24px, 4vw, 36px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .lead-form-box h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .lead-form-box p.form-sub {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 7px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      font-size: 14px;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    /* Submit Button with Loading Spinner & Pulse */
+    .btn-submit-form {
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: #FFFFFF;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 15.5px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(63, 93, 66, 0.35);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-submit-form:hover:not(:disabled) {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(63, 93, 66, 0.45);
+    }
+
+    .btn-submit-form:disabled {
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    .btn-submit-form.is-loading {
+      animation: btnPulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes btnPulse {
+      0%, 100% {
+        opacity: 0.95;
+        background-color: var(--accent-hover);
+      }
+      50% {
+        opacity: 0.78;
+        background-color: var(--accent);
+      }
+    }
+
+    .btn-spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: btnSpin 0.75s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes btnSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Form Status Reveal Animation */
+    #posFormStatus {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.5;
+      animation: formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes formStatusReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-secure-note {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       FLOATING SUCCESS NOTIFICATION CARD (Instant WhatsApp Redirect)
+    ══════════════════════════════════════════════════════════ */
+    .lead-success-card-floating {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      background: #FFFFFF;
+      border: 1.5px solid #25D366;
+      border-radius: 20px;
+      padding: 22px 24px;
+      max-width: 390px;
+      width: calc(100vw - 40px);
+      box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.22);
+      animation: popupSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @keyframes popupSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .lead-success-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lead-success-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(37, 211, 102, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .lead-success-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.2;
+    }
+
+    .lead-success-subtitle {
+      font-size: 12.5px;
+      color: #4b5563;
+      margin-top: 2px;
+    }
+
+    .lead-success-desc {
+      font-size: 13px;
+      color: #374151;
+      line-height: 1.45;
+    }
+
+    .lead-success-wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: #FFFFFF !important;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .lead-success-wa-btn:hover {
+      background: #20BA5A;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+    }
+
+    .lead-success-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #9ca3af;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      border-radius: 50%;
+    }
+
+    .lead-success-close:hover {
+      color: #111827;
+      background: #f3f4f6;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       BOLD STANDOUT FOOTER (Identical to index.html)
+    ══════════════════════════════════════════════════════════ */
+    footer {
+      padding: 72px 0 36px;
+      background: #F1E8D5;
+      border-top: 2px solid #D4C3A3;
+      margin-top: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.3fr 1.3fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+
+    @media(max-width: 900px) {
+      .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media(max-width: 550px) {
+      .foot-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    .foot-brand-desc {
+      font-size: 14px;
+      color: var(--ink-soft);
+      max-width: 320px;
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    footer h5 {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    footer ul li a {
+      font-size: 14px;
+      color: var(--ink-soft);
+      transition: color 0.15s ease;
+    }
+
+    footer ul li a:hover {
+      color: var(--accent);
+    }
+
+    .foot-address {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+
+    .foot-bottom {
+      border-top: 1px solid var(--line-strong);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       SCROLL REVEAL ANIMATIONS
+    ══════════════════════════════════════════════════════════ */
+    .pos-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .pos-reveal-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .pos-reveal-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .pos-reveal.visible,
+    .pos-reveal-left.visible,
+    .pos-reveal-right.visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .pos-delay-1 { transition-delay: 0.12s; }
+    .pos-delay-2 { transition-delay: 0.22s; }
+    .pos-delay-3 { transition-delay: 0.32s; }
+    .pos-delay-4 { transition-delay: 0.42s; }
+    #pos-billing { scroll-margin-top: 85px; }
   </style>
-
-
 </head>
 
-<body style="background-color: #ffffff; color: #0f172a;">
+<body>
+  <!-- Ambient Dot Grid -->
+  <div class="ambient-dot-grid"></div>
 
-<div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
-        <source src="priyulabs background.mp4" type="video/mp4">
-    <source src="./priyulabs background.mp4" type="video/mp4">
-    <source src="../priyulabs background.mp4" type="video/mp4">
-    <source src="../../priyulabs background.mp4" type="video/mp4">
-    <source src="/priyulabs background.mp4" type="video/mp4">
-    <source src="backgroundvideo1.mp4" type="video/mp4">
-    <source src="./backgroundvideo1.mp4" type="video/mp4">
-    <source src="../backgroundvideo1.mp4" type="video/mp4">
-    <source src="../../backgroundvideo1.mp4" type="video/mp4">
-    <source src="/backgroundvideo1.mp4" type="video/mp4">
-  </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
-        <source src="priyulabs background.mp4" type="video/mp4">
-    <source src="./priyulabs background.mp4" type="video/mp4">
-    <source src="../priyulabs background.mp4" type="video/mp4">
-    <source src="../../priyulabs background.mp4" type="video/mp4">
-    <source src="/priyulabs background.mp4" type="video/mp4">
-    <source src="backgroundvideo1.mp4" type="video/mp4">
-    <source src="./backgroundvideo1.mp4" type="video/mp4">
-    <source src="../backgroundvideo1.mp4" type="video/mp4">
-    <source src="../../backgroundvideo1.mp4" type="video/mp4">
-    <source src="/backgroundvideo1.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="global-fluid-mask"></div>
-
-
-
-
+  <!-- Global Fluid Live Video Background (Seamless Double-Buffered Looper) -->
+  <div class="global-fluid-bg">
+    <video class="bg-vid bg-vid-1 is-active" autoplay loop muted playsinline preload="auto">
+      <source src="priyulabs background.mp4" type="video/mp4">
+      <source src="./priyulabs background.mp4" type="video/mp4">
+      <source src="../priyulabs background.mp4" type="video/mp4">
+      <source src="backgroundvideo1.mp4" type="video/mp4">
+      <source src="./backgroundvideo1.mp4" type="video/mp4">
+      <source src="../backgroundvideo1.mp4" type="video/mp4">
+    </video>
+    <video class="bg-vid bg-vid-2" loop muted playsinline preload="auto">
+      <source src="priyulabs background.mp4" type="video/mp4">
+      <source src="./priyulabs background.mp4" type="video/mp4">
+      <source src="../priyulabs background.mp4" type="video/mp4">
+      <source src="backgroundvideo1.mp4" type="video/mp4">
+      <source src="./backgroundvideo1.mp4" type="video/mp4">
+      <source src="../backgroundvideo1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="global-fluid-mask"></div>
 
   <!-- ══════════════════════════════════════════════════════════
-       DEDICATED POS NAVBAR
+       NAVBAR WITH DYNAMIC SUB-BRAND / PAGE TITLE
   ══════════════════════════════════════════════════════════ -->
-    <!-- ══════════════════════════════════════════════════════════
-       SYNCHRONIZED WHITE NAVBAR WITH FULL MEGA MENU
-  ══════════════════════════════════════════════════════════ -->
-  <header class="navbar" id="navbar" style="background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000;">
-    <div class="nav-container">
-      <a href="/index.html#core-capabilities" class="logo" aria-label="Priyulabs Digital Home">
-        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+  <header>
+    <div class="nav">
+      <a href="/" class="logo" data-subbrand="SMART POS &amp; BILLING" aria-label="PriyuLabs Smart POS">
+        <img src="assets/logo.svg" alt="PriyuLabs Logo" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/logo.svg';}" />
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
-          <span class="logo-subtitle" style="color: #2563eb; font-weight: 800; letter-spacing: 0.14em;">SMART POS</span>
+          <span class="logo-subtitle" id="navLogoSubtitle">SMART POS &amp; BILLING</span>
         </div>
       </a>
 
-      <ul class="nav-links" id="navLinks">
-        <!-- 1. Business types Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger">Business types <span class="drop-arrow">▾</span></a>
+      <ul class="nav-links">
+        <!-- 1. Business types Dropdown (3-Column Mega Menu) -->
+        <li class="nav-item nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-btn dropdown-trigger">Business types <span class="nav-arrow">&#9662;</span></a>
           <div class="mega-dropdown square-mega-3col">
             <div class="mega-dropdown-inner mega-3col-wrapper">
 
               <!-- Column 1: Left Categories Tabs -->
               <div class="mega-col-left">
-                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')" onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
-                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')" onmouseenter="switchMegaTab('retail')">Retail</button>
-                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')" onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
-                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')" onmouseenter="switchMegaTab('services')">Services</button>
+                <button type="button" class="sq-cat-btn active" data-tab="fnb" onclick="switchMegaTab('fnb')"
+                  onmouseenter="switchMegaTab('fnb')">Food &amp; Beverage</button>
+                <button type="button" class="sq-cat-btn" data-tab="retail" onclick="switchMegaTab('retail')"
+                  onmouseenter="switchMegaTab('retail')">Retail</button>
+                <button type="button" class="sq-cat-btn" data-tab="beauty" onclick="switchMegaTab('beauty')"
+                  onmouseenter="switchMegaTab('beauty')">Beauty &amp; Fashion</button>
+                <button type="button" class="sq-cat-btn" data-tab="services" onclick="switchMegaTab('services')"
+                  onmouseenter="switchMegaTab('services')">Services</button>
+                <a href="all-business-types.html" class="sq-all-types-link">All business types &rarr;</a>
               </div>
 
-              <!-- Column 2: Discover (Specific Business Types) -->
+              <!-- Column 2: Discover Specific Types -->
               <div class="mega-col-middle">
                 <div class="mega-sub-header">Discover</div>
                 <div class="sq-tab-content active" id="tab-fnb">
@@ -1084,13 +1785,13 @@ body {
               <!-- Column 3: Capabilities -->
               <div class="mega-col-right">
                 <div class="mega-sub-header">Capabilities</div>
-                <a href="/#attractions" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
-                <a href="/solutions" class="sq-cap-item">Manage orders from one place</a>
-                <a href="/#attractions" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
-                <a href="/solutions" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
-                <a href="/#attractions" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
-                <a href="/#attractions" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
-                <a href="/#attractions" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
+                <a href="/pos" class="sq-cap-item">Take payments &amp; Zero-Fraud EDC Sync</a>
+                <a href="/pos" class="sq-cap-item">Manage orders from one place</a>
+                <a href="/pos" class="sq-cap-item">Keep customers coming back (Loyalty)</a>
+                <a href="/complete-management-system" class="sq-cap-item">Scale your business &amp; Multi-Store ERP</a>
+                <a href="/complete-management-system" class="sq-cap-item">Schedule and pay your team (Selfie HRMS)</a>
+                <a href="/pos" class="sq-cap-item">Manage your cash flow &amp; Cash Register Sync</a>
+                <a href="/complete-management-system" class="sq-cap-item">Vision AI Stock Detection &amp; Expiry Shield</a>
               </div>
 
             </div>
@@ -1098,13 +1799,13 @@ body {
         </li>
 
         <!-- 2. Solutions Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="javascript:void(0)" class="nav-link-title dropdown-trigger active" style="color: #2563eb; font-weight: 700;">Solutions <span class="drop-arrow">▾</span></a>
+        <li class="nav-item nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link-btn dropdown-trigger">Solutions <span class="nav-arrow">&#9662;</span></a>
           <div class="mega-dropdown square-dropdown-sm">
             <div class="mega-dropdown-inner">
               <div class="mega-column">
-                <a href="/pos" class="square-sub-item active" style="background: rgba(37, 99, 235, 0.08);">
-                  <strong style="color: #2563eb;">Smart POS</strong>
+                <a href="/pos" class="square-sub-item">
+                  <strong>Smart POS</strong>
                   <span>Fast billing, AI voice checkout &amp; offline mode</span>
                 </a>
                 <a href="/complete-management-system" class="square-sub-item">
@@ -1124,315 +1825,107 @@ body {
           </div>
         </li>
 
-        <!-- 2B. Hospitality Tech -->
-        <li>
-          <a href="/hospitality" class="nav-link-title">
-            Hospitality Tech <span class="nav-soon-pill">Soon</span>
-          </a>
+        <!-- 3. Pricing -->
+        <li class="nav-item">
+          <a href="/index.html#contact" class="nav-link-btn">Pricing</a>
         </li>
 
-        <!-- 3. Pricing -->
-        <li><a href="#pos-lead-form">Pricing</a></li>
+        <!-- 4. What's new -->
+        <li class="nav-item">
+          <a href="#pos-billing" class="nav-link-btn" onclick="event.preventDefault(); document.getElementById('pos-billing')?.scrollIntoView({behavior:'smooth', block:'start'});">What's new</a>
+        </li>
       </ul>
 
-      <div class="nav-actions">
-        <button class="btn-demo-nav" id="navDemoBtn" onclick="openDemoModal()"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Live Demo</button>
-        <a href="#pos-lead-form" class="btn-nav">Get Quote</a>
+      <!-- Action Buttons -->
+      <div class="nav-right-actions">
+        <a href="/interactive-demo"
+          onclick="if(location.protocol==='file:'){location.href='interactive-demo.html';return false;}"
+          class="nav-cta-ghost">&#10022; Interactive Demo</a>
+        <a href="/index.html#contact" class="nav-cta" onclick="goToFreeTrial(event)">Start Free Trial</a>
       </div>
-
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
   <!-- ══════════════════════════════════════════════════════════
-       MOBILE DRAWER
-  ══════════════════════════════════════════════════════════ -->
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <!-- Top Header Bar inside Drawer -->
-    <div class="drawer-header">
-      <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span class="drawer-back-text">Back</span>
-      </button>
-      <div class="drawer-header-title" id="drawerHeaderTitle">Menu</div>
-      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Sliding Viewport Container -->
-    <div class="drawer-viewport" id="drawerViewport">
-
-      <!-- ════ LEVEL 1: MAIN MENU ════ -->
-      <div class="drawer-panel drawer-panel-main active" id="drawerPanelMain" data-level="1" data-title="Menu">
-        <div class="drawer-panel-scroll">
-          <nav class="drawer-nav-list">
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBusiness">
-              <span>Business types</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelSolutions">
-              <span>Solutions</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer();">
-              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
-            </a>
-            <a href="/#cta" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Pricing</span>
-            </a>
-            <a href="/#trust" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>What's new</span>
-            </a>
-          </nav>
-
-          <div class="drawer-divider"></div>
-
-          <div class="drawer-utility-links">
-            <a href="/business-types" class="drawer-sublink" onclick="closeMobileDrawer()">All Business Types Directory</a>
-            <button type="button" class="drawer-sublink" onclick="openDemoModal(); closeMobileDrawer();"><svg class="inline-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Interactive
-              Demo &amp; Portfolio</button>
-            <a href="/#cta" class="drawer-sublink" onclick="closeMobileDrawer()">Support &amp; Contact</a>
-          </div>
-
-          <div class="drawer-bottom-cta">
-            <a href="/#cta" class="btn-primary drawer-btn-cta" onclick="closeMobileDrawer();">Start Free Trial →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ════ LEVEL 2: BUSINESS TYPES ════ -->
-      <div class="drawer-panel" id="drawerPanelBusiness" data-level="2" data-parent="drawerPanelMain"
-        data-title="Business types">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Select Industry Category</div>
-          <nav class="drawer-nav-list">
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelFnb">
-              <span>Food &amp; Beverage</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelRetail">
-              <span>Retail</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelBeauty">
-              <span>Beauty &amp; Fashion</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <button type="button" class="drawer-nav-item drawer-drill-trigger" data-target="drawerPanelServices">
-              <span>Services</span>
-              <span class="drawer-chevron">›</span>
-            </button>
-            <a href="/business-types" class="drawer-nav-item drawer-link highlight" onclick="closeMobileDrawer()">
-              <span>View All Business Types →</span>
-            </a>
-          </nav>
-        </div>
-      </div>
-
-      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
-      <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
-        data-title="Solutions">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Products &amp; Architecture</div>
-          <nav class="drawer-nav-list">
-            <a href="/pos" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Smart POS Billing</span>
-            </a>
-            <a href="/complete-management-system" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Complete Management System</span>
-            </a>
-            <a href="/website-builder" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Custom Website Building</span>
-            </a>
-            <a href="/digital-marketing" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Digital Marketing &amp; Ads</span>
-            </a>
-            <a href="/hospitality" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()">
-              <span>Hospitality Tech <span class="nav-soon-pill">Soon</span></span>
-            </a>
-          </nav>
-        </div>
-      </div>
-
-      <!-- ════ LEVEL 3: FOOD & BEVERAGE SECTORS ════ -->
-      <div class="drawer-panel" id="drawerPanelFnb" data-level="3" data-parent="drawerPanelBusiness"
-        data-title="Food &amp; Beverage">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Food &amp; Beverage Sectors</div>
-          <nav class="drawer-nav-list">
-            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link highlight"
-              onclick="closeMobileDrawer()"><span>Overview</span></a>
-            <a href="/restaurants-fine-dining" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Restaurants &amp; Fine Dining</span></a>
-            <a href="/qsr-fast-food" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>QSR, Fast
-                Food &amp; Takeaway</span></a>
-            <a href="/cafes-chai-bars" class="drawer-nav-item drawer-link" onclick="closeMobileDrawer()"><span>Cafes
-                &amp; Chai Bars</span></a>
-            <a href="/cloud-kitchens-catering" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Cloud Kitchens &amp; Catering</span></a>
-            <a href="/bakeries-shops" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Bakeries &amp; Patisseries</span></a>
-            <a href="/bars-pubs-breweries" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Bars, Pubs &amp; Breweries</span></a>
-          </nav>
-        </div>
-      </div>
-
-      <!-- ════ LEVEL 3: RETAIL SECTORS ════ -->
-      <div class="drawer-panel" id="drawerPanelRetail" data-level="3" data-parent="drawerPanelBusiness"
-        data-title="Retail">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Retail Sectors</div>
-          <nav class="drawer-nav-list">
-            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link highlight"
-              onclick="closeMobileDrawer()"><span>Overview</span></a>
-            <a href="/grocery-supermarkets-kirana" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Grocery, Supermarkets &amp; Kirana Stores</span></a>
-            <a href="/electronics-mobile-shops" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Electronics &amp; Mobile Shops</span></a>
-            <a href="/footwear-leather-stores" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Footwear &amp; Leather Stores</span></a>
-            <a href="/jewellery-shops" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Jewellery Showrooms &amp; Bullion</span></a>
-            <a href="/watch-stores" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Watch Stores &amp; Horology Boutiques</span></a>
-            <a href="/bookstores-stationery" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Bookstores &amp; Stationery Outlets</span></a>
-          </nav>
-        </div>
-      </div>
-
-      <!-- ════ LEVEL 3: BEAUTY & FASHION SECTORS ════ -->
-      <div class="drawer-panel" id="drawerPanelBeauty" data-level="3" data-parent="drawerPanelBusiness"
-        data-title="Beauty &amp; Fashion">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Beauty &amp; Fashion Sectors</div>
-          <nav class="drawer-nav-list">
-            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link highlight"
-              onclick="closeMobileDrawer()"><span>Overview</span></a>
-            <a href="/beauty-fashion/apparel" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Clothing Brands &amp; Apparel Boutiques</span></a>
-            <a href="/beauty-fashion/salons" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Salons, Spas &amp; Beauty Parlors</span></a>
-            <a href="/beauty-fashion/cosmetics" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Cosmetics &amp; Skincare Stores</span></a>
-          </nav>
-        </div>
-      </div>
-
-      <!-- ════ LEVEL 3: SERVICES SECTORS ════ -->
-      <div class="drawer-panel" id="drawerPanelServices" data-level="3" data-parent="drawerPanelBusiness"
-        data-title="Services">
-        <div class="drawer-panel-scroll">
-          <div class="drawer-panel-eyebrow">Services Sectors</div>
-          <nav class="drawer-nav-list">
-            <a href="/services/gyms" class="drawer-nav-item drawer-link highlight"
-              onclick="closeMobileDrawer()"><span>Overview</span></a>
-            <a href="/services/gyms" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Gyms, Fitness Studios &amp; Yoga Centers</span></a>
-            <a href="/services/dry-cleaners" class="drawer-nav-item drawer-link"
-              onclick="closeMobileDrawer()"><span>Dry Cleaners &amp; Laundry Shops</span></a>
-          </nav>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════════════
-       HERO
+       POS HERO SECTION
   ══════════════════════════════════════════════════════════ -->
   <section class="pos-hero" id="pos-hero">
-    <div class="pos-hero-inner container">
+    <div class="container">
 
-      <div class="pos-hero-eyebrow pos-reveal">
-        <span class="eyebrow-dot"></span>
-        &#128187; PRIYULABS POS &mdash; INDIA'S FASTEST RETAIL BILLING OS
+      <div class="kicker-badge pos-reveal">
+        <span class="badge-dot"></span>
+        PRIYULABS SMART POS &mdash; INDIA'S FASTEST RETAIL BILLING OS
       </div>
 
       <h1 class="pos-hero-title pos-reveal pos-delay-1">
         Bill Every Customer in<br>
-        <span class="pos-highlight">Under 2 Seconds.</span>
+        <span class="serif-accent">Under 2 Seconds.</span>
       </h1>
 
       <p class="pos-hero-sub pos-reveal pos-delay-2">
-        A lightning-fast touch POS, Vision AI stock prediction &amp; festive demand forecasting, 100% offline mode, and zero-fraud EDC payment sync &mdash;
-        all packed into one powerful system built for Indian retail.
+        A lightning-fast touch POS, Vision AI stock prediction &amp; festive demand forecasting, 100% offline mode, and zero-fraud EDC payment sync &mdash; all packed into one unified platform built for Indian retail.
       </p>
 
-      <div class="pos-speed-badge pos-reveal pos-delay-3">
-        <em class="lightning-icon">&#9889;</em>
-        Average billing time: <strong>2.1 seconds</strong> across 50,000+ transactions
+      <div class="pos-speed-pill pos-reveal pos-delay-3">
+        <span>&#9889; Average counter checkout: <strong>2.1 seconds</strong> across 50,000+ live transactions</span>
       </div>
 
       <div class="pos-hero-ctas pos-reveal pos-delay-3">
-        <a href="#pos-lead-form" class="pos-btn-primary">
-          &#128640; Book Free Demo
+        <a href="/index.html#contact" class="btn-hero-primary" onclick="goToFreeTrial(event)">
+          Start Free Trial &amp; Demo &#128640;
         </a>
-        <a href="#pos-billing" class="pos-btn-secondary" onclick="event.preventDefault(); (document.querySelector('#pos-billing') || document.getElementById('pos-billing') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
-          Explore Features &#8595;
+        <a href="#pos-billing" class="btn-hero-secondary" onclick="scrollToPosBilling(event)">
+          Explore POS Features &#8595;
         </a>
       </div>
 
-      <!-- Hero Image -->
-      <div class="pos-hero-frame pos-reveal pos-delay-4">
-        <div class="pos-hero-img-wrap">
+      <!-- Hero Preview Image Frame -->
+      <div class="pos-hero-showcase pos-reveal pos-delay-4">
+        <div class="pos-hero-showcase-inner">
           <img
-            src="assets/pos_billing_preview.jpg"
+            src="assets/solution_page_front.png"
             alt="Priyulabs touch POS billing terminal in active retail store counter"
-            class="pos-hero-img"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/solution_page_front.png';}"
             loading="eager"
           />
         </div>
       </div>
 
-      <!-- Stat Pills -->
-      <div class="pos-hero-stats-row pos-reveal pos-delay-4">
-        <div class="pos-stat-pill">
-          <span class="pos-stat-icon">&#9889;</span>
+      <!-- Stat Pills Row -->
+      <div class="pos-stats-grid pos-reveal pos-delay-4">
+        <div class="pos-stat-card">
+          <div class="pos-stat-icon-wrap">&#9889;</div>
           <div>
-            <div class="pos-stat-num">2s</div>
-            <div class="pos-stat-label">Avg. billing time</div>
+            <div class="pos-stat-val">2s</div>
+            <div class="pos-stat-txt">Avg. billing time</div>
           </div>
         </div>
-        <div class="pos-stat-pill">
-          <span class="pos-stat-icon">&#128244;</span>
+        <div class="pos-stat-card">
+          <div class="pos-stat-icon-wrap">&#128244;</div>
           <div>
-            <div class="pos-stat-num">100%</div>
-            <div class="pos-stat-label">Offline capable</div>
+            <div class="pos-stat-val">100%</div>
+            <div class="pos-stat-txt">Offline capable</div>
           </div>
         </div>
-        <div class="pos-stat-pill">
-          <span class="pos-stat-icon">📦</span>
+        <div class="pos-stat-card">
+          <div class="pos-stat-icon-wrap">&#128230;</div>
           <div>
-            <div class="pos-stat-num">0%</div>
-            <div class="pos-stat-label">Dead-stock expiry loss</div>
+            <div class="pos-stat-val">0%</div>
+            <div class="pos-stat-txt">Dead-stock loss</div>
           </div>
         </div>
-        <div class="pos-stat-pill">
-          <span class="pos-stat-icon">&#128737;&#65039;</span>
+        <div class="pos-stat-card">
+          <div class="pos-stat-icon-wrap">&#128737;&#65039;</div>
           <div>
-            <div class="pos-stat-num">0%</div>
-            <div class="pos-stat-label">Fraud on EDC sync</div>
+            <div class="pos-stat-val">0%</div>
+            <div class="pos-stat-txt">Fraud on EDC sync</div>
           </div>
         </div>
-        <div class="pos-stat-pill">
-          <span class="pos-stat-icon">&#127978;</span>
+        <div class="pos-stat-card">
+          <div class="pos-stat-icon-wrap">&#127978;</div>
           <div>
-            <div class="pos-stat-num">15+</div>
-            <div class="pos-stat-label">Retail formats</div>
+            <div class="pos-stat-val">15+</div>
+            <div class="pos-stat-txt">Retail formats</div>
           </div>
         </div>
       </div>
@@ -1441,85 +1934,59 @@ body {
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       TRUST STRIP
-  ══════════════════════════════════════════════════════════ -->
-  <div class="pos-trust-strip">
-    <div class="pos-trust-inner">
-      <span class="pos-trust-label">Trusted by</span>
-      <div class="pos-trust-divider"></div>
-      <div class="pos-trust-items">
-        <span class="pos-trust-item"><span class="check">&#10003;</span> 3,200+ Retail Outlets</span>
-        <span class="pos-trust-item"><span class="check">&#10003;</span> GST Compliant Billing</span>
-        <span class="pos-trust-item"><span class="check">&#10003;</span> Pine Labs &amp; Razorpay EDC Sync</span>
-        <span class="pos-trust-item"><span class="check">&#10003;</span> Works on Android &amp; Windows</span>
-        <span class="pos-trust-item"><span class="check">&#10003;</span> 24/7 WhatsApp Support</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 1: LIGHTNING-FAST TOUCH BILLING
+       SECTION 1: LIGHTNING TOUCH BILLING
   ══════════════════════════════════════════════════════════ -->
   <section class="pos-section" id="pos-billing">
     <div class="container">
-      <div class="pos-split">
+      <div class="split-row">
 
         <div class="pos-reveal-left">
-          <span class="pos-eyebrow-chip pos-eyebrow-indigo">&#9889; Touch POS Billing</span>
-          <h2 class="pos-section-title">Bill Customers Before<br>They Finish Saying<br>the Price.</h2>
-          <p class="pos-section-desc">
-            Priyulabs POS is engineered for real-world Indian retail speed. Scan barcodes, search by name or code,
-            and generate GST-compliant thermal bills in under 2 seconds &mdash; on any Android tablet or Windows counter.
+          <span class="section-eyebrow">&#9889; High-Speed Checkout</span>
+          <h2 class="section-title">Bill Customers Before They Finish Saying the Price.</h2>
+          <p class="section-desc">
+            Engineered specifically for peak-hour rush in Indian supermarkets, cafes, and apparel stores. Zero lag, tactile touch shortcuts, and one-tap barcode scanning keep checkout lines moving non-stop.
           </p>
 
-          <div class="pos-feature-list">
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#128269;</div>
-              <div>
-                <div class="pos-feature-text-title">Smart Product Search</div>
-                <div class="pos-feature-text-desc">Search by name, barcode, HSN code, or shorthand nicknames. Fuzzy match finds what you mean even with typos.</div>
+          <div class="feature-points">
+            <div class="point-item">
+              <div class="point-icon">&#128204;</div>
+              <div class="point-content">
+                <h4>Visual Quick-Keys for Top 20 Sellers</h4>
+                <p>One-tap billing for loose items, fresh produce, and bakery products without searching or scanning barcodes.</p>
               </div>
             </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#129518;</div>
-              <div>
-                <div class="pos-feature-text-title">1-Click GST Bill Generation</div>
-                <div class="pos-feature-text-desc">Automatic CGST/SGST/IGST breakup, HSN codes, and invoice numbering. Fully compliant with GST portal requirements.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128269;</div>
+              <div class="point-content">
+                <h4>Universal Barcode &amp; Weight Scale Sync</h4>
+                <p>Connects seamlessly with electronic weighing scales and laser scanners. Zero manual item weight entry errors.</p>
               </div>
             </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#128424;&#65039;</div>
-              <div>
-                <div class="pos-feature-text-title">Instant Thermal Print</div>
-                <div class="pos-feature-text-desc">Auto-trigger thermal receipt printing on bill confirmation. Compatible with Epson, TVS, and Bluetooth thermal printers.</div>
-              </div>
-            </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-indigo">&#128179;</div>
-              <div>
-                <div class="pos-feature-text-title">Split Payments &amp; Loyalty Points</div>
-                <div class="pos-feature-text-desc">Accept UPI, cash, card, and credit simultaneously. Apply discount codes and redeem loyalty points in one transaction.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128241;</div>
+              <div class="point-content">
+                <h4>Dynamic UPI QR on Customer Display</h4>
+                <p>Displays an instant payment QR code with the exact bill amount. Customers scan and pay directly from PhonePe, GPay, or Paytm.</p>
               </div>
             </div>
           </div>
 
-          <a href="#pos-lead-form" class="pos-btn-primary" style="display: inline-flex;">
-            See It Live &#8594; Book Demo
-          </a>
+          <div class="hw-chips-wrap">
+            <div class="hw-chip">&#9889; Sub-2s Checkout</div>
+            <div class="hw-chip">&#128241; UPI QR Sync</div>
+            <div class="hw-chip">&#9878;&#65039; Weight Scale API</div>
+            <div class="hw-chip">&#128172; WhatsApp E-Bills</div>
+          </div>
         </div>
 
-        <div class="pos-img-panel pos-reveal-right">
-          <div class="pos-img-wrap">
-            <img
-              src="assets/qsr_pos_billing.jpg"
-              alt="Priyulabs POS touch billing terminal in a retail store"
-              loading="lazy"
-            />
-            <div class="pos-img-badge pos-img-badge-light">
-              <span class="pos-badge-icon">&#9889;</span>
+        <div class="pos-reveal-right">
+          <div class="feature-media-frame">
+            <img src="assets/smart_pos_touch_billing.jpg" alt="Priyulabs fast touch POS counter interface" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/smart_pos_touch_billing.jpg';}" loading="lazy" />
+            <div class="floating-card-badge">
+              <div class="badge-icon-box">&#9889;</div>
               <div>
-                <div class="pos-badge-text-top dark-text">2.1 sec</div>
-                <div class="pos-badge-text-sub">Average bill time</div>
+                <div class="badge-bold">2.1s Billing Record</div>
+                <div class="badge-sub">Rush hour benchmark</div>
               </div>
             </div>
           </div>
@@ -1530,118 +1997,60 @@ body {
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 2: FULL FEATURE CARDS
+       SECTION 2: AI STOCK PREDICTION & FESTIVE SURGE SHIELD
   ══════════════════════════════════════════════════════════ -->
-  <section class="pos-section pos-section-alt">
+  <section class="pos-section pos-section-alt" id="pos-stock-ai">
     <div class="container">
-      <div class="pos-section-header">
-        <span class="pos-eyebrow-chip pos-eyebrow-indigo pos-reveal">&#128193; Full POS Feature Suite</span>
-        <h2 class="pos-section-title pos-reveal pos-delay-1">Everything Your Counter Needs.</h2>
-        <p class="pos-section-desc pos-reveal pos-delay-2">
-          From the moment a customer walks in to the moment they walk out &mdash; Priyulabs POS handles every step without friction.
-        </p>
-      </div>
-
-      <div class="pos-cards-grid">
-        <div class="pos-glass-card indigo-glow pos-reveal">
-          <span class="pos-glass-card-icon">&#128230;</span>
-          <div class="pos-glass-card-title">Live Inventory Deduction</div>
-          <div class="pos-glass-card-desc">Every bill auto-deducts stock in real time. Get low-stock alerts before you run out, not after.</div>
-        </div>
-        <div class="pos-glass-card emerald-glow pos-reveal pos-delay-1">
-          <span class="pos-glass-card-icon">&#128278;</span>
-          <div class="pos-glass-card-title">Barcode &amp; QR Scanning</div>
-          <div class="pos-glass-card-desc">Works with USB barcode guns, Bluetooth scanners, and the phone's built-in camera. Zero additional hardware required.</div>
-        </div>
-        <div class="pos-glass-card violet-glow pos-reveal pos-delay-2">
-          <span class="pos-glass-card-icon">&#127873;</span>
-          <div class="pos-glass-card-title">Loyalty &amp; Offers Engine</div>
-          <div class="pos-glass-card-desc">Run BOGO deals, percentage discounts, points-based loyalty, and seasonal campaigns &mdash; all from the billing screen.</div>
-        </div>
-        <div class="pos-glass-card amber-glow pos-reveal pos-delay-3">
-          <span class="pos-glass-card-icon">&#129518;</span>
-          <div class="pos-glass-card-title">Multi-Pricelist Support</div>
-          <div class="pos-glass-card-desc">Set different price lists for wholesale, retail, and loyalty customers. Prices switch automatically based on customer profile.</div>
-        </div>
-        <div class="pos-glass-card cyan-glow pos-reveal">
-          <span class="pos-glass-card-icon">&#128202;</span>
-          <div class="pos-glass-card-title">End-of-Day Reports</div>
-          <div class="pos-glass-card-desc">Daily sales summary, shift-wise collections, payment mode breakups, and top-selling items &mdash; in one clean dashboard.</div>
-        </div>
-        <div class="pos-glass-card rose-glow pos-reveal pos-delay-1">
-          <span class="pos-glass-card-icon">&#128260;</span>
-          <div class="pos-glass-card-title">Return &amp; Exchange</div>
-          <div class="pos-glass-card-desc">Process returns, partial refunds, and item exchanges in seconds. Auto-adjusts inventory and restores GST credits correctly.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       SECTION 3: AI STOCK PREDICTION & FESTIVE SURGE SHIELD
-  ══════════════════════════════════════════════════════════ -->
-  <section class="pos-section" id="pos-stock-ai">
-    <div class="container">
-      <div class="pos-split reversed">
-
-        <div class="pos-img-panel pos-reveal-right">
-          <div class="pos-img-wrap">
-            <img
-              src="assets/pos_stock_prediction.jpg"
-              alt="AI Stock Prediction Dashboard displaying Puja Season surge alerts, low-stock warnings, and Expiry Shield status"
-              loading="lazy"
-            />
-            <div class="pos-img-badge">
-              <span class="pos-badge-icon">📦</span>
-              <div>
-                <div class="pos-badge-text-top">AI Stock Intelligence</div>
-                <div class="pos-badge-text-sub">Puja Surge: +140% Demand Detected</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="split-row media-first">
 
         <div class="pos-reveal-left">
-          <span class="pos-eyebrow-chip pos-eyebrow-violet">📦 Vision AI Stock Prediction</span>
-          <h2 class="pos-section-title pos-section-title-light">Predict Depletion.<br>Catch Festive Surges.<br><em>Before</em> Shelves Empty.</h2>
-          <p class="pos-section-desc pos-section-desc-light">
-            Never lose sales to stockouts or write off expired products again. Priyulabs AI monitors sales velocity, festive shopping trends (Puja, Diwali, Eid), and supplier lead times to give you proactive reordering alerts.
+          <div class="feature-media-frame">
+            <img src="assets/pos_stock_prediction.jpg" alt="Priyulabs AI Stock Prediction and Festive Forecast Dashboard" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/pos_stock_prediction.jpg';}" loading="lazy" />
+            <div class="floating-card-badge">
+              <div class="badge-icon-box">&#129302;</div>
+              <div>
+                <div class="badge-bold">AI Surge Shield</div>
+                <div class="badge-sub">94.8% forecast accuracy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pos-reveal-right">
+          <span class="section-eyebrow">&#129302; Vision AI &amp; Demand Forecasting</span>
+          <h2 class="section-title">Predict Depletion. Catch Festive Surges. Before Shelves Empty.</h2>
+          <p class="section-desc">
+            Most Indian retailers lose 8–14% in sales during Diwali, Eid, and marriage seasons because bestsellers run out. Priyulabs AI analyzes historical sales, local calendar spikes, and live stock velocity to prevent stockouts automatically.
           </p>
 
-          <div class="pos-feature-list">
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-violet">📈</div>
-              <div>
-                <div class="pos-feature-text-title light">Festive &amp; Seasonal Surge AI</div>
-                <div class="pos-feature-text-desc light">Forecasts sales spikes before festivals like Durga Puja, Diwali, and New Year. Alerts you in advance: <em>"Puja demand +140% on Ghee, Sweets &amp; Dry Fruits — Refill Suggested"</em>.</div>
+          <div class="feature-points">
+            <div class="point-item">
+              <div class="point-icon">&#128337;</div>
+              <div class="point-content">
+                <h4>Festive Surge Shield</h4>
+                <p>Calculates reorder volumes 21 days before major festivals based on year-on-year sales acceleration.</p>
               </div>
             </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-violet">⚠️</div>
-              <div>
-                <div class="pos-feature-text-title light">Smart Low-Stock Run-Out Predictor</div>
-                <div class="pos-feature-text-desc light">Calculates exact item burn rates in real time: <em>"Stock emptying in 48 hours"</em>. Generates 1-click purchase orders before you run out.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128680;</div>
+              <div class="point-content">
+                <h4>Automated Expiry Alerts</h4>
+                <p>Flag near-expiry batch items 45 days early so you can discount or bundle them before they turn into dead stock loss.</p>
               </div>
             </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-violet">🛡️</div>
-              <div>
-                <div class="pos-feature-text-title light">Expiry Shield &amp; FEFO Automation</div>
-                <div class="pos-feature-text-desc light">Flags items expiring in 7, 15, or 30 days across Kirana, Pharmacy, and Supermarkets. Suggests smart combo bundles to sell near-expiry stock with 0% loss.</div>
-              </div>
-            </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-violet">📷</div>
-              <div>
-                <div class="pos-feature-text-title light">Wholesaler Invoice OCR Ingestion</div>
-                <div class="pos-feature-text-desc light">Snap a photo of wholesale bills — AI auto-extracts line items, quantities, batch numbers, and MRPs into ERP in 1.2 seconds. Zero manual entry.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128230;</div>
+              <div class="point-content">
+                <h4>1-Click Vendor Purchase Orders</h4>
+                <p>Generates auto-balanced POs and sends them straight to your distributor's WhatsApp or email.</p>
               </div>
             </div>
           </div>
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="#pos-lead-form" class="pos-btn-primary">Book AI Stock Demo</a>
-            <a href="/solutions" class="pos-btn-secondary">See All Features</a>
+          <div class="hw-chips-wrap">
+            <div class="hw-chip">&#128197; Calendar Forecast</div>
+            <div class="hw-chip">&#128680; Expiry Shield</div>
+            <div class="hw-chip">&#128225; Supplier Auto-PO</div>
           </div>
         </div>
 
@@ -1650,76 +2059,59 @@ body {
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 4: 100% OFFLINE MODE
+       SECTION 3: 100% OFFLINE BILLING ARCHITECTURE
   ══════════════════════════════════════════════════════════ -->
   <section class="pos-section" id="pos-offline">
     <div class="container">
-      <div class="pos-split">
+      <div class="split-row">
 
         <div class="pos-reveal-left">
-          <span class="pos-eyebrow-chip pos-eyebrow-emerald">&#128244; Offline Mode</span>
-          <h2 class="pos-section-title">Internet Down?<br>Your Billing Doesn't Stop.</h2>
-          <p class="pos-section-desc">
-            Priyulabs POS runs entirely on-device. Every sale, inventory deduction, and customer record is stored
-            locally &mdash; and syncs automatically the moment connectivity returns.
+          <span class="section-eyebrow">&#128244; Zero-Downtime Reliability</span>
+          <h2 class="section-title">Internet Down? Your Billing Never Stops.</h2>
+          <p class="section-desc">
+            Broadband cuts, mobile hotspot drops, and server blips shouldn't halt your cash counter. Priyulabs POS runs fully local on your terminal. Bills continue printing instantly and sync seamlessly to the cloud the second connectivity resumes.
           </p>
 
-          <div class="pos-offline-steps">
-            <div class="pos-offline-step pos-reveal pos-delay-1">
-              <div class="pos-step-num">1</div>
-              <div>
-                <div class="pos-step-title">Full Local Operation</div>
-                <div class="pos-step-desc">All product data, pricing, and customer records are cached locally. The POS runs at full speed &mdash; no latency, no cloud dependency.</div>
+          <div class="feature-points">
+            <div class="point-item">
+              <div class="point-icon">&#128274;</div>
+              <div class="point-content">
+                <h4>Full Local Terminal Database</h4>
+                <p>Your full product catalog, barcode database, customer list, and tax rules live right on the counter machine.</p>
               </div>
             </div>
-            <div class="pos-offline-step pos-reveal pos-delay-2">
-              <div class="pos-step-num">2</div>
-              <div>
-                <div class="pos-step-title">Auto Conflict Resolution</div>
-                <div class="pos-step-desc">If multiple terminals billed the same item offline, our sync engine resolves stock conflicts intelligently. No double-deductions, no errors.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128257;</div>
+              <div class="point-content">
+                <h4>Conflict-Free Cloud Auto-Sync</h4>
+                <p>When Wi-Fi reconnects, all offline invoices and payment entries sync up in timestamp order without duplicate invoice numbers.</p>
               </div>
             </div>
-            <div class="pos-offline-step pos-reveal pos-delay-3">
-              <div class="pos-step-num">3</div>
-              <div>
-                <div class="pos-step-title">Background Sync on Reconnect</div>
-                <div class="pos-step-desc">The moment internet returns, all offline bills, stock changes, and payments sync silently in the background. Zero manual intervention required.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128424;&#65039;</div>
+              <div class="point-content">
+                <h4>Hardware Keeps Printing Uninterrupted</h4>
+                <p>Thermal printers and cash drawers fire directly over USB or LAN even with no internet access.</p>
               </div>
             </div>
-            <div class="pos-offline-step pos-reveal pos-delay-4">
-              <div class="pos-step-num">4</div>
-              <div>
-                <div class="pos-step-title">Payment Acceptance Offline</div>
-                <div class="pos-step-desc">Accept cash and record UPI/card transactions offline. Payment sync logs catch up automatically &mdash; no missed revenue, ever.</div>
-              </div>
-            </div>
+          </div>
+
+          <div class="hw-chips-wrap">
+            <div class="hw-chip">&#128244; 100% Offline DB</div>
+            <div class="hw-chip">&#128424;&#65039; Direct Thermal ESC/POS</div>
+            <div class="hw-chip">&#9989; Zero Lost Bills</div>
           </div>
         </div>
 
-        <div class="pos-img-panel pos-reveal-right">
-          <div class="pos-img-wrap">
-            <img
-              src="assets/pos_offline_counter.jpg"
-              alt="Cashier using Priyulabs touchscreen POS system operating in 100% offline mode"
-              loading="lazy"
-            />
-            <div class="pos-img-badge pos-img-badge-light" style="background: rgba(5,150,105,0.9); border-color: rgba(5,150,105,0.5);">
-              <span class="pos-badge-icon">&#9989;</span>
+        <div class="pos-reveal-right">
+          <div class="feature-media-frame">
+            <img src="assets/pos_offline_counter.jpg" alt="Priyulabs 100% offline retail billing terminal" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/pos_offline_counter.jpg';}" loading="lazy" />
+            <div class="floating-card-badge">
+              <div class="badge-icon-box">&#128244;</div>
               <div>
-                <div class="pos-badge-text-top" style="color: #fff;">Offline Active</div>
-                <div class="pos-badge-text-sub" style="color: rgba(255,255,255,0.75);">All data saved locally</div>
+                <div class="badge-bold">100% Offline Mode</div>
+                <div class="badge-sub">Auto-sync on reconnect</div>
               </div>
-            </div>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;">
-            <div class="pos-glass-card emerald-glow" style="padding: 20px; text-align: center;">
-              <div style="font-size: 28px; font-weight: 900; color: #059669; font-family: var(--font-heading);">&#8734;</div>
-              <div style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">Hours offline</div>
-            </div>
-            <div class="pos-glass-card emerald-glow" style="padding: 20px; text-align: center;">
-              <div style="font-size: 28px; font-weight: 900; color: #059669; font-family: var(--font-heading);">0</div>
-              <div style="font-size: 12.5px; font-weight: 600; color: var(--text-muted); margin-top: 4px;">Bills lost on outage</div>
             </div>
           </div>
         </div>
@@ -1729,76 +2121,62 @@ body {
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       SECTION 5: ZERO-FRAUD EDC & HARDWARE
+       SECTION 4: ZERO-FRAUD EDC & HARDWARE INTEGRATION
   ══════════════════════════════════════════════════════════ -->
   <section class="pos-section pos-section-alt" id="pos-hardware">
     <div class="container">
-      <div class="pos-split reversed">
+      <div class="split-row media-first">
 
-        <div class="pos-img-panel pos-reveal-right">
-          <div class="pos-img-wrap">
-            <img
-              src="assets/pine_labs_real.jpg"
-              alt="Pine Labs EDC machine synced with Priyulabs POS for zero-fraud card payment processing"
-              loading="lazy"
-            />
-            <div class="pos-img-badge pos-img-badge-light">
-              <span class="pos-badge-icon">&#128737;&#65039;</span>
+        <div class="pos-reveal-left">
+          <div class="feature-media-frame">
+            <img src="assets/pine_labs_real.jpg" alt="Priyulabs Zero-fraud EDC card swipe and UPI machine integration" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/pine_labs_real.jpg';}" loading="lazy" />
+            <div class="floating-card-badge">
+              <div class="badge-icon-box">&#128737;&#65039;</div>
               <div>
-                <div class="pos-badge-text-top dark-text">0% Fraud</div>
-                <div class="pos-badge-text-sub">EDC amount locked by POS</div>
+                <div class="badge-bold">0% Fraud Guarantee</div>
+                <div class="badge-sub">Amount locked by POS</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="pos-reveal-left">
-          <span class="pos-eyebrow-chip pos-eyebrow-amber">&#128737;&#65039; Zero-Fraud EDC &amp; Hardware</span>
-          <h2 class="pos-section-title">Payment Amount<br>Sent Directly to EDC.<br>No Human Touch.</h2>
-          <p class="pos-section-desc">
-            Priyulabs POS pushes the exact bill amount to your EDC machine automatically &mdash; no staff keying in figures,
-            no shortchanging, no overcharge. Plus seamless integration with all popular hardware.
+        <div class="pos-reveal-right">
+          <span class="section-eyebrow">&#128737;&#65039; Zero-Fraud EDC &amp; Hardware</span>
+          <h2 class="section-title">Payment Amount Sent Directly to EDC.<br><span class="serif-accent">No Human Touch.</span></h2>
+          <p class="section-desc">
+            Priyulabs POS pushes the exact bill amount to your EDC machine automatically &mdash; eliminating cashier manual entry mistakes, shortchanging, or fraud. Plus plug-and-play support for all standard retail hardware.
           </p>
 
-          <div class="pos-feature-list">
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128274;</div>
-              <div>
-                <div class="pos-feature-text-title">Amount-Locked EDC Push</div>
-                <div class="pos-feature-text-desc">The POS sends the exact bill total directly to Pine Labs, Ingenico, or PAX EDC &mdash; staff cannot manually enter a different amount.</div>
+          <div class="feature-points">
+            <div class="point-item">
+              <div class="point-icon">&#128274;</div>
+              <div class="point-content">
+                <h4>Amount-Locked EDC Push</h4>
+                <p>The POS sends the exact bill total directly to Pine Labs, Ingenico, or PAX EDC &mdash; staff cannot alter the amount.</p>
               </div>
             </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128242;</div>
-              <div>
-                <div class="pos-feature-text-title">UPI Auto-Verification</div>
-                <div class="pos-feature-text-desc">QR code amount is pre-filled by the POS. Payment confirmation is received and matched automatically &mdash; no manual checking needed.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128242;</div>
+              <div class="point-content">
+                <h4>Instant Dynamic UPI Verification</h4>
+                <p>Dynamic QR generated per bill with exact amount pre-locked. Automatic payment webhook confirms receipt before printing invoice.</p>
               </div>
             </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128424;&#65039;</div>
-              <div>
-                <div class="pos-feature-text-title">Thermal Printer Integration</div>
-                <div class="pos-feature-text-desc">Auto-print on bill or on demand. Compatible with Epson TM, TVS RP, Xprinter, and any ESC/POS compliant thermal printer.</div>
-              </div>
-            </div>
-            <div class="pos-feature-item">
-              <div class="pos-feature-icon-wrap pos-feature-icon-amber">&#128247;</div>
-              <div>
-                <div class="pos-feature-text-title">Barcode Scanner Plug-and-Play</div>
-                <div class="pos-feature-text-desc">USB HID or Bluetooth scanners recognized instantly. Honeywell, Zebra, Datalogic, Netum &mdash; all work out of the box.</div>
+            <div class="point-item">
+              <div class="point-icon">&#128424;&#65039;</div>
+              <div class="point-content">
+                <h4>Thermal Printer &amp; Scanner Compatibility</h4>
+                <p>Compatible with Epson, TVS, Xprinter, Honeywell, and Zebra scanners right out of the box.</p>
               </div>
             </div>
           </div>
 
-          <div class="pos-hardware-strip">
-            <div class="pos-hw-chip">&#128697; Pine Labs EDC</div>
-            <div class="pos-hw-chip">&#128179; Ingenico</div>
-            <div class="pos-hw-chip">&#128242; Razorpay POS</div>
-            <div class="pos-hw-chip">&#128424;&#65039; Epson Thermal</div>
-            <div class="pos-hw-chip">&#128269; Honeywell Scanner</div>
-            <div class="pos-hw-chip">&#128247; Zebra Scanner</div>
-            <div class="pos-hw-chip">&#128250; Customer Display</div>
+          <div class="hw-chips-wrap">
+            <div class="hw-chip">&#128697; Pine Labs EDC</div>
+            <div class="hw-chip">&#128179; Ingenico</div>
+            <div class="hw-chip">&#128242; Razorpay POS</div>
+            <div class="hw-chip">&#128424;&#65039; Epson Thermal</div>
+            <div class="hw-chip">&#128269; Honeywell Scanner</div>
           </div>
         </div>
 
@@ -1807,251 +2185,175 @@ body {
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       LEAD DETAILS SUBMISSION & DEMO BOOKING FORM
+       SECTION 5: STORE FORMATS GALLERY (6 Cards)
   ══════════════════════════════════════════════════════════ -->
-  
-  <!-- ══════════════════════════════════════════════════════════
-       REAL RETAIL FORMATS SHOWCASE (REAL COLORFUL VISUALS)
-  ══════════════════════════════════════════════════════════ -->
-  <section class="pos-section pos-section-alt" id="pos-formats">
+  <section class="pos-section" id="pos-formats">
     <div class="container">
-      <div class="pos-section-header">
-        <span class="pos-eyebrow-chip pos-eyebrow-emerald pos-reveal">&#127978; Real Store Deployments</span>
-        <h2 class="pos-section-title pos-reveal pos-delay-1">Powering Indian Retail Across Every Store Format.</h2>
-        <p class="pos-section-desc pos-reveal pos-delay-2">
-          Real counters, real hardware, and zero complexity. See Priyulabs POS running live across India's fastest checkout environments.
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 56px;">
+        <span class="section-eyebrow">&#127978; Real Store Deployments</span>
+        <h2 class="section-title">Powering Indian Retail Across Every Store Format.</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          Real counters, real hardware, and zero friction. See Priyulabs POS running live across India's highest-velocity retail environments.
         </p>
       </div>
 
-      <div class="pos-sectors-grid">
+      <div class="formats-grid">
         <!-- Card 1: Cafes & Chai Bars -->
-        <div class="pos-sector-card pos-reveal">
-          <img src="assets/cafe_pos_modifiers.jpg" alt="Real Cafe POS counter with barista and touch ordering" class="pos-sector-img" loading="lazy" />
-          <div class="pos-sector-body">
-            <span class="pos-sector-tag" style="color: #d97706;">Food &amp; Beverage</span>
-            <div class="pos-sector-title">Cafes, Chai Bars &amp; Bakeries</div>
-            <div class="pos-sector-desc">KOT ticket printing, drink modifiers (sugar/milk/size), and table ordering with 1-tap UPI QR.</div>
+        <a href="/cafes-chai-bars" onclick="if(location.protocol==='file:'){location.href='cafes-chai-bars.html';return false;}" class="format-card pos-reveal" aria-label="Cafes, Chai Bars & Bakeries POS">
+          <div class="format-img-wrap">
+            <img src="assets/cafe_pos_modifiers.jpg" alt="Real Cafe POS counter with barista and touch ordering" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/cafe_pos_modifiers.jpg';}" loading="lazy" />
           </div>
-        </div>
+          <div class="format-body">
+            <span class="format-tag" style="color: #B8863B;">Food &amp; Beverage</span>
+            <h3>Cafes, Chai Bars &amp; Bakeries</h3>
+            <p>KOT ticket printing, drink modifiers (sugar/milk/size), and table ordering with 1-tap UPI QR.</p>
+          </div>
+        </a>
 
         <!-- Card 2: Grocery & Supermarkets -->
-        <div class="pos-sector-card pos-reveal pos-delay-1">
-          <img src="assets/grocery_upi_checkout.jpg" alt="Real Supermarket cashier counter with barcode scanner and UPI QR" class="pos-sector-img" loading="lazy" />
-          <div class="pos-sector-body">
-            <span class="pos-sector-tag" style="color: #059669;">Retail &amp; FMCG</span>
-            <div class="pos-sector-title">Grocery, Supermarkets &amp; Kirana</div>
-            <div class="pos-sector-desc">High-velocity barcode scanning, electronic weighing scale sync, and 2-second rush hour billing.</div>
+        <a href="/grocery-supermarkets-kirana" onclick="if(location.protocol==='file:'){location.href='grocery-supermarkets-kirana.html';return false;}" class="format-card pos-reveal pos-delay-1" aria-label="Grocery, Supermarkets & Kirana POS">
+          <div class="format-img-wrap">
+            <img src="assets/grocery_upi_checkout.jpg" alt="Real Supermarket cashier counter with barcode scanner and UPI QR" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/grocery_upi_checkout.jpg';}" loading="lazy" />
           </div>
-        </div>
+          <div class="format-body">
+            <span class="format-tag" style="color: #3F5D42;">Retail &amp; FMCG</span>
+            <h3>Grocery, Supermarkets &amp; Kirana</h3>
+            <p>High-velocity barcode scanning, electronic weighing scale sync, and 2-second rush hour billing.</p>
+          </div>
+        </a>
 
         <!-- Card 3: QSR & Fast Food -->
-        <div class="pos-sector-card pos-reveal pos-delay-2">
-          <img src="assets/qsr_pos_billing.jpg" alt="Real QSR touch POS billing terminal" class="pos-sector-img" loading="lazy" />
-          <div class="pos-sector-body">
-            <span class="pos-sector-tag" style="color: #2563eb;">Fast Food &amp; Dining</span>
-            <div class="pos-sector-title">QSR &amp; Fast Food Takeaways</div>
-            <div class="pos-sector-desc">Lightning token generation, live kitchen display (KDS), and thermal print speed under 1.5 seconds.</div>
+        <a href="/qsr-fast-food" onclick="if(location.protocol==='file:'){location.href='qsr-fast-food.html';return false;}" class="format-card pos-reveal pos-delay-2" aria-label="QSR & Fast Food Takeaways POS">
+          <div class="format-img-wrap">
+            <img src="assets/qsr_pos_billing.jpg" alt="Real QSR touch POS billing terminal" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/qsr_pos_billing.jpg';}" loading="lazy" />
           </div>
-        </div>
+          <div class="format-body">
+            <span class="format-tag" style="color: #2563EB;">Fast Food &amp; Dining</span>
+            <h3>QSR &amp; Fast Food Takeaways</h3>
+            <p>Lightning token generation, live kitchen display (KDS), and thermal print speed under 1.5 seconds.</p>
+          </div>
+        </a>
 
         <!-- Card 4: Electronics & Mobile -->
-        <div class="pos-sector-card pos-reveal pos-delay-1">
-          <img src="assets/electronics_imei_scan.jpg" alt="Real Mobile store counter scanning IMEI barcode" class="pos-sector-img" loading="lazy" />
-          <div class="pos-sector-body">
-            <span class="pos-sector-tag" style="color: #7c3aed;">Specialized Retail</span>
-            <div class="pos-sector-title">Electronics &amp; Mobile Shops</div>
-            <div class="pos-sector-desc">IMEI and serial number tracking on bill, warranty slip printing, and zero-error device returns.</div>
+        <a href="/electronics-mobile-shops" onclick="if(location.protocol==='file:'){location.href='electronics-mobile-shops.html';return false;}" class="format-card pos-reveal pos-delay-1" aria-label="Electronics & Mobile Shops POS">
+          <div class="format-img-wrap">
+            <img src="assets/electronics_imei_scan.jpg" alt="Real Mobile store counter scanning IMEI barcode" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/electronics_imei_scan.jpg';}" loading="lazy" />
           </div>
-        </div>
+          <div class="format-body">
+            <span class="format-tag" style="color: #7C3AED;">Specialized Retail</span>
+            <h3>Electronics &amp; Mobile Shops</h3>
+            <p>IMEI and serial number tracking on bill, warranty slip printing, and zero-error device returns.</p>
+          </div>
+        </a>
 
         <!-- Card 5: Footwear & Apparel -->
-        <div class="pos-sector-card pos-reveal pos-delay-2">
-          <img src="assets/footwear_pos_scan.jpg" alt="Real footwear and clothing boutique POS checkout" class="pos-sector-img" loading="lazy" />
-          <div class="pos-sector-body">
-            <span class="pos-sector-tag" style="color: #e11d48;">Fashion &amp; Boutiques</span>
-            <div class="pos-sector-title">Footwear &amp; Apparel Boutiques</div>
-            <div class="pos-sector-desc">Multi-size/color matrix lookup, custom barcode tag generation, and VIP customer loyalty points.</div>
+        <a href="/apparel-boutiques" onclick="if(location.protocol==='file:'){location.href='apparel-boutiques.html';return false;}" class="format-card pos-reveal pos-delay-2" aria-label="Footwear & Apparel Boutiques POS">
+          <div class="format-img-wrap">
+            <img src="assets/footwear_pos_scan.jpg" alt="Real footwear and clothing boutique POS checkout" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/footwear_pos_scan.jpg';}" loading="lazy" />
           </div>
-        </div>
+          <div class="format-body">
+            <span class="format-tag" style="color: #E11D48;">Fashion &amp; Boutiques</span>
+            <h3>Footwear &amp; Apparel Boutiques</h3>
+            <p>Multi-size/color matrix lookup, custom barcode tag generation, and VIP customer loyalty points.</p>
+          </div>
+        </a>
 
         <!-- Card 6: Jewellery & Gold -->
-        <div class="pos-sector-card pos-reveal pos-delay-3">
-          <img src="assets/jewellery_pos_scale.jpg" alt="Real jewellery showroom counter with precision bullion scale" class="pos-sector-img" loading="lazy" />
-          <div class="pos-sector-body">
-            <span class="pos-sector-tag" style="color: #d97706;">Luxury &amp; High-Value</span>
-            <div class="pos-sector-title">Jewellery &amp; Bullion Showrooms</div>
-            <div class="pos-sector-desc">Milligram weighing scale sync, making charge breakups, gold rate live updates, and secure GST billing.</div>
+        <a href="/jewellery-shops" onclick="if(location.protocol==='file:'){location.href='jewellery-shops.html';return false;}" class="format-card pos-reveal pos-delay-3" aria-label="Jewellery & Bullion Showrooms POS">
+          <div class="format-img-wrap">
+            <img src="assets/jewellery_pos_scale.jpg" alt="Real jewellery showroom counter with precision bullion scale" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/jewellery_pos_scale.jpg';}" loading="lazy" />
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="cta-section pos-section-alt" id="pos-lead-form" style="position: relative; overflow: hidden; padding: clamp(60px, 8vw, 100px) 0; border-top: 1px solid var(--border-color);">
-    <div class="cta-orb cta-orb1"></div>
-    <div class="cta-orb cta-orb2"></div>
-    <div class="container">
-      <div class="cta-inner" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 60px); align-items: center;">
-        <div class="cta-text pos-reveal-left">
-          <span class="pos-eyebrow-chip pos-eyebrow-indigo" style="margin-bottom: 18px;">
-            🚀 Fast Onboarding &amp; Custom Quote
-          </span>
-          <h2 style="color: var(--text-main); font-family: var(--font-heading); font-size: clamp(28px, 4.2vw, 44px); font-weight: 900; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 16px;">
-            Your Fastest Checkout Experience Starts with One Demo.
-          </h2>
-          <p style="color: var(--text-muted); font-size: clamp(14.5px, 2.5vw, 17px); line-height: 1.65; margin-bottom: 26px;">
-            Submit your store details below. Our POS specialists will give you a 10-minute live demonstration, customize your pricing package, and have your store billing in under 30 minutes.
-          </p>
-          <div class="cta-trust-row" style="display: flex; flex-wrap: wrap; gap: 14px; color: var(--text-body); font-weight: 700; font-size: 13.5px; margin-bottom: 28px;">
-            <span><span style="color:#059669;">✓</span> 14-Day Free Trial</span>
-            <span><span style="color:#059669;">✓</span> Zero Setup Fee</span>
-            <span><span style="color:#059669;">✓</span> 24/7 WhatsApp Support (<a href="tel:+917873844050" style="color: #b76e79; font-weight: 800;">+91 78738 44050</a>)</span>
+          <div class="format-body">
+            <span class="format-tag" style="color: #B8863B;">Luxury &amp; High-Value</span>
+            <h3>Jewellery &amp; Bullion Showrooms</h3>
+            <p>Milligram weighing scale sync, making charge breakups, gold rate live updates, and secure GST billing.</p>
           </div>
-
-          <div style="display: inline-flex; gap: 12px; align-items: center; padding: 14px 20px; background: var(--bg-surface); border-radius: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
-            <span style="font-size: 24px;">💬</span>
-            <span style="font-size: 14px; color: var(--text-body); font-weight: 600;">Need immediate help? <a href="https://wa.me/917873844050?text=Hello!%20I%20want%20a%20POS%20demo%20and%20pricing%20quote%20for%20my%20store." target="_blank" style="color: #059669; font-weight: 800; text-decoration: underline;">Chat on WhatsApp →</a></span>
-          </div>
-        </div>
-
-        <div class="cta-form-wrap pos-reveal-right">
-          <form class="cta-form" id="leadForm" style="background: var(--bg-surface); border-radius: 20px; padding: clamp(24px, 4vw, 36px); box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08); border: 1px solid var(--border-color);">
-            <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
-            <h3 style="font-family: var(--font-heading); font-size: clamp(20px, 3vw, 24px); font-weight: 800; color: var(--text-main); margin-bottom: 8px;">
-              Get POS Quote &amp; Free Trial
-            </h3>
-            <p class="cta-form-sub" style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
-              Submit your store details to request an instant onboarding call:
-            </p>
-
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="userName" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Your Name *</label>
-              <input type="text" id="userName" name="Name" placeholder="Enter your full name (e.g. Ramesh Kumar)" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff;" />
-            </div>
-
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="businessType" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Select Your Business Type *</label>
-              <select id="businessType" name="BusinessType" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff;">
-                <option value="" disabled selected>Select Your Business Type</option>
-                <optgroup label="Food &amp; Beverage / Dining">
-                  <option value="Restaurants &amp; Fine Dining">Restaurants &amp; Fine Dining</option>
-                  <option value="Cafes &amp; Chai Bars">Cafes &amp; Chai Bars</option>
-                  <option value="QSR &amp; Fast Food">QSR &amp; Fast Food</option>
-                  <option value="Bakeries &amp; Patisseries">Bakeries &amp; Patisseries</option>
-                  <option value="Cloud Kitchens &amp; Catering">Cloud Kitchens &amp; Catering</option>
-                  <option value="Bars, Pubs &amp; Breweries">Bars, Pubs &amp; Breweries</option>
-                </optgroup>
-                <optgroup label="Retail &amp; Supermarkets">
-                  <option value="Grocery, Supermarkets &amp; Kirana">Grocery, Supermarkets &amp; Kirana</option>
-                  <option value="Electronics &amp; Mobile Shops">Electronics &amp; Mobile Shops</option>
-                  <option value="Footwear &amp; Leather Stores">Footwear &amp; Leather Stores</option>
-                  <option value="Jewellery Showrooms">Jewellery Showrooms</option>
-                  <option value="Watch Stores &amp; Horology">Watch Stores &amp; Horology</option>
-                  <option value="Bookstores &amp; Stationery">Bookstores &amp; Stationery</option>
-                </optgroup>
-                <optgroup label="Beauty &amp; Fashion">
-                  <option value="Clothing Brands &amp; Apparel Boutiques">Clothing Brands &amp; Apparel Boutiques</option>
-                  <option value="Salons, Spas &amp; Beauty Parlours">Salons, Spas &amp; Beauty Parlours</option>
-                  <option value="Cosmetics &amp; Skincare Stores">Cosmetics &amp; Skincare Stores</option>
-                </optgroup>
-                <optgroup label="Services &amp; Fitness">
-                  <option value="Gyms, Fitness Studios &amp; Yoga Centers">Gyms, Fitness Studios &amp; Yoga Centers</option>
-                  <option value="Dry Cleaners &amp; Laundry Shops">Dry Cleaners &amp; Laundry Shops</option>
-                </optgroup>
-                <option value="Other Retail / Commercial Business">Other Retail / Commercial Business</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="serviceCategory" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Choose Service / Category *</label>
-              <select id="serviceCategory" name="Service" required style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff;">
-                <option value="POS" selected>POS (Smart POS &amp; Billing)</option>
-                <option value="Website Building">Website Building</option>
-                <option value="Digital Marketing">Digital Marketing</option>
-                <option value="Complete Management System">Complete Management System</option>
-                <option value="Custom">Custom</option>
-              </select>
-            </div>
-
-            <div class="form-group" id="customRequirementGroup" style="display: none; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <label for="customRequirement" style="font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 0;">What do you need? (Custom Requirements) *</label>
-                <span id="customWordCount" style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">0 / 100 words</span>
-              </div>
-              <textarea id="customRequirement" name="CustomRequirement" rows="3"
-                placeholder="Describe your requirements in detail (maximum 100 words)..."
-                style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; color: var(--text-main); background: #fff; resize: vertical; min-height: 80px;"></textarea>
-              <small id="customWordError" style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Word limit reached (Max 100 words allowed).</small>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 20px;">
-              <label for="userPhone" style="display: block; font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Phone / WhatsApp Number *</label>
-              <input type="tel" id="userPhone" name="Mobile" placeholder="WhatsApp Number (+91 78738 44050)" required maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" title="Please enter exactly 10 digits" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
-              <small id="phoneErrorMsg" style="display: none; color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px;">Phone number must be exactly 10 digits.</small>
-            </div>
-
-            <button type="submit" class="btn-primary full-width" id="submitLeadBtn" style="width: 100%; padding: 14px 20px; font-size: 15.5px; font-weight: 800; border-radius: 12px; background: #2563eb; color: #ffffff; border: none; cursor: pointer; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);">
-              Submit &amp; Get Free POS Demo 🚀
-            </button>
-
-            <div id="formStatusMsg" class="form-status-msg" style="display: none; margin-top: 14px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center;"></div>
-
-            <p class="form-privacy" style="font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center; line-height: 1.4;">
-              🔒 Your inquiry is securely received. Our team will contact you within 15 minutes.
-            </p>
-          </form>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       FOOTER
+       BOLD STANDOUT FOOTER (Identical to index.html)
   ══════════════════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="/" class="logo">
-            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
-            <div class="logo-text-group">
-              <span class="logo-title">PRIYULABS</span>
-              <span class="logo-subtitle" style="color: #2563eb; font-weight: 800; letter-spacing: 0.14em;">SMART POS</span>
-            </div>
-          </a>
-          <p class="footer-desc">
-            Priyulabs POS &mdash; Lightning-fast touch billing, Vision AI stock prediction &amp; expiry shield, 100% offline mode, and zero-fraud EDC
-            payment sync for Indian retail.
-          </p>
+    <!-- ══════════════════════════════════════════════════════════
+       UNIVERSAL EDITORIAL FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="priyulabs-universal-footer" style="padding: 72px 0 36px; border-top: 2px solid #D4C3A3; margin-top: 80px; background: #F1E8D5 !important; box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08); position: relative; z-index: 10; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; text-align: left; color: #383023;">
+    <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+      <div class="foot-grid" style="display: grid; grid-template-columns: 1.3fr 1fr 1.1fr 1fr; gap: 36px; text-align: left;">
+        <div>
+          <div class="logo" style="display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A150D;">
+            <img src="/assets/logo.svg" alt="PriyuLabs" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/logo.svg';}" style="height: 28px; width: 28px; object-fit: contain; border-radius: 7px; display: inline-block;" />
+            <span>PriyuLabs</span>
+          </div>
+          <p class="foot-brand-desc" style="margin-top: 14px; color: #383023; font-size: 14.5px; font-weight: 500; line-height: 1.6; max-width: 290px; text-align: left;">India's AI retail OS — POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
         </div>
-        <div class="footer-links-group">
-          <h4>POS Features</h4>
-          <ul>
-            <li><a href="#pos-billing" onclick="event.preventDefault(); (document.querySelector('#pos-billing') || document.getElementById('pos-billing') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">&#9889; Touch Billing</a></li>
-            <li><a href="#pos-stock-ai" onclick="event.preventDefault(); (document.querySelector('#pos-stock-ai') || document.getElementById('pos-stock-ai') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">📦 AI Stock Prediction</a></li>
-            <li><a href="#pos-offline" onclick="event.preventDefault(); (document.querySelector('#pos-offline') || document.getElementById('pos-offline') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">&#128244; Offline Mode</a></li>
-            <li><a href="#pos-hardware" onclick="event.preventDefault(); (document.querySelector('#pos-hardware') || document.getElementById('pos-hardware') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">&#128737;&#65039; EDC &amp; Hardware</a></li>
-            <li><a href="#pos-lead-form">&#128221; Get Quote &amp; Demo</a></li>
+        <div>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Solutions <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="/pos" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Smart POS</a></li>
+            <li><a href="/complete-management-system" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Management System</a></li>
+            <li><a href="/website-builder" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Website Building</a></li>
+            <li><a href="/digital-marketing" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Digital Marketing</a></li>
           </ul>
         </div>
-        <div class="footer-links-group">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="/">&#127968; Home</a></li>
-            <li><a href="/solutions">&#128197; All Solutions</a></li>
-            <li><a href="/hospitality">&#9749; Hospitality Tech</a></li>
-            <li><a href="https://wa.me/917873844050" target="_blank">&#128172; WhatsApp Support</a></li>
+        <div>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Business Types <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="/restaurants-fine-dining" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Restaurants &amp; Cafes</a></li>
+            <li><a href="/grocery-supermarkets-kirana" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Grocery &amp; Supermarkets</a></li>
+            <li><a href="/beauty-fashion/apparel" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Clothing &amp; Boutiques</a></li>
+            <li><a href="/electronics-mobile-shops" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Electronics &amp; Mobiles</a></li>
+            <li><a href="/beauty-fashion/salons" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Salons &amp; Spas</a></li>
+            <li><a href="/footwear-leather-stores" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">Footwear &amp; Leather</a></li>
+            <li><a href="/all-business-types.html" style="font-size: 14.5px; font-weight: 600; color: #B8863B; text-decoration: none; transition: all .2s ease;">All Business Types &rarr;</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
+            Contact <span style="display: inline-block; width: 16px; height: 2.5px; background: #B8863B; border-radius: 2px;"></span>
+          </h5>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0;">
+            <li><a href="mailto:priylabspos@gmail.com" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none; transition: all .2s ease;">priylabspos@gmail.com</a></li>
+            <li><a href="tel:+917873844050" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none;">+91 78738 44050</a> / <a href="tel:+917205045905" style="font-size: 14.5px; font-weight: 600; color: #383023; text-decoration: none;">+91 72050 45905</a></li>
+            <li class="foot-address" style="font-size: 14.5px; font-weight: 600; color: #383023; line-height: 1.4;">Basisthanagar, Bhubaneswar, Odisha</li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Priyulabs Digital. All Rights Reserved. | Dedicated POS Billing Software for Indian Retail.</p>
+      <!-- National Pride: Make in India & Ashoka Stambha MSME Emblems -->
+      <div class="footer-national-emblems-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
+          <!-- Make in India Lion Logo -->
+          <img src="/Made in india logo.png" alt="Make in India" class="foot-make-in-india-logo" style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='Made in india logo.png';}" />
+          <!-- Ashoka Stambha MSME Emblem -->
+          <img src="/image_4.png" alt="Ashoka Stambha MSME Government of India" class="foot-msme-emblem" style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}" />
+          <!-- Secure SSL Encryption Emblem -->
+          <img src="/sequre ssl.jpg" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem" style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='sequre ssl.jpg';}" />
+        </div>
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: #B8863B; text-transform: uppercase;">GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
+        <div style="font-size: 12px; font-family: monospace; color: #6B6152; margin-top: 3px;">MSME REGISTERED: UDYAM-OD-19-0177979</div>
+      </div>
+      <div class="foot-bottom" style="margin-top: 52px; padding-top: 24px; border-top: 1.5px solid #D4C3A3; font-size: 13.5px; font-weight: 600; color: #4A4030; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <span>© 2026 Priyulabs Software. All rights reserved.</span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08); padding: 3px 10px; border-radius: 9999px; font-size: 11.5px; font-family: ui-monospace, monospace; color: #4a4030;">
+          <span class="version-pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
+          <span class="foot-version" id="siteVersion">v2.4.68</span>
+        </span>
+        <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
   </footer>
 
-  <script src="script.js">
+  <!-- ══════════════════════════════════════════════════════════
+       CLIENT SCRIPTS
+  ══════════════════════════════════════════════════════════ -->
+  <script>
+    /* ── 3-COLUMN MEGA MENU TAB SWITCHER ── */
     function switchMegaTab(tabKey) {
       document.querySelectorAll('.sq-cat-btn').forEach(function(btn) {
         var isTarget = btn.getAttribute('data-tab') === tabKey;
@@ -2062,68 +2364,41 @@ body {
         content.classList.toggle('active', isTarget);
       });
     }
-  
-  </script>
-  <script>
+
+    /* ── CONDITIONAL CUSTOM BUSINESS TYPE ── */
+    function checkPosCustomBusinessType(selectEl) {
+      var customGroup = document.getElementById('posCustomTypeGroup');
+      var customInput = document.getElementById('posCustomType');
+      if (selectEl.value === 'Custom') {
+        if (customGroup) customGroup.style.display = 'block';
+        if (customInput) customInput.required = true;
+      } else {
+        if (customGroup) customGroup.style.display = 'none';
+        if (customInput) {
+          customInput.required = false;
+          customInput.value = '';
+        }
+      }
+    }
+
     /* ── SCROLL REVEAL OBSERVER ── */
     (function () {
-      var revealEls = document.querySelectorAll(
-        '.pos-reveal, .pos-reveal-left, .pos-reveal-right'
-      );
-      var observer = new IntersectionObserver(
-        function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-      );
-      revealEls.forEach(function(el) { observer.observe(el); });
-    })();
-  </script>
-
-
-  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
-  <script>
-    (function() {
-      function initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-          if (anchor.dataset.smoothBound) return;
-          anchor.dataset.smoothBound = 'true';
-          anchor.addEventListener('click', function(e) {
-            var hash = this.getAttribute('href');
-            if (hash && hash.length > 1 && !hash.startsWith('#/')) {
-              var target = document.querySelector(hash) || 
-                           document.getElementById(hash.substring(1)) || 
-                           document.getElementById('pillars') || 
-                           document.getElementById('matrix-features') || 
-                           document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid, .clean-container');
-              if (target) {
-                e.preventDefault();
-                e.stopPropagation();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                if (window.history && window.history.pushState) {
-                  window.history.pushState(null, null, hash);
-                }
-              }
-            }
-          });
+      var revealEls = document.querySelectorAll('.pos-reveal, .pos-reveal-left, .pos-reveal-right');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSmoothScroll);
-      } else {
-        initSmoothScroll();
-      }
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach(function(el) {
+        observer.observe(el);
+      });
     })();
-  </script>
 
-
-  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
-  <script id="seamless-video-looper-script">
+    /* ── SEAMLESS DOUBLE-BUFFERED VIDEO BACKGROUND LOOPER ── */
     (function initSeamlessVideoLooper() {
       const container = document.querySelector('.global-fluid-bg');
       if (!container) return;
@@ -2239,41 +2514,277 @@ body {
         startLooper();
       }
     })();
-  </script>
 
-
-  <!-- Smooth Redirection to Landing Page Free Trial Onboarding Form -->
-  <script id="landing-trial-router">
-    function goToLandingTrial(e, sector) {
-      if (e && e.preventDefault) e.preventDefault();
-
-      const query = sector ? ('?bType=' + encodeURIComponent(sector)) : '';
-      let target = 'index.html' + query + '#contact';
-
-      if (window.location.protocol === 'file:') {
-        const p = window.location.pathname.replace(/\\/g, '/');
-        const idx = p.indexOf('/Antigravity/');
-        if (idx !== -1) {
-          const rel = p.substring(idx + '/Antigravity/'.length);
-          const depth = rel.split('/').length - 1;
-          target = (depth > 0 ? '../'.repeat(depth) : '') + 'index.html' + query + '#contact';
+    /* ── DYNAMIC PAGE SUB-BRAND / TITLE ADAPTER ── */
+    (function initDynamicNavSubbrand() {
+      var logoSubEl = document.getElementById('navLogoSubtitle');
+      if (!logoSubEl) return;
+      var defaultSub = logoSubEl.textContent;
+      var hash = (window.location.hash || '').toLowerCase();
+      if (hash.includes('pricing') ) {
+        logoSubEl.textContent = 'PRICING & PLANS';
+      }
+      window.addEventListener('hashchange', function() {
+        var currentHash = (window.location.hash || '').toLowerCase();
+        if (currentHash.includes('pricing') ) {
+          logoSubEl.textContent = 'PRICING & PLANS';
         } else {
-          // Fallback relative
-          const parts = p.split('/');
-          const fileName = parts.pop();
-          if (parts.length > 0) {
-            target = 'index.html' + query + '#contact';
-          }
+          logoSubEl.textContent = defaultSub;
         }
-      } else {
-        // Web server (http://, https://)
-        target = '/index.html' + query + '#contact';
+      });
+    })();
+
+    /* ── GOOGLE APPS SCRIPT BACKEND & FLOATING POPUP ── */
+    var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
+
+    function showFloatingSuccessPopup(name, serviceName, waUrl) {
+      var popup = document.getElementById('leadSuccessPopup');
+      var nameEl = document.getElementById('leadSuccessName');
+      var serviceEl = document.getElementById('leadSuccessService');
+      var btnEl = document.getElementById('leadSuccessWaBtn');
+
+      if (nameEl) nameEl.textContent = name || 'there';
+      if (serviceEl) serviceEl.textContent = serviceName || 'Smart POS';
+      if (btnEl) btnEl.href = waUrl;
+
+      if (popup) {
+        popup.style.display = 'flex';
+        popup.style.opacity = '1';
+        popup.style.transform = 'translateY(0)';
+      }
+    }
+
+    function closeSuccessPopup() {
+      var popup = document.getElementById('leadSuccessPopup');
+      if (popup) {
+        popup.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateY(20px)';
+        setTimeout(function() {
+          popup.style.display = 'none';
+        }, 250);
+      }
+    }
+    window.closeSuccessPopup = closeSuccessPopup;
+    window.showFloatingSuccessPopup = showFloatingSuccessPopup;
+
+    /* ── POS LEAD FORM SUBMISSION HANDLER ── */
+    function handlePosLeadSubmit(e) {
+      e.preventDefault();
+      var form = e.target;
+      var submitBtn = document.getElementById('posSubmitBtn');
+      var statusEl = document.getElementById('posFormStatus');
+
+      var nameInput = document.getElementById('posUserName');
+      var bTypeSelect = document.getElementById('posBusinessType');
+      var customTypeInput = document.getElementById('posCustomType');
+      var serviceSelect = document.getElementById('posServiceCategory');
+      var phoneInput = document.getElementById('posUserPhone');
+
+      var name = nameInput ? nameInput.value.trim() : '';
+      var bType = bTypeSelect ? bTypeSelect.value : '';
+      if (bType === 'Custom') {
+        var customVal = customTypeInput ? customTypeInput.value.trim() : '';
+        if (!customVal) {
+          if (statusEl) {
+            statusEl.style.display = 'block';
+            statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+            statusEl.style.color = '#dc2626';
+            statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+            statusEl.textContent = 'Please specify your custom business type.';
+          }
+          if (customTypeInput) customTypeInput.focus();
+          return;
+        }
+        bType = 'Custom (' + customVal + ')';
+      }
+      var service = serviceSelect ? serviceSelect.value : 'Smart POS';
+      var phone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+
+      if (!name || name.length < 2) {
+        if (nameInput) nameInput.focus();
+        return;
+      }
+      if (!bType) {
+        if (bTypeSelect) bTypeSelect.focus();
+        return;
+      }
+      if (!phone || phone.length !== 10) {
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+          statusEl.style.color = '#dc2626';
+          statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          statusEl.textContent = 'Please enter a valid 10-digit phone number.';
+        }
+        if (phoneInput) phoneInput.focus();
+        return;
       }
 
-      window.location.href = target;
+      // Transform button to loading state with spinner
+      var originalBtnHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      submitBtn.innerHTML = '<span class="btn-spinner"></span><span>Submitting your request...</span>';
+
+      if (statusEl) {
+        statusEl.style.display = 'none';
+        statusEl.textContent = '';
+      }
+
+      var payload = {
+        name: name,
+        mobile: phone,
+        businessType: bType,
+        serviceCategory: service,
+        source: 'POS Page (/pos/)',
+        timestamp: new Date().toISOString()
+      };
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function() {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        submitBtn.innerHTML = originalBtnHtml;
+
+        // Reveal smooth success card below form
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(63, 93, 66, 0.12)';
+          statusEl.style.color = '#2A422D';
+          statusEl.style.border = '1px solid rgba(63, 93, 66, 0.35)';
+          statusEl.innerHTML = '<strong>Submission Confirmed!</strong> Thank you ' + name + ', our POS specialist will call you shortly.';
+        }
+
+        // Prepare WhatsApp redirect URL
+        var waGreeting = 'Hi Priyulabs, I just submitted my details for ' + encodeURIComponent(service) + ' (Business: ' + encodeURIComponent(bType) + '). Please arrange a demo.';
+        var waUrl = 'https://wa.me/917849074050?text=' + waGreeting;
+
+        // Show floating bottom-right success notification card
+        showFloatingSuccessPopup(name, service, waUrl);
+
+        form.reset();
+        if (customTypeInput) customTypeInput.value = '';
+        var customGroup = document.getElementById('posCustomTypeGroup');
+        if (customGroup) customGroup.style.display = 'none';
+      })
+      .catch(function(err) {
+        console.error('Lead submission error:', err);
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        submitBtn.innerHTML = originalBtnHtml;
+
+        if (statusEl) {
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(63, 93, 66, 0.12)';
+          statusEl.style.color = '#2A422D';
+          statusEl.style.border = '1px solid rgba(63, 93, 66, 0.35)';
+          statusEl.innerHTML = '<strong>Submission Confirmed!</strong> Thank you ' + name + ', our POS specialist will contact you shortly.';
+        }
+
+        var waGreeting = 'Hi Priyulabs, I just submitted my details for ' + encodeURIComponent(service) + '. Please connect with me.';
+        var waUrl = 'https://wa.me/917849074050?text=' + waGreeting;
+        showFloatingSuccessPopup(name, service, waUrl);
+
+        form.reset();
+      });
     }
   </script>
 
-</body>
-</html>
+  <!-- Business Types Mega-Menu Tab-Switching Logic & Dropdown Click-to-Pin -->
+  <script>
+    function switchMegaTab(tabKey) {
+      document.querySelectorAll('.sq-cat-btn').forEach(function (btn) {
+        var isTarget = btn.getAttribute('data-tab') === tabKey;
+        btn.classList.toggle('active', isTarget);
+      });
+      document.querySelectorAll('.sq-tab-content').forEach(function (content) {
+        var isTarget = content.id === 'tab-' + tabKey;
+        content.classList.toggle('active', isTarget);
+      });
+    }
+    window.switchMegaTab = switchMegaTab;
 
+    // Redirect to landing page Free Trial form section smoothly
+    function goToFreeTrial(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      var hash = '#contact';
+      if (window.location.protocol === 'file:') {
+        var href = window.location.href.split(/[?#]/)[0];
+        if (href.endsWith('/pos/index.html') || href.endsWith('/pos/')) {
+          var rootDir = href.replace(/\/pos\/(index\.html)?$/, '/');
+          window.location.href = rootDir + 'index.html' + hash;
+          return;
+        }
+        var baseDir = href.substring(0, href.lastIndexOf('/') + 1);
+        window.location.href = baseDir + 'index.html' + hash;
+      } else {
+        window.location.href = '/index.html' + hash;
+      }
+    }
+    window.goToFreeTrial = goToFreeTrial;
+
+    // Smooth scroll to High-Speed Checkout section with fixed header offset
+    function scrollToPosBilling(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      var target = document.getElementById('pos-billing');
+      if (target) {
+        var navOffset = 85;
+        var elemPos = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+        window.scrollTo({ top: elemPos, behavior: 'smooth' });
+        if (window.history && window.history.pushState) {
+          window.history.pushState(null, null, '#pos-billing');
+        }
+      }
+    }
+    window.scrollToPosBilling = scrollToPosBilling;
+
+
+
+    // Toggle "Business types ▾" / "Solutions ▾" dropdown on click (Click-to-Pin)
+    document.querySelectorAll('.nav-item-dropdown .dropdown-trigger, .nav-item-dropdown > a, .nav-item-dropdown > span, .nav-item-dropdown > button').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        var parent = trigger.closest('.nav-item-dropdown');
+        if (!parent) return;
+        var hasDropdown = parent.querySelector('.mega-dropdown, .square-dropdown-sm');
+        if (hasDropdown) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isPinned = parent.classList.contains('pinned');
+          document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+            item.classList.remove('open', 'pinned');
+          });
+          if (!isPinned) {
+            parent.classList.add('open', 'pinned');
+          }
+        }
+      });
+    });
+
+    // Close when clicking any link inside dropdown
+    document.querySelectorAll('.mega-dropdown a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+          item.classList.remove('open', 'pinned');
+        });
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
+          item.classList.remove('open', 'pinned');
+        });
+      }
+    });
+  </script>
+  <script src="version.js"></script>
+</body>
+
+</html>

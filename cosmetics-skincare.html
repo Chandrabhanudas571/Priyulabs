@@ -1256,6 +1256,9 @@ body {
 
       <ul class="clean-nav-links">
         <li>
+          <a href="/" class="clean-nav-link" onclick="if(window.location.protocol==='file:'){event.preventDefault();const p=window.location.pathname.replace(/\\/g,'/');const idx=p.indexOf('/Antigravity/');if(idx!==-1){const rel=p.substring(idx+13);const d=rel.split('/').length-1;window.location.href=(d>0?'../'.repeat(d):'')+'index.html';}else{window.location.href='index.html';}}">Home</a>
+        </li>
+        <li>
           <a href="#" class="clean-nav-link active">Overview</a>
         </li>
         <li class="types-menu-wrap">
@@ -2276,5 +2279,6 @@ body {
     }
   </script>
 
+  <script src="version.js"></script>
 </body>
 </html>

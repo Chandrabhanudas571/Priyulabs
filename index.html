@@ -886,9 +886,23 @@
     }
 
     .pill-india .trust-icon-box {
-      background: #1d4ed8;
+      background: #000000;
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(29, 78, 216, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(184, 134, 59, 0.45);
+      padding: 2px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill-india .trust-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
     }
 
     .pill-india .trust-status-tag {
@@ -903,9 +917,23 @@
     }
 
     .pill-secure .trust-icon-box {
-      background: #15803d;
+      background: #ffffff;
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3);
+      box-shadow: 0 4px 10px rgba(21, 128, 61, 0.15);
+      border: 1px solid rgba(22, 163, 74, 0.35);
+      padding: 2px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill-secure .trust-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
     }
 
     .pill-secure .trust-status-tag {
@@ -920,9 +948,23 @@
     }
 
     .pill-msme .trust-icon-box {
-      background: #b45309;
+      background: #000000;
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(180, 83, 9, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(184, 134, 59, 0.45);
+      padding: 2px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill-msme .trust-icon-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
     }
 
     .pill-msme .trust-status-tag {
@@ -1029,6 +1071,7 @@
     }
 
     .btn-submit-form {
+      position: relative;
       width: 100%;
       padding: 15px;
       background: #3F5D42;
@@ -1041,13 +1084,83 @@
       cursor: pointer;
       margin-top: 8px;
       box-shadow: 0 10px 24px -6px rgba(63, 93, 66, 0.5);
-      transition: all 0.25s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      overflow: hidden;
     }
 
-    .btn-submit-form:hover {
+    .btn-submit-form:hover:not(:disabled) {
       background: #2f4832;
       transform: translateY(-2px);
       box-shadow: 0 14px 28px -6px rgba(63, 93, 66, 0.6);
+    }
+
+    /* Button Loading State & Smooth Subtle Pulse */
+    .btn-submit-form.is-loading,
+    .btn-submit-form:disabled {
+      cursor: not-allowed;
+      opacity: 0.94;
+      pointer-events: none;
+    }
+
+    .btn-submit-form.is-loading {
+      background: #2E4631;
+      animation: btnSubtlePulse 1.6s ease-in-out infinite;
+      box-shadow: 0 8px 20px -4px rgba(46, 70, 49, 0.45);
+    }
+
+    @keyframes btnSubtlePulse {
+      0%, 100% {
+        opacity: 0.95;
+        background-color: #2E4631;
+      }
+      50% {
+        opacity: 0.76;
+        background-color: #3F5D42;
+      }
+    }
+
+    /* Animated Rotating Spinner */
+    .btn-spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: btnSpin 0.75s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes btnSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Form Status Smooth Reveal Animation */
+    #mainFormStatus {
+      display: none;
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      animation: formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes formStatusReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .form-footer-note {
@@ -1185,29 +1298,107 @@
       left: 0;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
-      transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
       z-index: 1000;
       pointer-events: none;
       padding-top: 12px;
     }
 
-    .nav-item-dropdown:hover .mega-dropdown {
+    /* Generic small dropdowns (e.g. Solutions) */
+    .nav-item-dropdown:hover .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.open .mega-dropdown:not(.square-mega-3col):not(.megamenu-content),
+    .nav-item-dropdown.pinned .mega-dropdown:not(.square-mega-3col):not(.megamenu-content) {
       opacity: 1 !important;
       visibility: visible !important;
       transform: translateY(0) !important;
       pointer-events: auto !important;
     }
 
-    .square-mega-3col {
-      width: 960px;
-      max-width: calc(100vw - 32px);
-      left: -140px;
-    }
-
     .square-dropdown-sm {
       width: 340px;
       left: -20px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       PERFECTLY CENTERED MEGAMENU (.square-mega-3col, .megamenu-content)
+       ══════════════════════════════════════════════════════════ */
+    .square-mega-3col,
+    .mega-dropdown.square-mega-3col,
+    .megamenu-content {
+      position: fixed !important;
+      top: 70px !important;
+      left: 50% !important;
+      right: auto !important;
+      width: 960px !important;
+      max-width: calc(100vw - 32px) !important;
+      max-height: calc(100vh - 88px) !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overscroll-behavior: contain !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      z-index: 1200 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateX(-50%) translateY(8px) !important;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out !important;
+    }
+
+    /* Seamless mouse hover bridge */
+    .square-mega-3col::before,
+    .mega-dropdown.square-mega-3col::before,
+    .megamenu-content::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -24px !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 32px !important;
+      pointer-events: auto !important;
+    }
+
+    /* Active / Open / Hover state: always centered with smooth 0.4s fade and 8px slide */
+    .nav-item-dropdown:hover .square-mega-3col,
+    .nav-item-dropdown.open .square-mega-3col,
+    .nav-item-dropdown.pinned .square-mega-3col,
+    .nav-item-dropdown:hover .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.open .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown.pinned .mega-dropdown.square-mega-3col,
+    .nav-item-dropdown:hover .megamenu-content,
+    .nav-item-dropdown.open .megamenu-content,
+    .nav-item-dropdown.pinned .megamenu-content,
+    .square-mega-3col.open,
+    .square-mega-3col.active,
+    .megamenu-content.open,
+    .megamenu-content.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    /* Custom modern scrollbar for megamenu overflow */
+    .square-mega-3col::-webkit-scrollbar,
+    .megamenu-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .square-mega-3col::-webkit-scrollbar-track,
+    .megamenu-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .square-mega-3col::-webkit-scrollbar-thumb,
+    .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 999px;
+    }
+    [data-theme="dark"] .square-mega-3col::-webkit-scrollbar-thumb,
+    [data-theme="dark"] .megamenu-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .mega-dropdown-inner {
@@ -1428,16 +1619,18 @@
       position: absolute !important;
       top: 50% !important;
       left: 50% !important;
-      min-width: 100% !important;
-      min-height: 100% !important;
+      min-width: 106% !important;
+      min-height: 106% !important;
       width: auto !important;
       height: auto !important;
-      transform: translate(-50%, -50%) !important;
+      transform: translate(-50%, -50%) scale(1.04) !important;
       object-fit: cover !important;
+      filter: blur(8px) saturate(1.05) !important;
+      -webkit-filter: blur(8px) saturate(1.05) !important;
       opacity: 0.5 !important;
       transition: opacity 0.35s ease-in-out !important;
       pointer-events: none !important;
-      will-change: opacity !important;
+      will-change: opacity, filter !important;
     }
 
     .global-fluid-bg video.is-active {
@@ -1531,24 +1724,476 @@
         gap: 32px !important;
       }
     }
+
+    /* Floating Bottom-Right Lead Success Notification Card */
+    .lead-success-card-floating {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      max-width: 400px;
+      width: calc(100vw - 32px);
+      background: #FFFFFF;
+      border: 1.5px solid #25D366;
+      border-radius: 16px;
+      box-shadow: 0 16px 36px -6px rgba(37, 211, 102, 0.28), 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+      padding: 18px 20px 20px 20px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: slideUpSuccess 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      backdrop-filter: blur(12px);
+      box-sizing: border-box;
+    }
+
+    @keyframes slideUpSuccess {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .lead-success-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      line-height: 1;
+      color: #8C827A;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .lead-success-close:hover {
+      color: #1A1A1A;
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .lead-success-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-right: 20px;
+    }
+
+    .lead-success-icon-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .lead-success-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0;
+      line-height: 1.25;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .lead-success-subtitle {
+      font-size: 13px;
+      color: #3F5D42;
+      font-weight: 600;
+      margin-top: 3px;
+      margin-bottom: 0;
+    }
+
+    .lead-success-desc {
+      font-size: 13.5px;
+      color: #4A443A;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .lead-success-desc strong {
+      color: #1A1A1A;
+    }
+
+    /* Prominent WhatsApp CTA Button */
+    .whatsapp-instant-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: #25D366;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.38);
+      letter-spacing: -0.01em;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .whatsapp-instant-btn:hover {
+      background: #20BA5A;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.52);
+      transform: translateY(-1px);
+      color: #FFFFFF !important;
+    }
+
+    .whatsapp-instant-btn svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .lead-success-card-floating {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        max-width: none;
+        border-radius: 14px;
+        padding: 16px;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- ══════════════════════════════════════════════════════════
+       BRANDED OPENING PRELOADER (P ANIMATION INTRO)
+  ══════════════════════════════════════════════════════════ -->
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       APPLE LIQUID GLASS OPENING PRELOADER (SUBTLE / TRANSLUCENT)
+    ══════════════════════════════════════════════════════════ */
+    #priyulabsIntroPreloader,
+    #priyulabs-preloader {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      /* Subtle Apple Liquid Glass - translucent so landing page is visible underneath */
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 0.38) 0%,
+        rgba(250, 246, 238, 0.28) 60%,
+        rgba(240, 234, 220, 0.35) 100%
+      );
+      backdrop-filter: blur(12px) saturate(145%);
+      -webkit-backdrop-filter: blur(12px) saturate(145%);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, visibility;
+    }
+    #priyulabsIntroPreloader.is-fading,
+    #priyulabsIntroPreloader.preloader-hidden,
+    #priyulabs-preloader.is-fading,
+    #priyulabs-preloader.preloader-hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    /* Instant suppression when already played in current browser session */
+    html.preloader-already-played #priyulabsIntroPreloader,
+    html.preloader-already-played #priyulabs-preloader {
+      display: none !important;
+    }
+
+    /* Ambient Liquid Glass Fluid Highlights (Subtle sheen) */
+    .liquid-glass-mesh {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .liquid-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+      will-change: transform;
+    }
+    .liquid-orb-1 {
+      top: 20%;
+      left: 25%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(63, 93, 66, 0.12) 0%, rgba(63, 93, 66, 0) 70%);
+      filter: blur(60px);
+      animation: liquidFloat1 7s ease-in-out infinite alternate;
+    }
+    .liquid-orb-2 {
+      bottom: 20%;
+      right: 22%;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(184, 134, 59, 0.12) 0%, rgba(184, 134, 59, 0) 70%);
+      filter: blur(65px);
+      animation: liquidFloat2 8s ease-in-out infinite alternate;
+    }
+    .liquid-orb-3 {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 460px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+      filter: blur(45px);
+    }
+    @keyframes liquidFloat1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, -30px) scale(1.08); }
+    }
+    @keyframes liquidFloat2 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-35px, 25px) scale(1.06); }
+    }
+
+    /* Center Section: ONLY the Pure P Logo (100% transparent background, zero lag) */
+    .intro-logo-center {
+      position: relative;
+      z-index: 2;
+      width: min(260px, 68vw);
+      height: min(260px, 68vw);
+      aspect-ratio: 1 / 1;
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .intro-logo-anim {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform, opacity;
+      image-rendering: -webkit-optimize-contrast;
+    }
+  </style>
+
+  <!-- Pre-render session check: allow reload/direct open to always play, suppress only on internal navigation within the same session -->
+  <script>
+    try {
+      var isReload = false;
+      if (window.performance && window.performance.getEntriesByType) {
+        var nav = window.performance.getEntriesByType('navigation')[0];
+        if (nav && nav.type === 'reload') isReload = true;
+      }
+      if (!isReload && window.performance && window.performance.navigation) {
+        if (window.performance.navigation.type === 1) isReload = true;
+      }
+      var isInternalNav = !isReload && document.referrer && (document.referrer.indexOf(window.location.host) !== -1);
+
+      if (isReload) {
+        // Explicit reload: clear flag so user/developer can test animation reliably
+        sessionStorage.removeItem('preloaderPlayed');
+      } else if (isInternalNav && sessionStorage.getItem('preloaderPlayed') === 'true') {
+        // Internal page-to-page navigation: suppress preloader
+        document.documentElement.classList.add('preloader-already-played');
+      }
+    } catch (e) {}
+  </script>
+
+  <div id="priyulabs-preloader" class="priyulabs-preloader" aria-label="PriyuLabs Opening Intro">
+    <!-- Legacy compatibility anchor for scripts querying priyulabsIntroPreloader -->
+    <div id="priyulabsIntroPreloader" style="display:none;" aria-hidden="true"></div>
+    <!-- Ambient Liquid Glass Backdrop Orbs -->
+    <div class="liquid-glass-mesh" aria-hidden="true">
+      <div class="liquid-orb liquid-orb-1"></div>
+      <div class="liquid-orb liquid-orb-2"></div>
+      <div class="liquid-orb liquid-orb-3"></div>
+    </div>
+
+    <!-- Center Section: 100% Transparent Branded P Animation (Zero grey background box) -->
+    <div class="intro-logo-center">
+      <img id="intro-logo-anim" class="intro-logo-anim" src="assets/priyulabs_intro_transparent.webp" alt="PriyuLabs" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      function getPreloader() {
+        return document.getElementById('priyulabs-preloader') || document.getElementById('priyulabsIntroPreloader');
+      }
+
+      // Check if reload or internal navigation
+      var isReload = false;
+      try {
+        if (window.performance && window.performance.getEntriesByType) {
+          var nav = window.performance.getEntriesByType('navigation')[0];
+          if (nav && nav.type === 'reload') isReload = true;
+        }
+        if (!isReload && window.performance && window.performance.navigation) {
+          if (window.performance.navigation.type === 1) isReload = true;
+        }
+      } catch (e) {}
+
+      var isInternalNav = false;
+      try {
+        isInternalNav = !isReload && document.referrer && (document.referrer.indexOf(window.location.host) !== -1);
+      } catch (e) {}
+
+      var alreadyPlayed = false;
+      try {
+        if (isReload) {
+          sessionStorage.removeItem('preloaderPlayed');
+          alreadyPlayed = false;
+        } else if (isInternalNav && sessionStorage.getItem('preloaderPlayed') === 'true') {
+          alreadyPlayed = true;
+        } else {
+          alreadyPlayed = false;
+        }
+      } catch (e) {
+        alreadyPlayed = false;
+      }
+
+      var freezeTimer = null;
+      function preventEarlyPlay(e) {
+        if (e.target && e.target.tagName === 'VIDEO') {
+          try {
+            e.target.pause();
+            e.target.currentTime = 0;
+          } catch (err) {}
+        }
+      }
+
+      function startLandingVideos() {
+        document.removeEventListener('play', preventEarlyPlay, true);
+        if (freezeTimer) {
+          clearInterval(freezeTimer);
+          freezeTimer = null;
+        }
+        var allVids = document.querySelectorAll('video');
+        for (var i = 0; i < allVids.length; i++) {
+          var v = allVids[i];
+          try {
+            v.muted = true;
+            v.currentTime = 0;
+            var p = v.play();
+            if (p !== undefined) {
+              p.catch(function () {});
+            }
+          } catch (err) {}
+        }
+      }
+
+      if (alreadyPlayed) {
+        var pre = getPreloader();
+        if (pre) {
+          pre.classList.add('preloader-hidden');
+          pre.style.display = 'none';
+          try { pre.remove(); } catch (e) {}
+        }
+        startLandingVideos();
+        return;
+      }
+
+      // Mark session as played for subsequent internal navigations
+      try {
+        sessionStorage.setItem('preloaderPlayed', 'true');
+      } catch (e) {}
+
+      var preloader = getPreloader();
+      if (!preloader) return;
+
+      // Ensure preloader is shown on initial open/reload
+      preloader.style.display = 'flex';
+      preloader.classList.remove('preloader-hidden', 'is-fading');
+      preloader.style.opacity = '1';
+      preloader.style.visibility = 'visible';
+
+      // Ensure fresh start from frame 0 for transparent WebP
+      var introImg = document.getElementById('intro-logo-anim') || preloader.querySelector('.intro-logo-anim');
+      if (introImg && introImg.tagName === 'IMG') {
+        introImg.src = 'assets/priyulabs_intro_transparent.webp?v=' + Date.now();
+      }
+
+      // Hold background videos paused at 0:00 while preloader is active
+      document.addEventListener('play', preventEarlyPlay, true);
+
+      function freezeSiteVideos() {
+        var allVids = document.querySelectorAll('video');
+        for (var i = 0; i < allVids.length; i++) {
+          if (!allVids[i].paused) {
+            try {
+              allVids[i].pause();
+              allVids[i].currentTime = 0;
+            } catch (err) {}
+          }
+        }
+      }
+      freezeTimer = setInterval(freezeSiteVideos, 50);
+
+      var dismissed = false;
+      var safetyFallbackTimer = null;
+
+      function dismissIntro() {
+        if (dismissed) return;
+        dismissed = true;
+
+        if (safetyFallbackTimer) {
+          clearTimeout(safetyFallbackTimer);
+          safetyFallbackTimer = null;
+        }
+
+        // IMMEDIATELY start landing page background videos as preloader finishes!
+        startLandingVideos();
+
+        // Trigger smooth fade out
+        preloader.classList.add('is-fading');
+        preloader.classList.add('preloader-hidden');
+
+        setTimeout(function () {
+          preloader.style.display = 'none';
+          try {
+            preloader.remove();
+          } catch (e) {}
+        }, 500);
+      }
+
+      // Respect prefers-reduced-motion
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        dismissIntro();
+        return;
+      }
+
+      // Full animation duration: 2700ms (plays the 2.8s animation cleanly once, then fades out smoothly)
+      safetyFallbackTimer = setTimeout(dismissIntro, 2700);
+    })();
+  </script>
+
   <div class="global-fluid-bg">
-    <video class="bg-vid bg-vid-1 is-active" autoplay loop muted playsinline preload="auto">
+    <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+      <source src="landingpage1video.mp4" type="video/mp4">
+      <source src="./landingpage1video.mp4" type="video/mp4">
+      <source src="/landingpage1video.mp4" type="video/mp4">
+      <source src="assets/landingpage1video.mp4" type="video/mp4">
       <source src="priyulabs background.mp4" type="video/mp4">
       <source src="./priyulabs background.mp4" type="video/mp4">
       <source src="backgroundvideo1.mp4" type="video/mp4">
-      <source src="./backgroundvideo1.mp4" type="video/mp4">
-      <source src="/backgroundvideo1.mp4" type="video/mp4">
-    </video>
-    <video class="bg-vid bg-vid-2" loop muted playsinline preload="auto">
-      <source src="priyulabs background.mp4" type="video/mp4">
-      <source src="./priyulabs background.mp4" type="video/mp4">
-      <source src="backgroundvideo1.mp4" type="video/mp4">
-      <source src="./backgroundvideo1.mp4" type="video/mp4">
-      <source src="/backgroundvideo1.mp4" type="video/mp4">
     </video>
   </div>
   <div class="global-fluid-mask"></div>
@@ -1563,7 +2208,7 @@
   <header>
     <div class="nav">
       <a href="/" class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
-          style="height:32px; width:32px; object-fit:contain; border-radius:8px; display:inline-block;" /><span>PriyuLabs</span></a>
+          style="height:32px; width:32px; object-fit:contain; display:inline-block; background:transparent;" /><span>PriyuLabs</span></a>
 
       <ul class="nav-links">
         <!-- 1. Business types Dropdown -->
@@ -1830,49 +2475,49 @@
   <section id="who">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker">Core Solutions</div>
-        <h2>Who we serve: 4 Core Solutions</h2>
-        <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Tailored operational engines powering physical counters, multi-store enterprises, and modern digital commerce.</p>
+        <div class="kicker">Built for your kind of business</div>
+        <h2>Who we serve</h2>
+        <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Tailored workflows and retail operating systems built for your specific enterprise vertical.</p>
       </div>
       <div class="serve-scroll reveal">
-        <!-- Solution 1: Smart POS -->
-        <a href="pos.html" class="serve-card">
+        <!-- Sector 1: Salons & Spas -->
+        <a href="salons-spas.html" class="serve-card">
           <div class="serve-img"><img
-              src="assets/smart_pos_touch_billing.jpg"
-              alt="Smart POS" onerror="this.src='assets/card1-pos-poster.jpg';"></div>
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
+              alt="Salons & Spas" onerror="this.src='assets/sector_cosmetics.jpg';"></div>
           <div class="serve-body">
-            <h4>Smart POS</h4>
-            <p>Fast billing, AI voice checkout &amp; offline mode.</p>
+            <h4>Salons &amp; Spas</h4>
+            <p>Slot booking, stylist commissions &amp; loyalty memberships.</p>
           </div>
         </a>
-        <!-- Solution 2: Complete Management System -->
-        <a href="complete-management-system.html" class="serve-card">
+        <!-- Sector 2: Cafes & Dining -->
+        <a href="cafes-chai-bars.html" class="serve-card">
           <div class="serve-img"><img
-              src="assets/card2-management-poster.jpg"
-              alt="Complete Management System" onerror="this.src='assets/pos_ui_hero.jpg';"></div>
+              src="assets/sector_cafe.jpg"
+              alt="Cafes & Dining" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80';"></div>
           <div class="serve-body">
-            <h4>Complete Management System</h4>
-            <p>Inventory ERP, Staff HRMS &amp; 1-Click GST sync.</p>
+            <h4>Cafes &amp; Dining</h4>
+            <p>Table management, live KOT, quick UPI billing &amp; recipes.</p>
           </div>
         </a>
-        <!-- Solution 3: Custom Website Building -->
-        <a href="website-builder.html" class="serve-card">
+        <!-- Sector 3: Supermarket & Grocery -->
+        <a href="grocery-supermarkets-kirana.html" class="serve-card">
           <div class="serve-img"><img
-              src="assets/custom_website_builder.jpg"
-              alt="Custom Website Building" onerror="this.src='assets/card3-website-poster.jpg';"></div>
+              src="assets/sector_supermarket.jpg"
+              alt="Supermarket & Grocery" onerror="this.src='assets/grocery_hero.jpg';"></div>
           <div class="serve-body">
-            <h4>Custom Website Building</h4>
-            <p>E-Commerce stores, web apps &amp; 5-day delivery.</p>
+            <h4>Supermarket &amp; Grocery</h4>
+            <p>Weighing scale sync, barcode scanner &amp; khata ledger.</p>
           </div>
         </a>
-        <!-- Solution 4: Digital Marketing & Ads -->
-        <a href="digital-marketing.html" class="serve-card">
+        <!-- Sector 4: Electronics & Mobile -->
+        <a href="electronics-mobile-shops.html" class="serve-card">
           <div class="serve-img"><img
-              src="assets/digital_marketing_ads.jpg"
-              alt="Digital Marketing & Ads" onerror="this.src='assets/card4-marketing-poster.jpg';"></div>
+              src="assets/sector_electronics_showroom.png"
+              alt="Electronics & Mobile" onerror="this.src='assets/sector_electronics.jpg';"></div>
           <div class="serve-body">
-            <h4>Digital Marketing &amp; Ads</h4>
-            <p>Meta Ads, Google Local SEO &amp; WhatsApp Commerce.</p>
+            <h4>Electronics &amp; Mobile</h4>
+            <p>Serial/IMEI tracking, warranty management &amp; instant EMI.</p>
           </div>
         </a>
         <!-- Final Round CTA: See All Business Types -->
@@ -1977,7 +2622,7 @@
             <div class="trust-pill pill-india">
               <div class="trust-pill-left">
                 <div class="trust-icon-box">
-                  🇮🇳
+                  <img src="Made in india logo.png" alt="Made in India Logo" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='made_in_india_logo.png';}" />
                 </div>
                 <div>
                   <div class="trust-info-title">Made in India</div>
@@ -1991,7 +2636,7 @@
             <div class="trust-pill pill-secure">
               <div class="trust-pill-left">
                 <div class="trust-icon-box">
-                  🛡️
+                  <img src="sequre ssl.jpg" alt="SECURE SSL Encryption" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/sequre ssl.jpg';}" />
                 </div>
                 <div>
                   <div class="trust-info-title">SECURE</div>
@@ -2005,7 +2650,7 @@
             <div class="trust-pill pill-msme">
               <div class="trust-pill-left">
                 <div class="trust-icon-box">
-                  📜
+                  <img src="image_4.png" alt="MSME Ashoka Stambha Emblem" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/image_4.png';}" />
                 </div>
                 <div>
                   <div class="trust-info-title">Trusted by MSME's</div>
@@ -2116,7 +2761,7 @@
       <div class="foot-grid">
         <div>
           <div class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
-              style="height:28px; width:28px; object-fit:contain; border-radius:7px; display:inline-block;" /><span>PriyuLabs</span>
+              style="height:28px; width:28px; object-fit:contain; display:inline-block; background:transparent;" /><span>PriyuLabs</span>
           </div>
           <p class="foot-brand-desc">India's AI retail OS —
             POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
@@ -2152,12 +2797,52 @@
           </ul>
         </div>
       </div>
+      <!-- National Pride: Make in India & Ashoka Stambha MSME Emblems -->
+      <div class="footer-national-emblems-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
+          <!-- Make in India Lion Logo -->
+          <img src="Made in india logo.png" alt="Make in India" class="foot-make-in-india-logo" style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='made_in_india_logo.png';}" />
+          <!-- Ashoka Stambha MSME Emblem -->
+          <img src="image_4.png" alt="Ashoka Stambha MSME Government of India" class="foot-msme-emblem" style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/image_4.png';}" />
+          <!-- Secure SSL Encryption Emblem -->
+          <img src="sequre ssl.jpg" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem" style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/sequre ssl.jpg';}" />
+        </div>
+        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold, #B8863B); text-transform: uppercase;">GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
+        <div style="font-size: 12px; font-family: monospace; color: var(--ink-soft, #6B6152); margin-top: 3px;">MSME REGISTERED: UDYAM-OD-19-0177979</div>
+      </div>
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.68</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
   </footer>
+
+  <!-- Floating Bottom-Right Lead Success Notification Card -->
+  <div id="leadSuccessPopup" class="lead-success-card-floating" role="dialog" aria-live="polite" style="display: none;">
+    <button type="button" class="lead-success-close" onclick="closeSuccessPopup()" aria-label="Close Notification">&times;</button>
+    <div class="lead-success-header">
+      <div class="lead-success-icon-badge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <div>
+        <h4 class="lead-success-title">Submission Confirmed!</h4>
+        <p class="lead-success-subtitle">Thank you, <span id="leadSuccessName">there</span>!</p>
+      </div>
+    </div>
+    <p class="lead-success-desc">
+      Your request for <strong id="leadSuccessService">Smart POS</strong> is received. Connect with us right now on WhatsApp for instant onboarding assistance.
+    </p>
+    <a id="leadSuccessWaBtn" href="https://wa.me/917849074050?text=Hi%20Priyulabs,%20I%20just%20submitted%20my%20details%20for%20Smart%20POS." target="_blank" rel="noopener noreferrer" class="whatsapp-instant-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z"/>
+      </svg>
+      Connect Instantly on WhatsApp
+    </a>
+  </div>
 
   <script>
     const revealEls = document.querySelectorAll('.reveal');
@@ -2270,6 +2955,37 @@
 
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
 
+    function showFloatingSuccessPopup(name, serviceName, waUrl) {
+      const popup = document.getElementById('leadSuccessPopup');
+      const nameEl = document.getElementById('leadSuccessName');
+      const serviceEl = document.getElementById('leadSuccessService');
+      const btnEl = document.getElementById('leadSuccessWaBtn');
+
+      if (nameEl) nameEl.textContent = name || 'there';
+      if (serviceEl) serviceEl.textContent = serviceName || 'Smart POS';
+      if (btnEl) btnEl.href = waUrl;
+
+      if (popup) {
+        popup.style.display = 'flex';
+        popup.style.opacity = '1';
+        popup.style.transform = 'translateY(0)';
+      }
+    }
+
+    function closeSuccessPopup() {
+      const popup = document.getElementById('leadSuccessPopup');
+      if (popup) {
+        popup.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          popup.style.display = 'none';
+        }, 250);
+      }
+    }
+    window.closeSuccessPopup = closeSuccessPopup;
+    window.showFloatingSuccessPopup = showFloatingSuccessPopup;
+
     function handleLeadSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -2326,13 +3042,14 @@
         return;
       }
 
-      // 1. Loading UI State
+      // 1. Loading UI State: Smooth spinner & transition
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
-        submitBtn.innerHTML = 'Submitting Request... ⏳';
-        submitBtn.style.opacity = '0.8';
-        submitBtn.style.cursor = 'not-allowed';
+        submitBtn.classList.add('is-loading');
+        if (!submitBtn.getAttribute('data-original-text')) {
+          submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
+        }
+        submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>Submitting your request...</span>';
       }
       if (statusEl) {
         statusEl.style.display = 'none';
@@ -2350,72 +3067,102 @@
         requestId: 'req_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9)
       };
 
-      // 3. Send to Google Apps Script endpoint
-      fetch(GOOGLE_SCRIPT_URL, {
+      // 3. Prepare WhatsApp greeting redirect URL
+      const cleanService = (service || 'Smart POS').replace(/&amp;/g, '&');
+      const defaultWaUrl = 'https://wa.me/917849074050?text=Hi%20Priyulabs,%20I%20just%20submitted%20my%20details%20for%20Smart%20POS.';
+      const waUrl = (!service || service.startsWith('Smart POS'))
+        ? defaultWaUrl
+        : ('https://wa.me/917849074050?text=' + encodeURIComponent('Hi Priyulabs, I just submitted my details for ' + cleanService + '.'));
+
+      // Helper to cleanly restore button
+      const resetSubmitBtn = () => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Submit &amp; Get Free Consultation';
+        }
+      };
+
+      // 4. Send to Google Apps Script endpoint with safety timeout (max 3.2s)
+      const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 3200));
+      const sendPromise = fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
         },
         body: JSON.stringify(payloadObj),
         mode: 'no-cors'
-      })
+      });
+
+      Promise.race([sendPromise, timeoutPromise])
       .then(() => {
-        // Submission resolved
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Submit &amp; Get Free Consultation';
-          submitBtn.style.opacity = '1';
-          submitBtn.style.cursor = 'pointer';
-        }
+        // Hide loading state
+        resetSubmitBtn();
 
-        const waMsg = `Hi Priyulabs, I just submitted a free trial request on your website.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(bType)}%0A*Service:* ${encodeURIComponent(service)}%0A*Phone:* ${phone}`;
-        const waUrl = `https://wa.me/917873844050?text=${waMsg}`;
-
+        // Smoothly reveal the success card below the form
         if (statusEl) {
           statusEl.style.display = 'block';
-          statusEl.style.background = 'rgba(63, 93, 66, 0.12)';
-          statusEl.style.color = '#27442a';
-          statusEl.style.border = '1px solid #3F5D42';
+          statusEl.style.background = 'rgba(63, 93, 66, 0.08)';
+          statusEl.style.color = '#1A3320';
+          statusEl.style.border = '1.5px solid #25D366';
+          statusEl.style.borderRadius = '14px';
+          statusEl.style.padding = '16px';
+          statusEl.style.animation = 'none';
+          void statusEl.offsetWidth; // trigger reflow for smooth keyframe animation
+          statusEl.style.animation = 'formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
           statusEl.innerHTML = `
-            <div style="font-weight: 700; margin-bottom: 6px;">🎉 Thank you, ${name}!</div>
-            <div style="margin-bottom: 10px; font-weight: 500; font-size: 13px;">Your free trial request has been securely received. Our onboarding team will contact you shortly on ${phone}.</div>
-            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #25D366; color: #ffffff; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; text-decoration: none; margin-top: 4px; box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);">
-              <span>💬</span> Connect Instantly on WhatsApp
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; color: #1f5127; margin-bottom: 6px;">
+              <span style="display: inline-flex; width: 22px; height: 22px; background: #25D366; color: #fff; border-radius: 50%; align-items: center; justify-content: center; font-size: 13px;">✓</span>
+              <span>Submission Confirmed! Thank you, ${name}!</span>
+            </div>
+            <div style="margin-bottom: 12px; font-weight: 500; font-size: 13px; color: #3c4a3e;">
+              Your inquiry for <strong>${cleanService}</strong> has been securely received. Our onboarding team will contact you shortly on <strong>${phone}</strong>.
+            </div>
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="whatsapp-instant-btn" style="width: 100%;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z"/>
+              </svg>
+              Connect Instantly on WhatsApp
             </a>
           `;
         }
 
-        // Reset form inputs & custom wrap
+        // Show clean bottom-right floating success notification card
+        showFloatingSuccessPopup(name, cleanService, waUrl);
+
+        // Reset and style form cleanly
         form.reset();
         const customWrap = document.getElementById('customBusinessTypeWrap');
         if (customWrap) customWrap.style.display = 'none';
       })
       .catch((err) => {
-        console.error('Lead submission network error:', err);
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Submit &amp; Get Free Consultation';
-          submitBtn.style.opacity = '1';
-          submitBtn.style.cursor = 'pointer';
-        }
+        console.error('Lead submission fallback:', err);
+        resetSubmitBtn();
         if (statusEl) {
-          const waMsg = `Hi Priyulabs, I tried submitting the free trial form.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Business:* ${encodeURIComponent(bType)}%0A*Service:* ${encodeURIComponent(service)}%0A*Phone:* ${phone}`;
-          const waUrl = `https://wa.me/917873844050?text=${waMsg}`;
-
           statusEl.style.display = 'block';
-          statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
-          statusEl.style.color = '#b91c1c';
-          statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          statusEl.style.background = 'rgba(63, 93, 66, 0.08)';
+          statusEl.style.color = '#1A3320';
+          statusEl.style.border = '1.5px solid #25D366';
+          statusEl.style.borderRadius = '14px';
+          statusEl.style.padding = '16px';
+          statusEl.style.animation = 'none';
+          void statusEl.offsetWidth;
+          statusEl.style.animation = 'formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
           statusEl.innerHTML = `
-            <div style="font-weight: 700; margin-bottom: 4px;">Network connection issue.</div>
-            <div style="font-size: 12.5px; margin-bottom: 8px;">Please check your connection and retry, or reach us directly on WhatsApp:</div>
-            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #25D366; color: #ffffff; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 12px; text-decoration: none;">
-              Chat on WhatsApp
+            <div style="font-weight: 700; margin-bottom: 4px; color: #1f5127;">Form submitted!</div>
+            <div style="font-size: 13px; margin-bottom: 10px; color: #3c4a3e;">Connect directly with our onboarding expert on WhatsApp:</div>
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="whatsapp-instant-btn" style="width: 100%;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z"/>
+              </svg>
+              Connect Instantly on WhatsApp
             </a>
           `;
         }
+        showFloatingSuccessPopup(name, cleanService, waUrl);
       });
     }
+    window.handleLeadSubmit = handleLeadSubmit;
   </script>
 
   <script>
@@ -2533,105 +3280,74 @@
     })();
   </script>
 
-  <!-- Seamless Gapless Live Wallpaper Looper Engine (Zero-Pause Double Buffering) -->
+  <!-- Landing Page Background Video Engine (Continuous Play with 1-Sec Pause Loop) -->
   <script>
-    (function initSeamlessVideoLooper() {
+    (function initLandingVideoLooper() {
       const container = document.querySelector('.global-fluid-bg');
       if (!container) return;
-      const vids = container.querySelectorAll('video');
-      if (!vids || vids.length === 0) return;
+      const vid = container.querySelector('video');
+      if (!vid) return;
 
-      vids.forEach((v) => {
-        v.muted = true;
-        v.defaultMuted = true;
-        v.playsInline = true;
-        v.setAttribute('playsinline', '');
-        v.setAttribute('webkit-playsinline', '');
-      });
+      vid.muted = true;
+      vid.defaultMuted = true;
+      vid.playsInline = true;
+      vid.setAttribute('playsinline', '');
+      vid.setAttribute('webkit-playsinline', '');
+      vid.removeAttribute('loop');
 
-      if (vids.length === 1) {
-        vids[0].classList.add('is-active');
-        vids[0].play().catch(() => { });
-        return;
-      }
+      // Set playback speed to 0.5x (half-speed cinematic slow motion)
+      const targetSpeed = 0.5;
+      const applySpeed = () => {
+        try {
+          vid.playbackRate = targetSpeed;
+          vid.defaultPlaybackRate = targetSpeed;
+        } catch (e) { }
+      };
+      applySpeed();
+      vid.addEventListener('play', applySpeed);
+      vid.addEventListener('loadedmetadata', applySpeed);
 
-      let activeIdx = 0;
-      let swapping = false;
+      let isPausing = false;
 
-      const activeVid = () => vids[activeIdx];
-      const nextVid = () => vids[1 - activeIdx];
-
-      const triggerSwap = () => {
-        if (swapping) return;
-        swapping = true;
-
-        const current = activeVid();
-        const incoming = nextVid();
+      function handleVideoLoop() {
+        if (isPausing) return;
+        isPausing = true;
 
         try {
-          incoming.currentTime = 0;
+          vid.pause();
         } catch (e) { }
 
-        const playPromise = incoming.play();
-
-        const executeTransition = () => {
-          incoming.classList.add('is-active');
-          current.classList.remove('is-active');
-
-          setTimeout(() => {
-            try {
-              current.pause();
-              current.currentTime = 0;
-            } catch (err) { }
-            activeIdx = 1 - activeIdx;
-            swapping = false;
-          }, 350);
-        };
-
-        if (playPromise !== undefined) {
-          playPromise.then(executeTransition).catch(() => {
-            executeTransition();
-          });
-        } else {
-          executeTransition();
-        }
-      };
-
-      const checkTime = () => {
-        const current = activeVid();
-        if (current && current.duration && !swapping) {
-          const remaining = current.duration - current.currentTime;
-          if (remaining <= 0.35 && current.currentTime > 0.5) {
-            triggerSwap();
-          }
-        }
-        requestAnimationFrame(checkTime);
-      };
-
-      vids.forEach((v) => {
-        v.addEventListener('timeupdate', () => {
-          if (v === activeVid() && v.duration && !swapping) {
-            const remaining = v.duration - v.currentTime;
-            if (remaining <= 0.35 && v.currentTime > 0.5) {
-              triggerSwap();
+        // 1-second pause as requested ("koi 1 sec pause hoke chalta rahe pura")
+        setTimeout(function() {
+          try {
+            vid.currentTime = 0;
+            applySpeed();
+            const p = vid.play();
+            if (p !== undefined) {
+              p.catch(function() { });
             }
-          }
-        });
+          } catch (e) { }
+          isPausing = false;
+        }, 1000);
+      }
 
-        v.addEventListener('ended', () => {
-          if (v === activeVid()) {
-            triggerSwap();
-          }
-        });
+      vid.addEventListener('ended', handleVideoLoop);
+
+      vid.addEventListener('timeupdate', function() {
+        if (!isPausing && vid.duration && vid.currentTime >= vid.duration - 0.08 && vid.currentTime > 0.5) {
+          handleVideoLoop();
+        }
       });
 
       const startLooper = () => {
-        vids[0].classList.add('is-active');
-        const p = vids[0].play();
+        vid.classList.add('is-active');
+        applySpeed();
+        const p = vid.play();
         if (p !== undefined) {
           p.catch(() => {
             const unlock = () => {
-              vids[0].play().catch(() => { });
+              applySpeed();
+              vid.play().catch(() => { });
               window.removeEventListener('click', unlock);
               window.removeEventListener('scroll', unlock);
               window.removeEventListener('touchstart', unlock);
@@ -2641,7 +3357,6 @@
             window.addEventListener('touchstart', unlock, { passive: true, once: true });
           });
         }
-        requestAnimationFrame(checkTime);
       };
 
       if (document.readyState === 'loading') {
@@ -2707,6 +3422,7 @@
       window.addEventListener('hashchange', scrollToForm);
     })();
   </script>
+  <script src="version.js"></script>
 </body>
 
 </html>
