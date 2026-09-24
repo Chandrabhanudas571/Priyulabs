@@ -1113,10 +1113,13 @@
     }
 
     @keyframes btnSubtlePulse {
-      0%, 100% {
+
+      0%,
+      100% {
         opacity: 0.95;
         background-color: #2E4631;
       }
+
       50% {
         opacity: 0.76;
         background-color: #3F5D42;
@@ -1157,6 +1160,7 @@
         opacity: 0;
         transform: translateY(-10px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1387,15 +1391,18 @@
     .megamenu-content::-webkit-scrollbar {
       width: 6px;
     }
+
     .square-mega-3col::-webkit-scrollbar-track,
     .megamenu-content::-webkit-scrollbar-track {
       background: transparent;
     }
+
     .square-mega-3col::-webkit-scrollbar-thumb,
     .megamenu-content::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.15);
       border-radius: 999px;
     }
+
     [data-theme="dark"] .square-mega-3col::-webkit-scrollbar-thumb,
     [data-theme="dark"] .megamenu-content::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.2);
@@ -1751,6 +1758,7 @@
         opacity: 0;
         transform: translateY(30px) scale(0.95);
       }
+
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -1888,17 +1896,16 @@
       justify-content: center;
       overflow: hidden;
       /* Subtle Apple Liquid Glass - translucent so landing page is visible underneath */
-      background: radial-gradient(
-        circle at 50% 50%,
-        rgba(255, 255, 255, 0.38) 0%,
-        rgba(250, 246, 238, 0.28) 60%,
-        rgba(240, 234, 220, 0.35) 100%
-      );
+      background: radial-gradient(circle at 50% 50%,
+          rgba(255, 255, 255, 0.38) 0%,
+          rgba(250, 246, 238, 0.28) 60%,
+          rgba(240, 234, 220, 0.35) 100%);
       backdrop-filter: blur(12px) saturate(145%);
       -webkit-backdrop-filter: blur(12px) saturate(145%);
       transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.55s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, visibility;
     }
+
     #priyulabsIntroPreloader.is-fading,
     #priyulabsIntroPreloader.preloader-hidden,
     #priyulabs-preloader.is-fading,
@@ -1907,6 +1914,7 @@
       visibility: hidden !important;
       pointer-events: none !important;
     }
+
     /* Instant suppression when already played in current browser session */
     html.preloader-already-played #priyulabsIntroPreloader,
     html.preloader-already-played #priyulabs-preloader {
@@ -1921,6 +1929,7 @@
       pointer-events: none;
       z-index: 0;
     }
+
     .liquid-orb {
       position: absolute;
       border-radius: 50%;
@@ -1928,6 +1937,7 @@
       mix-blend-mode: soft-light;
       will-change: transform;
     }
+
     .liquid-orb-1 {
       top: 20%;
       left: 25%;
@@ -1937,6 +1947,7 @@
       filter: blur(60px);
       animation: liquidFloat1 7s ease-in-out infinite alternate;
     }
+
     .liquid-orb-2 {
       bottom: 20%;
       right: 22%;
@@ -1946,6 +1957,7 @@
       filter: blur(65px);
       animation: liquidFloat2 8s ease-in-out infinite alternate;
     }
+
     .liquid-orb-3 {
       top: 50%;
       left: 50%;
@@ -1955,13 +1967,25 @@
       background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
       filter: blur(45px);
     }
+
     @keyframes liquidFloat1 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, -30px) scale(1.08); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(40px, -30px) scale(1.08);
+      }
     }
+
     @keyframes liquidFloat2 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-35px, 25px) scale(1.06); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(-35px, 25px) scale(1.06);
+      }
     }
 
     /* Center Section: ONLY the Pure P Logo (100% transparent background, zero lag) */
@@ -1979,6 +2003,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .intro-logo-anim {
       width: 100%;
       height: 100%;
@@ -2014,7 +2039,7 @@
         // Internal page-to-page navigation: suppress preloader
         document.documentElement.classList.add('preloader-already-played');
       }
-    } catch (e) {}
+    } catch (e) { }
   </script>
 
   <div id="priyulabs-preloader" class="priyulabs-preloader" aria-label="PriyuLabs Opening Intro">
@@ -2049,12 +2074,12 @@
         if (!isReload && window.performance && window.performance.navigation) {
           if (window.performance.navigation.type === 1) isReload = true;
         }
-      } catch (e) {}
+      } catch (e) { }
 
       var isInternalNav = false;
       try {
         isInternalNav = !isReload && document.referrer && (document.referrer.indexOf(window.location.host) !== -1);
-      } catch (e) {}
+      } catch (e) { }
 
       var alreadyPlayed = false;
       try {
@@ -2076,7 +2101,7 @@
           try {
             e.target.pause();
             e.target.currentTime = 0;
-          } catch (err) {}
+          } catch (err) { }
         }
       }
 
@@ -2094,9 +2119,9 @@
             v.currentTime = 0;
             var p = v.play();
             if (p !== undefined) {
-              p.catch(function () {});
+              p.catch(function () { });
             }
-          } catch (err) {}
+          } catch (err) { }
         }
       }
 
@@ -2105,7 +2130,7 @@
         if (pre) {
           pre.classList.add('preloader-hidden');
           pre.style.display = 'none';
-          try { pre.remove(); } catch (e) {}
+          try { pre.remove(); } catch (e) { }
         }
         startLandingVideos();
         return;
@@ -2114,7 +2139,7 @@
       // Mark session as played for subsequent internal navigations
       try {
         sessionStorage.setItem('preloaderPlayed', 'true');
-      } catch (e) {}
+      } catch (e) { }
 
       var preloader = getPreloader();
       if (!preloader) return;
@@ -2125,27 +2150,14 @@
       preloader.style.opacity = '1';
       preloader.style.visibility = 'visible';
 
-      // Ensure fresh start from frame 0 for transparent WebP
+      // Ensure fresh start for transparent WebP without breaking browser disk cache
       var introImg = document.getElementById('intro-logo-anim') || preloader.querySelector('.intro-logo-anim');
       if (introImg && introImg.tagName === 'IMG') {
-        introImg.src = 'assets/priyulabs_intro_transparent.webp?v=' + Date.now();
+        introImg.src = 'assets/priyulabs_intro_transparent.webp';
       }
 
-      // Hold background videos paused at 0:00 while preloader is active
+      // Hold background videos paused at 0:00 while preloader is active (event-driven, 0 CPU overhead)
       document.addEventListener('play', preventEarlyPlay, true);
-
-      function freezeSiteVideos() {
-        var allVids = document.querySelectorAll('video');
-        for (var i = 0; i < allVids.length; i++) {
-          if (!allVids[i].paused) {
-            try {
-              allVids[i].pause();
-              allVids[i].currentTime = 0;
-            } catch (err) {}
-          }
-        }
-      }
-      freezeTimer = setInterval(freezeSiteVideos, 50);
 
       var dismissed = false;
       var safetyFallbackTimer = null;
@@ -2170,7 +2182,7 @@
           preloader.style.display = 'none';
           try {
             preloader.remove();
-          } catch (e) {}
+          } catch (e) { }
         }, 500);
       }
 
@@ -2186,7 +2198,7 @@
   </script>
 
   <div class="global-fluid-bg">
-    <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+    <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata">
       <source src="landingpage1video.mp4" type="video/mp4">
       <source src="./landingpage1video.mp4" type="video/mp4">
       <source src="/landingpage1video.mp4" type="video/mp4">
@@ -2320,7 +2332,9 @@
 
         <!-- 4. What's new -->
         <li class="nav-item">
-          <a href="#core-capabilities" class="nav-link-btn" onclick="event.preventDefault(); (document.getElementById('core-capabilities') || document.getElementById('solutions'))?.scrollIntoView({behavior:'smooth', block:'start'});">What's new</a>
+          <a href="#core-capabilities" class="nav-link-btn"
+            onclick="event.preventDefault(); (document.getElementById('core-capabilities') || document.getElementById('solutions'))?.scrollIntoView({behavior:'smooth', block:'start'});">What's
+            new</a>
         </li>
       </ul>
 
@@ -2368,7 +2382,7 @@
       <!-- Balanced Showcase Frame -->
       <div class="hero-visual">
         <div class="hero-visual-inner">
-          <video autoplay muted loop playsinline preload="auto">
+          <video autoplay muted loop playsinline preload="metadata">
             <source src="./hero-video.mp4" type="video/mp4">
             <source src="hero-video.mp4" type="video/mp4">
           </video>
@@ -2412,9 +2426,8 @@
         </div>
         <div class="feature-media"
           style="border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
-          <img src="assets/smart_pos_touch_billing.jpg"
-            alt="Smart POS Fast Touch Billing Screen"
-            style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="assets/smart_pos_touch_billing.jpg" alt="Smart POS Fast Touch Billing Screen" loading="lazy"
+            decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
 
@@ -2422,8 +2435,9 @@
         <div class="feature-media"
           style="order: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
           <img src="assets/card2-management-poster.jpg"
-            alt="Complete Management System with AI Invoice OCR Inventory Scanner"
-            style="width: 100%; height: 100%; object-fit: cover;"></div>
+            alt="Complete Management System with AI Invoice OCR Inventory Scanner" loading="lazy" decoding="async"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
         <div class="feature-text">
           <div style="font-family: 'Fraunces', serif; font-size: 15px; color: var(--gold); margin-bottom: 12px;">02 /
             Backend Intelligence</div>
@@ -2449,15 +2463,17 @@
         <div class="feature-media"
           style="border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
           <img src="assets/custom_website_builder.jpg" alt="Custom E-Commerce Storefront on MacBook and iPhone"
-            style="width: 100%; height: 100%; object-fit: cover;"></div>
+            loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
       </div>
 
       <div class="feature-row reveal">
         <div class="feature-media"
           style="order: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 20px 45px rgba(31,45,36,0.12);">
           <img src="assets/digital_marketing_ads.jpg"
-            alt="Digital Marketing Growth Dashboard with Meta Ads, Google Ads and WhatsApp Commerce"
-            style="width: 100%; height: 100%; object-fit: cover;"></div>
+            alt="Digital Marketing Growth Dashboard with Meta Ads, Google Ads and WhatsApp Commerce" loading="lazy"
+            decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
         <div class="feature-text">
           <div style="font-family: 'Fraunces', serif; font-size: 15px; color: var(--gold); margin-bottom: 12px;">04 /
             Revenue Growth</div>
@@ -2477,14 +2493,16 @@
       <div class="section-head reveal">
         <div class="kicker">Built for your kind of business</div>
         <h2>Who we serve</h2>
-        <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Tailored workflows and retail operating systems built for your specific enterprise vertical.</p>
+        <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Tailored workflows and retail operating
+          systems built for your specific enterprise vertical.</p>
       </div>
       <div class="serve-scroll reveal">
         <!-- Sector 1: Salons & Spas -->
         <a href="salons-spas.html" class="serve-card">
           <div class="serve-img"><img
               src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
-              alt="Salons & Spas" onerror="this.src='assets/sector_cosmetics.jpg';"></div>
+              alt="Salons & Spas" loading="lazy" decoding="async" onerror="this.src='assets/sector_cosmetics.jpg';">
+          </div>
           <div class="serve-body">
             <h4>Salons &amp; Spas</h4>
             <p>Slot booking, stylist commissions &amp; loyalty memberships.</p>
@@ -2492,9 +2510,9 @@
         </a>
         <!-- Sector 2: Cafes & Dining -->
         <a href="cafes-chai-bars.html" class="serve-card">
-          <div class="serve-img"><img
-              src="assets/sector_cafe.jpg"
-              alt="Cafes & Dining" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80';"></div>
+          <div class="serve-img"><img src="assets/sector_cafe.jpg" alt="Cafes & Dining" loading="lazy" decoding="async"
+              onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80';">
+          </div>
           <div class="serve-body">
             <h4>Cafes &amp; Dining</h4>
             <p>Table management, live KOT, quick UPI billing &amp; recipes.</p>
@@ -2502,9 +2520,8 @@
         </a>
         <!-- Sector 3: Supermarket & Grocery -->
         <a href="grocery-supermarkets-kirana.html" class="serve-card">
-          <div class="serve-img"><img
-              src="assets/sector_supermarket.jpg"
-              alt="Supermarket & Grocery" onerror="this.src='assets/grocery_hero.jpg';"></div>
+          <div class="serve-img"><img src="assets/sector_supermarket.jpg" alt="Supermarket & Grocery" loading="lazy"
+              decoding="async" onerror="this.src='assets/grocery_hero.jpg';"></div>
           <div class="serve-body">
             <h4>Supermarket &amp; Grocery</h4>
             <p>Weighing scale sync, barcode scanner &amp; khata ledger.</p>
@@ -2512,9 +2529,8 @@
         </a>
         <!-- Sector 4: Electronics & Mobile -->
         <a href="electronics-mobile-shops.html" class="serve-card">
-          <div class="serve-img"><img
-              src="assets/sector_electronics_showroom.png"
-              alt="Electronics & Mobile" onerror="this.src='assets/sector_electronics.jpg';"></div>
+          <div class="serve-img"><img src="assets/sector_electronics_showroom.png" alt="Electronics & Mobile"
+              loading="lazy" decoding="async" onerror="this.src='assets/sector_electronics.jpg';"></div>
           <div class="serve-body">
             <h4>Electronics &amp; Mobile</h4>
             <p>Serial/IMEI tracking, warranty management &amp; instant EMI.</p>
@@ -2573,7 +2589,7 @@
           <div class="testi-person">
             <div class="testi-avatar"><img
                 src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=200&q=80"
-                alt=""></div>
+                alt="" loading="lazy" decoding="async"></div>
             <div>
               <div class="testi-name">Priyanshu Kumar Panda</div>
               <div class="testi-role">Panda Grocery, Bhubaneswar</div>
@@ -2586,7 +2602,8 @@
             register. Now it matches in one click — zero stress.</div>
           <div class="testi-person">
             <div class="testi-avatar"><img
-                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80" alt="">
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80" alt=""
+                loading="lazy" decoding="async">
             </div>
             <div>
               <div class="testi-name">Prakash Mohapatra</div>
@@ -2622,7 +2639,8 @@
             <div class="trust-pill pill-india">
               <div class="trust-pill-left">
                 <div class="trust-icon-box">
-                  <img src="Made in india logo.png" alt="Made in India Logo" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='made_in_india_logo.png';}" />
+                  <img src="assets/made_in_india_logo.webp" alt="Made in India Logo" loading="lazy" decoding="async"
+                    onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='Made in india logo.png';}" />
                 </div>
                 <div>
                   <div class="trust-info-title">Made in India</div>
@@ -2636,7 +2654,8 @@
             <div class="trust-pill pill-secure">
               <div class="trust-pill-left">
                 <div class="trust-icon-box">
-                  <img src="sequre ssl.jpg" alt="SECURE SSL Encryption" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/sequre ssl.jpg';}" />
+                  <img src="sequre ssl.jpg" alt="SECURE SSL Encryption" loading="lazy" decoding="async"
+                    onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/sequre ssl.jpg';}" />
                 </div>
                 <div>
                   <div class="trust-info-title">SECURE</div>
@@ -2650,7 +2669,9 @@
             <div class="trust-pill pill-msme">
               <div class="trust-pill-left">
                 <div class="trust-icon-box">
-                  <img src="image_4.png" alt="MSME Ashoka Stambha Emblem" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/image_4.png';}" />
+                  <img src="assets/msme_ashoka_emblem.webp" alt="MSME Ashoka Stambha Emblem" loading="lazy"
+                    decoding="async"
+                    onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}" />
                 </div>
                 <div>
                   <div class="trust-info-title">Trusted by MSME's</div>
@@ -2670,13 +2691,14 @@
 
           <form id="mainLeadForm" onsubmit="handleLeadSubmit(event)">
             <!-- Anti-spam Honeypot -->
-            <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+            <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true"
+              style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 
             <div class="form-group">
               <label for="userName">Your Name *</label>
-              <input type="text" id="userName" name="Name" class="form-input" placeholder="Enter your full name (e.g. Ramesh Kumar)"
-                pattern="[A-Za-z]+(\s[A-Za-z]+)*" title="Only alphabets are allowed (e.g. Ramesh Kumar)" autocomplete="name"
-                required />
+              <input type="text" id="userName" name="Name" class="form-input"
+                placeholder="Enter your full name (e.g. Ramesh Kumar)" pattern="[A-Za-z]+(\s[A-Za-z]+)*"
+                title="Only alphabets are allowed (e.g. Ramesh Kumar)" autocomplete="name" required />
             </div>
 
             <div class="form-group">
@@ -2700,7 +2722,8 @@
                   <option value="Bookstores &amp; Stationery">Bookstores &amp; Stationery Outlets</option>
                 </optgroup>
                 <optgroup label="Beauty &amp; Fashion">
-                  <option value="Clothing Brands &amp; Apparel Boutiques">Clothing Brands &amp; Apparel Boutiques</option>
+                  <option value="Clothing Brands &amp; Apparel Boutiques">Clothing Brands &amp; Apparel Boutiques
+                  </option>
                   <option value="Salons, Spas &amp; Beauty Parlors">Salons, Spas &amp; Beauty Parlors</option>
                   <option value="Cosmetics &amp; Skincare Stores">Cosmetics &amp; Skincare Stores</option>
                 </optgroup>
@@ -2717,7 +2740,8 @@
             <!-- Custom Business Type Input (Appears when Custom is selected) -->
             <div class="form-group" id="customBusinessTypeWrap" style="display: none; animation: fadeIn 0.3s ease;">
               <label for="customBusinessType">Enter Your Business Type *</label>
-              <input type="text" id="customBusinessType" name="CustomBusinessType" class="form-input" placeholder="e.g. Pharmacy, Pet Care, Hardware, Automotive..." />
+              <input type="text" id="customBusinessType" name="CustomBusinessType" class="form-input"
+                placeholder="e.g. Pharmacy, Pet Care, Hardware, Automotive..." />
             </div>
 
             <div class="form-group">
@@ -2725,18 +2749,22 @@
               <select id="serviceCategory" name="Service" class="form-select" required>
                 <option value="" disabled selected>Select a Service</option>
                 <option value="Smart POS">Smart POS (Fast billing, AI voice checkout &amp; offline mode)</option>
-                <option value="Complete Management System">Complete Management System (Inventory ERP, Staff HRMS &amp; GST sync)</option>
-                <option value="Custom Website Building">Custom Website Building (E-Commerce stores, web apps &amp; 5-day delivery)</option>
-                <option value="Digital Marketing &amp; Ads">Digital Marketing &amp; Ads (Meta Ads, Google Local SEO &amp; WhatsApp Commerce)</option>
-                <option value="All-in-One Complete Retail Bundle">⭐ All-in-One Complete Retail Bundle (Everything Included)</option>
+                <option value="Complete Management System">Complete Management System (Inventory ERP, Staff HRMS &amp;
+                  GST sync)</option>
+                <option value="Custom Website Building">Custom Website Building (E-Commerce stores, web apps &amp; 5-day
+                  delivery)</option>
+                <option value="Digital Marketing &amp; Ads">Digital Marketing &amp; Ads (Meta Ads, Google Local SEO
+                  &amp; WhatsApp Commerce)</option>
+                <option value="All-in-One Complete Retail Bundle">⭐ All-in-One Complete Retail Bundle (Everything
+                  Included)</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="userPhone">Phone Number *</label>
-              <input type="tel" id="userPhone" name="Mobile" class="form-input" placeholder="Enter 10-digit phone number"
-                maxlength="10" minlength="10" pattern="[0-9]{10}" inputmode="numeric"
-                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required />
+              <input type="tel" id="userPhone" name="Mobile" class="form-input"
+                placeholder="Enter 10-digit phone number" maxlength="10" minlength="10" pattern="[0-9]{10}"
+                inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required />
             </div>
 
             <button type="submit" id="mainSubmitBtn" class="btn-submit-form">
@@ -2744,7 +2772,9 @@
             </button>
 
             <!-- Status message container -->
-            <div id="mainFormStatus" style="display: none; margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-size: 13.5px; font-weight: 600; text-align: center; line-height: 1.5;"></div>
+            <div id="mainFormStatus"
+              style="display: none; margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-size: 13.5px; font-weight: 600; text-align: center; line-height: 1.5;">
+            </div>
 
             <p class="form-footer-note">
               🔒 Your inquiry is securely received. Our team will contact you Soon.
@@ -2798,21 +2828,36 @@
         </div>
       </div>
       <!-- National Pride: Make in India & Ashoka Stambha MSME Emblems -->
-      <div class="footer-national-emblems-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
+      <div class="footer-national-emblems-wrap"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
+        <div
+          style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
           <!-- Make in India Lion Logo -->
-          <img src="Made in india logo.png" alt="Make in India" class="foot-make-in-india-logo" style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='made_in_india_logo.png';}" />
+          <img src="assets/made_in_india_logo.webp" alt="Make in India" class="foot-make-in-india-logo" loading="lazy"
+            decoding="async"
+            style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='Made in india logo.png';}" />
           <!-- Ashoka Stambha MSME Emblem -->
-          <img src="image_4.png" alt="Ashoka Stambha MSME Government of India" class="foot-msme-emblem" style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/image_4.png';}" />
+          <img src="assets/msme_ashoka_emblem.webp" alt="Ashoka Stambha MSME Government of India"
+            class="foot-msme-emblem" loading="lazy" decoding="async"
+            style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}" />
           <!-- Secure SSL Encryption Emblem -->
-          <img src="sequre ssl.jpg" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem" style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/sequre ssl.jpg';}" />
+          <img src="sequre ssl.jpg" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem"
+            loading="lazy" decoding="async"
+            style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/sequre ssl.jpg';}" />
         </div>
-        <div style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold, #B8863B); text-transform: uppercase;">GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
-        <div style="font-size: 12px; font-family: monospace; color: var(--ink-soft, #6B6152); margin-top: 3px;">MSME REGISTERED: UDYAM-OD-19-0177979</div>
+        <div
+          style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold, #B8863B); text-transform: uppercase;">
+          GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
+        <div style="font-size: 12px; font-family: monospace; color: var(--ink-soft, #6B6152); margin-top: 3px;">MSME
+          REGISTERED: UDYAM-OD-19-0177979</div>
       </div>
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
-        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.74</span></span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span
+            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.74</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
@@ -2820,10 +2865,12 @@
 
   <!-- Floating Bottom-Right Lead Success Notification Card -->
   <div id="leadSuccessPopup" class="lead-success-card-floating" role="dialog" aria-live="polite" style="display: none;">
-    <button type="button" class="lead-success-close" onclick="closeSuccessPopup()" aria-label="Close Notification">&times;</button>
+    <button type="button" class="lead-success-close" onclick="closeSuccessPopup()"
+      aria-label="Close Notification">&times;</button>
     <div class="lead-success-header">
       <div class="lead-success-icon-badge">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
@@ -2834,11 +2881,15 @@
       </div>
     </div>
     <p class="lead-success-desc">
-      Your request for <strong id="leadSuccessService">Smart POS</strong> is received. Connect with us right now on WhatsApp for instant onboarding assistance.
+      Your request for <strong id="leadSuccessService">Smart POS</strong> is received. Connect with us right now on
+      WhatsApp for instant onboarding assistance.
     </p>
-    <a id="leadSuccessWaBtn" href="https://wa.me/917849074050?text=Hi%20Priyulabs,%20I%20just%20submitted%20my%20details%20for%20Smart%20POS." target="_blank" rel="noopener noreferrer" class="whatsapp-instant-btn">
+    <a id="leadSuccessWaBtn"
+      href="https://wa.me/917849074050?text=Hi%20Priyulabs,%20I%20just%20submitted%20my%20details%20for%20Smart%20POS."
+      target="_blank" rel="noopener noreferrer" class="whatsapp-instant-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z"/>
+        <path
+          d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z" />
       </svg>
       Connect Instantly on WhatsApp
     </a>
@@ -2892,11 +2943,11 @@
 
   <script>
     // Custom Business Type toggle & Name Title Case formatter
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // 1. Name input: Alphabet only + Title Case (1st letter Capital, rest small)
       const nameInput = document.getElementById('userName');
       if (nameInput) {
-        nameInput.addEventListener('keydown', function(e) {
+        nameInput.addEventListener('keydown', function (e) {
           if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'].includes(e.key) || e.ctrlKey || e.metaKey) {
             return;
           }
@@ -2905,13 +2956,13 @@
           }
         });
 
-        nameInput.addEventListener('input', function() {
+        nameInput.addEventListener('input', function () {
           const start = this.selectionStart;
           const oldVal = this.value;
 
           let clean = oldVal.replace(/[^a-zA-Z\s]/g, '').replace(/^\s+/, '').replace(/\s{2,}/g, ' ');
 
-          const formatted = clean.toLowerCase().replace(/(^|\s)([a-z])/g, function(match, space, letter) {
+          const formatted = clean.toLowerCase().replace(/(^|\s)([a-z])/g, function (match, space, letter) {
             return space + letter.toUpperCase();
           });
 
@@ -2921,11 +2972,11 @@
               const diff = formatted.length - oldVal.length;
               const newPos = Math.max(0, start + diff);
               this.setSelectionRange(newPos, newPos);
-            } catch (err) {}
+            } catch (err) { }
           }
         });
 
-        nameInput.addEventListener('blur', function() {
+        nameInput.addEventListener('blur', function () {
           this.value = this.value.trim();
         });
       }
@@ -2935,7 +2986,7 @@
       const customWrap = document.getElementById('customBusinessTypeWrap');
       const customInput = document.getElementById('customBusinessType');
       if (bTypeSelect && customWrap) {
-        bTypeSelect.addEventListener('change', function() {
+        bTypeSelect.addEventListener('change', function () {
           if (this.value === 'Custom') {
             customWrap.style.display = 'block';
             if (customInput) {
@@ -3095,22 +3146,22 @@
       });
 
       Promise.race([sendPromise, timeoutPromise])
-      .then(() => {
-        // Hide loading state
-        resetSubmitBtn();
+        .then(() => {
+          // Hide loading state
+          resetSubmitBtn();
 
-        // Smoothly reveal the success card below the form
-        if (statusEl) {
-          statusEl.style.display = 'block';
-          statusEl.style.background = 'rgba(63, 93, 66, 0.08)';
-          statusEl.style.color = '#1A3320';
-          statusEl.style.border = '1.5px solid #25D366';
-          statusEl.style.borderRadius = '14px';
-          statusEl.style.padding = '16px';
-          statusEl.style.animation = 'none';
-          void statusEl.offsetWidth; // trigger reflow for smooth keyframe animation
-          statusEl.style.animation = 'formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-          statusEl.innerHTML = `
+          // Smoothly reveal the success card below the form
+          if (statusEl) {
+            statusEl.style.display = 'block';
+            statusEl.style.background = 'rgba(63, 93, 66, 0.08)';
+            statusEl.style.color = '#1A3320';
+            statusEl.style.border = '1.5px solid #25D366';
+            statusEl.style.borderRadius = '14px';
+            statusEl.style.padding = '16px';
+            statusEl.style.animation = 'none';
+            void statusEl.offsetWidth; // trigger reflow for smooth keyframe animation
+            statusEl.style.animation = 'formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+            statusEl.innerHTML = `
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; color: #1f5127; margin-bottom: 6px;">
               <span style="display: inline-flex; width: 22px; height: 22px; background: #25D366; color: #fff; border-radius: 50%; align-items: center; justify-content: center; font-size: 13px;">✓</span>
               <span>Submission Confirmed! Thank you, ${name}!</span>
@@ -3125,30 +3176,30 @@
               Connect Instantly on WhatsApp
             </a>
           `;
-        }
+          }
 
-        // Show clean bottom-right floating success notification card
-        showFloatingSuccessPopup(name, cleanService, waUrl);
+          // Show clean bottom-right floating success notification card
+          showFloatingSuccessPopup(name, cleanService, waUrl);
 
-        // Reset and style form cleanly
-        form.reset();
-        const customWrap = document.getElementById('customBusinessTypeWrap');
-        if (customWrap) customWrap.style.display = 'none';
-      })
-      .catch((err) => {
-        console.error('Lead submission fallback:', err);
-        resetSubmitBtn();
-        if (statusEl) {
-          statusEl.style.display = 'block';
-          statusEl.style.background = 'rgba(63, 93, 66, 0.08)';
-          statusEl.style.color = '#1A3320';
-          statusEl.style.border = '1.5px solid #25D366';
-          statusEl.style.borderRadius = '14px';
-          statusEl.style.padding = '16px';
-          statusEl.style.animation = 'none';
-          void statusEl.offsetWidth;
-          statusEl.style.animation = 'formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-          statusEl.innerHTML = `
+          // Reset and style form cleanly
+          form.reset();
+          const customWrap = document.getElementById('customBusinessTypeWrap');
+          if (customWrap) customWrap.style.display = 'none';
+        })
+        .catch((err) => {
+          console.error('Lead submission fallback:', err);
+          resetSubmitBtn();
+          if (statusEl) {
+            statusEl.style.display = 'block';
+            statusEl.style.background = 'rgba(63, 93, 66, 0.08)';
+            statusEl.style.color = '#1A3320';
+            statusEl.style.border = '1.5px solid #25D366';
+            statusEl.style.borderRadius = '14px';
+            statusEl.style.padding = '16px';
+            statusEl.style.animation = 'none';
+            void statusEl.offsetWidth;
+            statusEl.style.animation = 'formStatusReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+            statusEl.innerHTML = `
             <div style="font-weight: 700; margin-bottom: 4px; color: #1f5127;">Form submitted!</div>
             <div style="font-size: 13px; margin-bottom: 10px; color: #3c4a3e;">Connect directly with our onboarding expert on WhatsApp:</div>
             <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="whatsapp-instant-btn" style="width: 100%;">
@@ -3158,9 +3209,9 @@
               Connect Instantly on WhatsApp
             </a>
           `;
-        }
-        showFloatingSuccessPopup(name, cleanService, waUrl);
-      });
+          }
+          showFloatingSuccessPopup(name, cleanService, waUrl);
+        });
     }
     window.handleLeadSubmit = handleLeadSubmit;
   </script>
@@ -3318,13 +3369,13 @@
         } catch (e) { }
 
         // 1-second pause as requested ("koi 1 sec pause hoke chalta rahe pura")
-        setTimeout(function() {
+        setTimeout(function () {
           try {
             vid.currentTime = 0;
             applySpeed();
             const p = vid.play();
             if (p !== undefined) {
-              p.catch(function() { });
+              p.catch(function () { });
             }
           } catch (e) { }
           isPausing = false;
@@ -3333,7 +3384,7 @@
 
       vid.addEventListener('ended', handleVideoLoop);
 
-      vid.addEventListener('timeupdate', function() {
+      vid.addEventListener('timeupdate', function () {
         if (!isPausing && vid.duration && vid.currentTime >= vid.duration - 0.08 && vid.currentTime > 0.5) {
           handleVideoLoop();
         }
@@ -3420,6 +3471,41 @@
       }
       window.addEventListener('load', scrollToForm);
       window.addEventListener('hashchange', scrollToForm);
+    })();
+  </script>
+
+  <!-- Low-Latency Video Performance Engine: Pauses Offscreen Videos to Free GPU/Decoder Memory -->
+  <script>
+    (function initVideoPerf() {
+      if (!('IntersectionObserver' in window)) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (!e.isIntersecting) {
+            if (!v.paused) {
+              v._autoPaused = true;
+              v.pause();
+            }
+          } else {
+            if (v._autoPaused) {
+              v._autoPaused = false;
+              v.play().catch(function () { });
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      function observeVideos() {
+        document.querySelectorAll('video').forEach(function (v) {
+          obs.observe(v);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', observeVideos);
+      } else {
+        observeVideos();
+      }
     })();
   </script>
   <script src="version.js"></script>

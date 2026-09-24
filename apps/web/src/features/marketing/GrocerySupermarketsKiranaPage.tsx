@@ -171,182 +171,26 @@ export function GrocerySupermarketsKiranaPage() {
             </a>
           </motion.div>
 
-          {/* Hero Interactive UI Mockup: Wide Retail POS Dashboard */}
+                    {/* Hero Showcase: High-Throughput Retail POS Dashboard */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="mt-14 overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-2xl text-left"
           >
-            {/* Top Bar */}
-            <div className="flex items-center justify-between bg-slate-950 px-5 py-3 text-xs font-semibold text-white">
-              <div className="flex items-center gap-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                <span>PRIYULABS RETAIL ENGINE — COUNTER #02</span>
-                <span className="hidden sm:inline rounded bg-slate-800 px-2 py-0.5 text-[11px] font-mono text-emerald-300">
-                  100% OFFLINE READY
-                </span>
-              </div>
-              <div className="text-slate-400">Batch: #0821-EVENING</div>
-            </div>
-
-            {/* Dashboard Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 bg-slate-50">
-              {/* Col 1: Rapid Barcode Feed (5 cols) */}
-              <div className="lg:col-span-5 p-5 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
-                    <span className="text-xs font-black uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                      <Scan size={14} className="text-blue-600" /> Rapid Barcode Feed
-                    </span>
-                    <span className="rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-800">
-                      4 Scans / Sec
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="rounded-xl border border-blue-400 bg-blue-50/60 p-3 shadow-xs">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <div className="font-bold text-sm text-slate-900">Aashirvaad Shudh Chakki Atta 5kg</div>
-                          <div className="text-xs font-mono text-slate-500">8901030384912 • Qty: 1</div>
-                        </div>
-                        <div className="font-black text-sm text-slate-900">₹265.00</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-2xs">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <div className="font-bold text-sm text-slate-900">Tata Salt Vacuum Evaporated 1kg</div>
-                          <div className="text-xs font-mono text-slate-500">8901058852332 • Qty: 2</div>
-                        </div>
-                        <div className="font-black text-sm text-slate-900">₹56.00</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-2xs">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <div className="font-bold text-sm text-slate-900">Fortune Kachi Ghani Mustard Oil 1L</div>
-                          <div className="text-xs font-mono text-slate-500">8906007284911 • Qty: 1</div>
-                        </div>
-                        <div className="font-black text-sm text-slate-900">₹142.00</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-2xs">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <div className="font-bold text-sm text-slate-900">Amul Pasteurised Butter 500g</div>
-                          <div className="text-xs font-mono text-slate-500">8901262010051 • Qty: 1</div>
-                        </div>
-                        <div className="font-black text-sm text-slate-900">₹275.00</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-dashed border-slate-200 flex justify-between text-xs text-slate-500">
-                  <span>Omni 2D Laser: Connected</span>
-                  <span className="font-bold text-emerald-600">● Laser Ready</span>
-                </div>
-              </div>
-
-              {/* Col 2: Electronic Scale Sync (4 cols) */}
-              <div className="lg:col-span-4 p-5 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
-                    <span className="text-xs font-black uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                      <Scale size={14} className="text-blue-600" /> Electronic Scale Sync
-                    </span>
-                    <span className="rounded bg-blue-100 px-2 py-0.5 text-[11px] font-bold text-blue-800">
-                      RS-232 LIVE
-                    </span>
-                  </div>
-
-                  <div className="relative overflow-hidden rounded-2xl bg-slate-950 p-5 text-center text-white shadow-inner">
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
-                      LOOSE COMMODITY WEIGHED
-                    </div>
-                    <div className="mt-1 text-base font-bold text-white">
-                      Premium Yellow Moong Dal
-                    </div>
-                    <div className="my-2 font-mono text-5xl font-black tracking-tight text-emerald-400">
-                      1.450 <span className="text-xl text-slate-400">KG</span>
-                    </div>
-                    <div className="mt-3 flex justify-between border-t border-slate-800 pt-2 text-xs text-slate-300">
-                      <span>Tare: 0.020 kg</span>
-                      <span className="font-bold text-emerald-400">Rate: ₹140.00 / kg</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-3 rounded-xl border border-slate-200 bg-white p-3 text-xs">
-                    <div className="flex justify-between font-bold text-slate-700">
-                      <span>Net Calculated Price:</span>
-                      <span className="font-black text-slate-950 text-sm">₹203.00</span>
-                    </div>
-                    <div className="mt-1.5 flex justify-between text-[11px] text-emerald-600 font-semibold">
-                      <span>Auto Barcode Sticker:</span>
-                      <span>Punched into Cart ✓</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-dashed border-slate-200 flex justify-between text-xs text-slate-500">
-                  <span>Zero Gram Tolerance</span>
-                  <span className="font-bold text-blue-600">Tare Calibrated</span>
-                </div>
-              </div>
-
-              {/* Col 3: 1-Tap UPI Settlement (3 cols) */}
-              <div className="lg:col-span-3 p-5 flex flex-col justify-between bg-white">
-                <div>
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
-                    <span className="text-xs font-black uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                      <QrCode size={14} className="text-emerald-600" /> 1-Tap Settlement
-                    </span>
-                    <span className="rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-800">
-                      Ready
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5 text-xs text-slate-600">
-                    <div className="flex justify-between">
-                      <span>Subtotal (5 Items):</span>
-                      <span className="font-bold text-slate-900">₹941.00</span>
-                    </div>
-                    <div className="flex justify-between text-emerald-600">
-                      <span>Store Member Savings:</span>
-                      <span className="font-bold">-₹42.00</span>
-                    </div>
-                    <div className="flex justify-between border-t border-slate-200 pt-2 text-base font-black text-slate-900">
-                      <span>Grand Total:</span>
-                      <span className="text-emerald-600">₹899.00</span>
-                    </div>
-                  </div>
-
-                  <div className="my-4 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-3 text-center">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-blue-700">
-                      Dynamic UPI QR Pushed
-                    </div>
-                    <div className="mt-1 text-xs font-bold text-slate-800">
-                      Scan via GPay / PhonePe / Paytm
-                    </div>
-                    <div className="mt-2 text-[11px] font-bold text-emerald-600">
-                      ✓ Instant Paytm Soundbox Alert
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setDemoModalOpen(true)}
-                  className="w-full rounded-xl bg-slate-900 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-slate-800"
-                >
-                  Auto-Kick Drawer &amp; Print Thermal Receipt ↵
-                </button>
-              </div>
-            </div>
+            <img
+              src="/grocerry bussiness type front image.png"
+              alt="PriyuLabs Grocery & Supermarkets Retail Engine Counter POS"
+              className="w-full h-auto block object-contain"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.retry) {
+                  target.dataset.retry = '1';
+                  target.src = '/assets/grocerry bussiness type front image.png';
+                }
+              }}
+              loading="eager"
+            />
           </motion.div>
         </div>
       </section>
