@@ -70,7 +70,7 @@ window.addEventListener('scroll', () => {
 
 // ─── SQUARE-STYLE FULL-SCREEN DRILLDOWN MOBILE DRAWER ─────────
 const mobileDrawer = document.getElementById('mobileDrawer');
-const hamburger = document.getElementById('hamburger');
+const drawerHamburger = document.getElementById('hamburger');
 const drawerCloseBtn = document.getElementById('drawerCloseBtn');
 const drawerBackBtn = document.getElementById('drawerBackBtn');
 const drawerHeaderTitle = document.getElementById('drawerHeaderTitle');
@@ -98,7 +98,7 @@ if (mobileDrawer) {
     mobileDrawer.classList.add('open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    if (hamburger) hamburger.classList.add('active');
+    if (drawerHamburger) drawerHamburger.classList.add('active');
     updateDrawerHeader();
   }
 
@@ -106,7 +106,7 @@ if (mobileDrawer) {
     mobileDrawer.classList.remove('open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (hamburger) hamburger.classList.remove('active');
+    if (drawerHamburger) drawerHamburger.classList.remove('active');
 
     // Reset drill-down stack back to Level 1 after transition completes
     setTimeout(() => {
@@ -166,8 +166,8 @@ if (mobileDrawer) {
     updateDrawerHeader();
   }
 
-  if (hamburger) {
-    hamburger.addEventListener('click', (e) => {
+  if (drawerHamburger) {
+    drawerHamburger.addEventListener('click', (e) => {
       e.stopPropagation();
       if (mobileDrawer.classList.contains('open')) {
         closeMobileDrawer();

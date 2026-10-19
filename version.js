@@ -6,15 +6,15 @@
   'use strict';
 
   var VERSION_INFO = {
-  "version": "2.4.74",
+  "version": "2.4.75",
   "major": 2,
   "minor": 4,
-  "patch": 74,
-  "commit": "0cdfad0",
-  "commitCount": 74,
+  "patch": 75,
+  "commit": "33640d7",
+  "commitCount": 75,
   "releaseName": "Bharat Retail Intelligence",
-  "updatedAt": "2026-09-24T08:33:17.918Z",
-  "releaseDate": "2026-09-24",
+  "updatedAt": "2026-10-19T04:49:49.841Z",
+  "releaseDate": "2026-10-19",
   "channel": "production"
 };
 
@@ -103,6 +103,125 @@
     });
   }
 
+  // Universal Floating WhatsApp Button Renderer
+  function ensureWhatsAppFabStyles() {
+    if (document.getElementById('priyulabs-whatsapp-fab-styles')) return;
+    var style = document.createElement('style');
+    style.id = 'priyulabs-whatsapp-fab-styles';
+    style.textContent = `
+      .cms-whatsapp-fab,
+      .whatsapp-float {
+        position: fixed !important;
+        bottom: 24px !important;
+        right: 24px !important;
+        width: 68px !important;
+        height: 68px !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #25D366 !important;
+        box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        z-index: 9999 !important;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+        text-decoration: none !important;
+        outline: none !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+      .cms-whatsapp-fab:hover,
+      .whatsapp-float:hover {
+        transform: translateY(-3px) scale(1.05) !important;
+        box-shadow: 0 10px 28px rgba(37, 211, 102, 0.6), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+      }
+      .cms-whatsapp-fab:active,
+      .whatsapp-float:active {
+        transform: scale(0.96) !important;
+      }
+      .cms-whatsapp-fab .cms-whatsapp-img,
+      .whatsapp-float .cms-whatsapp-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transform: scale(1.42) !important;
+        display: block !important;
+        pointer-events: none !important;
+        user-select: none !important;
+        -webkit-user-drag: none !important;
+      }
+      @media (max-width: 768px) {
+        .cms-whatsapp-fab,
+        .whatsapp-float {
+          bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+          right: calc(18px + env(safe-area-inset-right, 0px)) !important;
+          width: 56px !important;
+          height: 56px !important;
+          box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function renderUniversalWhatsAppFab() {
+    ensureWhatsAppFabStyles();
+
+    var defaultUrl = 'https://wa.me/917873844050?text=Hello%20PriyuLabs!%20I%20would%20like%20to%20know%20more%20about%20your%20services.';
+
+    var existingFabs = document.querySelectorAll('#cmsWhatsappFab, .cms-whatsapp-fab, .whatsapp-float');
+    if (existingFabs.length > 0) {
+      for (var i = 1; i < existingFabs.length; i++) {
+        try { existingFabs[i].remove(); } catch (e) { }
+      }
+      var primary = existingFabs[0];
+      primary.className = 'cms-whatsapp-fab';
+      primary.id = 'cmsWhatsappFab';
+      primary.setAttribute('target', '_blank');
+      primary.setAttribute('rel', 'noopener noreferrer');
+      primary.setAttribute('aria-label', 'Chat with PriyuLabs on WhatsApp');
+      var currentHref = primary.getAttribute('href');
+      if (!currentHref || !currentHref.includes('wa.me')) {
+        primary.setAttribute('href', defaultUrl);
+      }
+      if (primary.querySelector('img.cms-whatsapp-img')) {
+        return;
+      }
+    }
+
+    var scriptEl = document.querySelector('script[src*="version.js"]');
+    var prefix = '';
+    if (scriptEl) {
+      var src = scriptEl.getAttribute('src');
+      var idx = src.indexOf('version.js');
+      if (idx !== -1) {
+        prefix = src.substring(0, idx);
+      }
+    }
+    var hasBase = !!document.querySelector('base[href]');
+    var imgSrc = (hasBase ? 'assets/images/priyulabs-whatsapp.png' : prefix + 'assets/images/priyulabs-whatsapp.png');
+
+    var imgHtml = '<img src="' + imgSrc + '" alt="WhatsApp" class="cms-whatsapp-img" onerror="if(!this.dataset.retry){this.dataset.retry=\'1\';this.src=\'' + prefix + 'assets/images/priyulabs-whatsapp.png\';}else if(this.dataset.retry===\'1\'){this.dataset.retry=\'2\';this.src=\'' + prefix + 'assets/priyulabs-whatsapp.png\';}else if(this.dataset.retry===\'2\'){this.dataset.retry=\'3\';this.src=\'/assets/images/priyulabs-whatsapp.png\';}" />';
+
+    if (existingFabs.length > 0) {
+      existingFabs[0].innerHTML = imgHtml;
+      return;
+    }
+
+    var newFab = document.createElement('a');
+    newFab.href = defaultUrl;
+    newFab.className = 'cms-whatsapp-fab';
+    newFab.id = 'cmsWhatsappFab';
+    newFab.target = '_blank';
+    newFab.rel = 'noopener noreferrer';
+    newFab.setAttribute('aria-label', 'Chat with PriyuLabs on WhatsApp');
+    newFab.innerHTML = imgHtml;
+    document.body.appendChild(newFab);
+  }
+
   // Cleanup any lingering page loader elements
   function cleanupLingeringLoaders() {
     var el = document.getElementById('priyulabsGlobalPageLoader');
@@ -111,13 +230,15 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      renderVersion();
-      cleanupLingeringLoaders();
-    });
-  } else {
+  function initUniversalEnhancements() {
     renderVersion();
+    renderUniversalWhatsAppFab();
     cleanupLingeringLoaders();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUniversalEnhancements);
+  } else {
+    initUniversalEnhancements();
   }
 })();

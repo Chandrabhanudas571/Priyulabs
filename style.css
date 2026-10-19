@@ -6306,32 +6306,64 @@ iframe {
 }
 
 /* â”€â”€â”€ WHATSAPP FLOATING BUTTON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── UNIVERSAL FLOATING WHATSAPP BUTTON ─────────────────────── */
+.cms-whatsapp-fab,
 .whatsapp-float {
-  position: fixed;
-  bottom: 26px;
-  right: 26px;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #25d366;
-  color: white;
-  border-radius: 50px;
-  padding: 13px 20px;
-  font-weight: 700;
-  font-size: 14px;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  width: 68px !important;
+  height: 68px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #25D366 !important;
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  z-index: 9999 !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+  text-decoration: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
+.cms-whatsapp-fab:hover,
 .whatsapp-float:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 14px 34px rgba(37, 211, 102, 0.6);
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.6), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
-.wa-icon {
-  font-size: 20px;
+.cms-whatsapp-fab:active,
+.whatsapp-float:active {
+  transform: scale(0.96) !important;
+}
+
+.cms-whatsapp-fab .cms-whatsapp-img,
+.whatsapp-float .cms-whatsapp-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transform: scale(1.42) !important;
+  display: block !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+@media (max-width: 768px) {
+  .cms-whatsapp-fab,
+  .whatsapp-float {
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(18px + env(safe-area-inset-right, 0px)) !important;
+    width: 56px !important;
+    height: 56px !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 /* â”€â”€â”€ TOAST NOTIFICATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -6733,36 +6765,16 @@ screen and (max-width: 992px) {
     line-height: 1.35 !important;
   }
 
-  /* 3. Floating Chat Button: Compact Rectangle Badge */
+  /* 3. Floating WhatsApp Button: Consistent Circular Badge */
+  .cms-whatsapp-fab,
   .whatsapp-float {
-    position: fixed !important;
-    bottom: 16px !important;
-    right: 16px !important;
-    width: auto !important;
-    height: auto !important;
-    border-radius: 6px !important;
-    padding: 6px 12px !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    z-index: 999 !important;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4) !important;
-  }
-
-  .whatsapp-float .wa-text {
-    display: inline !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    white-space: nowrap !important;
-  }
-
-  .whatsapp-float .wa-icon {
-    font-size: 16px !important;
-    line-height: 1 !important;
-    margin: 0 !important;
-    display: inline-block !important;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(18px + env(safe-area-inset-right, 0px)) !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
   }
 }
 
@@ -6866,53 +6878,53 @@ textarea,
   visibility: visible !important;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   1. DESKTOP SCREENS (> 1024px) - UNTOUCHED CLEAN GRID LAYOUT
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-@media screen and (min-width: 1025px) {
+/* =========================================================
+   1. DESKTOP SCREENS (>= 1024px) — UNLOCKED & EDITABLE GRID LAYOUT
+   ========================================================= */
+@media screen and (min-width: 1024px) {
   .attr-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 28px !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 
   .serve-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-    gap: 28px !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 
   .test-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 26px !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 
   .attr-card,
   .serve-card,
   .test-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: unset !important;
+    width: 100%;
+    max-width: 100%;
+    flex: unset;
   }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   2. TABLETS & MOBILES (<= 1024px) - HORIZONTAL SWIPE SLIDING
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-@media screen and (max-width: 1024px) {
+/* =========================================================
+   2. TABLETS & MOBILES (< 1024px) — PROTECTED HORIZONTAL SWIPE SLIDING
+   ========================================================= */
+@media screen and (max-width: 1023px) {
   .attr-grid,
   .serve-grid,
   .test-grid,
@@ -8039,36 +8051,16 @@ textarea,
     border-radius: 14px !important;
   }
 
-  /* 3. Floating Chat Button: Compact Rectangle Badge */
+  /* 3. Floating WhatsApp Button: Consistent Circular Badge */
+  .cms-whatsapp-fab,
   .whatsapp-float {
-    position: fixed !important;
-    bottom: 16px !important;
-    right: 16px !important;
-    width: auto !important;
-    height: auto !important;
-    border-radius: 6px !important;
-    padding: 6px 12px !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    z-index: 999 !important;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4) !important;
-  }
-
-  .whatsapp-float .wa-text {
-    display: inline !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    white-space: nowrap !important;
-  }
-
-  .whatsapp-float .wa-icon {
-    font-size: 16px !important;
-    line-height: 1 !important;
-    margin: 0 !important;
-    display: inline-block !important;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(18px + env(safe-area-inset-right, 0px)) !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
   }
 
   /* Footer */
@@ -8310,21 +8302,10 @@ textarea,
     font-size: 14px !important;
   }
 
+  .cms-whatsapp-fab,
   .whatsapp-float {
-    bottom: 14px !important;
-    right: 14px !important;
-    border-radius: 6px !important;
-    padding: 5px 10px !important;
-    font-size: 11.5px !important;
-    gap: 5px !important;
-  }
-
-  .whatsapp-float .wa-text {
-    font-size: 11.5px !important;
-  }
-
-  .whatsapp-float .wa-icon {
-    font-size: 15px !important;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(18px + env(safe-area-inset-right, 0px)) !important;
   }
 
   .toast {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 
 <head>
@@ -1691,14 +1691,16 @@ body {
     
 
     // Mobile navigation toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    if (hamburger && navLinks) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-    }
+    (function() {
+      var hbg = document.getElementById('hamburger');
+      var nl = document.getElementById('navLinks');
+      if (hbg && nl) {
+        hbg.addEventListener('click', () => {
+          hbg.classList.toggle('active');
+          nl.classList.toggle('active');
+        });
+      }
+    })();
   </script>
   <script src="script.js"></script>
 

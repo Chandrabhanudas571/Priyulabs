@@ -1481,7 +1481,7 @@ body {
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08); padding: 3px 10px; border-radius: 9999px; font-size: 11.5px; font-family: ui-monospace, monospace; color: #4a4030;">
           <span class="version-pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
-          <span class="foot-version" id="siteVersion">v2.4.74</span>
+          <span class="foot-version" id="siteVersion">v2.4.75</span>
         </span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
@@ -1966,16 +1966,18 @@ body {
 
       
       // Update 4 Core Solutions Sub-Strip
-      const pillars = sqPillarsMap[key] || sqPillarsMap['supermarket'];
-      if (pillars) {
-        const p1 = document.getElementById('sqPillar1');
-        const p2 = document.getElementById('sqPillar2');
-        const p3 = document.getElementById('sqPillar3');
-        const p4 = document.getElementById('sqPillar4');
-        if (p1) p1.textContent = pillars[0];
-        if (p2) p2.textContent = pillars[1];
-        if (p3) p3.textContent = pillars[2];
-        if (p4) p4.textContent = pillars[3];
+      if (typeof sqPillarsMap !== 'undefined') {
+        const pillars = sqPillarsMap[key] || sqPillarsMap['supermarket'];
+        if (pillars) {
+          const p1 = document.getElementById('sqPillar1');
+          const p2 = document.getElementById('sqPillar2');
+          const p3 = document.getElementById('sqPillar3');
+          const p4 = document.getElementById('sqPillar4');
+          if (p1) p1.textContent = pillars[0];
+          if (p2) p2.textContent = pillars[1];
+          if (p3) p3.textContent = pillars[2];
+          if (p4) p4.textContent = pillars[3];
+        }
       }
     
       const sub = document.getElementById('sqHeroDesc');
