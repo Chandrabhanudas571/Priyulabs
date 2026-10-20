@@ -2970,6 +2970,13 @@
     }
 
   </style>
+<style id="pl-mobile-home">
+/* Closed drawer must not leak its shadow onto the page; keep the WhatsApp bubble off the open menu */
+@media (max-width: 1023px) {
+  .m-drawer:not(.is-open) { box-shadow: none !important; }
+  body:has(.m-drawer.is-open) .cms-whatsapp-fab { opacity: 0; pointer-events: none; }
+}
+</style>
 </head>
 
 <body>
