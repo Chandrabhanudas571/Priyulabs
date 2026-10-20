@@ -999,6 +999,23 @@ body {
   </style>
 
 
+<style id="pl-mobile-fixes">
+/* Phone fixes: sticky "pillar" tabs and the POS demo category filter */
+@media (max-width: 1024px) {
+  .sticky-scroll-stage { grid-template-columns: minmax(0, 1fr) !important; }
+  .sticky-col-left { min-width: 0; }
+  .sticky-nav-tabs { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .sticky-nav-tabs::-webkit-scrollbar { display: none; }
+  .sticky-nav-tab { flex: 0 0 auto; white-space: nowrap; }
+}
+@media (max-width: 640px) {
+  .sticky-media-card { height: 360px; width: 100%; max-width: 100%; }
+  .pos-layout > * { min-width: 0; }
+  .pos-cat-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .pos-cat-filter::-webkit-scrollbar { display: none; }
+  .pos-cat-btn { flex: 0 0 auto; white-space: nowrap; }
+}
+</style>
 </head>
 <body>
 
