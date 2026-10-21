@@ -2977,6 +2977,16 @@
   body:has(.m-drawer.is-open) .cms-whatsapp-fab { opacity: 0; pointer-events: none; }
 }
 </style>
+<style id="pl-mobile-drawer">
+/* Mobile menu: never squash rows (let the menu scroll), and style the group labels */
+.m-drawer-body > * { flex-shrink: 0 !important; }
+.m-drawer-accordion-btn { flex-shrink: 0 !important; line-height: 1.3 !important; }
+.m-drawer-body { overscroll-behavior: contain; padding-bottom: 32px !important; }
+.m-drawer-accordion-content.is-open { max-height: none !important; overflow: visible !important; }
+.m-drawer-group { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 12px 10px 2px; }
+.m-drawer-group:first-child { padding-top: 4px; }
+.m-drawer-sublink { overflow-wrap: anywhere; }
+</style>
 </head>
 
 <body>
@@ -3364,10 +3374,20 @@
           <span class="m-drawer-accordion-icon">&#9662;</span>
         </button>
         <div class="m-drawer-accordion-content drawer-accordion-content" id="drawerSolContent">
-          <a href="pos.html" class="m-drawer-sublink" onclick="closeMobileNav()">Smart POS System</a>
-          <a href="complete-management-system.html" class="m-drawer-sublink" onclick="closeMobileNav()">Complete Management ERP</a>
-          <a href="website-builder.html" class="m-drawer-sublink" onclick="closeMobileNav()">Custom Website Builder</a>
-          <a href="digital-marketing.html" class="m-drawer-sublink" onclick="closeMobileNav()">Digital Marketing &amp; Ads</a>
+          <div class="m-drawer-group">Products</div>
+          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Smart POS System</a>
+          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Complete Management ERP</a>
+          <a href="/website-builder" class="m-drawer-sublink" onclick="closeMobileNav()">Custom Website Builder</a>
+          <a href="/digital-marketing" class="m-drawer-sublink" onclick="closeMobileNav()">Digital Marketing &amp; Ads</a>
+          <a href="/solutions" class="m-drawer-sublink" onclick="closeMobileNav()">All Solutions</a>
+          <div class="m-drawer-group">Capabilities</div>
+          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Take payments &amp; Zero-Fraud EDC Sync</a>
+          <a href="/solutions" class="m-drawer-sublink" onclick="closeMobileNav()">Manage orders from one place</a>
+          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Keep customers coming back (Loyalty)</a>
+          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Scale your business &amp; Multi-Store ERP</a>
+          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Schedule and pay your team (Selfie HRMS)</a>
+          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Manage your cash flow &amp; Cash Register Sync</a>
+          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Vision AI Stock Detection &amp; Expiry Shield</a>
         </div>
       </div>
 
@@ -3378,11 +3398,28 @@
           <span class="m-drawer-accordion-icon">&#9662;</span>
         </button>
         <div class="m-drawer-accordion-content drawer-accordion-content" id="drawerSecContent">
-          <a href="salons-spas.html" class="m-drawer-sublink" onclick="closeMobileNav()">Salons &amp; Spas</a>
-          <a href="cafes-chai-bars.html" class="m-drawer-sublink" onclick="closeMobileNav()">Cafes &amp; Dining</a>
-          <a href="grocery-supermarkets-kirana.html" class="m-drawer-sublink" onclick="closeMobileNav()">Supermarket &amp; Grocery</a>
-          <a href="electronics-mobile-shops.html" class="m-drawer-sublink" onclick="closeMobileNav()">Electronics &amp; Mobile</a>
-          <a href="all-business-types.html" class="m-drawer-sublink" style="color: var(--accent); font-weight: 600;" onclick="closeMobileNav()">Explore All Verticals &rarr;</a>
+          <div class="m-drawer-group">Food &amp; Beverage</div>
+          <a href="/restaurants-fine-dining" class="m-drawer-sublink" onclick="closeMobileNav()">Restaurants &amp; Fine Dining</a>
+          <a href="/qsr-fast-food" class="m-drawer-sublink" onclick="closeMobileNav()">QSR, Fast Food &amp; Takeaway</a>
+          <a href="/cafes-chai-bars" class="m-drawer-sublink" onclick="closeMobileNav()">Cafes &amp; Chai Bars</a>
+          <a href="/cloud-kitchens-catering" class="m-drawer-sublink" onclick="closeMobileNav()">Cloud Kitchens &amp; Catering</a>
+          <a href="/bakeries-shops" class="m-drawer-sublink" onclick="closeMobileNav()">Bakeries &amp; Patisseries</a>
+          <a href="/bars-pubs-breweries" class="m-drawer-sublink" onclick="closeMobileNav()">Bars, Pubs &amp; Breweries</a>
+          <div class="m-drawer-group">Retail</div>
+          <a href="/grocery-supermarkets-kirana" class="m-drawer-sublink" onclick="closeMobileNav()">Grocery, Supermarkets &amp; Kirana</a>
+          <a href="/electronics-mobile-shops" class="m-drawer-sublink" onclick="closeMobileNav()">Electronics &amp; Mobile Shops</a>
+          <a href="/footwear-leather-stores" class="m-drawer-sublink" onclick="closeMobileNav()">Footwear &amp; Leather Stores</a>
+          <a href="/jewellery-shops" class="m-drawer-sublink" onclick="closeMobileNav()">Jewellery Showrooms &amp; Bullion</a>
+          <a href="/watch-stores" class="m-drawer-sublink" onclick="closeMobileNav()">Watch Stores &amp; Horology</a>
+          <a href="/bookstores-stationery" class="m-drawer-sublink" onclick="closeMobileNav()">Bookstores &amp; Stationery</a>
+          <div class="m-drawer-group">Beauty &amp; Fashion</div>
+          <a href="/beauty-fashion/apparel" class="m-drawer-sublink" onclick="closeMobileNav()">Clothing &amp; Apparel Boutiques</a>
+          <a href="/beauty-fashion/salons" class="m-drawer-sublink" onclick="closeMobileNav()">Salons, Spas &amp; Beauty Parlors</a>
+          <a href="/beauty-fashion/cosmetics" class="m-drawer-sublink" onclick="closeMobileNav()">Cosmetics &amp; Skincare Stores</a>
+          <div class="m-drawer-group">Services</div>
+          <a href="/services/gyms" class="m-drawer-sublink" onclick="closeMobileNav()">Gyms, Fitness &amp; Yoga Centers</a>
+          <a href="/services/dry-cleaners" class="m-drawer-sublink" onclick="closeMobileNav()">Dry Cleaners &amp; Laundry Shops</a>
+          <a href="/all-business-types" class="m-drawer-sublink" style="color: var(--accent); font-weight: 600;" onclick="closeMobileNav()">Explore All Verticals &rarr;</a>
         </div>
       </div>
 
