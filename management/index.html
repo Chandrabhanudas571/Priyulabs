@@ -4704,7 +4704,40 @@ body {
     })();
   </script>
 
-  <script src="../version.js"></script>
+
+  <!-- Smooth Redirection to Landing Page Free Trial Onboarding Form -->
+  <script id="landing-trial-router">
+    function goToLandingTrial(e, sector) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const query = sector ? ('?bType=' + encodeURIComponent(sector)) : '';
+      let target = 'index.html' + query + '#contact';
+
+      if (window.location.protocol === 'file:') {
+        const p = window.location.pathname.replace(/\\/g, '/');
+        const idx = p.indexOf('/Antigravity/');
+        if (idx !== -1) {
+          const rel = p.substring(idx + '/Antigravity/'.length);
+          const depth = rel.split('/').length - 1;
+          target = (depth > 0 ? '../'.repeat(depth) : '') + 'index.html' + query + '#contact';
+        } else {
+          // Fallback relative
+          const parts = p.split('/');
+          const fileName = parts.pop();
+          if (parts.length > 0) {
+            target = 'index.html' + query + '#contact';
+          }
+        }
+      } else {
+        // Web server (http://, https://)
+        target = '/index.html' + query + '#contact';
+      }
+
+      window.location.href = target;
+    }
+  </script>
+
+  <script src="version.js"></script>
 </body>
 
 </html>

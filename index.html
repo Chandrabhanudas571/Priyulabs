@@ -719,14 +719,14 @@
       margin-top: 6px;
     }
 
-    /* ---------- Testimonials ---------- */
+    /* ---------- Testimonials & Updates ---------- */
     .testi-wrap {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
-    @media(max-width:860px) {
+    @media(max-width:1023px) {
       .testi-wrap {
         grid-template-columns: 1fr;
       }
@@ -2131,87 +2131,54 @@
       .m-drawer-body {
         flex: 1 !important;
         overflow-y: auto !important;
-        padding: 20px !important;
+        padding: 24px 20px !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 12px !important;
+        gap: 14px !important;
         -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior: contain !important;
       }
 
       .m-drawer-link {
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 12px 14px !important;
-        font-size: 15px !important;
+        padding: 16px 20px !important;
+        font-size: 17px !important;
         font-weight: 600 !important;
         color: var(--ink) !important;
         text-decoration: none !important;
         background: #FFFFFF !important;
         border: 1px solid var(--line) !important;
-        border-radius: 12px !important;
-        min-height: 48px !important;
+        border-radius: 14px !important;
+        min-height: 58px !important;
         box-sizing: border-box !important;
         touch-action: manipulation !important;
+        box-shadow: 0 2px 8px rgba(42, 36, 25, 0.04) !important;
+        transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
       }
 
-      .m-drawer-accordion {
+      .m-drawer-link:hover,
+      .m-drawer-link:active {
         background: #FFFFFF !important;
-        border: 1px solid var(--line) !important;
-        border-radius: 12px !important;
-        overflow: hidden !important;
+        border-color: var(--accent) !important;
+        box-shadow: 0 4px 14px rgba(63, 93, 66, 0.12) !important;
+        transform: translateY(-1px) !important;
       }
 
-      .m-drawer-accordion-btn {
-        width: 100% !important;
-        display: flex !important;
+      .m-drawer-arrow {
+        font-size: 19px !important;
+        color: var(--ink-soft) !important;
+        line-height: 1 !important;
+        transition: transform 0.2s ease, color 0.2s ease !important;
+        display: inline-flex !important;
         align-items: center !important;
-        justify-content: space-between !important;
-        padding: 12px 14px !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        color: var(--ink) !important;
-        background: transparent !important;
-        border: none !important;
-        cursor: pointer !important;
-        min-height: 48px !important;
-        text-align: left !important;
-        touch-action: manipulation !important;
       }
 
-      .m-drawer-accordion-icon {
-        transition: transform 0.25s ease !important;
-        font-size: 12px !important;
-        color: var(--ink-soft) !important;
-      }
-
-      .m-drawer-accordion-btn.is-active .m-drawer-accordion-icon {
-        transform: rotate(180deg) !important;
-      }
-
-      .m-drawer-accordion-content {
-        display: none !important;
-        padding: 8px 14px 14px !important;
-        border-top: 1px solid var(--line) !important;
-        background: var(--bg) !important;
-      }
-
-      .m-drawer-accordion-content.is-open {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-      }
-
-      .m-drawer-sublink {
-        display: block !important;
-        padding: 8px 10px !important;
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        color: var(--ink-soft) !important;
-        text-decoration: none !important;
-        border-radius: 6px !important;
-        min-height: 38px !important;
-        line-height: 22px !important;
+      .m-drawer-link:hover .m-drawer-arrow,
+      .m-drawer-link:active .m-drawer-arrow {
+        color: var(--accent) !important;
+        transform: translateX(4px) !important;
       }
 
       .m-drawer-footer {
@@ -2978,14 +2945,281 @@
 }
 </style>
 <style id="pl-mobile-drawer">
-/* Mobile menu: never squash rows (let the menu scroll), and style the group labels */
-.m-drawer-body > * { flex-shrink: 0 !important; }
-.m-drawer-accordion-btn { flex-shrink: 0 !important; line-height: 1.3 !important; }
-.m-drawer-body { overscroll-behavior: contain; padding-bottom: 32px !important; }
-.m-drawer-accordion-content.is-open { max-height: none !important; overflow: visible !important; }
-.m-drawer-group { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); padding: 12px 10px 2px; }
-.m-drawer-group:first-child { padding-top: 4px; }
-.m-drawer-sublink { overflow-wrap: anywhere; }
+
+    /* ========================================================
+       MOBILE 3-LEVEL DRILL-DOWN DRAWER STYLES
+       ======================================================== */
+    .m-drawer-backdrop {
+      position: fixed !important;
+      inset: 0 !important;
+      background: rgba(42, 36, 25, 0.6) !important;
+      z-index: 1001 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transition: opacity 0.3s ease !important;
+      backdrop-filter: blur(4px) !important;
+      -webkit-backdrop-filter: blur(4px) !important;
+    }
+    .m-drawer-backdrop.is-open,
+    .m-drawer-backdrop.open {
+      display: block !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    .m-drawer {
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      width: min(340px, 86vw) !important;
+      height: 100% !important;
+      background: var(--bg, #FAF6EE) !important;
+      z-index: 1002 !important;
+      transform: translateX(100%) !important;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15) !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+    }
+    .m-drawer.is-open,
+    .m-drawer.open {
+      transform: translateX(0) !important;
+    }
+    .m-drawer:not(.is-open):not(.open) {
+      box-shadow: none !important;
+    }
+
+    .m-drawer-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 16px 20px !important;
+      border-bottom: 1px solid var(--line, #E3D9C1) !important;
+      background: var(--bg, #FAF6EE) !important;
+      flex-shrink: 0 !important;
+    }
+    .m-nav-logo {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      text-decoration: none !important;
+    }
+    .m-nav-logo img {
+      width: 28px !important;
+      height: 28px !important;
+      object-fit: contain !important;
+    }
+    .m-nav-logo span {
+      font-family: 'Fraunces', serif !important;
+      font-size: 20px !important;
+      font-weight: 600 !important;
+      color: var(--ink, #2A2419) !important;
+    }
+
+    .m-drawer-close {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 50% !important;
+      background: var(--bg-alt, #F1EAD9) !important;
+      border: 1px solid var(--line, #E3D9C1) !important;
+      color: var(--ink, #2A2419) !important;
+      font-size: 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      transition: background 0.15s ease, transform 0.15s ease !important;
+    }
+    .m-drawer-close:hover {
+      background: var(--line, #E3D9C1) !important;
+      transform: scale(1.05) !important;
+    }
+
+    .m-drawer-body {
+      flex: 1 !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      position: relative !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .m-drill-viewport {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+
+    .m-drill-track {
+      display: flex !important;
+      width: 300% !important;
+      height: 100% !important;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      will-change: transform !important;
+    }
+
+    .m-drill-panel {
+      width: 33.33333% !important;
+      height: 100% !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding: 20px 20px 24px !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+    }
+
+    .m-drill-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-bottom: 14px !important;
+      margin-bottom: 8px !important;
+      border-bottom: 1px solid var(--line, #E3D9C1) !important;
+      flex-shrink: 0 !important;
+      gap: 10px !important;
+    }
+
+    .m-drill-back-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      background: transparent !important;
+      border: none !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      color: var(--accent, #3F5D42) !important;
+      cursor: pointer !important;
+      padding: 6px 8px 6px 0 !important;
+      touch-action: manipulation !important;
+      font-family: inherit !important;
+      transition: transform 0.15s ease !important;
+      flex-shrink: 0 !important;
+    }
+    .m-drill-back-btn:hover {
+      transform: translateX(-2px) !important;
+    }
+
+    .m-drill-title {
+      font-family: 'Fraunces', serif !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      color: var(--ink, #2A2419) !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      text-align: right !important;
+      flex: 1 !important;
+    }
+
+    .m-drill-group {
+      display: none !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+
+    .m-drill-group.is-active {
+      display: flex !important;
+    }
+
+    .m-drawer-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      min-height: 58px !important;
+      padding: 16px 20px !important;
+      font-size: 16.5px !important;
+      font-weight: 600 !important;
+      color: var(--ink, #2A2419) !important;
+      background: var(--panel, #FFFFFF) !important;
+      border: 1px solid var(--line, #E3D9C1) !important;
+      border-radius: 14px !important;
+      text-decoration: none !important;
+      touch-action: manipulation !important;
+      box-shadow: 0 2px 8px rgba(42, 36, 25, 0.04) !important;
+      transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+      cursor: pointer !important;
+      font-family: inherit !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      text-align: left !important;
+    }
+
+    .m-drawer-link:hover,
+    .m-drawer-link:active {
+      background: var(--accent-soft, #E7EEE4) !important;
+      border-color: var(--accent, #3F5D42) !important;
+      transform: translateX(2px) !important;
+      box-shadow: 0 4px 12px rgba(63, 93, 66, 0.1) !important;
+    }
+
+    .m-drawer-arrow {
+      font-size: 18px !important;
+      color: var(--accent, #3F5D42) !important;
+      font-weight: 500 !important;
+      flex-shrink: 0 !important;
+      margin-left: 8px !important;
+    }
+
+    .m-drawer-footer {
+      padding: 16px 20px !important;
+      border-top: 1px solid var(--line, #E3D9C1) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      background: var(--bg, #FAF6EE) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .m-drawer-cta-primary {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      padding: 14px 20px !important;
+      background: var(--accent, #3F5D42) !important;
+      color: #FFFFFF !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      border-radius: 12px !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 14px rgba(63, 93, 66, 0.25) !important;
+      transition: background 0.2s ease, transform 0.15s ease !important;
+      box-sizing: border-box !important;
+    }
+    .m-drawer-cta-primary:hover {
+      background: #334b35 !important;
+      transform: translateY(-1px) !important;
+    }
+
+    .m-drawer-cta-wa {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      width: 100% !important;
+      padding: 14px 20px !important;
+      background: #25D366 !important;
+      color: #FFFFFF !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      border-radius: 12px !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25) !important;
+      transition: background 0.2s ease, transform 0.15s ease !important;
+      box-sizing: border-box !important;
+    }
+    .m-drawer-cta-wa:hover {
+      background: #20BA5A !important;
+      transform: translateY(-1px) !important;
+    }
+  
 </style>
 </head>
 
@@ -3343,7 +3577,7 @@
         <span class="m-trial-full">Start Free Trial</span>
         <span class="m-trial-short">Free Trial</span>
       </a>
-      <button class="m-hamburger hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <button class="m-hamburger hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" onclick="openMobileNav()">
         <span></span>
         <span></span>
         <span></span>
@@ -3351,95 +3585,310 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
-  <div class="m-drawer-backdrop drawer-backdrop" id="drawerBackdrop"></div>
+  <!-- Mobile Navigation Drawer (3-Level Horizontal Drill-Down) -->
+  <div class="m-drawer-backdrop drawer-backdrop" id="drawerBackdrop" onclick="closeMobileNav()"></div>
   <aside class="m-drawer mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
     <div class="m-drawer-header">
       <a href="/" class="m-nav-logo" onclick="closeMobileNav()">
-        <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='logo.png';" />
+        <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" />
         <span>PriyuLabs</span>
       </a>
-      <button class="m-drawer-close drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu"><span id="mDrawerCloseBtn" style="display:inline-block; pointer-events:auto;">✕</span></button>
+      <button class="m-drawer-close drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu" onclick="closeMobileNav()">
+        <span id="mDrawerCloseBtn" style="display:inline-block; pointer-events:auto;">✕</span>
+      </button>
     </div>
+
     <div class="m-drawer-body">
-      <a href="interactive-demo.html" class="m-drawer-link" onclick="closeMobileNav()">
-        <span>&#10022; Interactive Live Demo</span>
-        <span>&rarr;</span>
-      </a>
+      <div class="m-drill-viewport">
+        <div class="m-drill-track" id="mDrillTrack">
 
-      <!-- Solutions Accordion -->
-      <div class="m-drawer-accordion">
-        <button class="m-drawer-accordion-btn drawer-accordion-btn" id="drawerSolBtn" aria-expanded="false">
-          <span>Core Solutions &amp; Products</span>
-          <span class="m-drawer-accordion-icon">&#9662;</span>
-        </button>
-        <div class="m-drawer-accordion-content drawer-accordion-content" id="drawerSolContent">
-          <div class="m-drawer-group">Products</div>
-          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Smart POS System</a>
-          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Complete Management ERP</a>
-          <a href="/website-builder" class="m-drawer-sublink" onclick="closeMobileNav()">Custom Website Builder</a>
-          <a href="/digital-marketing" class="m-drawer-sublink" onclick="closeMobileNav()">Digital Marketing &amp; Ads</a>
-          <a href="/solutions" class="m-drawer-sublink" onclick="closeMobileNav()">All Solutions</a>
-          <div class="m-drawer-group">Capabilities</div>
-          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Take payments &amp; Zero-Fraud EDC Sync</a>
-          <a href="/solutions" class="m-drawer-sublink" onclick="closeMobileNav()">Manage orders from one place</a>
-          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Keep customers coming back (Loyalty)</a>
-          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Scale your business &amp; Multi-Store ERP</a>
-          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Schedule and pay your team (Selfie HRMS)</a>
-          <a href="/pos" class="m-drawer-sublink" onclick="closeMobileNav()">Manage your cash flow &amp; Cash Register Sync</a>
-          <a href="/complete-management-system" class="m-drawer-sublink" onclick="closeMobileNav()">Vision AI Stock Detection &amp; Expiry Shield</a>
+          <!-- LEVEL 1: Main 4-Item Menu -->
+          <div class="m-drill-panel" id="mDrillPanel1">
+            <button type="button" class="m-drawer-link" onclick="mDrillGoLevel2('business-types', 'Business Types')">
+              <span>Business Types</span>
+              <span class="m-drawer-arrow">&rarr;</span>
+            </button>
+            <button type="button" class="m-drawer-link" onclick="mDrillGoLevel2('solutions', 'Solutions')">
+              <span>Solutions</span>
+              <span class="m-drawer-arrow">&rarr;</span>
+            </button>
+            <a href="/#contact" class="m-drawer-link" onclick="handleDrawerNavClick(event, 'contact')">
+              <span>Pricing</span>
+              <span class="m-drawer-arrow">&rarr;</span>
+            </a>
+            <a href="/#whats-new" class="m-drawer-link" onclick="handleDrawerNavClick(event, 'whats-new')">
+              <span>What's New</span>
+              <span class="m-drawer-arrow">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- LEVEL 2: 4 Main Categories -->
+          <div class="m-drill-panel" id="mDrillPanel2">
+            <div class="m-drill-header">
+              <button type="button" class="m-drill-back-btn" onclick="mDrillGoBack(1)" aria-label="Back to main menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                <span>Back</span>
+              </button>
+              <div class="m-drill-title" id="mDrillTitleLevel2">Business Types</div>
+            </div>
+
+            <div class="m-drill-group" id="mDrillGroup-categories-business-types" style="display: none;">
+              
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'food-beverage', 'Food &amp; Beverage')">
+      <span>Food &amp; Beverage</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'beauty-wellness', 'Beauty &amp; Wellness')">
+      <span>Beauty &amp; Wellness</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'retail-shops', 'Retail &amp; Shops')">
+      <span>Retail &amp; Shops</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'education-services', 'Education &amp; Services')">
+      <span>Education &amp; Services</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+            </div>
+
+            <div class="m-drill-group" id="mDrillGroup-categories-solutions" style="display: none;">
+              
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'billing-pos', 'Billing &amp; POS')">
+      <span>Billing &amp; POS</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'inventory', 'Inventory')">
+      <span>Inventory</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'staff-payroll', 'Staff &amp; Payroll')">
+      <span>Staff &amp; Payroll</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'growth-marketing', 'Growth &amp; Marketing')">
+      <span>Growth &amp; Marketing</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </button>
+  
+            </div>
+          </div>
+
+          <!-- LEVEL 3: Sectors / Solutions List -->
+          <div class="m-drill-panel" id="mDrillPanel3">
+            <div class="m-drill-header">
+              <button type="button" class="m-drill-back-btn" onclick="mDrillGoBack(2)" aria-label="Back to categories">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                <span>Back</span>
+              </button>
+              <div class="m-drill-title" id="mDrillTitleLevel3">Category</div>
+            </div>
+
+            
+      <div class="m-drill-group" id="mDrillGroup-business-types-food-beverage" style="display: none;">
+        
+      <a href="/cafes-chai-bars" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Cafe</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/restaurants-fine-dining" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Restaurant</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/bakeries-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Bakery</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/cloud-kitchens-catering" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Cloud Kitchen</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/cafes-chai-bars" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Juice &amp; Tea Shop</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-business-types-beauty-wellness" style="display: none;">
+        
+      <a href="/salons-spas" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Salon</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/salons-spas" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Spa</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/salons-spas" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Barbershop</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/gyms" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Gym</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-business-types-retail-shops" style="display: none;">
+        
+      <a href="/grocery-supermarkets-kirana" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Grocery</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/apparel-boutiques" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Clothing Store</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/electronics-mobile-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Electronics</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/healthcare/pharmacies" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Pharmacy</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-business-types-education-services" style="display: none;">
+        
+      <a href="/bookstores-stationery" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Coaching Institute</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/bookstores-stationery" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Tuition Centre</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/healthcare/pharmacies" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Clinic</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/electronics-mobile-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Repair Shop</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-solutions-billing-pos" style="display: none;">
+        
+      <a href="/solutions/billing-pos/smart-pos" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Smart POS</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/billing-pos/gst-billing" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>GST Billing</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/billing-pos/qr-upi-payments" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>QR &amp; UPI Payments</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/billing-pos/table-order-management" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Table/Order Management</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-solutions-inventory" style="display: none;">
+        
+      <a href="/solutions/inventory/stock-tracking" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Stock Tracking</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/inventory/low-stock-alerts" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Low-Stock Alerts</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/inventory/supplier-management" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Supplier Management</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-solutions-staff-payroll" style="display: none;">
+        
+      <a href="/solutions/staff-payroll/attendance" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Attendance</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/staff-payroll/shifts-scheduling" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Shifts &amp; Scheduling</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/staff-payroll/payroll" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Payroll</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-solutions-growth-marketing" style="display: none;">
+        
+      <a href="/solutions/growth-marketing/customer-crm" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Customer CRM</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/growth-marketing/loyalty-offers" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Loyalty &amp; Offers</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/growth-marketing/whatsapp-campaigns" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>WhatsApp Campaigns</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/solutions/growth-marketing/website-ads" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Website &amp; Ads</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+          </div>
+
         </div>
       </div>
-
-      <!-- Business Types Accordion -->
-      <div class="m-drawer-accordion">
-        <button class="m-drawer-accordion-btn drawer-accordion-btn" id="drawerSecBtn" aria-expanded="false">
-          <span>Industry Verticals</span>
-          <span class="m-drawer-accordion-icon">&#9662;</span>
-        </button>
-        <div class="m-drawer-accordion-content drawer-accordion-content" id="drawerSecContent">
-          <div class="m-drawer-group">Food &amp; Beverage</div>
-          <a href="/restaurants-fine-dining" class="m-drawer-sublink" onclick="closeMobileNav()">Restaurants &amp; Fine Dining</a>
-          <a href="/qsr-fast-food" class="m-drawer-sublink" onclick="closeMobileNav()">QSR, Fast Food &amp; Takeaway</a>
-          <a href="/cafes-chai-bars" class="m-drawer-sublink" onclick="closeMobileNav()">Cafes &amp; Chai Bars</a>
-          <a href="/cloud-kitchens-catering" class="m-drawer-sublink" onclick="closeMobileNav()">Cloud Kitchens &amp; Catering</a>
-          <a href="/bakeries-shops" class="m-drawer-sublink" onclick="closeMobileNav()">Bakeries &amp; Patisseries</a>
-          <a href="/bars-pubs-breweries" class="m-drawer-sublink" onclick="closeMobileNav()">Bars, Pubs &amp; Breweries</a>
-          <div class="m-drawer-group">Retail</div>
-          <a href="/grocery-supermarkets-kirana" class="m-drawer-sublink" onclick="closeMobileNav()">Grocery, Supermarkets &amp; Kirana</a>
-          <a href="/electronics-mobile-shops" class="m-drawer-sublink" onclick="closeMobileNav()">Electronics &amp; Mobile Shops</a>
-          <a href="/footwear-leather-stores" class="m-drawer-sublink" onclick="closeMobileNav()">Footwear &amp; Leather Stores</a>
-          <a href="/jewellery-shops" class="m-drawer-sublink" onclick="closeMobileNav()">Jewellery Showrooms &amp; Bullion</a>
-          <a href="/watch-stores" class="m-drawer-sublink" onclick="closeMobileNav()">Watch Stores &amp; Horology</a>
-          <a href="/bookstores-stationery" class="m-drawer-sublink" onclick="closeMobileNav()">Bookstores &amp; Stationery</a>
-          <div class="m-drawer-group">Beauty &amp; Fashion</div>
-          <a href="/beauty-fashion/apparel" class="m-drawer-sublink" onclick="closeMobileNav()">Clothing &amp; Apparel Boutiques</a>
-          <a href="/beauty-fashion/salons" class="m-drawer-sublink" onclick="closeMobileNav()">Salons, Spas &amp; Beauty Parlors</a>
-          <a href="/beauty-fashion/cosmetics" class="m-drawer-sublink" onclick="closeMobileNav()">Cosmetics &amp; Skincare Stores</a>
-          <div class="m-drawer-group">Services</div>
-          <a href="/services/gyms" class="m-drawer-sublink" onclick="closeMobileNav()">Gyms, Fitness &amp; Yoga Centers</a>
-          <a href="/services/dry-cleaners" class="m-drawer-sublink" onclick="closeMobileNav()">Dry Cleaners &amp; Laundry Shops</a>
-          <a href="/all-business-types" class="m-drawer-sublink" style="color: var(--accent); font-weight: 600;" onclick="closeMobileNav()">Explore All Verticals &rarr;</a>
-        </div>
-      </div>
-
-      <a href="#solutions" class="m-drawer-link" onclick="closeMobileNav()">
-        <span>Core Capabilities</span>
-        <span>&rarr;</span>
-      </a>
-      <a href="#who" class="m-drawer-link" onclick="closeMobileNav()">
-        <span>Who We Serve</span>
-        <span>&rarr;</span>
-      </a>
-      <a href="#stories" class="m-drawer-link" onclick="closeMobileNav()">
-        <span>Customer Stories</span>
-        <span>&rarr;</span>
-      </a>
-      <a href="#contact" class="m-drawer-link" onclick="closeMobileNav()">
-        <span>Pricing &amp; Contact</span>
-        <span>&rarr;</span>
-      </a>
     </div>
+
     <div class="m-drawer-footer">
       <a href="https://wa.me/917873844050?text=Hi%20Priyulabs,%20I%20want%20to%20book%20a%2010-min%20demo." target="_blank" rel="noopener noreferrer" class="m-drawer-cta-primary" onclick="closeMobileNav()">Book a 10-Min Demo</a>
       <a href="https://wa.me/917849074050?text=Hi%20Priyulabs,%20I%20want%20to%20learn%20more%20about%20your%20retail%20operating%20system." target="_blank" rel="noopener noreferrer" class="m-drawer-cta-wa">
@@ -3569,8 +4018,8 @@
 
         <!-- 4. What's new -->
         <li class="nav-item">
-          <a href="#core-capabilities" class="nav-link-btn"
-            onclick="event.preventDefault(); (document.getElementById('core-capabilities') || document.getElementById('solutions'))?.scrollIntoView({behavior:'smooth', block:'start'});">What's
+          <a href="#whats-new" class="nav-link-btn"
+            onclick="event.preventDefault(); (document.getElementById('whats-new') || document.getElementById('stories') || document.getElementById('solutions'))?.scrollIntoView({behavior:'smooth', block:'start'});">What's
             new</a>
         </li>
       </ul>
@@ -3687,7 +4136,7 @@
     <div id="core-capabilities" style="position:relative; top:-90px; visibility:hidden;"></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker">Core Capabilities</div>
+        <div class="kicker">Core Solutions &amp; Capabilities</div>
         <h2 style="font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 48px); margin-bottom: 20px;">
           The Operating System <span style="font-style: italic; font-weight: 400; color: var(--gold);">&amp;</span> <br>
           Engine for Modern Business.
@@ -3770,10 +4219,11 @@
   </section>
 
   <section id="who">
+    <div id="business-types" style="position:relative; top:-80px; visibility:hidden;"></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker">Built for your kind of business</div>
-        <h2>Who we serve</h2>
+        <div class="kicker">Business Types &amp; Verticals</div>
+        <h2>Who We Serve &amp; Industry Solutions</h2>
         <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Tailored workflows and retail operating
           systems built for your specific enterprise vertical.</p>
       </div>
@@ -3868,13 +4318,35 @@
     </div>
   </section>
 
-  <section id="stories">
+  <section id="whats-new">
+    <div id="stories" style="position:relative; top:-80px; visibility:hidden;"></div>
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="kicker">In their words</div>
-        <h2>Retailers who switched to Priyulabs</h2>
+        <div class="kicker">What's New &amp; Customer Stories</div>
+        <h2>Latest Updates &amp; Retailer Stories</h2>
+        <p style="color: var(--ink-soft); font-size: 16px; margin-top: 8px;">Continuous platform upgrades and real stories from retailers scaling on PriyuLabs.</p>
       </div>
       <div class="testi-wrap reveal">
+        <!-- Card 1: What's New Feature Update -->
+        <div class="testi-card" style="border: 1px solid rgba(63, 93, 66, 0.25); background: linear-gradient(135deg, #FFFFFF 0%, #F5F9F4 100%);">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF; background: var(--accent); padding: 4px 10px; border-radius: 999px;">
+              ★ Platform Update
+            </span>
+            <span style="font-size: 12px; font-weight: 600; color: var(--ink-soft);">v2.4 Live</span>
+          </div>
+          <div class="testi-quote" style="font-size: 18px; margin-top: 4px;">
+            Zero-Fraud EDC Terminal Sync &amp; AI Expiry Shield
+          </div>
+          <p style="color: var(--ink-soft); font-size: 14.5px; line-height: 1.5; margin: 0;">
+            Direct POS-to-card terminal billing prevents manual entry errors. Vision AI automatically flags products expiring in 30 days.
+          </p>
+          <div class="testi-person" style="margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line);">
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--accent);">✓ Rolled out across all retail verticals</div>
+          </div>
+        </div>
+
+        <!-- Card 2: Customer Story 1 -->
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
           <div class="testi-quote">During evening rush hours we used to lose expired stock silently. The stock alerts
@@ -3882,20 +4354,22 @@
           <div class="testi-person">
             <div class="testi-avatar"><img
                 src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=200&q=80"
-                alt="" loading="lazy" decoding="async"></div>
+                alt="Priyanshu Kumar Panda" loading="lazy" decoding="async"></div>
             <div>
               <div class="testi-name">Priyanshu Kumar Panda</div>
               <div class="testi-role">Panda Grocery, Bhubaneswar</div>
             </div>
           </div>
         </div>
+
+        <!-- Card 3: Customer Story 2 -->
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
           <div class="testi-quote">We used to spend an hour every night balancing card terminals against the cash
             register. Now it matches in one click — zero stress.</div>
           <div class="testi-person">
             <div class="testi-avatar"><img
-                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80" alt=""
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=200&q=80" alt="Prakash Mohapatra"
                 loading="lazy" decoding="async">
             </div>
             <div>
@@ -3911,6 +4385,7 @@
   <!-- STANDALONE SEPARATED ONBOARDING (WARM CREAM GLASS) -->
   <section id="contact" class="onboard-section reveal">
     <div id="free-trial" style="position:relative; top:-80px; visibility:hidden;"></div>
+    <div id="pricing" style="position:relative; top:-80px; visibility:hidden;"></div>
     <div class="wrap">
       <div class="onboard-card-container">
 
@@ -4150,7 +4625,7 @@
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span
-            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.75</span></span>
+            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.81</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
@@ -4871,12 +5346,127 @@
         drawer.setAttribute('aria-hidden', 'true');
         if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        setTimeout(function() {
+          if (window.mDrillReset) window.mDrillReset();
+        }, 280);
       }
 
       window.openMobileNav = openNav;
       window.closeMobileNav = closeNav;
       window.openMobileDrawer = openNav;
       window.closeMobileDrawer = closeNav;
+
+      // 3-Level Drill-Down State Controller
+      var currentDrillLevel = 1;
+      var currentFlowType = null;
+      var currentCategorySlug = null;
+
+      function setTrackTransform(level) {
+        var track = document.getElementById('mDrillTrack');
+        if (!track) return;
+        if (level === 1) track.style.transform = 'translateX(0%)';
+        else if (level === 2) track.style.transform = 'translateX(-33.33333%)';
+        else if (level === 3) track.style.transform = 'translateX(-66.66667%)';
+        currentDrillLevel = level;
+      }
+
+      window.mDrillGoLevel2 = function(flowType, title) {
+        currentFlowType = flowType;
+        var titleEl = document.getElementById('mDrillTitleLevel2');
+        if (titleEl) titleEl.textContent = title;
+
+        var btypesGroup = document.getElementById('mDrillGroup-categories-business-types');
+        var solGroup = document.getElementById('mDrillGroup-categories-solutions');
+
+        if (btypesGroup) {
+          if (flowType === 'business-types') btypesGroup.classList.add('is-active');
+          else btypesGroup.classList.remove('is-active');
+        }
+        if (solGroup) {
+          if (flowType === 'solutions') solGroup.classList.add('is-active');
+          else solGroup.classList.remove('is-active');
+        }
+
+        setTrackTransform(2);
+        try {
+          window.history.pushState({ priyuDrillLevel: 2, flow: flowType }, '');
+        } catch(e) {}
+      };
+
+      window.mDrillGoLevel3 = function(flowType, categorySlug, categoryTitle) {
+        currentFlowType = flowType;
+        currentCategorySlug = categorySlug;
+
+        var titleEl = document.getElementById('mDrillTitleLevel3');
+        if (titleEl) titleEl.textContent = categoryTitle;
+
+        var allGroups = document.querySelectorAll('#mDrillPanel3 .m-drill-group');
+        for (var i = 0; i < allGroups.length; i++) {
+          allGroups[i].classList.remove('is-active');
+        }
+
+        var targetGroup = document.getElementById('mDrillGroup-' + flowType + '-' + categorySlug);
+        if (targetGroup) {
+          targetGroup.classList.add('is-active');
+        }
+
+        setTrackTransform(3);
+        try {
+          window.history.pushState({ priyuDrillLevel: 3, flow: flowType, cat: categorySlug }, '');
+        } catch(e) {}
+      };
+
+      window.mDrillGoBack = function(targetLevel) {
+        setTrackTransform(targetLevel);
+      };
+
+      window.mDrillReset = function() {
+        setTrackTransform(1);
+        currentFlowType = null;
+        currentCategorySlug = null;
+        var allGroups = document.querySelectorAll('.m-drill-group');
+        for (var i = 0; i < allGroups.length; i++) {
+          allGroups[i].classList.remove('is-active');
+        }
+      };
+
+      window.handleDrawerSectorClick = function(event, url) {
+        closeNav();
+      };
+
+      // Native back button listener for drawer drill-down
+      window.addEventListener('popstate', function(e) {
+        var isOpen = drawer && (drawer.classList.contains('is-open') || drawer.classList.contains('open'));
+        if (!isOpen) return;
+
+        if (currentDrillLevel === 3) {
+          setTrackTransform(2);
+        } else if (currentDrillLevel === 2) {
+          setTrackTransform(1);
+        } else if (currentDrillLevel === 1) {
+          closeNav();
+        }
+      });
+
+      function handleDrawerNavClick(event, targetId) {
+        if (event && event.preventDefault) {
+          event.preventDefault();
+        }
+        closeNav();
+        setTimeout(function() {
+          const el = document.getElementById(targetId);
+          if (el) {
+            const headerOffset = 64;
+            const elementPosition = el.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 120);
+      }
+      window.handleDrawerNavClick = handleDrawerNavClick;
 
       if (hamburger) hamburger.addEventListener('click', openNav);
       if (closeBtn) closeBtn.addEventListener('click', closeNav);

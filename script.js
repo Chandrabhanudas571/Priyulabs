@@ -2002,6 +2002,20 @@ function initMegaMenuCloseHandlers() {
     }
   });
 
+  // Mobile touch outside listener
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.nav-item-dropdown') && !e.target.closest('.types-menu-wrap')) {
+      closeAllMenus();
+    }
+  }, { passive: true });
+
+  // Escape key listener
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllMenus();
+    }
+  });
+
   // Keep centered on window resize and scroll
   window.addEventListener('resize', alignMegaMenuToCenter, { passive: true });
   window.addEventListener('scroll', alignMegaMenuToCenter, { passive: true });

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <!-- Universal PriyuLabs Favicon Suite -->
@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
   <style>
     :root {
@@ -1043,7 +1044,7 @@ body {
       </ul>
 
       <div class="nav-actions">
-        <a href="/#free-trial" class="btn-solid-dark">Start Free Trial</a>
+        <a href="/index.html?bType=Clothing%20Brands%20%26%20Apparel%20Boutiques#contact" onclick="goToLandingTrial(event, 'Clothing Brands & Apparel Boutiques')" class="btn-solid-dark">Start Free Trial</a>
       </div>
     </div>
   </header>
@@ -1067,7 +1068,7 @@ body {
     </p>
 
     <div class="hero-actions">
-      <a href="/#free-trial" class="btn-solid-dark" style="padding: 14px 32px; font-size: 15px;">
+      <a href="/index.html?bType=Clothing%20Brands%20%26%20Apparel%20Boutiques#contact" onclick="goToLandingTrial(event, 'Clothing Brands & Apparel Boutiques')" class="btn-solid-dark" style="padding: 14px 32px; font-size: 15px;">
         Start Free Trial →
       </a>
       <a href="#matrix-features" class="btn-outline-clean" style="padding: 14px 28px; font-size: 15px;" onclick="event.preventDefault(); (document.querySelector('#matrix-features') || document.getElementById('matrix-features') || document.getElementById('pillars') || document.querySelector('.clean-pillars-sec, .pillars-sec, .triptych-sec, .pillars-grid'))?.scrollIntoView({behavior:'smooth', block:'start'});">
@@ -1348,7 +1349,7 @@ body {
 
         <!-- Action Buttons with Working Routing -->
         <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 28px;">
-          <a href="/#free-trial" style="background: #ea580c; color: #ffffff; font-weight: 600; font-size: 14px; padding: 13px 26px; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25); transition: all 0.2s ease;">
+          <a href="/index.html?bType=Clothing%20Brands%20%26%20Apparel%20Boutiques#contact" onclick="goToLandingTrial(event, 'Clothing Brands & Apparel Boutiques')" style="background: #ea580c; color: #ffffff; font-weight: 600; font-size: 14px; padding: 13px 26px; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25); transition: all 0.2s ease;">
             Start Free Trial
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1450,7 +1451,7 @@ body {
           <div id="lightboxTag" class="lightbox-tag">PREVIEW</div>
           <div id="lightboxTitle" class="lightbox-title">Photo Title</div>
         </div>
-        <a href="/#free-trial" class="btn-solid-dark" style="font-size:12.5px; padding:8px 18px; border-radius:10px;">
+        <a href="/index.html?bType=Clothing%20Brands%20%26%20Apparel%20Boutiques#contact" onclick="goToLandingTrial(event, 'Clothing Brands & Apparel Boutiques')" class="btn-solid-dark" style="font-size:12.5px; padding:8px 18px; border-radius:10px;">
           Start Free Trial →
         </a>
       </div>
@@ -1643,6 +1644,40 @@ body {
     })();
   </script>
 
-  <script src="../version.js"></script>
+
+  <!-- Smooth Redirection to Landing Page Free Trial Onboarding Form -->
+  <script id="landing-trial-router">
+    function goToLandingTrial(e, sector) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const query = sector ? ('?bType=' + encodeURIComponent(sector)) : '';
+      let target = 'index.html' + query + '#contact';
+
+      if (window.location.protocol === 'file:') {
+        const p = window.location.pathname.replace(/\\/g, '/');
+        const idx = p.indexOf('/Antigravity/');
+        if (idx !== -1) {
+          const rel = p.substring(idx + '/Antigravity/'.length);
+          const depth = rel.split('/').length - 1;
+          target = (depth > 0 ? '../'.repeat(depth) : '') + 'index.html' + query + '#contact';
+        } else {
+          // Fallback relative
+          const parts = p.split('/');
+          const fileName = parts.pop();
+          if (parts.length > 0) {
+            target = 'index.html' + query + '#contact';
+          }
+        }
+      } else {
+        // Web server (http://, https://)
+        target = '/index.html' + query + '#contact';
+      }
+
+      window.location.href = target;
+    }
+  </script>
+
+  <script src="../script.js"></script>
+  <script src="version.js"></script>
 </body>
 </html>

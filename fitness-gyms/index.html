@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="style.css" />
   <style>
     :root {
       --font-main: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
@@ -1237,7 +1238,7 @@ body {
       </ul>
 
       <div class="nav-actions">
-        <a href="/#free-trial" class="btn-solid-dark">Get Started</a>
+        <a href="/index.html?bType=Gyms%2C%20Fitness%20Studios%20%26%20Yoga#contact" onclick="goToLandingTrial(event, 'Gyms, Fitness Studios & Yoga')" class="btn-solid-dark">Get Started</a>
       </div>
     </div>
   </header>
@@ -1262,7 +1263,7 @@ body {
       </p>
 
       <div class="hero-ctas">
-        <a href="/#free-trial" class="btn-hero-primary">
+        <a href="/index.html?bType=Gyms%2C%20Fitness%20Studios%20%26%20Yoga#contact" onclick="goToLandingTrial(event, 'Gyms, Fitness Studios & Yoga')" class="btn-hero-primary">
           Get Started Today
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
@@ -1786,7 +1787,7 @@ body {
 
         <!-- CTA Buttons -->
         <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-bottom:24px;">
-          <a href="/#free-trial" style="display:inline-flex; align-items:center; gap:8px; border-radius:12px; background:#ea580c; color:#ffffff; font-weight:700; padding:14px 28px; font-size:14.5px; text-decoration:none; transition:all 0.2s ease; box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);">
+          <a href="/index.html?bType=Gyms%2C%20Fitness%20Studios%20%26%20Yoga#contact" onclick="goToLandingTrial(event, 'Gyms, Fitness Studios & Yoga')" style="display:inline-flex; align-items:center; gap:8px; border-radius:12px; background:#ea580c; color:#ffffff; font-weight:700; padding:14px 28px; font-size:14.5px; text-decoration:none; transition:all 0.2s ease; box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);">
             Get Started Today
           </a>
           <a href="https://wa.me/917873844050?text=Hi%20Priyulabs%20Team%2C%20I%20want%20to%20see%20a%20demo%20for%20Gyms%20and%20Fitness%20Studios" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:8px; border-radius:12px; border:1px solid #cbd5e1; background:#ffffff; color:#1e293b; font-weight:700; padding:14px 24px; font-size:14.5px; text-decoration:none; transition:all 0.2s ease;">
@@ -1889,7 +1890,7 @@ body {
           <div id="lightboxTag" class="lightbox-tag">PREVIEW</div>
           <div id="lightboxTitle" class="lightbox-title">Photo Title</div>
         </div>
-        <a href="/#free-trial" class="btn-solid-dark" style="font-size:12.5px; padding:8px 18px; border-radius:10px;">
+        <a href="/index.html?bType=Gyms%2C%20Fitness%20Studios%20%26%20Yoga#contact" onclick="goToLandingTrial(event, 'Gyms, Fitness Studios & Yoga')" class="btn-solid-dark" style="font-size:12.5px; padding:8px 18px; border-radius:10px;">
           Get Started →
         </a>
       </div>
@@ -2082,6 +2083,39 @@ body {
     })();
   </script>
 
-  <script src="../version.js"></script>
+
+  <!-- Smooth Redirection to Landing Page Free Trial Onboarding Form -->
+  <script id="landing-trial-router">
+    function goToLandingTrial(e, sector) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const query = sector ? ('?bType=' + encodeURIComponent(sector)) : '';
+      let target = 'index.html' + query + '#contact';
+
+      if (window.location.protocol === 'file:') {
+        const p = window.location.pathname.replace(/\\/g, '/');
+        const idx = p.indexOf('/Antigravity/');
+        if (idx !== -1) {
+          const rel = p.substring(idx + '/Antigravity/'.length);
+          const depth = rel.split('/').length - 1;
+          target = (depth > 0 ? '../'.repeat(depth) : '') + 'index.html' + query + '#contact';
+        } else {
+          // Fallback relative
+          const parts = p.split('/');
+          const fileName = parts.pop();
+          if (parts.length > 0) {
+            target = 'index.html' + query + '#contact';
+          }
+        }
+      } else {
+        // Web server (http://, https://)
+        target = '/index.html' + query + '#contact';
+      }
+
+      window.location.href = target;
+    }
+  </script>
+
+  <script src="version.js"></script>
 </body>
 </html>

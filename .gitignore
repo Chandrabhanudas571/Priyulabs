@@ -3,4 +3,8 @@ dist/
 .env
 *.tsbuildinfo
 video-work/
+scratch/
+artifacts/
+*.patch
+scripts/*.png
 
