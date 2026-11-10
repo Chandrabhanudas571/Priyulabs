@@ -883,10 +883,10 @@ function renderSolutionPage(solution, category) {
         <div>
           <h5>Business Types</h5>
           <ul>
-            <li><a href="/business-types/food-beverage/cafe">Cafes &amp; Bakeries</a></li>
-            <li><a href="/business-types/retail-shops/grocery">Grocery &amp; Supermarkets</a></li>
-            <li><a href="/business-types/beauty-wellness/salon">Salons &amp; Spas</a></li>
-            <li><a href="/business-types/retail-shops/clothing-store">Clothing &amp; Retail</a></li>
+            <li><a href="/cafes-chai-bars">Cafes &amp; Bakeries</a></li>
+            <li><a href="/grocery-supermarkets-kirana">Grocery &amp; Supermarkets</a></li>
+            <li><a href="/salons-spas">Salons &amp; Spas</a></li>
+            <li><a href="/apparel-boutiques">Clothing &amp; Retail</a></li>
           </ul>
         </div>
         <div>
