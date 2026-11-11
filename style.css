@@ -9467,4 +9467,102 @@ footer.footer-universal {
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
+/* ==========================================================================
+   PHASE 2: RESPONSIVE LAYOUT & ACCESSIBILITY ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Safe Area Insets for Mobile Notches & Modern Devices */
+header, #navbar, .navbar, .nav {
+  padding-top: max(12px, env(safe-area-inset-top, 12px));
+  padding-left: max(16px, env(safe-area-inset-left, 16px));
+  padding-right: max(16px, env(safe-area-inset-right, 16px));
+}
+
+footer, .footer {
+  padding-bottom: max(24px, env(safe-area-inset-bottom, 24px));
+  padding-left: max(16px, env(safe-area-inset-left, 16px));
+  padding-right: max(16px, env(safe-area-inset-right, 16px));
+}
+
+.cms-whatsapp-fab, .whatsapp-fab {
+  bottom: max(20px, env(safe-area-inset-bottom, 20px)) !important;
+  right: max(20px, env(safe-area-inset-right, 20px)) !important;
+}
+
+/* 2. 100dvh with 100vh fallback for full-height sections & fixed overlays */
+.hero-full,
+.m-hero,
+.mobile-drawer,
+.m-drawer,
+#priyulabsIntroPreloader,
+#priyulabs-preloader {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* 3. Accessible Tap Targets (>= 44px) & iOS Input Auto-Zoom Prevention */
+input,
+select,
+textarea {
+  font-size: 16px !important; /* Prevents iOS Safari 100% zoom jump on focus */
+}
+
+button,
+a.btn,
+.btn-primary,
+.btn-secondary,
+.btn-nav,
+.drawer-link,
+.drawer-nav-item,
+.hamburger,
+.drawer-back-btn,
+.drawer-close-btn {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* 4. Fluid Typography & Prevent Text Overflow */
+body, h1, h2, h3, h4, h5, h6, p, span, a, li {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* 5. Mega Menu Containment (Never overflow on 768px-960px screens) */
+.mega-dropdown,
+.types-menu-dropdown,
+.square-dropdown,
+.megamenu-content {
+  max-width: calc(100vw - 32px) !important;
+  box-sizing: border-box !important;
+}
+
+/* 6. Responsive Grid Collapses & 320px Viewport Support */
+@media screen and (max-width: 1024px) {
+  .grid-4, .serve-grid, .attr-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid-4, .grid-3, .grid-2, .serve-grid, .attr-grid, .test-grid, .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .wrap, .container, .nav {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .stat-card, .serve-card, .ticker-wrap, .feature-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .modal-dialog, .free-trial-modal, .form-container {
+    width: 100% !important;
+    padding: 16px 12px !important;
+  }
+}
+
+
 
