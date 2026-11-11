@@ -5,7 +5,7 @@ const os = require('os');
 const puppeteer = require('puppeteer-core');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const PORT = 3002;
+const PORT = 3003;
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 function startServer() {
@@ -58,13 +58,14 @@ function startServer() {
 
 async function runTests() {
   const server = await startServer();
-  const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'puppeteer-hero-'));
+  const userDataDir = path.join(os.tmpdir(), 'puppeteer-hero-' + Date.now() + '-' + Math.random().toString(36).slice(2));
+  fs.mkdirSync(userDataDir, { recursive: true });
 
   const browser = await puppeteer.launch({
     executablePath: CHROME_PATH,
     headless: 'new',
-    userDataDir,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+    pipe: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--allow-file-access-from-files']
   });
 
   const screenshotDir = path.join(ROOT_DIR, 'test-artifacts', 'hero-redesign');
@@ -85,8 +86,9 @@ async function runTests() {
     for (const vp of viewports) {
       console.log(`\n--- Testing Hero at ${vp.name} (${vp.width}x${vp.height}) ---`);
       await page.setViewport({ width: vp.width, height: vp.height, deviceScaleFactor: 2 });
-      await page.goto(`http://localhost:${PORT}/`, { waitUntil: 'domcontentloaded' });
-      await new Promise(r => setTimeout(r, 600));
+      const fileUrl = 'file:///' + path.join(ROOT_DIR, 'index.html').replace(/\\/g, '/');
+      await page.goto(fileUrl, { waitUntil: 'domcontentloaded' });
+      await new Promise(r => setTimeout(r, 800));
 
       // 1. Horizontal scroll check
       const scrollMetrics = await page.evaluate(() => ({
@@ -101,80 +103,187 @@ async function runTests() {
         pass: hasNoHScroll
       });
 
-      // 2. Video Card & Chips Metrics
-      const heroMetrics = await page.evaluate(() => {
-        const hero = document.querySelector('.hero-redesign');
+      // 2. Element Metrics & Styling Checks
+      const metrics = await page.evaluate(() => {
+        const body = document.body;
+        const bodyStyle = window.getComputedStyle(body);
+        const globalFluidBg = document.querySelector('.global-fluid-bg');
+        const ambientGrid = document.querySelector('.ambient-dot-grid');
+
+        const nav = document.querySelector('.m-navbar');
+        const navStyle = nav ? window.getComputedStyle(nav) : null;
+        const navRect = nav ? nav.getBoundingClientRect() : null;
+
+        const trialBtn = document.querySelector('.m-nav-trial-btn');
+        const trialStyle = trialBtn ? window.getComputedStyle(trialBtn) : null;
+        const trialRect = trialBtn ? trialBtn.getBoundingClientRect() : null;
+
+        const hamburger = document.querySelector('.m-hamburger');
+        const hamStyle = hamburger ? window.getComputedStyle(hamburger) : null;
+        const hamRect = hamburger ? hamburger.getBoundingClientRect() : null;
+
+        const eyebrow = document.querySelector('.hero-eyebrow');
+        const eyebrowStyle = eyebrow ? window.getComputedStyle(eyebrow) : null;
+        const eyebrowRect = eyebrow ? eyebrow.getBoundingClientRect() : null;
+
         const headline = document.querySelector('.hero-headline');
+        const headlineStyle = headline ? window.getComputedStyle(headline) : null;
+        const headlineRect = headline ? headline.getBoundingClientRect() : null;
+
+        const highlight = document.querySelector('.headline-highlight');
+        const highlightStyle = highlight ? window.getComputedStyle(highlight) : null;
+        const underlineSvg = document.querySelector('.hand-drawn-underline');
+
+        const subhead = document.querySelector('.hero-subhead');
+        const subheadStyle = subhead ? window.getComputedStyle(subhead) : null;
+        const subheadRect = subhead ? subhead.getBoundingClientRect() : null;
+
         const videoCard = document.querySelector('.hero-video-card');
-        const video = document.querySelector('.hero-video-player');
-        const chipTL = document.querySelector('.chip-top-left');
-        const chipBR = document.querySelector('.chip-bottom-right');
-        const stickyBar = document.querySelector('.hero-sticky-bar');
-        const waFab = document.querySelector('#cmsWhatsappFab, .cms-whatsapp-fab');
+        const videoCardRect = videoCard ? videoCard.getBoundingClientRect() : null;
 
-        const heroStyle = hero ? window.getComputedStyle(hero) : null;
-        const cardStyle = videoCard ? window.getComputedStyle(videoCard) : null;
-        const stickyStyle = stickyBar ? window.getComputedStyle(stickyBar) : null;
-        const waFabStyle = waFab ? window.getComputedStyle(waFab) : null;
-
-        const cardRect = videoCard ? videoCard.getBoundingClientRect() : null;
-        const chipTLRect = chipTL ? chipTL.getBoundingClientRect() : null;
-        const chipBRRect = chipBR ? chipBR.getBoundingClientRect() : null;
+        const marqueeWrap = document.querySelector('.marquee-wrap');
+        const marqueeStyle = marqueeWrap ? window.getComputedStyle(marqueeWrap) : null;
 
         return {
-          heroBg: heroStyle?.backgroundColor,
-          headlineText: headline?.innerText?.trim(),
-          cardBorderRadius: cardStyle?.borderRadius,
-          cardBorder: cardStyle?.border,
-          videoExists: !!video,
-          cardWidth: cardRect?.width,
-          chipTLText: chipTL?.innerText?.trim(),
-          chipBRText: chipBR?.innerText?.trim(),
-          chipTLTop: chipTLRect?.top,
-          cardTop: cardRect?.top,
-          chipBRBottom: chipBRRect?.bottom,
-          cardBottom: cardRect?.bottom,
-          stickyBarDisplay: stickyStyle?.display,
-          stickyBarPosition: stickyStyle?.position,
-          waFabVisible: waFabStyle ? (waFabStyle.display !== 'none' && waFabStyle.visibility !== 'hidden') : false
+          bodyBg: bodyStyle.backgroundColor,
+          noDimmingOverlays: !globalFluidBg && !ambientGrid,
+          navHeight: navRect ? Math.round(navRect.height) : null,
+          navBgInitial: navStyle ? navStyle.backgroundColor : null,
+          trialBtnHeight: trialRect ? Math.round(trialRect.height) : null,
+          trialBtnFontSize: trialStyle ? trialStyle.fontSize : null,
+          trialBtnFontWeight: trialStyle ? trialStyle.fontWeight : null,
+          hamWidth: hamRect ? Math.round(hamRect.width) : null,
+          hamHeight: hamRect ? Math.round(hamRect.height) : null,
+          eyebrowExists: !!eyebrow,
+          eyebrowText: eyebrow ? eyebrow.innerText.trim() : null,
+          eyebrowColor: eyebrowStyle ? eyebrowStyle.color : null,
+          eyebrowBg: eyebrowStyle ? eyebrowStyle.backgroundColor : null,
+          eyebrowFontSize: eyebrowStyle ? eyebrowStyle.fontSize : null,
+          headlineWeight: headlineStyle ? headlineStyle.fontWeight : null,
+          headlineColor: headlineStyle ? headlineStyle.color : null,
+          highlightText: highlight ? highlight.innerText.trim() : null,
+          highlightColor: highlightStyle ? highlightStyle.color : null,
+          underlineSvgExists: !!underlineSvg,
+          subheadFontSize: subheadStyle ? subheadStyle.fontSize : null,
+          subheadColor: subheadStyle ? subheadStyle.color : null,
+          subheadFontWeight: subheadStyle ? subheadStyle.fontWeight : null,
+          // Spacing calculation (vertical offsets)
+          gapNavToEyebrow: (navRect && eyebrowRect) ? Math.round(eyebrowRect.top - navRect.bottom) : null,
+          gapEyebrowToHeadline: (eyebrowRect && headlineRect) ? Math.round(headlineRect.top - eyebrowRect.bottom) : null,
+          gapHeadlineToSubhead: (headlineRect && subheadRect) ? Math.round(subheadRect.top - headlineRect.bottom) : null,
+          gapSubheadToCard: (subheadRect && videoCardRect) ? Math.round(videoCardRect.top - subheadRect.bottom) : null,
+          // Marquee styling
+          marqueePaddingTop: marqueeStyle ? marqueeStyle.paddingTop : null,
+          marqueePaddingBottom: marqueeStyle ? marqueeStyle.paddingBottom : null,
+          marqueeMask: marqueeStyle ? (marqueeStyle.maskImage || marqueeStyle.webkitMaskImage) : null
         };
       });
 
-      console.log(`[${vp.name}] Hero metrics:`, heroMetrics);
+      console.log(`[${vp.name}] Computed metrics:`, metrics);
 
-      // Verify layout specifics
-      if (vp.width <= 430) {
+      // Check Dullness
+      results.checks.push({
+        test: `[${vp.name}] Body background is clean cream (#FAF6EE / rgb(250, 246, 238))`,
+        pass: metrics.bodyBg === 'rgb(250, 246, 238)'
+      });
+      results.checks.push({
+        test: `[${vp.name}] No dimming overlays (.global-fluid-bg, .ambient-dot-grid)`,
+        pass: metrics.noDimmingOverlays
+      });
+
+      if (vp.width <= 768) {
+        // Mobile Navbar
         results.checks.push({
-          test: `[${vp.name}] Video card has border-radius 24px`,
-          pass: heroMetrics.cardBorderRadius === '24px'
+          test: `[${vp.name}] Mobile navbar height is 64px (got ${metrics.navHeight}px)`,
+          pass: metrics.navHeight === 64
         });
         results.checks.push({
-          test: `[${vp.name}] Top-Left stat chip overlaps card edge`,
-          pass: heroMetrics.chipTLTop < heroMetrics.cardTop && heroMetrics.chipTLText.includes('100+')
+          test: `[${vp.name}] Start Free Trial button height is 40px, font 14px, weight >= 600`,
+          pass: metrics.trialBtnHeight === 40 && metrics.trialBtnFontSize === '14px' && parseInt(metrics.trialBtnFontWeight) >= 600
         });
         results.checks.push({
-          test: `[${vp.name}] Bottom-Right stat chip overlaps card edge`,
-          pass: heroMetrics.chipBRBottom > heroMetrics.cardBottom && heroMetrics.chipBRText.includes('99.9%')
+          test: `[${vp.name}] Hamburger button tap target is >= 44x44px (got ${metrics.hamWidth}x${metrics.hamHeight}px)`,
+          pass: metrics.hamWidth >= 44 && metrics.hamHeight >= 44
+        });
+
+        // Test Sticky Navbar after 10px scroll
+        await page.evaluate(() => window.scrollTo(0, 15));
+        await new Promise(r => setTimeout(r, 100));
+        const scrolledNavMetrics = await page.evaluate(() => {
+          const nav = document.querySelector('.m-navbar');
+          const isScrolled = nav.classList.contains('is-scrolled');
+          const style = window.getComputedStyle(nav);
+          return {
+            isScrolled,
+            bg: style.backgroundColor,
+            backdropFilter: style.backdropFilter || style.webkitBackdropFilter,
+            borderBottom: style.borderBottom
+          };
         });
         results.checks.push({
-          test: `[${vp.name}] Sticky bottom bar is visible and fixed`,
-          pass: heroMetrics.stickyBarDisplay !== 'none' && heroMetrics.stickyBarPosition === 'fixed'
+          test: `[${vp.name}] Navbar becomes sticky & translucent on scroll (>8px) (class: ${scrolledNavMetrics.isScrolled}, bg: ${scrolledNavMetrics.bg})`,
+          pass: scrolledNavMetrics.isScrolled && scrolledNavMetrics.bg.includes('250, 246, 238')
+        });
+        // Scroll back to top
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await new Promise(r => setTimeout(r, 100));
+
+        // Spacing checks
+        results.checks.push({
+          test: `[${vp.name}] 28px gap between navbar and eyebrow pill (got ${metrics.gapNavToEyebrow}px)`,
+          pass: Math.abs(metrics.gapNavToEyebrow - 28) <= 2
         });
         results.checks.push({
-          test: `[${vp.name}] Old floating WhatsApp button is removed/hidden`,
-          pass: !heroMetrics.waFabVisible
-        });
-      } else {
-        // Desktop check
-        results.checks.push({
-          test: `[${vp.name}] Card max-width centered (~960px)`,
-          pass: heroMetrics.cardWidth <= 965
+          test: `[${vp.name}] 14px gap between eyebrow pill and headline (got ${metrics.gapEyebrowToHeadline}px)`,
+          pass: Math.abs(metrics.gapEyebrowToHeadline - 14) <= 2
         });
         results.checks.push({
-          test: `[${vp.name}] Sticky bar hidden on desktop (inline actions used)`,
-          pass: heroMetrics.stickyBarDisplay === 'none'
+          test: `[${vp.name}] 14px gap between headline and subhead (got ${metrics.gapHeadlineToSubhead}px)`,
+          pass: Math.abs(metrics.gapHeadlineToSubhead - 14) <= 2
+        });
+        results.checks.push({
+          test: `[${vp.name}] 32px gap between subhead and video card (got ${metrics.gapSubheadToCard}px)`,
+          pass: Math.abs(metrics.gapSubheadToCard - 32) <= 2
+        });
+
+        // Eyebrow checks
+        results.checks.push({
+          test: `[${vp.name}] Eyebrow pill text is "Built for Indian retailers"`,
+          pass: metrics.eyebrowText.toUpperCase().includes('BUILT FOR INDIAN RETAILERS')
+        });
+        results.checks.push({
+          test: `[${vp.name}] Eyebrow font 12px, gold color (#9A6F2B / rgb(154, 111, 43))`,
+          pass: metrics.eyebrowFontSize === '12px' && metrics.eyebrowColor === 'rgb(154, 111, 43)'
+        });
+
+        // Headline & Underline
+        results.checks.push({
+          test: `[${vp.name}] Headline weight 600, color #1E1B16 (rgb(30, 27, 22))`,
+          pass: metrics.headlineWeight === '600' && metrics.headlineColor === 'rgb(30, 27, 22)'
+        });
+        results.checks.push({
+          test: `[${vp.name}] Highlight "one simple system" in warm gold (#B8893A) with hand-drawn underline SVG`,
+          pass: metrics.highlightText.includes('one simple system') &&
+                metrics.highlightColor === 'rgb(184, 137, 58)' &&
+                metrics.underlineSvgExists
+        });
+
+        // Subtext
+        results.checks.push({
+          test: `[${vp.name}] Subtext font 16px, weight 400, color #5B5448 (rgb(91, 84, 72))`,
+          pass: metrics.subheadFontSize === '16px' && metrics.subheadFontWeight === '400' && metrics.subheadColor === 'rgb(91, 84, 72)'
         });
       }
+
+      // Marquee strip check
+      results.checks.push({
+        test: `[${vp.name}] Marquee strip padding 20px top/bottom (got ${metrics.marqueePaddingTop})`,
+        pass: metrics.marqueePaddingTop === '20px' && metrics.marqueePaddingBottom === '20px'
+      });
+      results.checks.push({
+        test: `[${vp.name}] Marquee strip has edge fade mask-image`,
+        pass: metrics.marqueeMask && metrics.marqueeMask !== 'none'
+      });
 
       // Take screenshot of hero
       const ssPath = path.join(screenshotDir, `hero_${vp.name}.png`);
@@ -187,15 +296,34 @@ async function runTests() {
     console.log('\n--- Testing Prefers-Reduced-Motion ---');
     await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
     const motionMetrics = await page.evaluate(() => {
+      const eyebrow = document.querySelector('.hero-eyebrow');
+      const headline = document.querySelector('.hero-headline');
+      const subhead = document.querySelector('.hero-subhead');
+      const videoWrap = document.querySelector('.hero-video-wrapper');
       const chip = document.querySelector('.chip-top-left');
-      const style = window.getComputedStyle(chip);
-      return style.animationName;
+      const marqueeTrack = document.querySelector('.marquee-track');
+
+      const isNone = (el) => {
+        const a = window.getComputedStyle(el).animationName;
+        return a === 'none' || a === '';
+      };
+
+      return {
+        eyebrowAnimNone: isNone(eyebrow),
+        headlineAnimNone: isNone(headline),
+        subheadAnimNone: isNone(subhead),
+        videoWrapAnimNone: isNone(videoWrap),
+        chipAnimNone: isNone(chip),
+        marqueeTrackAnimNone: isNone(marqueeTrack)
+      };
     });
+    console.log('Reduced motion metrics:', motionMetrics);
     results.checks.push({
-      test: 'prefers-reduced-motion disables chip animation',
-      pass: motionMetrics === 'none' || motionMetrics === ''
+      test: 'prefers-reduced-motion disables animations on hero elements & marquee',
+      pass: motionMetrics.eyebrowAnimNone && motionMetrics.headlineAnimNone &&
+            motionMetrics.subheadAnimNone && motionMetrics.videoWrapAnimNone &&
+            motionMetrics.chipAnimNone && motionMetrics.marqueeTrackAnimNone
     });
-    console.log('Reduced motion animationName:', motionMetrics);
 
   } finally {
     await browser.close();

@@ -249,10 +249,21 @@
         /* =========================================================
        PRIYULABS HERO SECTION REDESIGN (MOBILE-FIRST & DESKTOP)
        ========================================================= */
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .hero-redesign {
       background: var(--bg, #FAF6EE) !important;
       position: relative !important;
-      padding: 82px 16px 36px 16px !important;
+      padding: 92px 16px 36px 16px !important; /* 64px navbar + 28px gap */
       box-sizing: border-box !important;
       width: 100% !important;
       overflow: visible !important;
@@ -260,7 +271,7 @@
 
     @media (min-width: 769px) {
       .hero-redesign {
-        padding: 96px 24px 52px 24px !important;
+        padding: 48px 24px 52px 24px !important;
       }
     }
 
@@ -277,29 +288,87 @@
     /* Headline & Subhead */
     .hero-header {
       text-align: center !important;
-      margin-bottom: 24px !important;
+      margin-bottom: 0 !important;
       max-width: 840px !important;
       width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: 'Inter', -apple-system, sans-serif !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      color: #9A6F2B !important;
+      background: rgba(184, 137, 58, 0.12) !important;
+      padding: 6px 12px !important;
+      border-radius: 9999px !important;
+      margin: 0 auto 14px auto !important;
+      animation: heroFadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+      animation-delay: 0ms !important;
+      line-height: 1 !important;
     }
 
     .hero-headline {
       font-family: 'Fraunces', serif !important;
-      font-size: clamp(28px, 6.8vw, 48px) !important;
-      font-weight: 700 !important;
-      line-height: 1.15 !important;
+      font-size: clamp(30px, 8.6vw, 42px) !important;
+      font-weight: 600 !important;
+      line-height: 1.12 !important;
       letter-spacing: -0.02em !important;
-      color: var(--ink, #2A2419) !important;
-      margin: 0 0 12px 0 !important;
+      color: #1E1B16 !important;
+      text-align: center !important;
+      text-wrap: balance !important;
+      max-width: 14em !important;
+      margin: 0 auto 14px auto !important;
+      animation: heroFadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+      animation-delay: 80ms !important;
+    }
+
+    .headline-highlight {
+      position: relative !important;
+      display: inline-block !important;
+      color: #B8893A !important;
+      white-space: nowrap !important;
+    }
+
+    .hand-drawn-underline {
+      position: absolute !important;
+      left: 0 !important;
+      bottom: -4px !important;
+      width: 100% !important;
+      height: 8px !important;
+      pointer-events: none !important;
+      overflow: visible !important;
     }
 
     .hero-subhead {
       font-family: 'Inter', sans-serif !important;
-      font-size: clamp(14.5px, 3.4vw, 17.5px) !important;
-      line-height: 1.45 !important;
-      color: var(--ink-soft, #6E6554) !important;
-      margin: 0 auto !important;
-      max-width: 600px !important;
+      font-size: 16px !important;
+      line-height: 1.55 !important;
       font-weight: 400 !important;
+      color: #5B5448 !important;
+      text-align: center !important;
+      margin: 0 auto 32px auto !important;
+      max-width: 32ch !important;
+      animation: heroFadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+      animation-delay: 160ms !important;
+    }
+
+    @media (min-width: 769px) {
+      .hero-subhead {
+        margin: 0 auto 20px auto !important;
+      }
+      .hero-desktop-actions {
+        display: flex !important;
+        margin-top: 0 !important;
+        margin-bottom: 32px !important;
+      }
     }
 
     .hero-desktop-actions {
@@ -360,6 +429,8 @@
       max-width: 960px !important;
       margin: 0 auto !important;
       box-sizing: border-box !important;
+      animation: heroFadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+      animation-delay: 240ms !important;
     }
 
     .hero-video-card {
@@ -484,10 +555,16 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      .hero-eyebrow,
+      .hero-headline,
+      .hero-subhead,
+      .hero-video-wrapper,
       .chip-top-left,
       .chip-bottom-right,
       .status-pulse-dot {
         animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
 
@@ -581,22 +658,32 @@
 
     /* ---------- Marquee strip ---------- */
     .marquee-wrap {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--bg-alt);
-      padding: 20px 0;
-      overflow: hidden;
+      border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+      background: transparent !important;
+      padding: 20px 0 !important;
+      overflow: hidden !important;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent) !important;
+      mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent) !important;
+      position: relative !important;
+      width: 100% !important;
     }
 
     .marquee-track {
-      display: flex;
-      gap: 56px;
-      white-space: nowrap;
-      width: max-content;
-      animation: scroll-left 32s linear infinite;
-      font-family: 'Fraunces', serif;
-      font-size: 19px;
-      color: var(--ink-soft);
+      display: flex !important;
+      gap: 56px !important;
+      white-space: nowrap !important;
+      width: max-content !important;
+      animation: scroll-left 32s linear infinite !important;
+      font-family: 'Fraunces', serif !important;
+      font-size: 19px !important;
+      color: var(--ink-soft) !important;
+      will-change: transform !important;
+    }
+
+    .marquee-wrap:hover .marquee-track,
+    .marquee-wrap:active .marquee-track {
+      animation-play-state: paused !important;
     }
 
     .marquee-track span {
@@ -606,6 +693,12 @@
     .marquee-track span.hl {
       color: var(--accent);
       opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track {
+        animation: none !important;
+      }
     }
 
     @keyframes scroll-left {
@@ -1784,84 +1877,10 @@
     }
 
 
-    /* Crisp Technical Dot Grid */
-    .ambient-dot-grid {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background-image: radial-gradient(rgba(42, 36, 25, 0.12) 1.2px, transparent 1.2px);
-      background-size: 28px 28px;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Ensure sections and cards remain translucent so the movement is visible */
-    section {
-      background: transparent !important;
-    }
-
-    .hero-visual,
-    .serve-card,
-    .testi-card {
-      background: rgba(255, 255, 255, 0.65) !important;
-      backdrop-filter: blur(14px) !important;
-      -webkit-backdrop-filter: blur(14px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    }
-
-    header {
-      background: rgba(250, 246, 238, 0.72) !important;
-      backdrop-filter: blur(20px) !important;
-      -webkit-backdrop-filter: blur(20px) !important;
-    }
-
-    /* Global Fluid Live Video Background (Live Wallpaper Engine) */
+    /* Clean Cream Background (#FAF6EE) */
     body {
-      background-color: transparent !important;
-    }
-
-    .global-fluid-bg {
-      position: fixed !important;
-      inset: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      z-index: -3 !important;
-      overflow: hidden !important;
       background: #FAF6EE !important;
-      pointer-events: none !important;
-    }
-
-    .global-fluid-bg video {
-      position: absolute !important;
-      top: 50% !important;
-      left: 50% !important;
-      min-width: 106% !important;
-      min-height: 106% !important;
-      width: auto !important;
-      height: auto !important;
-      transform: translate(-50%, -50%) scale(1.04) !important;
-      object-fit: cover !important;
-      filter: blur(8px) saturate(1.05) !important;
-      -webkit-filter: blur(8px) saturate(1.05) !important;
-      opacity: 0.5 !important;
-      transition: opacity 0.35s ease-in-out !important;
-      pointer-events: none !important;
-      will-change: opacity, filter !important;
-    }
-
-    .global-fluid-bg video.is-active {
-      opacity: 0.75 !important;
-    }
-
-    .global-fluid-mask {
-      position: fixed !important;
-      inset: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      background: radial-gradient(circle at 45% 25%, rgba(250, 246, 238, 0.3) 0%, rgba(240, 245, 241, 0.52) 100%) !important;
-      z-index: -2 !important;
-      pointer-events: none !important;
+      background-color: #FAF6EE !important;
     }
 
     /* Complete Mobile Responsiveness Overrides (<= 768px) */
@@ -2134,27 +2153,28 @@
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
-        height: 60px !important;
+        height: 64px !important;
         z-index: 1000 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 0 16px !important;
+        padding: 0 20px !important;
         box-sizing: border-box !important;
-        background: transparent;
-        border-bottom: 1px solid transparent;
-        transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease,
-                    backdrop-filter 0.3s ease;
+        background: transparent !important;
+        border-bottom: 1px solid transparent !important;
+        box-shadow: none !important;
+        transition: background 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease,
+                    backdrop-filter 0.25s ease !important;
       }
 
       .m-navbar.is-scrolled {
-        background: rgba(250, 246, 238, 0.94) !important;
-        backdrop-filter: blur(14px) !important;
-        -webkit-backdrop-filter: blur(14px) !important;
-        border-bottom: 1px solid var(--line) !important;
-        box-shadow: 0 4px 20px rgba(42, 36, 25, 0.06) !important;
+        background: rgba(250, 246, 238, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+        box-shadow: none !important;
       }
 
       .m-nav-logo {
@@ -2185,29 +2205,29 @@
       }
 
       .m-nav-trial-btn {
-        height: 44px !important;
-        min-height: 44px !important;
+        height: 40px !important;
+        min-height: 40px !important;
         padding: 0 16px !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background: var(--ink) !important;
-        color: var(--bg) !important;
-        border-radius: 100px !important;
-        font-size: 13.5px !important;
+        background: #1E1B16 !important;
+        color: #FAF6EE !important;
+        border-radius: 9999px !important;
+        font-size: 14px !important;
         font-weight: 600 !important;
         text-decoration: none !important;
         border: none !important;
         touch-action: manipulation !important;
         box-sizing: border-box !important;
         white-space: nowrap !important;
-        transition: background 0.2s ease, transform 0.2s ease;
+        transition: background 0.2s ease, transform 0.2s ease !important;
       }
 
       .m-nav-trial-btn:hover,
       .m-nav-trial-btn:active {
         background: var(--accent) !important;
-        transform: translateY(-1px);
+        transform: translateY(-1px) !important;
       }
 
       .m-trial-short {
@@ -2240,13 +2260,13 @@
         background: var(--ink) !important;
         border-radius: 2px !important;
         pointer-events: none !important;
-        transition: transform 0.25s ease, opacity 0.25s ease;
+        transition: transform 0.25s ease, opacity 0.25s ease !important;
       }
 
       /* Compact mobile screens (<= 360px) */
       @media (max-width: 360px) {
         .m-navbar {
-          padding: 0 10px !important;
+          padding: 0 12px !important;
         }
         .m-nav-logo {
           font-size: 18px !important;
@@ -2260,14 +2280,16 @@
           gap: 6px !important;
         }
         .m-nav-trial-btn {
-          padding: 0 10px !important;
-          font-size: 12.5px !important;
+          height: 40px !important;
+          min-height: 40px !important;
+          padding: 0 12px !important;
+          font-size: 14px !important;
         }
         .m-trial-full {
-          display: none !important;
+          display: inline !important;
         }
         .m-trial-short {
-          display: inline !important;
+          display: none !important;
         }
       }
 
@@ -3610,24 +3632,7 @@
     })();
   </script>
 
-  <div class="global-fluid-bg">
-    <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="assets/priyulabs-background-poster.webp">
-      <source src="landingpage1video.mp4" type="video/mp4">
-      <source src="./landingpage1video.mp4" type="video/mp4">
-      <source src="/landingpage1video.mp4" type="video/mp4">
-      <source src="assets/landingpage1video.mp4" type="video/mp4">
-      <source src="priyulabs background.mp4" type="video/mp4">
-      <source src="./priyulabs background.mp4" type="video/mp4">
-      <source src="backgroundvideo1.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="global-fluid-mask"></div>
-
-
-
-
-  <!-- Crisp Technical Dot Grid -->
-  <div class="ambient-dot-grid"></div>
+  
 
   <!-- NAVBAR WITHOUT HOSPITALITY TECH -->
     <!-- ========================================================= -->
@@ -4031,8 +4036,9 @@
       
       <!-- Headline & Subhead -->
       <div class="hero-header">
+        <div class="hero-eyebrow">Built for Indian retailers</div>
         <h1 class="hero-headline">
-          Run every counter, click &amp; shelf on one simple system.
+          Run every counter, click &amp; shelf on <span class="headline-highlight">one simple system<svg class="hand-drawn-underline" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2,9 C28,2 72,3 98,8" fill="none" stroke="#B8893A" stroke-width="2.5" stroke-linecap="round"/></svg></span>.
         </h1>
         <p class="hero-subhead">
           Billing, inventory, staff and GST — brought into one dashboard your team can actually use.
@@ -4602,7 +4608,7 @@
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span
-            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.90</span></span>
+            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.91</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
@@ -5289,13 +5295,24 @@
       // 1. Scroll-driven translucent navbar
       function onScroll() {
         if (!navbar) return;
-        if (window.scrollY > 15) {
+        if (window.scrollY > 8) {
           navbar.classList.add('is-scrolled');
         } else {
           navbar.classList.remove('is-scrolled');
         }
       }
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Touch pause for marquee strip
+      const marqueeWrap = document.querySelector('.marquee-wrap');
+      if (marqueeWrap) {
+        const track = marqueeWrap.querySelector('.marquee-track');
+        if (track) {
+          marqueeWrap.addEventListener('touchstart', function() { track.style.animationPlayState = 'paused'; }, { passive: true });
+          marqueeWrap.addEventListener('touchend', function() { track.style.animationPlayState = 'running'; }, { passive: true });
+        }
+      }
+    
       onScroll();
 
       // 2. Mobile Drawer Navigation
