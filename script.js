@@ -2813,5 +2813,56 @@ safeInitSquareHoverCards();
 
 window.initSquareHoverCards = initSquareHoverCards;
 
+// Video visibility & reduced-motion observer (Phase 4)
+function initVideoVisibilityObserver() {
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let isReducedMotion = mediaQuery.matches;
+
+  const handleReducedMotionChange = (e) => {
+    isReducedMotion = e.matches;
+    document.querySelectorAll('video').forEach((v) => {
+      if (isReducedMotion && !v.paused) {
+        v.pause();
+      }
+    });
+  };
+
+  if (mediaQuery.addEventListener) {
+    mediaQuery.addEventListener('change', handleReducedMotionChange);
+  } else if (mediaQuery.addListener) {
+    mediaQuery.addListener(handleReducedMotionChange);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting && !isReducedMotion) {
+          if (video.hasAttribute('autoplay') || video.classList.contains('bg-vid') || video.dataset.autoplay === 'true') {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {});
+            }
+          }
+        } else {
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '50px 0px 50px 0px' });
+
+    document.querySelectorAll('video').forEach((video) => {
+      videoObserver.observe(video);
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initVideoVisibilityObserver);
+} else {
+  initVideoVisibilityObserver();
+}
+
 console.log('%c Priyulabs – India\u2019s Smartest AI Retail OS Loaded Successfully! \uD83C\uDDEE\uD83C\uDDF3 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');

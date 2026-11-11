@@ -1025,7 +1025,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1037,7 +1037,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1608,7 +1608,7 @@ body {
       <div style="position:relative; padding-top:56.25%; width:100%; background:#000;">
         <video id="bakeryDemoVideo" controls
           style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;"
-          poster="assets/bakery_hero.jpg">
+          poster="assets/bakery_hero.jpg" preload="metadata">
           <source src="assets/bakery-demo.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
