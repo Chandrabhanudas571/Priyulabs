@@ -2946,6 +2946,24 @@
 </style>
 <style id="pl-mobile-drawer">
 
+    /* Guard: Always completely hidden on desktop/laptop (>= 1025px) */
+    @media screen and (min-width: 1025px) {
+      .m-drawer,
+      .mobile-drawer,
+      #mobileDrawer,
+      .m-drawer-backdrop,
+      .drawer-backdrop,
+      #drawerBackdrop,
+      .hamburger,
+      #hamburger {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        opacity: 0 !important;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
     /* ========================================================
        MOBILE 3-LEVEL DRILL-DOWN DRAWER STYLES
        ======================================================== */
@@ -3219,7 +3237,7 @@
       background: #20BA5A !important;
       transform: translateY(-1px) !important;
     }
-  
+  }
 </style>
 </head>
 
@@ -4625,7 +4643,7 @@
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span
-            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.81</span></span>
+            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.83</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>

@@ -389,7 +389,8 @@ body {
   <!-- ══════════════════════════════════════════════════════════
        FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
   ══════════════════════════════════════════════════════════ -->
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="drawer-backdrop m-drawer-backdrop" id="drawerBackdrop" aria-hidden="true" onclick="closeMobileDrawer && closeMobileDrawer()"></div>
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
     <!-- Top Header Bar inside Drawer -->
     <div class="drawer-header">
       <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">

@@ -1112,8 +1112,64 @@ iframe {
   transition: all 0.3s;
 }
 
-.mobile-drawer {
+/* ─── BASE MOBILE DRAWER, OVERLAY & HAMBURGER ISOLATION ─── */
+.mobile-drawer,
+.m-drawer,
+#mobileDrawer,
+#mDrawer,
+.drawer-backdrop,
+.m-drawer-backdrop,
+#drawerBackdrop,
+.hamburger,
+#hamburger {
   display: none;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.drawer-backdrop,
+.m-drawer-backdrop,
+#drawerBackdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(42, 36, 25, 0.6) !important;
+  z-index: 999998 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s ease, visibility 0.28s !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  display: none;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .drawer-backdrop.open,
+  .drawer-backdrop.is-open,
+  .m-drawer-backdrop.open,
+  .m-drawer-backdrop.is-open {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .mobile-drawer,
+  .m-drawer,
+  #mobileDrawer,
+  #mDrawer,
+  .drawer-backdrop,
+  .m-drawer-backdrop,
+  #drawerBackdrop,
+  .hamburger,
+  #hamburger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
 }
 
 /* â”€â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */

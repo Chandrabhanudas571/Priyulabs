@@ -95,16 +95,26 @@ if (mobileDrawer) {
   }
 
   function openMobileDrawer() {
-    mobileDrawer.classList.add('open');
+    mobileDrawer.classList.add('open', 'is-open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
+    const backdrop = document.getElementById('drawerBackdrop') || document.querySelector('.drawer-backdrop, .m-drawer-backdrop');
+    if (backdrop) {
+      backdrop.classList.add('open', 'is-open');
+      backdrop.setAttribute('aria-hidden', 'false');
+    }
     document.body.style.overflow = 'hidden';
     if (drawerHamburger) drawerHamburger.classList.add('active');
     updateDrawerHeader();
   }
 
   function closeMobileDrawer() {
-    mobileDrawer.classList.remove('open');
+    mobileDrawer.classList.remove('open', 'is-open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
+    const backdrop = document.getElementById('drawerBackdrop') || document.querySelector('.drawer-backdrop, .m-drawer-backdrop');
+    if (backdrop) {
+      backdrop.classList.remove('open', 'is-open');
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
     document.body.style.overflow = '';
     if (drawerHamburger) drawerHamburger.classList.remove('active');
 
@@ -113,6 +123,12 @@ if (mobileDrawer) {
       resetDrawerToLevel1();
     }, 320);
   }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && (mobileDrawer.classList.contains('open') || mobileDrawer.classList.contains('is-open'))) {
+      closeMobileDrawer();
+    }
+  });
 
   function resetDrawerToLevel1() {
     document.querySelectorAll('.drawer-panel').forEach(p => {
