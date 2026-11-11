@@ -276,7 +276,7 @@ permalink: /complete-management-system
       }
 
       .cms-hero-video-wrap {
-        background-image: url('assets/complete-management-system-poster.jpg'), url('assets/hero_platform_showcase.jpg');
+        background-image: url('assets/card2-management-poster.jpg'), url('assets/hero_platform_showcase.jpg');
         background-size: cover;
         background-position: center;
         opacity: 0.7;
@@ -2013,7 +2013,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -2025,7 +2025,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -2050,7 +2050,7 @@ body {
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="/index.html#core-capabilities" class="logo" aria-label="Priyulabs Digital Home">
-        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+        <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" / width="32" height="32" loading="lazy" decoding="async">
         <div class="logo-text-group">
           <span class="logo-title">PRIYULABS</span>
           <span class="logo-subtitle">MANAGEMENT SYSTEM</span>
@@ -2244,7 +2244,8 @@ body {
   <!-- ══════════════════════════════════════════════════════════
        FULL-SCREEN SQUARE-STYLE MOBILE DRILLDOWN DRAWER
   ══════════════════════════════════════════════════════════ -->
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="drawer-backdrop m-drawer-backdrop" id="drawerBackdrop" aria-hidden="true" onclick="closeMobileDrawer && closeMobileDrawer()"></div>
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
     <!-- Top Header Bar inside Drawer -->
     <div class="drawer-header">
       <button type="button" class="drawer-back-btn" id="drawerBackBtn" aria-label="Go back to previous menu">
@@ -2338,7 +2339,7 @@ body {
         </div>
       </div>
 
-      <!-- ════ LEVEL 2: SOLUTIONS ════ -->
+            <!-- ════ LEVEL 2: SOLUTIONS ════ -->
       <div class="drawer-panel" id="drawerPanelSolutions" data-level="2" data-parent="drawerPanelMain"
         data-title="Solutions">
         <div class="drawer-panel-scroll">
@@ -2354,7 +2355,7 @@ body {
                 </svg></div>
               <div class="drawer-sol-info">
                 <strong>Smart POS</strong>
-                <span>Fast billing, AI voice checkout &amp; 100% offline mode</span>
+                <span>Fast billing, AI voice checkout &amp; offline mode</span>
               </div>
             </a>
             <a href="/complete-management-system" class="drawer-sol-card" onclick="closeMobileDrawer();">
@@ -2367,7 +2368,7 @@ body {
                 </svg></div>
               <div class="drawer-sol-info">
                 <strong>Complete Management System</strong>
-                <span>Inventory ERP, Staff HRMS &amp; 1-Click GST reconciliation</span>
+                <span>Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
               </div>
             </a>
             <a href="/website-builder" class="drawer-sol-card" onclick="closeMobileDrawer();">
@@ -2563,7 +2564,7 @@ body {
     <!-- Video background / Fallback container -->
     <div class="cms-hero-video-wrap">
       <video class="cms-hero-video" autoplay muted loop playsinline
-        poster="assets/complete-management-system-poster.jpg">
+        poster="assets/card2-management-poster.jpg" preload="metadata">
         <source src="assets/complete-management-system-bg.mp4" type="video/mp4" />
       </video>
       <div class="cms-hero-video-overlay"></div>
@@ -4078,7 +4079,7 @@ body {
       <div class="footer-top">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" />
+            <img src="assets/logo.svg" alt="Priyulabs Logo" class="brand-logo-img" / width="32" height="32" loading="lazy" decoding="async">
             <div class="logo-text-group">
               <span class="logo-title">PRIYULABS</span>
               <span class="logo-subtitle" style="color: var(--primary);">DIGITAL PLATFORM</span>
@@ -4123,7 +4124,7 @@ body {
     <div class="modal-card modal-hub-wide">
       <div class="modal-header">
         <div class="modal-title-wrap">
-          <img src="assets/logo.svg" alt="Priyulabs" class="modal-brand-logo" />
+          <img src="assets/logo.svg" alt="Priyulabs" class="modal-brand-logo" / width="32" height="32" loading="lazy" decoding="async">
           <div>
             <h3>Priyulabs Interactive Product Suite</h3>
             <p>Live hands-on playground — test and experience all Priyulabs services directly in your browser</p>
@@ -4372,14 +4373,14 @@ body {
     class="cms-whatsapp-fab" id="cmsWhatsappFab" target="_blank" rel="noopener noreferrer"
     aria-label="Chat with PriyuLabs on WhatsApp">
     <img src="assets/images/priyulabs-whatsapp.png" alt="WhatsApp" class="cms-whatsapp-img"
-      onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/images/priyulabs-whatsapp.png';}" />
+      onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='../assets/images/priyulabs-whatsapp.png';}" / width="48" height="48" loading="lazy" decoding="async">
   </a>
 
   <!-- Notification Toast -->
   <div class="toast" id="mainToast"></div>
 
   <!-- Shared Scripts -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
   <!-- Page-specific Scoped Scripts -->
   <script>
@@ -4737,7 +4738,7 @@ body {
     }
   </script>
 
-  <script src="version.js"></script>
+  <script src="version.js" defer></script>
 </body>
 
 </html>

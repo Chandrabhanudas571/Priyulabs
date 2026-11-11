@@ -1190,7 +1190,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1202,7 +1202,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1229,7 +1229,7 @@ body {
       <a href="/" class="subnav-left" aria-label="Priyulabs Home">
         <!-- Squircle Logo Container -->
         <div class="subnav-logo-box">
-          <img src="assets/logo.svg" alt="Priyulabs" />
+          <img src="assets/logo.svg" alt="Priyulabs" / width="32" height="32" loading="lazy" decoding="async">
         </div>
         
         <!-- 2-Line Text Stack -->
@@ -1326,31 +1326,28 @@ body {
     <div class="hero-triptych-frame">
       <!-- Panel 1: The Product -->
       <div class="triptych-panel" onclick="openDemoModal()">
-        <img
-          src="assets/watch_showroom_display.jpg"
+        <img src="assets/watch_showroom_display.jpg"
           alt="Luxury Swiss automatic chronographs and timepieces displayed on green leather and brass stands inside an illuminated watch showcase"
           style="object-position: 50% 50%;"
-        />
+        / width="600" height="380" loading="lazy" decoding="async">
       </div>
 
       <!-- Panel 2: The Customer Experience -->
       <div class="triptych-panel" onclick="openDemoModal()">
-        <img
-          src="assets/watch_customer_experience.jpg"
+        <img src="assets/watch_customer_experience.jpg"
           alt="Customer trying on luxury stainless steel chronograph on leather watch presentation tray with boutique horology specialist wearing white gloves"
           style="object-position: 50% 30%;"
-        />
+        / width="600" height="380" loading="lazy" decoding="async">
       </div>
 
       <!-- Panel 3: The Billing Counter & Payment -->
       <div class="triptych-panel" onclick="openDemoModal()">
-        <img
-          src="assets/watch_checkout_counter.jpg"
+        <img src="assets/watch_checkout_counter.jpg"
           alt="Watch boutique cashier scanning box barcode with laser scanner at checkout counter with serialized POS monitor and leather watch box"
           style="object-position: 50% 50%;"
-        />
+        / width="600" height="380" loading="lazy" decoding="async">
         <div class="triptych-brand-mark" title="Priyulabs Retail OS">
-          <img src="assets/logo.svg" alt="Priyulabs" />
+          <img src="assets/logo.svg" alt="Priyulabs" / width="32" height="32" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1374,7 +1371,7 @@ body {
         <div class="sticky-col-left">
           <!-- Slide 0: Smart POS -->
           <div class="sticky-img-slide active" id="slide-0">
-            <img src="assets/watch_pos_scan.jpg" alt="Cashier using 2D barcode scanner to scan serialized watch caseback and warranty card" />
+            <img src="assets/watch_pos_scan.jpg" alt="Cashier using 2D barcode scanner to scan serialized watch caseback and warranty card" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 01 • SMART WATCH POS</div>
             <div class="slide-bottom-metric">
@@ -1384,7 +1381,7 @@ body {
 
           <!-- Slide 1: Serial & Stock -->
           <div class="sticky-img-slide" id="slide-1">
-            <img src="assets/watchmaker_movement.jpg" alt="Master watchmaker inspecting automatic movement with loupe at horology workbench" />
+            <img src="assets/watchmaker_movement.jpg" alt="Master watchmaker inspecting automatic movement with loupe at horology workbench" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 02 • SERIAL &amp; STOCK</div>
             <div class="slide-bottom-metric">
@@ -1394,7 +1391,7 @@ body {
 
           <!-- Slide 2: Digital Salon -->
           <div class="sticky-img-slide" id="slide-2">
-            <img src="assets/watch_digital_salon.jpg" alt="Customer using interactive digital watch catalog tablet in private horology viewing salon" />
+            <img src="assets/watch_digital_salon.jpg" alt="Customer using interactive digital watch catalog tablet in private horology viewing salon" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 03 • DIGITAL SALON</div>
             <div class="slide-bottom-metric">
@@ -1404,7 +1401,7 @@ body {
 
           <!-- Slide 3: Service & CRM -->
           <div class="sticky-img-slide" id="slide-3">
-            <img src="assets/watch_service_crm.jpg" alt="Watch service desk with pressure testing chamber, replacement straps, and WhatsApp completion alert" />
+            <img src="assets/watch_service_crm.jpg" alt="Watch service desk with pressure testing chamber, replacement straps, and WhatsApp completion alert" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 04 • SERVICE &amp; CRM</div>
             <div class="slide-bottom-metric">
@@ -2063,6 +2060,6 @@ body {
     }
   </script>
 
-  <script src="../version.js"></script>
+  <script src="../version.js" defer></script>
 </body>
 </html>

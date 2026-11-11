@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="manifest" href="site.webmanifest" />
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>All Business Types – Priyulabs Retail OS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -560,7 +560,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay loop muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay loop muted playsinline preload="metadata" poster="assets/priyulabs-background-poster.webp">
     <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -571,7 +571,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" loop muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" loop muted playsinline preload="none" poster="assets/priyulabs-background-poster.webp">
     <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -593,7 +593,7 @@ body {
     <div class="nav">
       <a href="index.html" class="brand-logo-wrap">
         <img src="assets/logo.svg" alt="Priyulabs" class="brand-logo-img"
-          onerror="this.src='/assets/logo.svg'; this.onerror=null;">
+          onerror="this.src='/assets/logo.svg'; this.onerror=null;" width="32" height="32" loading="lazy" decoding="async">
         <div class="logo-text-group" style="display:flex; flex-direction:column; text-align:left; line-height:1.1;"><span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:var(--ink, #0f172a);">PRIYULABS</span><span style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:var(--gold, #B8863B); text-transform:uppercase; margin-top:2px;">ALL BUSINESS TYPES</span></div>
       </a>
       <a href="index.html" class="nav-back-link">&larr; Back to Home</a>
@@ -633,8 +633,8 @@ body {
         <a href="restaurants-fine-dining.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop"
-          alt="Restaurants & Fine Dining">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Restaurants & Fine Dining" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 2: QSR, Fast Food & Takeaway -->
@@ -655,8 +655,8 @@ body {
         <a href="qsr-fast-food.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=900&auto=format&fit=crop"
-          alt="QSR, Fast Food & Takeaway">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="QSR, Fast Food & Takeaway" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 3: Cafes & Chai Bars -->
@@ -677,8 +677,8 @@ body {
         <a href="cafes-chai-bars.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=900&auto=format&fit=crop"
-          alt="Cafes & Chai Bars">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Cafes & Chai Bars" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 4: Cloud Kitchens & Catering -->
@@ -699,8 +699,8 @@ body {
         <a href="cloud-kitchens-catering.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=900&auto=format&fit=crop"
-          alt="Cloud Kitchens & Catering">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Cloud Kitchens & Catering" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 5: Bakeries & Patisseries -->
@@ -721,8 +721,8 @@ body {
         <a href="bakeries-shops.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=900&auto=format&fit=crop"
-          alt="Bakeries & Patisseries">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Bakeries & Patisseries" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 6: Bars, Pubs & Breweries -->
@@ -743,8 +743,8 @@ body {
         <a href="bars-pubs-breweries.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=900&auto=format&fit=crop"
-          alt="Bars, Pubs & Breweries">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Bars, Pubs & Breweries" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 7: Grocery, Supermarkets & Kirana -->
@@ -765,8 +765,8 @@ body {
         <a href="grocery-supermarkets-kirana.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=900&auto=format&fit=crop"
-          alt="Grocery, Supermarkets & Kirana">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Grocery, Supermarkets & Kirana" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 8: Electronics & Mobile Shops -->
@@ -787,8 +787,8 @@ body {
         <a href="electronics-mobile-shops.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=900&auto=format&fit=crop"
-          alt="Electronics & Mobile Shops">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Electronics & Mobile Shops" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 9: Footwear & Leather Stores -->
@@ -809,8 +809,8 @@ body {
         <a href="footwear-leather-stores.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop"
-          alt="Footwear & Leather Stores">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Footwear & Leather Stores" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 10: Jewellery Showrooms & Bullion -->
@@ -831,8 +831,8 @@ body {
         <a href="jewellery-shops.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=900&auto=format&fit=crop"
-          alt="Jewellery Showrooms & Bullion">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Jewellery Showrooms & Bullion" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 11: Watch Stores & Horology Boutiques -->
@@ -853,8 +853,8 @@ body {
         <a href="watch-stores.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=900&auto=format&fit=crop"
-          alt="Watch Stores & Horology Boutiques">
+        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Watch Stores & Horology Boutiques" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 12: Bookstores & Stationery -->
@@ -875,8 +875,8 @@ body {
         <a href="bookstores-stationery.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=900&auto=format&fit=crop"
-          alt="Bookstores & Stationery">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Bookstores & Stationery" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 13: Clothing Brands & Apparel Boutiques -->
@@ -897,8 +897,8 @@ body {
         <a href="apparel-boutiques.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=900&auto=format&fit=crop"
-          alt="Clothing Brands & Apparel Boutiques">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Clothing Brands & Apparel Boutiques" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 14: Salons, Spas & Beauty Parlors -->
@@ -919,8 +919,8 @@ body {
         <a href="salons-spas.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=900&auto=format&fit=crop"
-          alt="Salons, Spas & Beauty Parlors">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Salons, Spas & Beauty Parlors" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 15: Cosmetics & Skincare Stores -->
@@ -941,8 +941,8 @@ body {
         <a href="cosmetics-skincare.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=900&auto=format&fit=crop"
-          alt="Cosmetics & Skincare Stores">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Cosmetics & Skincare Stores" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 16: Gyms, Fitness Studios & Yoga -->
@@ -963,8 +963,8 @@ body {
         <a href="gyms.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop"
-          alt="Gyms, Fitness Studios & Yoga">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Gyms, Fitness Studios & Yoga" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 17: Dry Cleaners & Laundry Shops -->
@@ -985,8 +985,8 @@ body {
         <a href="dry-cleaners.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=900&auto=format&fit=crop"
-          alt="Dry Cleaners & Laundry Shops">
+        <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Dry Cleaners & Laundry Shops" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Sector 18: Hospitality, Boutique Hotels & Resorts -->
@@ -1003,8 +1003,8 @@ body {
         <a href="hospitality.html" class="sector-more-btn">More Details &rarr;</a>
       </div>
       <div class="sector-img-col">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=900&auto=format&fit=crop"
-          alt="Hospitality, Boutique Hotels & Resorts">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=75&w=800&auto=format&fit=crop&fm=webp"
+          alt="Hospitality, Boutique Hotels & Resorts" width="600" height="380" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
@@ -1195,8 +1195,8 @@ body {
     }
   </script>
 
-  <script src="script.js"></script>
-  <script src="version.js"></script>
+  <script src="script.js" defer></script>
+  <script src="version.js" defer></script>
 </body>
 
 </html>

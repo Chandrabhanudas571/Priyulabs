@@ -95,16 +95,26 @@ if (mobileDrawer) {
   }
 
   function openMobileDrawer() {
-    mobileDrawer.classList.add('open');
+    mobileDrawer.classList.add('open', 'is-open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
+    const backdrop = document.getElementById('drawerBackdrop') || document.querySelector('.drawer-backdrop, .m-drawer-backdrop');
+    if (backdrop) {
+      backdrop.classList.add('open', 'is-open');
+      backdrop.setAttribute('aria-hidden', 'false');
+    }
     document.body.style.overflow = 'hidden';
     if (drawerHamburger) drawerHamburger.classList.add('active');
     updateDrawerHeader();
   }
 
   function closeMobileDrawer() {
-    mobileDrawer.classList.remove('open');
+    mobileDrawer.classList.remove('open', 'is-open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
+    const backdrop = document.getElementById('drawerBackdrop') || document.querySelector('.drawer-backdrop, .m-drawer-backdrop');
+    if (backdrop) {
+      backdrop.classList.remove('open', 'is-open');
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
     document.body.style.overflow = '';
     if (drawerHamburger) drawerHamburger.classList.remove('active');
 
@@ -113,6 +123,12 @@ if (mobileDrawer) {
       resetDrawerToLevel1();
     }, 320);
   }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && (mobileDrawer.classList.contains('open') || mobileDrawer.classList.contains('is-open'))) {
+      closeMobileDrawer();
+    }
+  });
 
   function resetDrawerToLevel1() {
     document.querySelectorAll('.drawer-panel').forEach(p => {
@@ -2796,6 +2812,57 @@ function initSquareHoverCards() {
 safeInitSquareHoverCards();
 
 window.initSquareHoverCards = initSquareHoverCards;
+
+// Video visibility & reduced-motion observer (Phase 4)
+function initVideoVisibilityObserver() {
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let isReducedMotion = mediaQuery.matches;
+
+  const handleReducedMotionChange = (e) => {
+    isReducedMotion = e.matches;
+    document.querySelectorAll('video').forEach((v) => {
+      if (isReducedMotion && !v.paused) {
+        v.pause();
+      }
+    });
+  };
+
+  if (mediaQuery.addEventListener) {
+    mediaQuery.addEventListener('change', handleReducedMotionChange);
+  } else if (mediaQuery.addListener) {
+    mediaQuery.addListener(handleReducedMotionChange);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting && !isReducedMotion) {
+          if (video.hasAttribute('autoplay') || video.classList.contains('bg-vid') || video.dataset.autoplay === 'true') {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {});
+            }
+          }
+        } else {
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '50px 0px 50px 0px' });
+
+    document.querySelectorAll('video').forEach((video) => {
+      videoObserver.observe(video);
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initVideoVisibilityObserver);
+} else {
+  initVideoVisibilityObserver();
+}
 
 console.log('%c Priyulabs – India\u2019s Smartest AI Retail OS Loaded Successfully! \uD83C\uDDEE\uD83C\uDDF3 ',
   'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 14px; padding: 8px 16px; border-radius: 8px; font-weight: bold;');

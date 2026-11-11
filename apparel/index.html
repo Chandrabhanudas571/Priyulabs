@@ -966,7 +966,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -978,7 +978,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1004,7 +1004,7 @@ body {
     <div class="clean-subnav-inner">
       <a href="/" class="clean-brand" aria-label="Priyulabs Home">
         <div style="background: transparent; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" onerror="this.src='/assets/logo.svg'" />
+          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" onerror="this.src='/assets/logo.svg'" / width="32" height="32" loading="lazy" decoding="async">
         </div>
         <div style="display:flex; flex-direction:column; text-align:left;">
           <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
@@ -1096,7 +1096,7 @@ body {
       <!-- Panel 1 -->
       <div class="triptych-card" onclick="openPhotoLightbox('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80', 'Luxury Boutique Store Layout', 'Showroom Floor', 'Multi-rack variant organization and premium visual merchandising.')">
         <div class="triptych-img-wrap">
-          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80" alt="Luxury boutique store interior with organized apparel racks" onerror="this.src='/assets/sector_fashion.jpg'" />
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=75&fm=webp" alt="Luxury boutique store interior with organized apparel racks" onerror="this.src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=75&fm=webp"" / width="600" height="380" loading="lazy" decoding="async">
           <div class="triptych-overlay"></div>
           <div class="triptych-badge">Showroom Floor</div>
           <div class="triptych-zoom-hint">🔍 View Photo</div>
@@ -1114,7 +1114,7 @@ body {
       <!-- Panel 2 -->
       <div class="triptych-card" onclick="openPhotoLightbox('assets/sector_fashion.jpg', 'Boutique Smart POS Counter', '1.8s Matrix Checkout', 'Touchscreen size-color grid with integrated EDC card machine.')">
         <div class="triptych-img-wrap">
-          <img src="assets/sector_fashion.jpg" alt="Modern boutique checkout counter with touch POS screen and card terminal" onerror="this.src='/assets/sector_fashion.jpg'" />
+          <img src="assets/sector_fashion.jpg" alt="Modern boutique checkout counter with touch POS screen and card terminal" onerror="this.src='/assets/sector_fashion.jpg'" / width="600" height="380" loading="lazy" decoding="async">
           <div class="triptych-overlay"></div>
           <div class="triptych-badge" style="background:#db2777;">1.8s Matrix Checkout</div>
           <div class="triptych-zoom-hint">🔍 View Photo</div>
@@ -1132,7 +1132,7 @@ body {
       <!-- Panel 3 -->
       <div class="triptych-card" onclick="openPhotoLightbox('https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=1200&q=80', 'Digital Alteration Workspace', 'In-House Tailor Desk', 'Track tailor assignments, measurements and automated customer SMS.')">
         <div class="triptych-img-wrap">
-          <img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=1200&q=80" alt="In-house tailoring workspace with fabrics and measuring tape" onerror="this.src='/assets/sector_fashion.jpg'" />
+          <img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=800&q=75&fm=webp" alt="In-house tailoring workspace with fabrics and measuring tape" onerror="this.src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=800&q=75&fm=webp"" / width="600" height="380" loading="lazy" decoding="async">
           <div class="triptych-overlay"></div>
           <div class="triptych-badge">In-House Desk</div>
           <div class="triptych-zoom-hint">🔍 View Photo</div>
@@ -1643,6 +1643,6 @@ body {
     })();
   </script>
 
-  <script src="../version.js"></script>
+  <script src="../version.js" defer></script>
 </body>
 </html>

@@ -36,6 +36,13 @@ const server = http.createServer((req, res) => {
 
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     serveFile(filePath, res);
+    return;
+  }
+
+  // Clean URL fallback: try filePath + '.html'
+  if (fs.existsSync(filePath + '.html') && fs.statSync(filePath + '.html').isFile()) {
+    serveFile(filePath + '.html', res);
+    return;
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found');

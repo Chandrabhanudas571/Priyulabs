@@ -6,5 +6,7 @@ video-work/
 scratch/
 artifacts/
 *.patch
+backup-images/
+backup-media/
 scripts/*.png
 

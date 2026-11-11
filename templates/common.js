@@ -6,7 +6,7 @@
 const menuData = require('../data/menuData.js');
 
 function renderDrawerHtml() {
-  const { businessTypes, solutions } = menuData;
+  const { businessTypes } = menuData;
 
   // Level 2 Category Lists
   let btypesCatHtml = businessTypes.map(cat => `
@@ -16,11 +16,38 @@ function renderDrawerHtml() {
     </button>
   `).join('');
 
-  let solCatHtml = solutions.map(cat => `
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', '${cat.categorySlug}', '${escapeHtml(cat.categoryTitle)}')">
-      <span>${escapeHtml(cat.categoryTitle)}</span>
+  // 4 Core Solutions matching desktop dropdown
+  const solutionsList = [
+    {
+      title: 'Smart POS',
+      desc: 'Fast billing, AI voice checkout & offline mode',
+      url: '/pos'
+    },
+    {
+      title: 'Complete Management System',
+      desc: 'Inventory ERP, Staff HRMS & 1-Click GST sync',
+      url: '/complete-management-system'
+    },
+    {
+      title: 'Custom Website Building',
+      desc: 'E-Commerce stores, web apps & 5-day delivery',
+      url: '/website-builder'
+    },
+    {
+      title: 'Digital Marketing & Ads',
+      desc: 'Meta Ads, Google Local SEO & WhatsApp Commerce',
+      url: '/digital-marketing'
+    }
+  ];
+
+  let solCatHtml = solutionsList.map(sol => `
+    <a href="${sol.url}" class="m-drawer-link m-drawer-card-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <div class="m-drawer-card-content">
+        <strong class="m-drawer-card-title">${escapeHtml(sol.title)}</strong>
+        <span class="m-drawer-card-desc">${escapeHtml(sol.desc)}</span>
+      </div>
       <span class="m-drawer-arrow">&rarr;</span>
-    </button>
+    </a>
   `).join('');
 
   // Level 3 Sector Lists (Pre-rendered as real <a> tags for SEO crawling)
@@ -36,21 +63,6 @@ function renderDrawerHtml() {
 
     level3GroupsHtml += `
       <div class="m-drill-group" id="mDrillGroup-business-types-${cat.categorySlug}" style="display: none;">
-        ${itemsHtml}
-      </div>
-    `;
-  });
-
-  solutions.forEach(cat => {
-    const itemsHtml = cat.items.map(sol => `
-      <a href="/solutions/${cat.categorySlug}/${sol.slug}" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>${escapeHtml(sol.title)}</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    `).join('');
-
-    level3GroupsHtml += `
-      <div class="m-drill-group" id="mDrillGroup-solutions-${cat.categorySlug}" style="display: none;">
         ${itemsHtml}
       </div>
     `;
@@ -360,6 +372,42 @@ function renderDrawerCss() {
       border-color: var(--accent, #3F5D42) !important;
       transform: translateX(2px) !important;
       box-shadow: 0 4px 12px rgba(63, 93, 66, 0.1) !important;
+    }
+
+    .m-drawer-card-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 14px 18px !important;
+      min-height: 66px !important;
+      gap: 12px !important;
+      text-decoration: none !important;
+    }
+    .m-drawer-card-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      text-align: left !important;
+    }
+    .m-drawer-card-title {
+      font-size: 15.5px !important;
+      font-weight: 700 !important;
+      color: var(--ink, #2A2419) !important;
+      line-height: 1.3 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      white-space: normal !important;
+    }
+    .m-drawer-card-desc {
+      font-size: 13px !important;
+      font-weight: 400 !important;
+      color: var(--ink-soft, #6E6554) !important;
+      line-height: 1.35 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      white-space: normal !important;
     }
 
     .m-drawer-arrow {

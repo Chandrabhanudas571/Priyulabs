@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- Universal PriyuLabs Favicon Suite -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -198,7 +199,7 @@ body {
 <body style="font-family: sans-serif; text-align: center; padding: 50px;">
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -210,7 +211,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -385,6 +386,6 @@ body {
     })();
   </script>
 
-  <script src="../../version.js"></script>
+  <script src="../../version.js" defer></script>
 </body>
 </html>

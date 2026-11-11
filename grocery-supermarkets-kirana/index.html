@@ -1310,7 +1310,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1322,7 +1322,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1348,7 +1348,7 @@ body {
     <div class="clean-subnav-inner">
       <a href="/" class="clean-brand" aria-label="Priyulabs Home">
         <div style="background: transparent; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" />
+          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" / width="32" height="32" loading="lazy" decoding="async">
         </div>
         <div style="display:flex; flex-direction:column; text-align:left;">
           <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
@@ -1442,13 +1442,12 @@ body {
 
         <!-- Hero Showcase: High-Throughput Retail POS Dashboard -->
     <div class="retail-pos-mockup">
-      <img
-        src="grocerry bussiness type front image.png"
+      <img src="assets/grocery_business_type_front.png"
         alt="PriyuLabs Grocery &amp; Supermarkets Retail Engine Counter POS"
         style="width: 100%; height: auto; display: block; object-fit: contain;"
-        onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='/grocerry bussiness type front image.png';}else if(this.dataset.retry==='1'){this.dataset.retry='2';this.src='assets/grocerry bussiness type front image.png';}"
+        onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='/assets/grocery_business_type_front.png';}else if(this.dataset.retry==='1'){this.dataset.retry='2';this.src='assets/assets/grocery_business_type_front.png';}"
         loading="eager"
-      />
+      / width="1200" height="574" decoding="async">
     </div>
   </section>
 
@@ -1471,7 +1470,7 @@ body {
           <div class="sticky-media-card">
             <!-- Slide 0: Smart POS -->
             <div class="sticky-slide active" data-pillar-slide="0">
-              <img src="assets/grocery_weighing_scale.jpg" alt="Certified electronic weighing scale integrated with supermarket POS for loose dal and grains" />
+              <img src="assets/grocery_weighing_scale.jpg" alt="Certified electronic weighing scale integrated with supermarket POS for loose dal and grains" / width="600" height="380" loading="lazy" decoding="async">
               <div class="sticky-slide-overlay"></div>
               <div class="sticky-slide-top-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/></svg>
@@ -1486,7 +1485,7 @@ body {
 
             <!-- Slide 1: Stock Management -->
             <div class="sticky-slide" data-pillar-slide="1">
-              <img src="assets/grocery_aisle_inventory.jpg" alt="Supermarket FMCG grocery aisle inventory stock audit" />
+              <img src="assets/grocery_aisle_inventory.jpg" alt="Supermarket FMCG grocery aisle inventory stock audit" / width="600" height="380" loading="lazy" decoding="async">
               <div class="sticky-slide-overlay"></div>
               <div class="sticky-slide-top-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
@@ -1501,7 +1500,7 @@ body {
 
             <!-- Slide 2: Digital Storefront -->
             <div class="sticky-slide" data-pillar-slide="2">
-              <img src="assets/grocery_quick_delivery.jpg" alt="Local supermarket quick commerce delivery packing" />
+              <img src="assets/grocery_quick_delivery.jpg" alt="Local supermarket quick commerce delivery packing" / width="600" height="380" loading="lazy" decoding="async">
               <div class="sticky-slide-overlay"></div>
               <div class="sticky-slide-top-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -1516,7 +1515,7 @@ body {
 
             <!-- Slide 3: Khata & Loyalty -->
             <div class="sticky-slide" data-pillar-slide="3">
-              <img src="assets/grocery_upi_checkout.jpg" alt="Customer scanning UPI QR code at supermarket checkout" />
+              <img src="assets/grocery_upi_checkout.jpg" alt="Customer scanning UPI QR code at supermarket checkout" / width="600" height="380" loading="lazy" decoding="async">
               <div class="sticky-slide-overlay"></div>
               <div class="sticky-slide-top-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -2014,7 +2013,7 @@ body {
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <script>
     // Sticky Scroll Image Animation
     function switchPillarSlide(index) {
@@ -2300,7 +2299,7 @@ body {
     }
   </script>
 
-  <script src="version.js"></script>
+  <script src="version.js" defer></script>
 </body>
 
 </html>

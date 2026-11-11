@@ -1112,8 +1112,64 @@ iframe {
   transition: all 0.3s;
 }
 
-.mobile-drawer {
+/* ─── BASE MOBILE DRAWER, OVERLAY & HAMBURGER ISOLATION ─── */
+.mobile-drawer,
+.m-drawer,
+#mobileDrawer,
+#mDrawer,
+.drawer-backdrop,
+.m-drawer-backdrop,
+#drawerBackdrop,
+.hamburger,
+#hamburger {
   display: none;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.drawer-backdrop,
+.m-drawer-backdrop,
+#drawerBackdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(42, 36, 25, 0.6) !important;
+  z-index: 999998 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s ease, visibility 0.28s !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  display: none;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .drawer-backdrop.open,
+  .drawer-backdrop.is-open,
+  .m-drawer-backdrop.open,
+  .m-drawer-backdrop.is-open {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .mobile-drawer,
+  .m-drawer,
+  #mobileDrawer,
+  #mDrawer,
+  .drawer-backdrop,
+  .m-drawer-backdrop,
+  #drawerBackdrop,
+  .hamburger,
+  #hamburger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
 }
 
 /* â”€â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -6587,10 +6643,19 @@ screen and (max-width: 992px) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   .reveal-item {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .liquid-orb, .floating-orb, .glow-orb, .orb, .pulse-dot, .pulse-ring, .ticker-track, .marquee, .marquee-content {
+    animation: none !important;
   }
 }
 
@@ -7474,6 +7539,42 @@ textarea,
 
   [data-theme="dark"] .drawer-sol-info span {
     color: #94a3b8;
+  }
+
+  .m-drawer-card-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 14px 18px !important;
+    min-height: 66px !important;
+    gap: 12px !important;
+    text-decoration: none !important;
+  }
+  .m-drawer-card-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    text-align: left !important;
+  }
+  .m-drawer-card-title {
+    font-size: 15.5px !important;
+    font-weight: 700 !important;
+    color: var(--ink, #2A2419) !important;
+    line-height: 1.3 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+  .m-drawer-card-desc {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: var(--ink-soft, #6E6554) !important;
+    line-height: 1.35 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
   }
 
   /* Hero Mobile Layout */
@@ -9410,5 +9511,170 @@ footer.footer-universal {
   display: inline-block;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
+
+/* ==========================================================================
+   PHASE 2: RESPONSIVE LAYOUT & ACCESSIBILITY ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Safe Area Insets for Mobile Notches & Modern Devices */
+header, #navbar, .navbar, .nav {
+  padding-top: max(12px, env(safe-area-inset-top, 12px));
+  padding-left: max(16px, env(safe-area-inset-left, 16px));
+  padding-right: max(16px, env(safe-area-inset-right, 16px));
+}
+
+footer, .footer {
+  padding-bottom: max(24px, env(safe-area-inset-bottom, 24px));
+  padding-left: max(16px, env(safe-area-inset-left, 16px));
+  padding-right: max(16px, env(safe-area-inset-right, 16px));
+}
+
+.cms-whatsapp-fab, .whatsapp-fab {
+  bottom: max(20px, env(safe-area-inset-bottom, 20px)) !important;
+  right: max(20px, env(safe-area-inset-right, 20px)) !important;
+}
+
+/* 2. 100dvh with 100vh fallback for full-height sections & fixed overlays */
+.hero-full,
+.m-hero,
+.mobile-drawer,
+.m-drawer,
+#priyulabsIntroPreloader,
+#priyulabs-preloader {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* 3. Accessible Tap Targets (>= 44px) & iOS Input Auto-Zoom Prevention */
+input,
+select,
+textarea {
+  font-size: 16px !important; /* Prevents iOS Safari 100% zoom jump on focus */
+}
+
+button,
+a.btn,
+.btn-primary,
+.btn-secondary,
+.btn-nav,
+.drawer-link,
+.drawer-nav-item,
+.hamburger,
+.drawer-back-btn,
+.drawer-close-btn {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* 4. Fluid Typography & Prevent Text Overflow */
+body, h1, h2, h3, h4, h5, h6, p, span, a, li {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* 5. Mega Menu Containment (Never overflow on 768px-960px screens) */
+.mega-dropdown,
+.types-menu-dropdown,
+.square-dropdown,
+.megamenu-content {
+  max-width: calc(100vw - 32px) !important;
+  box-sizing: border-box !important;
+}
+
+/* 6. Responsive Grid Collapses & 320px Viewport Support */
+@media screen and (max-width: 1024px) {
+  .grid-4, .serve-grid, .attr-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid-4, .grid-3, .grid-2, .serve-grid, .attr-grid, .test-grid, .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .wrap, .container, .nav {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .stat-card, .serve-card, .ticker-wrap, .feature-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .modal-dialog, .free-trial-modal, .form-container {
+    width: 100% !important;
+    padding: 16px 12px !important;
+  }
+}
+
+/* ==========================================================================
+   PHASE 3: IMAGES - ZERO CROPPING, ZERO DISTORTION, CRISP RENDERING
+   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 1. Screenshots, Dashboards, POS screens, Mockups, Posters, Logos, Certificates & Text-bearing visuals */
+.hero-showcase-img,
+.pos-screen-img,
+.mockup-img,
+.ui-preview-img,
+.cert-badge,
+.foot-make-in-india-logo,
+.foot-msme-emblem,
+.foot-secure-ssl-emblem,
+.brand-logo-img,
+.logo img,
+img[src*="logo"],
+img[src*="preview"],
+img[src*="billing"],
+img[src*="dashboard"],
+img[src*="screen"],
+img[src*="poster"],
+img[src*="front"],
+img[src*="ssl"],
+img[src*="india"],
+img[src*="msme"] {
+  object-fit: contain !important;
+}
+
+/* 2. People & shop photos in cards (Centered at 30% so faces/subjects are never cut) */
+.serve-card img,
+.serve-mini-img,
+.sector-card img,
+.sq-photo-card img,
+.sq-card-img,
+.attr-mini-img {
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  transition: transform 0.3s ease;
+}
+
+/* 3. Testimonial avatars (Face-centered circle) */
+.test-avatar,
+.avatar img,
+img[src*="avatar"],
+img[src*="review"],
+img[src*="w=200"] {
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  flex-shrink: 0 !important;
+}
+
+/* 4. WhatsApp Floating Action Button */
+.cms-whatsapp-fab img,
+.whatsapp-fab img,
+.cms-whatsapp-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+
 
 

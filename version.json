@@ -1,12 +1,12 @@
 {
-  "version": "2.4.81",
+  "version": "2.4.95",
   "major": 2,
   "minor": 4,
-  "patch": 81,
-  "commit": "67e5837",
-  "commitCount": 81,
+  "patch": 95,
+  "commit": "e0a3582",
+  "commitCount": 95,
   "releaseName": "Bharat Retail Intelligence",
-  "updatedAt": "2026-11-06T15:59:38.140Z",
-  "releaseDate": "2026-11-06",
+  "updatedAt": "2026-11-11T17:34:22.417Z",
+  "releaseDate": "2026-11-11",
   "channel": "production"
 }

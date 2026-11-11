@@ -1290,7 +1290,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1302,7 +1302,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1329,7 +1329,7 @@ body {
       <a href="/" class="subnav-left" aria-label="Priyulabs Home">
         <!-- Squircle Logo Container -->
         <div class="subnav-logo-box">
-          <img src="assets/logo.svg" alt="Priyulabs" />
+          <img src="assets/logo.svg" alt="Priyulabs" / width="32" height="32" loading="lazy" decoding="async">
         </div>
         
         <!-- 2-Line Text Stack -->
@@ -1415,12 +1415,11 @@ body {
     <div class="hero-triptych-frame">
       <!-- Panel 1: The Product -->
       <div class="triptych-panel" onclick="openPhotoLightbox('assets/bookstore_showroom_display.jpg', 'Organized Genre Shelves & Curated Book Displays', 'AISLE & SHELF MASTER')" title="Click to enlarge photo">
-        <img
-          src="assets/bookstore_showroom_display.jpg"
+        <img src="assets/bookstore_showroom_display.jpg"
           alt="Modern bookstore interior with organized wooden bookshelves packed with books and bestsellers"
           style="object-position: 50% 50%;"
           onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/assets/bookstore_showroom_display.jpg';}"
-        />
+        / width="600" height="380" loading="lazy" decoding="async">
         <div class="triptych-zoom-hint" title="Click to view full photo">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
         </div>
@@ -1428,12 +1427,11 @@ body {
 
       <!-- Panel 2: The Customer Experience -->
       <div class="triptych-panel" onclick="openPhotoLightbox('assets/bookstore_customer_experience.jpg', 'Students & Parents Browsing Academic Syllabus Kits', 'CAMPUS EXPERIENCE')" title="Click to enlarge photo">
-        <img
-          src="assets/bookstore_customer_experience.jpg"
+        <img src="assets/bookstore_customer_experience.jpg"
           alt="Students and parents browsing educational syllabus kits in a vibrant campus bookstore"
           style="object-position: 50% 30%;"
           onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/assets/bookstore_customer_experience.jpg';}"
-        />
+        / width="600" height="380" loading="lazy" decoding="async">
         <div class="triptych-zoom-hint" title="Click to view full photo">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
         </div>
@@ -1441,17 +1439,16 @@ body {
 
       <!-- Panel 3: The Billing Counter & Payment -->
       <div class="triptych-panel" onclick="openPhotoLightbox('assets/bookstore_checkout_counter.jpg', 'Sub-Second ISBN Checkout Counter & Dual-Tax GST Invoicing', 'BILLING & CHECKOUT')" title="Click to enlarge photo">
-        <img
-          src="assets/bookstore_checkout_counter.jpg"
+        <img src="assets/bookstore_checkout_counter.jpg"
           alt="Fast book billing counter with cashier scanning book barcode and printing dual-tax invoice"
           style="object-position: 50% 50%;"
           onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/assets/bookstore_checkout_counter.jpg';}"
-        />
+        / width="600" height="380" loading="lazy" decoding="async">
         <div class="triptych-zoom-hint" title="Click to view full photo">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
         </div>
         <div class="triptych-brand-mark" title="Priyulabs Retail OS">
-          <img src="assets/logo.svg" alt="Priyulabs" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/assets/logo.svg';}" />
+          <img src="assets/logo.svg" alt="Priyulabs" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/assets/logo.svg';}" / width="32" height="32" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1475,7 +1472,7 @@ body {
         <div class="sticky-col-left">
           <!-- Slide 0: Smart POS -->
           <div class="sticky-img-slide active" id="slide-0" onclick="openPhotoLightbox('assets/bookstore_pos_isbn_scan.jpg', 'Sub-1.5s ISBN Checkout Speed & Dual-Tax Split', 'PILLAR 01 • SMART POS')" title="Click to view full photo">
-            <img src="assets/bookstore_pos_isbn_scan.jpg" alt="Fast 2D barcode scanner scanning 13-digit ISBN barcode on book jacket at modern billing counter" />
+            <img src="assets/bookstore_pos_isbn_scan.jpg" alt="Fast 2D barcode scanner scanning 13-digit ISBN barcode on book jacket at modern billing counter" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 01 • SMART BOOKSTORE POS</div>
             <div class="slide-bottom-metric">
@@ -1485,7 +1482,7 @@ body {
 
           <!-- Slide 1: Serial & Stock -->
           <div class="sticky-img-slide" id="slide-1" onclick="openPhotoLightbox('assets/bookstore_inventory_unboxing.jpg', 'Publisher SOR & Unsold Book Return Manifests', 'PILLAR 02 • CATALOG & SOR')" title="Click to view full photo">
-            <img src="assets/bookstore_inventory_unboxing.jpg" alt="Bookstore staff unpacking publisher book cartons and sorting books onto categorized shelves" />
+            <img src="assets/bookstore_inventory_unboxing.jpg" alt="Bookstore staff unpacking publisher book cartons and sorting books onto categorized shelves" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 02 • CATALOG &amp; SOR</div>
             <div class="slide-bottom-metric">
@@ -1495,7 +1492,7 @@ body {
 
           <!-- Slide 2: Digital Salon -->
           <div class="sticky-img-slide" id="slide-2" onclick="openPhotoLightbox('assets/bookstore_digital_catalog.jpg', 'Curated Readers Online Bookstore & Campus Pre-Booking', 'PILLAR 03 • SCHOOL KIT PORTAL')" title="Click to view full photo">
-            <img src="assets/bookstore_digital_catalog.jpg" alt="Organized tables of books and academic kits ready for student pickup in contemporary bookstore" />
+            <img src="assets/bookstore_digital_catalog.jpg" alt="Organized tables of books and academic kits ready for student pickup in contemporary bookstore" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 03 • SCHOOL KIT PORTAL</div>
             <div class="slide-bottom-metric">
@@ -1505,7 +1502,7 @@ body {
 
           <!-- Slide 3: Service & CRM -->
           <div class="sticky-img-slide" id="slide-3" onclick="openPhotoLightbox('assets/bookstore_stationery_crm.jpg', 'Exam Season Loyalty & Multi-Pack Stationery CRM', 'PILLAR 04 • EXAM & LOYALTY CRM')" title="Click to view full photo">
-            <img src="assets/bookstore_stationery_crm.jpg" alt="Colorful stationery items, notebooks, and artist pencils arranged neatly for student study and exam preparation" />
+            <img src="assets/bookstore_stationery_crm.jpg" alt="Colorful stationery items, notebooks, and artist pencils arranged neatly for student study and exam preparation" / width="600" height="380" loading="lazy" decoding="async">
             <div class="sticky-img-overlay"></div>
             <div class="slide-floating-badge">PILLAR 04 • EXAM &amp; LOYALTY CRM</div>
             <div class="slide-bottom-metric">
@@ -2176,6 +2173,6 @@ body {
     }
   </script>
 
-  <script src="../version.js"></script>
+  <script src="../version.js" defer></script>
 </body>
 </html>

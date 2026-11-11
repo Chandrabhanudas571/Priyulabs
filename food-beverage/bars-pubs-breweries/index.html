@@ -1020,7 +1020,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1032,7 +1032,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1055,7 +1055,7 @@ body {
     <div class="clean-subnav-inner">
       <a href="/" class="clean-brand" aria-label="Priyulabs Home">
         <div style="background: transparent; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" />
+          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" / width="32" height="32" loading="lazy" decoding="async">
         </div>
         <div style="display:flex; flex-direction:column; text-align:left;">
           <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
@@ -1149,7 +1149,7 @@ body {
     </div>
 
     <div class="clean-hero-media-wrap">
-      <img src="assets/bar_hero.jpg" alt="Modern lively craft brewery bar counter with bartender tapping craft draft beer" />
+      <img src="assets/bar_hero.jpg" alt="Modern lively craft brewery bar counter with bartender tapping craft draft beer" / width="600" height="380" fetchpriority="high">
       
       <!-- Active Bar POS Interface Overlay -->
       <div class="hero-pos-overlay">
@@ -1217,7 +1217,7 @@ body {
           </ul>
         </div>
         <div class="pillar-media-col">
-          <img src="assets/bar_pos_tabs.jpg" alt="Bartender operating modern touchscreen POS behind glowing craft cocktail bar counter" />
+          <img src="assets/bar_pos_tabs.jpg" alt="Bartender operating modern touchscreen POS behind glowing craft cocktail bar counter" / width="600" height="380" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -1250,7 +1250,7 @@ body {
           </ul>
         </div>
         <div class="pillar-media-col">
-          <img src="assets/bar_draft_tap.jpg" alt="Draft craft beer pouring from taps into cold pint glasses" />
+          <img src="assets/bar_draft_tap.jpg" alt="Draft craft beer pouring from taps into cold pint glasses" / width="600" height="380" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -1283,7 +1283,7 @@ body {
           </ul>
         </div>
         <div class="pillar-media-col">
-          <img src="assets/bar_cocktail_mixologist.jpg" alt="Artisan craft cocktails and VIP table setup in modern lounge" />
+          <img src="assets/bar_cocktail_mixologist.jpg" alt="Artisan craft cocktails and VIP table setup in modern lounge" / width="600" height="380" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -1316,7 +1316,7 @@ body {
           </ul>
         </div>
         <div class="pillar-media-col">
-          <img src="assets/bar_keg_inventory.jpg" alt="Crowd of friends socializing and toasting craft beer at lively gastro-pub" />
+          <img src="assets/bar_keg_inventory.jpg" alt="Crowd of friends socializing and toasting craft beer at lively gastro-pub" / width="600" height="380" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -1568,7 +1568,7 @@ body {
     <div class="video-modal-content" onclick="event.stopPropagation()">
       <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
       <div style="position:relative; padding-top:56.25%; width:100%; background:#000;">
-        <video id="barDemoVideo" controls style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" poster="assets/bar_hero.jpg">
+        <video id="barDemoVideo" controls style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" poster="assets/bar_hero.jpg" preload="metadata">
           <source src="assets/pos-checkout.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
@@ -1576,7 +1576,7 @@ body {
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <script>
     function openVideoModal() {
       const modal = document.getElementById('videoModal');
@@ -1755,6 +1755,6 @@ body {
     })();
   </script>
 
-  <script src="../../version.js"></script>
+  <script src="../../version.js" defer></script>
 </body>
 </html>

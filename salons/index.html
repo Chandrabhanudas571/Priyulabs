@@ -1352,7 +1352,7 @@ body {
 <body>
 
 <div class="global-fluid-bg">
-  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-1 is-active" autoplay muted playsinline preload="metadata" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1364,7 +1364,7 @@ body {
     <source src="../../backgroundvideo1.mp4" type="video/mp4">
     <source src="/backgroundvideo1.mp4" type="video/mp4">
   </video>
-  <video class="bg-vid bg-vid-2" muted playsinline preload="auto">
+  <video class="bg-vid bg-vid-2" muted playsinline preload="none" poster="../assets/priyulabs-background-poster.webp">
         <source src="priyulabs background.mp4" type="video/mp4">
     <source src="./priyulabs background.mp4" type="video/mp4">
     <source src="../priyulabs background.mp4" type="video/mp4">
@@ -1390,7 +1390,7 @@ body {
     <div class="clean-subnav-inner">
       <a href="/" class="clean-brand" aria-label="Priyulabs Home">
         <div style="background: transparent; display: flex; align-items: center; justify-content: center;">
-          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" />
+          <img src="assets/logo.svg" style="height: 32px; width: 32px; display: block; object-fit: contain;" alt="Priyulabs Logo" / width="32" height="32" loading="lazy" decoding="async">
         </div>
         <div style="display:flex; flex-direction:column; text-align:left;">
           <span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a; line-height:1.1;">PRIYULABS</span>
@@ -1481,12 +1481,11 @@ body {
       <div class="hero-gallery-strip">
         <!-- Image 1 (Left): Modern Salon Styling Station -->
         <div class="gallery-card" onclick="openPhotoLightbox('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80', 'Luxury Styling Stations', 'STYLING STATION')">
-          <img
-            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80"
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=75&fm=webp"
             alt="Modern luxury salon styling stations with mirrors and chairs"
-            onerror="this.src='assets/sector_cosmetics.jpg'"
+            onerror="this.src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=75&fm=webp""
             loading="lazy"
-          />
+          / width="600" height="380" decoding="async">
           <div class="gallery-card-overlay">
             <span class="gallery-tag">Styling Station</span>
             <div class="gallery-title">Luxury Styling Stations</div>
@@ -1496,12 +1495,11 @@ body {
 
         <!-- Image 2 (Center - Hero Focus): Front Desk Tablet Chair Board -->
         <div class="gallery-card featured" onclick="openPhotoLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80', 'Chair Appointment Board & Front Desk POS', 'FRONT DESK POS')">
-          <img
-            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80"
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=75&fm=webp"
             alt="Stylist and receptionist using tablet for salon appointment calendar"
-            onerror="this.src='assets/sector_cosmetics.jpg'"
+            onerror="this.src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=75&fm=webp""
             loading="lazy"
-          />
+          / width="600" height="380" decoding="async">
           <div class="gallery-card-overlay">
             <span class="gallery-tag">Front Desk POS</span>
             <div class="gallery-title">Chair Appointment Board</div>
@@ -1511,12 +1509,11 @@ body {
 
         <!-- Image 3 (Right): Spa Treatment Room & Backbar -->
         <div class="gallery-card" onclick="openPhotoLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', 'Luxury Treatment Suites & Spa Backbar', 'SPA & BACKBAR')">
-          <img
-            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75&fm=webp"
             alt="Serene luxury spa treatment room with facial care products"
-            onerror="this.src='assets/sector_cosmetics.jpg'"
+            onerror="this.src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75&fm=webp""
             loading="lazy"
-          />
+          / width="600" height="380" decoding="async">
           <div class="gallery-card-overlay">
             <span class="gallery-tag">Spa &amp; Backbar</span>
             <div class="gallery-title">Luxury Treatment Suites</div>
@@ -1571,12 +1568,11 @@ body {
           <div class="mockup-frame">
             <!-- Store Interior Image: Styling Station -->
             <div class="mockup-img-banner">
-              <img
-                src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=1200&q=80"
+              <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=75&fm=webp"
                 alt="Salon styling stations with chairs, mirrors and equipment"
-                onerror="this.src='assets/sector_cosmetics.jpg'"
+                onerror="this.src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=75&fm=webp""
                 loading="lazy"
-              />
+              / width="600" height="380" decoding="async">
               <div class="mockup-img-overlay">
                 <span class="mockup-img-tag">
                   <span style="width:6px; height:6px; border-radius:50%; background:#10b981;"></span>
@@ -1742,12 +1738,11 @@ body {
           <div class="mockup-frame">
             <!-- Store Interior Image: Backbar Station -->
             <div class="mockup-img-banner">
-              <img
-                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80"
+              <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=75&fm=webp"
                 alt="Salon backbar wash station with shampoos and hair treatment products"
-                onerror="this.src='assets/sector_cosmetics.jpg'"
+                onerror="this.src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=75&fm=webp""
                 loading="lazy"
-              />
+              / width="600" height="380" decoding="async">
               <div class="mockup-img-overlay">
                 <span class="mockup-img-tag">
                   <span style="width:6px; height:6px; border-radius:50%; background:#059669;"></span>
@@ -2217,6 +2212,6 @@ body {
     })();
   </script>
 
-  <script src="../version.js"></script>
+  <script src="../version.js" defer></script>
 </body>
 </html>
