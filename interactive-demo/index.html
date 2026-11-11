@@ -1210,7 +1210,7 @@ body {
   <header>
     <div class="nav">
       <a href="/" class="logo">
-        <img src="/assets/favicon.svg" alt="PriyuLabs" />
+        <img src="/assets/favicon.svg" alt="PriyuLabs" / width="32" height="32" loading="lazy" decoding="async">
         <span>PriyuLabs</span>
       </a>
 
@@ -1443,7 +1443,7 @@ body {
       container.innerHTML = list.map(item => `
         <div class="pos-item-card" onclick="addToCart(${item.id})">
           <div class="pos-item-img">
-            <img src="${item.img}" alt="${item.name}" loading="lazy" />
+            <img src="${item.img}" alt="${item.name}" loading="lazy" / width="600" height="380" decoding="async">
           </div>
           <div class="pos-item-name">${item.name}</div>
           <div class="pos-item-price">&#8377;${item.price}</div>

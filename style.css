@@ -9564,5 +9564,72 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, li {
   }
 }
 
+/* ==========================================================================
+   PHASE 3: IMAGES - ZERO CROPPING, ZERO DISTORTION, CRISP RENDERING
+   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 1. Screenshots, Dashboards, POS screens, Mockups, Posters, Logos, Certificates & Text-bearing visuals */
+.hero-showcase-img,
+.pos-screen-img,
+.mockup-img,
+.ui-preview-img,
+.cert-badge,
+.foot-make-in-india-logo,
+.foot-msme-emblem,
+.foot-secure-ssl-emblem,
+.brand-logo-img,
+.logo img,
+img[src*="logo"],
+img[src*="preview"],
+img[src*="billing"],
+img[src*="dashboard"],
+img[src*="screen"],
+img[src*="poster"],
+img[src*="front"],
+img[src*="ssl"],
+img[src*="india"],
+img[src*="msme"] {
+  object-fit: contain !important;
+}
+
+/* 2. People & shop photos in cards (Centered at 30% so faces/subjects are never cut) */
+.serve-card img,
+.serve-mini-img,
+.sector-card img,
+.sq-photo-card img,
+.sq-card-img,
+.attr-mini-img {
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  transition: transform 0.3s ease;
+}
+
+/* 3. Testimonial avatars (Face-centered circle) */
+.test-avatar,
+.avatar img,
+img[src*="avatar"],
+img[src*="review"],
+img[src*="w=200"] {
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  flex-shrink: 0 !important;
+}
+
+/* 4. WhatsApp Floating Action Button */
+.cms-whatsapp-fab img,
+.whatsapp-fab img,
+.cms-whatsapp-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+
 
 

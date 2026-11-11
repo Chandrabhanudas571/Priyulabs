@@ -1208,7 +1208,7 @@ body {
   <header>
     <div class="nav">
       <a href="/" class="logo">
-        <img src="/assets/favicon.svg" alt="PriyuLabs" />
+        <img src="/assets/favicon.svg" alt="PriyuLabs" / width="32" height="32" loading="lazy" decoding="async">
         <div class="logo-text-group" style="display:flex; flex-direction:column; text-align:left; line-height:1.1;"><span style="font-size:15px; font-weight:800; letter-spacing:-0.02em; color:#0f172a;">PRIYULABS</span><span style="font-size:9.5px; font-weight:700; letter-spacing:0.08em; color:#B8863B; text-transform:uppercase; margin-top:2px;">INTERACTIVE DEMO</span></div>
       </a>
 
@@ -1441,7 +1441,7 @@ body {
       container.innerHTML = list.map(item => `
         <div class="pos-item-card" onclick="addToCart(${item.id})">
           <div class="pos-item-img">
-            <img src="${item.img}" alt="${item.name}" loading="lazy" />
+            <img src="${item.img}" alt="${item.name}" loading="lazy" / width="600" height="380" decoding="async">
           </div>
           <div class="pos-item-name">${item.name}</div>
           <div class="pos-item-price">&#8377;${item.price}</div>
