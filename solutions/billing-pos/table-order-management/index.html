@@ -3,7 +3,7 @@
 <head>
   <base href="/">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live Table &amp; Order Management System | PriyuLabs</title>
   <meta name="description" content="Visual floor plan, live table status, steward ordering, and kitchen display integration for food and hospitality businesses.">
   <link rel="canonical" href="https://priyulabs.com/solutions/billing-pos/table-order-management">
@@ -835,6 +835,42 @@
       box-shadow: 0 4px 12px rgba(63, 93, 66, 0.1) !important;
     }
 
+    .m-drawer-card-link {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 14px 18px !important;
+      min-height: 66px !important;
+      gap: 12px !important;
+      text-decoration: none !important;
+    }
+    .m-drawer-card-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      text-align: left !important;
+    }
+    .m-drawer-card-title {
+      font-size: 15.5px !important;
+      font-weight: 700 !important;
+      color: var(--ink, #2A2419) !important;
+      line-height: 1.3 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      white-space: normal !important;
+    }
+    .m-drawer-card-desc {
+      font-size: 13px !important;
+      font-weight: 400 !important;
+      color: var(--ink-soft, #6E6554) !important;
+      line-height: 1.35 !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      white-space: normal !important;
+    }
+
     .m-drawer-arrow {
       font-size: 18px !important;
       color: var(--accent, #3F5D42) !important;
@@ -904,7 +940,7 @@
   <header class="dyn-header">
     <div class="dyn-wrap dyn-header-inner">
       <a href="/" class="dyn-logo">
-        <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" / width="32" height="32" loading="lazy" decoding="async">
+        <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" />
         <span>PriyuLabs</span>
       </a>
       <ul class="dyn-nav-links">
@@ -923,7 +959,7 @@
   <!-- Mobile Header (<1024px) -->
   <header class="m-navbar" id="mobileNavbar">
     <a href="/" class="m-nav-logo">
-      <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" / width="32" height="32" loading="lazy" decoding="async">
+      <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" />
       <span>PriyuLabs</span>
     </a>
     <div class="m-nav-actions">
@@ -942,7 +978,7 @@
   <aside class="m-drawer mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
     <div class="m-drawer-header">
       <a href="/" class="m-nav-logo" onclick="closeMobileNav()">
-        <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" / width="32" height="32" loading="lazy" decoding="async">
+        <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" />
         <span>PriyuLabs</span>
       </a>
       <button class="m-drawer-close drawer-close" id="drawerCloseBtn" aria-label="Close navigation menu" onclick="closeMobileNav()">
@@ -1012,25 +1048,37 @@
 
             <div class="m-drill-group" id="mDrillGroup-categories-solutions" style="display: none;">
               
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'billing-pos', 'Billing &amp; POS')">
-      <span>Billing &amp; POS</span>
+    <a href="/pos" class="m-drawer-link m-drawer-card-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <div class="m-drawer-card-content">
+        <strong class="m-drawer-card-title">Smart POS</strong>
+        <span class="m-drawer-card-desc">Fast billing, AI voice checkout &amp; offline mode</span>
+      </div>
       <span class="m-drawer-arrow">&rarr;</span>
-    </button>
+    </a>
   
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'inventory', 'Inventory')">
-      <span>Inventory</span>
+    <a href="/complete-management-system" class="m-drawer-link m-drawer-card-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <div class="m-drawer-card-content">
+        <strong class="m-drawer-card-title">Complete Management System</strong>
+        <span class="m-drawer-card-desc">Inventory ERP, Staff HRMS &amp; 1-Click GST sync</span>
+      </div>
       <span class="m-drawer-arrow">&rarr;</span>
-    </button>
+    </a>
   
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'staff-payroll', 'Staff &amp; Payroll')">
-      <span>Staff &amp; Payroll</span>
+    <a href="/website-builder" class="m-drawer-link m-drawer-card-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <div class="m-drawer-card-content">
+        <strong class="m-drawer-card-title">Custom Website Building</strong>
+        <span class="m-drawer-card-desc">E-Commerce stores, web apps &amp; 5-day delivery</span>
+      </div>
       <span class="m-drawer-arrow">&rarr;</span>
-    </button>
+    </a>
   
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('solutions', 'growth-marketing', 'Growth &amp; Marketing')">
-      <span>Growth &amp; Marketing</span>
+    <a href="/digital-marketing" class="m-drawer-link m-drawer-card-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <div class="m-drawer-card-content">
+        <strong class="m-drawer-card-title">Digital Marketing &amp; Ads</strong>
+        <span class="m-drawer-card-desc">Meta Ads, Google Local SEO &amp; WhatsApp Commerce</span>
+      </div>
       <span class="m-drawer-arrow">&rarr;</span>
-    </button>
+    </a>
   
             </div>
           </div>
@@ -1144,92 +1192,6 @@
     
       <a href="/electronics-mobile-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
         <span>Repair Shop</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      </div>
-    
-      <div class="m-drill-group" id="mDrillGroup-solutions-billing-pos" style="display: none;">
-        
-      <a href="/solutions/billing-pos/smart-pos" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Smart POS</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/billing-pos/gst-billing" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>GST Billing</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/billing-pos/qr-upi-payments" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>QR &amp; UPI Payments</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/billing-pos/table-order-management" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Table/Order Management</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      </div>
-    
-      <div class="m-drill-group" id="mDrillGroup-solutions-inventory" style="display: none;">
-        
-      <a href="/solutions/inventory/stock-tracking" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Stock Tracking</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/inventory/low-stock-alerts" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Low-Stock Alerts</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/inventory/supplier-management" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Supplier Management</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      </div>
-    
-      <div class="m-drill-group" id="mDrillGroup-solutions-staff-payroll" style="display: none;">
-        
-      <a href="/solutions/staff-payroll/attendance" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Attendance</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/staff-payroll/shifts-scheduling" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Shifts &amp; Scheduling</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/staff-payroll/payroll" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Payroll</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      </div>
-    
-      <div class="m-drill-group" id="mDrillGroup-solutions-growth-marketing" style="display: none;">
-        
-      <a href="/solutions/growth-marketing/customer-crm" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Customer CRM</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/growth-marketing/loyalty-offers" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Loyalty &amp; Offers</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/growth-marketing/whatsapp-campaigns" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>WhatsApp Campaigns</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/solutions/growth-marketing/website-ads" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Website &amp; Ads</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
@@ -1513,7 +1475,7 @@
       <div class="foot-grid">
         <div>
           <div class="dyn-logo">
-            <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" / width="32" height="32" loading="lazy" decoding="async">
+            <img src="assets/logo.svg" alt="PriyuLabs" onerror="this.onerror=null; this.src='assets/logo.svg';" />
             <span>PriyuLabs</span>
           </div>
           <p class="foot-brand-desc">India's AI retail OS — POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
@@ -1547,7 +1509,7 @@
       </div>
       <div class="foot-bottom">
         <span>© 2026 PriyuLabs Software. All rights reserved.</span>
-        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.83 (Live)"><span class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.88</span></span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.89 (Live)"><span class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.89</span></span>
         <span>MSME REGISTERED: UDYAM-OD-19-0177979</span>
         <span>Made with Pride in India</span>
       </div>
@@ -1699,6 +1661,6 @@
     </script>
   
 
-  <script src="../../../version.js" defer></script>
+  <script src="../../../version.js"></script>
 </body>
 </html>
