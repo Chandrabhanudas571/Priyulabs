@@ -601,9 +601,9 @@
     }
 
     .sticky-wa-btn {
-      width: 48px !important;
-      height: 48px !important;
-      min-width: 48px !important;
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
       border-radius: 50% !important;
       background: #25D366 !important;
       color: #FFFFFF !important;
@@ -622,17 +622,17 @@
 
     .sticky-demo-btn {
       flex: 1 !important;
-      height: 48px !important;
-      min-height: 48px !important;
+      height: 46px !important;
+      min-height: 46px !important;
       background: var(--accent, #3F5D42) !important;
       color: #FFFFFF !important;
-      border-radius: 14px !important;
+      border-radius: 12px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
-      font-size: 15.5px !important;
-      font-weight: 700 !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
       text-decoration: none !important;
       box-shadow: 0 4px 16px rgba(63, 93, 66, 0.32) !important;
       transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease !important;
@@ -647,7 +647,7 @@
     /* Spacing: Clear bottom bar on mobile and tight spacing */
     @media (max-width: 1023px) {
       body {
-        padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+        padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
       }
       #cmsWhatsappFab,
       .cms-whatsapp-fab {
@@ -1477,110 +1477,156 @@
       margin-top: 14px;
     }
 
-    /* ---------- Bold & Distinct Standout Footer ---------- */
+    /* ---------- Compact & Clean Modern Footer ---------- */
     footer {
-      padding: 72px 0 36px;
-      border-top: 2px solid #D4C3A3;
-      margin-top: 80px;
-      background: #F1E8D5 !important;
-      box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08);
-      position: relative;
-      z-index: 10;
+      padding: 56px 0 28px !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+      margin-top: 48px !important;
+      background: var(--bg, #FAF6EE) !important;
+      position: relative !important;
+      z-index: 10 !important;
+      box-shadow: none !important;
     }
 
     .foot-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1.1fr 1fr;
-      gap: 36px;
-    }
-
-    @media(max-width:860px) {
-      .foot-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-      }
-    }
-
-    @media(max-width:540px) {
-      .foot-grid {
-        grid-template-columns: 1fr;
-      }
+      display: grid !important;
+      grid-template-columns: 1.4fr 1fr 1.2fr 1.1fr !important;
+      gap: 32px !important;
+      align-items: start !important;
     }
 
     .foot-grid .logo {
-      font-size: 24px;
-      font-weight: 700;
-      color: #1A150D;
+      font-family: 'Fraunces', serif !important;
+      font-size: 22px !important;
+      font-weight: 600 !important;
+      color: var(--ink, #1E1B16) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      line-height: 1 !important;
+    }
+
+    .foot-grid .logo img {
+      height: 28px !important;
+      width: 28px !important;
+      object-fit: contain !important;
+      display: inline-block !important;
     }
 
     .foot-brand-desc {
-      margin-top: 14px;
-      color: #383023;
-      font-size: 14.5px;
-      font-weight: 500;
-      line-height: 1.6;
-      max-width: 290px;
+      margin-top: 10px !important;
+      color: #5B5448 !important;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      line-height: 1.5 !important;
+      max-width: 280px !important;
+    }
+
+    /* Social icons: 20px icons inside 36px tap targets, in one row */
+    .foot-social {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 12px !important;
+    }
+
+    .foot-social-btn {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+      min-height: 36px !important;
+      border-radius: 50% !important;
+      background: rgba(42, 36, 25, 0.05) !important;
+      border: 1px solid rgba(0, 0, 0, 0.06) !important;
+      color: #5B5448 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease !important;
+      box-sizing: border-box !important;
+    }
+
+    .foot-social-btn svg {
+      width: 20px !important;
+      height: 20px !important;
+      display: block !important;
+    }
+
+    .foot-social-btn:hover {
+      background: var(--accent, #3F5D42) !important;
+      color: #FFFFFF !important;
+      transform: translateY(-1px) !important;
     }
 
     .foot-grid h5 {
-      font-family: 'Fraunces', serif;
-      font-size: 17px;
-      margin-bottom: 18px;
-      color: #1A150D;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: var(--ink, #1E1B16) !important;
+      margin-bottom: 12px !important;
+      line-height: 1.3 !important;
+      letter-spacing: -0.01em !important;
     }
 
     .foot-grid h5::after {
-      content: '';
-      display: inline-block;
-      width: 16px;
-      height: 2.5px;
-      background: #B8863B;
-      border-radius: 2px;
+      display: none !important;
     }
 
     .foot-grid ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      list-style: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      padding: 0 !important;
+      margin: 0 !important;
     }
 
-    .foot-grid a {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #383023;
-      transition: all .2s ease;
-      display: inline-block;
+    .foot-grid a,
+    .foot-address {
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      font-weight: 400 !important;
+      color: #5B5448 !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease !important;
+      display: inline-block !important;
     }
 
     .foot-grid a:hover {
-      color: #263B28;
-      transform: translateX(4px);
+      color: var(--accent, #3F5D42) !important;
+      transform: none !important;
     }
 
-    .foot-address {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #383023;
-      line-height: 1.4;
+    /* National Pride Emblems (compact) */
+    .footer-national-emblems-wrap {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 24px auto 14px !important;
+      text-align: center !important;
     }
 
+    .footer-national-emblems-wrap img {
+      height: 44px !important;
+      width: auto !important;
+      object-fit: contain !important;
+    }
+
+    /* Foot Bottom / Copyright Row */
     .foot-bottom {
-      margin-top: 52px;
-      padding-top: 24px;
-      border-top: 1.5px solid #D4C3A3;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #4A4030;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      margin-top: 20px !important;
+      padding-top: 16px !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+      font-size: 12.5px !important;
+      font-weight: 400 !important;
+      color: #6E6554 !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
     }
 
     .reveal {
@@ -2921,47 +2967,83 @@
         box-shadow: 0 10px 24px -4px rgba(63, 93, 66, 0.55) !important;
       }
 
-      /* ---------- 11 — MOBILE FOOTER ---------- */
+      /* ---------- 11 — MOBILE FOOTER (COMPACT & 2-COLUMN) ---------- */
       footer {
-        padding: 44px 0 32px !important;
+        padding: 40px 0 24px !important;
+        margin-top: 32px !important;
       }
 
       .foot-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 28px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16px 16px !important;
+        text-align: left !important;
+      }
+
+      /* Brand column spans full width in row 1 */
+      .foot-grid > div:nth-child(1) {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+      }
+
+      /* Solutions column in col 1, row 2 */
+      .foot-grid > div:nth-child(2) {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+      }
+
+      /* Business Types column in col 2, spanning rows 2 & 3 */
+      .foot-grid > div:nth-child(3) {
+        grid-column: 2 !important;
+        grid-row: 2 / span 2 !important;
+      }
+
+      /* Contact column in col 1, row 3 (stacked under Solutions) */
+      .foot-grid > div:nth-child(4) {
+        grid-column: 1 !important;
+        grid-row: 3 !important;
       }
 
       .foot-grid h5 {
-        font-size: 15px !important;
-        margin-bottom: 12px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        margin-bottom: 8px !important;
       }
 
       .foot-grid ul {
         display: flex !important;
         flex-direction: column !important;
-        gap: 8px !important;
+        gap: 10px !important;
       }
 
-      .foot-grid ul li a {
-        display: inline-flex !important;
-        align-items: center !important;
-        min-height: 38px !important;
+      .foot-grid ul li a,
+      .foot-grid a,
+      .foot-address {
+        display: inline-block !important;
+        min-height: auto !important;
         font-size: 14px !important;
-        color: var(--ink-soft) !important;
-        text-decoration: none !important;
+        line-height: 1.5 !important;
+        color: #5B5448 !important;
+      }
+
+      .footer-national-emblems-wrap {
+        margin: 12px auto 8px !important;
+      }
+
+      .footer-national-emblems-wrap img {
+        height: 30px !important;
       }
 
       .foot-bottom {
         display: flex !important;
         flex-direction: column !important;
-        gap: 12px !important;
+        gap: 4px !important;
         text-align: center !important;
         align-items: center !important;
         font-size: 12.5px !important;
-        margin-top: 36px !important;
-        padding-top: 24px !important;
-        border-top: 1px solid var(--line) !important;
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
       }
     }
   
@@ -4542,10 +4624,33 @@
       <div class="foot-grid">
         <div>
           <div class="logo"><img src="assets/logo.svg" alt="PriyuLabs"
-              style="height:28px; width:28px; object-fit:contain; display:inline-block; background:transparent;" / width="32" height="32" loading="lazy" decoding="async"><span>PriyuLabs</span>
+              style="height:28px; width:28px; object-fit:contain; display:inline-block; background:transparent;" width="32" height="32" loading="lazy" decoding="async"><span>PriyuLabs</span>
           </div>
           <p class="foot-brand-desc">India's AI retail OS —
             POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
+          <div class="foot-social" aria-label="Social links">
+            <a href="https://wa.me/917873844050" target="_blank" rel="noopener noreferrer" class="foot-social-btn" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/priyulabs" target="_blank" rel="noopener noreferrer" class="foot-social-btn" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/priyulabs" target="_blank" rel="noopener noreferrer" class="foot-social-btn" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="mailto:priylabspos@gmail.com" class="foot-social-btn" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
         <div>
           <h5>Solutions</h5>
@@ -4565,8 +4670,7 @@
             <li><a href="/electronics-mobile-shops">Electronics &amp; Mobiles</a></li>
             <li><a href="/beauty-fashion/salons">Salons &amp; Spas</a></li>
             <li><a href="/footwear-leather-stores">Footwear &amp; Leather</a></li>
-            <li><a href="all-business-types.html" style="font-weight:600; color:var(--accent);">All Business Types
-                &rarr;</a></li>
+            <li><a href="all-business-types.html" style="font-weight:600; color:var(--accent);">All Business Types &rarr;</a></li>
           </ul>
         </div>
         <div>
@@ -4579,36 +4683,30 @@
         </div>
       </div>
       <!-- National Pride: Make in India & Ashoka Stambha MSME Emblems -->
-      <div class="footer-national-emblems-wrap"
-        style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 34px auto 18px; text-align: center;">
-        <div
-          style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px;">
+      <div class="footer-national-emblems-wrap">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px;">
           <!-- Make in India Lion Logo -->
           <img src="assets/made_in_india_logo.webp" alt="Make in India" class="foot-make-in-india-logo" loading="lazy"
-            decoding="async"
-            style="height: 64px; width: auto; max-width: 140px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);"
-            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/made_in_india_logo.webp';}" / width="110" height="48">
+            decoding="async" width="90" height="38"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/made_in_india_logo.webp';}">
           <!-- Ashoka Stambha MSME Emblem -->
           <img src="assets/msme_ashoka_emblem.webp" alt="Ashoka Stambha MSME Government of India"
-            class="foot-msme-emblem" loading="lazy" decoding="async"
-            style="height: 64px; width: auto; max-width: 85px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);"
-            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}" / width="40" height="50">
+            class="foot-msme-emblem" loading="lazy" decoding="async" width="34" height="42"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='image_4.png';}">
           <!-- Secure SSL Encryption Emblem -->
           <img src="assets/secure_ssl.webp" alt="SECURE SSL 256-Bit Bank Encryption" class="foot-secure-ssl-emblem"
-            loading="lazy" decoding="async"
-            style="height: 64px; width: auto; max-width: 165px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.14);"
-            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/assets/secure_ssl.webp';}" / width="100" height="42">
+            loading="lazy" decoding="async" width="90" height="38"
+            onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/assets/secure_ssl.webp';}">
         </div>
-        <div
-          style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold, #B8863B); text-transform: uppercase;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--gold, #B8863B); text-transform: uppercase;">
           GOVERNMENT OF INDIA &bull; MAKE IN INDIA</div>
-        <div style="font-size: 12px; font-family: monospace; color: var(--ink-soft, #6B6152); margin-top: 3px;">MSME
-          REGISTERED: UDYAM-OD-19-0177979</div>
+        <div style="font-size: 11.5px; font-family: monospace; color: var(--ink-soft, #6B6152); margin-top: 2px;">
+          MSME REGISTERED: UDYAM-OD-19-0177979</div>
       </div>
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
-        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span
-            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.91</span></span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.91 (Live)"><span
+            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.92</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
