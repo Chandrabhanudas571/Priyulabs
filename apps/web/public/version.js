@@ -6,14 +6,14 @@
   'use strict';
 
   var VERSION_INFO = {
-  "version": "2.4.95",
+  "version": "2.4.97",
   "major": 2,
   "minor": 4,
-  "patch": 95,
-  "commit": "ff13e34",
-  "commitCount": 95,
+  "patch": 97,
+  "commit": "f8ac0e6",
+  "commitCount": 97,
   "releaseName": "Bharat Retail Intelligence",
-  "updatedAt": "2026-11-12T15:27:25.313Z",
+  "updatedAt": "2026-11-12T16:08:19.173Z",
   "releaseDate": "2026-11-12",
   "channel": "production"
 };
