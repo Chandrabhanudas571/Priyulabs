@@ -1546,7 +1546,7 @@ function closeSectorModal() {
 }
 
 // ─── CTA LEAD FORM SUBMISSION (GOOGLE APPS SCRIPT WEB APP) ───────────────────
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
+var GOOGLE_SCRIPT_URL = window.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyH13ep4RQxIBDc8I1gGrwr9eVU9yEYY30psOD1akHgePYWSg34vzPn2BtyVk3QWzqegg/exec";
 
 /**
  * Global Lead Submission Helper for Google Apps Script Web App

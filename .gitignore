@@ -10,3 +10,4 @@ backup-images/
 backup-media/
 scripts/*.png
 
+test-artifacts/
