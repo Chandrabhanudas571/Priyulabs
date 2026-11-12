@@ -93,6 +93,12 @@ const newJsController = `function closeNav() {
         currentFlowType = flowType;
         currentCategorySlug = categorySlug;
 
+        // Normalise category slugs
+        if (categorySlug === 'fnb') categorySlug = 'food-beverage';
+        if (categorySlug === 'beauty' || categorySlug === 'beauty-wellness') categorySlug = 'beauty-fashion';
+        if (categorySlug === 'retail-shops') categorySlug = 'retail';
+        if (categorySlug === 'education-services') categorySlug = 'services';
+
         var titleEl = document.getElementById('mDrillTitleLevel3');
         if (titleEl) titleEl.textContent = categoryTitle;
 
@@ -162,7 +168,44 @@ const newJsController = `function closeNav() {
           }
         }, 120);
       }
-      window.handleDrawerNavClick = handleDrawerNavClick;`;
+      window.handleDrawerNavClick = handleDrawerNavClick;
+
+      // Dynamic Single Source of Truth sync from Desktop mega-menu
+      function syncMobileSectorsFromDesktop() {
+        var mapping = [
+          { catSlug: 'food-beverage', altSlug: 'fnb', desktopTabId: 'tab-fnb' },
+          { catSlug: 'retail', altSlug: 'retail', desktopTabId: 'tab-retail' },
+          { catSlug: 'beauty-fashion', altSlug: 'beauty', desktopTabId: 'tab-beauty' },
+          { catSlug: 'services', altSlug: 'services', desktopTabId: 'tab-services' }
+        ];
+        mapping.forEach(function(item) {
+          var desktopTab = document.getElementById(item.desktopTabId);
+          var targetGroup = document.getElementById('mDrillGroup-business-types-' + item.catSlug) ||
+                            document.getElementById('mDrillGroup-business-types-' + item.altSlug);
+          if (desktopTab && targetGroup) {
+            var desktopLinks = desktopTab.querySelectorAll('a.sq-disc-item');
+            if (desktopLinks.length > 0) {
+              var html = '';
+              for (var i = 0; i < desktopLinks.length; i++) {
+                var link = desktopLinks[i];
+                var text = link.textContent.trim().replace(/\\s+/g, ' ');
+                var href = link.getAttribute('href');
+                var isPrimary = link.classList.contains('sq-disc-primary');
+                html += '<a href="' + href + '" class="m-drawer-link' + (isPrimary ? ' highlight' : '') + '" onclick="handleDrawerSectorClick(event, this.href)">' +
+                  '<span>' + text + '</span>' +
+                  '<span class="m-drawer-arrow">&rarr;</span>' +
+                  '</a>\\n';
+              }
+              targetGroup.innerHTML = html;
+            }
+          }
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', syncMobileSectorsFromDesktop);
+      } else {
+        syncMobileSectorsFromDesktop();
+      }`;
 
 if (jsTargetRegex.test(content)) {
   content = content.replace(jsTargetRegex, newJsController);

@@ -1,0 +1,211 @@
+[
+  {
+    "page": "All Business Types",
+    "category": "Directory",
+    "file": "all-business-types.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "15 KB",
+    "h1Size": "27.3px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "None (Looks good)"
+  },
+  {
+    "page": "Business Types Directory",
+    "category": "Directory",
+    "file": "business-types.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "15 KB",
+    "h1Size": "32px",
+    "hScroll": "No",
+    "cardCount": 18,
+    "issues": "Non-serif H1 font (\"Times New Roman\"); Tiny buttons (<44px)"
+  },
+  {
+    "page": "Restaurants & Fine Dining",
+    "category": "Food & Beverage",
+    "file": "restaurants-fine-dining.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "29 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (29KB)"
+  },
+  {
+    "page": "QSR, Fast Food & Takeaway",
+    "category": "Food & Beverage",
+    "file": "qsr-fast-food.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "29 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (29KB)"
+  },
+  {
+    "page": "Cafes & Chai Bars",
+    "category": "Food & Beverage",
+    "file": "cafes-chai-bars.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "29 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (29KB)"
+  },
+  {
+    "page": "Cloud Kitchens & Catering",
+    "category": "Food & Beverage",
+    "file": "cloud-kitchens-catering.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "26 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (26KB)"
+  },
+  {
+    "page": "Bakeries & Patisseries",
+    "category": "Food & Beverage",
+    "file": "bakeries-shops.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "24 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (24KB)"
+  },
+  {
+    "page": "Bars, Pubs & Breweries",
+    "category": "Food & Beverage",
+    "file": "bars-pubs-breweries.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "24 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (24KB)"
+  },
+  {
+    "page": "Grocery, Supermarkets & Kirana",
+    "category": "Retail",
+    "file": "grocery-supermarkets-kirana.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "32 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 6,
+    "issues": "Heavy inline styles (32KB)"
+  },
+  {
+    "page": "Electronics & Mobile Shops",
+    "category": "Retail",
+    "file": "electronics-mobile-shops.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "32 KB",
+    "h1Size": "36px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (32KB)"
+  },
+  {
+    "page": "Footwear & Leather Stores",
+    "category": "Retail",
+    "file": "footwear-leather-stores.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "28 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (28KB)"
+  },
+  {
+    "page": "Jewellery Showrooms & Bullion",
+    "category": "Retail",
+    "file": "jewellery-shops.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "32 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 6,
+    "issues": "Heavy inline styles (32KB)"
+  },
+  {
+    "page": "Watch Stores & Horology",
+    "category": "Retail",
+    "file": "watch-stores.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "31 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 6,
+    "issues": "Heavy inline styles (31KB)"
+  },
+  {
+    "page": "Bookstores & Stationery",
+    "category": "Retail",
+    "file": "bookstores-stationery.html",
+    "sharedCss": "Yes (style.css)",
+    "inlineStylesKB": "33 KB",
+    "h1Size": "24px",
+    "hScroll": "No",
+    "cardCount": 6,
+    "issues": "Heavy inline styles (33KB)"
+  },
+  {
+    "page": "Apparel Boutiques",
+    "category": "Beauty & Fashion",
+    "file": "beauty-fashion/apparel/index.html",
+    "sharedCss": "No (isolated)",
+    "inlineStylesKB": "24 KB",
+    "h1Size": "32px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (24KB)"
+  },
+  {
+    "page": "Salons & Spas",
+    "category": "Beauty & Fashion",
+    "file": "beauty-fashion/salons/index.html",
+    "sharedCss": "No (isolated)",
+    "inlineStylesKB": "32 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (32KB)"
+  },
+  {
+    "page": "Cosmetics & Skincare",
+    "category": "Beauty & Fashion",
+    "file": "beauty-fashion/cosmetics/index.html",
+    "sharedCss": "No (isolated)",
+    "inlineStylesKB": "29 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (29KB)"
+  },
+  {
+    "page": "Gyms & Fitness",
+    "category": "Services",
+    "file": "services/gyms/index.html",
+    "sharedCss": "No (isolated)",
+    "inlineStylesKB": "27 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (27KB)"
+  },
+  {
+    "page": "Dry Cleaners & Laundry",
+    "category": "Services",
+    "file": "services/dry-cleaners/index.html",
+    "sharedCss": "No (isolated)",
+    "inlineStylesKB": "26 KB",
+    "h1Size": "34px",
+    "hScroll": "No",
+    "cardCount": 0,
+    "issues": "Heavy inline styles (26KB)"
+  }
+]

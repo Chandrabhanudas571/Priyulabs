@@ -1285,6 +1285,11 @@ body {
   .clean-subnav .types-menu-dropdown::before { display: none; }
 }
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <!-- Shared Business Types Mobile Design System -->
+  <link rel="stylesheet" href="../assets/css/business-types-mobile.css" />
 </head>
 <body>
 
@@ -1984,7 +1989,8 @@ body {
   </div>
 
 
-  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>) -->
   <script>
     (function() {
       function initSmoothScroll() {

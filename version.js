@@ -10,11 +10,11 @@
   "major": 2,
   "minor": 4,
   "patch": 95,
-  "commit": "e0a3582",
+  "commit": "ff13e34",
   "commitCount": 95,
   "releaseName": "Bharat Retail Intelligence",
-  "updatedAt": "2026-11-11T17:34:22.417Z",
-  "releaseDate": "2026-11-11",
+  "updatedAt": "2026-11-12T15:27:25.313Z",
+  "releaseDate": "2026-11-12",
   "channel": "production"
 };
 

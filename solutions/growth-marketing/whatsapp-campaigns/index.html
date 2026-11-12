@@ -623,8 +623,9 @@
 
     
     /* ========================================================
-       MOBILE 3-LEVEL DRILL-DOWN DRAWER STYLES
+       MOBILE 3-LEVEL DRILL-DOWN DRAWER STYLES (MOBILE ONLY)
        ======================================================== */
+    @media (max-width: 767px) {
     .m-drawer-backdrop {
       position: fixed !important;
       inset: 0 !important;
@@ -931,6 +932,14 @@
       background: #20BA5A !important;
       transform: translateY(-1px) !important;
     }
+    }
+
+    @media (min-width: 768px) {
+      .m-drawer,
+      .m-drawer-backdrop {
+        display: none !important;
+      }
+    }
   
   </style>
 </head>
@@ -1029,20 +1038,25 @@
       <span class="m-drawer-arrow">&rarr;</span>
     </button>
   
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'beauty-wellness', 'Beauty &amp; Wellness')">
-      <span>Beauty &amp; Wellness</span>
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'retail', 'Retail')">
+      <span>Retail</span>
       <span class="m-drawer-arrow">&rarr;</span>
     </button>
   
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'retail-shops', 'Retail &amp; Shops')">
-      <span>Retail &amp; Shops</span>
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'beauty-fashion', 'Beauty &amp; Fashion')">
+      <span>Beauty &amp; Fashion</span>
       <span class="m-drawer-arrow">&rarr;</span>
     </button>
   
-    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'education-services', 'Education &amp; Services')">
-      <span>Education &amp; Services</span>
+    <button type="button" class="m-drawer-link" onclick="mDrillGoLevel3('business-types', 'services', 'Services')">
+      <span>Services</span>
       <span class="m-drawer-arrow">&rarr;</span>
     </button>
+  
+    <a href="all-business-types.html" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <span>All Business Types</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </a>
   
             </div>
 
@@ -1098,100 +1112,120 @@
             
       <div class="m-drill-group" id="mDrillGroup-business-types-food-beverage" style="display: none;">
         
-      <a href="/cafes-chai-bars" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Cafe</span>
+      <a href="/restaurants-fine-dining" class="m-drawer-link highlight" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Overview</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
       <a href="/restaurants-fine-dining" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Restaurant</span>
+        <span>Restaurants &amp; Fine Dining</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
-      <a href="/bakeries-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Bakery</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/cloud-kitchens-catering" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Cloud Kitchen</span>
+      <a href="/qsr-fast-food" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>QSR, Fast Food &amp; Takeaway</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
       <a href="/cafes-chai-bars" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Juice &amp; Tea Shop</span>
+        <span>Cafes &amp; Chai Bars</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/cloud-kitchens-catering" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Cloud Kitchens &amp; Catering</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/bakeries-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Bakeries &amp; Patisseries</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/bars-pubs-breweries" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Bars, Pubs &amp; Breweries</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
       </div>
     
-      <div class="m-drill-group" id="mDrillGroup-business-types-beauty-wellness" style="display: none;">
+      <div class="m-drill-group" id="mDrillGroup-business-types-retail" style="display: none;">
         
-      <a href="/salons-spas" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Salon</span>
+      <a href="/grocery-supermarkets-kirana" class="m-drawer-link highlight" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Overview</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
-      <a href="/salons-spas" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Spa</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/salons-spas" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Barbershop</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/gyms" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Gym</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      </div>
-    
-      <div class="m-drill-group" id="mDrillGroup-business-types-retail-shops" style="display: none;">
-        
       <a href="/grocery-supermarkets-kirana" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Grocery</span>
-        <span class="m-drawer-arrow">&rarr;</span>
-      </a>
-    
-      <a href="/apparel-boutiques" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Clothing Store</span>
+        <span>Grocery, Supermarkets &amp; Kirana Stores</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
       <a href="/electronics-mobile-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Electronics</span>
+        <span>Electronics &amp; Mobile Shops</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
-      <a href="/healthcare/pharmacies" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Pharmacy</span>
+      <a href="/footwear-leather-stores" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Footwear &amp; Leather Stores</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/jewellery-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Jewellery Showrooms &amp; Bullion</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/watch-stores" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Watch Stores &amp; Horology Boutiques</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/bookstores-stationery" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Bookstores &amp; Stationery Outlets</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
       </div>
     
-      <div class="m-drill-group" id="mDrillGroup-business-types-education-services" style="display: none;">
+      <div class="m-drill-group" id="mDrillGroup-business-types-beauty-fashion" style="display: none;">
         
-      <a href="/bookstores-stationery" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Coaching Institute</span>
+      <a href="/beauty-fashion/apparel" class="m-drawer-link highlight" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Overview</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
-      <a href="/bookstores-stationery" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Tuition Centre</span>
+      <a href="/beauty-fashion/apparel" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Clothing Brands &amp; Apparel Boutiques</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
-      <a href="/healthcare/pharmacies" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Clinic</span>
+      <a href="/beauty-fashion/salons" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Salons, Spas &amp; Beauty Parlors</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
-      <a href="/electronics-mobile-shops" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
-        <span>Repair Shop</span>
+      <a href="/beauty-fashion/cosmetics" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Cosmetics &amp; Skincare Stores</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      </div>
+    
+      <div class="m-drill-group" id="mDrillGroup-business-types-services" style="display: none;">
+        
+      <a href="/services/gyms" class="m-drawer-link highlight" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Overview</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/services/gyms" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Gyms, Fitness Studios &amp; Yoga Centers</span>
+        <span class="m-drawer-arrow">&rarr;</span>
+      </a>
+    
+      <a href="/services/dry-cleaners" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+        <span>Dry Cleaners &amp; Laundry Shops</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
     
@@ -1509,7 +1543,7 @@
       </div>
       <div class="foot-bottom">
         <span>© 2026 PriyuLabs Software. All rights reserved.</span>
-        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.89 (Live)"><span class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.95</span></span>
+        <span class="foot-version-badge" title="PriyuLabs Platform v2.4.95 (Live)"><span class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.95</span></span>
         <span>MSME REGISTERED: UDYAM-OD-19-0177979</span>
         <span>Made with Pride in India</span>
       </div>
@@ -1593,6 +1627,12 @@
           currentFlowType = flowType;
           currentCategorySlug = categorySlug;
 
+          // Normalise category slugs
+          if (categorySlug === 'fnb') categorySlug = 'food-beverage';
+          if (categorySlug === 'beauty' || categorySlug === 'beauty-wellness') categorySlug = 'beauty-fashion';
+          if (categorySlug === 'retail-shops') categorySlug = 'retail';
+          if (categorySlug === 'education-services') categorySlug = 'services';
+
           var titleEl = document.getElementById('mDrillTitleLevel3');
           if (titleEl) titleEl.textContent = categoryTitle;
 
@@ -1648,6 +1688,44 @@
             if (window.closeMobileNav) window.closeMobileNav();
           }
         });
+
+        // Dynamic Single Source of Truth sync from Desktop mega-menu
+        function syncMobileSectorsFromDesktop() {
+          var mapping = [
+            { catSlug: 'food-beverage', altSlug: 'fnb', desktopTabId: 'tab-fnb' },
+            { catSlug: 'retail', altSlug: 'retail', desktopTabId: 'tab-retail' },
+            { catSlug: 'beauty-fashion', altSlug: 'beauty', desktopTabId: 'tab-beauty' },
+            { catSlug: 'services', altSlug: 'services', desktopTabId: 'tab-services' }
+          ];
+          mapping.forEach(function(item) {
+            var desktopTab = document.getElementById(item.desktopTabId);
+            var targetGroup = document.getElementById('mDrillGroup-business-types-' + item.catSlug) ||
+                              document.getElementById('mDrillGroup-business-types-' + item.altSlug);
+            if (desktopTab && targetGroup) {
+              var desktopLinks = desktopTab.querySelectorAll('a.sq-disc-item');
+              if (desktopLinks.length > 0) {
+                var html = '';
+                for (var i = 0; i < desktopLinks.length; i++) {
+                  var link = desktopLinks[i];
+                  var text = link.textContent.trim().replace(/s+/g, ' ');
+                  var href = link.getAttribute('href');
+                  var isPrimary = link.classList.contains('sq-disc-primary');
+                  html += '<a href="' + href + '" class="m-drawer-link' + (isPrimary ? ' highlight' : '') + '" onclick="handleDrawerSectorClick(event, this.href)">' +
+                    '<span>' + text + '</span>' +
+                    '<span class="m-drawer-arrow">&rarr;</span>' +
+                    '</a>
+';
+                }
+                targetGroup.innerHTML = html;
+              }
+            }
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', syncMobileSectorsFromDesktop);
+        } else {
+          syncMobileSectorsFromDesktop();
+        }
 
         // Ensure drawer closes and resets properly
         var origClose = window.closeMobileNav;

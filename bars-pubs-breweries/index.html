@@ -8,7 +8,10 @@
   <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="manifest" href="site.webmanifest" />
-  <base href="/">
+  <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript></noscript></noscript>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bars, Pubs &amp; Breweries POS &amp; Management OS | Priyulabs Digital</title>
@@ -1016,6 +1019,11 @@ body {
   .pos-cat-btn { flex: 0 0 auto; white-space: nowrap; }
 }
 </style>
+  <!-- Shared Business Types Mobile Design System -->
+  <link rel="stylesheet" href="../assets/css/business-types-mobile.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -1789,5 +1797,6 @@ body {
   </script>
 
   <script src="version.js" defer></script>
+  <script src="../assets/js/business-types-mobile.js" defer></script>
 </body>
 </html>

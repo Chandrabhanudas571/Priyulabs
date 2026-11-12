@@ -14,7 +14,12 @@ function renderDrawerHtml() {
       <span>${escapeHtml(cat.categoryTitle)}</span>
       <span class="m-drawer-arrow">&rarr;</span>
     </button>
-  `).join('');
+  `).join('') + `
+    <a href="all-business-types.html" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <span>All Business Types</span>
+      <span class="m-drawer-arrow">&rarr;</span>
+    </a>
+  `;
 
   // 4 Core Solutions matching desktop dropdown
   const solutionsList = [
@@ -55,7 +60,7 @@ function renderDrawerHtml() {
 
   businessTypes.forEach(cat => {
     const itemsHtml = cat.sectors.map(sec => `
-      <a href="${sec.url || `/business-types/${cat.categorySlug}/${sec.slug}`}" class="m-drawer-link" onclick="handleDrawerSectorClick(event, this.href)">
+      <a href="${sec.url || `/business-types/${cat.categorySlug}/${sec.slug}`}" class="m-drawer-link${sec.isPrimary ? ' highlight' : ''}" onclick="handleDrawerSectorClick(event, this.href)">
         <span>${escapeHtml(sec.title)}</span>
         <span class="m-drawer-arrow">&rarr;</span>
       </a>
@@ -162,8 +167,9 @@ function renderDrawerHtml() {
 function renderDrawerCss() {
   return `
     /* ========================================================
-       MOBILE 3-LEVEL DRILL-DOWN DRAWER STYLES
+       MOBILE 3-LEVEL DRILL-DOWN DRAWER STYLES (MOBILE ONLY)
        ======================================================== */
+    @media (max-width: 767px) {
     .m-drawer-backdrop {
       position: fixed !important;
       inset: 0 !important;
@@ -470,6 +476,14 @@ function renderDrawerCss() {
       background: #20BA5A !important;
       transform: translateY(-1px) !important;
     }
+    }
+
+    @media (min-width: 768px) {
+      .m-drawer,
+      .m-drawer-backdrop {
+        display: none !important;
+      }
+    }
   `;
 }
 
@@ -516,6 +530,12 @@ function renderDrawerScript() {
         window.mDrillGoLevel3 = function(flowType, categorySlug, categoryTitle) {
           currentFlowType = flowType;
           currentCategorySlug = categorySlug;
+
+          // Normalise category slugs
+          if (categorySlug === 'fnb') categorySlug = 'food-beverage';
+          if (categorySlug === 'beauty' || categorySlug === 'beauty-wellness') categorySlug = 'beauty-fashion';
+          if (categorySlug === 'retail-shops') categorySlug = 'retail';
+          if (categorySlug === 'education-services') categorySlug = 'services';
 
           var titleEl = document.getElementById('mDrillTitleLevel3');
           if (titleEl) titleEl.textContent = categoryTitle;
@@ -572,6 +592,43 @@ function renderDrawerScript() {
             if (window.closeMobileNav) window.closeMobileNav();
           }
         });
+
+        // Dynamic Single Source of Truth sync from Desktop mega-menu
+        function syncMobileSectorsFromDesktop() {
+          var mapping = [
+            { catSlug: 'food-beverage', altSlug: 'fnb', desktopTabId: 'tab-fnb' },
+            { catSlug: 'retail', altSlug: 'retail', desktopTabId: 'tab-retail' },
+            { catSlug: 'beauty-fashion', altSlug: 'beauty', desktopTabId: 'tab-beauty' },
+            { catSlug: 'services', altSlug: 'services', desktopTabId: 'tab-services' }
+          ];
+          mapping.forEach(function(item) {
+            var desktopTab = document.getElementById(item.desktopTabId);
+            var targetGroup = document.getElementById('mDrillGroup-business-types-' + item.catSlug) ||
+                              document.getElementById('mDrillGroup-business-types-' + item.altSlug);
+            if (desktopTab && targetGroup) {
+              var desktopLinks = desktopTab.querySelectorAll('a.sq-disc-item');
+              if (desktopLinks.length > 0) {
+                var html = '';
+                for (var i = 0; i < desktopLinks.length; i++) {
+                  var link = desktopLinks[i];
+                  var text = link.textContent.trim().replace(/\s+/g, ' ');
+                  var href = link.getAttribute('href');
+                  var isPrimary = link.classList.contains('sq-disc-primary');
+                  html += '<a href="' + href + '" class="m-drawer-link' + (isPrimary ? ' highlight' : '') + '" onclick="handleDrawerSectorClick(event, this.href)">' +
+                    '<span>' + text + '</span>' +
+                    '<span class="m-drawer-arrow">&rarr;</span>' +
+                    '</a>\n';
+                }
+                targetGroup.innerHTML = html;
+              }
+            }
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', syncMobileSectorsFromDesktop);
+        } else {
+          syncMobileSectorsFromDesktop();
+        }
 
         // Ensure drawer closes and resets properly
         var origClose = window.closeMobileNav;

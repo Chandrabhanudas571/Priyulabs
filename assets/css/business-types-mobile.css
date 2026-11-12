@@ -1,0 +1,1054 @@
+/* ==========================================================================
+   PRIYULABS BUSINESS TYPES - SHARED MOBILE DESIGN SYSTEM
+   Applied strictly on mobile viewports: @media (max-width: 767px)
+   Desktop layout (min-width: 768px) is completely unaffected.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+@media (max-width: 767px) {
+  /* -----------------------------------------------------------------------
+     1. Animations & Base Variables
+     ----------------------------------------------------------------------- */
+  @keyframes plFadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :root {
+    --pl-cream-bg: #FAF6EE;
+    --pl-dark-text: #1E1B16;
+    --pl-muted-text: #5B5448;
+    --pl-gold-accent: #B8893A;
+    --pl-gold-text: #9A6F2B;
+    --pl-gold-tint: rgba(184, 137, 58, 0.12);
+    --pl-primary-green: #1b4332;
+    --pl-primary-green-hover: #143326;
+    --pl-card-border: rgba(0, 0, 0, 0.06);
+    --pl-card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  /* -----------------------------------------------------------------------
+     2. Page Background, Typography & Contrast (No Grey Overlays / Dull Filters)
+     ----------------------------------------------------------------------- */
+  html, body {
+    background-color: var(--pl-cream-bg) !important;
+    background: var(--pl-cream-bg) !important;
+    color: var(--pl-dark-text) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent navigation bar overflow */
+  header,
+  header.clean-nav-header,
+  header.clean-subnav,
+  header.navbar {
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    overflow-x: hidden !important;
+  }
+
+  .clean-nav-inner,
+  .clean-subnav-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+
+  .types-menu-dropdown {
+    width: auto !important;
+    max-width: calc(100vw - 28px) !important;
+    box-sizing: border-box !important;
+    left: 14px !important;
+    right: 14px !important;
+    transform: none !important;
+  }
+
+  /* Remove dimming filters & grey backdrops */
+  .global-fluid-mask,
+  .hero-overlay,
+  .clean-overlay,
+  .overlay-mask,
+  .video-overlay {
+    opacity: 0.05 !important;
+    background: transparent !important;
+    filter: none !important;
+  }
+
+  .global-fluid-bg video {
+    opacity: 0.25 !important;
+    filter: none !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     3. Section Spacing & Mobile Side Padding
+     ----------------------------------------------------------------------- */
+  section,
+  .clean-hero-sec,
+  .hero-sec,
+  .hero-clean,
+  .hub-hero,
+  .bdir-hero,
+  .clean-pillars-sec,
+  .pillars-sec,
+  .clean-features-sec,
+  .features-sec,
+  .clean-grid-sec,
+  .clean-metrics-sec,
+  .metrics-sec,
+  .clean-cta-sec,
+  .bottom-cta-sec,
+  .deal-matrix-sec,
+  .triptych-sec {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Clean 40px vertical spacing between consecutive sections */
+  .clean-pillars-sec,
+  .pillars-sec,
+  .clean-features-sec,
+  .features-sec,
+  .clean-grid-sec,
+  .clean-metrics-sec,
+  .metrics-sec,
+  .clean-cta-sec,
+  .bottom-cta-sec,
+  .deal-matrix-sec,
+  .triptych-sec {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     4. Uniform Hero Rhythm
+     Eyebrow Pill -> Centered H1 -> 2-line Subtext -> Full-width Buttons -> Rounded Visual
+     ----------------------------------------------------------------------- */
+  .clean-hero-sec,
+  .hero-sec,
+  .hero-clean,
+  .hub-hero,
+  .bdir-hero {
+    padding-top: 32px !important;
+    padding-bottom: 36px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    animation: plFadeUp 450ms ease-out both;
+  }
+
+  /* Eyebrow pill */
+  .clean-hero-badge,
+  .hero-badge,
+  .hub-badge,
+  .eyebrow-pill,
+  .sec-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    background: var(--pl-gold-tint) !important;
+    color: var(--pl-gold-text) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding: 6px 14px !important;
+    border-radius: 9999px !important;
+    border: 1px solid rgba(184, 137, 58, 0.22) !important;
+    margin: 0 auto 14px auto !important;
+    box-shadow: none !important;
+    width: auto !important;
+    max-width: fit-content !important;
+  }
+
+  .clean-hero-badge .green-dot,
+  .hero-badge .green-dot {
+    width: 6px !important;
+    height: 6px !important;
+    background-color: var(--pl-gold-text) !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+  }
+
+  /* H1 Heading */
+  h1,
+  .clean-hero-title,
+  .hero-title,
+  .hero-headline,
+  .hub-title,
+  .bdir-title {
+    font-family: 'Fraunces', serif !important;
+    font-size: clamp(28px, 8vw, 38px) !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--pl-dark-text) !important;
+    text-align: center !important;
+    text-wrap: balance !important;
+    margin: 0 auto 14px auto !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+  }
+
+  h1 span.muted-title,
+  h1 span.highlight-serif,
+  h1 span {
+    font-family: 'Fraunces', serif !important;
+    color: var(--pl-dark-text) !important;
+    font-weight: 600 !important;
+    opacity: 0.88;
+  }
+
+  /* Subtext */
+  .clean-hero-sub,
+  .hero-sub,
+  .hero-subtitle,
+  .hub-sub,
+  .bdir-sub {
+    font-family: 'Inter', -apple-system, sans-serif !important;
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+    color: var(--pl-muted-text) !important;
+    text-align: center !important;
+    max-width: 94% !important;
+    margin: 0 auto 24px auto !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     5. Buttons & CTAs (48px tall, 14px radius, full width on mobile)
+     ----------------------------------------------------------------------- */
+  .clean-hero-actions,
+  .hero-actions,
+  .hero-cta-group,
+  .hero-btns,
+  .clean-hero-btns {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+    margin: 0 auto 20px auto !important;
+  }
+
+  /* Primary button */
+  .btn-solid-dark,
+  .btn-primary,
+  .clean-hero-actions a:first-child,
+  .hero-actions a:first-child,
+  .hero-cta-group a:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    background: var(--pl-primary-green) !important;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 14px !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(27, 67, 50, 0.2) !important;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-solid-dark:active,
+  .btn-primary:active,
+  .clean-hero-actions a:first-child:active {
+    background: var(--pl-primary-green-hover) !important;
+  }
+
+  /* Secondary button */
+  .btn-outline-clean,
+  .btn-secondary,
+  .clean-hero-actions a:nth-child(2),
+  .hero-actions a:nth-child(2),
+  .hero-cta-group a:nth-child(2) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    background: transparent !important;
+    color: var(--pl-dark-text) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease;
+  }
+
+  /* -----------------------------------------------------------------------
+     6. Hero Visual Media Card
+     Full width minus 40px (20px each side), rounded 20px, soft shadow
+     ----------------------------------------------------------------------- */
+  .clean-hero-visual-frame,
+  .hero-visual,
+  .hero-media-wrap,
+  .hero-image-wrap,
+  .sticky-media-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    margin: 20px auto 0 auto !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid var(--pl-card-border) !important;
+    background: #ffffff !important;
+    position: relative !important;
+  }
+
+  .clean-hero-visual-frame img,
+  .hero-visual img,
+  .hero-media-wrap img,
+  .sticky-media-card img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 280px !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 20px !important;
+  }
+
+  /* Overlay card adjustments on mobile */
+  .clean-hero-overlay-card,
+  .hero-overlay-card {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 12px !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    padding: 12px 14px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Hero sub-strip (4 Core Solutions pill strip) */
+  .hero-pillars-strip {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid var(--pl-card-border) !important;
+    border-radius: 16px !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+    margin: 14px auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     7. Section Titles & Standardized Cards (Features, Benefits, Metrics)
+     ----------------------------------------------------------------------- */
+  h2,
+  .clean-sec-title,
+  .sec-title,
+  .section-title {
+    font-family: 'Fraunces', serif !important;
+    font-size: clamp(22px, 6vw, 26px) !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    color: var(--pl-dark-text) !important;
+    text-align: center !important;
+    margin-bottom: 12px !important;
+  }
+
+  .clean-sec-desc,
+  .sec-sub,
+  .section-sub {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    color: var(--pl-muted-text) !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Grids collapse to single-column on mobile with 14px gap */
+  .clean-pillars-grid,
+  .pillars-grid,
+  .features-grid,
+  .clean-features-grid,
+  .clean-metrics-grid,
+  .metrics-grid,
+  .matrix-grid,
+  .clean-grid,
+  .bdir-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  /* Standardized Card Style */
+  .clean-pillar-card,
+  .clean-feat-card,
+  .pillar-card,
+  .feature-card,
+  .deal-card,
+  .bdir-card {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--pl-card-border) !important;
+    box-shadow: var(--pl-card-shadow) !important;
+    padding: 18px 16px !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    animation: plFadeUp 450ms ease-out both;
+  }
+
+  .clean-pillar-card h3,
+  .clean-feat-card h3,
+  .pillar-card h3,
+  .feature-card h3,
+  .deal-card h3,
+  .bdir-card h3 {
+    font-family: 'Fraunces', serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: var(--pl-dark-text) !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+  }
+
+  .clean-pillar-card p,
+  .clean-feat-card p,
+  .pillar-card p,
+  .feature-card p,
+  .deal-card p,
+  .bdir-card p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: var(--pl-muted-text) !important;
+    margin: 0 !important;
+  }
+
+  /* Metric cards */
+  .clean-metric-col,
+  .metric-col {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--pl-card-border) !important;
+    border-left: 4px solid var(--pl-gold-accent) !important;
+    padding: 16px !important;
+    box-shadow: var(--pl-card-shadow) !important;
+  }
+
+  .clean-metric-val,
+  .metric-val {
+    font-family: 'Fraunces', serif !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    color: var(--pl-dark-text) !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     8. Bottom Conversion Section
+     Cream card with green button matching the homepage rhythm
+     ----------------------------------------------------------------------- */
+  .clean-cta-box,
+  .bottom-cta-box,
+  .cta-card {
+    background: #ffffff !important;
+    border: 1px solid var(--pl-card-border) !important;
+    border-radius: 20px !important;
+    padding: 32px 20px !important;
+    text-align: center !important;
+    color: var(--pl-dark-text) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .clean-cta-box h2,
+  .bottom-cta-title {
+    font-family: 'Fraunces', serif !important;
+    color: var(--pl-dark-text) !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .clean-cta-box p,
+  .bottom-cta-sub {
+    color: var(--pl-muted-text) !important;
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    margin: 0 auto 24px auto !important;
+  }
+
+  .bottom-cta-btns,
+  .clean-cta-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .bottom-cta-btns a,
+  .clean-cta-actions a,
+  .btn-light-solid {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    border-radius: 14px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    box-sizing: border-box !important;
+  }
+
+  .bottom-cta-btns a:first-child,
+  .clean-cta-actions a:first-child,
+  .btn-light-solid {
+    background: var(--pl-primary-green) !important;
+    color: #ffffff !important;
+    border: none !important;
+  }
+
+  .bottom-cta-btns a:nth-child(2),
+  .clean-cta-actions a:nth-child(2),
+  .btn-outline-white {
+    background: transparent !important;
+    color: var(--pl-dark-text) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     9. Interactive Elements & Sticky Bottom Bar Clearance
+     ----------------------------------------------------------------------- */
+  a, button, .clean-nav-link, .pos-cat-btn {
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  /* Safe bottom spacing for sticky bar */
+  body, main, .main-wrap {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 20px) !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     10. Pillars Section as a Pure CSS Scroll-Snap Swipe Carousel
+     ----------------------------------------------------------------------- */
+  .clean-pillars-sec,
+  .pillars-sec {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .clean-pillars-sec .clean-sec-header,
+  .pillars-sec .sec-header {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Carousel Container */
+  .clean-pillars-sec .clean-container,
+  .pillars-sec .clean-container,
+  .pillars-sec .pillars-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    padding: 10px 20px 20px 20px !important;
+    scroll-padding-inline: 20px !important;
+    overscroll-behavior-x: contain !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    align-items: stretch !important;
+    width: 100vw !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+  }
+
+  .clean-pillars-sec .clean-container:focus-visible,
+  .pillars-sec .clean-container:focus-visible,
+  .pillars-sec .pillars-container:focus-visible {
+    outline: 2px solid var(--pl-primary-green) !important;
+    outline-offset: -2px !important;
+  }
+
+  .clean-pillars-sec .clean-container::-webkit-scrollbar,
+  .pillars-sec .clean-container::-webkit-scrollbar,
+  .pillars-sec .pillars-container::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Each Card: 86% width so ~8% next card peeks */
+  .pillar-row,
+  .pillar-scroll-step {
+    flex: 0 0 86% !important;
+    min-width: 86% !important;
+    max-width: 86% !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal !important;
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    align-self: stretch !important;
+    margin: 0 !important;
+    position: relative !important;
+  }
+
+  /* Photo at top of card (aspect-ratio 16/10) */
+  .pillar-img-col,
+  .pillar-img-frame,
+  .pillar-visual-card,
+  .pillar-media-col {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 14px 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .pillar-img-col img,
+  .pillar-img-frame img,
+  .pillar-visual-card img,
+  .pillar-media-col img,
+  .pillar-row img.pillar-img,
+  .pillar-row img {
+    width: 100% !important;
+    aspect-ratio: 16/10 !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    display: block !important;
+    max-height: none !important;
+  }
+
+  /* Content inside card */
+  .pillar-text-col {
+    order: 1 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+  }
+
+  /* Impact Badge */
+  .pillar-impact-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: fit-content !important;
+    padding: 4px 10px !important;
+    border-radius: 9999px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Heading */
+  .pillar-heading {
+    font-family: 'Fraunces', serif !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    color: var(--pl-dark-text) !important;
+    margin: 0 0 12px 0 !important;
+    text-align: left !important;
+  }
+
+  /* Problem Solved box: cream tint #FAF6EE, 3px left border #B8893A, text #5B5448 */
+  .pillar-box-problem {
+    background: #FAF6EE !important;
+    border: none !important;
+    border-left: 3px solid #B8893A !important;
+    border-radius: 4px 12px 12px 4px !important;
+    padding: 10px 14px !important;
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    color: #5B5448 !important;
+    margin: 0 0 12px 0 !important;
+    text-align: left !important;
+  }
+
+  .pillar-box-problem strong {
+    color: #1E1B16 !important;
+    display: block !important;
+    margin-bottom: 2px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  /* How It Works collapsible details */
+  details.pl-how-details {
+    background: #FAF6EE !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    margin: 0 0 12px 0 !important;
+    overflow: hidden !important;
+    transition: all 0.2s ease;
+  }
+
+  details.pl-how-details summary.pl-how-summary {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #1E1B16 !important;
+    cursor: pointer !important;
+    list-style: none !important;
+    user-select: none !important;
+  }
+
+  details.pl-how-details summary.pl-how-summary::-webkit-details-marker {
+    display: none !important;
+  }
+
+  details.pl-how-details summary.pl-how-summary svg.pl-how-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  details.pl-how-details[open] summary.pl-how-summary svg.pl-how-arrow {
+    transform: rotate(180deg);
+  }
+
+  details.pl-how-details .pl-how-content {
+    padding: 0 14px 12px 14px !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: #5B5448 !important;
+    text-align: left !important;
+  }
+
+  /* Checklist: single column, green tick icons aligned, 15px text */
+  .pillar-bullets,
+  .pillar-checklist {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    margin: 4px 0 0 0 !important;
+    list-style: none !important;
+  }
+
+  .pillar-bullets li,
+  .pillar-checklist li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    color: #1E1B16 !important;
+    text-align: left !important;
+  }
+
+  .pillar-bullets li svg,
+  .pillar-checklist li svg {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    stroke: #1b4332 !important;
+    margin-top: 2px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Dot indicators & Counter below carousel */
+  .pl-carousel-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin: 8px auto 20px auto !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pl-dots-track {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .pl-dot-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .pl-dot-btn:focus-visible {
+    outline: 2px solid var(--pl-primary-green) !important;
+    outline-offset: 2px !important;
+    border-radius: 9999px !important;
+  }
+
+  .pl-dot-pill {
+    display: block !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 9999px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .pl-dot-btn.active .pl-dot-pill {
+    width: 22px !important;
+    background: #1b4332 !important;
+  }
+
+  .pl-counter-badge {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #5B5448 !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    padding: 3px 9px !important;
+    border-radius: 9999px !important;
+    line-height: 1 !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     11. Final CTA Card Redesign (Photo Top Banner, Text Below)
+     ----------------------------------------------------------------------- */
+  /* Target the final conversion card across all pages */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"],
+  div[style*="grid-template-columns: 1.1fr 1fr"],
+  .clean-cta-box-redesign {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    min-height: auto !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Top Banner Image: aspect-ratio 16/8, no text on top */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] > div[style*="background-image"],
+  div[style*="grid-template-columns: 1.1fr 1fr"] > div[style*="background-image"] {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/8 !important;
+    min-height: 140px !important;
+    max-height: 200px !important;
+    order: -2 !important;
+    z-index: 1 !important;
+    display: block !important;
+    opacity: 1 !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  /* Remove gradient fade overlay */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] > div[style*="linear-gradient"],
+  div[style*="grid-template-columns: 1.1fr 1fr"] > div[style*="linear-gradient"] {
+    display: none !important;
+  }
+
+  /* Below Banner Content Area: 20px padding */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] > div[style*="align-items: flex-start"],
+  div[style*="grid-template-columns: 1.1fr 1fr"] > div[style*="align-items: flex-start"] {
+    order: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Pill Badge */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] div[style*="border-radius: 999px"],
+  div[style*="grid-template-columns: 1.1fr 1fr"] div[style*="border-radius: 999px"] {
+    display: inline-block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding: 5px 12px !important;
+    border-radius: 9999px !important;
+    background: rgba(184, 137, 58, 0.12) !important;
+    color: #9A6F2B !important;
+    border: 1px solid rgba(184, 137, 58, 0.25) !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Heading */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] h2,
+  div[style*="grid-template-columns: 1.1fr 1fr"] h2 {
+    font-family: 'Fraunces', serif !important;
+    font-size: clamp(22px, 6vw, 28px) !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    color: #1E1B16 !important;
+    margin: 0 0 12px 0 !important;
+    text-align: left !important;
+  }
+
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] h2 span,
+  div[style*="grid-template-columns: 1.1fr 1fr"] h2 span {
+    font-family: inherit !important;
+    color: inherit !important;
+  }
+
+  /* Short paragraph */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] p,
+  div[style*="grid-template-columns: 1.1fr 1fr"] p {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    color: #5B5448 !important;
+    margin: 0 0 20px 0 !important;
+    text-align: left !important;
+    max-width: 100% !important;
+  }
+
+  /* CTA Buttons (Primary Green 48px, Secondary Outlined 48px, 12px gap) */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] div[style*="margin-bottom: 28px"],
+  div[style*="grid-template-columns: 1.1fr 1fr"] div[style*="margin-bottom: 28px"] {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Primary Button */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] a[href*="#contact"],
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] a[style*="background: #ea580c"],
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] a[style*="background:#ea580c"] {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    border-radius: 14px !important;
+    background: #1b4332 !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(27, 67, 50, 0.2) !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+  }
+
+  /* Secondary Button */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] a[href*="wa.me"] {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    border-radius: 14px !important;
+    background: transparent !important;
+    color: #1E1B16 !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+  }
+
+  /* Right column trust cards */
+  div[style*="grid-template-columns: 1.15fr 0.85fr"] > div[style*="justify-self: end"],
+  div[style*="grid-template-columns: 1.1fr 1fr"] > div[style*="justify-self: end"] {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px 20px 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Fix National badge */
+  span[style*="National"],
+  span[style*="national"],
+  span[style*="NATIONAL"] {
+    display: inline-block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    border: 1px solid rgba(184, 137, 58, 0.35) !important;
+    color: #9A6F2B !important;
+    background: rgba(184, 137, 58, 0.1) !important;
+    padding: 5px 12px !important;
+    border-radius: 9999px !important;
+    position: static !important;
+    float: none !important;
+    margin: 0 !important;
+  }
+
+  /* Respects prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+    .clean-pillars-sec .clean-container,
+    .pillars-sec .clean-container,
+    .pillars-sec .pillars-container {
+      scroll-behavior: auto !important;
+    }
+  }
+}

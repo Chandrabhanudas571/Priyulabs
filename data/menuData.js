@@ -15,1235 +15,137 @@
     {
       categorySlug: 'food-beverage',
       categoryTitle: 'Food & Beverage',
-      description: 'Complete operational software for restaurants, cafes, cloud kitchens, and bakeries.',
+      description: 'Complete operational software for restaurants, cafes, cloud kitchens, bakeries, and bars.',
       sectors: [
         {
-          slug: 'cafe',
-          url: '/cafes-chai-bars',
-          title: 'Cafe',
-          metaTitle: 'Cafe POS & Billing Software | PriyuLabs',
-          metaDescription: 'Speed up coffee orders with sub-second touch billing, recipe inventory management, and digital WhatsApp receipts built for modern cafes.',
-          h1: 'Smart POS & Management Software for Cafes',
-          shortDescription: 'Sub-second touch billing, barista display sync, custom modifier matrix, and live ingredient deduction tailored for specialty cafes and coffee bars.',
-          problemsSolved: [
-            {
-              problem: 'Long Morning Rush Counter Queues',
-              solution: '1-tap touch POS with automated combo shortcuts processes takeaway orders in under 3 seconds.'
-            },
-            {
-              problem: 'Milk and Coffee Bean Inventory Wastage',
-              solution: 'Recipe-based auto-deduction tracks exact gram-level milk, syrup, and roast usage per cup brewed.'
-            },
-            {
-              problem: 'Lost Table & Pickup Orders',
-              solution: 'Kitchen Order Ticket (KOT) sync pushes takeaway and dine-in orders instantly to barista screens.'
-            },
-            {
-              problem: 'High Customer Drop-off During Peak Hours',
-              solution: 'QR-at-table dynamic digital menu enables customers to order and pay UPI straight from their phone.'
-            }
-          ],
-          features: [
-            {
-              title: 'Sub-Second Touch POS',
-              description: 'Intuitive touch interface with customizable quick-keys for espresso, brew variants, and baked pastries.'
-            },
-            {
-              title: 'Barista Display System (BDS)',
-              description: 'Color-coded digital ticket board organizes hot vs. iced beverage queues in chronological order.'
-            },
-            {
-              title: 'Recipe & Ingredient Depletion',
-              description: 'Gram-level raw material decrement ensures real-time dairy, oat-milk, and coffee bean stock accuracy.'
-            },
-            {
-              title: 'WhatsApp Digital Loyalty Pass',
-              description: 'Automated digital loyalty stamp cards sent to customer mobile numbers after every 5th coffee purchase.'
-            },
-            {
-              title: 'Zero-Fraud UPI & EDC Sync',
-              description: 'Direct integration with card swipe machines and soundboxes guarantees 100% matched shift settlements.'
-            },
-            {
-              title: 'Offline Billing Reliability',
-              description: 'Continuous offline queue billing keeps your counter running even when broadband connection drops.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Does PriyuLabs Cafe POS work when the internet is down?',
-              answer: 'Yes. PriyuLabs runs a local offline-first SQLite database cache. You can ring up bills and print receipts uninterrupted; data automatically synchronizes when connection returns.'
-            },
-            {
-              question: 'Can I connect a thermal kitchen printer and cash drawer?',
-              answer: 'Yes. It supports standard USB, Ethernet, and Bluetooth thermal printers (58mm and 80mm) as well as automatic RJ11 cash drawer kicks.'
-            },
-            {
-              question: 'How does ingredient and recipe tracking work?',
-              answer: 'You define recipes (e.g. 18g coffee beans + 200ml whole milk for Cappuccino). Each sale automatically deducts the ingredients from raw inventory in real time.'
-            },
-            {
-              question: 'How long does onboarding and staff training take?',
-              answer: 'Our intuitive interface allows new baristas and cashiers to learn the billing workflow in under 10 minutes.'
-            }
-          ]
-        },
-        {
-          slug: 'restaurant',
+          slug: 'overview',
           url: '/restaurants-fine-dining',
-          title: 'Restaurant',
-          metaTitle: 'Restaurant Billing & Fine Dining POS Software | PriyuLabs',
-          metaDescription: 'Manage table layouts, live KOT routing, split billing, and multi-station kitchen operations with PriyuLabs Restaurant POS.',
-          h1: 'Restaurant POS & Table Management Software',
-          shortDescription: 'Multi-floor table layouts, instant KOT routing to kitchen stations, split billing, and raw material food costing designed for fine dining and casual restaurants.',
-          problemsSolved: [
-            {
-              problem: 'Delayed Kitchen Order Communication',
-              solution: 'Captain tablet ordering routes food items directly to kitchen and bar printers in less than a second.'
-            },
-            {
-              problem: 'Messy Bill Splitting & Custom Discounts',
-              solution: 'Split by seat, cover, or item with 1-click GST calculation and authorized manager discount overrides.'
-            },
-            {
-              problem: 'High Raw Material Food Costing Spoilage',
-              solution: 'Central kitchen stock transfer tracking with real-time yield and spoilage logs.'
-            },
-            {
-              problem: 'Slow Table Turnaround During Weekends',
-              solution: 'Visual floor plan with color-coded table occupancy status (vacant, seated, billed, cleaning).'
-            }
-          ],
-          features: [
-            {
-              title: 'Visual Floor & Table Map',
-              description: 'Multi-section floor plan with drag-and-drop table merging, moving, and reservation management.'
-            },
-            {
-              title: 'Multi-Station KOT Routing',
-              description: 'Automatically route appetizer tickets to the starter kitchen and cocktail tickets to the bar.'
-            },
-            {
-              title: 'Split & Itemized Billing',
-              description: 'Split checks by guest, percentage, or specific dish with zero manual calculation errors.'
-            },
-            {
-              title: 'Captain Ordering Handheld',
-              description: 'Android smartphone or tablet app allowing stewards to punch orders right at guest tables.'
-            },
-            {
-              title: 'Food Costing & Portion Audit',
-              description: 'Track dish cost variance and flag recipe changes that erode profit margins.'
-            },
-            {
-              title: 'Zomato & Swiggy Central Sync',
-              description: 'Consolidated online aggregator ordering with single-screen menu toggle and stock pause.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can we run Captain ordering on Android phones?',
-              answer: 'Yes. Any modern Android phone or tablet can be used by stewards to manage table occupancy and punch KOTs.'
-            },
-            {
-              question: 'Does it handle multi-tax GST slabs (5% vs 18% alcohol)?',
-              answer: 'Yes. The system automatically applies appropriate GST rates to food vs. alcoholic beverages on itemized bills.'
-            },
-            {
-              question: 'Can managers approve complimentary items or discounts remotely?',
-              answer: 'Yes. Manager PIN overrides or mobile push notifications allow secure authorization of discounts.'
-            },
-            {
-              question: 'How does daily night settlement work?',
-              answer: 'One-click EOD day closing balances cash drawer, card slips, UPI batches, and pet-cash expenses with automatic manager summary.'
-            }
-          ]
+          title: 'Overview',
+          isPrimary: true
         },
         {
-          slug: 'bakery',
-          url: '/bakeries-shops',
-          title: 'Bakery',
-          metaTitle: 'Bakery POS & Cake Order Management Software | PriyuLabs',
-          metaDescription: 'Custom cake advance bookings, batch expiry management, and barcode labeling designed specifically for bakeries and patisseries.',
-          h1: 'Bakery POS & Custom Order Management Software',
-          shortDescription: 'Manage custom cake advance booking sheets, batch manufacturing expiry dates, weighing scale sync, and barcode labeling for bakeries and patisseries.',
-          problemsSolved: [
-            {
-              problem: 'Custom Cake Order Miscommunication',
-              solution: 'Dedicated advance order calendar with photo upload, flavor preferences, and delivery slot tracking.'
-            },
-            {
-              problem: 'Silent Expiry of Fresh Cream Pastries',
-              solution: 'Automated 24/48-hour shelf-life warning flags older batches for discount promotions before expiry.'
-            },
-            {
-              problem: 'Weighing Scale Integration Friction',
-              solution: 'Direct serial port integration reads exact gram weight from digital scales directly into the bill.'
-            },
-            {
-              problem: 'Advance Payment Khata Errors',
-              solution: 'Track advance deposits, remaining balance on pickup, and send WhatsApp confirmation slips.'
-            }
-          ],
-          features: [
-            {
-              title: 'Advance Cake Booking Calendar',
-              description: 'Log design references, delivery time slots, custom eggless requirements, and deposit balances.'
-            },
-            {
-              title: 'Weighing Scale Direct Connect',
-              description: 'Plug-and-play RS232 weighing scale support for loose cookies, chocolates, and dry snacks.'
-            },
-            {
-              title: 'Batch & Expiry Date Printing',
-              description: 'Print custom labels with manufacturing timestamp, best-before date, and ingredient highlights.'
-            },
-            {
-              title: 'Production Planning Sheet',
-              description: 'Aggregate upcoming weekend advance orders into a single raw ingredient prep requisition.'
-            },
-            {
-              title: 'WhatsApp Pickup Reminders',
-              description: 'Automatic WhatsApp notification sent to customer when cake has been iced and boxed.'
-            },
-            {
-              title: 'Multi-Outlet Central Kitchen Dispatch',
-              description: 'Transfer freshly baked inventory from base kitchen to retail branches with digital transit challans.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can customers upload reference photos for custom birthday cakes?',
-              answer: 'Yes. Cashiers can attach reference photos and special notes directly to the order sheet on the POS.'
-            },
-            {
-              question: 'Does the software support barcode scale stickers?',
-              answer: 'Yes. The system reads weight-embedded barcodes (EAN-13 price/weight encoding) seamlessly.'
-            },
-            {
-              question: 'How does it handle unsold fresh goods at the end of the day?',
-              answer: 'A dedicated wastage and return ledger records daily shrinkage for accurate profit-and-loss accounting.'
-            },
-            {
-              question: 'Can multi-branch bakeries share central recipes?',
-              answer: 'Yes. Standard recipes and pricing can be locked centrally and synced across all retail outlets.'
-            }
-          ]
+          slug: 'restaurants-fine-dining',
+          url: '/restaurants-fine-dining',
+          title: 'Restaurants & Fine Dining'
         },
         {
-          slug: 'cloud-kitchen',
-          url: '/cloud-kitchens-catering',
-          title: 'Cloud Kitchen',
-          metaTitle: 'Cloud Kitchen POS & Multi-Brand Management Software | PriyuLabs',
-          metaDescription: 'Consolidate Swiggy, Zomato, and direct delivery orders across multiple virtual food brands from a single kitchen terminal.',
-          h1: 'Cloud Kitchen & Multi-Brand Order Management System',
-          shortDescription: 'One single screen to accept, prepare, and dispatch orders from Swiggy, Zomato, and direct WhatsApp storefronts across 10+ virtual brands.',
-          problemsSolved: [
-            {
-              problem: 'Managing 5+ Aggregator Tablets on One Counter',
-              solution: 'Single unified dashboard auto-accepts orders from all food delivery aggregators directly into 1 terminal.'
-            },
-            {
-              problem: 'Menu Out-of-Stock Discrepancy',
-              solution: '1-click central item toggle marks an ingredient or dish paused across all delivery platforms simultaneously.'
-            },
-            {
-              problem: 'Kitchen Staff Rider Confusion',
-              solution: 'Unified token numbering and bag label printing ensures riders pick up the right branded packages.'
-            },
-            {
-              problem: 'High Platform Commissions',
-              solution: 'Deploy your own branded zero-commission WhatsApp ordering storefront with integrated delivery tracking.'
-            }
-          ],
-          features: [
-            {
-              title: 'Universal Aggregator Hub',
-              description: 'Auto-accept Swiggy, Zomato, and Magicpin orders without needing multiple physical tablets.'
-            },
-            {
-              title: 'Multi-Brand Kitchen Routing',
-              description: 'Color-coded Kitchen Display System (KDS) separates prep queues for Biryani, Pizza, and Burger brands.'
-            },
-            {
-              title: 'Direct WhatsApp Storefront',
-              description: 'Take high-margin direct delivery orders via interactive WhatsApp catalog with live UPI payments.'
-            },
-            {
-              title: 'Rider Handover Token System',
-              description: 'Display ready-for-dispatch order tokens on an external TV screen for delivery executive pickup.'
-            },
-            {
-              title: 'Packaging & Consumables Tracking',
-              description: 'Track packaging containers, paper bags, and cutlery inventory per order to prevent leakage.'
-            },
-            {
-              title: 'Central Stock & Preparation Logs',
-              description: 'Monitor batch gravy, marination prep levels, and cross-brand raw ingredient consumption.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can we run 8 different virtual brands from 1 PriyuLabs account?',
-              answer: 'Yes. You can manage unlimited virtual brands under a single cloud kitchen entity with isolated menu catalogs.'
-            },
-            {
-              question: 'Does the system print delivery address slips?',
-              answer: 'Yes. It automatically prints packaging bills with customer address, contact, and itemized instructions.'
-            },
-            {
-              question: 'What happens if our kitchen reaches maximum capacity?',
-              answer: 'You can tap "Busy Kitchen Mode" to automatically add prep buffer time or temporarily pause new incoming orders.'
-            },
-            {
-              question: 'Can we connect third-party riders like Dunzo or Shadowfax?',
-              answer: 'Yes. Integrated logistics APIs allow 1-click on-demand rider booking for direct customer orders.'
-            }
-          ]
+          slug: 'qsr-fast-food',
+          url: '/qsr-fast-food',
+          title: 'QSR, Fast Food & Takeaway'
         },
         {
-          slug: 'juice-tea-shop',
+          slug: 'cafes-chai-bars',
           url: '/cafes-chai-bars',
-          title: 'Juice & Tea Shop',
-          metaTitle: 'Tea Shop & Juice Bar Quick Billing POS Software | PriyuLabs',
-          metaDescription: 'High-volume rapid billing, soundbox UPI integration, and sugar/ice modifier shortcuts for tea stalls and fresh juice bars.',
-          h1: 'Juice Bar & Tea Cafe Quick Billing POS Software',
-          shortDescription: 'High-frequency counter billing designed for 500+ daily tokens, instant soundbox voice announcements, and customizable sweetness modifiers.',
-          problemsSolved: [
-            {
-              problem: 'Evening Tea Rush Traffic Congestion',
-              solution: '3-tap fast billing prints kitchen tokens in 1.5 seconds so queues keep moving rapidly.'
-            },
-            {
-              problem: 'Unverified UPI Payment Cheating',
-              solution: 'Directly synced QR soundbox announces exact payment receipt immediately, preventing fake screenshot fraud.'
-            },
-            {
-              problem: 'Seasonal Fresh Fruit Spoilage',
-              solution: 'Daily fresh fruit purchase intake tracking balances vendor crate weights against juice sales.'
-            },
-            {
-              problem: 'Cash Register Mismatch with Hourly Staff',
-              solution: 'Blind cashier shift closing ensures staff count actual cash before seeing the software balance.'
-            }
-          ],
-          features: [
-            {
-              title: 'Rapid Token Generator',
-              description: 'Large high-contrast touch keys designed for rapid 1-hand operation during busy rush hours.'
-            },
-            {
-              title: 'Instant Voice UPI Soundbox',
-              description: 'Real-time multilingual voice announcement verifies digital customer payments without phone checking.'
-            },
-            {
-              title: 'Modifier & Sweetness Presets',
-              description: 'Single-touch customization for "No Sugar", "Less Ice", "Extra Ginger", or "Large Cup".'
-            },
-            {
-              title: 'Daily Perishable Fruit Intake',
-              description: 'Log morning fruit crate rates and calculate daily gross profit margins per liter extracted.'
-            },
-            {
-              title: 'Prepaid Wallet & Customer Khata',
-              description: 'Digital recharge cards for regular neighborhood office customers to prepay monthly tea accounts.'
-            },
-            {
-              title: 'Compact Hardware Friendly',
-              description: 'Runs smoothly on Android POS handhelds, inexpensive touch terminals, or standard tablets.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can we use an inexpensive Android handheld POS device?',
-              answer: 'Yes. PriyuLabs runs smoothly on portable handheld Android POS terminals with built-in thermal printers.'
-            },
-            {
-              question: 'How fast can a cashier print a tea token?',
-              answer: 'With touch shortcuts, a standard token is printed in under 2 seconds.'
-            },
-            {
-              question: 'Does it support pre-paid corporate monthly tea accounts?',
-              answer: 'Yes. You can maintain digital balance accounts for neighboring businesses with monthly statement generation.'
-            },
-            {
-              question: 'What hardware do I need to get started?',
-              answer: 'Just an Android tablet or POS machine and a receipt printer. You can be up and running in 10 minutes.'
-            }
-          ]
+          title: 'Cafes & Chai Bars'
+        },
+        {
+          slug: 'cloud-kitchens-catering',
+          url: '/cloud-kitchens-catering',
+          title: 'Cloud Kitchens & Catering'
+        },
+        {
+          slug: 'bakeries-shops',
+          url: '/bakeries-shops',
+          title: 'Bakeries & Patisseries'
+        },
+        {
+          slug: 'bars-pubs-breweries',
+          url: '/bars-pubs-breweries',
+          title: 'Bars, Pubs & Breweries'
         }
       ]
     },
     {
-      categorySlug: 'beauty-wellness',
-      categoryTitle: 'Beauty & Wellness',
-      description: 'Streamlined appointment calendars, stylist commissions, and customer loyalty for wellness brands.',
-      sectors: [
-        {
-          slug: 'salon',
-          url: '/salons-spas',
-          title: 'Salon',
-          metaTitle: 'Salon & Beauty Parlor Billing & Booking Software | PriyuLabs',
-          metaDescription: 'Manage stylist chairs, appointment scheduling, tiered commission splits, and automated WhatsApp reminders with PriyuLabs Salon POS.',
-          h1: 'Salon & Beauty Parlor Appointment and Billing Software',
-          shortDescription: 'Real-time chair booking calendar, tiered stylist commission calculations, package memberships, and consumable back-bar product usage tracking.',
-          problemsSolved: [
-            {
-              problem: 'Weekend Appointment Overlapping & Double-Booking',
-              solution: 'Visual multi-chair booking calendar with stylist availability and appointment buffer times.'
-            },
-            {
-              problem: 'Complex Stylist Commission Disputes',
-              solution: 'Automated service vs. product commission calculation with daily transparent stylist performance slips.'
-            },
-            {
-              problem: 'Expensive Back-Bar Color & Shampoo Waste',
-              solution: 'Internal salon consumption logging tracks chemical tube and shampoo gram usage per client service.'
-            },
-            {
-              problem: 'No-Shows and Late Cancellations',
-              solution: 'Automated 2-hour WhatsApp appointment reminders with 1-tap confirmation and reschedule options.'
-            }
-          ],
-          features: [
-            {
-              title: 'Multi-Stylist Booking Calendar',
-              description: 'Color-coded schedule board displaying appointments by stylist, service chair, and treatment duration.'
-            },
-            {
-              title: 'Tiered Commission Engine',
-              description: 'Flexible commission tiers based on monthly service revenue targets, retail sales, and tip tracking.'
-            },
-            {
-              title: 'Service Packages & Prepaid Wallets',
-              description: 'Sell bridal packages, multi-session hair spa passes, and digital customer balance recharge cards.'
-            },
-            {
-              title: 'Back-Bar Consumable Depletion',
-              description: 'Deduct internal salon shampoo, dye, and cream usage from inventory separate from retail products.'
-            },
-            {
-              title: 'WhatsApp Client Reminders',
-              description: 'Automatic WhatsApp confirmation, 24-hr reminder, and automated post-service review collection.'
-            },
-            {
-              title: 'Customer Service History & Notes',
-              description: 'Store client hair dye formulas, skin sensitivity notes, and preferred beverage choices.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can stylists view their own daily commission on their phones?',
-              answer: 'Yes. Stylists can have restricted mobile login access to view their own completed services and daily commission earnings.'
-            },
-            {
-              question: 'Does the software support bridal package advance bookings?',
-              answer: 'Yes. You can schedule multi-session treatments across multiple stylists with advance token deposits.'
-            },
-            {
-              question: 'How are back-bar salon products tracked?',
-              answer: 'Products used for services are marked as "Internal Consumption" and deducted from inventory without generating retail revenue.'
-            },
-            {
-              question: 'Can customers book appointments online from Instagram or WhatsApp?',
-              answer: 'Yes. PriyuLabs provides a shareable online booking link that integrates with your Instagram bio and WhatsApp messages.'
-            }
-          ]
-        },
-        {
-          slug: 'spa',
-          url: '/salons-spas',
-          title: 'Spa',
-          metaTitle: 'Spa & Wellness Center Management Software | PriyuLabs',
-          metaDescription: 'Therapy room allocation, therapist schedules, package memberships, and aromatic inventory tracking for luxury spas.',
-          h1: 'Luxury Spa & Wellness Center Management Software',
-          shortDescription: 'Therapy room allocation, synchronized therapist schedules, annual membership packages, and essential oil inventory tracking for wellness centers.',
-          problemsSolved: [
-            {
-              problem: 'Room & Therapist Scheduling Conflicts',
-              solution: 'Smart resource booking ensures a therapist, steam room, and massage suite are never double-booked.'
-            },
-            {
-              problem: 'Manual Membership Renewal Follow-Ups',
-              solution: 'Automated WhatsApp membership alerts notify clients 15 days before treatment credit expiration.'
-            },
-            {
-              problem: 'High Inventory Theft of Essential Oils',
-              solution: 'Milliliter-level stock auditing and therapist requisition logs track luxury aroma oil consumption.'
-            },
-            {
-              problem: 'Unorganized Client Health Notes',
-              solution: 'Digital consultation intake form logs client pressure preferences, allergies, and therapy notes.'
-            }
-          ],
-          features: [
-            {
-              title: 'Resource & Suite Management',
-              description: 'Synchronized allocation of therapists, specialized therapy suites, steam baths, and jacuzzi rooms.'
-            },
-            {
-              title: 'Annual Wellness Memberships',
-              description: 'Flexible tiered passes (Gold, Platinum) with redeemable session balances and family sharing.'
-            },
-            {
-              title: 'Therapist Rotation & Rest Balancing',
-              description: 'Enforce mandatory rest gaps between deep-tissue sessions to preserve therapist energy and wellness.'
-            },
-            {
-              title: 'Digital Health Intake Form',
-              description: 'Clients complete health questionnaires and consent forms on a tablet prior to entering treatment.'
-            },
-            {
-              title: 'Luxury Essential Oil Tracking',
-              description: 'Gram/ml consumption tracking for premium oils, facial serums, and organic wellness scrubs.'
-            },
-            {
-              title: 'Confidential Client Profiles',
-              description: 'Encrypted storage of client therapy preferences, therapist gender preference, and medical alerts.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can a single booking reserve both a specific therapist and a specific room?',
-              answer: 'Yes. PriyuLabs links therapist assignment directly with treatment suite availability to prevent conflicts.'
-            },
-            {
-              question: 'How do membership credits work across family members?',
-              answer: 'You can configure family membership accounts where primary members authorize dependents to redeem therapy credits.'
-            },
-            {
-              question: 'Can we take advance booking deposits via UPI?',
-              answer: 'Yes. Send an instant dynamic payment link via WhatsApp to secure appointment slots.'
-            },
-            {
-              question: 'Does it support multi-location spa chains?',
-              answer: 'Yes. Central cloud reporting lets owners monitor multi-center occupancy, therapist performance, and stock levels.'
-            }
-          ]
-        },
-        {
-          slug: 'barbershop',
-          url: '/salons-spas',
-          title: 'Barbershop',
-          metaTitle: 'Barbershop POS & Walk-In Queue Management Software | PriyuLabs',
-          metaDescription: 'Walk-in queue management, chair turn times, quick mobile billing, and barber commission payouts tailored for modern barbershops.',
-          h1: 'Barbershop Queue & Stylist Commission Software',
-          shortDescription: 'Digital walk-in waitlist queue display, rapid counter checkout, barber split commission slips, and automated beard-trimming reminder campaigns.',
-          problemsSolved: [
-            {
-              problem: 'Walk-In Customer Wait Time Frustration',
-              solution: 'Digital waiting lobby TV screen displays live barber queue positions and estimated wait times.'
-            },
-            {
-              problem: 'Barber Commission Calculations at End-of-Day',
-              solution: 'Automatic split tracking based on haircut counts, beard grooming, and retail wax sales.'
-            },
-            {
-              problem: 'Inconsistent Regular Customer Re-Visits',
-              solution: 'Automated WhatsApp reminder sent precisely 21 days after previous haircut invites client for a trim.'
-            },
-            {
-              problem: 'Loose Cash Counter Pilferage',
-              solution: 'Soundbox verified UPI integration ensures cashiers punch every haircut into the system before releasing the seat.'
-            }
-          ],
-          features: [
-            {
-              title: 'Digital Queue Waitlist TV',
-              description: 'Display current customer queue on a lobby TV screen showing which barber is with which client.'
-            },
-            {
-              title: '1-Click Barber Billing',
-              description: 'Cashiers select the barber photo, tap the service icon (Haircut + Beard), and print receipt in 3 seconds.'
-            },
-            {
-              title: 'Daily Cash & Commission Slips',
-              description: 'Print individual barber payout slips at the end of each shift with complete transparency.'
-            },
-            {
-              title: 'Automated 3-Week Haircut Alert',
-              description: 'Send gentle automated WhatsApp reminders to male clients when their hair is due for a fresh fade.'
-            },
-            {
-              title: 'Retail Grooming Product Upsell',
-              description: 'Track beard oil, hair pomade, and wax sales with barber retail incentives.'
-            },
-            {
-              title: 'Touchscreen Barber Check-In',
-              description: 'Barbers tap their profile on the counter terminal to claim the next waiting walk-in customer.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can customers check their queue position on their own phones?',
-              answer: 'Yes. When added to the waitlist, customers receive a WhatsApp text with a live tracking link.'
-            },
-            {
-              question: 'Does the system support booth-rental or freelance barber models?',
-              answer: 'Yes. You can configure revenue sharing, chair rental deductions, or standard commission percentages.'
-            },
-            {
-              question: 'Can we print thermal receipts on 58mm compact printers?',
-              answer: 'Yes. Both 58mm (2-inch) and 80mm (3-inch) thermal printers are fully supported.'
-            },
-            {
-              question: 'Can barbers see their total tips at the end of the day?',
-              answer: 'Yes. Digital tips added on card or UPI payments are clearly allocated to the barber on their settlement slip.'
-            }
-          ]
-        },
-        {
-          slug: 'gym',
-          url: '/gyms',
-          title: 'Gym',
-          metaTitle: 'Gym & Fitness Center Management Software | PriyuLabs',
-          metaDescription: 'Biometric turnstile access integration, automated WhatsApp membership renewals, and PT trainer commission tracking for fitness clubs.',
-          h1: 'Gym & Fitness Center Membership & Access Software',
-          shortDescription: 'Biometric RFID/fingerprint turnstile integration, automatic WhatsApp membership renewal alerts, trainer PT logs, and supplement retail POS.',
-          problemsSolved: [
-            {
-              problem: 'Defaulters Sneaking in Past Reception',
-              solution: 'Direct biometric turnstile gate sync automatically locks access the moment a membership expires.'
-            },
-            {
-              problem: 'Manual Payment Renewal Follow-Up Hassles',
-              solution: 'Automated WhatsApp renewal reminders with instant UPI payment links sent 7 days and 2 days prior.'
-            },
-            {
-              problem: 'Personal Trainer (PT) Session Disputes',
-              solution: 'Digital session punch-in logs client and trainer attendance before every personal workout.'
-            },
-            {
-              problem: 'Supplement & Protein Shake Inventory Theft',
-              solution: 'Integrated retail barcode POS tracks whey protein tubs, pre-workout cans, and shaker bottles.'
-            }
-          ],
-          features: [
-            {
-              title: 'Biometric Access Gate Sync',
-              description: 'Connects directly with eSSL, ZKTeco, and Matrix biometric fingerprint/facial recognition turnstiles.'
-            },
-            {
-              title: 'Automated WhatsApp Renewal Bot',
-              description: 'Sends personalized renewal payment links with festive discount codes before plan expiry.'
-            },
-            {
-              title: 'Personal Trainer Session Vault',
-              description: 'Clients sign off on completed PT sessions digitally on trainer tablet or via mobile OTP.'
-            },
-            {
-              title: 'Member Mobile Passbook',
-              description: 'Members track active plan days, workout attendance history, and trainer schedule on mobile.'
-            },
-            {
-              title: 'Supplement Bar Barcode POS',
-              description: 'Barcode billing for whey protein, energy drinks, and gym merchandise with low-stock alerts.'
-            },
-            {
-              title: 'Multi-Branch Access Pass',
-              description: 'Allows premium members to work out at any branch across your fitness club network.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Does PriyuLabs work with our existing fingerprint turnstile machine?',
-              answer: 'Yes. We support standard biometric controllers (eSSL, ZKTeco, Realtime, Hikvision) via local network sync.'
-            },
-            {
-              question: 'What happens when a member renews their plan online via WhatsApp?',
-              answer: 'Their biometric access is instantly reactivated in the turnstile system within seconds of successful payment.'
-            },
-            {
-              question: 'Can we track personal training commissions for trainers?',
-              answer: 'Yes. Trainer payouts are automatically calculated per session completed or as a percentage of PT sales.'
-            },
-            {
-              question: 'Can members freeze their memberships during medical emergencies?',
-              answer: 'Yes. Authorized managers can pause membership days, which adjusts the expiration date automatically.'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      categorySlug: 'retail-shops',
-      categoryTitle: 'Retail & Shops',
+      categorySlug: 'retail',
+      categoryTitle: 'Retail',
       description: 'High-speed barcode scanning, inventory replenishment, and customer credit ledgers for retail merchants.',
       sectors: [
         {
-          slug: 'grocery',
+          slug: 'overview',
           url: '/grocery-supermarkets-kirana',
-          title: 'Grocery',
-          metaTitle: 'Grocery & Supermarket POS Billing Software | PriyuLabs',
-          metaDescription: 'High-speed barcode scanning, weighing scale sync, digital customer credit (Khata) ledger, and batch expiry management for supermarkets.',
-          h1: 'Grocery, Kirana & Supermarket Barcode POS Software',
-          shortDescription: 'High-speed multi-barcode checkout, weighing scale sync for loose grains and produce, digital Khata ledger with automated WhatsApp UPI payment links.',
-          problemsSolved: [
-            {
-              problem: 'High Customer Billing Counter Rush Delays',
-              solution: 'Rapid sub-second barcode laser scanner integration scans 30 items per minute effortlessly.'
-            },
-            {
-              problem: 'Expired Cans and Packaged Goods on Shelves',
-              solution: 'Automated 30-day early expiry shield flags expiring FMCG products for immediate supplier return or clearance.'
-            },
-            {
-              problem: 'Uncollected Customer Credit (Udhar/Khata)',
-              solution: 'Digital Khata ledger records credit balances and auto-dispatches WhatsApp reminder links with UPI.'
-            },
-            {
-              problem: 'Weighing Fresh Vegetables and Grains Manually',
-              solution: 'Direct serial scale integration captures live weight instantly without cashier keying.'
-            }
-          ],
-          features: [
-            {
-              title: 'Pre-Loaded 50,000+ FMCG Barcode Database',
-              description: 'Instant scan-and-bill for popular biscuits, soaps, pulses, and snacks without manual item entry.'
-            },
-            {
-              title: 'Weighing Scale Direct Connect',
-              description: 'Instant weight reading for loose rice, dal, onions, and potatoes with automatic price-per-kg math.'
-            },
-            {
-              title: 'Digital Customer Udhar (Khata)',
-              description: 'Maintain customer credit ledgers with daily purchase tracking and automated WhatsApp reminder links.'
-            },
-            {
-              title: 'Expiry Shield & Batch Manager',
-              description: 'Flag FMCG batches approaching expiry dates 30/60 days prior to prevent unsellable inventory loss.'
-            },
-            {
-              title: 'Supplier Purchase Order & GRN',
-              description: 'Generate purchase orders, verify supplier goods received against invoices, and track accounts payable.'
-            },
-            {
-              title: 'Offline Queue Billing',
-              description: 'Keep scanning and printing receipts even when your store broadband connection is completely down.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Do I have to manually enter 5,000 grocery items before starting?',
-              answer: 'No. PriyuLabs comes pre-configured with thousands of Indian FMCG product barcodes and standard packaging details.'
-            },
-            {
-              question: 'Does it support loose grains and produce weighing scales?',
-              answer: 'Yes. Standard digital weighing scales connect via USB or RS232 cable for instant weight capture.'
-            },
-            {
-              question: 'How do customers pay their Khata credit balance?',
-              answer: 'Customers receive an automated WhatsApp statement with a UPI link that settles their balance into your bank account.'
-            },
-            {
-              question: 'Can I print small 2-inch and 3-inch barcode thermal bills?',
-              answer: 'Yes. All standard receipt printers and barcode sticker label printers are supported.'
-            }
-          ]
+          title: 'Overview',
+          isPrimary: true
         },
         {
-          slug: 'clothing-store',
-          url: '/apparel-boutiques',
-          title: 'Clothing Store',
-          metaTitle: 'Apparel Boutique & Clothing Store POS Software | PriyuLabs',
-          metaDescription: 'Size-color variant matrix, custom clothing barcode tag printing, VIP customer lookbooks, and alteration tracking for fashion boutiques.',
-          h1: 'Apparel Boutique & Fashion Retail Inventory POS',
-          shortDescription: 'Multi-variant size-color grid, custom barcode clothing tag printing, alteration tracking, and seasonal dead-stock clearance reports for fashion retailers.',
-          problemsSolved: [
-            {
-              problem: 'Managing Endless Size, Color & Fabric Variants',
-              solution: 'Single parent SKU matrix manages XS to XXL and color variants in one streamlined view.'
-            },
-            {
-              problem: 'Missing Barcodes on Designer Garments',
-              solution: 'Print customized branded barcode tags with MRP, size, fabric care, and branding in 1 click.'
-            },
-            {
-              problem: 'Dead Stock and Stale Fashion Inventory',
-              solution: 'Dead-stock aging analytics highlight garments sitting on racks for 90+ days for seasonal sales.'
-            },
-            {
-              problem: 'Garment Alteration Mix-ups',
-              solution: 'Attach alteration job slips with tailor notes, master measurement details, and promised trial dates.'
-            }
-          ],
-          features: [
-            {
-              title: 'Size & Color Variant Matrix',
-              description: 'Manage complex garment variations (Size, Color, Fabric, Fit) under unified master catalog items.'
-            },
-            {
-              title: '1-Tap Custom Barcode Tag Printing',
-              description: 'Print thermal jewelry and clothing tags with store logo, wash care instructions, size, and MRP.'
-            },
-            {
-              title: 'Garment Alteration Management',
-              description: 'Assign alteration tickets to internal tailors with promised customer pickup dates and SMS alerts.'
-            },
-            {
-              title: 'Dead Stock & Slow Movers Audit',
-              description: 'Identify slow-moving collections to initiate targeted end-of-season clearance promotions.'
-            },
-            {
-              title: 'VIP Digital WhatsApp Lookbook',
-              description: 'Send high-resolution digital product lookbooks to VIP fashion buyers with direct buy links.'
-            },
-            {
-              title: 'Credit Note & Exchange Management',
-              description: 'Seamlessly issue customer store credit notes for returned garments with 90-day expiry enforcement.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can we print custom clothing hang-tags with our store logo?',
-              answer: 'Yes. You can design and print custom thermal barcode sticker tags and jewelry rat-tail tags.'
-            },
-            {
-              question: 'How does the system handle size and color exchanges?',
-              answer: 'Cashiers can swap sizes in 1 click without voiding the bill, keeping inventory balances perfectly accurate.'
-            },
-            {
-              question: 'Can we run Buy 2 Get 1 Free promotional offers?',
-              answer: 'Yes. Advanced discount rules support mix-and-match offers, flat clearance discounts, and cart-level promos.'
-            },
-            {
-              question: 'Does it support multi-outlet boutique stock transfers?',
-              answer: 'Yes. Create transfer challans between branches and track stock in transit until confirmed by destination.'
-            }
-          ]
+          slug: 'grocery-supermarkets-kirana',
+          url: '/grocery-supermarkets-kirana',
+          title: 'Grocery, Supermarkets & Kirana Stores'
         },
         {
-          slug: 'electronics',
+          slug: 'electronics-mobile-shops',
           url: '/electronics-mobile-shops',
-          title: 'Electronics',
-          metaTitle: 'Electronics & Mobile Phone Shop POS Software | PriyuLabs',
-          metaDescription: '15-digit IMEI serial number tracking, multi-bank zero-cost EMI billing, and digital WhatsApp warranty certificates for electronics stores.',
-          h1: 'Electronics & Mobile Phone IMEI Warranty POS',
-          shortDescription: 'Exact 15-digit IMEI/serial number tracking, multi-bank paperless EMI integration, digital warranty certificates, and trade-in exchange billing.',
-          problemsSolved: [
-            {
-              problem: 'Fraudulent Phone Warranty Claims',
-              solution: 'Every sales invoice records exact 15-digit IMEI/serial number pushed directly to customer WhatsApp.'
-            },
-            {
-              problem: 'Complex Paperless Bank EMI Schemes',
-              solution: 'Pre-configured credit/debit card EMI calculation with Bajaj Finserv, HDFC, and Pine Labs support.'
-            },
-            {
-              problem: 'Used Phone Trade-In & Buyback Calculation',
-              solution: 'Log trade-in old phone condition, calculate exchange discount, and capture legal customer ID proof.'
-            },
-            {
-              problem: 'High-Value Serialized Stock Theft',
-              solution: 'Real-time serial number audit matches physical back-room inventory against software stock instantly.'
-            }
-          ],
-          features: [
-            {
-              title: 'IMEI & Serial Number Grabber',
-              description: 'Scan 15-digit IMEI codes with 2D barcode scanner directly into invoice line items.'
-            },
-            {
-              title: 'Paperless Multi-Bank EMI Calculation',
-              description: 'Instant tenure calculation (3, 6, 9, 12 months) with processing fee and cashback breakdowns.'
-            },
-            {
-              title: 'Digital Warranty Certificate',
-              description: 'Automated branded WhatsApp warranty card sent to customer with brand warranty validity dates.'
-            },
-            {
-              title: 'Trade-in & Old Device Buyback',
-              description: 'Capture buyback device IMEI, battery health, aesthetic rating, and customer Aadhaar verification.'
-            },
-            {
-              title: 'Brand Scheme & Volume Rebate Tracker',
-              description: 'Track Samsung, Vivo, and Apple target achievement schemes and distributor incentive payouts.'
-            },
-            {
-              title: 'Technician Repair Job-Sheet',
-              description: 'Manage phone screen replacements, service status tracking, and spare part inventory.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Does the bill clearly show the phone IMEI number for customer warranty claims?',
-              answer: 'Yes. The invoice displays device model, color, storage, and 15-digit IMEI/serial numbers prominently.'
-            },
-            {
-              question: 'Can we track individual commissions for sales promoters?',
-              answer: 'Yes. Promoters can be tagged on specific invoices to calculate monthly brand commission payouts.'
-            },
-            {
-              question: 'Does it support Bajaj Finserv and Pine Labs payment terminals?',
-              answer: 'Yes. Payments sync directly to eliminate manual cashier keying errors on credit card terminals.'
-            },
-            {
-              question: 'Can we audit serialized stock without stopping sales?',
-              answer: 'Yes. Use wireless handheld barcode scanners to audit shelf stock in the background while counters operate.'
-            }
-          ]
+          title: 'Electronics & Mobile Shops'
         },
         {
-          slug: 'pharmacy',
-          url: '/healthcare/pharmacies',
-          title: 'Pharmacy',
-          metaTitle: 'Pharmacy & Chemist Shop Billing Software | PriyuLabs',
-          metaDescription: 'Schedule H1 drug prescription tracking, batch expiry alerts, salt-composition substitute lookup, and GST-ready chemist billing.',
-          h1: 'Pharmacy & Chemist Batch/Expiry Billing Software',
-          shortDescription: 'Batch number and expiry tracking, salt and generic molecule substitution lookup, Schedule H/H1 narcotic registers, and GST pharmaceutical invoicing.',
-          problemsSolved: [
-            {
-              problem: 'Unsold Expired Medicine Loss',
-              solution: 'Automatic 60/90-day expiry notifications highlight medicines to be returned to pharmaceutical distributors.'
-            },
-            {
-              problem: 'Out-of-Stock Branded Medicine Lost Sales',
-              solution: 'Instant generic salt and molecule lookup suggests available chemical substitutes in real time.'
-            },
-            {
-              problem: 'Strict Schedule H & H1 Drug Audit Penalties',
-              solution: 'Mandatory prescription upload and doctor details capture for controlled antibiotic dispensations.'
-            },
-            {
-              problem: 'Slow Distributor Purchase Bill Entry',
-              solution: 'CSV and Excel purchase invoice import uploads 200+ medicine batches in under 30 seconds.'
-            }
-          ],
-          features: [
-            {
-              title: 'Batch & Expiry Date Enforcement',
-              description: 'Strict First-Expiry-First-Out (FEFO) dispensing ensures older non-expired batches sell first.'
-            },
-            {
-              title: 'Generic Salt Composition Search',
-              description: 'Search by Paracetamol 650mg, Amoxicillin, or Ibuprofen to find in-stock generic alternatives.'
-            },
-            {
-              title: 'Schedule H & H1 Compliance Register',
-              description: 'Auto-maintained digital register documenting patient name, prescribing doctor, and batch details.'
-            },
-            {
-              title: 'Distributor Invoice CSV Import',
-              description: 'Import distributor invoices directly to populate batch numbers, manufacturing dates, and purchase rates.'
-            },
-            {
-              title: 'Strip & Tablet Cut Billing',
-              description: 'Accurate pricing for individual loose tablets cut from a full 10-tablet or 15-tablet blister strip.'
-            },
-            {
-              title: 'Chronic Patient Refill Reminders',
-              description: 'Automated WhatsApp reminders sent every 28 days to diabetes and hypertension patients for medicine refills.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Does the software support selling loose tablets cut from a strip?',
-              answer: 'Yes. You define the tablets-per-strip ratio, and the system automatically calculates accurate fraction pricing.'
-            },
-            {
-              question: 'Can we import distributor bills in Excel or CSV format?',
-              answer: 'Yes. Upload pharmaceutical distributor invoices to automatically generate batches and purchase entries.'
-            },
-            {
-              question: 'Does it generate Schedule H1 audit reports for drug inspectors?',
-              answer: 'Yes. Generate compliant Schedule H and H1 dispensation registers with 1 click.'
-            },
-            {
-              question: 'Can we alert chronic patients for monthly blood pressure and sugar medicines?',
-              answer: 'Yes. The system automatically schedules WhatsApp refill alerts for regular long-term medication buyers.'
-            }
-          ]
+          slug: 'footwear-leather-stores',
+          url: '/footwear-leather-stores',
+          title: 'Footwear & Leather Stores'
+        },
+        {
+          slug: 'jewellery-shops',
+          url: '/jewellery-shops',
+          title: 'Jewellery Showrooms & Bullion'
+        },
+        {
+          slug: 'watch-stores',
+          url: '/watch-stores',
+          title: 'Watch Stores & Horology Boutiques'
+        },
+        {
+          slug: 'bookstores-stationery',
+          url: '/bookstores-stationery',
+          title: 'Bookstores & Stationery Outlets'
         }
       ]
     },
     {
-      categorySlug: 'education-services',
-      categoryTitle: 'Education & Services',
-      description: 'Streamlined batch fee collection, student attendance, and service ticketing for institutions and repair centers.',
+      categorySlug: 'beauty-fashion',
+      categoryTitle: 'Beauty & Fashion',
+      description: 'Streamlined appointment calendars, stylist commissions, and customer loyalty for wellness and fashion brands.',
       sectors: [
         {
-          slug: 'coaching-institute',
-          url: '/bookstores-stationery',
-          title: 'Coaching Institute',
-          metaTitle: 'Coaching Institute & Academy Management Software | PriyuLabs',
-          metaDescription: 'Manage student admissions, batch scheduling, installment fee collection with WhatsApp payment links, and biometric attendance.',
-          h1: 'Coaching Institute & Student Batch Fee Management',
-          shortDescription: 'Student batch allocation, installment fee scheduling, automated WhatsApp fee due reminders with direct UPI links, and biometric attendance logs.',
-          problemsSolved: [
-            {
-              problem: 'Chasing Late Tuition Fee Installments',
-              solution: 'Automated WhatsApp payment reminder alerts sent to parents with direct 1-tap UPI fee payment links.'
-            },
-            {
-              problem: 'Student Absenteeism Without Parent Awareness',
-              solution: 'Biometric or RFID card punch triggers instant WhatsApp arrival/departure message to parents.'
-            },
-            {
-              problem: 'Clashing Faculty & Classroom Timetables',
-              solution: 'Central room and subject scheduling grid prevents faculty and classroom double-allocations.'
-            },
-            {
-              problem: 'Unorganized Student Study Material Dispatch',
-              solution: 'Track printed book and module distribution records per enrolled student ID.'
-            }
-          ],
-          features: [
-            {
-              title: 'Installment Fee Plan Generator',
-              description: 'Flexible fee schedules (Monthly, Quarterly, Lump Sum) with automated receipt and tax invoices.'
-            },
-            {
-              title: 'Parent WhatsApp Fee Reminder Bot',
-              description: 'Automated fee due notifications sent 5 days prior with secure UPI payment gateway integration.'
-            },
-            {
-              title: 'Biometric RFID Student Attendance',
-              description: 'Instant notification dispatched to parents when student punches in at coaching center reception.'
-            },
-            {
-              title: 'Classroom & Faculty Timetable Grid',
-              description: 'Visual schedule board allocating rooms, subject teachers, and test series timings.'
-            },
-            {
-              title: 'Student Performance & Test Marks Portal',
-              description: 'Record mock test scores and auto-send monthly progress report cards to parents.'
-            },
-            {
-              title: 'Admission Lead CRM',
-              description: 'Track walk-in inquiry forms, demo class attendance, and follow-up call statuses.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can parents pay student fees directly via UPI from WhatsApp?',
-              answer: 'Yes. The reminder message contains a dynamic payment link that routes fee payments directly to your institute bank account.'
-            },
-            {
-              question: 'Can we send SMS or WhatsApp alerts to parents when students are absent?',
-              answer: 'Yes. Daily absence reports can auto-trigger alerts to parent mobile numbers within 15 minutes of class start.'
-            },
-            {
-              question: 'Does the software manage multiple coaching branches?',
-              answer: 'Yes. Central management allows administrators to monitor fee collections, enrollments, and staff attendance across all centers.'
-            },
-            {
-              question: 'Can we print official GST fee receipts for parents?',
-              answer: 'Yes. Clean branded receipts with serial invoice numbers and fee head breakdowns can be printed or sent as PDF.'
-            }
-          ]
+          slug: 'overview',
+          url: '/beauty-fashion/apparel',
+          title: 'Overview',
+          isPrimary: true
         },
         {
-          slug: 'tuition-centre',
-          url: '/bookstores-stationery',
-          title: 'Tuition Centre',
-          metaTitle: 'Tuition Centre Attendance & Fee Tracking Software | PriyuLabs',
-          metaDescription: 'Manage small student cohorts, monthly fee cards, parent notifications, and teacher payouts for local tuition and learning centres.',
-          h1: 'Tuition Centre Attendance & Fee Tracking Software',
-          shortDescription: 'Cohort management, quick monthly fee collection, QR attendance punch, and parent progress updates designed for neighbourhood tuition centres.',
-          problemsSolved: [
-            {
-              problem: 'Cash Fee Accounting Discrepancies',
-              solution: 'Instant digital fee receipt generated on mobile and shared immediately with parents on WhatsApp.'
-            },
-            {
-              problem: 'Tracking Multiple Small Batches and Timings',
-              solution: 'Easily organize Class 8 to 12 science and commerce cohorts with individual batch rosters.'
-            },
-            {
-              problem: 'Manual Paper Attendance Registers',
-              solution: 'QR code scanning or 1-tap mobile attendance roster logs student presence in seconds.'
-            },
-            {
-              problem: 'Irregular Student Progress Feedback',
-              solution: 'Share weekly homework completion and chapter test scores with parents in a standardized format.'
-            }
-          ],
-          features: [
-            {
-              title: 'Cohort & Subject Batch Manager',
-              description: 'Organize students by school grade, subject, and evening timing slots.'
-            },
-            {
-              title: '1-Tap Mobile Fee Collection',
-              description: 'Log monthly fees and generate professional PDF receipts in under 10 seconds.'
-            },
-            {
-              title: 'QR Student Attendance Punch',
-              description: 'Students scan their identity card QR on the reception tablet to mark attendance.'
-            },
-            {
-              title: 'Weekly Test Score Card Dispatch',
-              description: 'Send test scores and teacher feedback directly to parent WhatsApp chats.'
-            },
-            {
-              title: 'Tutor Hourly & Batch Payouts',
-              description: 'Track hourly faculty compensation and calculate monthly teacher remuneration accurately.'
-            },
-            {
-              title: 'Study Notes & Worksheet Vault',
-              description: 'Keep record of distributed mock question papers and chapter practice booklets.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Is this suitable for a single-room or 2-room neighbourhood tuition centre?',
-              answer: 'Yes. PriyuLabs is designed to be affordable, ultra-fast, and simple to operate from any mobile phone or tablet.'
-            },
-            {
-              question: 'Can we track monthly fee defaulters easily?',
-              answer: 'Yes. A single dashboard screen lists all students with pending fees, with a 1-click button to send WhatsApp reminders.'
-            },
-            {
-              question: 'Can teachers mark attendance from their own smartphones?',
-              answer: 'Yes. Staff logins allow teachers to take roll calls directly from their phone browser.'
-            },
-            {
-              question: 'How do parents receive the fee receipts?',
-              answer: 'Receipts are automatically delivered as a formatted WhatsApp message with an optional downloadable PDF invoice.'
-            }
-          ]
+          slug: 'clothing-brands-apparel-boutiques',
+          url: '/beauty-fashion/apparel',
+          title: 'Clothing Brands & Apparel Boutiques'
         },
         {
-          slug: 'clinic',
-          url: '/healthcare/pharmacies',
-          title: 'Clinic',
-          metaTitle: 'Clinic & Doctor Appointment Patient Billing Software | PriyuLabs',
-          metaDescription: 'OPD queue tokens, doctor appointment scheduling, prescription printing, and patient fee billing for medical clinics and polyclinics.',
-          h1: 'Clinic & Doctor Appointment Patient Billing Software',
-          shortDescription: 'Digital OPD queue tokens, doctor consultation scheduling, patient medical history vault, prescription printing, and pharmacy integration.',
-          problemsSolved: [
-            {
-              problem: 'Chaotic Reception OPD Waiting Lobby Crowds',
-              solution: 'Digital OPD token system displays estimated consultation wait times on reception waiting room screens.'
-            },
-            {
-              problem: 'Lost Patient Medical Records',
-              solution: 'Secure digital patient timeline archives past vitals, consultation notes, and prescription history.'
-            },
-            {
-              problem: 'Polyclinic Multi-Doctor Fee Splits',
-              solution: 'Automated consultation fee accounting tracks doctor shares and clinic facility charges transparently.'
-            },
-            {
-              problem: 'Unverified Patient Follow-Up Visits',
-              solution: 'Automated WhatsApp follow-up reminders notify patients when their recommended check-up is due.'
-            }
-          ],
-          features: [
-            {
-              title: 'Digital OPD Token Generator',
-              description: 'Issue sequential OPD consultation tokens with estimated wait time and SMS notifications.'
-            },
-            {
-              title: 'Doctor Schedule & Slot Manager',
-              description: 'Manage morning and evening visiting hours across multiple specialist doctors.'
-            },
-            {
-              title: 'Digital Prescription Pad',
-              description: 'Type or choose from saved medicine templates to print clean, legible prescriptions.'
-            },
-            {
-              title: 'Doctor Fee Split Accounting',
-              description: 'Daily settlement reports dividing gross consultation revenue between clinic and doctors.'
-            },
-            {
-              title: 'In-House Pharmacy & Lab Sync',
-              description: 'Push doctor prescriptions directly to clinic pharmacy counter to reduce patient wait times.'
-            },
-            {
-              title: 'WhatsApp Appointment Booking',
-              description: 'Patients can book, reschedule, or verify clinic consultation slots directly over WhatsApp.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can doctors view patient consultation history on their own tablets?',
-              answer: 'Yes. Doctors have private access to view previous vitals, diagnosis notes, and past prescribed medications.'
-            },
-            {
-              question: 'Does the system print branded clinic letterheads for prescriptions?',
-              answer: 'Yes. You can print prescriptions on standard A4/A5 paper with clinic logo, doctor registration numbers, and signatures.'
-            },
-            {
-              question: 'Can we manage multiple visiting doctors with different commission rates?',
-              answer: 'Yes. Each doctor profile can have custom consultation fees and revenue-sharing percentages.'
-            },
-            {
-              question: 'Is patient medical data stored securely?',
-              answer: 'Yes. Patient data is encrypted with strict bank-grade SSL security and access controls.'
-            }
-          ]
+          slug: 'salons-spas-beauty-parlors',
+          url: '/beauty-fashion/salons',
+          title: 'Salons, Spas & Beauty Parlors'
         },
         {
-          slug: 'repair-shop',
-          url: '/electronics-mobile-shops',
-          title: 'Repair Shop',
-          metaTitle: 'Repair Shop & Service Center Job-Sheet Software | PriyuLabs',
-          metaDescription: 'Manage device intake inspection photos, technician job-sheets, spare part inventory, and WhatsApp repair status updates.',
-          h1: 'Device & Appliance Repair Job-Sheet Tracking Software',
-          shortDescription: 'Digital repair job-sheets, intake condition photos, technician assignment, spare parts inventory deduction, and WhatsApp repair status alerts.',
-          problemsSolved: [
-            {
-              problem: 'Customer Disputes Over Pre-Existing Scratches',
-              solution: 'Capture intake inspection photos and customer sign-off on screen before accepting devices for repair.'
-            },
-            {
-              problem: 'Constant "Is My Device Ready?" Phone Inquiries',
-              solution: 'Automatic WhatsApp alerts notify customers when device is "Diagnosed", "In Repair", and "Ready for Pickup".'
-            },
-            {
-              problem: 'Spare Parts Pilferage & Inventory Leakage',
-              solution: 'Technicians must log specific screens, batteries, or IC components consumed against the job-sheet number.'
-            },
-            {
-              problem: 'Uncollected Repaired Devices Sitting in Storage',
-              solution: 'Automated periodic reminders prompt customers to collect repaired items and settle outstanding balances.'
-            }
-          ],
-          features: [
-            {
-              title: 'Digital Intake Job-Sheet',
-              description: 'Record device serial number, passcode, reported fault, accessories received, and estimated cost.'
-            },
-            {
-              title: 'Intake Defect Camera Log',
-              description: 'Attach photos of pre-existing screen cracks, scratches, and water damage directly to the job ticket.'
-            },
-            {
-              title: 'Automated WhatsApp Status Tracker',
-              description: 'Live tracking link allows customers to check repair progress without needing to call the shop.'
-            },
-            {
-              title: 'Spare Part Inventory Sync',
-              description: 'Deduct screens, charging ports, and replacement motherboards from stock upon job completion.'
-            },
-            {
-              title: 'Technician Labor Incentive Tracker',
-              description: 'Monitor individual technician repair volume and calculate monthly skill-based commission.'
-            },
-            {
-              title: 'Post-Repair Warranty Slips',
-              description: 'Print 30/90-day repair warranty cards with clear conditions and terms of service.'
-            }
-          ],
-          faqs: [
-            {
-              question: 'Can customers check repair status on their phone without calling?',
-              answer: 'Yes. Each job-sheet generates a private tracking URL sent via WhatsApp with real-time status updates.'
-            },
-            {
-              question: 'Can we photograph existing damage when accepting a laptop or smartphone?',
-              answer: 'Yes. Cashiers can snap intake photos with the POS tablet camera and attach them to the digital job-sheet.'
-            },
-            {
-              question: 'Does the software deduct replacement parts from our stock automatically?',
-              answer: 'Yes. When a technician marks an item as repaired, the used spare parts are immediately deducted from inventory.'
-            },
-            {
-              question: 'Can we print thermal adhesive stickers for repaired device boxes?',
-              answer: 'Yes. Print job ticket barcode stickers to label incoming gadgets and packaging boxes.'
-            }
-          ]
+          slug: 'cosmetics-skincare-stores',
+          url: '/beauty-fashion/cosmetics',
+          title: 'Cosmetics & Skincare Stores'
+        }
+      ]
+    },
+    {
+      categorySlug: 'services',
+      categoryTitle: 'Services',
+      description: 'Membership management, recurring subscriptions, and service dispatch for fitness and laundry centers.',
+      sectors: [
+        {
+          slug: 'overview',
+          url: '/services/gyms',
+          title: 'Overview',
+          isPrimary: true
+        },
+        {
+          slug: 'gyms-fitness-studios-yoga-centers',
+          url: '/services/gyms',
+          title: 'Gyms, Fitness Studios & Yoga Centers'
+        },
+        {
+          slug: 'dry-cleaners-laundry-shops',
+          url: '/services/dry-cleaners',
+          title: 'Dry Cleaners & Laundry Shops'
         }
       ]
     }
