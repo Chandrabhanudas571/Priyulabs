@@ -48,13 +48,13 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Prevent navigation bar overflow */
+  /* Prevent navigation bar overflow & hide desktop navbar on mobile */
   header,
   header.clean-nav-header,
   header.clean-subnav,
   header.navbar {
     width: 100% !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
     padding-left: 14px !important;
     padding-right: 14px !important;
@@ -71,13 +71,13 @@
     margin: 0 !important;
   }
 
+  /* Desktop nav elements hidden on mobile */
+  .clean-nav-links,
+  ul.clean-nav-links,
+  .nav-links,
+  header .clean-nav-links,
   .types-menu-dropdown {
-    width: auto !important;
-    max-width: calc(100vw - 28px) !important;
-    box-sizing: border-box !important;
-    left: 14px !important;
-    right: 14px !important;
-    transform: none !important;
+    display: none !important;
   }
 
   /* Remove dimming filters & grey backdrops */
@@ -91,9 +91,62 @@
     filter: none !important;
   }
 
+  .global-fluid-bg {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+
   .global-fluid-bg video {
     opacity: 0.25 !important;
     filter: none !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .grocery-trust-cta,
+  .trust-cta,
+  .cta-box,
+  .cta-card,
+  .clean-cta-box,
+  div[style*="padding: 60px 20px"],
+  div:has(> .grocery-trust-cta) {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: clip !important;
+  }
+
+  /* Stylist Schedule 3-Column Mockup on Mobile: Stack Vertically */
+  .schedule-ui-card {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  div[style*="grid-template-columns:repeat(3, 1fr)"],
+  div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  div[style*="grid-template-columns:repeat(3, 1fr)"] > div,
+  div[style*="grid-template-columns: repeat(3, 1fr)"] > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    box-sizing: border-box !important;
   }
 
   /* -----------------------------------------------------------------------
@@ -561,77 +614,179 @@
   }
 
   /* -----------------------------------------------------------------------
-     10. Pillars Section as a Pure CSS Scroll-Snap Swipe Carousel
+     10. Pillars Section: Clean Single-Column Vertical Stack (Mobile Bug Fix)
      ----------------------------------------------------------------------- */
+  html body section.clean-pillars-sec,
+  html body section.pillars-sec,
+  html body #pillars,
   .clean-pillars-sec,
   .pillars-sec {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
+    background: #FAF6EE !important;
+    background-color: #FAF6EE !important;
+    padding: 36px 0 !important;
+    overflow-x: clip !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .clean-pillars-sec .clean-sec-header,
   .pillars-sec .sec-header {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px 24px 20px !important;
+    margin: 0 auto !important;
     box-sizing: border-box !important;
+    display: block !important;
+    text-align: center !important;
   }
 
-  /* Carousel Container */
+  .clean-sec-header .clean-sec-badge,
+  .sec-header .sec-badge {
+    display: inline-flex !important;
+    width: fit-content !important;
+    height: auto !important;
+    margin: 0 auto 10px auto !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+  }
+
+  .clean-sec-header .clean-sec-title,
+  .sec-header .sec-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+    margin: 0 0 10px 0 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--pl-dark-text, #1E1B16) !important;
+  }
+
+  .clean-sec-header .clean-sec-desc,
+  .sec-header .sec-sub {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    color: var(--pl-muted-text, #5B5448) !important;
+  }
+
+  /* Pillar Container: Clean vertical column with 16px gap */
   .clean-pillars-sec .clean-container,
   .pillars-sec .clean-container,
   .pillars-sec .pillars-container {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     flex-wrap: nowrap !important;
-    gap: 14px !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    padding: 10px 20px 20px 20px !important;
-    scroll-padding-inline: 20px !important;
-    overscroll-behavior-x: contain !important;
-    scrollbar-width: none !important;
-    -webkit-overflow-scrolling: touch !important;
-    align-items: stretch !important;
-    width: 100vw !important;
+    gap: 16px !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
-    outline: none !important;
+    align-items: stretch !important;
+    background: transparent !important;
   }
 
-  .clean-pillars-sec .clean-container:focus-visible,
-  .pillars-sec .clean-container:focus-visible,
-  .pillars-sec .pillars-container:focus-visible {
-    outline: 2px solid var(--pl-primary-green) !important;
-    outline-offset: -2px !important;
-  }
-
-  .clean-pillars-sec .clean-container::-webkit-scrollbar,
-  .pillars-sec .clean-container::-webkit-scrollbar,
-  .pillars-sec .pillars-container::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  /* Each Card: 86% width so ~8% next card peeks */
+  /* Each Card: Full width natural flow, no stretching, no horizontal carousel */
   .pillar-row,
   .pillar-scroll-step {
-    flex: 0 0 86% !important;
-    min-width: 86% !important;
-    max-width: 86% !important;
-    scroll-snap-align: start !important;
-    scroll-snap-stop: normal !important;
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: auto !important;
+    scroll-snap-align: none !important;
     background: #ffffff !important;
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
     border-radius: 20px !important;
     border: 1px solid rgba(0, 0, 0, 0.06) !important;
     box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
-    padding: 16px !important;
+    padding: 18px 16px !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
-    height: auto !important;
-    align-self: stretch !important;
-    margin: 0 !important;
+    margin: 0 0 16px 0 !important;
     position: relative !important;
+    justify-content: flex-start !important;
+  }
+
+  .pillar-scroll-step:last-child,
+  .pillar-row:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Template B: Sticky Scroll Stage Mobile Layout */
+  .sticky-scroll-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    position: static !important;
+  }
+
+  .sticky-col-left {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    top: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin: 0 !important;
+  }
+
+  .sticky-media-card {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16/10 !important;
+    max-height: 280px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .sticky-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .sticky-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .sticky-nav-tabs {
+    display: none !important;
+  }
+
+  .sticky-col-right,
+  .scroll-col-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin: 0 !important;
   }
 
   /* Photo at top of card (aspect-ratio 16/10) */
@@ -642,6 +797,7 @@
     order: -1 !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
     margin: 0 0 14px 0 !important;
     padding: 0 !important;
     background: transparent !important;
@@ -659,7 +815,7 @@
     aspect-ratio: 16/10 !important;
     height: auto !important;
     object-fit: cover !important;
-    border-radius: 16px !important;
+    border-radius: 12px !important;
     display: block !important;
     max-height: none !important;
   }
@@ -668,6 +824,8 @@
   .pillar-text-col {
     order: 1 !important;
     width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
     display: flex !important;
     flex-direction: column !important;
     padding: 0 !important;
@@ -686,14 +844,22 @@
   }
 
   /* Heading */
-  .pillar-heading {
+  .pillar-heading,
+  .pillar-step-title {
     font-family: 'Fraunces', serif !important;
     font-size: 18px !important;
     font-weight: 600 !important;
     line-height: 1.3 !important;
-    color: var(--pl-dark-text) !important;
+    color: var(--pl-dark-text, #1E1B16) !important;
     margin: 0 0 12px 0 !important;
     text-align: left !important;
+  }
+
+  .pillar-step-divider {
+    height: 1px !important;
+    background: rgba(0, 0, 0, 0.08) !important;
+    margin: 12px 0 !important;
+    width: 100% !important;
   }
 
   /* Problem Solved box: cream tint #FAF6EE, 3px left border #B8893A, text #5B5448 */
@@ -718,52 +884,10 @@
     font-weight: 700 !important;
   }
 
-  /* How It Works collapsible details */
-  details.pl-how-details {
-    background: #FAF6EE !important;
-    border-radius: 12px !important;
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
-    margin: 0 0 12px 0 !important;
-    overflow: hidden !important;
-    transition: all 0.2s ease;
-  }
-
-  details.pl-how-details summary.pl-how-summary {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 10px 14px !important;
-    font-size: 13.5px !important;
-    font-weight: 600 !important;
-    color: #1E1B16 !important;
-    cursor: pointer !important;
-    list-style: none !important;
-    user-select: none !important;
-  }
-
-  details.pl-how-details summary.pl-how-summary::-webkit-details-marker {
-    display: none !important;
-  }
-
-  details.pl-how-details summary.pl-how-summary svg.pl-how-arrow {
-    transition: transform 0.2s ease;
-  }
-
-  details.pl-how-details[open] summary.pl-how-summary svg.pl-how-arrow {
-    transform: rotate(180deg);
-  }
-
-  details.pl-how-details .pl-how-content {
-    padding: 0 14px 12px 14px !important;
-    font-size: 13px !important;
-    line-height: 1.55 !important;
-    color: #5B5448 !important;
-    text-align: left !important;
-  }
-
   /* Checklist: single column, green tick icons aligned, 15px text */
   .pillar-bullets,
-  .pillar-checklist {
+  .pillar-checklist,
+  .pillar-points-list {
     display: flex !important;
     flex-direction: column !important;
     gap: 10px !important;
@@ -773,18 +897,23 @@
   }
 
   .pillar-bullets li,
-  .pillar-checklist li {
+  .pillar-checklist li,
+  .pillar-point-item {
     display: flex !important;
     align-items: flex-start !important;
     gap: 10px !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     line-height: 1.45 !important;
     color: #1E1B16 !important;
     text-align: left !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
   }
 
   .pillar-bullets li svg,
-  .pillar-checklist li svg {
+  .pillar-checklist li svg,
+  .pillar-point-icon svg {
     width: 18px !important;
     height: 18px !important;
     min-width: 18px !important;
@@ -793,59 +922,12 @@
     flex-shrink: 0 !important;
   }
 
-  /* Dot indicators & Counter below carousel */
-  .pl-carousel-nav {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    margin: 8px auto 20px auto !important;
-    padding: 0 20px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .pl-dots-track {
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-  }
-
+  /* Hide Carousel Navigation & Dots & Counters on Mobile */
+  .pl-carousel-nav,
+  .pl-dots-track,
+  .pl-counter-badge,
   .pl-dot-btn {
-    min-width: 44px !important;
-    min-height: 44px !important;
-    width: 44px !important;
-    height: 44px !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent !important;
-  }
-
-  .pl-dot-btn:focus-visible {
-    outline: 2px solid var(--pl-primary-green) !important;
-    outline-offset: 2px !important;
-    border-radius: 9999px !important;
-  }
-
-  .pl-dot-pill {
-    display: block !important;
-    width: 8px !important;
-    height: 8px !important;
-    border-radius: 9999px !important;
-    background: rgba(0, 0, 0, 0.2) !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  }
-
-  .pl-dot-btn.active .pl-dot-pill {
-    width: 22px !important;
-    background: #1b4332 !important;
+    display: none !important;
   }
 
   .pl-counter-badge {
@@ -860,7 +942,251 @@
   }
 
   /* -----------------------------------------------------------------------
-     11. Final CTA Card Redesign (Photo Top Banner, Text Below)
+     11. Interactive Mobile Swipe Cards & Micro-Animations
+     Precision Modules, Feature Grids, Hero Showcases, and Metrics Strips
+     ----------------------------------------------------------------------- */
+  @keyframes plSlideFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes plArrowPulse {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+
+  /* Animated Swipe Hint Bar */
+  .pl-swipe-hint-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 6px 20px 14px 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pl-swipe-hint-label {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    color: #9A6F2B !important; /* Soft luxury gold */
+    text-transform: uppercase !important;
+  }
+
+  .pl-swipe-hint-arrow {
+    display: inline-block !important;
+    animation: plArrowPulse 1.6s ease-in-out infinite !important;
+    font-size: 13px !important;
+  }
+
+  /* Dynamic animated dots track */
+  .pl-swipe-dots {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .pl-swipe-dot {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 999px !important;
+    background: rgba(0, 0, 0, 0.16) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: block !important;
+  }
+
+  .pl-swipe-dot.active {
+    width: 18px !important;
+    background: #1b4332 !important; /* Signature forest green */
+    border-radius: 999px !important;
+  }
+
+  /* Feature Grids as Swipe Cards on Mobile */
+  .cards-grid-6,
+  .clean-grid-6,
+  .clean-feature-grid,
+  .matrix-grid,
+  .features-grid,
+  .features-6-grid,
+  .hardware-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 10px 20px 20px 20px !important;
+    scroll-padding-inline: 20px !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cards-grid-6::-webkit-scrollbar,
+  .clean-grid-6::-webkit-scrollbar,
+  .clean-feature-grid::-webkit-scrollbar,
+  .matrix-grid::-webkit-scrollbar,
+  .features-grid::-webkit-scrollbar,
+  .features-6-grid::-webkit-scrollbar,
+  .hardware-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .cards-grid-6 > *,
+  .clean-grid-6 > *,
+  .clean-feature-grid > *,
+  .matrix-grid > *,
+  .features-grid > *,
+  .features-6-grid > *,
+  .hardware-grid > *,
+  .matrix-card,
+  .clean-card,
+  .feature-card {
+    flex: 0 0 84% !important;
+    min-width: 84% !important;
+    max-width: 320px !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal !important;
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
+    padding: 24px 20px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+  }
+
+  .cards-grid-6 > *:active,
+  .clean-grid-6 > *:active,
+  .matrix-card:active,
+  .clean-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Hero 3-Photo Showcase Swipe Cards */
+  .hero-triptych,
+  .hero-triptych-frame {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 10px 20px 20px 20px !important;
+    scroll-padding-inline: 20px !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-triptych::-webkit-scrollbar,
+  .hero-triptych-frame::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .triptych-card,
+  .triptych-panel,
+  .hero-triptych > * {
+    flex: 0 0 84% !important;
+    min-width: 84% !important;
+    max-width: 320px !important;
+    scroll-snap-align: start !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 6px 24px -4px rgba(15, 23, 42, 0.08) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .triptych-card:active,
+  .triptych-panel:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Metrics / Numbers Swipeable Strip */
+  .metrics-grid-4,
+  .clean-metrics-grid,
+  .metrics-ribbon-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 8px 20px 16px 20px !important;
+    scroll-padding-inline: 20px !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .metrics-grid-4::-webkit-scrollbar,
+  .clean-metrics-grid::-webkit-scrollbar,
+  .metrics-ribbon-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .metrics-grid-4 > *,
+  .clean-metrics-grid > *,
+  .metrics-ribbon-grid > *,
+  .clean-metric-card,
+  .metric-card {
+    flex: 0 0 72% !important;
+    min-width: 72% !important;
+    max-width: 260px !important;
+    scroll-snap-align: start !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04) !important;
+    padding: 20px 18px !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Icon Squircles Micro-Interaction */
+  .icon-squircle,
+  .clean-icon-wrap,
+  .matrix-icon-box {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .cards-grid-6 > *:hover .icon-squircle,
+  .matrix-card:hover .icon-squircle,
+  .clean-card:hover .clean-icon-wrap {
+    transform: scale(1.08) rotate(2deg) !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     12. Final CTA Card Redesign (Photo Top Banner, Text Below)
      ----------------------------------------------------------------------- */
   /* Target the final conversion card across all pages */
   div[style*="grid-template-columns: 1.15fr 0.85fr"],
@@ -1036,6 +1362,283 @@
     position: static !important;
     float: none !important;
     margin: 0 !important;
+  }
+
+  /* -----------------------------------------------------------------------
+     11. STANDARDIZED MOBILE FOOTER SYSTEM
+     ----------------------------------------------------------------------- */
+  /* All Footer Containers on Sector Pages */
+  footer,
+  footer.priyulabs-universal-footer,
+  footer.footer-universal,
+  footer.site-footer,
+  footer.footer,
+  footer.hub-footer {
+    padding-top: 40px !important;
+    padding-bottom: 24px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-top: 40px !important;
+    background: #FAF6EE !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  footer .wrap,
+  footer.priyulabs-universal-footer .wrap,
+  footer.footer-universal .wrap {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Universal Grid: 2-column density */
+  .foot-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 16px !important;
+    align-items: start !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Brand column spans both columns */
+  .foot-grid > div:first-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Footer Logo: height locked to 28px */
+  .foot-grid .logo,
+  footer .logo {
+    font-family: 'Fraunces', Georgia, serif !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: #1E1B16 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+  }
+
+  .foot-grid .logo img,
+  footer .logo img,
+  footer img.logo {
+    height: 28px !important;
+    width: 28px !important;
+    max-height: 28px !important;
+    max-width: 28px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    background: transparent !important;
+  }
+
+  /* Brand tagline */
+  .foot-brand-desc {
+    margin-top: 10px !important;
+    margin-bottom: 16px !important;
+    color: #5B5448 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    max-width: 280px !important;
+    text-align: left !important;
+  }
+
+  /* Social buttons: one row, 44px tap targets, 22px SVG icons */
+  .foot-social {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+  }
+
+  .foot-social-btn {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    padding: 0 !important;
+  }
+
+  .foot-social-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .foot-social-btn:active {
+    transform: scale(0.96) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .foot-social-btn svg {
+    width: 22px !important;
+    height: 22px !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Column Headings: 14px, weight 600, color #1E1B16 */
+  .foot-grid h5 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #1E1B16 !important;
+    margin-bottom: 12px !important;
+    margin-top: 0 !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.01em !important;
+    display: block !important;
+  }
+
+  .foot-grid h5::after {
+    display: none !important;
+  }
+
+  /* Link items: 14px, line-height 1.5, gap 10px */
+  .foot-grid ul {
+    list-style: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .foot-grid a,
+  .foot-address {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+    color: #5B5448 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+    display: inline-block !important;
+  }
+
+  .foot-grid a:hover {
+    color: #263B28 !important;
+    transform: none !important;
+  }
+
+  /* National Emblems: compact 34px height */
+  .footer-national-emblems-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 24px auto 14px !important;
+    text-align: center !important;
+  }
+
+  .footer-national-emblems-wrap img {
+    height: 34px !important;
+    max-height: 34px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    box-shadow: none !important;
+  }
+
+  /* Bottom copyright row with sticky-bottom-bar clearance */
+  .foot-bottom {
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 12px) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    font-size: 12.5px !important;
+    font-weight: 400 !important;
+    color: #6E6554 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Sector & Directory Simple Footers (.footer, .site-footer, .hub-footer) */
+  footer.footer,
+  footer.site-footer,
+  footer.hub-footer {
+    padding-top: 36px !important;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 16px) !important;
+    background: #FAF6EE !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: none !important;
+  }
+
+  footer.footer .container,
+  footer.site-footer .footer-inner,
+  footer.hub-footer > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 14px !important;
+    padding: 0 16px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  footer.footer p,
+  footer.site-footer div,
+  footer.hub-footer span {
+    font-size: 12.5px !important;
+    color: #78716c !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+  }
+
+  footer.footer a,
+  footer.site-footer a {
+    font-size: 14px !important;
+    color: #263B28 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+
+  footer.site-footer .footer-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px 18px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  footer.site-footer .footer-links a {
+    font-size: 13.5px !important;
+    color: #5B5448 !important;
+    font-weight: 500 !important;
   }
 
   /* Respects prefers-reduced-motion */

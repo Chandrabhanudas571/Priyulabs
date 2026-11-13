@@ -231,7 +231,8 @@ body {
 
   <p>Loading... If not redirected, <a href="/solutions.html#appointments">click here</a>.</p>
 
-  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>) -->
   <script>
     (function() {
       function initSmoothScroll() {
@@ -390,9 +391,9 @@ body {
   <!-- ══════════════════════════════════════════════════════════
        UNIVERSAL EDITORIAL FOOTER
   ══════════════════════════════════════════════════════════ -->
-  <footer class="priyulabs-universal-footer" style="padding: 72px 0 36px; border-top: 2px solid #D4C3A3; margin-top: 80px; background: #F1E8D5 !important; box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08); position: relative; z-index: 10; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; text-align: left; color: #383023;">
+  <footer class="priyulabs-universal-footer">
     <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-      <div class="foot-grid" style="display: grid; grid-template-columns: 1.3fr 1fr 1.1fr 1fr; gap: 36px; text-align: left;">
+      <div class="foot-grid">
         <div>
           <div class="logo" style="display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A150D;">
             <img src="/assets/logo.svg" alt="PriyuLabs" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/logo.svg';}" style="height: 28px; width: 28px; object-fit: contain; border-radius: 7px; display: inline-block;" / width="32" height="32" loading="lazy" decoding="async">
@@ -453,7 +454,7 @@ body {
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08); padding: 3px 10px; border-radius: 9999px; font-size: 11.5px; font-family: ui-monospace, monospace; color: #4a4030;">
           <span class="version-pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
-          <span class="foot-version" id="siteVersion">v2.4.97</span>
+          <span class="foot-version" id="siteVersion">v2.4.100</span>
         </span>
         <span>UDYAM-OD-19-0177979</span>
       </div>

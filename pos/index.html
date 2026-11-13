@@ -1581,17 +1581,160 @@
       margin-bottom: 56px;
     }
 
-    @media(max-width: 900px) {
+    @media(max-width: 900px) and (min-width: 768px) {
       .foot-grid {
         grid-template-columns: 1fr 1fr;
         gap: 36px;
       }
     }
 
-    @media(max-width: 550px) {
+    /* Standardized Mobile Footer System (<= 767px) */
+    @media(max-width: 767px) {
+      footer,
+      footer.priyulabs-universal-footer {
+        padding: 40px 20px 24px !important;
+        margin-top: 40px !important;
+        background: #FAF6EE !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+        box-shadow: none !important;
+      }
+
+      footer.priyulabs-universal-footer .wrap {
+        padding: 0 !important;
+      }
+
       .foot-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 24px 16px !important;
+        align-items: start !important;
+      }
+
+      .foot-grid > div:first-child {
+        grid-column: 1 / -1 !important;
+      }
+
+      .foot-grid .logo img {
+        height: 28px !important;
+        width: 28px !important;
+        object-fit: contain !important;
+      }
+
+      .foot-brand-desc {
+        margin-top: 10px !important;
+        margin-bottom: 16px !important;
+        color: #5B5448 !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        max-width: 280px !important;
+      }
+
+      .foot-social {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        position: relative !important;
+        z-index: 10 !important;
+        pointer-events: auto !important;
+      }
+
+      .foot-social-btn {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        border-radius: 50% !important;
+        background: #FFFFFF !important;
+        border: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-decoration: none !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+        box-sizing: border-box !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        padding: 0 !important;
+      }
+
+      .foot-social-btn svg {
+        width: 22px !important;
+        height: 22px !important;
+        display: block !important;
+        pointer-events: none !important;
+      }
+
+      footer h5,
+      .foot-grid h5 {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #1E1B16 !important;
+        margin-bottom: 12px !important;
+        text-transform: none !important;
+        letter-spacing: -0.01em !important;
+      }
+
+      footer h5 span,
+      .foot-grid h5 span,
+      .foot-grid h5::after {
+        display: none !important;
+      }
+
+      footer ul,
+      .foot-grid ul {
+        list-style: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      footer ul li a,
+      .foot-grid a,
+      .foot-address {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
+        color: #5B5448 !important;
+        text-decoration: none !important;
+      }
+
+      .footer-national-emblems-wrap img {
+        height: 34px !important;
+        max-height: 34px !important;
+        width: auto !important;
+        object-fit: contain !important;
+        box-shadow: none !important;
+      }
+
+      .foot-bottom {
+        margin-top: 20px !important;
+        padding-top: 16px !important;
+        padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 12px) !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+        font-size: 12.5px !important;
+        font-weight: 400 !important;
+        color: #6E6554 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .foot-social {
+        display: none !important;
       }
     }
 
@@ -2993,15 +3136,52 @@
     <!-- ══════════════════════════════════════════════════════════
        UNIVERSAL EDITORIAL FOOTER
   ══════════════════════════════════════════════════════════ -->
-  <footer class="priyulabs-universal-footer" style="padding: 72px 0 36px; border-top: 2px solid #D4C3A3; margin-top: 80px; background: #F1E8D5 !important; box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08); position: relative; z-index: 10; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; text-align: left; color: #383023;">
-    <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
-      <div class="foot-grid" style="display: grid; grid-template-columns: 1.3fr 1fr 1.1fr 1fr; gap: 36px; text-align: left;">
+  <footer class="priyulabs-universal-footer">
+    <div class="wrap">
+      <div class="foot-grid">
         <div>
           <div class="logo" style="display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; color: #1A150D;">
             <img src="/assets/logo.svg" alt="PriyuLabs" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src='assets/logo.svg';}" style="height: 28px; width: 28px; object-fit: contain; border-radius: 7px; display: inline-block;" / width="32" height="32" loading="lazy" decoding="async">
             <span>PriyuLabs</span>
           </div>
           <p class="foot-brand-desc" style="margin-top: 14px; color: #383023; font-size: 14.5px; font-weight: 500; line-height: 1.6; max-width: 290px; text-align: left;">India's AI retail OS — POS billing, inventory, staff HRMS and GST, built for Bharat.</p>
+          <div class="foot-social" aria-label="Social links">
+            <a href="https://wa.me/917879844050?text=Hi%20Priyulabs%2C%20I%20want%20to%20book%20a%2010-min%20demo."
+              target="_blank" rel="noopener noreferrer" class="foot-social-btn" aria-label="Chat on WhatsApp">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z" fill="#25D366"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.37 14.39C17.12 14.26 15.89 13.66 15.66 13.58C15.43 13.49 15.27 13.45 15.1 13.7C14.94 13.95 14.47 14.5 14.32 14.67C14.18 14.84 14.03 14.86 13.78 14.73C13.54 14.61 12.75 14.35 11.82 13.52C11.09 12.87 10.6 12.07 10.46 11.82C10.31 11.58 10.44 11.44 10.57 11.32C10.68 11.21 10.82 11.03 10.94 10.89C11.07 10.74 11.11 10.64 11.19 10.48C11.27 10.31 11.23 10.17 11.17 10.04C11.11 9.92 10.61 8.7 10.41 8.19C10.21 7.7 10 7.76 9.85 7.75C9.71 7.75 9.55 7.74 9.38 7.74C9.22 7.74 8.95 7.8 8.73 8.05C8.5 8.29 7.87 8.89 7.87 10.1C7.87 11.31 8.75 12.48 8.87 12.64C9 12.8 10.6 15.28 13.06 16.34C13.65 16.59 14.1 16.74 14.46 16.85C15.05 17.04 15.58 17.01 16.01 16.95C16.48 16.88 17.46 16.36 17.66 15.78C17.87 15.21 17.87 14.72 17.81 14.62C17.75 14.51 17.61 14.45 17.37 14.39Z" fill="white"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/chandrabhanu-das-773060442" target="_blank"
+              rel="noopener noreferrer" class="foot-social-btn" aria-label="Priyulabs on LinkedIn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" fill="#0A66C2"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/priyulabs/" target="_blank" rel="noopener noreferrer"
+              class="foot-social-btn" aria-label="Priyulabs on Instagram">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="plFootIgGradPos" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#F58529"/>
+                    <stop offset="30%" stop-color="#DD2A7B"/>
+                    <stop offset="70%" stop-color="#8134AF"/>
+                    <stop offset="100%" stop-color="#515BD4"/>
+                  </linearGradient>
+                </defs>
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="url(#plFootIgGradPos)" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4.25" stroke="url(#plFootIgGradPos)" stroke-width="2"/>
+                <circle cx="17.25" cy="6.75" r="1.25" fill="url(#plFootIgGradPos)"/>
+              </svg>
+            </a>
+            <a href="mailto:priylabspos@gmail.com?subject=Enquiry%20from%20Priyulabs%20website"
+              class="foot-social-btn" aria-label="Email Priyulabs">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#EA4335"/>
+              </svg>
+            </a>
+          </div>
         </div>
         <div>
           <h5 style="font-family: 'Fraunces', Georgia, serif; font-size: 17px; margin-bottom: 18px; color: #1A150D; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;">
@@ -3056,7 +3236,7 @@
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08); padding: 3px 10px; border-radius: 9999px; font-size: 11.5px; font-family: ui-monospace, monospace; color: #4a4030;">
           <span class="version-pulse-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
-          <span class="foot-version" id="siteVersion">v2.4.97</span>
+          <span class="foot-version" id="siteVersion">v2.4.100</span>
         </span>
         <span>UDYAM-OD-19-0177979</span>
       </div>

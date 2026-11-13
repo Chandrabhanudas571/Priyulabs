@@ -8,7 +8,8 @@
   <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="manifest" href="site.webmanifest" />
-  <base href="/" />
+  <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosmetics &amp; Skincare Stores POS &amp; Retail OS | Priyulabs</title>
@@ -1222,6 +1223,7 @@ body {
   .pos-cat-btn { flex: 0 0 auto; white-space: nowrap; }
 }
 </style>
+  <link rel="stylesheet" href="assets/css/business-types-mobile.css?v=20261113v2" />
 </head>
 <body>
 
@@ -2102,7 +2104,8 @@ body {
     });
   </script>
 
-  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>) -->
   <script>
     (function() {
       function initSmoothScroll() {
@@ -2292,5 +2295,6 @@ body {
 
   <script src="script.js" defer></script>
   <script src="version.js" defer></script>
+  <script src="assets/js/business-types-mobile.js?v=20261113v2" defer></script>
 </body>
 </html>

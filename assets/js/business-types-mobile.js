@@ -8,116 +8,103 @@
     if (window.innerWidth > 767) return;
 
     // -------------------------------------------------------------
-    // 1. PILLAR CAROUSEL SETUP (Dots, Counter & IntersectionObserver)
+    // Interactive Swipe Indicators for Feature Grids & Showcases
     // -------------------------------------------------------------
-    const pillarSec = document.querySelector('.clean-pillars-sec, .pillars-sec');
-    if (!pillarSec) return;
+    const swipeTrackSelectors = [
+      '.cards-grid-6',
+      '.clean-grid-6',
+      '.clean-feature-grid',
+      '.matrix-grid',
+      '.features-grid',
+      '.features-6-grid',
+      '.hardware-grid',
+      '.hero-triptych',
+      '.hero-triptych-frame'
+    ];
 
-    // Find the card container
-    const container = pillarSec.querySelector('.clean-container, .pillars-container, .sticky-scroll-stage');
-    if (!container) return;
+    const tracks = document.querySelectorAll(swipeTrackSelectors.join(', '));
 
-    // Find all pillar cards or rows
-    const cards = Array.from(pillarSec.querySelectorAll('.pillar-row, .pillar-scroll-step, .pillar-card'));
-    if (cards.length <= 1) return; // 1 pillar renders as a normal card
+    tracks.forEach((track) => {
+      const items = Array.from(track.children).filter(el => !el.classList.contains('pl-swipe-hint-bar'));
+      if (items.length <= 1) return;
 
-    // Accessibility attributes on carousel container
-    container.setAttribute('role', 'region');
-    container.setAttribute('aria-label', 'Pillars');
-    container.setAttribute('tabindex', '0');
+      // Check if already injected
+      const existingBar = track.nextElementSibling;
+      if (existingBar && existingBar.classList.contains('pl-swipe-hint-bar')) return;
 
-    // Arrow key navigation
-    container.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') {
-        container.scrollBy({ left: container.clientWidth * 0.86, behavior: 'smooth' });
-      } else if (e.key === 'ArrowLeft') {
-        container.scrollBy({ left: -container.clientWidth * 0.86, behavior: 'smooth' });
-      }
-    });
+      const bar = document.createElement('div');
+      bar.className = 'pl-swipe-hint-bar';
 
-    // Progressive enhancement: Wrap "How it works" in <details>
-    cards.forEach((card, idx) => {
-      card.setAttribute('data-pillar-card-idx', idx);
-      
-      const bodyText = card.querySelector('.pillar-body-text, .pillar-desc');
-      if (bodyText && !card.querySelector('.pl-how-details')) {
-        const textContent = bodyText.innerHTML.replace(/<strong>How It Works:?<\/strong>/i, '').trim();
-        const details = document.createElement('details');
-        details.className = 'pl-how-details';
-        details.innerHTML = `
-          <summary class="pl-how-summary">
-            <span>How it works</span>
-            <svg class="pl-how-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </summary>
-          <div class="pl-how-content">${textContent}</div>
-        `;
-        bodyText.parentNode.insertBefore(details, bodyText);
-        bodyText.style.display = 'none'; // Keep in DOM for fallback/SEO
-      }
-    });
+      // Left: Animated swipe label with pulsing arrow
+      const hintLabel = document.createElement('div');
+      hintLabel.className = 'pl-swipe-hint-label';
+      hintLabel.innerHTML = `<span>Swipe to explore</span> <span class="pl-swipe-hint-arrow">→</span>`;
 
-    // Check if nav already exists
-    let navWrap = pillarSec.querySelector('.pl-carousel-nav');
-    if (!navWrap) {
-      navWrap = document.createElement('div');
-      navWrap.className = 'pl-carousel-nav';
-      navWrap.setAttribute('role', 'tablist');
-      navWrap.setAttribute('aria-label', 'Pillar navigation');
+      // Right: Active dot indicators
+      const dotsWrap = document.createElement('div');
+      dotsWrap.className = 'pl-swipe-dots';
 
-      const dotsContainer = document.createElement('div');
-      dotsContainer.className = 'pl-dots-track';
+      const dots = [];
+      items.forEach((item, idx) => {
+        const dot = document.createElement('span');
+        dot.className = `pl-swipe-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('data-index', idx);
+        dot.style.cursor = 'pointer';
 
-      const counter = document.createElement('div');
-      counter.className = 'pl-counter-badge';
-      counter.textContent = `1 / ${cards.length}`;
-
-      cards.forEach((card, i) => {
-        const dotBtn = document.createElement('button');
-        dotBtn.type = 'button';
-        dotBtn.className = `pl-dot-btn ${i === 0 ? 'active' : ''}`;
-        dotBtn.setAttribute('role', 'tab');
-        dotBtn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-        dotBtn.setAttribute('aria-label', `Go to pillar ${i + 1}`);
-        
-        const dotPill = document.createElement('span');
-        dotPill.className = 'pl-dot-pill';
-        dotBtn.appendChild(dotPill);
-
-        dotBtn.addEventListener('click', () => {
-          card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        dot.addEventListener('click', () => {
+          item.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
         });
 
-        dotsContainer.appendChild(dotBtn);
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
       });
 
-      navWrap.appendChild(dotsContainer);
-      navWrap.appendChild(counter);
+      bar.appendChild(hintLabel);
+      bar.appendChild(dotsWrap);
 
-      // Insert right after container
-      container.parentNode.insertBefore(navWrap, container.nextSibling);
+      // Insert right after track
+      track.parentNode.insertBefore(bar, track.nextSibling);
 
-      // IntersectionObserver for active dot and counter
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-              const activeIdx = parseInt(entry.target.getAttribute('data-pillar-card-idx') || '0', 10);
-              const allDots = navWrap.querySelectorAll('.pl-dot-btn');
-              allDots.forEach((btn, idx) => {
-                const isActive = idx === activeIdx;
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-              });
-              counter.textContent = `${activeIdx + 1} / ${cards.length}`;
-            }
+      // Scroll listener to update active dot
+      let ticking = false;
+      track.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollLeft = track.scrollLeft;
+            const cardWidth = items[0].offsetWidth || (track.clientWidth * 0.84);
+            const activeIdx = Math.min(
+              Math.max(Math.round(scrollLeft / (cardWidth + 14)), 0),
+              items.length - 1
+            );
+
+            dots.forEach((d, i) => {
+              d.classList.toggle('active', i === activeIdx);
+            });
+            ticking = false;
           });
-        }, {
-          root: container,
-          threshold: 0.55
-        });
+          ticking = true;
+        }
+      }, { passive: true });
+    });
 
-        cards.forEach(card => observer.observe(card));
-      }
+    // -------------------------------------------------------------
+    // Staggered Entrance Animation on Scroll
+    // -------------------------------------------------------------
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.matrix-card, .clean-card, .triptych-card, .triptych-panel').forEach(card => {
+        card.style.transition = 'opacity 0.45s ease-out, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+        observer.observe(card);
+      });
     }
   }
 
@@ -127,7 +114,6 @@
     setup();
   }
 
-  // Handle orientation change or resize
   window.addEventListener('resize', () => {
     setup();
   });

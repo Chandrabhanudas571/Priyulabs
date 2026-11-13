@@ -82,7 +82,8 @@ body {
 <div class="global-fluid-mask"></div>
 <div id="root"></div>
 <script type="module" src="/src/main.tsx"></script>
-  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>) -->
   <script>
     (function() {
       function initSmoothScroll() {

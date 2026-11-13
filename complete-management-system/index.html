@@ -9,7 +9,8 @@
   <link rel="alternate icon" type="image/png" href="assets/favicon.png" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="manifest" href="site.webmanifest" />
-  <base href="/">
+  <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Complete Management System | Priyulabs Digital</title>
@@ -2287,16 +2288,18 @@
     }
 
 
-    /* ---------- Bold & Distinct Standout Footer ---------- */
-    footer {
-      padding: 72px 0 36px !important;
-      border-top: 2px solid #D4C3A3 !important;
-      margin-top: 80px !important;
-      background: #F1E8D5 !important;
+    /* ---------- Bold & Distinct Standout Footer (Desktop >= 768px) ---------- */
+    @media (min-width: 768px) {
+      footer {
+        padding: 72px 0 36px !important;
+        border-top: 2px solid #D4C3A3 !important;
+        margin-top: 80px !important;
+        background: #F1E8D5 !important;
       box-shadow: 0 -16px 40px rgba(42, 36, 25, 0.08) !important;
-      position: relative !important;
-      z-index: 10 !important;
-      color: #1A150D !important;
+        position: relative !important;
+        z-index: 10 !important;
+        color: #1A150D !important;
+      }
     }
 
     .foot-grid {
@@ -2408,11 +2411,8 @@
         padding: 44px 0 32px !important;
       }
 
-      .foot-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 28px !important;
-      }
+      .foot-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 24px 16px !important; align-items: start !important; }
+      .foot-grid > div:first-child { grid-column: 1 / -1 !important; }
 
       .foot-grid h5 {
         font-size: 15px !important;
@@ -6048,7 +6048,7 @@ body {
       <div class="foot-bottom">
         <span>© 2026 Priyulabs Software. All rights reserved.</span>
         <span class="foot-version-badge" title="PriyuLabs Platform v2.4.68 (Live)"><span
-            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.97</span></span>
+            class="version-pulse-dot"></span><span class="foot-version" id="siteVersion">v2.4.100</span></span>
         <span>UDYAM-OD-19-0177979</span>
       </div>
     </div>
@@ -6783,7 +6783,8 @@ body {
   </script>
 
 
-  <!-- Smooth Internal Hash Scroll Engine (Overrides <base href="/">) -->
+  <!-- Smooth Internal Hash Scroll Engine (Overrides <script>if (window.location.protocol !== 'file:') { const b = document.createElement('base'); b.href = '/'; document.head.appendChild(b); }</script>
+  <noscript><base href="/"></noscript>) -->
   <script>
     (function() {
       function initSmoothScroll() {

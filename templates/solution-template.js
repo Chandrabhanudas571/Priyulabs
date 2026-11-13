@@ -661,8 +661,11 @@ function renderSolutionPage(solution, category) {
     @media (max-width: 860px) {
       .foot-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 520px) {
-      .foot-grid { grid-template-columns: 1fr; }
+    @media (max-width: 767px) {
+      footer { padding: 40px 0 24px !important; }
+      .foot-grid { grid-template-columns: 1fr 1fr !important; gap: 24px 16px !important; }
+      .foot-grid > div:first-child { grid-column: 1 / -1 !important; }
+      .foot-bottom { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 12px) !important; }
     }
     .foot-brand-desc {
       font-size: 13.5px;
