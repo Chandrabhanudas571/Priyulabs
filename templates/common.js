@@ -105,11 +105,7 @@ function renderDrawerHtml() {
               <span>Pricing</span>
               <span class="m-drawer-arrow">&rarr;</span>
             </a>
-            <a href="/#whats-new" class="m-drawer-link" onclick="handleDrawerNavClick(event, 'whats-new')">
-              <span>What's New</span>
-              <span class="m-drawer-arrow">&rarr;</span>
-            </a>
-          </div>
+            </div>
 
           <!-- LEVEL 2: 4 Main Categories -->
           <div class="m-drill-panel" id="mDrillPanel2">
@@ -153,7 +149,7 @@ function renderDrawerHtml() {
 
     <div class="m-drawer-footer">
       <a href="https://wa.me/917873844050?text=Hi%20Priyulabs,%20I%20want%20to%20book%20a%2010-min%20demo." target="_blank" rel="noopener noreferrer" class="m-drawer-cta-primary" onclick="closeMobileNav()">Book a 10-Min Demo</a>
-      <a href="https://wa.me/917849074050?text=Hi%20Priyulabs,%20I%20want%20to%20learn%20more%20about%20your%20retail%20operating%20system." target="_blank" rel="noopener noreferrer" class="m-drawer-cta-wa">
+      <a href="https://wa.me/917873844050?text=Hi%20Priyulabs,%20I%20want%20to%20learn%20more%20about%20your%20retail%20operating%20system." target="_blank" rel="noopener noreferrer" class="m-drawer-cta-wa">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.898-.782-3.118-2.73-3.212-2.857-.094-.127-.775-1.029-.775-1.961 0-.932.489-1.391.663-1.583.174-.192.38-.24.507-.24.127 0 .254.001.363.007.119.006.279-.045.437.334.164.394.561 1.366.611 1.467.05.101.082.22.016.353-.067.133-.1.216-.198.33-.099.115-.208.257-.297.345-.101.099-.207.207-.089.41.118.203.525.867 1.127 1.403.774.689 1.427.902 1.63.1.203.101.323.089.444-.051.121-.14.52-.607.66-.814.14-.207.279-.172.47-.101.191.071 1.213.571 1.421.674.208.103.346.155.397.243.05.088.05.512-.094.917z"/>
         </svg>

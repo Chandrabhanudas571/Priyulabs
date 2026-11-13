@@ -9958,3 +9958,13 @@ img[src*="w=200"] {
 
 
 
+
+
+/* Hide What's New section completely on mobile viewports (< 768px) */
+@media (max-width: 767px) {
+  #whats-new,
+  section#whats-new,
+  .whats-new-section {
+    display: none !important;
+  }
+}

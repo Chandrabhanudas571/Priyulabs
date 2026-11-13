@@ -14,8 +14,9 @@ async function verify() {
   const browser = await puppeteer.launch({
     executablePath: chromePath,
     headless: 'new',
-    userDataDir: tmpDir,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
+    pipe: true,
+    userDataDir: path.join(os.tmpdir(), 'pl_social_' + Date.now()),
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--single-process']
   });
 
   const page = await browser.newPage();
@@ -119,7 +120,7 @@ async function verify() {
   const expectedBtns = [
     {
       name: 'WhatsApp',
-      expectedHref: 'https://wa.me/917879844050?text=Hi%20Priyulabs%2C%20I%20want%20to%20book%20a%2010-min%20demo.',
+      expectedHref: 'https://wa.me/917873844050?text=Hi%20Priyulabs%2C%20I%20want%20to%20book%20a%2010-min%20demo.',
       expectedTarget: '_blank',
       expectedRel: 'noopener noreferrer',
       expectedAria: 'Chat on WhatsApp',

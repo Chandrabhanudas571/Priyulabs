@@ -1655,3 +1655,13 @@
     }
   }
 }
+
+
+/* Hide What's New section completely on mobile */
+@media (max-width: 767px) {
+  #whats-new,
+  section#whats-new,
+  .whats-new-section {
+    display: none !important;
+  }
+}

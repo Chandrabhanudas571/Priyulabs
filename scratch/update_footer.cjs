@@ -93,7 +93,7 @@ const oldFooterHTML = `<div class="foot-grid">
           <h5>Contact</h5>
           <ul>
             <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
-            <li><a href="tel:+917849074050">+91 78490 74050</a></li>
+            <li><a href="tel:+917873844050">+91 78738 44050</a></li>
             <li><a href="#">Basisthanagar, Bhubaneswar, Odisha</a></li>
           </ul>
         </div>
@@ -129,7 +129,7 @@ const newFooterHTML = `<div class="foot-grid">
           <h5>Contact</h5>
           <ul>
             <li><a href="mailto:priylabspos@gmail.com">priylabspos@gmail.com</a></li>
-            <li><a href="tel:+917849074050">+91 78490 74050</a></li>
+            <li><a href="tel:+917873844050">+91 78738 44050</a></li>
             <li><a href="#">Basisthanagar, Bhubaneswar, Odisha</a></li>
           </ul>
         </div>

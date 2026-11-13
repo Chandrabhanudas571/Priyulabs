@@ -8,7 +8,7 @@ function renderSolutionPage(solution, category) {
   const currentYear = new Date().getFullYear();
   const canonicalUrl = `https://priyulabs.com/solutions/${category.categorySlug}/${solution.slug}`;
   const whatsappDemoUrl = `https://wa.me/917873844050?text=Hi%20PriyuLabs,%20I%20want%20to%20book%20a%2010-min%20demo%20for%20${encodeURIComponent(solution.title)}.`;
-  const whatsappChatUrl = `https://wa.me/917849074050?text=Hi%20PriyuLabs,%20I%20want%20to%20learn%20more%20about%20${encodeURIComponent(solution.title)}.`;
+  const whatsappChatUrl = `https://wa.me/917873844050?text=Hi%20PriyuLabs,%20I%20want%20to%20learn%20more%20about%20${encodeURIComponent(solution.title)}.`;
 
   // Schema.org Structured Data
   const schemaBreadcrumbs = {
